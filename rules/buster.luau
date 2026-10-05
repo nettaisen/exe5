@@ -1,7 +1,7 @@
 --!strict
--- The buster's recovery by Rapid, then open panels ahead (0x0801CEA4, BN6's values); and what the empty
+-- The buster's recovery by Rapid, then open panels ahead (0x0801CEA4, EXE6's values); and what the empty
 -- hand's chip reads (the chip record 0xFFFF past the chip table at 0x0801E214).
--- Written by tools/bn5/gen_rules.py (bn6battle-verify) from the BN5 ROM; people own it now.
+-- Written by tools/exe5/gen_rules.py (bn6battle-verify) from the EXE5 ROM; people own it now.
 
 return {
     recovery = {

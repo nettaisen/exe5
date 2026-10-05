@@ -1,8 +1,8 @@
 --!strict
--- PitHoky (BN5 chip 0x155): the Program Advance of three AirHocs with consecutive codes (or two CannBalls and an
--- AirHoc): AirHoc's flick (action 0x21) of BN5's puck in row 3 (chips/airhoc/puck: 18 steps, a trail), down the field (the
+-- PitHoky (EXE5 chip 0x155): the Program Advance of three AirHocs with consecutive codes (or two CannBalls and an
+-- AirHoc): AirHoc's flick (action 0x21) of EXE5's puck in row 3 (chips/airhoc/puck: 18 steps, a trail), down the field (the
 -- record's Param1 3 and Param2 1).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local flick = require("@exelib/airhocky/flick")
 local puck = require("./airhoc/puck")
@@ -22,7 +22,7 @@ return define.chip {
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
-    -- BN5's recipes (written by tools/bn5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
     -- gauge tries.
     program_advances = {

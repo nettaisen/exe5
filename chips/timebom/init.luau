@@ -1,11 +1,11 @@
 --!strict
 -- TimeBom1, TimeBom2, TimeBom3 and TimeBom+: the timebom series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local timebom = require("@self/timebom")
 
--- TimeBom1 (BN5 chip 0x04b): a bomb on the enemy's frontmost panel of a random row that counts 3, 2, 1 and blows
--- up the whole enemy area unless it is broken first (chips/timebom/timebom: BN6's TimeBom with BN5's placement).
+-- TimeBom1 (EXE5 chip 0x04b): a bomb on the enemy's frontmost panel of a random row that counts 3, 2, 1 and blows
+-- up the whole enemy area unless it is broken first (chips/timebom/timebom: EXE6's TimeBom with EXE5's placement).
 local timebom1 = define.chip {
     id = "timebom1",
     codes = { "H", "N", "T" },
@@ -22,8 +22,8 @@ local timebom1 = define.chip {
     dimming = timebom.controller.hook(timebom.variants.bomb),
 }
 
--- TimeBom2 (BN5 chip 0x04c): a bomb on the enemy's frontmost panel of a random row that counts 3, 2, 1 and blows
--- up the whole enemy area unless it is broken first (chips/timebom/timebom: BN6's TimeBom with BN5's placement).
+-- TimeBom2 (EXE5 chip 0x04c): a bomb on the enemy's frontmost panel of a random row that counts 3, 2, 1 and blows
+-- up the whole enemy area unless it is broken first (chips/timebom/timebom: EXE6's TimeBom with EXE5's placement).
 local timebom2 = define.chip {
     id = "timebom2",
     codes = { "D", "H", "Z" },
@@ -40,8 +40,8 @@ local timebom2 = define.chip {
     dimming = timebom.controller.hook(timebom.variants.bomb),
 }
 
--- TimeBom3 (BN5 chip 0x04d): a bomb on the enemy's frontmost panel of a random row that counts 3, 2, 1 and blows
--- up the whole enemy area unless it is broken first (chips/timebom/timebom: BN6's TimeBom with BN5's placement).
+-- TimeBom3 (EXE5 chip 0x04d): a bomb on the enemy's frontmost panel of a random row that counts 3, 2, 1 and blows
+-- up the whole enemy area unless it is broken first (chips/timebom/timebom: EXE6's TimeBom with EXE5's placement).
 local timebom3 = define.chip {
     id = "timebom3",
     codes = { "F", "H", "S" },
@@ -58,8 +58,8 @@ local timebom3 = define.chip {
     dimming = timebom.controller.hook(timebom.variants.bomb),
 }
 
--- TimeBom+ (BN5 chip 0x15b): the Program Advance of TimeBom1, TimeBom2 and TimeBom3 in that order: TimeBom1-3's bomb
--- with 300 HP, its own look and a harder shake (chips/timebom/timebom: BN6's TimeBom with BN5's placement).
+-- TimeBom+ (EXE5 chip 0x15b): the Program Advance of TimeBom1, TimeBom2 and TimeBom3 in that order: TimeBom1-3's bomb
+-- with 300 HP, its own look and a harder shake (chips/timebom/timebom: EXE6's TimeBom with EXE5's placement).
 
 local recipe_timebom1 = timebom1
 local recipe_timebom2 = timebom2
@@ -78,7 +78,7 @@ local timebom_chip = define.chip {
     lockout = 0,
     flags = { "dimming", "has_damage", "library" },
     slot_in_limit = 1,
-    -- BN5's recipes (written by tools/bn5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
     -- gauge tries.
     program_advances = {

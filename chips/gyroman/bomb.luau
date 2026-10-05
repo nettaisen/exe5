@@ -1,5 +1,5 @@
 --!strict
--- GyroMan's bomb (BN5's attack object #0x1B, 0x080C7C6C; BN6's `sub_80C793C` is like it, though no BN6 content drops
+-- GyroMan's bomb (EXE5's attack object #0x1B, 0x080C7C6C; EXE6's `sub_80C793C` is like it, though no EXE6 content drops
 -- it): dropped on a panel from high up. Its variant (its first parameter) gives its height, its fall and its wait:
 -- 0 (a virus's) 64 pixels up, falling 4 a tick, after a wait by its row; 1 (GyroMan's chip's) and 2 40 up, falling
 -- 6, at once, and running while dimmed. Hidden while it waits, it lights its panel as it falls; on a panel that

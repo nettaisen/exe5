@@ -1,13 +1,13 @@
 --!strict
 -- EnergBom and MegEnBom: the energbom series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local bombs = require("../lib/bombs")
 local burst = require("@self/burst")
 local collision = require("../rules/collision")
 
--- EnergBom (BN5 chip 0x01e): a bomb that leaves an energy burst where it lands (three hits on that panel): BN6's
--- throw, bomb and burst (@exelib/bombs, @exelib/energbom/burst; BN5's the same code), with BN5's collision
+-- EnergBom (EXE5 chip 0x01e): a bomb that leaves an energy burst where it lands (three hits on that panel): EXE6's
+-- throw, bomb and burst (@exelib/bombs, @exelib/energbom/burst; EXE5's the same code), with EXE5's collision
 -- types.
 local energbom = define.chip {
     id = "energbom",
@@ -35,8 +35,8 @@ local energbom = define.chip {
     },
 }
 
--- MegEnBom (BN5 chip 0x01f): a bomb that leaves an energy burst where it lands (three hits on that panel): BN6's
--- throw, bomb and burst (@exelib/bombs, @exelib/energbom/burst; BN5's the same code), with BN5's collision
+-- MegEnBom (EXE5 chip 0x01f): a bomb that leaves an energy burst where it lands (three hits on that panel): EXE6's
+-- throw, bomb and burst (@exelib/bombs, @exelib/energbom/burst; EXE5's the same code), with EXE5's collision
 -- types.
 local megenbom = define.chip {
     id = "megenbom",

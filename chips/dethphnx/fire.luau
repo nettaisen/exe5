@@ -1,5 +1,5 @@
 --!strict
--- DeathPhoenix's fire on a panel (BN5's effect object #0x89, 0x080EA5E4; BN5's own): it rises there (its sprite's
+-- DeathPhoenix's fire on a panel (EXE5's effect object #0x89, 0x080EA5E4; EXE5's own): it rises there (its sprite's
 -- animation 0, then 1 for 10 ticks), then burns for 40 ticks: a hit on its panel lasting 25 ticks at once, one on
 -- the panel beside it lasting 31 ticks 16 ticks later (ahead of its side, or back toward the phoenix for a far
 -- fire), and a flame (./flame) leaping off it every 4 ticks. Then it goes.
@@ -29,7 +29,7 @@ local function damage_word(me: Object): number
     return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
 end
 
--- `sub_80C53A6` (BN5's 0x080C4DC6): a hit on (x, y) lasting `ticks`, running while dimmed (region 1, hit effect 0,
+-- `sub_80C53A6` (EXE5's 0x080C4DC6): a hit on (x, y) lasting `ticks`, running while dimmed (region 1, hit effect 0,
 -- target 5, self 0xA, hit modifier 3, 16 pixels up).
 local function hit(me: Object, x: number, y: number, ticks: number)
     local damage = damage_word(me)

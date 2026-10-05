@@ -1,6 +1,6 @@
 --!strict
--- DeltaRay (BN5 chip 0x12e): ProtoMan cuts in as DeltaRay and strikes the first enemy navi ahead, a strike more for each A while dimmed, up to three (./navi).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- DeltaRay (EXE5 chip 0x12e): ProtoMan cuts in as DeltaRay and strikes the first enemy navi ahead, a strike more for each A while dimmed, up to three (./navi).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 

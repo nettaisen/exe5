@@ -1,5 +1,5 @@
 --!strict
--- The chaos strike (BN5's attack object #0x82, 0x080D67D8; BN5's own, its dispatch BN6's `sub_80D5740`): a ball of
+-- The chaos strike (EXE5's attack object #0x82, 0x080D67D8; EXE5's own, its dispatch EXE6's `sub_80D5740`): a ball of
 -- dark energy that gathers in front of its thrower (46 pixels ahead, 50 up), changes look as it grows (0x080D6A1C's
 -- rows: the charge glow, the orb, then two of Bass's animations), picks its target panel 15 ticks before it flies and
 -- flies there in 16 ticks, where it bursts: explosions over the 3x3 around the panel (the panel bursts), a hit there

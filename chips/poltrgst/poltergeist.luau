@@ -1,9 +1,9 @@
 --!strict
--- BN5's Poltrgst (the dimming handler's subtype 49): BN5's own. Its controller (effect object #0x72, 0x080E8C1C):
+-- EXE5's Poltrgst (the dimming handler's subtype 49): EXE5's own. Its controller (effect object #0x72, 0x080E8C1C):
 -- the usual dimming phases, whose effect (0x080E8C60), when the field has an obstacle Poltergeist takes, sends out a
 -- stand-in of the user (actor object #0x58, 0x080C38E8: drawn as the user in animation 12 while the user vanishes),
 -- which raises the poltergeist (effect object #0x73, 0x080E8CFC): it takes every such obstacle (the field-object
--- registry's eight slots in order, but those whose identities aren't `throwable`: BN5's NameIDs 0xDA, 0xD3, 0xD2,
+-- registry's eight slots in order, but those whose identities aren't `throwable`: EXE5's NameIDs 0xDA, 0xD3, 0xD2,
 -- 0xE5, 0xE4 and 0xE7), front to back as its side faces (on one column, top row first), and throws each at a panel
 -- (`obstacle.throw`, `sub_800F6AC`: the obstacle rises, shakes 30 ticks, 20 more for each before it, and flies onto
 -- the panel, breaking there with a hit of the chip's damage); the panel a random one with the other side's navi on
@@ -75,7 +75,7 @@ local function pick(list: { { number } }): (number, number)
     return p[1], p[2]
 end
 
--- `sub_800F6C6` (BN5's 0x0800D5FE): a random panel with the other side's navi; else one of the other side's but its
+-- `sub_800F6C6` (EXE5's 0x0800D5FE): a random panel with the other side's navi; else one of the other side's but its
 -- own; else any.
 local function random_target(me: Object): (number, number)
     local side = me.alliance

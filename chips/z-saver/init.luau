@@ -1,7 +1,7 @@
 --!strict
--- Z Saver (BN5 chip 0x0da): three slashes with growing reach, a fourth (a piercing sonic boom) for B and back in the
--- twelve ticks after the third's hit, A held: BN5's action 0x34 (./action, BN6's Z Saver with the Katanas' step).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Z Saver (EXE5 chip 0x0da): three slashes with growing reach, a fourth (a piercing sonic boom) for B and back in the
+-- twelve ticks after the third's hit, A held: EXE5's action 0x34 (./action, EXE6's Z Saver with the Katanas' step).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local zsaver = require("@self/action")
 

@@ -1,8 +1,8 @@
 --!strict
--- ElemPowr's controller (effect object #0x7F, 0x080E9B68): BN5's own, the panel chips' (@exelib/panel-chips, BN6's
+-- ElemPowr's controller (effect object #0x7F, 0x080E9B68): EXE5's own, the panel chips' (@exelib/panel-chips, EXE6's
 -- `sub_80E2AE8`) reworked. The usual dimming phases; its effect (0x080E9BAC), when the user stands on lava, sea, ice,
 -- metal or grass, adds 10 for each panel of that type on the field (at most 9) to the side's Atk+ bonus, and has a
--- panel changer (objects/panel-changer: BN5's rows 15 to 19, 0x080E2A78) turn every such panel back to normal over 30
+-- panel changer (objects/panel-changer: EXE5's rows 15 to 19, 0x080E2A78) turn every such panel back to normal over 30
 -- ticks, then waits for it; on any other panel it is done at once.
 
 local dimming_chips = require("@exelib/dimming")
@@ -18,7 +18,7 @@ export type State = {
 -- The side's bonuses (`battle.add_special_bonus`'s index): the Atk+ bonus (the side state's +0x36).
 local ATTACK_BONUS = 0
 local PER_PANEL, MAX_PANELS = 10, 9
--- The flag bit each type's panels have (BN5's panel types' words, 0x0800BCF0), what any panel the change touches
+-- The flag bit each type's panels have (EXE5's panel types' words, 0x0800BCF0), what any panel the change touches
 -- mustn't have (0x8000), and the change by type.
 local NOT = 0x8000
 local function back_to_normal(bit: number): PanelChange

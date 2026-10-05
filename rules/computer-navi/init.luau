@@ -1,5 +1,5 @@
 --!strict
--- BN5's computer navis (docs/design/bn5-map.md §15.9): the navis no player controls a battle brings, which the
+-- EXE5's computer navis (docs/design/exe5-map.md §15.9): the navis no player controls a battle brings, which the
 -- navi type's tables drive by their AI index (its idle, 0x081041F0's action 6, and its tick, 0x080F23FC's entry).
 -- In a netbattle the one is Dark MegaMan (AI index 0x16, navis/dark-megaman), whom a failed Chaos Unison brings
 -- (rules/souls/chaos) for twelve seconds: his idle runs the AI (./ai) until his time is up, then he leaves; his last
@@ -121,7 +121,7 @@ computer_navi.system = define.system {
     actions = { computer_navi.leave },
     hooks = {
         -- The navi type's idle (action 6) of a navi this system drives: its AI index's. And the side's player's
-        -- idle where it would step (BN5's no-charge drive, 0x080F03E4): with the no-charge state the AI decides
+        -- idle where it would step (EXE5's no-charge drive, 0x080F03E4): with the no-charge state the AI decides
         -- for it (0x0802B4AC: DarkInvs's drive, on its own side's tactics, its state the system's of the side);
         -- without, that state starts over (0x0802C03A) and its idle goes on.
         controller = function(_side: number, navi: Object)

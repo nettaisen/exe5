@@ -1,5 +1,5 @@
 --!strict
--- The ripple over a body under the sea's surface (BN5's effect object #0x3E, 0x080E4B64; BN6's `sub_80E4CB8`, which
+-- The ripple over a body under the sea's surface (EXE5's effect object #0x3E, 0x080E4B64; EXE6's `sub_80E4CB8`, which
 -- nothing starts): the navi's status tick keeps one while its flags say it is under (0x80000004, 0x0800DEB2: the role
 -- `kinds.dive_ripple`, the body its first related) and ends it as it comes up. It sits on the surface over the body,
 -- its animation by the body's (0 standing, 2 for the body's 3, 1 for the rest), shown on the consoles that see the

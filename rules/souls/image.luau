@@ -1,5 +1,5 @@
 --!strict
--- The soul's image (actor object 0x2A, 0x080C0394; spawned by 0x080C0524, BN6's `sub_80C02A6`, which spawns its
+-- The soul's image (actor object 0x2A, 0x080C0394; spawned by 0x080C0524, EXE6's `sub_80C02A6`, which spawns its
 -- own kind 0x28 for battle mode 9): the navi MegaMan unites with comes in on a spiral around him for 22 ticks
 -- (tinted), blinks for 30 and fades out over 8. Its sprite is the soul's navi's (category 8 by the soul's number).
 -- It puts on what the soul's navi wears as it comes (0x0800ED0E with 1: 0x0800EDBC's routines by soul, their parts
@@ -181,7 +181,7 @@ image.kind = define.kind {
 --
 -- (It is spawned at the registers 0x0801201E's read of the side's transform record leaves (0x08012402): Chaos Unison
 -- (+1), the turn's arm chip by number (+6: 0xFFFF without one, which is what this has whatever the chip; a replay's
--- comparison knows the number, bn5-compat) and the turns (+3), which its first tick overwrites but NumberMan's face,
+-- comparison knows the number, exe5-compat) and the turns (+3), which its first tick overwrites but NumberMan's face,
 -- spawned before it, copies.)
 function image.spawn(owner: Object, soul: number): Object?
     local turns, chaos = owner:form_change_soul()

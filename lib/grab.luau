@@ -1,7 +1,7 @@
 --!strict
--- BN5's AreaGrab and PanelGrab: their grab shot (attack object #0xF, BN6's code: @exelib/grab/shot), BN6's look (BN6's
--- sheet and sound numbers) and BN5's collision types, and their dimming controller (effect object #3:
--- @exelib/grab/controller), BN5's kinds. Each chip's `dimming` hook is `grab.area` or `grab.panel`.
+-- EXE5's AreaGrab and PanelGrab: their grab shot (attack object #0xF, EXE6's code: @exelib/grab/shot), EXE6's look (EXE6's
+-- sheet and sound numbers) and EXE5's collision types, and their dimming controller (effect object #3:
+-- @exelib/grab/controller), EXE5's kinds. Each chip's `dimming` hook is `grab.area` or `grab.panel`.
 
 local collision = require("../rules/collision")
 local controller = require("@exelib/grab/controller")

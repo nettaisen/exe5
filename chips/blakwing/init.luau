@@ -1,7 +1,7 @@
 --!strict
--- BlakWing (BN5 chip 0x0d6): a cut-in chip: perches over the enemy's columns, and 18 wings falling down them, one
+-- BlakWing (EXE5 chip 0x0d6): a cut-in chip: perches over the enemy's columns, and 18 wings falling down them, one
 -- every 12 ticks (./blakwing, the dimming handler's subtype 32).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local blakwing = require("@self/blakwing")
 

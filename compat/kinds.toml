@@ -1,8 +1,8 @@
-# BN5's object kinds: the original's pool and index (the traces compare them), and the positions the comparison
+# EXE5's object kinds: the original's pool and index (the traces compare them), and the positions the comparison
 # skips (register garbage the spawner leaves until the kind's init places it), and the statuses it skips
-# (`scratch_status`: no collision behind the object's +0x54): bn5-compat's comparison reads them.
-# Written by hand from the BN5 recordings and code, as kinds come up in the replays: edit it when content is renamed
-# or added. A key without a root is BN5's own (most made with content/exelib's shared code); `engine/...` the
+# (`scratch_status`: no collision behind the object's +0x54): exe5-compat's comparison reads them.
+# Written by hand from the EXE5 recordings and code, as kinds come up in the replays: edit it when content is renamed
+# or added. A key without a root is EXE5's own (most made with content/exelib's shared code); `engine/...` the
 # engine's.
 
 "engine/player" = { pool = "actor", index = 0x00 }

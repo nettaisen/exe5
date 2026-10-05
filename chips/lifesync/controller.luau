@@ -1,10 +1,10 @@
 --!strict
--- BN5's LifeSync (the dimming handler's subtype 39): its dimming controller (effect object #0x5C, 0x080E710C: BN6's
--- `sub_80E7260` reworked) with BN6's marker (@exelib/lifesync/marker, effect object #0x60, BN5's look). The usual
+-- EXE5's LifeSync (the dimming handler's subtype 39): its dimming controller (effect object #0x5C, 0x080E710C: EXE6's
+-- `sub_80E7260` reworked) with EXE6's marker (@exelib/lifesync/marker, effect object #0x60, EXE5's look). The usual
 -- dimming phases, with an effect that marks the enemy two panels ahead and, after a warning over each, sets the HP
--- of the other combatants (side 1's, whoever uses it) to that enemy's, at most their own max HP (0x080E72C4; BN6's
+-- of the other combatants (side 1's, whoever uses it) to that enemy's, at most their own max HP (0x080E72C4; EXE6's
 -- not capped). A link or boss-ranked battle (unless in the operation battle) turns it into a wait, as do finding no enemy
--- there and no one to sync (81 ticks: BN6's waits otherwise). In the operation battle (never in a netbattle) the
+-- there and no one to sync (81 ticks: EXE6's waits otherwise). In the operation battle (never in a netbattle) the
 -- enemy two panels ahead takes a hit of 50 instead (0x080E739C), then the wait.
 
 local collision = require("../../rules/collision")
@@ -42,7 +42,7 @@ local MARK_POINT = 0x1B
 
 lifesync.marker = marker.make_kind("lifesync/marker", asset.sprite("hit-sparks"))
 
--- 0x080E7356 (BN6's `sub_80E7486`): if the panel shows the other side's player navi, the first combatant (both
+-- 0x080E7356 (EXE6's `sub_80E7486`): if the panel shows the other side's player navi, the first combatant (both
 -- sides' slots) whose collision is on it.
 local function combatant_on(x: number, y: number, side: number): Object?
     if not bit32.btest(field.flags(x, y), ENEMY_NAVI[side]) then
@@ -203,7 +203,7 @@ lifesync.controller = define.kind {
     update = dimming_chips.phases { name = "LifeSync", effect = effect },
 }
 
--- 0x080E7334 (BN6's `sub_80E7464`): LifeSync's `dimming` hook.
+-- 0x080E7334 (EXE6's `sub_80E7464`): LifeSync's `dimming` hook.
 function lifesync.hook(user: Object, spec: DimmingChipSpec): Object?
     return dimming_chips.spawn(lifesync.controller, user, spec)
 end

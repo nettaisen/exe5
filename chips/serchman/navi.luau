@@ -1,5 +1,5 @@
 --!strict
--- SearchMan, the navi of the SearchMan chips (BN5's actor object #0x31, 0x080C11D8; BN5's own, built on BN6's
+-- SearchMan, the navi of the SearchMan chips (EXE5's actor object #0x31, 0x080C11D8; EXE5's own, built on EXE6's
 -- Colonel template), brought by their navi chip controller. He fades in on his user's panel (and goes if it
 -- isn't solid), raises his rifle (animation 16) and sends his scope (./scope) sweeping the enemy area until it
 -- locks on; then five shots (./shot) on that panel, 10 ticks apart, the last powered if his user pressed B with

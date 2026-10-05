@@ -1,5 +1,5 @@
 --!strict
--- OmegaRkt's dimming controller (BN5's effect object #0x79, 0x080E95BC; BN5's own, on the dimming chips' skeleton): the
+-- OmegaRkt's dimming controller (EXE5's effect object #0x79, 0x080E95BC; EXE5's own, on the dimming chips' skeleton): the
 -- usual dimming phases (@exelib/dimming), with an effect (0x080E9600) that launches a rocket (./rocket) from its side's
 -- back column, middle row, its damage the chip's and the Atk+ bonus, and waits on it; then the undim.
 

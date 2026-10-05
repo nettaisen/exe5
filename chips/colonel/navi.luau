@@ -1,6 +1,6 @@
 --!strict
--- Colonel, the navi of BN5's Colonel chips and CrossDiv (BN5's actor object #0x08, 0x080BA280; BN5's own, built on
--- BN6's navi template: BN6's Colonel, its chips/colonel, is another routine), brought by their navi chip controller.
+-- Colonel, the navi of EXE5's Colonel chips and CrossDiv (EXE5's actor object #0x08, 0x080BA280; EXE5's own, built on
+-- EXE6's navi template: EXE6's Colonel, its chips/colonel, is another routine), brought by their navi chip controller.
 -- He appears with his cape (his body overlay), picks his target as he comes (the first panel ahead holding an enemy
 -- navi, else three columns ahead, else none), stands 20 ticks and (on a solid panel, with a target) draws his sword
 -- and divides the screen there: one diagonal slash rising toward his front, or, if his user held B and Left while he
@@ -31,7 +31,7 @@ local SPRITE = asset.sprite("colonel")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_COMMAND = asset.sound("ok-8b")
 local SOUND_SWING = asset.sound("spin")
--- What he wears (0x0800EE5E: BN5's body overlay row 3, its sprite 10-1E, in front at every animation), stepping
+-- What he wears (0x0800EE5E: EXE5's body overlay row 3, its sprite 10-1E, in front at every animation), stepping
 -- even while paused.
 local CAPE = define.identity {
     id = "colonel-navi",

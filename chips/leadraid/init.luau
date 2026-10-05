@@ -1,10 +1,10 @@
 --!strict
--- LeadRaid (BN5 chip 0x137): a navi chip (the summon table's entry 21) bringing ProtoMan and Colonel, who charge,
+-- LeadRaid (EXE5 chip 0x137): a navi chip (the summon table's entry 21) bringing ProtoMan and Colonel, who charge,
 -- then strike in turn: ProtoMan a slash ahead of the enemy navi he blinks to, Colonel an X on the first enemy navi in
--- his row (./protoman, ./colonel: BN5's actor objects #0x20 and #0x22).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs. An e-Reader card's chip:
--- its name, description and picture palette are the save's (bn5-map.md §6.4), the palette here from Tango's netplay
--- saves, as a gift chip's in BN6.
+-- his row (./protoman, ./colonel: EXE5's actor objects #0x20 and #0x22).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs. An e-Reader card's chip:
+-- its name, description and picture palette are the save's (exe5-map.md §6.4), the palette here from Tango's netplay
+-- saves, as a gift chip's in EXE6.
 
 local protoman = require("@self/protoman")
 

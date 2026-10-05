@@ -1,6 +1,6 @@
 --!strict
 -- GigaCan1, GigaCan2 and GigaCan3: the gigacan series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local recipe_attck_10 = require("./attck-10")
 local recipe_cannon = require("./cannon").cannon
@@ -9,9 +9,9 @@ local recipe_m_cannon = require("./cannon").m_cannon
 local shooter = require("../lib/cannon")
 local variants = require("../objects/projectile/variants")
 
--- GigaCan1 (BN5 chip 0x140): the Program Advance of three Cannons of one code (or Attck+10 and two of them): BN6's
+-- GigaCan1 (EXE5 chip 0x140): the Program Advance of three Cannons of one code (or Attck+10 and two of them): EXE6's
 -- cannon (@exelib/cannon, action 0x14 with subtype 4: the arm's row 0 of 0x080EC2AC, the shot's row 0x0C of 0x080EC2B3)
--- firing BN5's GigaCan shot (objects/projectile: a blast, no burst), the cannon and the navi leaving
+-- firing EXE5's GigaCan shot (objects/projectile: a blast, no burst), the cannon and the navi leaving
 -- afterimages as it charges (a third, Hub Style's shade, in Hub Style: lib/cannon).
 local gigacan1 = define.chip {
     id = "gigacan1",
@@ -26,7 +26,7 @@ local gigacan1 = define.chip {
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
-    -- BN5's recipes (written by tools/bn5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
     -- gauge tries.
     program_advances = {
@@ -41,9 +41,9 @@ local gigacan1 = define.chip {
     },
 }
 
--- GigaCan2 (BN5 chip 0x141): the Program Advance of three HiCannons of one code (or Attck+10 and two of them): BN6's
+-- GigaCan2 (EXE5 chip 0x141): the Program Advance of three HiCannons of one code (or Attck+10 and two of them): EXE6's
 -- cannon (@exelib/cannon, action 0x14 with subtype 5: the arm's row 1 of 0x080EC2AC, the shot's row 0x0C of 0x080EC2B3)
--- firing BN5's GigaCan shot (objects/projectile: a blast, no burst), the cannon and the navi leaving
+-- firing EXE5's GigaCan shot (objects/projectile: a blast, no burst), the cannon and the navi leaving
 -- afterimages as it charges (a third, Hub Style's shade, in Hub Style: lib/cannon).
 local gigacan2 = define.chip {
     id = "gigacan2",
@@ -58,7 +58,7 @@ local gigacan2 = define.chip {
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
-    -- BN5's recipes (written by tools/bn5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
     -- gauge tries.
     program_advances = {
@@ -73,9 +73,9 @@ local gigacan2 = define.chip {
     },
 }
 
--- GigaCan3 (BN5 chip 0x142): the Program Advance of three M-Cannons of one code (or Attck+10 and two of them): BN6's
+-- GigaCan3 (EXE5 chip 0x142): the Program Advance of three M-Cannons of one code (or Attck+10 and two of them): EXE6's
 -- cannon (@exelib/cannon, action 0x14 with subtype 6: the arm's row 2 of 0x080EC2AC, the shot's row 0x0C of 0x080EC2B3)
--- firing BN5's GigaCan shot (objects/projectile: a blast, no burst), the cannon and the navi leaving
+-- firing EXE5's GigaCan shot (objects/projectile: a blast, no burst), the cannon and the navi leaving
 -- afterimages as it charges (a third, Hub Style's shade, in Hub Style: lib/cannon).
 local gigacan3 = define.chip {
     id = "gigacan3",
@@ -90,7 +90,7 @@ local gigacan3 = define.chip {
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
-    -- BN5's recipes (written by tools/bn5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
     -- gauge tries.
     program_advances = {

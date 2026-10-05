@@ -1,5 +1,5 @@
 --!strict
--- BN5's flying shot (attack object #0x0B, 0x080C5DCC): BN5's own, BN6's (`sub_80C60A8`, objects/flying-shot)
+-- EXE5's flying shot (attack object #0x0B, 0x080C5DCC): EXE5's own, EXE6's (`sub_80C60A8`, objects/flying-shot)
 -- without the wait, the fall, the palette, the thrown obstacle and the end effect. It flies forward at its row's
 -- speed until it has passed its range in panel centers, and ends on the first thing it hits or when it leaves the
 -- field. Its row (its first parameter; the 16-byte rows at 0x080C5D0C) gives its collision, element, spark, status,
@@ -120,12 +120,12 @@ flying_shot.rows = { bubble = 0x7 }
 local function row_of(n: number): Row
     local r = ROWS[n]
     if not r then
-        error(string.format("BN5's flying shot row %#x reads past 0x080C5D0C's rows", n))
+        error(string.format("EXE5's flying shot row %#x reads past 0x080C5D0C's rows", n))
     end
     return r
 end
 
--- `sub_800E6E8` (BN5's 0x0800CB08): `c` lies past `a` and up to `b`, either way.
+-- `sub_800E6E8` (EXE5's 0x0800CB08): `c` lies past `a` and up to `b`, either way.
 local function crossed(a: number, b: number, c: number): boolean
     if a <= b then
         return c > a and c <= b
@@ -171,7 +171,7 @@ local function tick(me: Object)
         end
     end
     c:present()
-    -- `object_highlightCurrentCollisionPanels` (BN5's 0x0800B388): the panels of its region (none once it ends).
+    -- `object_highlightCurrentCollisionPanels` (EXE5's 0x0800B388): the panels of its region (none once it ends).
     -- Drawn only.
     if s.highlight then
         me:highlight_collision_panels()

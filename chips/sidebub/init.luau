@@ -1,11 +1,11 @@
 --!strict
 -- SideBub1, SideBub2 and SideBub3: the sidebub series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local sidebub = require("@self/sidebub")
 
--- SideBub1 (BN5 chip 0x0a0): the navi sends two bubbles to the column ahead, in the rows above and below its own,
--- drifting forward and bouncing between the top and bottom rows; a popped bubble bursts into an aqua shot: BN5's
+-- SideBub1 (EXE5 chip 0x0a0): the navi sends two bubbles to the column ahead, in the rows above and below its own,
+-- drifting forward and bouncing between the top and bottom rows; a popped bubble bursts into an aqua shot: EXE5's
 -- own (chips/sidebub/sidebub).
 local sidebub1 = define.chip {
     id = "sidebub1",
@@ -23,8 +23,8 @@ local sidebub1 = define.chip {
     action = sidebub.action,
 }
 
--- SideBub2 (BN5 chip 0x0a1): the navi sends two bubbles to the column ahead, in the rows above and below its own,
--- drifting forward and bouncing between the top and bottom rows; a popped bubble bursts into an aqua shot: BN5's
+-- SideBub2 (EXE5 chip 0x0a1): the navi sends two bubbles to the column ahead, in the rows above and below its own,
+-- drifting forward and bouncing between the top and bottom rows; a popped bubble bursts into an aqua shot: EXE5's
 -- own (chips/sidebub/sidebub).
 local sidebub2 = define.chip {
     id = "sidebub2",
@@ -42,8 +42,8 @@ local sidebub2 = define.chip {
     action = sidebub.action,
 }
 
--- SideBub3 (BN5 chip 0x0a2): the navi sends two bubbles to the column ahead, in the rows above and below its own,
--- drifting forward and bouncing between the top and bottom rows; a popped bubble bursts into an aqua shot: BN5's
+-- SideBub3 (EXE5 chip 0x0a2): the navi sends two bubbles to the column ahead, in the rows above and below its own,
+-- drifting forward and bouncing between the top and bottom rows; a popped bubble bursts into an aqua shot: EXE5's
 -- own (chips/sidebub/sidebub).
 local sidebub3 = define.chip {
     id = "sidebub3",

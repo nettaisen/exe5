@@ -2,7 +2,7 @@
 -- ShadowSoul's B+Back (`shadowsoul/back`): the original's weapon routine 0x45 (0x0800FBEE) sets 50 damage, its own
 -- counter byte, no bonus, the attack's variant 1, 30 ticks and a 50-tick wait before the next B+Back, and starts
 -- action 0x3D (0x080EE9F4): the anti-damage stance (@exelib/navicust/anti-damage, the AntiDmg program's), whose
--- caught hit turns into BN5's anti-damage counter (the roles' `anti_damage_counter`, or `anti_sword_counter`) with
+-- caught hit turns into EXE5's anti-damage counter (the roles' `anti_damage_counter`, or `anti_sword_counter`) with
 -- that variant: the shuriken thrown at the nearest enemy ahead (@exelib/antidmg/counter).
 
 local anti_damage = require("@exelib/navicust/anti-damage")

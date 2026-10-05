@@ -1,11 +1,11 @@
 --!strict
 -- ElcReel1, ElcReel2 and ElcReel3: the elcreel series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local elcreel = require("@self/elcreel")
 
--- ElcReel1 (BN5 chip 0x0a3): the navi launches a reel along its row; what it hits, it hooks with every navi around
--- it, and shocks them: BN5's own (chips/elcreel/elcreel).
+-- ElcReel1 (EXE5 chip 0x0a3): the navi launches a reel along its row; what it hits, it hooks with every navi around
+-- it, and shocks them: EXE5's own (chips/elcreel/elcreel).
 local elcreel1 = define.chip {
     id = "elcreel1",
     codes = { "C", "V", "Z" },
@@ -22,8 +22,8 @@ local elcreel1 = define.chip {
     action = elcreel.action,
 }
 
--- ElcReel2 (BN5 chip 0x0a4): the navi launches a reel along its row; what it hits, it hooks with every navi around
--- it, and shocks them: BN5's own (chips/elcreel/elcreel).
+-- ElcReel2 (EXE5 chip 0x0a4): the navi launches a reel along its row; what it hits, it hooks with every navi around
+-- it, and shocks them: EXE5's own (chips/elcreel/elcreel).
 local elcreel2 = define.chip {
     id = "elcreel2",
     codes = { "B", "Q", "Y" },
@@ -40,8 +40,8 @@ local elcreel2 = define.chip {
     action = elcreel.action,
 }
 
--- ElcReel3 (BN5 chip 0x0a5): the navi launches a reel along its row; what it hits, it hooks with every navi around
--- it, and shocks them: BN5's own (chips/elcreel/elcreel).
+-- ElcReel3 (EXE5 chip 0x0a5): the navi launches a reel along its row; what it hits, it hooks with every navi around
+-- it, and shocks them: EXE5's own (chips/elcreel/elcreel).
 local elcreel3 = define.chip {
     id = "elcreel3",
     codes = { "E", "L", "R" },

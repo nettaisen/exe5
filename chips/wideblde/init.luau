@@ -1,7 +1,7 @@
 --!strict
--- WideBlde (BN5 chip 0x033): WideSwrd's slash, stronger: the shared slash (@exelib/swords/slash, the original's action
--- 0x13; BN5's the same code) with BN5's parts (lib/swords) and its slash effect 0x19.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- WideBlde (EXE5 chip 0x033): WideSwrd's slash, stronger: the shared slash (@exelib/swords/slash, the original's action
+-- 0x13; EXE5's the same code) with EXE5's parts (lib/swords) and its slash effect 0x19.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")

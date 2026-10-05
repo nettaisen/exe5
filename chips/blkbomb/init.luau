@@ -1,13 +1,13 @@
 --!strict
--- BlkBomb (BN5 chip 0x02e): a black bomb lobbed three panels ahead that sits there until a fire hit sets it off
--- over the other side's area: the shared BlkBomb (@exelib/blkbomb, BN5's attack object #0x47, BN6's #0x4A; the same
--- code but for how it leaves, BN5's 0x080CE594, BN6's `sub_80CD700`, and its hit intake, BN5's that of BN6's
--- `sub_801ADFA` where BN6's is `sub_801AD12`, which BN5 hasn't) with BN5's look (its spark, BN5's 0x0A, and
--- collision types; its identity, sprite, sounds, burst and what it hits BN6's), thrown by the shared throw (lib/bombs:
--- the same held look, BN5's attachment row 0x1A, BN6's 0x2D). (BN5's
--- action table has 8 rows to BN6's 10, no frozen or bubbled: its idle and its return are 7 and 6 where BN6's are 9
+-- BlkBomb (EXE5 chip 0x02e): a black bomb lobbed three panels ahead that sits there until a fire hit sets it off
+-- over the other side's area: the shared BlkBomb (@exelib/blkbomb, EXE5's attack object #0x47, EXE6's #0x4A; the same
+-- code but for how it leaves, EXE5's 0x080CE594, EXE6's `sub_80CD700`, and its hit intake, EXE5's that of EXE6's
+-- `sub_801ADFA` where EXE6's is `sub_801AD12`, which EXE5 hasn't) with EXE5's look (its spark, EXE5's 0x0A, and
+-- collision types; its identity, sprite, sounds, burst and what it hits EXE6's), thrown by the shared throw (lib/bombs:
+-- the same held look, EXE5's attachment row 0x1A, EXE6's 0x2D). (EXE5's
+-- action table has 8 rows to EXE6's 10, no frozen or bubbled: its idle and its return are 7 and 6 where EXE6's are 9
 -- and 8, the same actions.)
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local attachment = require("../objects/attachment")
 local black_bomb = require("@exelib/blkbomb/bomb")
@@ -21,7 +21,7 @@ local trajectory = require("../lib/trajectory")
 
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
 
--- 0x080CE594: leaving. Hidden at once; a chip's removal (BN5 has no absorbing and no blinking out: only the
+-- 0x080CE594: leaving. Hidden at once; a chip's removal (EXE5 has no absorbing and no blinking out: only the
 -- removal) leaves a puff, and then, as when broken, an explosion if its HP is 0, with the bomb's sound unless a
 -- fire hit set it off; carried to be thrown, it goes at once, else not while dimmed.
 local function destroyed(me: Object)
@@ -75,7 +75,7 @@ local KIND = black_bomb.make_kind("blkbomb/bomb", {
     trajectory = trajectory,
 })
 
--- What the navi holds while throwing one: the bomb's sprite, palette 4 (BN5's attachment row 0x1A).
+-- What the navi holds while throwing one: the bomb's sprite, palette 4 (EXE5's attachment row 0x1A).
 local HELD = attachment.look { sprite = asset.sprite("bomb"), palette = 4 }
 
 return define.chip {

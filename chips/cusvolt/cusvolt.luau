@@ -1,9 +1,9 @@
 --!strict
--- BN5's CusVolt1-3 (action 0x27, 0x080ED1A2): BN5's own. The navi holds out its volt gun (the attachment table's row
+-- EXE5's CusVolt1-3 (action 0x27, 0x080ED1A2): EXE5's own. The navi holds out its volt gun (the attachment table's row
 -- 0x36, 0c-39) and, unless the custom gauge is full, the battle is of mode 6 or a link battle, drains half the custom
 -- gauge; on the action's sixth tick an electric beam (attack object #0xB8, 0x080DD3D0) comes out 40 pixels ahead of
 -- it, over its panel and the column ahead, and follows it until the action's end, 31 ticks in. Its damage is the
--- custom gauge's (BN5's formulas 73 to 75).
+-- custom gauge's (EXE5's formulas 73 to 75).
 
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")

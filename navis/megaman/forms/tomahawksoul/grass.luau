@@ -1,5 +1,5 @@
 --!strict
--- TomahawkSoul's grass (BN5's effect object 0x16, 0x080E1FC0: BN6's `sub_80E1E4C`, the same code, which BN6's
+-- TomahawkSoul's grass (EXE5's effect object 0x16, 0x080E1FC0: EXE6's `sub_80E1E4C`, the same code, which EXE6's
 -- netbattles never reach), spawned by the status reset in TomahawkSoul (0x08011C98, running while paused and
 -- dimmed): for its ticks every panel on the field shows as grass, two ticks of four (`object_setPanelTypeBlink`,
 -- keeping its side), then every panel turns to grass and it goes. Its parameters name the type and the ticks: the

@@ -1,16 +1,16 @@
 --!strict
 -- ProtoMan, ProtoMnSP and ProtoMnDS: the protoman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local attachment = require("../objects/attachment")
 local common = require("@exelib/protoman/navi")
 local navi = require("@self/navi")
 
--- ProtoMan (BN5 chip 0x0ef): ProtoMan cuts in and slashes each enemy navi he can reach: the shared navi
--- (@exelib/protoman/navi, BN5's kind ./navi; BN5's the same code but for his sprite, 08-01, BN6's 08-0b) with BN5's
+-- ProtoMan (EXE5 chip 0x0ef): ProtoMan cuts in and slashes each enemy navi he can reach: the shared navi
+-- (@exelib/protoman/navi, EXE5's kind ./navi; EXE5's the same code but for his sprite, 08-01, EXE6's 08-0b) with EXE5's
 -- look: his sword
--- BN5's attachment row 3 (BN6's 0x11, the same look) in its animation 1 (BN6 0xB, 0x080C199C's rows), his slash
--- BN5's effect 0x33 (BN6's 0x27, the same row), his palette 0 (0x080C1714) and his spawner BN5's 0x080C1A00.
+-- EXE5's attachment row 3 (EXE6's 0x11, the same look) in its animation 1 (EXE6 0xB, 0x080C199C's rows), his slash
+-- EXE5's effect 0x33 (EXE6's 0x27, the same row), his palette 0 (0x080C1714) and his spawner EXE5's 0x080C1A00.
 
 local LOOK = common.look {
     sprite = asset.sprite("protoman"),
@@ -38,8 +38,8 @@ local protoman = define.chip {
     navi = navi.summon_with(LOOK),
 }
 
--- ProtoMnSP (BN5 chip 0x0f0): ProtoMan cuts in and slashes each enemy navi he can reach, as ProtoMan's (the shared navi
--- with BN5's look: chips/protoman/init.luau; his palette by the chip's Param1, 0x080C1714: 0 for its 3); its damage by how
+-- ProtoMnSP (EXE5 chip 0x0f0): ProtoMan cuts in and slashes each enemy navi he can reach, as ProtoMan's (the shared navi
+-- with EXE5's look: chips/protoman/init.luau; his palette by the chip's Param1, 0x080C1714: 0 for its 3); its damage by how
 -- fast its user deleted ProtoMan SP (rules/sp-chips: formula 2, its table's row 1).
 
 local LOOK_PROTOMN_SP = common.look {
@@ -68,8 +68,8 @@ local protomn_sp = define.chip {
     navi = navi.summon_with(LOOK_PROTOMN_SP),
 }
 
--- ProtoMnDS (BN5 chip 0x0f1): ProtoMan, dark, cuts in and slashes each enemy navi he can reach, as ProtoMan's (the
--- shared navi with BN5's look: chips/protoman/init.luau; his palette by the chip's Param1, 0x080C1714: 3 for its 4); its
+-- ProtoMnDS (EXE5 chip 0x0f1): ProtoMan, dark, cuts in and slashes each enemy navi he can reach, as ProtoMan's (the
+-- shared navi with EXE5's look: chips/protoman/init.luau; his palette by the chip's Param1, 0x080C1714: 3 for its 4); its
 -- damage by its user's side's statistic 3 (formula 24, its table's row 1).
 
 local LOOK_PROTOMN_DS = common.look {

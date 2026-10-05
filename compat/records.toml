@@ -1,8 +1,8 @@
-# BN5's numbers of what its NaviStats name (bn5-compat's NaviStats conversion reads them). Written by hand from
-# the BN5 ROM: edit it when content is renamed or added. A key without a root is BN5's own; a qualified one
-# (`bn6:...`) is BN6's definition, which BN5's code shares.
+# EXE5's numbers of what its NaviStats name (exe5-compat's NaviStats conversion reads them). Written by hand from
+# the EXE5 ROM: edit it when content is renamed or added. A key without a root is EXE5's own; a qualified one
+# (`exe6:...`) is EXE6's definition, which EXE5's code shares.
 
-# Weapons: the weapon routine numbers (0x0800F370, BN6's `off_80117D4`) NaviStats +0x04 (buster), +0x05 (charged
+# Weapons: the weapon routine numbers (0x0800F370, EXE6's `off_80117D4`) NaviStats +0x04 (buster), +0x05 (charged
 # shot), +0x07 (B+Back) and +0x39 (A charge) name; 0xFF none.
 [weapons]
 "megaman/buster" = [0x00]
@@ -51,7 +51,7 @@
 "megaman/guard1" = [0x6A]
 "megaman/crsshld1" = [0x6B]
 
-# Projectile variants: the projectile table's rows (0x080C4718, BN6's `off_80C4C78`) the buster-shot and
+# Projectile variants: the projectile table's rows (0x080C4718, EXE6's `off_80C4C78`) the buster-shot and
 # charged-shot programs (NaviStats +0x4D, +0x4F) name; the buster's and the charged shot's own, and the chips'.
 [projectile_variants]
 "shot/plain" = 0x00
@@ -81,7 +81,7 @@
 "shot/charged-hp-bug" = 0x1E
 
 # The barriers NaviStats +0x06 names as the one a navi enters with (0 none): FstBarr's (1), the Barrier chip's
-# (lib/barriers: BN6's rows, BN5's visual).
+# (lib/barriers: EXE6's rows, EXE5's visual).
 [barriers]
 "barrier/10" = 1
 "barrier/100" = 5

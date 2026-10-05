@@ -1,7 +1,7 @@
 --!strict
--- BN5's computer-navi AI, in the two families a netbattle runs. Dark MegaMan's (0x0802BA14: `ai.run`) plays the tactics
+-- EXE5's computer-navi AI, in the two families a netbattle runs. Dark MegaMan's (0x0802BA14: `ai.run`) plays the tactics
 -- of the side across from it (the player whose Chaos Unison failed: their computer-navi data, the battle's
--- `tactic`s); the one BN5's story navis and DarkInvs's drive run (0x0802B4AC: `ai.run_own`, a player under DarkInvs
+-- `tactic`s); the one EXE5's story navis and DarkInvs's drive run (0x0802B4AC: `ai.run_own`, a player under DarkInvs
 -- driving itself) plays the navi's own side's, and faces, as it steps, the target whose search starts at the step's
 -- column (where the other starts at the pattern's search place); its pick for a crowded front is real code. Entry by
 -- entry: an entry is a chip, which it gets in place for (./place) and uses, or a pattern: a place by its target and a

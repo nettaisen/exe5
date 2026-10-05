@@ -1,5 +1,5 @@
 --!strict
--- A flame leaping off DeathPhoenix's fire (BN5's effect object #0x71, 0x080E8ACC; BN5's own): on the fire's panel,
+-- A flame leaping off DeathPhoenix's fire (EXE5's effect object #0x71, 0x080E8ACC; EXE5's own): on the fire's panel,
 -- a pixel up the field, 4 pixels up; from its next tick it leaps 40 pixels ahead over 16 ticks in an arc 20 pixels
 -- high (slow on the way up, quick on the way down), and goes. It faces the fire's way, turned back for a far fire.
 -- (Its action table, 0x080E8B3C, holds the leap alone: the 10-tick wait that would go before it, 0x080E8B40, is

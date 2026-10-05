@@ -1,6 +1,6 @@
 --!strict
--- BN5's panel changer (effect object #0x1F, BN6's code: @exelib/panel-changer/panel_changer), BN5's kind; the
--- sounds most changes make BN6's (a tick every fourth tick, and the change).
+-- EXE5's panel changer (effect object #0x1F, EXE6's code: @exelib/panel-changer/panel_changer), EXE5's kind; the
+-- sounds most changes make EXE6's (a tick every fourth tick, and the change).
 
 local common = require("@exelib/panel-changer")
 

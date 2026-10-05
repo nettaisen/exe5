@@ -1,5 +1,5 @@
 --!strict
--- LeadRaid's ProtoMan (BN5's actor object #0x20, 0x080BE1C8; the code BN6's TwinLdrs grew from: `sub_80BD388` is this
+-- LeadRaid's ProtoMan (EXE5's actor object #0x20, 0x080BE1C8; the code EXE6's TwinLdrs grew from: `sub_80BD388` is this
 -- handler as it is, the rest reworked), brought by the navi chip controller (the summon table's entry 21) on his
 -- user's panel, 10 pixels ahead of it and 6 down; he brings Colonel (./colonel). He appears (4 ticks) and charges (his
 -- glow, ./glow, from his 11th tick); on his 55th he picks his target and lets Colonel strike: along his row, the

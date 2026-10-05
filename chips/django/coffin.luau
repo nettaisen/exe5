@@ -1,5 +1,5 @@
 --!strict
--- Django's coffin (BN5's attack object #0xBC, 0x080DE050; BN5's own): it stands over his target's panel, its look
+-- Django's coffin (EXE5's attack object #0xBC, 0x080DE050; EXE5's own): it stands over his target's panel, its look
 -- the animation Django gives it (`coffin.set_anim`), until he lets it go (`coffin.remove`) or the battle ends.
 
 local coffin = {}

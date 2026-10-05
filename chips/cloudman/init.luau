@@ -1,10 +1,10 @@
 --!strict
 -- CloudMan, CloudMnSP and CloudMnDS: the cloudman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- CloudMan (BN5 chip 0x10a): CloudMan cuts in and sets thunderclouds behind the enemies, each striking with a
+-- CloudMan (EXE5 chip 0x10a): CloudMan cuts in and sets thunderclouds behind the enemies, each striking with a
 -- paralyzing bolt (./navi).
 local cloudman = define.chip {
     id = "cloudman",
@@ -23,7 +23,7 @@ local cloudman = define.chip {
     navi = navi.summon,
 }
 
--- CloudMnSP (BN5 chip 0x10b): CloudMan cuts in and sets thunderclouds behind the enemies, each striking with a
+-- CloudMnSP (EXE5 chip 0x10b): CloudMan cuts in and sets thunderclouds behind the enemies, each striking with a
 -- paralyzing bolt (../cloudman/navi); its damage by how fast its user deleted CloudMan SP (rules/sp-chips: formula 16,
 -- its table's row 15).
 local cloudmn_sp = define.chip {
@@ -43,7 +43,7 @@ local cloudmn_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- CloudMnDS (BN5 chip 0x10c): CloudMan, dark, cuts in and sets thunderclouds behind the enemies, each striking with a
+-- CloudMnDS (EXE5 chip 0x10c): CloudMan, dark, cuts in and sets thunderclouds behind the enemies, each striking with a
 -- paralyzing bolt (../cloudman/navi); its damage by its user's side's statistic 3 (formula 38, its table's row 15).
 local cloudmn_ds = define.chip {
     id = "cloudmn-ds",

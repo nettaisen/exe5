@@ -1,7 +1,7 @@
 --!strict
--- ElemRage (BN5 chip 0x080): a row of three flames from the panel ahead, of the element of the panel the user stands
+-- ElemRage (EXE5 chip 0x080): a row of three flames from the panel ahead, of the element of the panel the user stands
 -- on, which then spread and paralyze (chips/elemrage/elemrage, action 0x56; the record's parameters: 3 flames, 30 ticks).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local elemrage = require("@self/elemrage")
 

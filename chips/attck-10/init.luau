@@ -1,7 +1,7 @@
 --!strict
--- Attck+10 (BN5 chip 0x095): folded into the chip before it on the custom screen, 10 more damage;
+-- Attck+10 (EXE5 chip 0x095): folded into the chip before it on the custom screen, 10 more damage;
 -- used alone, action 0x1A's effect 3 (lib/plus: the sparkle, or in a special battle the side's attack bonus).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local plus = require("../lib/plus")
 

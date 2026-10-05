@@ -1,7 +1,7 @@
 --!strict
--- BN5's Boxer1-3 (action 0x1A's instant effect 21, 0x080E7D68): BN5's own. An unseen boxer (effect object #0x64,
+-- EXE5's Boxer1-3 (action 0x1A's instant effect 21, 0x080E7D68): EXE5's own. An unseen boxer (effect object #0x64,
 -- 0x080E7CE0) on the user's panel, which doesn't run while the battle is dimmed, punches with FireHit's fist
--- (chips/firehit/fist: BN5's fist, attack object #0x5B) three rounds of three, a punch every 12 ticks: down the middle
+-- (chips/firehit/fist: EXE5's fist, attack object #0x5B) three rounds of three, a punch every 12 ticks: down the middle
 -- row, the top and the bottom (0x080E7D64). A punch (0x080E7D86) walks the row from the panel ahead of the boxer and
 -- strikes the first panel with one of the other side's bodies or a neutral object on it (0x080E7E08); with none, a
 -- random panel of those it walked.

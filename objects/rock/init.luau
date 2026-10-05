@@ -1,13 +1,13 @@
 --!strict
--- BN5's rocks (attack object #0x59, 0x080D0FA0) and their debris (effect object #0x38, 0x080E46F4): BN6's
+-- EXE5's rocks (attack object #0x59, 0x080D0FA0) and their debris (effect object #0x38, 0x080E46F4): EXE6's
 -- (@exelib/rock) but for
 --
 -- - its rows (0x080D0F80, 8 bytes: animation, HP in twos, debris palette, break sound, NameID): the ice block has
---   100 HP (BN6's 200), its break sound BN5's 0xD9;
--- - how it leaves (0x080D1170): any removal leaves a puff (BN5 neither absorbs nor blinks obstacles out);
--- - the rocks' identities (actor records 0xD0 and 0xD1): field objects of AI index 0x21 (BN6's 1);
--- - BN5's sheets (rocks 10-02, debris 10-09), effects, sounds and collision types, and its action table of 7 rows
---   (no frozen or bubbled: standing is its 6, BN6's 8, the same action).
+--   100 HP (EXE6's 200), its break sound EXE5's 0xD9;
+-- - how it leaves (0x080D1170): any removal leaves a puff (EXE5 neither absorbs nor blinks obstacles out);
+-- - the rocks' identities (actor records 0xD0 and 0xD1): field objects of AI index 0x21 (EXE6's 1);
+-- - EXE5's sheets (rocks 10-02, debris 10-09), effects, sounds and collision types, and its action table of 7 rows
+--   (no frozen or bubbled: standing is its 6, EXE6's 8, the same action).
 --
 -- RockCube's and the stages' rocks (an actor list's entry type 8, 0x08006910: the variant the entry names, placed,
 -- thrown for 200).
@@ -21,7 +21,7 @@ local rock = {}
 
 local SPRITE = asset.sprite("rock")
 local SMALL_PUFF = asset.sprite("small-puff")
--- Effects 1, 2 and 0x14 (BN5's table, 0x080DFC94, as BN6's rows): a splash, dust, a puff.
+-- Effects 1, 2 and 0x14 (EXE5's table, 0x080DFC94, as EXE6's rows): a splash, dust, a puff.
 local SPLASH = define.effect { sprite = SMALL_PUFF, anim = 0, palette = 0 }
 local DUST = define.effect { sprite = SMALL_PUFF, anim = 1, palette = 0 }
 local PUFF = define.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 }

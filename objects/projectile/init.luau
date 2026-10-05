@@ -1,6 +1,6 @@
 --!strict
--- BN5's projectile (attack object #0, BN6's code: @exelib/projectile/projectile), BN5's kind; a bursting variant's
--- burst BN6's (its sound, effect and collision types). Its variants are BN5's (./variants).
+-- EXE5's projectile (attack object #0, EXE6's code: @exelib/projectile/projectile), EXE5's kind; a bursting variant's
+-- burst EXE6's (its sound, effect and collision types). Its variants are EXE5's (./variants).
 
 local collision = require("../rules/collision")
 local common = require("@exelib/projectile/projectile")

@@ -1,9 +1,9 @@
 --!strict
--- Blinder (BN5 chip 0x081): a flash that blinds every enemy navi: the dimming handler's subtype 8 (0x080E3140),
--- whose controller (effect object #0x23, 0x080E3050) is BN6's code that no BN6 chip uses (`sub_80E2E34`): the user
--- flashes white for 10 ticks, then a screen flash, the blinding hit over the other side's area (BN5's row 0x34,
+-- Blinder (EXE5 chip 0x081): a flash that blinds every enemy navi: the dimming handler's subtype 8 (0x080E3140),
+-- whose controller (effect object #0x23, 0x080E3050) is EXE6's code that no EXE6 chip uses (`sub_80E2E34`): the user
+-- flashes white for 10 ticks, then a screen flash, the blinding hit over the other side's area (EXE5's row 0x34,
 -- blindness for 480 ticks) and 60 more ticks of the user flashing.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local collision = require("../rules/collision")
 local dimming_chips = require("@exelib/dimming")
@@ -22,7 +22,7 @@ local function whiten(me: Object)
     end
 end
 
--- BN6's `sub_80E2E94`: the user flashes for 10 ticks.
+-- EXE6's `sub_80E2E94`: the user flashes for 10 ticks.
 local function flash(me: Object)
     if me.phase_init == 0 then
         me.timer = 10
@@ -36,8 +36,8 @@ local function flash(me: Object)
     end
 end
 
--- BN6's `sub_80E2EBC`: a 60-tick screen flash, the sound and the blinding hit over the other side's area (no damage,
--- no spark: `byte_80E2F18`, by side, BN5's 0x080E3134); 60 ticks of the user flashing, then undim.
+-- EXE6's `sub_80E2EBC`: a 60-tick screen flash, the sound and the blinding hit over the other side's area (no damage,
+-- no spark: `byte_80E2F18`, by side, EXE5's 0x080E3134); 60 ticks of the user flashing, then undim.
 local function blind(me: Object)
     if me.phase_init == 0 then
         me.timer = 60
@@ -72,7 +72,7 @@ local function blind(me: Object)
     whiten(me)
 end
 
--- BN6's `sub_80E2E78`.
+-- EXE6's `sub_80E2E78`.
 local function effect(me: Object)
     local phase = me.phase
     if phase == FLASH then
@@ -84,7 +84,7 @@ local function effect(me: Object)
     end
 end
 
--- Its controller (effect object #0x23; BN6's `sub_80E2E34`).
+-- Its controller (effect object #0x23; EXE6's `sub_80E2E34`).
 local CONTROLLER = define.kind {
     id = "blinder/controller",
     pool = "effect",

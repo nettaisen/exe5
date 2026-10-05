@@ -1,5 +1,5 @@
 --!strict
--- SearchMan's shot (BN5's attack object #0x57, 0x080D0D78; BN6 keeps its code, `sub_80CF5C8`, which no BN6 chip
+-- SearchMan's shot (EXE5's attack object #0x57, 0x080D0D78; EXE6 keeps its code, `sub_80CF5C8`, which no EXE6 chip
 -- spawns): a one-tick hit on a panel, 16 pixels up; a miss shows a spark (effect 7) near where it struck,
 -- flipped up or down at random. The powered last shot is another hit and shows a shot's impact.
 

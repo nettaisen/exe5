@@ -1,18 +1,18 @@
 --!strict
--- BN5's GunDelSol (action 0x2F, 0x080EDCB8; BN6's action 0x37, `sub_80EDAE0`): GunDelS1 to 3's and GunDelEX's. A
+-- EXE5's GunDelSol (action 0x2F, 0x080EDCB8; EXE6's action 0x37, `sub_80EDAE0`): GunDelS1 to 3's and GunDelEX's. A
 -- 7-tick wind-up with the gun out, then one hit per tick on the column two panels ahead (and the one past it,
--- GunDelEX's) under the sun beam (@exelib/gundels/beam, BN5's hum), for the chip's firing time while its player
+-- GunDelEX's) under the sun beam (@exelib/gundels/beam, EXE5's hum), for the chip's firing time while its player
 -- holds A, then an 11-tick recovery. The hits are element 5: they drain HP without flinching; 2 damage a hit, 4 in
--- the sun. BN6's code but:
+-- the sun. EXE6's code but:
 --
 -- - a player's beam lasts only while A is held (0x080EDD30, 0x080EDDCE): at the wind-up's end and each firing
 --   tick, a player (not AI index 0x17) without the no-charge state who has let go of A stops firing (unless the
 --   battle gives each player a gauge, the operation battle); the beam also stops when the battle is over;
--- - the hits are BN5's collision row 0x17 (BN6's drain, 0x2C);
--- - the gun is the attachment table's rows 0x13 to 0x16 (BN6's 7 to 0xA), the same look;
--- - the firing ticks are BN5's (0x080EDDC8: 60, 90, 120, 120), and nothing is left in the attack's count;
--- - the reactive-defense abort takes requests 0x200 and 0x400 (BN6's also 0x8000);
--- - the recovery steps the gun's animation without a null check (BN6 checks; a missing gun's write goes nowhere).
+-- - the hits are EXE5's collision row 0x17 (EXE6's drain, 0x2C);
+-- - the gun is the attachment table's rows 0x13 to 0x16 (EXE6's 7 to 0xA), the same look;
+-- - the firing ticks are EXE5's (0x080EDDC8: 60, 90, 120, 120), and nothing is left in the attack's count;
+-- - the reactive-defense abort takes requests 0x200 and 0x400 (EXE6's also 0x8000);
+-- - the recovery steps the gun's animation without a null check (EXE6 checks; a missing gun's write goes nowhere).
 
 local attachment = require("../../objects/attachment")
 local beam = require("@exelib/gundels/beam")
@@ -60,7 +60,7 @@ local SOUND = asset.sound("gundels1")
 local WIND_UP_TICKS, RECOVER_TICKS = 6, 10
 -- The beam, 80 pixels ahead of the navi.
 local BEAM_AHEAD = 0x50
--- The hits: element 5, two panels ahead, BN5's row 0x17, 2 damage (4 in the sun).
+-- The hits: element 5, two panels ahead, EXE5's row 0x17, 2 damage (4 in the sun).
 local ELEMENT, AHEAD = 5, 2
 local HIT = { is = collision.thrown_piercing_break, hits = collision.hits_navis }
 local DAMAGE, SUN_DAMAGE = 2, 4

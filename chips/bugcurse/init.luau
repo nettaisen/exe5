@@ -1,6 +1,6 @@
 --!strict
--- BugCurse (BN5 chip 0x12f): a giga cut-in chip that lays a curse on the enemy navi, infecting it with bugs (./controller).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- BugCurse (EXE5 chip 0x12f): a giga cut-in chip that lays a curse on the enemy navi, infecting it with bugs (./controller).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local controller = require("@self/controller")
 

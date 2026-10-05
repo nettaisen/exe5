@@ -1,8 +1,8 @@
 --!strict
--- BugBomb (BN5 chip 0x029): a bomb (bomb.luau) lobbed three panels ahead that bursts a second later and gives what it
--- hits a NaviCust bug: BN5's throw (lib/bombs: the shared throw, @exelib/bombs/throw, BN6's action 0x12; BN5's the same
--- code) with BN5's held bomb and BugBomb.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- BugBomb (EXE5 chip 0x029): a bomb (bomb.luau) lobbed three panels ahead that bursts a second later and gives what it
+-- hits a NaviCust bug: EXE5's throw (lib/bombs: the shared throw, @exelib/bombs/throw, EXE6's action 0x12; EXE5's the same
+-- code) with EXE5's held bomb and BugBomb.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local bombs = require("../lib/bombs")
 local bug_bomb = require("@self/bomb")

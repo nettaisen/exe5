@@ -1,7 +1,7 @@
 --!strict
--- NumbrBl (BN5 chip 0x0d3): a cut-in chip: the user warps out, and NumberMan himself sets five balls rolling down the
+-- NumbrBl (EXE5 chip 0x0d3): a cut-in chip: the user warps out, and NumberMan himself sets five balls rolling down the
 -- row (./controller, ./numberman); its damage is the last two digits of the user's HP.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local controller = require("@self/controller")
 

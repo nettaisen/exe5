@@ -1,12 +1,12 @@
 --!strict
 -- Cannon, HiCannon and M-Cannon: the cannon series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local shooter = require("../lib/cannon")
 local variants = require("../objects/projectile/variants")
 
--- Cannon (BN5 chip 0x001): BN6's cannon (@exelib/cannon, the original's action 0x14; BN5's the same code), firing
--- BN5's cannon shot.
+-- Cannon (EXE5 chip 0x001): EXE6's cannon (@exelib/cannon, the original's action 0x14; EXE5's the same code), firing
+-- EXE5's cannon shot.
 local cannon = define.chip {
     id = "cannon",
     codes = { "A", "B", "C", "*" },
@@ -23,8 +23,8 @@ local cannon = define.chip {
     action = shooter.action { id = "cannon/action", arm = shooter.arms.cannon, shot = variants.cannon },
 }
 
--- HiCannon (BN5 chip 0x002): BN6's cannon (@exelib/cannon, the original's action 0x14; BN5's the same code),
--- firing BN5's cannon shot.
+-- HiCannon (EXE5 chip 0x002): EXE6's cannon (@exelib/cannon, the original's action 0x14; EXE5's the same code),
+-- firing EXE5's cannon shot.
 local hicannon = define.chip {
     id = "hicannon",
     codes = { "D", "E", "F" },
@@ -41,8 +41,8 @@ local hicannon = define.chip {
     action = shooter.action { id = "hicannon/action", arm = shooter.arms.hicannon, shot = variants.cannon },
 }
 
--- M-Cannon (BN5 chip 0x003): BN6's cannon (@exelib/cannon, the original's action 0x14; BN5's the same code),
--- firing BN5's cannon shot.
+-- M-Cannon (EXE5 chip 0x003): EXE6's cannon (@exelib/cannon, the original's action 0x14; EXE5's the same code),
+-- firing EXE5's cannon shot.
 local m_cannon = define.chip {
     id = "m-cannon",
     codes = { "F", "G", "H" },

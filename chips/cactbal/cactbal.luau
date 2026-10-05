@@ -1,6 +1,6 @@
 --!strict
--- BN5's CactBal1-3 (action 0x48, 0x080EF0F4) and their cactus ball (attack object #0x5E, 0x080D1A88): BN5's own
--- (BN6's BblStar's action, `sub_80ED2F8`, is the nearest code; BN6's attack object #0x5E is another thing). The navi
+-- EXE5's CactBal1-3 (action 0x48, 0x080EF0F4) and their cactus ball (attack object #0x5E, 0x080D1A88): EXE5's own
+-- (EXE6's BblStar's action, `sub_80ED2F8`, is the nearest code; EXE6's attack object #0x5E is another thing). The navi
 -- raises its buster arm and, on the action's second tick, throws a wooden ball from where it stands, 16 pixels up.
 -- The ball hops two panels ahead in 15 ticks, then one panel at a time in 10, as long as it lands on solid panels and
 -- stays on the field; hitting something, it hops a panel back and goes on, until its fifth hop, after which a hit ends

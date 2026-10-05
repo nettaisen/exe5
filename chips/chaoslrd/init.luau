@@ -1,10 +1,10 @@
 --!strict
--- ChaosLrd (BN5 chip 0x138): a navi chip (the summon table's entry 29) bringing Bass and the dark beast behind him to
--- his user's back column, who throws a chaos strike at the middle of the other side's area (./navi: BN5's actor
+-- ChaosLrd (EXE5 chip 0x138): a navi chip (the summon table's entry 29) bringing Bass and the dark beast behind him to
+-- his user's back column, who throws a chaos strike at the middle of the other side's area (./navi: EXE5's actor
 -- object #0x51).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs. An e-Reader card's chip:
--- its name, description and picture palette are the save's (bn5-map.md §6.4), the palette here from Tango's netplay
--- saves, as a gift chip's in BN6.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs. An e-Reader card's chip:
+-- its name, description and picture palette are the save's (exe5-map.md §6.4), the palette here from Tango's netplay
+-- saves, as a gift chip's in EXE6.
 
 local navi = require("@self/navi")
 

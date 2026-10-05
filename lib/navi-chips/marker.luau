@@ -1,5 +1,5 @@
 --!strict
--- A die's marker over its panel (BN5's effect object #0x83, 0x080E9F38; BN5's own), in the operation battle
+-- A die's marker over its panel (EXE5's effect object #0x83, 0x080E9F38; EXE5's own), in the operation battle
 -- only: an entry of the 32 the battle's panel numbers draw from (0x0203C51C's bits, their records at 0x02035760),
 -- showing its style (1: where the die lands, 15: its countdown) for `ticks` ticks and one more; it goes at once when
 -- all 32 are taken. The engine draws none of them: the marker only holds its place in the effects' list.

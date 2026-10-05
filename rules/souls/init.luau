@@ -1,5 +1,5 @@
 --!strict
--- BN5's Soul Unison (docs/design/bn5-map.md §5, §15.8): MegaMan unites with a soul for some turns. The custom
+-- EXE5's Soul Unison (docs/design/exe5-map.md §5, §15.8): MegaMan unites with a soul for some turns. The custom
 -- screen's soul button (./custom: it gives up the last chip picked for the soul of its family, a soul a form with a
 -- `soul` naming its `family`) asks for it in the turn's transform record; at the turn's start the sequencer runs the
 -- soul's change (./change). The system keeps the side's soul turns (AIData +0x0F) and whether it is Chaos Unison,
@@ -55,7 +55,7 @@ souls.system = define.system {
     id = "souls",
     state = state,
     -- What the player's save brings: the souls it has (a match's side's `souls`, which nettai-match writes by this
-    -- field's name; a recording's, its version's: bn5-compat), which the custom screen's soul button may offer, as the
+    -- field's name; a recording's, its version's: exe5-compat), which the custom screen's soul button may offer, as the
     -- save's soul flags (0x08024BF0's, by each soul's number; any souls of the game, either version's); Soul Unison
     -- (event flag 0: the soul button) and Chaos Unison (event flag 0x236: a dark chip's soul). A finished save has
     -- both, as a setup that says nothing.
@@ -82,8 +82,8 @@ souls.system = define.system {
                 navi:set_request("revert_form", true)
             end
         end,
-        -- 0x0801248C, which BN5 calls as a custom screen is asked for mid-fight (0x08007774, BN6's `sub_8008452`'s
-        -- place, where BN6 counts its Beast Out down: not at the turn's start, so a soul's first turn shows all its
+        -- 0x0801248C, which EXE5 calls as a custom screen is asked for mid-fight (0x08007774, EXE6's `sub_8008452`'s
+        -- place, where EXE6 counts its Beast Out down: not at the turn's start, so a soul's first turn shows all its
         -- turns): MegaMan's soul turns count down (not below 0, and not 0xFF), unless the side's navi isn't
         -- MegaMan (NaviStats +0x29).
         custom_requested = function(side: number)

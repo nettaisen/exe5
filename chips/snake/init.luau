@@ -1,7 +1,7 @@
 --!strict
--- Snake (BN5 chip 0x060): a cut-in chip whose snakes leap out of the holes on the user's side at the nearest enemy,
--- three at a time (chips/snake: BN6's controller with BN5's nest and snakes).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Snake (EXE5 chip 0x060): a cut-in chip whose snakes leap out of the holes on the user's side at the nearest enemy,
+-- three at a time (chips/snake: EXE6's controller with EXE5's nest and snakes).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local snake = require("@self/snake")
 

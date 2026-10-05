@@ -1,6 +1,6 @@
 --!strict
--- GyroMan, the navi of BN5's GyroMan chips (BN5's actor object #0x0C, 0x080BAA80; BN5's own, built on BN6's navi
--- template), brought by their navi chip controller, wearing his propeller (BN5's body overlay row 0). He appears,
+-- GyroMan, the navi of EXE5's GyroMan chips (EXE5's actor object #0x0C, 0x080BAA80; EXE5's own, built on EXE6's navi
+-- template), brought by their navi chip controller, wearing his propeller (EXE5's body overlay row 0). He appears,
 -- stands 40 ticks, rises and vanishes, and takes off from his side's back column along his row, a pixel up: 16
 -- ticks on (a sound) he flies forward 3 pixels a tick, dropping a bomb (chips/gyroman/bomb) on each enemy panel as
 -- he passes its center, until he reaches the field's edge; then he leaves, and the controller moves on. Holding L
@@ -30,7 +30,7 @@ local SOUND_APPEAR = asset.sound("appear")
 local SOUND_TAKEOFF = asset.sound("gyro-takeoff")
 local SOUND_DROP = asset.sound("drop")
 local SOUND_RUN = asset.sound("ok-8b")
--- What he wears (0x0800EE4E: BN5's body overlay row 0, its sprite 10-0A, behind him in his animations 0 to 5, 7,
+-- What he wears (0x0800EE4E: EXE5's body overlay row 0, its sprite 10-0A, behind him in his animations 0 to 5, 7,
 -- 16 and 17), stepping even while paused.
 local PROPELLER = define.identity {
     id = "gyroman-navi",

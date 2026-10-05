@@ -1,7 +1,7 @@
 --!strict
--- RockCube (BN5 chip 0x063): a dimming that sets a rock cube rising on the panel in front of the user (./cube, the
+-- RockCube (EXE5 chip 0x063): a dimming that sets a rock cube rising on the panel in front of the user (./cube, the
 -- dimming handler's subtype 20).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local cube = require("@self/cube")
 

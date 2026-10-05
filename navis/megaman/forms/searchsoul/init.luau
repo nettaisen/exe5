@@ -1,5 +1,5 @@
 --!strict
--- SearchSoul (soul 3, Team ProtoMan's): BN5's Soul Unison with SearchMan, for a Cursor chip given up. MegaMan's
+-- SearchSoul (soul 3, Team ProtoMan's): EXE5's Soul Unison with SearchMan, for a Cursor chip given up. MegaMan's
 -- sprite in it is 00-03 (0x0800DA58[3]), his element Null (0x0800E634 by soul); he wears nothing over it. Its weapons
 -- (0x0801CA1C's row 3, loaded by 0x0800DCA0): the buster (routine 0), the scope's shots (8, ./charge), routine 1 on A
 -- (the charged shot's: no chip charges in SearchSoul, 0x0801090A), Chaos Unison's (0x30: DarkCirc); no B+Back (0xFF).

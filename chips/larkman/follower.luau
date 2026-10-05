@@ -1,5 +1,5 @@
 --!strict
--- What carries a powered swoop's damage (BN5's attack object #0xCB, 0x080DFB94; BN5's own): a hit with no sprite
+-- What carries a powered swoop's damage (EXE5's attack object #0xCB, 0x080DFB94; EXE5's own): a hit with no sprite
 -- that its swoop (./swoop) moves to where its body is each tick, its hit on the panel under it, gone with its swoop.
 
 local collision = require("../../rules/collision")

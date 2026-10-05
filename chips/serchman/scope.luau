@@ -1,5 +1,5 @@
 --!strict
--- SearchMan's scope (BN5's effect object #0x43, 0x080E5208; BN6 keeps its code, `sub_80E55C0`, which no BN6 chip
+-- SearchMan's scope (EXE5's effect object #0x43, 0x080E5208; EXE6 keeps its code, `sub_80E55C0`, which no EXE6 chip
 -- spawns): it starts on the top of the first column past its user's area, and sweeps the columns from there to the
 -- far edge, down one column and up the next, a panel every 6 ticks (4 for the SP and DS chips), until its user
 -- presses A while the battle is dimmed or 300 ticks pass; then it locks on (animation 1) and gives SearchMan the

@@ -1,6 +1,6 @@
 --!strict
--- MeddySoul's capsules on BN5's custom screen (docs/design/bn5-map.md §15.8; the screen's slots 8 and 9 in soul 6,
--- kinds 6 and 7: 0x08023D20). Each screen offers two of the five (BN5's chips 0x17C to 0x180), drawn by the console's
+-- MeddySoul's capsules on EXE5's custom screen (docs/design/exe5-map.md §15.8; the screen's slots 8 and 9 in soul 6,
+-- kinds 6 and 7: 0x08023D20). Each screen offers two of the five (EXE5's chips 0x17C to 0x180), drawn by the console's
 -- RNG1. A capsule is mixed into the last pick, a chip that deals damage and has none yet (0x08024C74): the screen's
 -- state 0x3C (0x0802373A: the capsule's icon flies to the column, the soul's choice's flashes), then the chip's pick
 -- carries the capsule's effect into the hand (the hand's flag byte, +68: 0x08023824) and the capsule is used. B on

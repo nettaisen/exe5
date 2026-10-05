@@ -1,10 +1,10 @@
 --!strict
 -- ToadMan, ToadManSP and ToadManDS: the toadman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- ToadMan (BN5 chip 0x101): ToadMan cuts in and plays a chain of paralyzing notes toward the nearest enemy ahead
+-- ToadMan (EXE5 chip 0x101): ToadMan cuts in and plays a chain of paralyzing notes toward the nearest enemy ahead
 -- (./navi).
 local toadman = define.chip {
     id = "toadman",
@@ -24,7 +24,7 @@ local toadman = define.chip {
     navi = navi.summon,
 }
 
--- ToadManSP (BN5 chip 0x102): ToadMan cuts in and plays a chain of paralyzing notes toward the nearest enemy ahead
+-- ToadManSP (EXE5 chip 0x102): ToadMan cuts in and plays a chain of paralyzing notes toward the nearest enemy ahead
 -- (../toadman/navi); its damage by how fast its user deleted ToadMan SP (rules/sp-chips: formula 13, its table's row
 -- 12).
 local toadman_sp = define.chip {
@@ -45,7 +45,7 @@ local toadman_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- ToadManDS (BN5 chip 0x103): ToadMan, dark, cuts in and plays a chain of paralyzing notes toward the nearest enemy
+-- ToadManDS (EXE5 chip 0x103): ToadMan, dark, cuts in and plays a chain of paralyzing notes toward the nearest enemy
 -- ahead (../toadman/navi); its damage by its user's side's statistic 3 (formula 35, its table's row 12).
 local toadman_ds = define.chip {
     id = "toadman-ds",

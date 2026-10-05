@@ -1,7 +1,7 @@
 --!strict
--- WindRack (BN5 chip 0x035): a swing of a rack that pushes the column ahead (chips/windrack/action: BN6's WindRack,
+-- WindRack (EXE5 chip 0x035): a swing of a rack that pushes the column ahead (chips/windrack/action: EXE6's WindRack,
 -- action 0x26, without its gusts).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local windrack = require("@self/action")
 

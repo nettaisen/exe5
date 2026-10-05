@@ -1,5 +1,5 @@
 --!strict
--- PileDrvr's beam (BN5's attack object #0x9A, 0x080D9DA0; BN6's code, `sub_80D879C`, which no BN6 chip uses): from
+-- PileDrvr's beam (EXE5's attack object #0x9A, 0x080D9DA0; EXE6's code, `sub_80D879C`, which no EXE6 chip uses): from
 -- the panel ahead of its pile, as long as the way to the one its pile saw (sprite 0C-4A, its animation by that
 -- distance, drawn 60 pixels ahead), it plays its opening animation through; then it hits that one's panel ten times,
 -- 16 ticks apart (0x080D9E6C), and goes. Its sound every 16 ticks; it runs while dimmed.

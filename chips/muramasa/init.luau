@@ -1,9 +1,9 @@
 --!strict
--- Muramasa (BN5 chip 0x0ca): a slash on the two panels ahead, as strong as the HP its user lost: BN6's slash
--- (@exelib/swords/slash, the original's action 0x13 with subtype 8) with BN5's parts (lib/swords) and its slash
--- effect (0x2D, BN5's palette 8 for BN6's 6), its damage BN5's formula 46 (0x0800EA78: BN6's formula 20 but for its
+-- Muramasa (EXE5 chip 0x0ca): a slash on the two panels ahead, as strong as the HP its user lost: EXE6's slash
+-- (@exelib/swords/slash, the original's action 0x13 with subtype 8) with EXE5's parts (lib/swords) and its slash
+-- effect (0x2D, EXE5's palette 8 for EXE6's 6), its damage EXE5's formula 46 (0x0800EA78: EXE6's formula 20 but for its
 -- cap, 999 for 500).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")

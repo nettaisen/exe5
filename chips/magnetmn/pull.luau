@@ -1,9 +1,9 @@
 --!strict
--- A magnet's pull (BN5's attack object #0x66, 0x080D2BE8; BN5's own): an unseen collision (collision row 0x36, the
+-- A magnet's pull (EXE5's attack object #0x66, 0x080D2BE8; EXE5's own): an unseen collision (collision row 0x36, the
 -- pulling kind, hitting nothing itself) on the panel 20 pixels ahead of a sliding magnet (./magnet), following it
 -- until it crashes (its action 8) or the battle ends. The magnet's (its variant 1) runs while paused and while
 -- dimmed. (Its variant 0, which follows a navi until its AIData+0xA0 reads 0x18 or its action leaves 0xB, belongs
--- to BN5's MagnetMan as an enemy, which nothing ported spawns.)
+-- to EXE5's MagnetMan as an enemy, which nothing ported spawns.)
 
 local collision = require("../../rules/collision")
 

@@ -1,7 +1,7 @@
-# BN5's asset names, written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs,
-# by BN6's names for what is BN6's (gen_content.py's `asset_names`: the songs and sprites whose data is
-# BN6's, BN5's music and sprites by the place BN5's code uses them where BN6's same code uses a named one,
-# the banners whose records are BN6's). bn5-extract writes each asset under its name here, the rest under a
+# EXE5's asset names, written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs,
+# by EXE6's names for what is EXE6's (gen_content.py's `asset_names`: the songs and sprites whose data is
+# EXE6's, EXE5's music and sprites by the place EXE5's code uses them where EXE6's same code uses a named one,
+# the banners whose records are EXE6's). exe5-extract writes each asset under its name here, the rest under a
 # placeholder (`sprite-cc-ii`, `sound-nnn`, `banner-nn`), which content may not use.
 
 # Sprites: "cc-ii", the category's byte offset in the sprite list (0x08032728) and the index.
@@ -441,7 +441,7 @@ numbers = 0x12
 numbers-2 = 0x14
 glyphs = 0x1a
 
-# Mugshots: the emotion window's faces, by the number bn5-extract gives them (its hud.rs: the face
+# Mugshots: the emotion window's faces, by the number exe5-extract gives them (its hud.rs: the face
 # table's pictures with their own palettes, then the version souls' with the palettes Chaos Unison
 # shows them in, then Team Colonel's own souls').
 [mugshots]

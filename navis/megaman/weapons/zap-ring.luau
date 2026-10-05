@@ -1,8 +1,8 @@
 --!strict
 -- The patch cards' ZapRng (`megaman/zap-ring`, B↓ZapRng, Bunny's card): weapon routine 0x42 (0x0800FB76) and action
--- 0x32 (0x080EFFC8, BN5's own): the navi holds out its ring (the attachment table's row 0x38, 0c-5a, at its attach
--- point 0x1C) and, five ticks after the first, sends a ring (attack object #0xC4, 0x080DF38C: BN6's code,
--- `sub_80C51CC` and `sub_80C524C`, which no BN6 content spawns, BN5's look) along its row from the panel ahead, 26
+-- 0x32 (0x080EFFC8, EXE5's own): the navi holds out its ring (the attachment table's row 0x38, 0c-5a, at its attach
+-- point 0x1C) and, five ticks after the first, sends a ring (attack object #0xC4, 0x080DF38C: EXE6's code,
+-- `sub_80C51CC` and `sub_80C524C`, which no EXE6 content spawns, EXE5's look) along its row from the panel ahead, 26
 -- pixels up: Elec, 30 damage, hit parameter 10, paralyzing. 11 ticks in, 11 more, and it is back to idle.
 --
 -- The ring: by its first parameter (the attack's parameters' first byte: 0), a row of 0x080DF380 (its speed in
@@ -37,7 +37,7 @@ local function finish(me: Object)
     me:set_lifecycle("destroy")
 end
 
--- 0x080DF42C (BN6's `sub_80C524C`): its hits; on a hit or the battle's end it goes; else it flies on, leaving the
+-- 0x080DF42C (EXE6's `sub_80C524C`): its hits; on a hit or the battle's end it goes; else it flies on, leaving the
 -- field it goes.
 local function tick(me: Object)
     local c = me.collision
@@ -57,7 +57,7 @@ local function tick(me: Object)
     me:update_sprite()
 end
 
--- 0x080DF3AC (BN6's `sub_80C51CC`, BN5's sheet): shown on its panel (its height the spawner's), flying ahead at its
+-- 0x080DF3AC (EXE6's `sub_80C51CC`, EXE5's sheet): shown on its panel (its height the spawner's), flying ahead at its
 -- row's speed; an attack hitting navis with its row's status and its element's spark; its row's sound.
 local function init(me: Object)
     local s = me.state :: RingState

@@ -1,6 +1,6 @@
 --!strict
--- MetrKnuk's dimming controller (BN5's effect object #0x76, 0x080E9188): the shared controller
--- (@exelib/metrknuk/controller), BN5's kind: 16 fists (./fist), 8 ticks apart, every one at a random panel around
+-- MetrKnuk's dimming controller (EXE5's effect object #0x76, 0x080E9188): the shared controller
+-- (@exelib/metrknuk/controller), EXE5's kind: 16 fists (./fist), 8 ticks apart, every one at a random panel around
 -- the enemies (0x080E91F8; never the last one twice in a row), none when no enemy stands (0x080E9270); its fists
 -- null (0x080E9268).
 

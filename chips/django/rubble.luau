@@ -1,5 +1,5 @@
 --!strict
--- Rubble from Django's sun's landing (BN5's effect object #0x84, 0x080EA000; BN5's own): a piece that drops from
+-- Rubble from Django's sun's landing (EXE5's effect object #0x84, 0x080EA000; EXE5's own): a piece that drops from
 -- where it is spawned, puffing as it starts, falling faster each tick (half a pixel more), then lying blinking for
 -- 20 ticks.
 

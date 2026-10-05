@@ -1,8 +1,8 @@
 --!strict
--- BN5's GrabBnsh's and GrabRvng's dimming controller (effect object #0x22) and hand (attack object #0x46): BN6's
--- code (@exelib/grabbnsh), BN5's kinds; the hand's look BN6's numbers, its hit BN5's curse row
+-- EXE5's GrabBnsh's and GrabRvng's dimming controller (effect object #0x22) and hand (attack object #0x46): EXE6's
+-- code (@exelib/grabbnsh), EXE5's kinds; the hand's look EXE6's numbers, its hit EXE5's curse row
 -- hitting navis, the flash on each panel taken
--- back (BN5's effect 0x29, BN6's 0x3B: the same) and its sound BN6's number.
+-- back (EXE5's effect 0x29, EXE6's 0x3B: the same) and its sound EXE6's number.
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/grabbnsh/controller")

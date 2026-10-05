@@ -1,11 +1,11 @@
 --!strict
 -- Vulcan1, Vulcan2, Vulcan3 and SuprVulc: the vulcan series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local bullet = require("../objects/bullet")
 local vulcan = require("@self/vulcan")
 
--- Vulcan1 (BN5 chip 0x00f): action 0x19, BN6's vulcan with BN5's gun and bullets (chips/vulcan/vulcan): 3 bullets.
+-- Vulcan1 (EXE5 chip 0x00f): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 3 bullets.
 local vulcan1 = define.chip {
     id = "vulcan1",
     codes = { "C", "D", "E", "*" },
@@ -22,7 +22,7 @@ local vulcan1 = define.chip {
     action = vulcan.action(3),
 }
 
--- Vulcan2 (BN5 chip 0x010): action 0x19, BN6's vulcan with BN5's gun and bullets (chips/vulcan/vulcan): 5 bullets.
+-- Vulcan2 (EXE5 chip 0x010): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 5 bullets.
 local vulcan2 = define.chip {
     id = "vulcan2",
     codes = { "A", "B", "C" },
@@ -39,7 +39,7 @@ local vulcan2 = define.chip {
     action = vulcan.action(5),
 }
 
--- Vulcan3 (BN5 chip 0x011): action 0x19, BN6's vulcan with BN5's gun and bullets (chips/vulcan/vulcan): 7 bullets.
+-- Vulcan3 (EXE5 chip 0x011): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 7 bullets.
 local vulcan3 = define.chip {
     id = "vulcan3",
     codes = { "L", "M", "N" },
@@ -56,8 +56,8 @@ local vulcan3 = define.chip {
     action = vulcan.action(7),
 }
 
--- SuprVulc (BN5 chip 0x0dc): action 0x19, BN6's vulcan with BN5's gun and bullets (chips/vulcan/vulcan): 12 bullets of
--- row 0x10 (BN6's SuprVulc's).
+-- SuprVulc (EXE5 chip 0x0dc): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 12 bullets of
+-- row 0x10 (EXE6's SuprVulc's).
 local suprvulc = define.chip {
     id = "suprvulc",
     codes = { "S" },

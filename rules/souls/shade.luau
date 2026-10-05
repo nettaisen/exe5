@@ -1,8 +1,8 @@
 --!strict
 -- Chaos Unison's dark shade (actor object 0x2B, 0x080C0544; spawned by 0x080C0678 as the soul's image comes in, ../
 -- soul-image): MegaMan's own sprite in its dark palette leaves him forward for 20 ticks, waits 30, and spirals back
--- into him over 20; then it goes. (BN6 has the same object, actor 0x2A's neighbor `sub_80C065C`, which nothing
--- spawns.) It runs while the battle is paused, as the change does. BN5's dark MegaMan's last stand has its own
+-- into him over 20; then it goes. (EXE6 has the same object, actor 0x2A's neighbor `sub_80C065C`, which nothing
+-- spawns.) It runs while the battle is paused, as the change does. EXE5's dark MegaMan's last stand has its own
 -- (actor object 0x2E, 0x080C0EA0: ../emotion/dark-survival), the same code but for its height, its shadow and the
 -- parts it wears (`shade.make`).
 

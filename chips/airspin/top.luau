@@ -1,7 +1,7 @@
 --!strict
--- AirSpin's whirlwind top (BN5's attack object #0x9B, 0x080D9EE4): BN6's
--- (@exelib/airspin/top) in BN5's look. Its side's own body of 50 HP that
--- the other side hits (BN6's is a neutral one of 400), set down wherever it
+-- AirSpin's whirlwind top (EXE5's attack object #0x9B, 0x080D9EE4): EXE6's
+-- (@exelib/airspin/top) in EXE5's look. Its side's own body of 50 HP that
+-- the other side hits (EXE6's is a neutral one of 400), set down wherever it
 -- is sent; a wind hit doesn't spin it more and no chip removes it; its gust
 -- (effect 0x4F, not turned to its side) hits without pushing. As it stands,
 -- and after each spin, it draws RNG2 (bit 2) for the style, 9 or 11, of a

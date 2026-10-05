@@ -1,11 +1,11 @@
 --!strict
 -- CactBal1, CactBal2 and CactBal3: the cactbal series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local cactbal = require("@self/cactbal")
 
--- CactBal1 (BN5 chip 0x0af): the navi throws a wooden ball that hops along the row, bouncing back off what it hits:
--- BN5's own (chips/cactbal/cactbal), the ball in palette 0.
+-- CactBal1 (EXE5 chip 0x0af): the navi throws a wooden ball that hops along the row, bouncing back off what it hits:
+-- EXE5's own (chips/cactbal/cactbal), the ball in palette 0.
 local cactbal1 = define.chip {
     id = "cactbal1",
     codes = { "H", "I", "J" },
@@ -22,8 +22,8 @@ local cactbal1 = define.chip {
     action = cactbal.action(0),
 }
 
--- CactBal2 (BN5 chip 0x0b0): the navi throws a wooden ball that hops along the row, bouncing back off what it hits:
--- BN5's own (chips/cactbal/cactbal), the ball in palette 2.
+-- CactBal2 (EXE5 chip 0x0b0): the navi throws a wooden ball that hops along the row, bouncing back off what it hits:
+-- EXE5's own (chips/cactbal/cactbal), the ball in palette 2.
 local cactbal2 = define.chip {
     id = "cactbal2",
     codes = { "Q", "R", "S" },
@@ -40,8 +40,8 @@ local cactbal2 = define.chip {
     action = cactbal.action(1),
 }
 
--- CactBal3 (BN5 chip 0x0b1): the navi throws a wooden ball that hops along the row, bouncing back off what it hits:
--- BN5's own (chips/cactbal/cactbal), the ball in palette 4.
+-- CactBal3 (EXE5 chip 0x0b1): the navi throws a wooden ball that hops along the row, bouncing back off what it hits:
+-- EXE5's own (chips/cactbal/cactbal), the ball in palette 4.
 local cactbal3 = define.chip {
     id = "cactbal3",
     codes = { "L", "M", "N" },

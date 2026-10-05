@@ -1,5 +1,5 @@
 --!strict
--- NumberSoul (soul 9, Team Colonel's): BN5's Soul Unison with NumberMan, for a Plus chip given up. MegaMan's sprite in
+-- NumberSoul (soul 9, Team Colonel's): EXE5's Soul Unison with NumberMan, for a Plus chip given up. MegaMan's sprite in
 -- it is 00-09 (0x0800DA58[9]), his element Null (0x0800E634 by soul); he wears its layer (./layer, row 1: his start
 -- and end hooks, 0x0800F07C and 0x0800F0DE; NumberMan's image wears row 0). Its weapons (0x0801CA1C's row 9, loaded by
 -- 0x0800DCA0): the buster (routine 0), the die (7, ./charge), routine 1 on A (the charged shot's: no chip charges in

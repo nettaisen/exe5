@@ -1,10 +1,10 @@
 --!strict
--- MegaMan's buster in BN5 (`megaman/buster`): the original's weapon routine 0 (0x0800F522, BN6's `sub_8011A26`), which
--- sets up the shared buster shot (@exelib/megaman/buster, BN6's action 0x11, BN5's 0x11: the same code but for the
--- muzzle flash's attachment row and the absorbed-obstacle throw, which BN5 hasn't) with BN5's buster parts, projectile
--- and attachment; its sound BN6's number. The NaviCust's buster bugs may make a shot a blank (the shared blank shot,
--- @exelib/megaman/blank_shot: BN5's action 0x33, its click BN6's number) or a charged shot instead (BN6's pick,
--- `sub_8013D5E`: the same code). Unlike BN6's, the damage is Attack plus the navi's buster bonus (0x0800F5AC by navi:
+-- MegaMan's buster in EXE5 (`megaman/buster`): the original's weapon routine 0 (0x0800F522, EXE6's `sub_8011A26`), which
+-- sets up the shared buster shot (@exelib/megaman/buster, EXE6's action 0x11, EXE5's 0x11: the same code but for the
+-- muzzle flash's attachment row and the absorbed-obstacle throw, which EXE5 hasn't) with EXE5's buster parts, projectile
+-- and attachment; its sound EXE6's number. The NaviCust's buster bugs may make a shot a blank (the shared blank shot,
+-- @exelib/megaman/blank_shot: EXE5's action 0x33, its click EXE6's number) or a charged shot instead (EXE6's pick,
+-- `sub_8013D5E`: the same code). Unlike EXE6's, the damage is Attack plus the navi's buster bonus (0x0800F5AC by navi:
 -- no worn-out rule, no form's bonus, no cap), and it always draws: on half the draws the shot is the one the navi's
 -- buster-shot program
 -- names (NaviStats +0x4D, the plain shot when 0). MegaMan in his base form in Hub Style (NaviStats +0x4C, patch card
@@ -21,12 +21,12 @@ local lib = require("../../../lib/buster")
 local projectile = require("../../../lib/projectile")
 local variants = require("../../../objects/projectile/variants")
 
-local bn5 = {}
+local exe5 = {}
 
--- BN5's MegaMan (navi 0): his navi requires this module, so by his key.
+-- EXE5's MegaMan (navi 0): his navi requires this module, so by his key.
 local MEGAMAN = "megaman"
 
--- The shot (BN5's action 0x11), which throws no absorbed obstacle (BN5 absorbs none).
+-- The shot (EXE5's action 0x11), which throws no absorbed obstacle (EXE5 absorbs none).
 local buster = {
     pick = common.pick,
     shot = common.shot_action {
@@ -41,11 +41,11 @@ local buster = {
     },
 }
 
--- The blank shot (BN5's action 0x33).
+-- The blank shot (EXE5's action 0x33).
 local blank_shot = blank.make { id = "megaman/blank-shot/action", buster = lib, click = asset.sound("gundels1") }
 
 -- 0x0800F522.
-function bn5.setup(navi: Object): Action
+function exe5.setup(navi: Object): Action
     local shot = buster.pick(navi)
     if shot == "blank" then
         return blank_shot.setup(navi)
@@ -74,19 +74,19 @@ function bn5.setup(navi: Object): Action
     return buster.shot
 end
 
-bn5.weapon = define.weapon {
+exe5.weapon = define.weapon {
     id = "megaman/buster",
     -- The buster isn't charged (the charge table's row 0).
     charge_ticks = { 0, 0, 0, 0, 0 },
-    setup = bn5.setup,
+    setup = exe5.setup,
 }
 
 -- 0x0800FE12: the patch cards' TriBustr (a B button), the buster's routine.
-bn5.tri_buster = define.weapon {
+exe5.tri_buster = define.weapon {
     id = "megaman/tri-buster",
     -- The charge table's row 0x65, by Charge 0 to 5: past 4 it reads on into row 0x66's first entry.
     charge_ticks = { 60, 60, 60, 60, 60, 120 },
-    setup = bn5.setup,
+    setup = exe5.setup,
 }
 
-return bn5
+return exe5

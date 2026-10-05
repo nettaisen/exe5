@@ -1,5 +1,5 @@
 --!strict
--- Phoenix's fireball (BN5's attack object #0xC5, 0x080DF490; BN6's is DustCross Beast's junk, rewritten): from over
+-- Phoenix's fireball (EXE5's attack object #0xC5, 0x080DF490; EXE6's is DustCross Beast's junk, rewritten): from over
 -- the phoenix's column it falls in a straight line onto its target panel in 8 ticks, highlighting it; it hits there
 -- for a tick (a fire hit), then bursts (./blaze), shaking the camera, and goes. It is gone at once when the battle is
 -- over.

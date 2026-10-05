@@ -1,5 +1,5 @@
 --!strict
--- A flame of ChaosLrd's gathering (BN5's effect object #0x4B, 0x080E5E6C; BN5's own, its spawner where BN6 has
+-- A flame of ChaosLrd's gathering (EXE5's effect object #0x4B, 0x080E5E6C; EXE5's own, its spawner where EXE6 has
 -- AirRaid's): set off from a point by an offset (sprite 08-14, animation 21, in one of two palettes), it circles in
 -- on the point over 30 ticks, its circle shrinking (a quarter step a tick for the first ten, then whole steps,
 -- doubled for the last five) and its turning sped up at random on its 11th, 21st and 26th tick (the battle RNG's

@@ -1,5 +1,5 @@
 --!strict
--- BN5's body overlays (actor object 0x56, 0x080C35E8, BN6's `sub_80C4348`: the same code, but it always wears its
+-- EXE5's body overlays (actor object 0x56, 0x080C35E8, EXE6's `sub_80C4348`: the same code, but it always wears its
 -- wearer's palette and starts at animation 0): a second sprite layered on a navi, by row (Param1): its sprite
 -- (0x080C35DC) and its depth table (0x080C35C4: a byte by the wearer's animation, 0 drawn a pixel behind it). An
 -- identity wears one as its `parts` (`parts = { body = body_overlays.gyroman }`).

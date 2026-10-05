@@ -1,12 +1,12 @@
 --!strict
--- BN5's BoyBomb1-3 (the dimming handler's subtype 58): BN6's leftover code (BN6's effect object #0x67, `sub_80E7DC4`,
--- and attack object #0x3E, `sub_80CBB44`, which no BN6 chip spawns) with BN5's numbers. Its controller (effect object
+-- EXE5's BoyBomb1-3 (the dimming handler's subtype 58): EXE6's leftover code (EXE6's effect object #0x67, `sub_80E7DC4`,
+-- and attack object #0x3E, `sub_80CBB44`, which no EXE6 chip spawns) with EXE5's numbers. Its controller (effect object
 -- #0x67, 0x080E8008: the usual dimming phases) sets a bomb on the panel ahead of the user if it is free, and waits 30
 -- ticks. The bomb (attack object #0x3E, 0x080CCDF4) fades in over 16 ticks, then, on a panel it may stand on, counts
 -- down 60 ticks blinking and blows up over the 3x3 around it (no spark, against navis, hit modifier 3); on a panel it
--- may not, it breaks. An obstacle of 150 HP, it takes hits (any one side's hit pushes it a panel away: BN5's
+-- may not, it breaks. An obstacle of 150 HP, it takes hits (any one side's hit pushes it a panel away: EXE5's
 -- reaction by the hitters' flips, 0x08017A78), is pushed and breaks as one (the obstacle framework, in its numbering:
--- its standing the framework's 8, which BN5 stores as 6: `obstacle.action_byte`).
+-- its standing the framework's 8, which EXE5 stores as 6: `obstacle.action_byte`).
 --
 -- The bomb's Param1 0 (HP 50, a body against the other side's, exploding over the whole enemy area, kept on a
 -- holder's record: 0x08108274's, an AI's) is no chip's: this module spawns its Param1 1 alone.
@@ -42,7 +42,7 @@ local IDENTITY = define.identity {
     version = 1,
     ai_index = 0x21,
 }
--- The effects (BN5's table, 0x080DFC94): row 6 (0C-12) as it comes, row 0 (14-00) over the blast, row 0x14 (14-0D,
+-- The effects (EXE5's table, 0x080DFC94): row 6 (0C-12) as it comes, row 0 (14-00) over the blast, row 0x14 (14-0D,
 -- animation 2) when removed, row 0x0E (14-01) when broken.
 local COMES = define.effect { sprite = asset.sprite("heal"), anim = 0, palette = 0 }
 local BLAST = define.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 }
@@ -59,7 +59,7 @@ local FORBID = { [0] = 0x0B800000, [1] = 0x06800000 }
 -- Where the controller sets it: solid with nothing on it.
 local OCCUPIED = 0x0F880080
 
--- The actions (0x080CCF3C: BN5's seven, here by BN6's numbers).
+-- The actions (0x080CCF3C: EXE5's seven, here by EXE6's numbers).
 local APPEAR, DESTROYED, IDLE = 0, 2, 8
 
 local function state(me: Object): State

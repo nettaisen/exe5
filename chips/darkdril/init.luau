@@ -1,8 +1,8 @@
 --!strict
--- DarkDril (BN5 chip 0x0c4): a dark chip: DrilArm's drill arm and two drills on the two panels ahead, for 60
+-- DarkDril (EXE5 chip 0x0c4): a dark chip: DrilArm's drill arm and two drills on the two panels ahead, for 60
 -- ticks, the arm in its second palette and each drill's hit carrying the bug 0xFA (chips/drilarm/drill). Its use costs a
 -- panel trail (rules/light-dark).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local drill = require("./drilarm/drill")
 

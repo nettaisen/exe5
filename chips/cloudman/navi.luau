@@ -1,5 +1,5 @@
 --!strict
--- CloudMan, the navi of BN5's CloudMan chips (BN5's actor object #0x15, 0x080BC304; BN5's own, built on BN6's navi
+-- CloudMan, the navi of EXE5's CloudMan chips (EXE5's actor object #0x15, 0x080BC304; EXE5's own, built on EXE6's navi
 -- template), brought by their navi chip controller. He appears (a sound) and, 10 ticks on, sets a cloud (./cloud)
 -- on each free panel behind each enemy combatant, as far back as the free panels go; with none set he leaves at
 -- once. Else he waits 30 ticks, raises his arms (animation 3) 30, holds them (animation 4) 110, stands 90, and

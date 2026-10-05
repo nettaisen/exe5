@@ -1,5 +1,5 @@
 --!strict
--- GridMan's grid (BN5's effect object #0x58, 0x080E6D3C; BN5's own): his sprite's animation 13 on the far end of
+-- GridMan's grid (EXE5's effect object #0x58, 0x080E6D3C; EXE5's own): his sprite's animation 13 on the far end of
 -- his dash (the middle row of the column he strikes from), 32 pixels up the field and down into it, facing back;
 -- it stays until he goes (`grid.remove`) or the battle ends.
 --

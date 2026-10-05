@@ -1,5 +1,5 @@
 --!strict
--- KnightMan's wrecking ball (BN5's attack object #0x17, 0x080C7568; BN5's own: BN6's #0x17 is SpoutMan's geyser,
+-- KnightMan's wrecking ball (EXE5's attack object #0x17, 0x080C7568; EXE5's own: EXE6's #0x17 is SpoutMan's geyser,
 -- on the same skeleton), swinging around its owner: its angle starts at 0 and turns by its speed (its first
 -- parameter) a tick, its position on a circle of its radius around its owner's, turned to the owner's side (x back,
 -- toward its own side's end, at angle 0); after its turns (its second parameter) it goes. It hits each panel it

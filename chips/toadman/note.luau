@@ -1,5 +1,5 @@
 --!strict
--- ToadMan's note (BN5's attack object #0x81, 0x080D66A0; BN5's own: BN6's #0x81 is TenguCross Beast's whirlwind, on
+-- ToadMan's note (EXE5's attack object #0x81, 0x080D66A0; EXE5's own: EXE6's #0x81 is TenguCross Beast's whirlwind, on
 -- the same skeleton), an elec attack that paralyzes (status 0x10). Each note lives 10 ticks on its panel (gone at
 -- once on a hit, off the field or at the battle's end) and 6 ticks in sends the next one panel ahead, a row nearer
 -- its target's: a chain of notes stepping toward the target.

@@ -1,5 +1,5 @@
 --!strict
--- A die (BN5's attack object #5, 0x080C4F2C; BN5's own: BN6's `sub_80C55B0` family is another object), thrown at a
+-- A die (EXE5's attack object #5, 0x080C4F2C; EXE5's own: EXE6's `sub_80C55B0` family is another object), thrown at a
 -- panel: it arcs there (rising 4 pixels a tick, falling 0x3000 a tick, as long as that takes), hitting what it
 -- meets while low; landed on a panel that isn't solid it is gone in a puff, else it bounces, shows its face (1 to
 -- 6, or 9's own) for 60 ticks, flashing white in the last 50, and bursts: a hit over the 3x3 around it worth its

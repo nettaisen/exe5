@@ -1,10 +1,10 @@
 --!strict
 -- Astroid1, Astroid2 and Astroid3: the astroid series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local meteors = require("./meteors/meteors")
 
--- Astroid1 (BN5 chip 0x068): a shower of 6 Fire meteors, one every 20 ticks on one of the enemy navis' panels or
+-- Astroid1 (EXE5 chip 0x068): a shower of 6 Fire meteors, one every 20 ticks on one of the enemy navis' panels or
 -- beside it, each cracking its panel (chips/meteors: instant chip effect 17, its second parameter 6).
 local astroid1 = define.chip {
     id = "astroid1",
@@ -22,7 +22,7 @@ local astroid1 = define.chip {
     instant = meteors.instant(false, 6),
 }
 
--- Astroid2 (BN5 chip 0x069): a shower of 8 Fire meteors, one every 20 ticks on one of the enemy navis' panels or
+-- Astroid2 (EXE5 chip 0x069): a shower of 8 Fire meteors, one every 20 ticks on one of the enemy navis' panels or
 -- beside it, each cracking its panel (chips/meteors: instant chip effect 17, its second parameter 8).
 local astroid2 = define.chip {
     id = "astroid2",
@@ -40,7 +40,7 @@ local astroid2 = define.chip {
     instant = meteors.instant(false, 8),
 }
 
--- Astroid3 (BN5 chip 0x06a): a shower of 10 Fire meteors, one every 20 ticks on one of the enemy navis' panels or
+-- Astroid3 (EXE5 chip 0x06a): a shower of 10 Fire meteors, one every 20 ticks on one of the enemy navis' panels or
 -- beside it, each cracking its panel (chips/meteors: instant chip effect 17, its second parameter 10).
 local astroid3 = define.chip {
     id = "astroid3",

@@ -1,10 +1,10 @@
 --!strict
 -- BlizMan, BlizManSP and BlizManDS: the blizman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- BlizMan (BN5 chip 0x107): BlizzardMan cuts in and rolls a snowball down his row, growing on the field objects it
+-- BlizMan (EXE5 chip 0x107): BlizzardMan cuts in and rolls a snowball down his row, growing on the field objects it
 -- swallows (./navi).
 local blizman = define.chip {
     id = "blizman",
@@ -23,7 +23,7 @@ local blizman = define.chip {
     navi = navi.summon,
 }
 
--- BlizManSP (BN5 chip 0x108): BlizzardMan cuts in and rolls a snowball down his row, growing on the field objects it
+-- BlizManSP (EXE5 chip 0x108): BlizzardMan cuts in and rolls a snowball down his row, growing on the field objects it
 -- swallows (../blizman/navi); its damage by how fast its user deleted BlizzardMan SP (rules/sp-chips: formula 15, its
 -- table's row 14).
 local blizman_sp = define.chip {
@@ -43,7 +43,7 @@ local blizman_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- BlizManDS (BN5 chip 0x109): BlizzardMan, dark, cuts in and rolls a snowball down his row, growing on the field
+-- BlizManDS (EXE5 chip 0x109): BlizzardMan, dark, cuts in and rolls a snowball down his row, growing on the field
 -- objects it swallows (../blizman/navi); its damage by its user's side's statistic 3 (formula 37, its table's row 14).
 local blizman_ds = define.chip {
     id = "blizman-ds",

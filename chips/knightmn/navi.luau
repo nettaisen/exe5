@@ -1,6 +1,6 @@
 --!strict
--- KnightMan, the navi of BN5's KnightMan chips (BN5's actor object #0x06, 0x080B9C28; BN5's own, built on BN6's
--- navi template), brought by their navi chip controller, wearing his ball and chain (BN5's body overlay row 1). He
+-- KnightMan, the navi of EXE5's KnightMan chips (EXE5's actor object #0x06, 0x080B9C28; EXE5's own, built on EXE6's
+-- navi template), brought by their navi chip controller, wearing his ball and chain (EXE5's body overlay row 1). He
 -- drops from 160 pixels up, falling faster each tick; off a solid panel he goes in smoke as he lands, else he
 -- lands with a shake (a sound), stands 40 ticks, and swings (animation 18, a sound) his wrecking ball (./ball)
 -- around himself once, hiding the one he wears, for 58 ticks; then he stands 30, crouches (animation 4) 4 and
@@ -23,7 +23,7 @@ local knightman = {}
 local SPRITE = asset.sprite("knightman")
 local SOUND_LAND = asset.sound("land")
 local SOUND_SWING = asset.sound("knight-swing")
--- What he wears (0x0800EE7A: BN5's body overlay row 1, its sprite 10-47, in front at every animation), stepping
+-- What he wears (0x0800EE7A: EXE5's body overlay row 1, its sprite 10-47, in front at every animation), stepping
 -- even while paused.
 local CHAIN = define.identity {
     id = "knightman-navi",

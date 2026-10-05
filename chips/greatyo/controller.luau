@@ -46,7 +46,7 @@ end
 controller.kind = define.kind {
     id = "greatyo/controller",
     pool = "effect",
-    state = { middle = "object", below = "object", above = "object", leader = "record:bn5-yoyo", follower = "record:bn5-yoyo" },
+    state = { middle = "object", below = "object", above = "object", leader = "record:exe5-yoyo", follower = "record:exe5-yoyo" },
     -- 0x080E89C4.
     update = function(me: Object)
         local l = me.lifecycle

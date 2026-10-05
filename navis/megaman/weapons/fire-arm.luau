@@ -1,6 +1,6 @@
 --!strict
 -- The patch cards' FireAm (`megaman/fire-arm`, B↓FireAm, FireMan's card): weapon routine 0x4E (0x0800FC94) and action
--- 0x57 (0x080F0074, BN5's own: BN6's action 0x57 is DustCross's charged shot, of the same dispatch only). The navi
+-- 0x57 (0x080F0074, EXE5's own: EXE6's action 0x57 is DustCross's charged shot, of the same dispatch only). The navi
 -- raises ElemRage's claw (the attachment table's row 0x34, 0c-33, its animation 1) and sends ElemRage's flame
 -- (chips/elemrage: attack object #0x98) along its row from the panel ahead, at its attach point 20: 5 flames, each
 -- standing 30 ticks (the attack's parameters 0x1E05), Fire, 50 damage, in the flames' palette 0, none spreading or

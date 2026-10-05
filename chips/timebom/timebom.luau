@@ -1,16 +1,16 @@
 --!strict
--- BN5's TimeBom chips' bomb and controller (TimeBom1-3 and TimeBom+, the dimming handler's subtype 10): the shared
--- code (@exelib/timebom: BN6's, BN5's attack object #0x4B and effect object #0x27) but for
+-- EXE5's TimeBom chips' bomb and controller (TimeBom1-3 and TimeBom+, the dimming handler's subtype 10): the shared
+-- code (@exelib/timebom: EXE6's, EXE5's attack object #0x4B and effect object #0x27) but for
 --
--- - where the bomb goes (0x080E3420, BN6's `sub_80E3264`): in each row, the enemy's frontmost panel (from the
+-- - where the bomb goes (0x080E3420, EXE6's `sub_80E3264`): in each row, the enemy's frontmost panel (from the
 --   back of the field, the first panel of the other side's, then the first of the user's, one step back toward
 --   the enemy), if it is solid with no body on it; a random one of those rows (RNG2);
--- - how the bomb leaves (0x080CF21C): any removal leaves a puff (BN5 neither absorbs nor blinks obstacles out);
--- - TimeBom+'s bomb's HP: 300 (BN6's 200, 0x080CEEE4's row 1);
--- - the bombs' identities (actor records 0xD8 and 0xD9): field objects of AI index 0x21 (BN6's 1), which nothing
---   of BN5's reads but the record (their hooks are none, 0x0800ED30 and 0x0800EEE0);
--- - BN5's look and collision types, and its action table of 8 rows (no frozen or bubbled: the countdown and the
---   blink are its 6 and 7, BN6's 8 and 9, the same actions).
+-- - how the bomb leaves (0x080CF21C): any removal leaves a puff (EXE5 neither absorbs nor blinks obstacles out);
+-- - TimeBom+'s bomb's HP: 300 (EXE6's 200, 0x080CEEE4's row 1);
+-- - the bombs' identities (actor records 0xD8 and 0xD9): field objects of AI index 0x21 (EXE6's 1), which nothing
+--   of EXE5's reads but the record (their hooks are none, 0x0800ED30 and 0x0800EEE0);
+-- - EXE5's look and collision types, and its action table of 8 rows (no frozen or bubbled: the countdown and the
+--   blink are its 6 and 7, EXE6's 8 and 9, the same actions).
 
 local collision = require("../../rules/collision")
 local controller = require("@exelib/timebom/controller")
@@ -34,7 +34,7 @@ timebom.kind = countdown.make_kind("timebom/countdown", {
     },
     blast = { is = collision.attack, hits = collision.hits_navis },
     removal_puffs = true,
-    -- (The blast's explosions and the puff BN6's.)
+    -- (The blast's explosions and the puff EXE6's.)
     explosion = effects.explosion,
     puff = effects.puff,
     bursts = panel_bursts.kind,

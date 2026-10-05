@@ -1,8 +1,8 @@
 --!strict
--- What BN5's buster shots share (@exelib/buster: BN6's code) but the arm they raise, BN5's own (lib/arm): the muzzle
--- flash (BN5's attachment row 0x0D, BN6's 5: 0x080EBA08, sprite 0C-06 in BN5's own colors; a spread shot's would be row
--- 0x39, 0C-59, which no BN5 buster fires), the arm looks BN6's code keeps (BN5's rows 0x23 and 0x2B), BN5's recovery
--- table (rules/buster: BN6's values) and BN5's attachment.
+-- What EXE5's buster shots share (@exelib/buster: EXE6's code) but the arm they raise, EXE5's own (lib/arm): the muzzle
+-- flash (EXE5's attachment row 0x0D, EXE6's 5: 0x080EBA08, sprite 0C-06 in EXE5's own colors; a spread shot's would be row
+-- 0x39, 0C-59, which no EXE5 buster fires), the arm looks EXE6's code keeps (EXE5's rows 0x23 and 0x2B), EXE5's recovery
+-- table (rules/buster: EXE6's values) and EXE5's attachment.
 
 local arm = require("./arm")
 local attachment = require("../objects/attachment")
@@ -16,7 +16,7 @@ local buster = common.make {
     attachment = attachment.kind,
 }
 
--- The arm BN5's shots raise is BN5's own (0x080EBAAE and 0x080EBABE: lib/arm), not BN6's choices: an enemy navi's
+-- The arm EXE5's shots raise is EXE5's own (0x080EBAAE and 0x080EBABE: lib/arm), not EXE6's choices: an enemy navi's
 -- arm and a computer navi's buster arm by its AI index, MegaMan's by his soul and NaviStats +0x4C.
 buster.raise_arm = arm.raise
 function buster.raise_arm_for(navi: Object, holder: Object, which: Slot, while_dimmed: boolean)

@@ -1,11 +1,11 @@
 --!strict
--- A magnet: MagnetMan's image (BN5's attack object #0x67, 0x080D2CEC; BN5's own) on a panel, hitting navis
+-- A magnet: MagnetMan's image (EXE5's attack object #0x67, 0x080D2CEC; EXE5's own) on a panel, hitting navis
 -- (collision row 0x37, hit modifier 1, the elec spark, immobilizing for 60 ticks), its pole (its first parameter)
 -- picking its palette and facing: pole 0 faces its side's way, pole 1 the other. It appears (a sound) and waits
 -- for MagnetMan (./navi) to send both (his action 8); then, with its pull (./pull) 20 pixels ahead, it slides 8
 -- pixels a tick: off the field, or, when it has a partner (pole 1 always), to 10 pixels short of the panel of
 -- MagnetMan's target, where the two meet. A navi it hits, or the meeting, stops it: it shakes (a sound) 11
--- ticks, waits 6 and goes. (Its variant 1, BN5's MagnetMan as an enemy's, hits with modifier 3 and without the
+-- ticks, waits 6 and goes. (Its variant 1, EXE5's MagnetMan as an enemy's, hits with modifier 3 and without the
 -- immobilization, goes at once and stops while dimmed.)
 
 local collision = require("../../rules/collision")

@@ -1,6 +1,6 @@
 --!strict
 -- ProtoSoul's Chaos Unison weapon (`protosoul/chaos`): the original's weapon routine 6 (0x0800F668), AIData +0x11's
--- in ProtoSoul: DrkSword (chip 0xBC) loaded as the attack (0x0800FE78, BN6's `sub_8010D04`'s place: the chip's
+-- in ProtoSoul: DrkSword (chip 0xBC) loaded as the attack (0x0800FE78, EXE6's `sub_8010D04`'s place: the chip's
 -- record's damage, hit parameter, lockout and element) and the chip's use. An armed full B charge released in the
 -- chaos cycle's window fires it; the charge's time is its row's by the chaos level.
 

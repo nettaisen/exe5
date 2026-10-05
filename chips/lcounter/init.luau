@@ -1,8 +1,8 @@
 --!strict
--- LCounter (BN5 chip 0x120): a Liberation chip: a copy of the user's navi glows over it as it logs in, and the side gets
+-- LCounter (EXE5 chip 0x120): a Liberation chip: a copy of the user's navi glows over it as it logs in, and the side gets
 -- five uses of Counter's Liberation ability, which only a Liberation Mission's specials use (the dimming handler's
 -- subtype 66, objects/bugfix).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local bugfix = require("../objects/bugfix")
 

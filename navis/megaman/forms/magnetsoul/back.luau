@@ -1,9 +1,9 @@
 --!strict
 -- MagnetSoul's B+Back (`magnetsoul/back`): the original's weapon routine 0x25 (0x0800F9A8) sets the instant chips'
--- effect 10, no damage and a 120-tick wait before the next B+Back, and starts the instant chips' action (BN5's 0x1A).
+-- effect 10, no damage and a 120-tick wait before the next B+Back, and starts the instant chips' action (EXE5's 0x1A).
 -- Effect 10 (0x080124D0) does nothing outside MagnetSoul; in it MegaMan glows (effect 0x26: sprite 14-1B on him for
 -- 20 ticks) and every panel from his forward to the field's edge with an enemy body on it gets an immobilizing hit
--- (BN5's attack object 0x3F, BN6's code: @exelib/instant/immobilizer, with the immobilized mark).
+-- (EXE5's attack object 0x3F, EXE6's code: @exelib/instant/immobilizer, with the immobilized mark).
 
 local collision = require("../../../../rules/collision")
 local glow = require("../../weapons/glow")
@@ -12,7 +12,7 @@ local status = require("../../../../rules/status")
 
 local back = {}
 
--- BN5's immobilizer: the mark (10-2D, its animation 1), a guard-breaking attack against navis that immobilizes for
+-- EXE5's immobilizer: the mark (10-2D, its animation 1), a guard-breaking attack against navis that immobilizes for
 -- 120 ticks (status 0x42), its sound.
 back.immobilizer = immobilizer.make_kind("immobilizer", {
     sprite = asset.sprite("immobilized"),

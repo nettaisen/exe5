@@ -1,7 +1,7 @@
 --!strict
--- LifeAur (BN5 chip 0x0c9): an aura on the user that stops every hit of less than 200 for 3000 ticks: BN6's barrier
--- chips (the dimming handler's subtype 14) with BN5's barriers (lib/barriers).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- LifeAur (EXE5 chip 0x0c9): an aura on the user that stops every hit of less than 200 for 3000 ticks: EXE6's barrier
+-- chips (the dimming handler's subtype 14) with EXE5's barriers (lib/barriers).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local barriers = require("../lib/barriers")
 

@@ -1,5 +1,5 @@
 --!strict
--- LarkMan, the navi of the LarkMan chips (BN5's actor object #0x1E, 0x080BDBFC; BN5's own), brought by their navi
+-- LarkMan, the navi of the LarkMan chips (EXE5's actor object #0x1E, 0x080BDBFC; EXE5's own), brought by their navi
 -- chip controller. He appears, stands, rises out of sight and sends his swoop (./swoop) round the field; when it
 -- has had its time, he goes, and the controller moves on. While he is there, his user holding B and pressing up,
 -- right and down in turn (each within a second of the first) powers the swoop (0x080BDDF4). WildBird's LarkMan (the

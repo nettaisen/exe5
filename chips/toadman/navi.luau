@@ -1,5 +1,5 @@
 --!strict
--- ToadMan, the navi of the ToadMan chips (BN5's actor object #0x17, 0x080BC748; BN5's own, built on BN6's navi
+-- ToadMan, the navi of the ToadMan chips (EXE5's actor object #0x17, 0x080BC748; EXE5's own, built on EXE6's navi
 -- template), brought by their navi chip controller. He appears (and goes at once off a panel that isn't solid),
 -- stands 10 ticks, readies 10, and plays: a chain of notes (./note) from the panel ahead toward the nearest enemy
 -- combatant in his cone ahead (a row nearer it each step; none: straight ahead), paralyzing. 30 ticks of playing, 30

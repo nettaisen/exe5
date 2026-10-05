@@ -1,10 +1,10 @@
 --!strict
 -- HotBody1, HotBody2 and HotBody3: the hotbody series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local hotbody = require("@self/hotbody")
 
--- HotBody1 (BN5 chip 0x09a): the navi bursts into flames that spread to the enemies around it, two rounds 30 ticks
+-- HotBody1 (EXE5 chip 0x09a): the navi bursts into flames that spread to the enemies around it, two rounds 30 ticks
 -- apart (chips/hotbody/hotbody, action 0x58; the record's second parameter, 2).
 local hotbody1 = define.chip {
     id = "hotbody1",
@@ -22,7 +22,7 @@ local hotbody1 = define.chip {
     action = hotbody.action("hotbody1/action", 2),
 }
 
--- HotBody2 (BN5 chip 0x09b): the navi bursts into flames that spread to the enemies around it, two rounds 30 ticks
+-- HotBody2 (EXE5 chip 0x09b): the navi bursts into flames that spread to the enemies around it, two rounds 30 ticks
 -- apart (chips/hotbody/hotbody, action 0x58; the record's second parameter, 2).
 local hotbody2 = define.chip {
     id = "hotbody2",
@@ -40,7 +40,7 @@ local hotbody2 = define.chip {
     action = hotbody.action("hotbody2/action", 2),
 }
 
--- HotBody3 (BN5 chip 0x09c): the navi bursts into flames that spread to the enemies around it, two rounds 30 ticks
+-- HotBody3 (EXE5 chip 0x09c): the navi bursts into flames that spread to the enemies around it, two rounds 30 ticks
 -- apart (chips/hotbody/hotbody, action 0x58; the record's second parameter, 2).
 local hotbody3 = define.chip {
     id = "hotbody3",

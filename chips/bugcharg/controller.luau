@@ -1,5 +1,5 @@
 --!strict
--- BugCharg's dimming controller (BN5's effect object #0x7C, 0x080E98C8; BN6's SumnBlk controller's skeleton): the usual
+-- BugCharg's dimming controller (EXE5's effect object #0x7C, 0x080E98C8; EXE6's SumnBlk controller's skeleton): the usual
 -- dimming phases (@exelib/dimming), with an effect (0x080E990C) that sends out BugCharg's stand-in (./actor) with the
 -- damage plus the bonus and lasts until it is done.
 

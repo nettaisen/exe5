@@ -1,24 +1,24 @@
 --!strict
--- Otenko (BN5 chip 0x0d7): a statue in front of the user that, for 600 ticks, raises the Atk+ bonus of the user's
--- next damaging chip by 1 every 5 ticks, up to 50: BN6's Otenko (@exelib/otenko, the dimming handler's subtype 60)
--- but for its lifetime (600, BN6's 1800: 0x080DBBC2), its place in the field-object registry (class 1, one a side:
--- 0x080DBD8A), how it leaves (with a puff with HP left, else bubbles, silent; BN5 neither absorbs nor blinks
+-- Otenko (EXE5 chip 0x0d7): a statue in front of the user that, for 600 ticks, raises the Atk+ bonus of the user's
+-- next damaging chip by 1 every 5 ticks, up to 50: EXE6's Otenko (@exelib/otenko, the dimming handler's subtype 60)
+-- but for its lifetime (600, EXE6's 1800: 0x080DBBC2), its place in the field-object registry (class 1, one a side:
+-- 0x080DBD8A), how it leaves (with a puff with HP left, else bubbles, silent; EXE5 neither absorbs nor blinks
 -- obstacles out: 0x080DBD1A), its blessing (with each side keeping its own gauge, the side's special bonus:
--- 0x080DBC78) and BN5's look.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- 0x080DBC78) and EXE5's look.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local collision = require("../rules/collision")
 local common = require("@exelib/otenko")
 local effects = require("../lib/effects")
 
--- Its sheet, 0c-49 (`otenko`: BN6's JP ROMs' Otenko, the US ROMs' placeholder).
+-- Its sheet, 0c-49 (`otenko`: EXE6's JP ROMs' Otenko, the US ROMs' placeholder).
 local SPRITE = asset.sprite("otenko")
 
 local OTENKO = common.make {
     statue_id = "otenko/statue",
     controller_id = "otenko/controller",
     sprite = SPRITE,
-    -- NameID 0xCF (actor record 0xCF: AI index 0x21, BN5's field objects').
+    -- NameID 0xCF (actor record 0xCF: AI index 0x21, EXE5's field objects').
     identity = define.identity {
         id = "otenko",
         class = "field_object",

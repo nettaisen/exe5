@@ -1,11 +1,11 @@
 --!strict
--- BN5's BugBomb (attack object #0x77, 0x080D4E54): the shared BugBomb (@exelib/bugbomb/bomb, BN6's code) with BN5's
--- look and bugs. It explodes as effect 0x32 (BN6's 0x4A, the same look) and sounds 0x6F crushed (BN6's 0x70).
+-- EXE5's BugBomb (attack object #0x77, 0x080D4E54): the shared BugBomb (@exelib/bugbomb/bomb, EXE6's code) with EXE5's
+-- look and bugs. It explodes as effect 0x32 (EXE6's 0x4A, the same look) and sounds 0x6F crushed (EXE6's 0x70).
 --
--- Its bugs (0x080D50CA, BN6's `sub_80D9FC2`): of HP drain, custom-screen HP drain and emotion swings (NaviStats
--- +0x18, +0x19, +0x24; BN6 has a panel trail and buster blanks for the last), one its target's side lacks, at
+-- Its bugs (0x080D50CA, EXE6's `sub_80D9FC2`): of HP drain, custom-screen HP drain and emotion swings (NaviStats
+-- +0x18, +0x19, +0x24; EXE6 has a panel trail and buster blanks for the last), one its target's side lacks, at
 -- random, or any of the three; in the operation battle, always HP drain. Its codes (0x080D5148) add 2 to either drain,
--- to at most 7 (argument 0x12: BN5's intake, 0x0801103E, adds with bit 4, rules/status's `drain_bug_flags`), or set
+-- to at most 7 (argument 0x12: EXE5's intake, 0x0801103E, adds with bit 4, rules/status's `drain_bug_flags`), or set
 -- the emotion swings to 1.
 
 local collision = require("../../rules/collision")

@@ -1,7 +1,7 @@
 --!strict
 -- The custom screen's slot grid (0x08025E04) and the lists its neighbor fix-up scans (0x08025E34,
--- 0x08023E2C, 0x08023E84): BN6's values.
--- Written by tools/bn5/gen_rules.py (bn6battle-verify) from the BN5 ROM; people own it now.
+-- 0x08023E2C, 0x08023E84): EXE6's values.
+-- Written by tools/exe5/gen_rules.py (bn6battle-verify) from the EXE5 ROM; people own it now.
 
 return {
     slots = {

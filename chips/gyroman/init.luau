@@ -1,10 +1,10 @@
 --!strict
 -- GyroMan, GyroManSP and GyroManDS: the gyroman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- GyroMan (BN5 chip 0x0e0): GyroMan cuts in and flies along his row, dropping bombs on the enemy panels (./navi).
+-- GyroMan (EXE5 chip 0x0e0): GyroMan cuts in and flies along his row, dropping bombs on the enemy panels (./navi).
 local gyroman = define.chip {
     id = "gyroman",
     codes = { "G" },
@@ -22,7 +22,7 @@ local gyroman = define.chip {
     navi = navi.summon,
 }
 
--- GyroManSP (BN5 chip 0x0e1): GyroMan cuts in and flies along his row, dropping bombs on the enemy panels
+-- GyroManSP (EXE5 chip 0x0e1): GyroMan cuts in and flies along his row, dropping bombs on the enemy panels
 -- (../gyroman/navi); its damage by how fast its user deleted GyroMan SP (rules/sp-chips: formula 3, its table's row 2).
 local gyroman_sp = define.chip {
     id = "gyroman-sp",
@@ -41,7 +41,7 @@ local gyroman_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- GyroManDS (BN5 chip 0x0e2): GyroMan, dark, cuts in and flies along his row, dropping bombs on the enemy panels
+-- GyroManDS (EXE5 chip 0x0e2): GyroMan, dark, cuts in and flies along his row, dropping bombs on the enemy panels
 -- (../gyroman/navi); its damage by its user's side's statistic 3 (formula 25, its table's row 2).
 local gyroman_ds = define.chip {
     id = "gyroman-ds",

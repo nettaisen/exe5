@@ -1,5 +1,5 @@
 --!strict
--- DarkInvs's stand-in (BN5's actor object #9, 0x080BA5C0; BN5's own): drawn as the user (@exelib/dimming/stand_in's
+-- DarkInvs's stand-in (EXE5's actor object #9, 0x080BA5C0; EXE5's own): drawn as the user (@exelib/dimming/stand_in's
 -- look: its sprite, palette and parts, where the user is, the user vanishing) for 30 ticks, its palette flickering
 -- between the user's and the dark one every other pair of ticks; then its parts off, the user back with a sound, and
 -- its controller (./controller) goes on. A user that isn't a player (no chip reaches one) has none: the controller

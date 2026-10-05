@@ -1,7 +1,7 @@
 --!strict
--- MudWave (BN5 chip 0x0ae): in each row, the first hole from the user's back column starts a wave toward the other
--- side; past the field, the waves raise geysers under the other side's navis: BN5's own (chips/wavepit/wavepit).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- MudWave (EXE5 chip 0x0ae): in each row, the first hole from the user's back column starts a wave toward the other
+-- side; past the field, the waves raise geysers under the other side's navis: EXE5's own (chips/wavepit/wavepit).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local wavepit = require("./wavepit/wavepit")
 

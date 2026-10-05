@@ -1,6 +1,6 @@
 --!strict
--- BigHook (BN5 chip 0x134): The hook swings two big flames across the enemy area (./hook); its user stays on the field.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- BigHook (EXE5 chip 0x134): The hook swings two big flames across the enemy area (./hook); its user stays on the field.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local hook = require("@self/hook")
 

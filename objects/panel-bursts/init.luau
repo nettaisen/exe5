@@ -1,5 +1,5 @@
 --!strict
--- BN5's panel bursts (effect object #0x24, BN6's code: @exelib/panel-bursts/panel_bursts), BN5's kind.
+-- EXE5's panel bursts (effect object #0x24, EXE6's code: @exelib/panel-bursts/panel_bursts), EXE5's kind.
 
 local common = require("@exelib/panel-bursts")
 

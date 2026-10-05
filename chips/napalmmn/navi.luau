@@ -1,6 +1,6 @@
 --!strict
--- NapalmMan, the navi of BN5's NapalmMan chips (BN5's actor object #0x0E, 0x080BB10C; BN5's own, built on BN6's
--- navi template), brought by their navi chip controller, wearing his cannon (BN5's body overlay row 4). He appears
+-- NapalmMan, the navi of EXE5's NapalmMan chips (EXE5's actor object #0x0E, 0x080BB10C; EXE5's own, built on EXE6's
+-- navi template), brought by their navi chip controller, wearing his cannon (EXE5's body overlay row 4). He appears
 -- (a sound); off a solid panel he sinks and goes 11 ticks on. Else, 31 ticks on, he raises his cannon (animation
 -- 18) for 31 ticks and fires (animation 19, a sound) a napalm bomb (chips/napalmmn/bomb) from 8 pixels ahead and 56
 -- up at the panel four columns ahead in his row (the field's edge column at most), running while dimmed; 88 ticks
@@ -21,7 +21,7 @@ local napalmman = {}
 local SPRITE = asset.sprite("napalmman")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("cannon")
--- What he wears (0x0800EE8A: BN5's body overlay row 4, its sprite 10-18, behind him in his animations 20 to 22),
+-- What he wears (0x0800EE8A: EXE5's body overlay row 4, its sprite 10-18, behind him in his animations 20 to 22),
 -- stepping even while paused.
 local CANNON = define.identity {
     id = "napalmman-navi",

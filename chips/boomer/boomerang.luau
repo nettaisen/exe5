@@ -1,6 +1,6 @@
 --!strict
--- BN5's boomerang (attack object #0x32, BN6's code: @exelib/boomer/boomerang), BN5's kind: BN5's sprite, its sound
--- BN6's (each variant gives its own sprite, collision type and spark).
+-- EXE5's boomerang (attack object #0x32, EXE6's code: @exelib/boomer/boomerang), EXE5's kind: EXE5's sprite, its sound
+-- EXE6's (each variant gives its own sprite, collision type and spark).
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/boomer/boomerang")

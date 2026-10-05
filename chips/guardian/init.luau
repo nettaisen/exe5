@@ -1,7 +1,7 @@
 --!strict
--- Guardian (BN5 chip 0x0cb): a statue in front of the user; broken by one side's attack, it strikes back at that
--- side's navi wherever it stands: BN6's Guardian with BN5's statue (chips/guardian/guardian: 10 HP).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Guardian (EXE5 chip 0x0cb): a statue in front of the user; broken by one side's attack, it strikes back at that
+-- side's navi wherever it stands: EXE6's Guardian with EXE5's statue (chips/guardian/guardian: 10 HP).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local guardian = require("@self/guardian")
 

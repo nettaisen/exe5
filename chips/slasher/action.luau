@@ -1,15 +1,15 @@
 --!strict
--- Slasher's action (action 0x29, 0x080ED328: BN5's own): the navi waits, standing, while A is held, for an enemy
+-- Slasher's action (action 0x29, 0x080ED328: EXE5's own): the navi waits, standing, while A is held, for an enemy
 -- navi to stand on its side's area; then (or at once, if one already does) it slashes that one's column (a wide
 -- slash on its middle row, 16 pixels up, hit modifier 3), invulnerable from the moment it saw it until it stands
 -- down. Letting go of A first ends it.
 --
--- The column (0x0800FEC4, BN6's `sub_801273E`): from its side's back column forward, the first whose panel holds
+-- The column (0x0800FEC4, EXE6's `sub_801273E`): from its side's back column forward, the first whose panel holds
 -- the other side's navi on its own side's area (side 0: an other-navi panel not of side 1; side 1: one of side 1;
 -- 0x0800FF08), bottom row up.
 --
 -- After each phase: requests 0x200 and 0x400 (a trap's counter) take over and the invulnerability ends; request
--- 0x80000 (BN5's no-charge timer's end, 0x0800DBE0) starts its action (the roles' `stun_strike`, BN5's action
+-- 0x80000 (EXE5's no-charge timer's end, 0x0800DBE0) starts its action (the roles' `stun_strike`, EXE5's action
 -- 0x49) and the invulnerability ends.
 --
 -- Not modeled: at the slash, the other player's console shows Slasher's name again (sub_801EB18's counterpart,
@@ -149,7 +149,7 @@ slasher.action = define.action {
         if me:request("stun_strike") then
             local a = (roles.actions :: any).stun_strike
             if a == nil then
-                error("Slasher: request 0x80000 starts BN5's action 0x49 (the roles' stun_strike), which no BN5 role names yet")
+                error("Slasher: request 0x80000 starts EXE5's action 0x49 (the roles' stun_strike), which no EXE5 role names yet")
             end
             me:set_attack(a, 0)
             vulnerable(me)

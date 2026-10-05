@@ -1,6 +1,6 @@
 --!strict
--- BN5's Skullys (action 0x55, 0x080EFC30, BN5's own): the navi calls up a skull (attack object #0x88, 0x080D7290,
--- BN5's own; BN6 numbers another object so) on the panel ahead, 20 pixels up; it confuses what it hits (status
+-- EXE5's Skullys (action 0x55, 0x080EFC30, EXE5's own): the navi calls up a skull (attack object #0x88, 0x080D7290,
+-- EXE5's own; EXE6 numbers another object so) on the panel ahead, 20 pixels up; it confuses what it hits (status
 -- 0x20, 480 ticks). Each skull lasts 30 ticks and, 15 ticks in, calls the next on the panel beside it toward the
 -- nearest enemy body in a line (ahead, up or down, ahead first on a tie), three in all. The three chips differ in
 -- the skulls' palette.

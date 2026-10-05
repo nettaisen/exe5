@@ -1,6 +1,6 @@
 --!strict
--- BN5's MarkCannons (action 0x4E, 0x080EF358: BN5's own): the navi sends out a sight (effect object #0x44,
--- 0x080E5498: BN6 keeps its code, `sub_80E5710`, which no BN6 chip uses) that sweeps the field ahead in arcs; on the
+-- EXE5's MarkCannons (action 0x4E, 0x080EF358: EXE5's own): the navi sends out a sight (effect object #0x44,
+-- 0x080E5498: EXE6 keeps its code, `sub_80E5710`, which no EXE6 chip uses) that sweeps the field ahead in arcs; on the
 -- first panel with an enemy body it locks on, paralyzing what stands there (a hit of no damage, element 5, status
 -- 0x11), and the navi raises its cannon and fires at that panel 15 ticks later (hit modifier 3, the impact spark).
 -- If the sight finds nothing (three arcs), or the navi's slot no longer holds it, the navi stands down. The three

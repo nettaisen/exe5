@@ -1,8 +1,8 @@
 --!strict
--- BlizzardMan, the navi of BN5's BlizMan chips (BN5's actor object #0x14, 0x080BC100; BN5's own, built on BN6's navi
+-- BlizzardMan, the navi of EXE5's BlizMan chips (EXE5's actor object #0x14, 0x080BC100; EXE5's own, built on EXE6's navi
 -- template), brought by their navi chip controller. He appears (and goes at once off a panel that isn't solid),
 -- stands 20 ticks, and winds up (animation 9): 6 ticks in, with its sound, he rolls a snowball (BlzrdBal's,
--- @exelib/blzrdbal, as BN5 has it: his sprite's animation 18, 19 grown, 100 more damage a swallow, silent) from 20
+-- @exelib/blzrdbal, as EXE5 has it: his sprite's animation 18, 19 grown, 100 more damage a swallow, silent) from 20
 -- pixels ahead of him; 70 ticks on he leaves, and the controller moves on.
 
 local navi_chips = require("@exelib/navi-chips/navi")
@@ -27,13 +27,13 @@ local PALETTES: { [number]: number } = { [0] = 0, 0, 0, 0, 3 }
 local SOLID = 0x10
 -- When the ball goes and his arm comes down (ticks left of his windup).
 local THROW, DOWN = 0x40, 0x22
--- His snowball's roller (BN5's attack object #0xB7, 0x080DD234): rows 0x48 and 0x49.
+-- His snowball's roller (EXE5's attack object #0xB7, 0x080DD234): rows 0x48 and 0x49.
 local ROLLER = rollers.make_kind {
     id = "blizman/roller",
     self_type = collision.hitbox,
     target = define.collision { id = "blizman/roller-reach", side0 = 0x3F800000, side1 = 0x3F800000, row_offset = 0x248 },
 }
--- His snowball (BN5's attack object #0xB2, 0x080DC880).
+-- His snowball (EXE5's attack object #0xB2, 0x080DC880).
 local BALL = balls.make_kind {
     id = "blizman/ball",
     sprite = SPRITE,

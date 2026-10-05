@@ -1,16 +1,16 @@
 --!strict
--- What BN5's rules start, spawn, show and play by role (docs/design/content-model-v2.md §7.4,
+-- What EXE5's rules start, spawn, show and play by role (docs/design/content-model-v2.md §7.4,
 -- docs/design/rules-in-luau.md R2: a game's roles are its root's). So far the roles that name only
--- assets and data BN5 has: the sounds, music, banners and sprites its pack names (content/bn5/compat/
--- assets.toml: BN6's names where the asset or its place in the code is BN6's), its collision types, the
--- anchor region (BN6's, as BN5's region 0x01 is), and the traps' counters and mark (BN6's, as BN5's trap
--- chips are BN6's code). The other roles that name actions, kinds, chips, statuses, effects and sparks wait
--- for the port's BN5 definitions (docs/design/bn5-map.md §15); the content check lists them as unfilled,
+-- assets and data EXE5 has: the sounds, music, banners and sprites its pack names (content/exe5/compat/
+-- assets.toml: EXE6's names where the asset or its place in the code is EXE6's), its collision types, the
+-- anchor region (EXE6's, as EXE5's region 0x01 is), and the traps' counters and mark (EXE6's, as EXE5's trap
+-- chips are EXE6's code). The other roles that name actions, kinds, chips, statuses, effects and sparks wait
+-- for the port's EXE5 definitions (docs/design/exe5-map.md §15); the content check lists them as unfilled,
 -- and a battle stops at the first it needs.
 --
--- Not filled for want of a BN5 counterpart: the freeze and bubble sounds and sprites (BN5 has neither status), the
--- eruption's (BN5's lava panels don't erupt: they burn and go, §15), the Cross and Beast Out sounds and the custom
--- screen's Cross window, re-deal and scrap (BN6's).
+-- Not filled for want of an EXE5 counterpart: the freeze and bubble sounds and sprites (EXE5 has neither status), the
+-- eruption's (EXE5's lava panels don't erupt: they burn and go, §15), the Cross and Beast Out sounds and the custom
+-- screen's Cross window, re-deal and scrap (EXE6's).
 
 local antidmg_counter = require("../chips/antidmg/counter")
 local barriers = require("../lib/barriers")
@@ -35,40 +35,40 @@ local tango = require("../chips/tango")
 
 return {
     actions = {
-        -- The charged shot a navi's request starts from idle without its weapon's setup (BN5's 0x1E: the shared
+        -- The charged shot a navi's request starts from idle without its weapon's setup (EXE5's 0x1E: the shared
         -- action, @exelib/megaman/charged_shot, navis/megaman/weapons/charged-shot).
         forced_charged_shot = charged_shot.action,
         -- The trap chips' counters, which a trap that caught a hit starts (the original's actions 0x47 and
-        -- 0x48: AntiDmg's and AntiSwrd's, BN6's code; AntiSwrd's swinging BN5's blade and throwing BN5's sonic
+        -- 0x48: AntiDmg's and AntiSwrd's, EXE6's code; AntiSwrd's swinging EXE5's blade and throwing EXE5's sonic
         -- booms, lib/swords).
         anti_damage_counter = antidmg_counter.action,
         anti_sword_counter = swords.anti_sword_counter,
-        -- A Chaos Unison charge released out of its window (BN5's action 0x39: ./souls/chaos): Dark MegaMan comes.
+        -- A Chaos Unison charge released out of its window (EXE5's action 0x39: ./souls/chaos): Dark MegaMan comes.
         chaos_failure = chaos.failure,
-        -- The request 0x80000's action (BN5's 0x49): the end of DarkInvs's no-charge drive, which its timer's end asks
-        -- for (rules/status's `no_charge_drive`; chips/darkinvs/drive-end). BN6's is its stun strike.
+        -- The request 0x80000's action (EXE5's 0x49): the end of DarkInvs's no-charge drive, which its timer's end asks
+        -- for (rules/status's `no_charge_drive`; chips/darkinvs/drive-end). EXE6's is its stun strike.
         stun_strike = drive_end.action,
-        -- The request 0x40000000's action (BN5's 0x30): a dark MegaMan's last stand, which a loss of HP that brings
-        -- him to 0 asks for (rules/status's `hp_loss`; ./emotion/dark-survival). BN6's is a volley no routine asks
+        -- The request 0x40000000's action (EXE5's 0x30): a dark MegaMan's last stand, which a loss of HP that brings
+        -- him to 0 asks for (rules/status's `hp_loss`; ./emotion/dark-survival). EXE6's is a volley no routine asks
         -- for.
         volley = dark_survival.action,
     },
     chips = {
         -- What a selection the custom screen can't allow becomes, and what a chip use the light and dark rule refuses
-        -- becomes (BN5's chip 0x185, past the named ones: chips/invalid).
+        -- becomes (EXE5's chip 0x185, past the named ones: chips/invalid).
         invalid = invalid,
-        -- The chips the NaviCust supports' telops name (BN5's 0x179 to 0x17B, past the library: BN6's numbers).
+        -- The chips the NaviCust supports' telops name (EXE5's 0x179 to 0x17B, past the library: EXE6's numbers).
         rush = rush,
         beat = beat,
         tango = tango,
     },
     kinds = {
-        -- AntiRecv's counterattack, which a heal meets when the other side has AntiRecv armed (BN6's code).
+        -- AntiRecv's counterattack, which a heal meets when the other side has AntiRecv armed (EXE6's code).
         anti_recovery = anti_recovery.kind,
-        -- What an obstacle turns into where an armed side's ColonelSoul can use it (attack object 0x30: BN5's own,
+        -- What an obstacle turns into where an armed side's ColonelSoul can use it (attack object 0x30: EXE5's own,
         -- objects/soldier).
         obstacle_soldier = soldier.kind,
-        -- The NaviCust supports' controller (Rush's, Beat's and Tango's: BN5's effect object 0x74, BN6's code,
+        -- The NaviCust supports' controller (Rush's, Beat's and Tango's: EXE5's effect object 0x74, EXE6's code,
         -- lib/supports).
         support = supports.kind,
         -- The ripple over a body under the sea's surface (effect object 0x3E: objects/dive-ripple).
@@ -76,7 +76,7 @@ return {
     },
     statuses = {
         -- What a damage word's paralysis bit makes its hits carry, and what a counter hit lands instead of a
-        -- flinch (BN5's status bytes 0x10 and 0x12, BN6's numbers).
+        -- flinch (EXE5's status bytes 0x10 and 0x12, EXE6's numbers).
         damage_word_paralysis = statuses.paralyze_90,
         -- What its confusion and blindness bits (0x2000, 0x1000) make them carry (0x080165EC: bytes 0x20, 0x30).
         damage_word_confusion = statuses.confuse_480,
@@ -87,7 +87,7 @@ return {
         hit_bug_confuse = statuses.confuse_960,
     },
     sparks = {
-        -- BN5's hit sparks (lib/sparks: BN6's rows with BN5's sprites): a new registration's, a blocked hit's,
+        -- EXE5's hit sparks (lib/sparks: EXE6's rows with EXE5's sprites): a new registration's, a blocked hit's,
         -- a thrown obstacle's landing's.
         plain = sparks.plain,
         guard = sparks.guard,
@@ -96,14 +96,14 @@ return {
         panel_burn = sparks.fire,
     },
     effects = {
-        -- A navi deleted, HP recovered, the flash where a side cut in: BN5's effects 3, 6 and 0x1E are BN6's
-        -- (0x080DFC94, BN6's `byte_80E0398`: the same rows).
+        -- A navi deleted, HP recovered, the flash where a side cut in: EXE5's effects 3, 6 and 0x1E are EXE6's
+        -- (0x080DFC94, EXE6's `byte_80E0398`: the same rows).
         deletion = effects.deletion,
         recovery = effects.heal,
         cut_in_flash = effects.cut_in_flash,
-        -- The mark over a navi whose trap sprang (AntiNavi, AntiRecv): BN5's effect 43 is BN6's 0x46 (hit
-        -- sparks, animation 7), where rules/chip-use's `anti_navi_sparkle` puts it (BN5's on the panel's center,
-        -- 16 pixels up; BN6's 16 pixels down the field and 32 up).
+        -- The mark over a navi whose trap sprang (AntiNavi, AntiRecv): EXE5's effect 43 is EXE6's 0x46 (hit
+        -- sparks, animation 7), where rules/chip-use's `anti_navi_sparkle` puts it (EXE5's on the panel's center,
+        -- 16 pixels up; EXE6's 16 pixels down the field and 32 up).
         trap_mark = effects.trap_mark,
         -- The splash of a body a sea panel holds at a move's end (effect 0x63: 0x0801715E).
         panel_splash = define.effect { sprite = asset.sprite("splash"), anim = 0, palette = 0 },
@@ -189,18 +189,18 @@ return {
         charge_glow = asset.sprite("charge-glow"),
         charge_glow_a = asset.sprite("charge-glow-a"),
         charge_glow_chaos = asset.sprite("chaos-charge-glow"),
-        -- The status visuals over a navi (0x080E08EC, BN6's `byte_80E08E4`): confusion's stars and blindness (BN6's
-        -- numbers) and the immobilized one (10-2d, BN6's 10-00).
+        -- The status visuals over a navi (0x080E08EC, EXE6's `byte_80E08E4`): confusion's stars and blindness (EXE6's
+        -- numbers) and the immobilized one (10-2d, EXE6's 10-00).
         confusion = asset.sprite("confusion"),
         blindness = asset.sprite("blindness"),
         immobilized = asset.sprite("immobilized"),
-        -- The Full Synchro aura (actor object 0x5E, 0x080C4608: 14-16, BN6's sprite numbers; its animation the navi's
+        -- The Full Synchro aura (actor object 0x5E, 0x080C4608: 14-16, EXE6's sprite numbers; its animation the navi's
         -- actor record's AI index).
         full_synchro_aura = asset.sprite("full-synchro-aura"),
     },
     hooks = {
-        -- The first barrier: the navi enters with the barrier its stats name (FstBarr's, BN6's code), and its
-        -- visual (BN5's, lib/barriers).
+        -- The first barrier: the navi enters with the barrier its stats name (FstBarr's, EXE6's code), and its
+        -- visual (EXE5's, lib/barriers).
         first_barrier = function(navi: Object)
             local barrier = battle.navi(navi.alliance).first_barrier
             if barrier then

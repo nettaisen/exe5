@@ -1,5 +1,5 @@
 --!strict
--- Django's lights (BN5's effect object #0x7D, 0x080E9968; BN5's own): over his target's panel, three lights (its
+-- Django's lights (EXE5's effect object #0x7D, 0x080E9968; EXE5's own): over his target's panel, three lights (its
 -- children: the same kind, Param1 1) circle the coffin, 35 pixels up, a third of a turn apart, 8 steps of 256 a
 -- tick, on an ellipse 45 pixels across and 28 deep; the one that leads them stays hidden. They go when Django ends
 -- them (`lights.remove`), brighter with Otenko's blessing (palette 3).

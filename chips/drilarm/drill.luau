@@ -1,14 +1,14 @@
 --!strict
--- BN5's drills (attack object #0x71) and DrilArm's action (BN5's 0x4F, 0x080EF490; BN6's 0x2E): the shared drill
--- (@exelib/drilarm/drill, BN6's code) but for
+-- EXE5's drills (attack object #0x71) and DrilArm's action (EXE5's 0x4F, 0x080EF490; EXE6's 0x2E): the shared drill
+-- (@exelib/drilarm/drill, EXE6's code) but for
 --
 -- - the action's start: no 10-tick wait outside the operation battle (0x080EF4B8; with it, 10 ticks and effect
 --   object 0x83 on the panel ahead, which isn't ported: never in a netbattle), so the arm and drills come at once;
--- - the arm: BN5's attachment row 0x2F (0C-1E, BN6's row 0x20), DarkDril's (subtype 1) with 1 added to its palette;
+-- - the arm: EXE5's attachment row 0x2F (0C-1E, EXE6's row 0x20), DarkDril's (subtype 1) with 1 added to its palette;
 --   and DarkDril drills for 60 ticks (0x080EF526) where DrilArm's record says 24;
 -- - the drills (0x080D41C8, 0x080D4100): they keep no element (0) and the second doesn't take the first's running
---   while dimmed; Param3 is DarkDril's, whose hit carries the bug 0xFA (argument 1), where BN6's makes a light one;
--- - BN5's spark and collision types.
+--   while dimmed; Param3 is DarkDril's, whose hit carries the bug 0xFA (argument 1), where EXE6's makes a light one;
+-- - EXE5's spark and collision types.
 
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
@@ -16,7 +16,7 @@ local drill = require("@exelib/drilarm/drill")
 local sparks = require("../../lib/sparks")
 local operation_battle = require("../../lib/operation_battle")
 
-local bn5_drill = {}
+local exe5_drill = {}
 
 export type State = {
     -- Ticks left in the current phase (AIAttackVars+0x10).
@@ -31,7 +31,7 @@ local KIND, spawn = drill.make_kind("drill", {
     param3 = { bug = 0xFA, bug_arg = 1 },
     keeps_element = false,
 })
-bn5_drill.kind = KIND
+exe5_drill.kind = KIND
 
 local ARM = attachment.look { sprite = asset.sprite("drill-arm"), palette = 0, attach_point = 0x13 }
 local ARM_DRILLING = 1
@@ -44,7 +44,7 @@ local HEIGHT = 0x10_0000
 local TICKS, DARK_TICKS = 0x18, 60
 
 -- The action of a drill chip (DarkDril's with `dark`).
-function bn5_drill.action(dark: boolean): Action
+function exe5_drill.action(dark: boolean): Action
     -- 0x080EF4EA: the arm and the drills; draw back when the time is up.
     local function grind(me: Object, s: State)
         if me.step_init == 0 then
@@ -91,7 +91,7 @@ function bn5_drill.action(dark: boolean): Action
         grind(me, s)
     end
 
-    -- BN6's `sub_80ED41C` (the same code): the arm goes back; 10 ticks later the navi lets go of the drills.
+    -- EXE6's `sub_80ED41C` (the same code): the arm goes back; 10 ticks later the navi lets go of the drills.
     local function draw_back(me: Object, s: State)
         if me.step_init == 0 then
             local arm = me.overlay
@@ -130,4 +130,4 @@ function bn5_drill.action(dark: boolean): Action
     return define.action { state = { timer = "u16" }, update = update }
 end
 
-return bn5_drill
+return exe5_drill

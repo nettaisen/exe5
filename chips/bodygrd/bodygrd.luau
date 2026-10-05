@@ -1,9 +1,9 @@
 --!strict
--- BN5's BodyGrd (the dimming handler's subtype 46), where BN6's is a trap: its controller (effect object #0x6D,
+-- EXE5's BodyGrd (the dimming handler's subtype 46), where EXE6's is a trap: its controller (effect object #0x6D,
 -- 0x080E8620: the usual dimming phases; its effect, 0x080E8664, sends out the striker at once with the controller's
 -- element and damage word plus the Atk+ bonus, and is done when its second parameter is 0, the record's: at once),
--- the shared striker (@exelib/bodygrd/striker, effect object #0x6E, 0x080E86B0: BN6's code) with BN5's identity and
--- BN5's diving shuriken (chips/shadoman/shuriken, attack object #0x5C).
+-- the shared striker (@exelib/bodygrd/striker, effect object #0x6E, 0x080E86B0: EXE6's code) with EXE5's identity and
+-- EXE5's diving shuriken (chips/shadoman/shuriken, attack object #0x5C).
 
 local dimming_chips = require("@exelib/dimming")
 local shuriken = require("../shadoman/shuriken")

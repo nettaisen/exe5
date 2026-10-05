@@ -1,7 +1,7 @@
 --!strict
--- Anubis (BN5 chip 0x0cc): a statue in front of the user that drains every enemy navi 1 HP each 6 ticks for 3000
--- ticks, with bubbles over the enemy's area: BN6's Anubis with BN5's statue (chips/anubis/anubis).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Anubis (EXE5 chip 0x0cc): a statue in front of the user that drains every enemy navi 1 HP each 6 ticks for 3000
+-- ticks, with bubbles over the enemy's area: EXE6's Anubis with EXE5's statue (chips/anubis/anubis).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local anubis = require("@self/anubis")
 

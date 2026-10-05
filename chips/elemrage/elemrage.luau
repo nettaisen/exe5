@@ -1,5 +1,5 @@
 --!strict
--- BN5's ElemRage (action 0x56, 0x080EFCD0): BN5's own. The navi raises its claw (the attachment table's row 0x34,
+-- EXE5's ElemRage (action 0x56, 0x080EFCD0): EXE5's own. The navi raises its claw (the attachment table's row 0x34,
 -- 0c-33, its animation 1) and sends a flame (attack object #0x98, 0x080D99D8) along its row from the panel ahead, at
 -- its attach point 20; each flame, when its animation first ends, sends the next one ahead until the record's count
 -- (its first parameter, 3) is spent, and stands its time (the second, 30 ticks). On lava, sea, ice, grass or metal
@@ -18,7 +18,7 @@ local elemrage = {}
 -- ---- The flame ------------------------------------------------------------------------------------------------------
 
 local SPRITE = asset.sprite("rage-flame")
--- BN5's panel types by number (compat/panels.toml, 0x0800BCF0), for the type a flame leaves.
+-- EXE5's panel types by number (compat/panels.toml, 0x0800BCF0), for the type a flame leaves.
 local PANEL_TYPES: { [number]: PanelType } = {
     [0] = "missing",
     [1] = "broken",
@@ -107,7 +107,7 @@ local function tick(me: Object)
         if kind ~= 0 then
             local t = PANEL_TYPES[kind]
             if not t then
-                error(string.format("ElemRage's flame: panel type %d is past BN5's types", kind))
+                error(string.format("ElemRage's flame: panel type %d is past EXE5's types", kind))
             end
             field.set_type(me.panel_x, me.panel_y, t)
         end

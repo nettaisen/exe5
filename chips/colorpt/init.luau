@@ -1,11 +1,11 @@
 --!strict
 -- ColorPt and DblPoint: the colorpt series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local colorpt = require("@self/colorpt")
 
--- ColorPt (BN5 chip 0x07f): the user's front column goes to the other side, panel by panel, for Atk+10 a panel on
--- the chip at the hand's cursor: BN6's ColorPt with BN5's points (chips/colorpt/colorpt).
+-- ColorPt (EXE5 chip 0x07f): the user's front column goes to the other side, panel by panel, for Atk+10 a panel on
+-- the chip at the hand's cursor: EXE6's ColorPt with EXE5's points (chips/colorpt/colorpt).
 local colorpt_chip = define.chip {
     id = "colorpt",
     codes = { "*" },
@@ -23,8 +23,8 @@ local colorpt_chip = define.chip {
     dimming = colorpt.hook { palette = 0, bonus = 10 },
 }
 
--- DblPoint (BN5 chip 0x0cf): the user's front column goes to the other side, panel by panel, for Atk+20 a panel on
--- the chip at the hand's cursor: BN6's DblPoint with BN5's points (chips/colorpt/colorpt).
+-- DblPoint (EXE5 chip 0x0cf): the user's front column goes to the other side, panel by panel, for Atk+20 a panel on
+-- the chip at the hand's cursor: EXE6's DblPoint with EXE5's points (chips/colorpt/colorpt).
 local dblpoint = define.chip {
     id = "dblpoint",
     codes = { "*" },

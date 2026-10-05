@@ -1,5 +1,5 @@
 --!strict
--- BN5's souls (Soul Unison), by the name BN5's code tells them apart by: NaviStats +0x2C, the soul's number in
+-- EXE5's souls (Soul Unison), by the name EXE5's code tells them apart by: NaviStats +0x2C, the soul's number in
 -- the list of the navis MegaMan unites with (0x0873BBC8's names: 1 ProtoMan, 2 GyroMan, 3 SearchMan, 4 NapalmMan,
 -- 5 MagnetMan, 6 Meddy, 7 Colonel, 8 ShadowMan, 9 NumberMan, 10 TomahawkMan, 11 KnightMan, 12 ToadMan; 0 none).
 -- A soul is a form of MegaMan's; `souls.of` names the soul a side's navi is in.

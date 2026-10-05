@@ -1,8 +1,8 @@
 --!strict
--- NeoVari (BN5 chip 0x0d9): the navi holds A and enters a direction sequence: down, forward, up gives CrosSwrd; back,
--- forward, back, A+B SprSonic; up, A+B, down, A+B, up, A+B DblDream; letting go of A, or 48 ticks, gives a Sword: BN5's
+-- NeoVari (EXE5 chip 0x0d9): the navi holds A and enters a direction sequence: down, forward, up gives CrosSwrd; back,
+-- forward, back, A+B SprSonic; up, A+B, down, A+B, up, A+B DblDream; letting go of A, or 48 ticks, gives a Sword: EXE5's
 -- action 0x31 (0x080EDEE2), VarSwrd's (../varswrd/action) with its own sequences and picks.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local action = require("./varswrd/action")
 local crosswrd = require("./crosswrd")

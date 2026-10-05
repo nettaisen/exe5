@@ -1,6 +1,6 @@
 --!strict
--- MetrKnuk (BN5 chip 0x130): a giga cut-in chip that rains 16 fists around the enemies, cracking the panels (./controller).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- MetrKnuk (EXE5 chip 0x130): a giga cut-in chip that rains 16 fists around the enemies, cracking the panels (./controller).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local controller = require("@self/controller")
 

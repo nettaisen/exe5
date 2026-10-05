@@ -1,5 +1,5 @@
 --!strict
--- BN5's WavePit, RedWave and MudWave (action 0x1A's instant chip effect 0x13, 0x080DAF18): BN5's own. In each row,
+-- EXE5's WavePit, RedWave and MudWave (action 0x1A's instant chip effect 0x13, 0x080DAF18): EXE5's own. In each row,
 -- from the user's back column toward the other side, the first panel of the chip's kind (WavePit a sea panel, flag
 -- 0x20000; RedWave a lava panel, 0x1000; MudWave a hole, a panel without the standable flag 0x10) starts a wave
 -- there, and turns Normal (MudWave's hole stays). A row without one starts none.

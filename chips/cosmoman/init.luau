@@ -1,10 +1,10 @@
 --!strict
 -- CosmoMan, CosmoMnSP and CosmoMnDS: the cosmoman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- CosmoMan (BN5 chip 0x10d): CosmoMan cuts in, takes the field objects around him and calls meteors down on the
+-- CosmoMan (EXE5 chip 0x10d): CosmoMan cuts in, takes the field objects around him and calls meteors down on the
 -- enemy area (./navi).
 local cosmoman = define.chip {
     id = "cosmoman",
@@ -23,7 +23,7 @@ local cosmoman = define.chip {
     navi = navi.summon,
 }
 
--- CosmoMnSP (BN5 chip 0x10e): CosmoMan cuts in, takes the field objects around him and calls meteors down on the
+-- CosmoMnSP (EXE5 chip 0x10e): CosmoMan cuts in, takes the field objects around him and calls meteors down on the
 -- enemy area (../cosmoman/navi); its damage by how fast its user deleted CosmoMan SP (rules/sp-chips: formula 17,
 -- its table's row 16).
 local cosmomn_sp = define.chip {
@@ -43,7 +43,7 @@ local cosmomn_sp = define.chip {
     navi = navi.summon,
 }
 
--- CosmoMnDS (BN5 chip 0x10f): CosmoMan, dark, cuts in, takes the field objects around him and calls meteors down on
+-- CosmoMnDS (EXE5 chip 0x10f): CosmoMan, dark, cuts in, takes the field objects around him and calls meteors down on
 -- the enemy area (../cosmoman/navi); its damage by its user's side's statistic 3 (formula 39, its table's row 16).
 local cosmomn_ds = define.chip {
     id = "cosmomn-ds",

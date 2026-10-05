@@ -1,15 +1,15 @@
 --!strict
--- BN5's swords' parts, for the shared slash (@exelib/swords/slash, BN6's action 0x13; BN5's the same code
+-- EXE5's swords' parts, for the shared slash (@exelib/swords/slash, EXE6's action 0x13; EXE5's the same code
 -- but for a step sword's afterimage and the elemental swords' slash palettes, which these swords haven't): the
--- blade (attachment row 3, as BN6's: the same look), the slash's effects (BN5's effects 0x16 to 0x18 are
--- BN6's: the same rows of 0x080DFC94, by the swords' table 0x080EC028), the swing's sound, and BN5's
--- collision types, and BN5's blade animation, which goes by its souls (0x080EC038, `sub_80EBAE8`'s counterpart:
+-- blade (attachment row 3, as EXE6's: the same look), the slash's effects (EXE5's effects 0x16 to 0x18 are
+-- EXE6's: the same rows of 0x080DFC94, by the swords' table 0x080EC028), the swing's sound, and EXE5's
+-- collision types, and EXE5's blade animation, which goes by its souls (0x080EC038, `sub_80EBAE8`'s counterpart:
 -- `swords.blade_anim`, each sword's `blade_anim`). (Its attachment row, 0x080EC082, `sub_80EBB34`'s counterpart,
--- is row 3 but in Chaos Unison's ProtoSoul and ColonelSoul: Chaos Unison's work, bn5-map.md §15.) BN5's swing also calls 0x080E9FD2 where BN6's calls `nullsub_12`: with battle
--- flag 0x40 (`operation_battle()`, never set in a netbattle: bn5-map.md §3) it spawns effect object 0x83
--- on the panel ahead, which isn't ported. And BN5's sonic boom (attack object #0x58, BN6's the same number:
--- 0x080D0E64, BN6's `sub_80CF810`, the same code but for its look): at the floor (BN6's 16 pixels up), its palette
--- 9 going through (BN6's 0xB), else by its whole element byte (BN6's its primary element) from 0x080D0EF4, a BN5
+-- is row 3 but in Chaos Unison's ProtoSoul and ColonelSoul: Chaos Unison's work, exe5-map.md §15.) EXE5's swing also calls 0x080E9FD2 where EXE6's calls `nullsub_12`: with battle
+-- flag 0x40 (`operation_battle()`, never set in a netbattle: exe5-map.md §3) it spawns effect object 0x83
+-- on the panel ahead, which isn't ported. And EXE5's sonic boom (attack object #0x58, EXE6's the same number:
+-- 0x080D0E64, EXE6's `sub_80CF810`, the same code but for its look): at the floor (EXE6's 16 pixels up), its palette
+-- 9 going through (EXE6's 0xB), else by its whole element byte (EXE6's its primary element) from 0x080D0EF4, an EXE5
 -- slash.
 
 local antiswrd = require("@exelib/antiswrd/counter")
@@ -76,7 +76,7 @@ swords.sonic_boom = sonic_boom.make_kind("sonic-boom", {
     hits = collision.hits_navis,
 })
 
--- BN5's sword step (0x080EBD04: by the attack's charge, as its Katanas and MoonBlds take it, lib/stepsword): a
+-- EXE5's sword step (0x080EBD04: by the attack's charge, as its Katanas and MoonBlds take it, lib/stepsword): a
 -- charged slash steps two panels ahead, or in ShadowSoul (and by a charge of 2) behind the enemy, turned round.
 local STEPS: SlashSteps = {
     steps = function(me: Object): boolean
@@ -86,13 +86,13 @@ local STEPS: SlashSteps = {
     warp_target = stepsword.behind_enemy,
 }
 
--- A chip's slash (@exelib/swords/slash), its blade BN5's attachment, its step BN5's.
+-- A chip's slash (@exelib/swords/slash), its blade EXE5's attachment, its step EXE5's.
 function swords.slash(spec: SlashSpec): Action
     return slash.action(spec, attachment.kind, { steps = STEPS })
 end
 
--- AntiSwrd's counter (the original's navi action 0x48: @exelib/antiswrd/counter) with BN5's blade and booms; its
--- sounds BN6's. The ruleset starts it by role (`actions.anti_sword_counter`, rules/roles.luau).
+-- AntiSwrd's counter (the original's navi action 0x48: @exelib/antiswrd/counter) with EXE5's blade and booms; its
+-- sounds EXE6's. The ruleset starts it by role (`actions.anti_sword_counter`, rules/roles.luau).
 swords.anti_sword_counter = antiswrd.action_with {
     id = "antiswrd/counter",
     blade = swords.blade,
@@ -100,7 +100,7 @@ swords.anti_sword_counter = antiswrd.action_with {
     start_sound = asset.sound("log-in"),
     swing_sound = asset.sound("sword-swing"),
     attachment = attachment.kind,
-    -- (BN5's: no invulnerability, nothing restarted at its swings.)
+    -- (EXE5's: no invulnerability, nothing restarted at its swings.)
     plain = true,
 }
 

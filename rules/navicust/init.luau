@@ -1,11 +1,11 @@
 --!strict
--- BN5's NaviCust (docs/design/bn5-map.md §15.13): as the round is set up (`round_setup`, before anything reads the
+-- EXE5's NaviCust (docs/design/exe5-map.md §15.13): as the round is set up (`round_setup`, before anything reads the
 -- stats), a player's NaviCust (`battle.navicust`: the programs placed on its grid) is compiled into the navi's stats,
--- as the original's does (0x0813F97C's 0x0813FA10, for MegaMan alone; BN5's patch cards, 0x08138214, follow it). The
--- compile is BN6's routine for routine (@exelib/navicust/compile): the bugs counted, the stats reset (the setup's are
+-- as the original's does (0x0813F97C's 0x0813FA10, for MegaMan alone; EXE5's patch cards, 0x08138214, follow it). The
+-- compile is EXE6's routine for routine (@exelib/navicust/compile): the bugs counted, the stats reset (the setup's are
 -- already the navi's fresh stats with what the save keeps: 0x08133DBC keeps the mood, the light/dark value, +0x21 and
 -- +0x22, the base HP, the soul, the folder and its three Regular chips, the Regular memory and the HP), the programs'
--- effects, the bugs, the HP. BN5's own:
+-- effects, the bugs, the HP. EXE5's own:
 --
 -- - its board (./board.luau): 4x4, 5x4 or 5x5 by the save's ExpMemry (which the compile doesn't read: only placing a
 --   program does), no frame, any cell of the grid a neighbor's;
@@ -16,7 +16,7 @@
 --   ../patch-cards/system);
 -- - BugStop (+0x1F) stops the bugs unless the patch cards say (0x0813FA48 asks 0x08137A30 first): a switched-on
 --   card's BugStop effect (the last card's) stops them at 1 and keeps them else;
--- - the HP (0x0803C13C): in the real world the maximum again and the HP with it, as BN6's; in the cyberworld (the
+-- - the HP (0x0803C13C): in the real world the maximum again and the HP with it, as EXE6's; in the cyberworld (the
 --   save's area, 0x02002944, from 0x80, or event flag 0x10B2: the setup's `cyberworld`) neither, so the HP is the
 --   save's and the maximum the effects' (0x0803C1CC: the base and the HP programs), HubBatc's bug's halving standing.
 
@@ -79,9 +79,9 @@ local HUBBATC = "hubbatc"
 -- cyberworld (its area, 0x02002944, from 0x80, or event flag 0x10B2), where the compile leaves the HP.
 type Setup = { cyberworld: boolean }
 
--- BN5's compile.
-local BN5: NaviCustGame = {
-    name = "BN5",
+-- EXE5's compile.
+local EXE5: NaviCustGame = {
+    name = "EXE5",
     board = board,
     bugs = programs.BUGS,
     bug_work = BUG_WORK,
@@ -121,7 +121,7 @@ return define.system {
     setup = { cyberworld = "bool" },
     hooks = {
         round_setup = function(side: number)
-            compile.run(side, BN5)
+            compile.run(side, EXE5)
         end,
     },
 }

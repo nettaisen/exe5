@@ -1,5 +1,5 @@
 --!strict
--- BN5's Quake bomb (attack object #0x51, 0x080CFE0C; BN5's own, thrown by action 0x12's subtype 11, 0x080D007C):
+-- EXE5's Quake bomb (attack object #0x51, 0x080CFE0C; EXE5's own, thrown by action 0x12's subtype 11, 0x080D007C):
 -- lobbed at the panel three ahead at 4 pixels a tick, it hangs there 48 pixels up as a weight in its level's colors
 -- for 25 ticks, then drops 8 pixels a tick. Landing on a solid panel, it shakes the screen, cracks the panel and hits
 -- its level's region around it (Quake1 the panel, Quake2 the column, Quake3 the panel and its four neighbors), an
@@ -30,7 +30,7 @@ local REGIONS = { [0] = regions.single, [1] = regions.wide, [2] = regions.plus }
 local EXPLOSION = define.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 }
 local PUFF = define.effect { sprite = asset.sprite("puff"), anim = 0, palette = 0 }
 local SOUND_LAND = asset.sound("land")
--- What it is and hits: BN5's rows 0x15 and 5, hit modifier 3.
+-- What it is and hits: EXE5's rows 0x15 and 5, hit modifier 3.
 local HIT_MOD = 3
 
 -- 0x080CFED8: lobbed at the panel; over it, it hangs (else off the field it goes).
@@ -79,7 +79,7 @@ local function hang(me: Object, s: State)
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
     sprite.palette = PALETTES[s.level]
     -- (In the operation battle, which a netbattle never sets, 0x080E9FA4 spawns effect object 0x83 at the panel for 60
-    -- ticks: not ported, bn5-map.md §15.6.)
+    -- ticks: not ported, exe5-map.md §15.6.)
     me.action = 8
     me.phase, me.phase_init = 0, 0
 end

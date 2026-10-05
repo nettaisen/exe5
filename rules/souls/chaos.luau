@@ -1,10 +1,10 @@
 --!strict
--- BN5's Chaos Unison failure (action 0x39, 0x080EE63C; the role `actions.chaos_failure`, which the engine starts
+-- EXE5's Chaos Unison failure (action 0x39, 0x080EE63C; the role `actions.chaos_failure`, which the engine starts
 -- when an armed charge is released out of the chaos cycle's window: the navi uninterruptible, `set_attack` slot 6).
 -- The battle dims (battle flag 4 alone, once no dimming runs), MegaMan flashes white every other pair of ticks
 -- while he crouches (animation 12, 6 ticks) and fades (animation 1 and the fade sound, 25 ticks), and on the fade's
 -- seventeenth tick the Dark MegaMen across from him leave (rules/computer-navi) and a new one comes onto a solid,
--- empty panel of the other side's area (navis/dark-megaman, driven by BN5's computer navis, his summoner's side's
+-- empty panel of the other side's area (navis/dark-megaman, driven by EXE5's computer navis, his summoner's side's
 -- system). Then MegaMan is back in his base form, as a soul's revert leaves him (./revert, but in place, with no
 -- flash or sound), his attack requests and his uninterruptibility are dropped, the battle undims and he idles.
 
@@ -76,7 +76,7 @@ local function vanish(me: Object, s: State)
         computer_navi.dismiss(me.alliance)
         local x, y = landing(me)
         if x ~= nil then
-            -- (BN5's 0x08006AAE: NameID 0x18D for the other side; the navi type's tick runs for him from the start.)
+            -- (EXE5's 0x08006AAE: NameID 0x18D for the other side; the navi type's tick runs for him from the start.)
             local navi = battle.spawn_navi(dark_megaman, x, y :: number, bit32.bxor(me.alliance, 1), me, computer_navi.system)
             if navi then
                 navi.ticked = true

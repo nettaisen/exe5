@@ -1,5 +1,5 @@
 --!strict
--- BN5's WoodNos1-3 (action 0x28, 0x080ED286): BN5's own. The navi raises its buster arm and, on the action's second
+-- EXE5's WoodNos1-3 (action 0x28, 0x080ED286): EXE5's own. The navi raises its buster arm and, on the action's second
 -- tick, a wooden wave (attack object #0xA6, 0x080DAFC4) leaves the panel ahead, 20 pixels up, rolling 6 pixels a
 -- tick toward the other side and hitting navis for 10 (hit modifier 1); a hit ends it. Past the field's edge it
 -- raises a geyser (attack object #0xA7, 0x080DB124) in every row where the other side's navi stands (the first panel

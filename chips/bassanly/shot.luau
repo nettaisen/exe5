@@ -1,5 +1,5 @@
 --!strict
--- BassAnly's shot (BN5's attack object #0x73, 0x080DECF4): the shared dark ball (@exelib/bassanly/shot), BN5's kind:
+-- BassAnly's shot (EXE5's attack object #0x73, 0x080DECF4): the shared dark ball (@exelib/bassanly/shot), EXE5's kind:
 -- its sprite 10-4F (0x080D4470) and sound, thrown, hitting navis.
 
 local collision = require("../../rules/collision")

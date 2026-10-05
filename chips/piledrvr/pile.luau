@@ -1,5 +1,5 @@
 --!strict
--- PileDrvr's pile (BN5's attack object #0x99, 0x080D9C1C; BN6's code, `sub_80D8620`, which no BN6 chip uses): set
+-- PileDrvr's pile (EXE5's attack object #0x99, 0x080D9C1C; EXE6's code, `sub_80D8620`, which no EXE6 chip uses): set
 -- down on its panel with a sound (sprite 0C-46), it stands 68 ticks; then, if it saw someone ahead, it sends its beam
 -- (./beam) from the panel past it and works for 151 ticks (animation 2) and 7 more (animation 3). Then, or at once
 -- with no one ahead, its controller (./controller) is told it's done, and it goes. It runs while dimmed.

@@ -1,6 +1,6 @@
 --!strict
--- BN5's yoyo (attack object #0x52, 0x080D00A8: BN6's number, an earlier form of its code) and the YoYo chips'
--- throw (BN6's, the shared @exelib/yoyo/throw, with BN5's yoyo arm: the attachment table's row 0x26).
+-- EXE5's yoyo (attack object #0x52, 0x080D00A8: EXE6's number, an earlier form of its code) and the YoYo chips'
+-- throw (EXE6's, the shared @exelib/yoyo/throw, with EXE5's yoyo arm: the attachment table's row 0x26).
 --
 -- A yoyo rolls out a panel per 8 ticks for its panels (5 pixels a tick), spins there for its 8-tick rounds and
 -- rolls back as far as it went; on each new panel and each round its region is re-armed (YoYo's: the panel; a
@@ -9,7 +9,7 @@
 -- its next panel once it has hit, and the leader's hit (or turn) tells the other two (0x080E8A5A: each yoyo its
 -- controller holds is marked as having hit). When it goes it clears the slot that holds it, if that still does.
 --
--- Unlike BN6's: its collision is row 0x40 (BN6's slash), no snapping to the panel on another yoyo's hit, and no
+-- Unlike EXE6's: its collision is row 0x40 (EXE6's slash), no snapping to the panel on another yoyo's hit, and no
 -- skipped spin tick.
 
 local collision = require("../../rules/collision")
@@ -286,7 +286,7 @@ yoyo.kind = define.kind {
     id = "yoyo/yoyo",
     pool = "attack",
     state = {
-        spec = "record:bn5-yoyo",
+        spec = "record:exe5-yoyo",
         slot = { "related", "middle", "below", "above" },
         left = "i32",
         hit = "u32",
@@ -307,7 +307,7 @@ yoyo.kind = define.kind {
 }
 
 function yoyo.spec(spec: Spec): Spec
-    return define.record("bn5-yoyo", spec)
+    return define.record("exe5-yoyo", spec)
 end
 
 -- 0x080D0346: a yoyo for `owner` on (x, y) at height `z`, with `element` and the damage word, flying as `spec`

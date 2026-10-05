@@ -1,5 +1,5 @@
 --!strict
--- BN5's Voltz1-3 (action 0x1A's instant effect 16, 0x080D88CE): BN5's own. A sensor (attack object #0x90,
+-- EXE5's Voltz1-3 (action 0x1A's instant effect 16, 0x080D88CE): EXE5's own. A sensor (attack object #0x90,
 -- 0x080D86E8; NameID 0xE4) drops from 160 pixels onto the panel three ahead of the user, 4 pixels a tick, its
 -- collision on (and the panel reserved) for its last 16 pixels; landed, it waits 10 ticks, then shocks (its second
 -- animation, the thunder ball's sound): a shock (attack object #0x92, 0x080D8AF0) on each panel beside it that isn't
@@ -8,7 +8,7 @@
 -- field object of class 1, with 1 HP: evicted (its HP 0) it leaves a puff and goes; anything its collision meets
 -- ends it at once. Its palette is its level's (the record's first parameter, 4 palettes apart).
 --
--- In the operation battle's mode (never in a netbattle) it marks its panel as it comes and as it lands (BN5's effect
+-- In the operation battle's mode (never in a netbattle) it marks its panel as it comes and as it lands (EXE5's effect
 -- object 0x83: lib/navi-chips/marker).
 
 local collision = require("../../rules/collision")
@@ -35,7 +35,7 @@ local HIT_MOD = 3
 -- 0x080D8B22: the shock's sprite 10-11 without a shadow (0x00001011), animation 0; the same collision.
 local SHOCK_SPRITE = asset.sprite("thunder-ball")
 -- NameID 0xE4: actor record 0xE4 (0x08014C94: version 5, AI index 0x21); its look (0x0801D6B0's row 0x17: the
--- sensor, a ground shadow); BN5's swallowing and Poltergeist leave it (0x0800D372, 0x080E8CA0).
+-- sensor, a ground shadow); EXE5's swallowing and Poltergeist leave it (0x0800D372, 0x080E8CA0).
 local IDENTITY = define.identity {
     id = "voltz",
     class = "field_object",
@@ -49,7 +49,7 @@ local HP = 1
 -- It drops from 160 pixels, 4 a tick; its collision is on from 16 pixels up.
 local DROP_HEIGHT, DROP_SPEED, LOW = 0xA0_0000, 0x4_0000, 16
 local DROP_SOUND, SHOCK_SOUND = asset.sound("voltz-drop"), asset.sound("erase-man-2")
--- The effects (BN5's table, 0x080DFC94): row 0x14 (14-0D, animation 2) when evicted.
+-- The effects (EXE5's table, 0x080DFC94): row 0x14 (14-0D, animation 2) when evicted.
 local PUFF = define.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 }
 -- Landed, shocking, blinking out.
 local LANDED_TICKS, SHOCK_TICKS, BLINK_TICKS = 10, 30, 30

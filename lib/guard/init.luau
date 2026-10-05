@@ -1,7 +1,7 @@
 --!strict
--- BN5's guard (action 0x1F, 0x080ECAE6): the Guard chips (subtypes 0 to 2), the NaviCust's Shield (3) and Reflect (4)
--- programs and the CrsShld chips (5 to 7). BN6's Reflectors' guard (`sub_80ED13E`, action 0x2B) is its nearest code
--- (its chips/rflectr/guard); BN5's differs in its counters. The navi holds up a shield (@exelib/rflectr/shield, BN5's
+-- EXE5's guard (action 0x1F, 0x080ECAE6): the Guard chips (subtypes 0 to 2), the NaviCust's Shield (3) and Reflect (4)
+-- programs and the CrsShld chips (5 to 7). EXE6's Reflectors' guard (`sub_80ED13E`, action 0x2B) is its nearest code
+-- (its chips/rflectr/guard); EXE5's differs in its counters. The navi holds up a shield (@exelib/rflectr/shield, EXE5's
 -- looks below) for the chip's ticks (its first parameter) and guards. The first hit the guard blocks from the front
 -- sends the counterattack:
 --
@@ -12,7 +12,7 @@
 -- - the CrsShld chips': a cross (CROSS below) leaving from the panel ahead, after which the guard ends at once.
 --
 -- A hit that breaks guards takes the shield down, the guard with it (the time still runs). The NaviCust programs'
--- uses come with BN5's NaviCust.
+-- uses come with EXE5's NaviCust.
 
 local collision = require("../rules/collision")
 local projectile = require("../objects/projectile")
@@ -26,10 +26,10 @@ local guard = {}
 
 -- ---- The shields --------------------------------------------------------------------------------------------------
 
--- The shield (attack object #0x2B, 0x080CA22C: BN6's `sub_80C96A0`, the same code).
+-- The shield (attack object #0x2B, 0x080CA22C: EXE6's `sub_80C96A0`, the same code).
 local SHIELD = shield.make { id = "rflectr/shield", sound = asset.sound("follow-effect") }
 
--- Its looks (0x080CA1F0's rows, by the guard's second parameter: BN6's `byte_80C9664`'s but for rows 3 to 6, BN5's
+-- Its looks (0x080CA1F0's rows, by the guard's second parameter: EXE6's `byte_80C9664`'s but for rows 3 to 6, EXE5's
 -- ProtoMan's and CrsShld's, and row 9's sheet).
 local REFLECTOR, CROSS_SHIELD = asset.sprite("reflector-shield"), asset.sprite("cross-shield")
 local function look(l: ReflectorShieldLook): ReflectorShieldLook

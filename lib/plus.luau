@@ -1,9 +1,9 @@
 --!strict
--- BN5's plus chips used on their own (action 0x1A's effect 3, 0x0800E198, BN6's `sub_8010488`; its parameters the
--- record's +0x10 and +0x11: the side's bonus it goes to, and whether it goes to the next chip). BN6's tests the
--- attack's special source; BN5's tests the operation battle (the operation battle) (the each side's own gauge, never in a netbattle) and adds the
+-- EXE5's plus chips used on their own (action 0x1A's effect 3, 0x0800E198, EXE6's `sub_8010488`; its parameters the
+-- record's +0x10 and +0x11: the side's bonus it goes to, and whether it goes to the next chip). EXE6's tests the
+-- attack's special source; EXE5's tests the operation battle (the operation battle) (the each side's own gauge, never in a netbattle) and adds the
 -- damage alone to the side's bonus, playing the bonus sound only for a chip that goes to the next chip. Otherwise,
--- as BN6's, the sparkle by the navi (@exelib/instant/sparkle: BN5's bubble, the sound BN6's number).
+-- as EXE6's, the sparkle by the navi (@exelib/instant/sparkle: EXE5's bubble, the sound EXE6's number).
 --
 -- Attck+10 and Attck+30 are `instant = plus.attack` (+0x10 0, +0x11 0: none goes to the next chip); Navi+20 is
 -- `plus.navi` (+0x10 1: the side's Navi+ bonus); DarkPlus is `plus.dark`

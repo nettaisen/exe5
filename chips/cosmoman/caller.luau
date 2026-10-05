@@ -1,5 +1,5 @@
 --!strict
--- CosmoMan in the sky (BN5's effect object #0x86, 0x080EA1BC; BN5's own): his sprite 95 pixels up over the enemy
+-- CosmoMan in the sky (EXE5's effect object #0x86, 0x080EA1BC; EXE5's own): his sprite 95 pixels up over the enemy
 -- area's middle panel, calling his meteors (./meteor) down, 30 ticks apart: three, then one for each field object
 -- he took. They fall on the enemies on that panel and the four beside it: by turns while the turns come out even,
 -- the last ones on the one with the most HP; on the middle panel when none is there.

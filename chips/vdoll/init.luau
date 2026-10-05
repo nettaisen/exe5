@@ -1,8 +1,8 @@
 --!strict
--- VDoll (BN5 chip 0x067): a doll (./doll) lobbed three panels ahead, that poisons the panel it lands on and, hurt
--- there, curses one of the other side's panels with the damage it took (./curse): BN5's throw (action 0x12, subtype
+-- VDoll (EXE5 chip 0x067): a doll (./doll) lobbed three panels ahead, that poisons the panel it lands on and, hurt
+-- there, curses one of the other side's panels with the damage it took (./curse): EXE5's throw (action 0x12, subtype
 -- 8: lib/bombs, holding the bomb, the attachment table's row 4, 0x080EBCA0) of the doll (0x080D5926).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local bombs = require("../lib/bombs")
 local doll = require("@self/doll")

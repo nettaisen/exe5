@@ -1,11 +1,11 @@
 --!strict
 -- Wind and Fan: the wind series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local controller = require("@self/controller")
 local fan = require("@self/fan")
 
--- Wind (BN5 chip 0x053): a dimming that places a fan in front of the user (./controller, the dimming handler's
+-- Wind (EXE5 chip 0x053): a dimming that places a fan in front of the user (./controller, the dimming handler's
 -- subtype 9) that blows a gust along the enemy's rows every 12 ticks for 24 seconds, pushing away from the enemy's
 -- front column (./fan, the record's first parameter 0).
 local wind = define.chip {
@@ -38,7 +38,7 @@ local wind = define.chip {
     }),
 }
 
--- Fan (BN5 chip 0x054): a dimming that places a fan in front of the user (./controller, the dimming handler's
+-- Fan (EXE5 chip 0x054): a dimming that places a fan in front of the user (./controller, the dimming handler's
 -- subtype 9) that blows a gust along the enemy's rows every 12 ticks for 24 seconds, pulling from the far column
 -- (./fan, the record's first parameter 1).
 local fan_chip = define.chip {

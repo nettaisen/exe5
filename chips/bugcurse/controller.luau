@@ -1,5 +1,5 @@
 --!strict
--- BugCurse's dimming controller (BN5's effect object #0x56, 0x080E6AC8; BN5's own): the usual dimming phases
+-- BugCurse's dimming controller (EXE5's effect object #0x56, 0x080E6AC8; EXE5's own): the usual dimming phases
 -- (@exelib/dimming), with an effect (0x080E6B0C) that lays a curse (./curse) on the enemy navi's panel, unless the
 -- enemy navi is invisible, submerged, flashing or bubbled (or there is none), and waits on it; then the undim.
 

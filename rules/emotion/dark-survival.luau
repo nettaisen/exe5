@@ -1,6 +1,6 @@
 --!strict
--- BN5's dark MegaMan's last stand: BN5's action 0x30 (0x080EFE22), the roles' `volley`. A player MegaMan (AI index 0)
--- of BN5's emotion 5 (a mood of 0, a dark MegaMan's) whom a loss of HP brings to 0 holds at 1 HP, once a battle,
+-- EXE5's dark MegaMan's last stand: EXE5's action 0x30 (0x080EFE22), the roles' `volley`. A player MegaMan (AI index 0)
+-- of EXE5's emotion 5 (a mood of 0, a dark MegaMan's) whom a loss of HP brings to 0 holds at 1 HP, once a battle,
 -- and asks for the request 0x40000000 (0x0802C16C, from object_subtractHP, 0x0800C6E0, and applyDamageToPlayer,
 -- 0x080185A2: the status section's `hp_loss`). This is what the request starts. Its steps (0x080EFE34, on the
 -- attack's step):
@@ -12,7 +12,7 @@
 -- - 4 (0x080EFF10): his dark self leaves him and spirals back into him (actor object 0x2E: ../souls/shade's); 50
 --   ticks later another flash and a sound; 61 ticks.
 -- - 8 (0x080EFF58): the computer drives him for 720 ticks (rules/computer-navi, as DarkInvs's drive drives its user:
---   chips/darkinvs; the drive's end is BN5's action 0x49, the roles' `stun_strike`), his statuses and his anger
+--   chips/darkinvs; the drive's end is EXE5's action 0x49, the roles' `stun_strike`), his statuses and his anger
 --   ended.
 -- - 0xC (0x080EFF78): the HUD back (in the last turns without the gauge) and the screen fades in; then he is no
 --   longer in the stand, the battle undims and he idles.
@@ -29,7 +29,7 @@ export type State = {
     timer: number,
 }
 
--- The flash: BN5's effect 3 (0x080DFC94's row 3: 14-03).
+-- The flash: EXE5's effect 3 (0x080DFC94's row 3: 14-03).
 local FLASH = define.effect { sprite = asset.sprite("deletion"), anim = 0, palette = 0 }
 local FLASH_SOUND = asset.sound("log-in")
 local CHANGE_SOUND = asset.sound("cross-change")

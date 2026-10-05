@@ -1,6 +1,6 @@
 --!strict
--- BugCharg (BN5 chip 0x136): a giga cut-in chip whose stand-in takes in its user's NaviCust bugs and fires a heavy shot for each (./controller).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- BugCharg (EXE5 chip 0x136): a giga cut-in chip whose stand-in takes in its user's NaviCust bugs and fires a heavy shot for each (./controller).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local controller = require("@self/controller")
 

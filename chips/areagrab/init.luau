@@ -1,7 +1,7 @@
 --!strict
--- AreaGrab (BN5 chip 0x075): a dimming that drops grab shots on the first column in front not wholly the user's
--- side's: BN6's (@exelib/grab; BN5's the same code).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- AreaGrab (EXE5 chip 0x075): a dimming that drops grab shots on the first column in front not wholly the user's
+-- side's: EXE6's (@exelib/grab; EXE5's the same code).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local grab = require("../lib/grab")
 

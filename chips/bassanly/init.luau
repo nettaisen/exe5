@@ -1,6 +1,6 @@
 --!strict
--- BassAnly (BN5 chip 0x132): Bass cuts in as BassAnly and fires four dark balls up and down the slant, seeking enemy navis (./navi).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- BassAnly (EXE5 chip 0x132): Bass cuts in as BassAnly and fires four dark balls up and down the slant, seeking enemy navis (./navi).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 

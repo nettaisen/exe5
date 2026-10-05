@@ -1,5 +1,5 @@
 --!strict
--- NumberMan's face (BN5's actor object #0x5C, 0x080C412E; BN5's own, NumberMan's alone: its spawner's only caller is
+-- NumberMan's face (EXE5's actor object #0x5C, 0x080C412E; EXE5's own, NumberMan's alone: its spawner's only caller is
 -- his, with its Param0 0 and Param2 1): a second sprite (10-06) on him, following his position, visibility, color
 -- shader, alpha and palette. It waits for every navi to be in (running while paused till then); then it is drawn
 -- while he stands (his animation 0), restarting its animation each time he comes back to it, and hidden otherwise.

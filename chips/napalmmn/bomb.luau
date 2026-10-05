@@ -1,5 +1,5 @@
 --!strict
--- A napalm bomb (BN5's attack object #0x3A, 0x080CC490; BN6's `sub_80CB284` is the same, though no BN6 content
+-- A napalm bomb (EXE5's attack object #0x3A, 0x080CC490; EXE6's `sub_80CB284` is the same, though no EXE6 content
 -- throws it): lobbed at a panel, fire, it lands there in 45 ticks, falling by its variant's gravity (variant 2's
 -- lighter), its target marked in the operation battle (lib/navi-chips/marker). Off a solid panel it goes in a
 -- puff. On one it hits its panel for 5 ticks (thrown, hitting navis, hit modifier 3, no spark), with a sound; when

@@ -1,5 +1,5 @@
 --!strict
--- BN5's Pulsars (action 0x52, lib/armshot): a pulse (attack object #0x6A, 0x080D32D0, BN5's own; BN6 numbers its
+-- EXE5's Pulsars (action 0x52, lib/armshot): a pulse (attack object #0x6A, 0x080D32D0, EXE5's own; EXE6 numbers its
 -- tomahawk strike so) flies along the row 24 pixels up, 8 pixels a tick, hitting what it touches; on a body it
 -- slows to a quarter and 8 ticks later bursts over the eight panels around where it hit, paralyzing for 90 ticks
 -- (a hit that lasts 26 ticks). Anything else it touches ends it; so does leaving the field.

@@ -1,5 +1,5 @@
 --!strict
--- Soul Unison on BN5's custom screen (docs/design/rules-in-luau.md §4.4, docs/design/bn5-map.md §15.8): the soul
+-- Soul Unison on EXE5's custom screen (docs/design/rules-in-luau.md §4.4, docs/design/exe5-map.md §15.8): the soul
 -- button in the special slot (0x08023C54, its offer 0x08024B28, A on it 0x08024972), the soul's choice as the window
 -- `soul_unison` (the screen's state 9, 0x080232D0), the soul given at OK (0x08024FF6) and the round's souls used
 -- (0x02034E10). Its state is the souls system's (./init). What a soul adds to the screen (its per-soul slots,

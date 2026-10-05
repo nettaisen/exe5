@@ -1,6 +1,6 @@
 --!strict
--- AqWhirl's whirlpool (BN5's attack object #0x5D, 0x080D16E0; BN5's own: BN6 keeps the object's frame unused), set
--- down ahead by AqWhirl (@exelib/airspin/action's BN5 variant 0). An attack at navis that hits each panel it comes
+-- AqWhirl's whirlpool (EXE5's attack object #0x5D, 0x080D16E0; EXE5's own: EXE6 keeps the object's frame unused), set
+-- down ahead by AqWhirl (@exelib/airspin/action's EXE5 variant 0). An attack at navis that hits each panel it comes
 -- into (a hit turning a solid panel it is on to sea), it goes round a loop at its speed (its second parameter, times
 -- 0x1000 a tick, both ways): down its column to the field's edge, forward to the first column holding an enemy navi
 -- (or the edge), up to the edge, back to its first column and down to its first row; there it is gone, as it is off

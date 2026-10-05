@@ -1,14 +1,14 @@
 --!strict
--- BN5's hit sparks: what shows where a hit lands (`collision:set_hit_effect`). BN5's spark table (0x080E0814,
--- rows 0 to 0xD) has BN6's rows (`off_80E0804`: sprite, animation, palette) with BN5's sprites; BN5's hit sparks
--- (14-05) last a frame longer than BN6's, and a spark goes when its animation ends, so BN5's hits show BN5's
--- (a BN6 module that sets a spark takes a game's: chips/thunder's look).
+-- EXE5's hit sparks: what shows where a hit lands (`collision:set_hit_effect`). EXE5's spark table (0x080E0814,
+-- rows 0 to 0xD) has EXE6's rows (`off_80E0804`: sprite, animation, palette) with EXE5's sprites; EXE5's hit sparks
+-- (14-05) last a frame longer than EXE6's, and a spark goes when its animation ends, so EXE5's hits show EXE5's
+-- (an EXE6 module that sets a spark takes a game's: chips/thunder's look).
 
 local sparks = {}
 
 local HIT_SPARKS = asset.sprite("hit-sparks")
 
--- By element (null, fire, aqua, elec, wood, and 5): the spark the element routine (BN6's `sub_801A146`, BN5's
+-- By element (null, fire, aqua, elec, wood, and 5): the spark the element routine (EXE6's `sub_801A146`, EXE5's
 -- the same code) gives an attack of that element (hit effects 0 to 5).
 local BY_ELEMENT: { [number]: Spark } = {
     [0] = define.spark { sprite = HIT_SPARKS, anim = 0, palette = 0 },

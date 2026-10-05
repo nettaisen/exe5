@@ -1,6 +1,6 @@
 --!strict
--- The sine table (0x08005CD0, which the cosine table continues: 384 values, 1.0 = 0x100): BN6's values.
--- Written by tools/bn5/gen_rules.py (bn6battle-verify) from the BN5 ROM; people own it now.
+-- The sine table (0x08005CD0, which the cosine table continues: 384 values, 1.0 = 0x100): EXE6's values.
+-- Written by tools/exe5/gen_rules.py (bn6battle-verify) from the EXE5 ROM; people own it now.
 
 return {
     sine = {

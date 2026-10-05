@@ -1,5 +1,5 @@
 --!strict
--- KnightSoul (soul 11, Team Colonel's): BN5's Soul Unison with KnightMan, for a Break chip given up. MegaMan's sprite
+-- KnightSoul (soul 11, Team Colonel's): EXE5's Soul Unison with KnightMan, for a Break chip given up. MegaMan's sprite
 -- in it is 00-0B (0x0800DA58[11]), his element Null (0x0800E634 by soul); he wears nothing over it (KnightMan's image
 -- wears his ball and chain). Its weapons (0x0801CA1C's row 11, loaded by 0x0800DCA0): the buster (routine 0), the
 -- wrecking ball (0x11, ./charge), Break chips charged with A (0x12, empty, 0x0800F7D6: any Break chip but a dimming

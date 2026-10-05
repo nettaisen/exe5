@@ -1,5 +1,5 @@
 --!strict
--- BN5's buster arm (0x080EBAAE and 0x080EBABE, BN6's `sub_80EB562` and `sub_80EB572`: the same shape, BN5's own
+-- EXE5's buster arm (0x080EBAAE and 0x080EBABE, EXE6's `sub_80EB562` and `sub_80EB572`: the same shape, EXE5's own
 -- choices): the arm a navi raises for a shot, held in its overlay slot (an attachment). By its holder:
 --
 -- - a virus: the buster arm (the attachment table's row 0x23);

@@ -1,5 +1,5 @@
 --!strict
--- MagnetSoul (soul 5, Team ProtoMan's): BN5's Soul Unison with MagnetMan, for an Elec chip given up. MegaMan's sprite
+-- MagnetSoul (soul 5, Team ProtoMan's): EXE5's Soul Unison with MagnetMan, for an Elec chip given up. MegaMan's sprite
 -- in it is 00-05 (0x0800DA58[5]), his element Elec (0x0800E634 by soul); he wears nothing over it. Its weapons
 -- (0x0801CA1C's row 5, loaded by 0x0800DCA0): the buster (routine 0), the magnet's pull (0x15, ./charge), Elec chips
 -- charged with A (0x16: any Elec chip but a dimming or dark one, 0x0801090A; their damage doubled, 0x080103D0),

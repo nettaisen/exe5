@@ -1,8 +1,8 @@
 --!strict
 -- The attach points of MegaMan's battle sprites (category 0: 00-00 his base form's, 00-01 to 00-0C his souls', by the
 -- soul's number), in pixels, x toward the facing side: the attach points' category 0 table (0x080151CC, from
--- 0x080151C0's list of the categories' tables; a row of 30 points, 0x3C bytes, a sprite, by its index: BN5 has no
--- index map, BN6's rows have 34). Dark MegaMan (navis/dark-megaman) wears the base form's sprite.
+-- 0x080151C0's list of the categories' tables; a row of 30 points, 0x3C bytes, a sprite, by its index: EXE5 has no
+-- index map, EXE6's rows have 34). Dark MegaMan (navis/dark-megaman) wears the base form's sprite.
 
 local points: { [number]: { { number } } } = {
     [0] = {

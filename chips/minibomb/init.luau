@@ -1,7 +1,7 @@
 --!strict
--- MiniBomb (BN5 chip 0x01d): a bomb thrown three panels ahead that blasts the panel it lands on: BN6's throw and
--- bomb (@exelib/bombs; BN5's the same code), with BN5's collision types.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- MiniBomb (EXE5 chip 0x01d): a bomb thrown three panels ahead that blasts the panel it lands on: EXE6's throw and
+-- bomb (@exelib/bombs; EXE5's the same code), with EXE5's collision types.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local bombs = require("../lib/bombs")
 local collision = require("../rules/collision")

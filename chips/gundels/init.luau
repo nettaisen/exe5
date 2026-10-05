@@ -1,11 +1,11 @@
 --!strict
 -- GunDelS1, GunDelS2 and GunDelS3: the gundels series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local gundels = require("@self/gundels")
 
--- GunDelS1 (BN5 chip 0x020): a sun beam that drains the column two panels ahead while A is held, more in the sun, for
--- at most 60 ticks: BN5's GunDelSol (chips/gundels/gundels; BN6's code but for holding A, its collision row and its firing
+-- GunDelS1 (EXE5 chip 0x020): a sun beam that drains the column two panels ahead while A is held, more in the sun, for
+-- at most 60 ticks: EXE5's GunDelSol (chips/gundels/gundels; EXE6's code but for holding A, its collision row and its firing
 -- ticks).
 local gundels1 = define.chip {
     id = "gundels1",
@@ -30,8 +30,8 @@ local gundels1 = define.chip {
     },
 }
 
--- GunDelS2 (BN5 chip 0x021): a sun beam that drains the column two panels ahead while A is held, more in the sun, for
--- at most 90 ticks: BN5's GunDelSol (chips/gundels/gundels; BN6's code but for holding A, its collision row and its firing
+-- GunDelS2 (EXE5 chip 0x021): a sun beam that drains the column two panels ahead while A is held, more in the sun, for
+-- at most 90 ticks: EXE5's GunDelSol (chips/gundels/gundels; EXE6's code but for holding A, its collision row and its firing
 -- ticks).
 local gundels2 = define.chip {
     id = "gundels2",
@@ -56,8 +56,8 @@ local gundels2 = define.chip {
     },
 }
 
--- GunDelS3 (BN5 chip 0x022): a sun beam that drains the column two panels ahead while A is held, more in the sun, for
--- at most 120 ticks: BN5's GunDelSol (chips/gundels/gundels; BN6's code but for holding A, its collision row and its firing
+-- GunDelS3 (EXE5 chip 0x022): a sun beam that drains the column two panels ahead while A is held, more in the sun, for
+-- at most 120 ticks: EXE5's GunDelSol (chips/gundels/gundels; EXE6's code but for holding A, its collision row and its firing
 -- ticks).
 local gundels3 = define.chip {
     id = "gundels3",
@@ -82,8 +82,8 @@ local gundels3 = define.chip {
     },
 }
 
--- GunDelEX (BN5 chip 0x0db): a wide sun beam that drains the column two panels ahead and the one past it while A is
--- held, more in the sun, for at most 120 ticks: BN5's GunDelSol (chips/gundels/gundels, action 0x2F with subtype 3: the
+-- GunDelEX (EXE5 chip 0x0db): a wide sun beam that drains the column two panels ahead and the one past it while A is
+-- held, more in the sun, for at most 120 ticks: EXE5's GunDelSol (chips/gundels/gundels, action 0x2F with subtype 3: the
 -- gun's attachment row 0x16, palette 9; the firing ticks' fourth, 120; the wide beams).
 local gundelex = define.chip {
     id = "gundelex",

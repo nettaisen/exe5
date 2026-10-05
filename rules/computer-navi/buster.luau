@@ -1,7 +1,7 @@
 --!strict
 -- The computer navi's buster (./ai's buster run, 0x0802BB7A): the original's weapon routine 0x3E (0x0800FB06),
--- Attack plus one, and the attack it names, action 0x16 (the attack table's row 6, 0x080EC3BC: BN5's own; BN6's
--- action 0x16 is the charged shot): three shots. The navi raises its arm (lib/arm, BN5's 0x080EBAAE) with a muzzle
+-- Attack plus one, and the attack it names, action 0x16 (the attack table's row 6, 0x080EC3BC: EXE5's own; EXE6's
+-- action 0x16 is the charged shot): three shots. The navi raises its arm (lib/arm, EXE5's 0x080EBAAE) with a muzzle
 -- flash in its first related slot (the attachment table's row 13); each shot flies on the second tick from the panel
 -- in front (the projectile table's row 3: the plain shot with the charged shot's spark, at 24 pixels, its damage word
 -- the attack's damage and counter byte), with the buster's sound, and after five ticks come two of rest; after the

@@ -1,10 +1,10 @@
 --!strict
 -- MagnetMn, MagntMnSP and MagntMnDS: the magnetmn series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- MagnetMn (BN5 chip 0x0e9): MagnetMan cuts in and sends two magnets sliding along his row to meet at the first enemy
+-- MagnetMn (EXE5 chip 0x0e9): MagnetMan cuts in and sends two magnets sliding along his row to meet at the first enemy
 -- navi, immobilizing (./navi).
 local magnetmn = define.chip {
     id = "magnetmn",
@@ -23,7 +23,7 @@ local magnetmn = define.chip {
     navi = navi.summon,
 }
 
--- MagntMnSP (BN5 chip 0x0ea): MagnetMan cuts in and sends two magnets sliding along his row to meet at the first enemy
+-- MagntMnSP (EXE5 chip 0x0ea): MagnetMan cuts in and sends two magnets sliding along his row to meet at the first enemy
 -- navi, immobilizing (../magnetmn/navi); its damage by how fast its user deleted MagnetMan SP (rules/sp-chips: formula
 -- 6, its table's row 5).
 local magntmn_sp = define.chip {
@@ -43,7 +43,7 @@ local magntmn_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- MagntMnDS (BN5 chip 0x0eb): MagnetMan, dark, cuts in and sends two magnets sliding along his row to meet at the first
+-- MagntMnDS (EXE5 chip 0x0eb): MagnetMan, dark, cuts in and sends two magnets sliding along his row to meet at the first
 -- enemy navi, immobilizing (../magnetmn/navi); its damage by its user's side's statistic 3 (formula 28, its table's row
 -- 5).
 local magntmn_ds = define.chip {

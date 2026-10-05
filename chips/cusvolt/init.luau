@@ -1,12 +1,12 @@
 --!strict
 -- CusVolt1, CusVolt2 and CusVolt3: the cusvolt series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local cusvolt = require("@self/cusvolt")
 
--- CusVolt1 (BN5 chip 0x0a6): an electric beam over the panel and the column ahead that follows the navi for 25 ticks
+-- CusVolt1 (EXE5 chip 0x0a6): an electric beam over the panel and the column ahead that follows the navi for 25 ticks
 -- (chips/cusvolt/cusvolt, action 0x27), draining half the custom gauge; its damage 10 plus up to 100 by how full the gauge is
--- (BN5's formula 73: none for a full one).
+-- (EXE5's formula 73: none for a full one).
 local cusvolt1 = define.chip {
     id = "cusvolt1",
     codes = { "A", "V", "Y", "*" },
@@ -25,9 +25,9 @@ local cusvolt1 = define.chip {
     action = cusvolt.action("cusvolt1/action"),
 }
 
--- CusVolt2 (BN5 chip 0x0a7): an electric beam over the panel and the column ahead that follows the navi for 25 ticks
+-- CusVolt2 (EXE5 chip 0x0a7): an electric beam over the panel and the column ahead that follows the navi for 25 ticks
 -- (chips/cusvolt/cusvolt, action 0x27), draining half the custom gauge; its damage 30 plus up to 100 by how full the gauge is
--- (BN5's formula 74: none for a full one).
+-- (EXE5's formula 74: none for a full one).
 local cusvolt2 = define.chip {
     id = "cusvolt2",
     codes = { "C", "E", "G" },
@@ -46,9 +46,9 @@ local cusvolt2 = define.chip {
     action = cusvolt.action("cusvolt2/action"),
 }
 
--- CusVolt3 (BN5 chip 0x0a8): an electric beam over the panel and the column ahead that follows the navi for 25 ticks
+-- CusVolt3 (EXE5 chip 0x0a8): an electric beam over the panel and the column ahead that follows the navi for 25 ticks
 -- (chips/cusvolt/cusvolt, action 0x27), draining half the custom gauge; its damage 50 plus up to 100 by how full the gauge is
--- (BN5's formula 75: none for a full one).
+-- (EXE5's formula 75: none for a full one).
 local cusvolt3 = define.chip {
     id = "cusvolt3",
     codes = { "G", "M", "P" },

@@ -1,5 +1,5 @@
 --!strict
--- A part of the dark beast behind ChaosLrd (BN5's effect object #0x47, 0x080E5A40; BN5's own: BN6 keeps its code as
+-- A part of the dark beast behind ChaosLrd (EXE5's effect object #0x47, 0x080E5A40; EXE5's own: EXE6 keeps its code as
 -- leftover meteor code's neighbor): one of the beast's animations (sprite 08-14), 26 pixels down the field and up
 -- from where it is put. It comes in (animation 13, the beast's body, out of a mosaic, fading in over 23 ticks, then
 -- 26 more; the others hidden 35 ticks, then flashing in from white over 16), holds for its time, then blinks out

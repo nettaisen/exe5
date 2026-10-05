@@ -1,5 +1,5 @@
 --!strict
--- CosmoMan's meteor (BN5's attack object #0xBF, 0x080DE708; BN6 keeps its code, `sub_80DCEF4`, which no BN6 chip
+-- CosmoMan's meteor (EXE5's attack object #0xBF, 0x080DE708; EXE6 keeps its code, `sub_80DCEF4`, which no EXE6 chip
 -- spawns): it falls from 72 pixels up over its caller's column onto its target panel in 10 ticks (starting a panel
 -- further toward the enemy when the target is in that column, so it never falls straight), then hits the panel
 -- (a single panel, running while dimmed) with an explosion; a panel that isn't solid or held swallows it. It is

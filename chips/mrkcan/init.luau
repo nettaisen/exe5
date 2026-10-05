@@ -1,11 +1,11 @@
 --!strict
 -- MrkCan1, MrkCan2 and MrkCan3: the mrkcan series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local mrkcan = require("@self/mrkcan")
 
--- MrkCan1 (BN5 chip 0x00c): a sight sweeps the field ahead and locks on to the first enemy it finds, paralyzing it,
--- and the cannon fires at it (BN5's own MarkCannon, chips/mrkcan/mrkcan: action 0x4E).
+-- MrkCan1 (EXE5 chip 0x00c): a sight sweeps the field ahead and locks on to the first enemy it finds, paralyzing it,
+-- and the cannon fires at it (EXE5's own MarkCannon, chips/mrkcan/mrkcan: action 0x4E).
 local mrkcan1 = define.chip {
     id = "mrkcan1",
     codes = { "M", "K", "S" },
@@ -22,8 +22,8 @@ local mrkcan1 = define.chip {
     action = mrkcan.action { id = "mrkcan1/action", cannon = mrkcan.cannon(0) },
 }
 
--- MrkCan2 (BN5 chip 0x00d): a sight sweeps the field ahead and locks on to the first enemy it finds, paralyzing it,
--- and the cannon fires at it (BN5's own MarkCannon, chips/mrkcan/mrkcan: action 0x4E).
+-- MrkCan2 (EXE5 chip 0x00d): a sight sweeps the field ahead and locks on to the first enemy it finds, paralyzing it,
+-- and the cannon fires at it (EXE5's own MarkCannon, chips/mrkcan/mrkcan: action 0x4E).
 local mrkcan2 = define.chip {
     id = "mrkcan2",
     codes = { "D", "F", "Z" },
@@ -40,8 +40,8 @@ local mrkcan2 = define.chip {
     action = mrkcan.action { id = "mrkcan2/action", cannon = mrkcan.cannon(3) },
 }
 
--- MrkCan3 (BN5 chip 0x00e): a sight sweeps the field ahead and locks on to the first enemy it finds, paralyzing it,
--- and the cannon fires at it (BN5's own MarkCannon, chips/mrkcan/mrkcan: action 0x4E).
+-- MrkCan3 (EXE5 chip 0x00e): a sight sweeps the field ahead and locks on to the first enemy it finds, paralyzing it,
+-- and the cannon fires at it (EXE5's own MarkCannon, chips/mrkcan/mrkcan: action 0x4E).
 local mrkcan3 = define.chip {
     id = "mrkcan3",
     codes = { "E", "R", "Y" },

@@ -1,8 +1,8 @@
 --!strict
--- BN5's patch cards (its Modification Cards; docs/design/bn5-map.md §15.14): a card is the engine's
--- (`define.patch_card`, content/bn5/cards/), its effects the values the shared constructors make
--- (@exelib/patch-cards/effects, BN6's too); the patch-cards system (./system.luau) applies a player's installed
--- cards to the navi's stats as the round is set up. BN5's own are its tables: the kinds' order (its effect numbers,
+-- EXE5's patch cards (its Modification Cards; docs/design/exe5-map.md §15.14): a card is the engine's
+-- (`define.patch_card`, content/exe5/cards/), its effects the values the shared constructors make
+-- (@exelib/patch-cards/effects, EXE6's too); the patch-cards system (./system.luau) applies a player's installed
+-- cards to the navi's stats as the round is set up. EXE5's own are its tables: the kinds' order (its effect numbers,
 -- 0x00 to 0x89, the handlers at 0x08137BC8) and the trails' bytes (0x08138802).
 
 local effects = require("@exelib/patch-cards/effects")
@@ -91,7 +91,7 @@ patch_cards.CHOICE = {
 -- The element bytes of the bodies (NaviStats +0x10).
 patch_cards.BODY = { null = 0, fire = 1, aqua = 2, elec = 3, wood = 4 } :: { [string]: number }
 -- What a step leaves behind, by the panel the effect names (the trail byte, NaviStats +0x12: 0x08138802's rows,
--- BN5's panel types: water its sea, magnet its metal, holy its 9).
+-- EXE5's panel types: water its sea, magnet its metal, holy its 9).
 patch_cards.TRAILS = {
     crack = 3,
     hole = 1,
@@ -109,7 +109,7 @@ patch_cards.HIT_STATUS = { blind = 1, confuse = 2, hp_bug = 3, none = 0 } :: { [
 -- The random encounters' element (NaviStats +0x27, 0x081387FC), by program.
 patch_cards.ENCOUNTER = { oil_body = 2, fish = 4, battery = 8, jungle = 0x10, search = 1 } :: { [string]: number }
 
--- ---- The effects (@exelib/patch-cards/effects, BN6's too) ----------------
+-- ---- The effects (@exelib/patch-cards/effects, EXE6's too) ----------------
 
 patch_cards.bug = effects.bug
 patch_cards.hp = effects.hp
@@ -156,7 +156,7 @@ patch_cards.status_bug = effects.status_bug
 patch_cards.bug_stopper = effects.bug_stopper
 patch_cards.hub_style = effects.hub_style
 
--- What the application reads of BN5's (@exelib/patch-cards/apply).
+-- What the application reads of EXE5's (@exelib/patch-cards/apply).
 patch_cards.GAME = {
     rank = patch_cards.RANK,
     choice = patch_cards.CHOICE,

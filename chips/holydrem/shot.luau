@@ -1,5 +1,5 @@
 --!strict
--- HolyDrem's shot (BN5's attack object #0x83, 0x080D6A60; BN5's own): a bullet from HolyDrem's stand-in along the
+-- HolyDrem's shot (EXE5's attack object #0x83, 0x080D6A60; EXE5's own): a bullet from HolyDrem's stand-in along the
 -- user's row, 5 pixels a tick after a 10-tick wait, ending on the first thing it hits or past the field's edge;
 -- a thrown piercing break of the stand-in's damage, hit modifier 3, no element.
 

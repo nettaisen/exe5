@@ -1,5 +1,5 @@
 --!strict
--- BN5's cannons' action (the original's action 0x14, BN6's code: @exelib/cannon) with BN5's attachment and
+-- EXE5's cannons' action (the original's action 0x14, EXE6's code: @exelib/cannon) with EXE5's attachment and
 -- projectile, its arms (the attachment table's rows 0 to 2: sprite 0c-01 in palettes 0 to 2), its sound (0xAE) and
 -- GigaCan's third afterimage in Hub Style.
 

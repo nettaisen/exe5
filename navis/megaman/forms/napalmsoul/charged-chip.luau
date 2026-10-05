@@ -1,5 +1,5 @@
 --!strict
--- NapalmSoul's charged Fire chips (BN5's action 0x4B, 0x080EF2A2, which a charged chip starts in NapalmSoul in place
+-- NapalmSoul's charged Fire chips (EXE5's action 0x4B, 0x080EF2A2, which a charged chip starts in NapalmSoul in place
 -- of its own: 0x08010442): MegaMan glows (effect 0x26, weapons/glow: sprite 14-1D) and on the eleventh tick
 -- lobs a napalm bomb (chips/napalmmn/bomb, variant 2) with the chip's damage at the first enemy body he finds two
 -- columns ahead and on (each column his row first; none on the field: four panels ahead in his row, 0x0801265C).

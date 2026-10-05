@@ -1,11 +1,11 @@
 --!strict
--- BN5's VDoll curse (effect object #0x4E, 0x080E6110: BN6's `sub_80E6088` table, BN5's own marking and hit): a
--- dimming controller the doll (./doll) starts when it is first hurt after landing, its telop BN5's Curse (chip 0x174,
--- ../curse/chip). Unlike BN6's, which hits every combatant of the other side, it picks one panel at random (an RNG2
+-- EXE5's VDoll curse (effect object #0x4E, 0x080E6110: EXE6's `sub_80E6088` table, EXE5's own marking and hit): a
+-- dimming controller the doll (./doll) starts when it is first hurt after landing, its telop EXE5's Curse (chip 0x174,
+-- ../curse/chip). Unlike EXE6's, which hits every combatant of the other side, it picks one panel at random (an RNG2
 -- draw) of those the other side's combatants stand on (0x080E625E); with none it keeps the doll's aim (its parameters'
 -- third and fourth bytes, which it spawned with), and a column of 0 ends it at once. It marks that panel for 60
--- ticks, waits 10, then hits it with the damage the doll took (0x080E62AC: BN5's row 0x17, a thrown piercing break,
--- against navis, spark 6, hit modifier 1; BN6's the curse row, hit modifier 3) and sparkles over whoever stands
+-- ticks, waits 10, then hits it with the damage the doll took (0x080E62AC: EXE5's row 0x17, a thrown piercing break,
+-- against navis, spark 6, hit modifier 1; EXE6's the curse row, hit modifier 3) and sparkles over whoever stands
 -- there; 30 ticks later the dimming ends.
 
 local collision = require("../../rules/collision")
@@ -30,16 +30,16 @@ type DollAim = { target_x: number, target_y: number }
 -- The effect's phases.
 local MARK, WAIT, HIT = 0x0, 0x4, 0x8
 local MARK_TICKS, WAIT_TICKS, HIT_TICKS = 0x3C, 0xA, 0x1E
--- The mark's sound (0x08009620, BN6's `sub_800AE90`).
+-- The mark's sound (0x08009620, EXE6's `sub_800AE90`).
 local MARK_SOUND = asset.sound("err-select-91")
 local HIT_MOD = 1
 -- Where the other side's combatants stand (0x080E629C, by the controller's side: require, forbid 0).
 local OTHER_SIDE: { [number]: number } = { [0] = 0x0020_0000, [1] = 0x0040_0000 }
--- Who stands on the hit panel (0x080E7356): its table is BN6's `byte_80E74C4` (0x00200000, 0x00400000), but BN5's
+-- Who stands on the hit panel (0x080E7356): its table is EXE6's `byte_80E74C4` (0x00200000, 0x00400000), but EXE5's
 -- code indexes it by the side unscaled, so side 1 reads the word one byte in (an unaligned load: the first word
 -- rotated, 0x00002000).
 local OCCUPANT: { [number]: number } = { [0] = 0x0020_0000, [1] = 0x0000_2000 }
--- The sparkles over whoever is hit: 32 ticks of effect 0x24 (BN5's table, 0x080DFC94: sheet 14-00 in palette 1).
+-- The sparkles over whoever is hit: 32 ticks of effect 0x24 (EXE5's table, 0x080DFC94: sheet 14-00 in palette 1).
 local SPARKLES_LENGTH = 2
 local SPARKLE = define.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 1 }
 

@@ -1,5 +1,5 @@
 --!strict
--- The end of DarkInvs's drive: BN5's action 0x49 (0x080EF188), the roles' `stun_strike` (the request the drive's
+-- The end of DarkInvs's drive: EXE5's action 0x49 (0x080EF188), the roles' `stun_strike` (the request the drive's
 -- timer raises at its end, rules/status's `no_charge_drive`). The navi, white, drops the no-charge state and stands
 -- (animation 1) for 23 ticks; on its 14th its dark image leaves it (actor object #10, 0x080BA71C: drawn as the navi
 -- in the dark palette, sliding 40 pixels ahead, then fading); then a sound, the navi touchable again, the request

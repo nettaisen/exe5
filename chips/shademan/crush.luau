@@ -1,5 +1,5 @@
 --!strict
--- ShadeMan's crush (BN5's attack object #0x34, 0x080CB4AC; BN5's own): his figure (his sprite's animation 11) two
+-- ShadeMan's crush (EXE5's attack object #0x34, 0x080CB4AC; EXE5's own): his figure (his sprite's animation 11) two
 -- panels ahead of him, 18 pixels up, that hits the panel ahead of him at once and, 10 ticks later, the column
 -- beyond it (running while dimmed, no spark), highlighting where it hits, for 60 ticks. His command picks what
 -- the hits carry: paralysis without a flinch, or confusion.

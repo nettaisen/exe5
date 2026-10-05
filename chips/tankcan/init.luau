@@ -1,11 +1,11 @@
 --!strict
 -- TankCan1, TankCan2 and TankCan3: the tankcan series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local tankcan = require("@self/tankcan")
 
--- TankCan1 (BN5 chip 0x03f): a shell from the panel ahead that staggers what it hits, or, off the far edge, blasts
--- and cracks the last column and sets off three explosions there (chips/tankcan/tankcan: BN6's with BN5's look).
+-- TankCan1 (EXE5 chip 0x03f): a shell from the panel ahead that staggers what it hits, or, off the far edge, blasts
+-- and cracks the last column and sets off three explosions there (chips/tankcan/tankcan: EXE6's with EXE5's look).
 local tankcan1 = define.chip {
     id = "tankcan1",
     codes = { "A", "E", "P" },
@@ -22,8 +22,8 @@ local tankcan1 = define.chip {
     action = tankcan.action,
 }
 
--- TankCan2 (BN5 chip 0x040): a shell from the panel ahead that staggers what it hits, or, off the far edge, blasts
--- and cracks the last column and sets off three explosions there (chips/tankcan/tankcan: BN6's with BN5's look).
+-- TankCan2 (EXE5 chip 0x040): a shell from the panel ahead that staggers what it hits, or, off the far edge, blasts
+-- and cracks the last column and sets off three explosions there (chips/tankcan/tankcan: EXE6's with EXE5's look).
 local tankcan2 = define.chip {
     id = "tankcan2",
     codes = { "B", "T", "Y" },
@@ -40,8 +40,8 @@ local tankcan2 = define.chip {
     action = tankcan.action,
 }
 
--- TankCan3 (BN5 chip 0x041): a shell from the panel ahead that staggers what it hits, or, off the far edge, blasts
--- and cracks the last column and sets off three explosions there (chips/tankcan/tankcan: BN6's with BN5's look).
+-- TankCan3 (EXE5 chip 0x041): a shell from the panel ahead that staggers what it hits, or, off the far edge, blasts
+-- and cracks the last column and sets off three explosions there (chips/tankcan/tankcan: EXE6's with EXE5's look).
 local tankcan3 = define.chip {
     id = "tankcan3",
     codes = { "F", "M", "R" },

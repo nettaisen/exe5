@@ -1,5 +1,5 @@
 --!strict
--- BN5's cannonball (attack object #0x35, 0x080CB5C8; BN5's own, thrown by action 0x12's subtype 4, 0x080CB7D4):
+-- EXE5's cannonball (attack object #0x35, 0x080CB5C8; EXE5's own, thrown by action 0x12's subtype 4, 0x080CB7D4):
 -- lobbed in a 50-tick arc at the panel three ahead, it can hit on its way (its region set once it lands); landing
 -- on a solid panel it hits it, breaks it (cracks it while something stands on it) with an impact and a crack's
 -- sound; off solid ground it ends in a puff, and a hit ends it at once. Its kind (Param1) 2 is another's: a plain

@@ -1,8 +1,8 @@
 --!strict
--- Punisher (BN5 chip 0x175, no library chip; Guardian's strike back's telop names it): a swing that throws a sonic
--- boom down the row, BN5's action 0x2B (../sonicbom/action) with BN5's sonic boom, hit modifier 0 (the record's
+-- Punisher (EXE5 chip 0x175, no library chip; Guardian's strike back's telop names it): a swing that throws a sonic
+-- boom down the row, EXE5's action 0x2B (../sonicbom/action) with EXE5's sonic boom, hit modifier 0 (the record's
 -- first parameter).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local sonicbom = require("./sonicbom/action")
 

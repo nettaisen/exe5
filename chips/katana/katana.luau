@@ -1,12 +1,12 @@
 --!strict
--- BN5's Katanas (action 0x54, 0x080EF98A: BN5's own action, built on the swords' slash, BN6's `sub_80EB776`): the
+-- EXE5's Katanas (action 0x54, 0x080EF98A: EXE5's own action, built on the swords' slash, EXE6's `sub_80EB776`): the
 -- navi swings twice, a wide slash (the column ahead, hit modifier 1) and then a long one (two panels ahead, hit
--- modifier 3), each of the chip's damage and no element, holding the sword's blade (BN5's lib/swords) in its
+-- modifier 3), each of the chip's damage and no element, holding the sword's blade (EXE5's lib/swords) in its
 -- overlay slot.
 --
--- A charged Katana steps first and back after (lib/stepsword: BN5's step before a charged sword, BN6's StepSwrd's).
+-- A charged Katana steps first and back after (lib/stepsword: EXE5's step before a charged sword, EXE6's StepSwrd's).
 --
--- Unlike BN6's slash: no moving state set or cleared, two swings always, its own hits and slashes by swing
+-- Unlike EXE6's slash: no moving state set or cleared, two swings always, its own hits and slashes by swing
 -- (0x080EFBC4, 0x080EFBE0), the blade in the overlay slot, and no recovery ticks.
 
 local attachment = require("../../objects/attachment")

@@ -1,14 +1,14 @@
 --!strict
--- BN5's tornado (attack object 0x31, 0x080CAC60) and its blow (action 0x22, 0x080ECD46): the shared code
--- (@exelib/tornado: BN6's) with BN5's variants, panels, collision types and sparks, BN5's fan and attachment; its
--- sprite and sound BN6's numbers.
+-- EXE5's tornado (attack object 0x31, 0x080CAC60) and its blow (action 0x22, 0x080ECD46): the shared code
+-- (@exelib/tornado: EXE6's) with EXE5's variants, panels, collision types and sparks, EXE5's fan and attachment; its
+-- sprite and sound EXE6's numbers.
 --
--- - The variants (0x080CAD44: palette, re-arm ticks) are BN6's rows with re-arms of 2 for rows 0, 4, 5 and 6 (BN6's
+-- - The variants (0x080CAD44: palette, re-arm ticks) are EXE6's rows with re-arms of 2 for rows 0, 4, 5 and 6 (EXE6's
 --   4).
 -- - A plain tornado takes a panel's variant on lava (row 4), sea (6), grass (0), metal (5) and ice (6) (0x080CAF3C),
---   turns the panel Normal, and doesn't double its damage (BN6 does).
--- - It is BN5's row 0x20 (BN6's 0x12), the HP-bug variant's row 0x4B, reaching row 5; its spark BN5's of its element.
--- - The fan is BN5's attachment rows 0xC and 0x17 (BN6's 0x21 and 0x22: the same look in BN5's sprite).
+--   turns the panel Normal, and doesn't double its damage (EXE6 does).
+-- - It is EXE5's row 0x20 (EXE6's 0x12), the HP-bug variant's row 0x4B, reaching row 5; its spark EXE5's of its element.
+-- - The fan is EXE5's attachment rows 0xC and 0x17 (EXE6's 0x21 and 0x22: the same look in EXE5's sprite).
 
 local attachment = require("../../objects/attachment")
 local blows = require("@exelib/tornado/blow")
@@ -61,9 +61,9 @@ tornado.single = blows.blow({
 }, LOOK)
 
 -- Static's blow (subtype 2): static tornadoes spreading around the panel two ahead by the navi's kinds of NaviCust
--- bug (0x0800DC14, BN6's `sub_800FE52` but for its tenth kind, NaviStats +0x63, which BN5's hasn't), as BN6's
--- (0x080CADE4, BN6's `sub_80CA104`: the same panels), the charged fan; BN5's tornadoes paralyze by level
--- (0x080CAE50: none, 90, 120, 150 ticks; BN6's none at every level).
+-- bug (0x0800DC14, EXE6's `sub_800FE52` but for its tenth kind, NaviStats +0x63, which EXE5's hasn't), as EXE6's
+-- (0x080CADE4, EXE6's `sub_80CA104`: the same panels), the charged fan; EXE5's tornadoes paralyze by level
+-- (0x080CAE50: none, 90, 120, 150 ticks; EXE6's none at every level).
 tornado.static = blows.blow({
     id = "static/action",
     fan = CHARGED_FAN,
@@ -80,8 +80,8 @@ tornado.static = blows.blow({
     },
 }, LOOK)
 
--- DarkTorn's blow (subtype 3, BN6's action's third form): HP-bug tornadoes spreading back toward the navi by its
--- side's statistic 3 (0x080CAE7E, BN6's `sub_80CA19E`: the same tables), the charged fan one palette on.
+-- DarkTorn's blow (subtype 3, EXE6's action's third form): HP-bug tornadoes spreading back toward the navi by its
+-- side's statistic 3 (0x080CAE7E, EXE6's `sub_80CA19E`: the same tables), the charged fan one palette on.
 tornado.back_spread = blows.blow({
     id = "darktorn/action",
     fan = CHARGED_FAN,

@@ -1,5 +1,5 @@
 --!strict
--- BN5's HotBody1-3 (action 0x58, 0x080F013A): BN5's own. The navi stands (animation 0) while its fire (effect object
+-- EXE5's HotBody1-3 (action 0x58, 0x080F013A): EXE5's own. The navi stands (animation 0) while its fire (effect object
 -- #0x57, 0x080E6B88) burns: a flame (attack object #0x9D, 0x080DA390) on the navi's panel, then every
 -- 30 ticks, for each panel the last flames stood on, a flame on each of the eight panels around it that is solid,
 -- holds one of the other side's bodies or objects or a neutral object (0x080E6CC4), and has had none; it goes when

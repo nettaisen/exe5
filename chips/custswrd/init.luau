@@ -1,9 +1,9 @@
 --!strict
--- CustSwrd (BN5 chip 0x036): a big slash over the two columns ahead (region 0x11, as BN6's LifeSrd) whose damage is
--- the custom gauge's (BN5's formula 45, 0x0800EA20: BN6's `sub_8010B78`, the same code): the shared slash
--- (@exelib/swords/slash, BN6's action 0x13; BN5's the same code) with BN5's parts (lib/swords), its slash
+-- CustSwrd (EXE5 chip 0x036): a big slash over the two columns ahead (region 0x11, as EXE6's LifeSrd) whose damage is
+-- the custom gauge's (EXE5's formula 45, 0x0800EA20: EXE6's `sub_8010B78`, the same code): the shared slash
+-- (@exelib/swords/slash, EXE6's action 0x13; EXE5's the same code) with EXE5's parts (lib/swords), its slash
 -- effect 0x28 and the plain swing.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")

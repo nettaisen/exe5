@@ -1,6 +1,6 @@
 --!strict
--- BN5's AntiDmg's counter (navi action 0x47) and shuriken (attack object #0xC2): BN6's code (@exelib/antidmg), BN5's
--- definitions; the shuriken's look and collision types, the sounds and the puff BN6's. The ruleset starts it by role
+-- EXE5's AntiDmg's counter (navi action 0x47) and shuriken (attack object #0xC2): EXE6's code (@exelib/antidmg), EXE5's
+-- definitions; the shuriken's look and collision types, the sounds and the puff EXE6's. The ruleset starts it by role
 -- (`actions.anti_damage_counter`, rules/roles.luau): a trap's catch leaves the attack's variant 0, a random enemy;
 -- ShadowSoul's stance (navis/megaman/forms/shadowsoul/back) 1, the nearest enemy ahead.
 

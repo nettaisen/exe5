@@ -1,7 +1,7 @@
 --!strict
--- AntiNavi (BN5 chip 0x090): a trap that turns the other side's next navi chip around: BN6's (@exelib/traps; BN5's
+-- AntiNavi (EXE5 chip 0x090): a trap that turns the other side's next navi chip around: EXE6's (@exelib/traps; EXE5's
 -- the same code).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local traps = require("../lib/traps")
 

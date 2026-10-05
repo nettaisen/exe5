@@ -1,8 +1,8 @@
 --!strict
--- DblDream (BN5 chip 0x178): two big slashes over the column ahead and the next (NeoVari's pick: no library chip): the
--- shared slash (@exelib/swords/slash, BN5's action 0x13 subtype 11) with BN5's parts (lib/swords), region 0x11, hit
+-- DblDream (EXE5 chip 0x178): two big slashes over the column ahead and the next (NeoVari's pick: no library chip): the
+-- shared slash (@exelib/swords/slash, EXE5's action 0x13 subtype 11) with EXE5's parts (lib/swords), region 0x11, hit
 -- modifier 1, the big swing and LifeSrd's slash.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")

@@ -1,10 +1,10 @@
 --!strict
 -- SerchMan, SerchMnSP and SerchMnDS: the serchman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- SerchMan (BN5 chip 0x0e6): SearchMan cuts in, his scope sweeps the enemy area until it locks on, and he fires five
+-- SerchMan (EXE5 chip 0x0e6): SearchMan cuts in, his scope sweeps the enemy area until it locks on, and he fires five
 -- shots on the panel (./navi).
 local serchman = define.chip {
     id = "serchman",
@@ -23,7 +23,7 @@ local serchman = define.chip {
     navi = navi.summon,
 }
 
--- SerchMnSP (BN5 chip 0x0e7): SearchMan cuts in, his scope sweeps the enemy area until it locks on, and he fires five
+-- SerchMnSP (EXE5 chip 0x0e7): SearchMan cuts in, his scope sweeps the enemy area until it locks on, and he fires five
 -- shots on the panel (../serchman/navi); its damage by how fast its user deleted SearchMan SP (rules/sp-chips:
 -- formula 4, its table's row 3).
 local serchmn_sp = define.chip {
@@ -43,7 +43,7 @@ local serchmn_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- SerchMnDS (BN5 chip 0x0e8): SearchMan, dark, cuts in, his scope sweeps the enemy area until it locks on, and he fires
+-- SerchMnDS (EXE5 chip 0x0e8): SearchMan, dark, cuts in, his scope sweeps the enemy area until it locks on, and he fires
 -- five shots on the panel (../serchman/navi); its damage by its user's side's statistic 3 (formula 26, its table's
 -- row 3).
 local serchmn_ds = define.chip {

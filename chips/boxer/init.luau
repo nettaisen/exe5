@@ -1,6 +1,6 @@
 --!strict
 -- Boxer1, Boxer2 and Boxer3: the boxer series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local boxer = require("@self/boxer")
 local recipe_firehit1 = require("./firehit").firehit1
@@ -10,7 +10,7 @@ local recipe_hotbody1 = require("./hotbody").hotbody1
 local recipe_hotbody2 = require("./hotbody").hotbody2
 local recipe_hotbody3 = require("./hotbody").hotbody3
 
--- Boxer1 (BN5 chip 0x146): the Program Advance of two HotBody1s and a FireHit1 (or three FireHit1s of one code): an
+-- Boxer1 (EXE5 chip 0x146): the Program Advance of two HotBody1s and a FireHit1 (or three FireHit1s of one code): an
 -- unseen boxer punches FireHit's fists down the rows, nine in all (chips/boxer/boxer, instant effect 21; the fists' hit
 -- modifier 1, the record's +0x11).
 local boxer1 = define.chip {
@@ -26,7 +26,7 @@ local boxer1 = define.chip {
     lockout = 20,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
-    -- BN5's recipes (written by tools/bn5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
     -- gauge tries.
     program_advances = {
@@ -36,7 +36,7 @@ local boxer1 = define.chip {
     instant = boxer.instant(1),
 }
 
--- Boxer2 (BN5 chip 0x147): the Program Advance of two HotBody2s and a FireHit2 (or three FireHit2s of one code): an
+-- Boxer2 (EXE5 chip 0x147): the Program Advance of two HotBody2s and a FireHit2 (or three FireHit2s of one code): an
 -- unseen boxer punches FireHit's fists down the rows, nine in all (chips/boxer/boxer, instant effect 21; the fists' hit
 -- modifier 1, the record's +0x11).
 local boxer2 = define.chip {
@@ -52,7 +52,7 @@ local boxer2 = define.chip {
     lockout = 20,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
-    -- BN5's recipes (written by tools/bn5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
     -- gauge tries.
     program_advances = {
@@ -62,7 +62,7 @@ local boxer2 = define.chip {
     instant = boxer.instant(1),
 }
 
--- Boxer3 (BN5 chip 0x148): the Program Advance of two HotBody3s and a FireHit3 (or three FireHit3s of one code): an
+-- Boxer3 (EXE5 chip 0x148): the Program Advance of two HotBody3s and a FireHit3 (or three FireHit3s of one code): an
 -- unseen boxer punches FireHit's fists down the rows, nine in all (chips/boxer/boxer, instant effect 21; the fists' hit
 -- modifier 1, the record's +0x11).
 local boxer3 = define.chip {
@@ -78,7 +78,7 @@ local boxer3 = define.chip {
     lockout = 20,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
-    -- BN5's recipes (written by tools/bn5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
     -- gauge tries.
     program_advances = {

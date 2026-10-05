@@ -1,5 +1,5 @@
 --!strict
--- ColonelSoul's Arm Change on BN5's custom screen (docs/design/bn5-map.md §15.8; the screen's slots 8 and 9 in soul
+-- ColonelSoul's Arm Change on EXE5's custom screen (docs/design/exe5-map.md §15.8; the screen's slots 8 and 9 in soul
 -- 7, kinds 8 and 9: 0x08023D74). The last pick, a standard Null chip that deals damage and neither dims nor is dark
 -- (0x08024C00), leaves the picks for the button (the screen's state 0x38, 0x08023694) and is the turn's arm chip (the
 -- transform record's +6, 0x080123FC): at the turn's start ColonelSoul's charged shot fires it (0x080124AE: AIData

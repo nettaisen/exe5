@@ -1,10 +1,10 @@
 --!strict
--- Spreader (BN5 chip 0x012): a bullet from the panel ahead that bursts over the 3x3 around what it finds: the shared
--- Spreaders' action (@exelib/spreadr/action, BN6's action 0x25, BN5's 0x18 at 0x080EC4CC; the same code
--- but for the tick it fires, a row of 0x080EC57C, the first row 1 as BN6's) with BN5's gun (the attachment table's
--- row 9, 0c-19: BN6's row 0x15) 16 pixels up (0x080EC580), and BN5's bullet (objects/bullet, its record's Param1: row
+-- Spreader (EXE5 chip 0x012): a bullet from the panel ahead that bursts over the 3x3 around what it finds: the shared
+-- Spreaders' action (@exelib/spreadr/action, EXE6's action 0x25, EXE5's 0x18 at 0x080EC4CC; the same code
+-- but for the tick it fires, a row of 0x080EC57C, the first row 1 as EXE6's) with EXE5's gun (the attachment table's
+-- row 9, 0c-19: EXE6's row 0x15) 16 pixels up (0x080EC580), and EXE5's bullet (objects/bullet, its record's Param1: row
 -- 3).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")

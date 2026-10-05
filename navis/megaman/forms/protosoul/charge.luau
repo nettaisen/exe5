@@ -1,6 +1,6 @@
 --!strict
 -- ProtoSoul's charged shot (`protosoul/charge`): the original's weapon routine 3 (0x0800F60C). It is WideSwrd's
--- slash (BN5's action 0x13 as its subtype 1: the chip's own action, chips/wideswrd), not loaded as a chip, with 80
+-- slash (EXE5's action 0x13 as its subtype 1: the chip's own action, chips/wideswrd), not loaded as a chip, with 80
 -- damage and 10 more per point of buster Attack plus one (0x0800FE5E), and its own counter byte.
 
 local wideswrd = require("../../../../chips/wideswrd")

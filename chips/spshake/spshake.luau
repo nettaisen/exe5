@@ -1,5 +1,5 @@
 --!strict
--- BN5's SpShakes (action 0x51, lib/armshot): an electric wave (attack object #0x68, 0x080D2FF8, BN5's own) that
+-- EXE5's SpShakes (action 0x51, lib/armshot): an electric wave (attack object #0x68, 0x080D2FF8, EXE5's own) that
 -- snakes along the field from the panel ahead, a row up and down as it goes (a sine of 24 pixels, one swing a
 -- panel), hitting what it touches; after a hit it ends once it is on a body's panel again (unless it paralyzes:
 -- then its hit comes back on the next panel). It goes off the field's columns.

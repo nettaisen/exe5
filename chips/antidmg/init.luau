@@ -1,8 +1,8 @@
 --!strict
--- AntiDmg (BN5 chip 0x091): a hidden trap that swallows the next hit of 10 damage or more and counters with
--- shurikens: BN6's AntiDmg (@exelib/traps/controller, the dimming spawner's entry 12; BN5's the same code; its
+-- AntiDmg (EXE5 chip 0x091): a hidden trap that swallows the next hit of 10 damage or more and counters with
+-- shurikens: EXE6's AntiDmg (@exelib/traps/controller, the dimming spawner's entry 12; EXE5's the same code; its
 -- counter the role `actions.anti_damage_counter`).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local traps = require("../lib/traps")
 

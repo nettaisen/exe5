@@ -1,7 +1,7 @@
 --!strict
--- WideSwrd (BN5 chip 0x031): a slash over the column ahead: the shared slash (@exelib/swords/slash) with BN5's parts
+-- WideSwrd (EXE5 chip 0x031): a slash over the column ahead: the shared slash (@exelib/swords/slash) with EXE5's parts
 -- (lib/swords).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")

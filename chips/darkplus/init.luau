@@ -1,8 +1,8 @@
 --!strict
--- DarkPlus (BN5 chip 0x0be): a dark chip: its damage becomes the Atk+ bonus of the hand's next chip, if that does
+-- DarkPlus (EXE5 chip 0x0be): a dark chip: its damage becomes the Atk+ bonus of the hand's next chip, if that does
 -- damage, and its navi takes the dark tint (lib/plus: action 0x1A's effect 3 with its second parameter set). Its use
 -- costs a step bug (rules/light-dark).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local plus = require("../lib/plus")
 

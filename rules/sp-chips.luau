@@ -1,8 +1,8 @@
 --!strict
--- BN5's SP navi chips' damage (0x0800E8DE, BN6's `sub_8010AE4` in the operation battle branch): the navis whose
+-- EXE5's SP navi chips' damage (0x0800E8DE, EXE6's `sub_8010AE4` in the operation battle branch): the navis whose
 -- deletion times a battle's setup carries, in its order (the save's 0x0203E560, 22 halfwords a side: an SP navi
 -- chip's formula less one names its navi's slot), and the deletion-time steps (BCD hours, minutes, seconds,
--- hundredths; 0x0800E93C, BN6's) that pick the damage. Slot 0 is Roll's, whose SP chip counts holy panels instead
+-- hundredths; 0x0800E93C, EXE6's) that pick the damage. Slot 0 is Roll's, whose SP chip counts holy panels instead
 -- (0x0800E8B4); Django's SP chip counts turns (0x0800E98A).
 
 return {

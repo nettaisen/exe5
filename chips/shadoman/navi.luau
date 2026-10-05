@@ -1,5 +1,5 @@
 --!strict
--- ShadowMan, the navi of the ShadowMan chips (BN5's actor object #0x07, 0x080B9E98; BN5's own, built on BN6's navi
+-- ShadowMan, the navi of the ShadowMan chips (EXE5's actor object #0x07, 0x080B9E98; EXE5's own, built on EXE6's navi
 -- template), brought by their navi chip controller. The controller's ShadowMan (his Param1 0) is unseen: he sends
 -- three of himself (Param1 1), one to each row, at the first panel of his user's side from its back corner, 15 ticks
 -- apart, each with a target (an enemy combatant ahead of it: the first not yet targeted, else the one with the most

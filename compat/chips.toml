@@ -1,6 +1,6 @@
-# BN5's chips by key: the original's numbers, written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+# EXE5's chips by key: the original's numbers, written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 # id: the chip table's number (both versions, both regions); action, subtype: its use by number (+0x0B,
-# +0x0C); damage_formula: a damage of 1000 and up (+0x1A) less 1000, the row of BN5's formula table;
+# +0x0C); damage_formula: a damage of 1000 and up (+0x1A) less 1000, the row of EXE5's formula table;
 # colonel: what Team Colonel's record has where it differs from Team ProtoMan's (flags +0x09, extra_flags
 # +0x16); save_slot: an e-Reader card's chip, whose name, description and palette are the save's slot n.
 

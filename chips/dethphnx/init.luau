@@ -1,7 +1,7 @@
 --!strict
--- DethPhnx (BN5 chip 0x13a): DeathPhoenix sets 12 fires over the enemy area, then brings the last navi chip's navi again (./controller,
+-- DethPhnx (EXE5 chip 0x13a): DeathPhoenix sets 12 fires over the enemy area, then brings the last navi chip's navi again (./controller,
 -- ./phoenix). Past the navi chips' block: AntiNavi lets it through.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local controller = require("@self/controller")
 

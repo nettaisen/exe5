@@ -1,12 +1,12 @@
 --!strict
--- BN5's barriers (the barrier chips' and FstBarr's): BN6's rows (BN5's 0x0801CF94 and its visuals' looks 0x080E0A1C
--- are BN6's `byte_8020B2C` and `byte_80E0A14`, row for row; BN5 has no weak-element table, BN6's `byte_8020B8C`,
--- whose rows are all none), raised by BN5's code (0x080174DA) with BN5's visual (@exelib/barriers/visual: BN5's
--- effect object #7, 0x080E0AA0, which is never blown away and comes back up whatever its navi's status: BN5 has no
--- bubble status). The barrier chips' dimming controller is BN6's code (@exelib/barriers/controller: BN5's effect
+-- EXE5's barriers (the barrier chips' and FstBarr's): EXE6's rows (EXE5's 0x0801CF94 and its visuals' looks 0x080E0A1C
+-- are EXE6's `byte_8020B2C` and `byte_80E0A14`, row for row; EXE5 has no weak-element table, EXE6's `byte_8020B8C`,
+-- whose rows are all none), raised by EXE5's code (0x080174DA) with EXE5's visual (@exelib/barriers/visual: EXE5's
+-- effect object #7, 0x080E0AA0, which is never blown away and comes back up whatever its navi's status: EXE5 has no
+-- bubble status). The barrier chips' dimming controller is EXE6's code (@exelib/barriers/controller: EXE5's effect
 -- object #0x2F, 0x080E3CCC).
 --
--- The sheets are BN6's numbers (0c-3d, 0c-20, 0c-07: the same archives).
+-- The sheets are EXE6's numbers (0c-3d, 0c-20, 0c-07: the same archives).
 
 local common_controller = require("@exelib/barriers/controller")
 local common_visual = require("@exelib/barriers/visual")

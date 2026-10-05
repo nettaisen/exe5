@@ -1,6 +1,6 @@
 --!strict
--- BN5's Mine chip's dimming controller (effect object #0x29) and mine (attack object #0x4C): BN6's code
--- (@exelib/mine), BN5's kinds; the mine's identity and look BN6's, its collision types BN5's (BN6's values).
+-- EXE5's Mine chip's dimming controller (effect object #0x29) and mine (attack object #0x4C): EXE6's code
+-- (@exelib/mine), EXE5's kinds; the mine's identity and look EXE6's, its collision types EXE5's (EXE6's values).
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/mine/controller")

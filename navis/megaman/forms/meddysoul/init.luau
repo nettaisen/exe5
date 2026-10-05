@@ -1,5 +1,5 @@
 --!strict
--- MeddySoul (soul 6, Team ProtoMan's): BN5's Soul Unison with Meddy, for a Recovery chip given up. MegaMan's sprite in
+-- MeddySoul (soul 6, Team ProtoMan's): EXE5's Soul Unison with Meddy, for a Recovery chip given up. MegaMan's sprite in
 -- it is 00-06 (0x0800DA58[6]), his element Null (0x0800E634 by soul); he wears nothing over it. Its weapons
 -- (0x0801CA1C's row 6, loaded by 0x0800DCA0): the buster (routine 0), Meddy's capsule (0xE, ./charge), routine 1 on A
 -- (the charged shot's: no chip charges in MeddySoul, 0x0801090A), Chaos Unison's (0x36: DrkRecov), its charge cycle

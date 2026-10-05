@@ -1,8 +1,8 @@
 --!strict
--- BN5's one-shot effects (`battle.effect(pos, effects.explosion)`): rows of BN5's effect table (0x080DFC94: a
+-- EXE5's one-shot effects (`battle.effect(pos, effects.explosion)`): rows of EXE5's effect table (0x080DFC94: a
 -- sprite, its animation and palette), which effect object 0 (SpawnT4BattleObjectWithId0) plays once. Its rows to
--- 0x22 are BN6's (`byte_80E0398`) in BN5's sprites, and the shared code shows them by the same numbers; past them
--- the two tables differ. Named as content/bn6/lib/effects names BN6's rows; effects one owner shows live with it.
+-- 0x22 are EXE6's (`byte_80E0398`) in EXE5's sprites, and the shared code shows them by the same numbers; past them
+-- the two tables differ. Named as content/exe6/lib/effects names EXE6's rows; effects one owner shows live with it.
 
 local effects = {}
 
@@ -46,7 +46,7 @@ effects.flash = define.effect { sprite = asset.sprite("pink-flash"), anim = 0, p
 -- Row 0x22: a fiery burst: a bullet's hit, a sprung trap's counterattack.
 effects.shell_burst = define.effect { sprite = asset.sprite("shell-burst"), anim = 0, palette = 0 }
 
--- Row 0x2B (BN6's 0x46): the mark over a navi whose trap sprang (AntiNavi, AntiRecv).
+-- Row 0x2B (EXE6's 0x46): the mark over a navi whose trap sprang (AntiNavi, AntiRecv).
 effects.trap_mark = define.effect { sprite = asset.sprite("hit-sparks"), anim = 7, palette = 0 }
 
 return effects

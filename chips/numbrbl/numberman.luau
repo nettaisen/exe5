@@ -1,5 +1,5 @@
 --!strict
--- NumbrBl's NumberMan (BN5's actor object #0x45, 0x080C2018; BN5's own: BN6's #0x45 draws the user): the navi himself,
+-- NumbrBl's NumberMan (EXE5's actor object #0x45, 0x080C2018; EXE5's own: EXE6's #0x45 draws the user): the navi himself,
 -- on the panel the user warped out of. He appears (a sound) and, on a solid panel, stands 21 ticks; then sets balls
 -- (@exelib/numbrbl/ball: the chip's first parameter and three) down in front of him, 24 ticks apart, waits 31 ticks
 -- and leaves; off a solid panel he leaves at once. Leaving, he lets his controller go on. His sprite steps while
@@ -26,7 +26,7 @@ local ANIM_APPEAR, ANIM_STAND, ANIM_LEAVE, ANIM_THROW = 3, 0, 4, 0x10
 -- The balls sit 16 pixels up and wait 10 ticks (plus one) before rolling.
 local BALL_Z, BALL_WAIT = 0x10_0000, 0xA
 
--- The balls (BN5's attack object #0x91, 0x080D895C).
+-- The balls (EXE5's attack object #0x91, 0x080D895C).
 local ball = common_ball.make {
     id = "numbrbl/ball",
     sprite = asset.sprite("number-ball"),

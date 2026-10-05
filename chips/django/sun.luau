@@ -1,5 +1,5 @@
 --!strict
--- Django's sun (BN5's effect object #0x7B, 0x080E97F8; BN5's own): it hangs 64 pixels above him and 8 behind,
+-- Django's sun (EXE5's effect object #0x7B, 0x080E97F8; EXE5's own): it hangs 64 pixels above him and 8 behind,
 -- rising (animation 0) then shining (animation 1), brighter with Otenko's blessing (palette 3), until he puts it
 -- away (`sun.remove`).
 

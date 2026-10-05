@@ -1,5 +1,5 @@
 --!strict
--- BN5's launches from the raised buster arm (SideBub's action 0x1C, 0x080EC84C, and WoodNos's 0x28, 0x080ED2A0,
+-- EXE5's launches from the raised buster arm (SideBub's action 0x1C, 0x080EC84C, and WoodNos's 0x28, 0x080ED2A0,
 -- the same code): the navi raises its buster arm (animation 14) and, on the action's count 1, launches what the
 -- chip sends with the attack's damage word; at 16 it recovers for 6 ticks, then lowers the arm and goes back to
 -- idle.

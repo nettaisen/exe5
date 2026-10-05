@@ -1,10 +1,10 @@
 --!strict
--- H-Burst (BN5 chip 0x152): the Program Advance of three Spreaders with consecutive codes: a shot along the row that
--- bursts eight times where it hits: the shared H-Burst (@exelib/h-burst, BN5's action 0x35 at 0x080EE35C) with BN5's
--- spreader (the attachment table's row 9, 0c-19: BN6's row 0x15), sound and shot (./burst). Its bursts: the shot's
+-- H-Burst (EXE5 chip 0x152): the Program Advance of three Spreaders with consecutive codes: a shot along the row that
+-- bursts eight times where it hits: the shared H-Burst (@exelib/h-burst, EXE5's action 0x35 at 0x080EE35C) with EXE5's
+-- spreader (the attachment table's row 9, 0c-19: EXE6's row 0x15), sound and shot (./burst). Its bursts: the shot's
 -- init reads them from 0x080DA514 (5, 10, ...) at its parameters, the record's word 0x103, past the table's four
 -- bytes into the next routine's code (0x080DA617): 8.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local action = require("@exelib/h-burst/action")
 local attachment = require("../objects/attachment")
@@ -33,7 +33,7 @@ return define.chip {
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
-    -- BN5's recipes (written by tools/bn5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
     -- gauge tries.
     program_advances = {

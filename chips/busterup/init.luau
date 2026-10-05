@@ -1,9 +1,9 @@
 --!strict
--- BusterUp (BN5 chip 0x073): action 0x1A's effect 10 (0x0800E5B2, BN6's `sub_8010820`): the buster's attack level
--- up by one (to 9 at most once it reaches 10), as BN6's. BN5 shows the heal effect (effect 6, in the palette after
+-- BusterUp (EXE5 chip 0x073): action 0x1A's effect 10 (0x0800E5B2, EXE6's `sub_8010820`): the buster's attack level
+-- up by one (to 9 at most once it reaches 10), as EXE6's. EXE5 shows the heal effect (effect 6, in the palette after
 -- its own: 0x0800E5DE's r4 is 0x00010006, the effect's third byte) on the user's
--- panel where BN6 shows its own sparkle at an attach point, and in ColonelSoul the navi gets AirShoes.
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- panel where EXE6 shows its own sparkle at an attach point, and in ColonelSoul the navi gets AirShoes.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local effects = require("../lib/effects")
 local souls = require("../navis/megaman/souls")

@@ -1,5 +1,5 @@
 --!strict
--- LeadRaid's charge glow (BN5's effect object #0x85, 0x080EA0EC; BN5's own, which only LeadRaid's leaders spawn): on
+-- LeadRaid's charge glow (EXE5's effect object #0x85, 0x080EA0EC; EXE5's own, which only LeadRaid's leaders spawn): on
 -- its leader (sprite 14-08), building for 20 ticks with the buster's charging sound, then charged (animation 2) with
 -- its sound, until its leader ends it (0x080EA1B0).
 

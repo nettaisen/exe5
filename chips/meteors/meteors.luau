@@ -1,14 +1,14 @@
 --!strict
--- BN5's falling meteor (attack object #0x56) and meteor shower (effect object #0x46): the shared code
--- (@exelib/meteors: BN6's) but for
+-- EXE5's falling meteor (attack object #0x56) and meteor shower (effect object #0x46): the shared code
+-- (@exelib/meteors: EXE6's) but for
 --
--- - the meteor's look and rows (0x080D0B24: rows 0 to 2 BN6's, but row 2 hits with modifier 0, 0x080D0BE4; row 3
---   cracks its panel; row 4, DarkMetr's, hits as BN5's row 0x2B with the bug 0x19 (argument 1), shakes the cameras
+-- - the meteor's look and rows (0x080D0B24: rows 0 to 2 EXE6's, but row 2 hits with modifier 0, 0x080D0BE4; row 3
+--   cracks its panel; row 4, DarkMetr's, hits as EXE5's row 0x2B with the bug 0x19 (argument 1), shakes the cameras
 --   at 2 and breaks its panel);
 -- - the shower (0x080E58A8, 0x080E58EC) with its first parameter set (DarkMetr's): 10 more meteors and 2 for each of
 --   the first three reactions its side's navi took (side stat 3), one every 10 ticks (20 without), on the target's
 --   own panel (no draw for a neighbor), row 4 (row 3 without). (Its init also gives the shower, which has no
---   collision, the bug 0x19: BN5 writes it through a null pointer, into the BIOS, to no effect.)
+--   collision, the bug 0x19: EXE5 writes it through a null pointer, into the BIOS, to no effect.)
 --
 -- Not ported: in the operation battle (never in a netbattle), a meteor also spawns effect object 0x83 on its panel
 -- for 20 ticks (0x080E9FA4, as FireHit's warning and the swords' swing).
@@ -43,7 +43,7 @@ meteors.kind = falling_meteor.make_kind("meteor", {
         },
     },
     spark = sparks.of_element,
-    -- (Its landing's burst BN6's.)
+    -- (Its landing's burst EXE6's.)
     burst = effects.burst,
     marker = marker,
 })

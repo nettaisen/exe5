@@ -1,14 +1,14 @@
 --!strict
--- CrakOut, DublCrak and TripCrak (BN5 chips 0x05B to 0x05D): their action (0x1B, 0x080EC79C, BN5's own) and the
--- crack they leave (attack object 0x18, 0x080C7704: the code BN6 keeps as `sub_80C7074`, no BN6 chip uses it).
+-- CrakOut, DublCrak and TripCrak (EXE5 chips 0x05B to 0x05D): their action (0x1B, 0x080EC79C, EXE5's own) and the
+-- crack they leave (attack object 0x18, 0x080C7704: the code EXE6 keeps as `sub_80C7074`, no EXE6 chip uses it).
 --
 -- The navi points (animation 12) for 15 ticks; two ticks in, a crack appears on each panel of the chip's pattern
--- that is on the field (0x080C77C2, BN6's `sub_80C7132`: by its subtype, the panel ahead; it and the one behind
+-- that is on the field (0x080C77C2, EXE6's `sub_80C7132`: by its subtype, the panel ahead; it and the one behind
 -- it; it and the ones above and below), then 5 ticks to recover. A crack hits its panel once with the chip's
 -- damage (no spark), breaks it (cracks it when something stands on it), and shows its dust for 19 ticks.
 --
--- Its break is `object_breakPanelLoud` (BN5's 0x0800B204): the panel break with its own sound (0xDA). Not as BN5's:
--- the hit's element, which BN5's crack leaves to a register (r2, what the sound call left: 0 here).
+-- Its break is `object_breakPanelLoud` (EXE5's 0x0800B204): the panel break with its own sound (0xDA). Not as EXE5's:
+-- the hit's element, which EXE5's crack leaves to a register (r2, what the sound call left: 0 here).
 
 local collision = require("../../rules/collision")
 local regions = require("@exelib/regions")
@@ -32,7 +32,7 @@ local PATTERNS: { [number]: { { number } } } = {
     [2] = { { 0, 0 }, { 0, -1 }, { 0, 1 } },
 }
 
--- 0x080C7768 (BN6's `sub_80C70D8`): the hit and the break, then 19 ticks.
+-- 0x080C7768 (EXE6's `sub_80C70D8`): the hit and the break, then 19 ticks.
 local function tick(me: Object)
     if me.phase_init == 0 then
         battle.hitbox(me, {
@@ -59,7 +59,7 @@ local function tick(me: Object)
     end
 end
 
--- 0x080C7728 (BN6's `sub_80C7098`).
+-- 0x080C7728 (EXE6's `sub_80C7098`).
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
@@ -91,7 +91,7 @@ crack.kind = define.kind {
     end,
 }
 
--- 0x080C77A4 (BN6's `sub_80C7114`): a crack of `owner`'s side on (x, y) with the damage word. (It spawns at the
+-- 0x080C77A4 (EXE6's `sub_80C7114`): a crack of `owner`'s side on (x, y) with the damage word. (It spawns at the
 -- registers' values: the panel Y, the element and Z, which its init replaces but for Z.)
 local function spawn(owner: Object, x: number, y: number, element: number, damage: number)
     local o = battle.spawn(crack.kind, Vec3.new(y, element, 0))

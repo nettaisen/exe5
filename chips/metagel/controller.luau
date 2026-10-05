@@ -1,5 +1,5 @@
 --!strict
--- MetaGel's dimming controller (BN5's effect object #0x21, 0x080E2D98; the dimming handler's subtype 6, 0x080E2E9C):
+-- MetaGel's dimming controller (EXE5's effect object #0x21, 0x080E2D98; the dimming handler's subtype 6, 0x080E2E9C):
 -- the usual dimming phases (@exelib/dimming), with an effect (0x080E2DDC) that drops a gel (./gel) on each row's
 -- front panel of the other side's area, one every 13 ticks in a shuffled order of the rows, then waits until they
 -- are all gone.

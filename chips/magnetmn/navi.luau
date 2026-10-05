@@ -1,5 +1,5 @@
 --!strict
--- MagnetMan, the navi of BN5's MagnetMan chips (BN5's actor object #0x0D, 0x080BAF2C; BN5's own), brought by their
+-- MagnetMan, the navi of EXE5's MagnetMan chips (EXE5's actor object #0x0D, 0x080BAF2C; EXE5's own), brought by their
 -- navi chip controller: unseen himself, he works through two magnets (./magnet). Off the field he goes at once.
 -- Else he hits his own panel lightly (a one-tick hit of 1, hitting navis), finds his target, the first panel
 -- ahead along his row holding an enemy navi, and sends the first magnet (pole 0) from where he stands; 30 ticks

@@ -1,14 +1,14 @@
 --!strict
--- BN5's BigNoise (the navi chips' action with the summon table's entry 20, 0x080BD702): BN5's own ShadeMan (actor
+-- EXE5's BigNoise (the navi chips' action with the summon table's entry 20, 0x080BD702): EXE5's own ShadeMan (actor
 -- object #0x1B, 0x080BD510), brought by the navi chip controller. He appears (4 ticks), stands 10, cries out
--- (animation 5) for 15, and sends his noise (attack object #0x04, 0x080C4DE0, BN5's own: its Param2 1) from the panel
+-- (animation 5) for 15, and sends his noise (attack object #0x04, 0x080C4DE0, EXE5's own: its Param2 1) from the panel
 -- ahead; 40 ticks later he lowers (animation 7) for 11, stands 20, leaves (animation 4) in 4 and goes, and the
 -- controller moves on.
 --
 -- The noise, ShadeMan's image (08-0d's animation 12) 40 pixels ahead of its panel, hits navis (piercing, or a plain
 -- attack in a battle of mode 1, a netbattle) over the three columns ahead of it and its own (region 0x1B: with its
 -- Param2, no hit modifier and paralysis for 150 ticks), highlighting them, for 60 ticks. (Without its Param2, the
--- one BN5's ShadeMan the virus sends, it starts on its panel with hit modifier 3 and grows: the fan at 2 ticks, two
+-- one EXE5's ShadeMan the virus sends, it starts on its panel with hit modifier 3 and grows: the fan at 2 ticks, two
 -- columns at 4, three at 6, four at 8.)
 
 local collision = require("../../rules/collision")

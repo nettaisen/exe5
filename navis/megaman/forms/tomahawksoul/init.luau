@@ -1,5 +1,5 @@
 --!strict
--- TomahawkSoul (soul 10, Team Colonel's): BN5's Soul Unison with TomahawkMan, for a Wood chip given up. MegaMan's
+-- TomahawkSoul (soul 10, Team Colonel's): EXE5's Soul Unison with TomahawkMan, for a Wood chip given up. MegaMan's
 -- sprite in it is 00-0A (0x0800DA58[10]), his element Wood (0x0800E634 by soul); he wears nothing over it, and his
 -- change shakes the cameras (rules/souls/change). Its weapons (0x0801CA1C's row 10, loaded by 0x0800DCA0): the buster
 -- (routine 0), the tomahawk's swing (0x1A, ./charge), routine 1 on A (the charged shot's: no chip charges in

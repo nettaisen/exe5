@@ -1,5 +1,5 @@
 --!strict
--- BN5's computer navi getting in place for a chip (0x08029B3C, from the AI's chip play, ./ai): each chip's record
+-- EXE5's computer navi getting in place for a chip (0x08029B3C, from the AI's chip play, ./ai): each chip's record
 -- names how (byte 13, its positioning class: data.chips[...].class), and the class's routine runs once a decision
 -- until it says it is no longer busy. Most classes have two steps: a search for a panel the chip reaches the target
 -- from, a step there, and the next decision's "in place"; the rest test a condition and say at once. In place or
@@ -185,7 +185,7 @@ local function reach_from_here(navi: Object, s: State)
 end
 
 -- 0x08029DBC (class 1): the navi stands at its area's front (the panel it faces isn't its side's): in place if a
--- hit would land, else a step anywhere; else a step to its area's front line (BN5's 0x08013126), or the next target
+-- hit would land, else a step anywhere; else a step to its area's front line (EXE5's 0x08013126), or the next target
 -- and a step anywhere.
 local function front(navi: Object, s: State)
     local x, y = navi.panel_x + panels.front_direction(navi), navi.panel_y
@@ -701,8 +701,8 @@ local function to_back(navi: Object, s: State)
     go(navi, s, 4, x, y)
 end
 
--- NaviStats +0x2A, which class 28 reads first. Its BN5 meaning isn't read (docs/design/bn5-map.md §15.1, the
--- NaviStats bytes); a netbattle's is 0 (bn5-compat reads it as 0).
+-- NaviStats +0x2A, which class 28 reads first. Its EXE5 meaning isn't read (docs/design/exe5-map.md §15.1, the
+-- NaviStats bytes); a netbattle's is 0 (exe5-compat reads it as 0).
 local NAVI_STATS_2A = 0
 
 -- 0x0802AC04 (class 28): with NaviStats +0x2A 0 and less than 300 HP lost, not ready (no step); else the chip reaches

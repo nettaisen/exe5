@@ -1,5 +1,5 @@
 --!strict
--- GyroSoul's tornado (BN5's attack object 0x1E, 0x080C8194; BN5's own, its BN6 counterpart `sub_80C7F40` out of a
+-- GyroSoul's tornado (EXE5's attack object 0x1E, 0x080C8194; EXE5's own, its EXE6 counterpart `sub_80C7F40` out of a
 -- netbattle's reach): a whirlwind (sprite 10-0C) lying along the three panels ahead of MegaMan, which hits them
 -- three times, eight ticks apart: all three, then the far two, then the farthest (0x080C82FC), each hit lasting
 -- eight ticks. It highlights the three panels while it blows, and goes after the third hit or when the battle ends.

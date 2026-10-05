@@ -1,6 +1,6 @@
 --!strict
--- Bass (BN5 chip 0x12d): Bass cuts in and fires 24 volleys of two shots at the enemy area (./navi).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Bass (EXE5 chip 0x12d): Bass cuts in and fires 24 volleys of two shots at the enemy area (./navi).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 

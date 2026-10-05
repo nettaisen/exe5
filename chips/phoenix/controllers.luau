@@ -1,6 +1,6 @@
 --!strict
--- Phoenix's and DethPhnx's dimming controllers (BN5's effect objects #0x0D, 0x080E1590, and #0x15, 0x080E1E9C;
--- BN5's own): a navi chip's controller (BN6's `sub_80E17E8`, the engine's) but for its effect. Its actions: the dim,
+-- Phoenix's and DethPhnx's dimming controllers (EXE5's effect objects #0x0D, 0x080E1590, and #0x15, 0x080E1E9C;
+-- EXE5's own): a navi chip's controller (EXE6's `sub_80E17E8`, the engine's) but for its effect. Its actions: the dim,
 -- AntiNavi's check, the chip's name as a navi chip's (`sub_800BA8A`), the effect, the undim. The effect (0x080E1F08):
 -- 31 ticks; the chip's phoenix, which it waits on; 31 ticks; 31 more. The user stays on the field throughout (the
 -- navi chip's controller warps it out and back), and nothing is kept as the last navi chip. Each chip makes its own
@@ -24,7 +24,7 @@ export type Spec = {
     id: string,
     name: string,
     -- The chip's phoenix for `user`, on the controller's panel, of the user's side and facing, with the damage word
-    -- (bonus included), reporting to the controller (its `done`): BN5's 0x080BFCC4 and 0x080C00B6.
+    -- (bonus included), reporting to the controller (its `done`): EXE5's 0x080BFCC4 and 0x080C00B6.
     spawn: (controller: Object, user: Object, damage: number) -> Object?,
 }
 

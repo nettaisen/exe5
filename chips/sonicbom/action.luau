@@ -1,6 +1,6 @@
 --!strict
--- SonicBom's action (BN5's action 0x2B, 0x080ED622: BN5's own, BN6's SonicBom swing, `sub_80EF970`, with the
--- Katanas' step): the navi swings its sword (the blade in its related slot) and on the swing's tenth tick throws BN5's
+-- SonicBom's action (EXE5's action 0x2B, 0x080ED622: EXE5's own, EXE6's SonicBom swing, `sub_80EF970`, with the
+-- Katanas' step): the navi swings its sword (the blade in its related slot) and on the swing's tenth tick throws EXE5's
 -- sonic boom (lib/swords: attack object #0x58) from the panel ahead, of the record's hit modifier (its first
 -- parameter: SonicBom's 3, SprSonic's 1) and going through by its second (SprSonic's). A charged one steps first and
 -- back after (lib/stepsword), its boom of hit modifier 1, leaving two afterimages as it throws. Each chip makes its

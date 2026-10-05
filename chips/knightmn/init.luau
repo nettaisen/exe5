@@ -1,10 +1,10 @@
 --!strict
 -- KnightMn, KnigtMnSP and KnigtMnDS: the knightmn series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- KnightMn (BN5 chip 0x0fe): KnightMan cuts in and swings his wrecking ball around himself, confusing what it hits
+-- KnightMn (EXE5 chip 0x0fe): KnightMan cuts in and swings his wrecking ball around himself, confusing what it hits
 -- (./navi).
 local knightmn = define.chip {
     id = "knightmn",
@@ -24,7 +24,7 @@ local knightmn = define.chip {
     navi = navi.summon,
 }
 
--- KnigtMnSP (BN5 chip 0x0ff): KnightMan cuts in and swings his wrecking ball around himself, confusing what it hits
+-- KnigtMnSP (EXE5 chip 0x0ff): KnightMan cuts in and swings his wrecking ball around himself, confusing what it hits
 -- (../knightmn/navi); its damage by how fast its user deleted KnightMan SP (rules/sp-chips: formula 12, its table's row
 -- 11).
 local knigtmn_sp = define.chip {
@@ -45,7 +45,7 @@ local knigtmn_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- KnigtMnDS (BN5 chip 0x100): KnightMan, dark, cuts in and swings his wrecking ball around himself, confusing what it
+-- KnigtMnDS (EXE5 chip 0x100): KnightMan, dark, cuts in and swings his wrecking ball around himself, confusing what it
 -- hits (../knightmn/navi); its damage by its user's side's statistic 3 (formula 34, its table's row 11).
 local knigtmn_ds = define.chip {
     id = "knigtmn-ds",

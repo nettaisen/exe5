@@ -1,13 +1,13 @@
 --!strict
--- BN5's Anubis statue and its controller (Anubis and PoisPhar, the dimming handler's subtype 17: effect object
--- #0x33, 0x080E411C, and attack object #0x55, 0x080D0868): BN6's (@exelib/anubis) but for
+-- EXE5's Anubis statue and its controller (Anubis and PoisPhar, the dimming handler's subtype 17: effect object
+-- #0x33, 0x080E411C, and attack object #0x55, 0x080D0868): EXE6's (@exelib/anubis) but for
 --
--- - its lifetime: 3000 ticks for either variant (0x080D08E2; BN6 reads its variant's);
--- - how it leaves (0x080D0970): any removal leaves a puff (BN5 neither absorbs nor blinks obstacles out);
--- - its variants (0x080D0858): PoisPhar's statue has 300 HP (BN6's 100);
--- - its drain's self type, BN5's row 0x31 (0x080D0A98; BN6's 0x52), and BN5's look and collision types;
--- - the statues' identities (actor records 0xDB and 0xDC): field objects of AI index 0x21 (BN6's 1);
--- - its action table of 7 rows (no frozen or bubbled: the drain is its 6, BN6's 8, the same action).
+-- - its lifetime: 3000 ticks for either variant (0x080D08E2; EXE6 reads its variant's);
+-- - how it leaves (0x080D0970): any removal leaves a puff (EXE5 neither absorbs nor blinks obstacles out);
+-- - its variants (0x080D0858): PoisPhar's statue has 300 HP (EXE6's 100);
+-- - its drain's self type, EXE5's row 0x31 (0x080D0A98; EXE6's 0x52), and EXE5's look and collision types;
+-- - the statues' identities (actor records 0xDB and 0xDC): field objects of AI index 0x21 (EXE6's 1);
+-- - its action table of 7 rows (no frozen or bubbled: the drain is its 6, EXE6's 8, the same action).
 
 local collision = require("../../rules/collision")
 local controller = require("@exelib/anubis/controller")
@@ -27,7 +27,7 @@ local made = statue.make {
     hits = collision.hit_by_other_side,
     drain = collision.collision_31,
     nothing = collision.nothing,
-    -- The puff and the explosion (lib/effects: BN5's effect table's rows 0x14 and 0, BN6's rows).
+    -- The puff and the explosion (lib/effects: EXE5's effect table's rows 0x14 and 0, EXE6's rows).
     effects = { puff = effects.puff, explosion = effects.explosion },
     bubble = rising_bubble.kind,
 }

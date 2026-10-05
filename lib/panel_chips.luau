@@ -1,6 +1,6 @@
 --!strict
--- BN5's panel chips' dimming controller (effect object #0x20, BN6's code: @exelib/panel-chips/controller), BN5's
--- kind with BN5's panel changer (objects/panel-changer).
+-- EXE5's panel chips' dimming controller (effect object #0x20, EXE6's code: @exelib/panel-chips/controller), EXE5's
+-- kind with EXE5's panel changer (objects/panel-changer).
 
 local common = require("@exelib/panel-chips/controller")
 local panel_changer = require("../objects/panel-changer")

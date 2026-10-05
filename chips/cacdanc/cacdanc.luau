@@ -1,5 +1,5 @@
 --!strict
--- BN5's CacDanc1-3 (action 0x1A's instant effect 23, 0x080E7E86): BN5's own. An unseen dancer (effect object #0x65,
+-- EXE5's CacDanc1-3 (action 0x1A's instant effect 23, 0x080E7E86): EXE5's own. An unseen dancer (effect object #0x65,
 -- 0x080E7E10: its side's field object of class 1 with 1 HP, NameID 0xD2, which doesn't run while the battle is dimmed)
 -- drops a cactus (attack object #0xB1, 0x080DC60C) every 15 ticks, twelve in all, until it is replaced. A drop
 -- (0x080E7EAC) lands on a random panel with one of the other side's navis on it, or, on a coin flip (the random

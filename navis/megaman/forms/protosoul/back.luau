@@ -1,5 +1,5 @@
 --!strict
--- ProtoSoul's B+Back (`protosoul/back`): the original's weapon routine 4 (0x0800F634). It raises BN5's guard (action
+-- ProtoSoul's B+Back (`protosoul/back`): the original's weapon routine 4 (0x0800F634). It raises EXE5's guard (action
 -- 0x1F, lib/guard) as the NaviCust Reflect program's (subtype 4: a hit it guards from the front is fired back as the
 -- charged shot's projectile, 20 pixels up, with 50 damage), for 20 ticks (its params word's first byte, 0x114), in
 -- the Reflect program's look (the word's second byte: row 1), or row 9's with the Chaos Unison charge armed (0x914);

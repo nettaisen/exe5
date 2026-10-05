@@ -1,5 +1,5 @@
 --!strict
--- BN5's MegaMan's base form (`base`, the engine's base form of BN5's game: rules-in-luau.md P1c): MegaMan in no
+-- EXE5's MegaMan's base form (`base`, the engine's base form of EXE5's game: rules-in-luau.md P1c): MegaMan in no
 -- soul (NaviStats +0x2C 0), his sprite by his soul (0x0800DA58[0]). His weapons in it are his navi's, from his stats.
 -- In Hub Style (NaviStats +0x4C, patch card 111's) he wears its shade.
 
@@ -30,7 +30,7 @@ return define.form {
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charged_shot.weapon },
     palette = 0,
-    -- MegaMan's faces in the emotion window, by his emotion (0x0801AF64: the table 0x0801AFB4 by BN5's emotion,
+    -- MegaMan's faces in the emotion window, by his emotion (0x0801AF64: the table 0x0801AFB4 by EXE5's emotion,
     -- 0x08012740; each brings its box): worried for a mood under 65, the dark face for a mood of 0 (a dark
     -- MegaMan's); and Hub Style's (NaviStats +0x4C, the navi's `hub_style`: 0x0801AF8E adds 11).
     mugshot = {

@@ -1,10 +1,10 @@
 --!strict
 -- ShadeMan, ShadeMnSP and ShadeMnDS: the shademan series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- ShadeMan (BN5 chip 0x104): ShadeMan cuts in and crushes the panel ahead and the column beyond (./navi); a command
+-- ShadeMan (EXE5 chip 0x104): ShadeMan cuts in and crushes the panel ahead and the column beyond (./navi); a command
 -- paralyzes or confuses.
 local shademan = define.chip {
     id = "shademan",
@@ -23,7 +23,7 @@ local shademan = define.chip {
     navi = navi.summon,
 }
 
--- ShadeMnSP (BN5 chip 0x105): ShadeMan cuts in and crushes the panel ahead and the column beyond (../shademan/navi);
+-- ShadeMnSP (EXE5 chip 0x105): ShadeMan cuts in and crushes the panel ahead and the column beyond (../shademan/navi);
 -- its damage by how fast its user deleted ShadeMan SP (rules/sp-chips: formula 14, its table's row 13).
 local shademn_sp = define.chip {
     id = "shademn-sp",
@@ -42,7 +42,7 @@ local shademn_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- ShadeMnDS (BN5 chip 0x106): ShadeMan, dark, cuts in and crushes the panel ahead and the column beyond
+-- ShadeMnDS (EXE5 chip 0x106): ShadeMan, dark, cuts in and crushes the panel ahead and the column beyond
 -- (../shademan/navi); its damage by its user's side's statistic 3 (formula 36, its table's row 13).
 local shademn_ds = define.chip {
     id = "shademn-ds",

@@ -1,5 +1,5 @@
 --!strict
--- BN5's Geyser (attack object #0x42, 0x080CD992: BN6's BlkBomb code, `sub_80CD4EC`, reworked; thrown by action
+-- EXE5's Geyser (attack object #0x42, 0x080CD992: EXE6's BlkBomb code, `sub_80CD4EC`, reworked; thrown by action
 -- 0x12's subtype 5, 0x080CDC08): an aqua bomb lobbed at the panel three ahead. Landing on a solid panel it only
 -- splashes it for 10 damage; landing in a hole it erupts: a geyser (sprite 0c-25) that hits its panel while it
 -- stands and, two ticks in, sends water (attack object #0x43, 0x080CDC2C) onto the eight panels around it, one

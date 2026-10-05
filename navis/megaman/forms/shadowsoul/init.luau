@@ -1,5 +1,5 @@
 --!strict
--- ShadowSoul (soul 8, Team Colonel's): BN5's Soul Unison with ShadowMan, for an Invisible chip given up. MegaMan's
+-- ShadowSoul (soul 8, Team Colonel's): EXE5's Soul Unison with ShadowMan, for an Invisible chip given up. MegaMan's
 -- sprite in it is 00-08 (0x0800DA58[8]), his element Null (0x0800E634 by soul); he wears nothing over it, floats
 -- (his status reset's and a NaviCust change's FloatShoes and floating body, 0x08011C80, 0x08011D32) and ends a move
 -- without lag (0x0800E0D2). Its weapons (0x0801CA1C's row 8, loaded by 0x0800DCA0): the buster (routine 0),

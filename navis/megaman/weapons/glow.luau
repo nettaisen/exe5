@@ -1,5 +1,5 @@
 --!strict
--- A glow on MegaMan (BN5's effect object 0x26, 0x080E330C: BN6's `sub_80E3150`, the same code): a sprite (its
+-- A glow on MegaMan (EXE5's effect object 0x26, 0x080E330C: EXE6's `sub_80E3150`, the same code): a sprite (its
 -- parameters', `sub_801BE2A`: the sprite, its animation, a shadow or none) on its owner for 20 ticks; then it goes.
 -- NapalmSoul's charged Fire chips (14-1D) and MagnetSoul's B+Back (14-1B) show one (`sub_80E31C0`'s spawn).
 

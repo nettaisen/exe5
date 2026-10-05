@@ -1,10 +1,10 @@
 --!strict
 -- LarkMan, LarkManSP and LarkManDS: the larkman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- LarkMan (BN5 chip 0x110): LarkMan cuts in and sends his swoop round the field (./navi).
+-- LarkMan (EXE5 chip 0x110): LarkMan cuts in and sends his swoop round the field (./navi).
 local larkman = define.chip {
     id = "larkman",
     codes = { "S" },
@@ -22,7 +22,7 @@ local larkman = define.chip {
     navi = navi.summon,
 }
 
--- LarkManSP (BN5 chip 0x111): LarkMan cuts in and sends his swoop round the field (../larkman/navi); its damage by how
+-- LarkManSP (EXE5 chip 0x111): LarkMan cuts in and sends his swoop round the field (../larkman/navi); its damage by how
 -- fast its user deleted LarkMan SP (rules/sp-chips: formula 18, its table's row 17).
 local larkman_sp = define.chip {
     id = "larkman-sp",
@@ -41,7 +41,7 @@ local larkman_sp = define.chip {
     navi = navi.summon,
 }
 
--- LarkManDS (BN5 chip 0x112): LarkMan, dark, cuts in and sends his swoop round the field (../larkman/navi); its damage
+-- LarkManDS (EXE5 chip 0x112): LarkMan, dark, cuts in and sends his swoop round the field (../larkman/navi); its damage
 -- by its user's side's statistic 3 (formula 40, its table's row 17).
 local larkman_ds = define.chip {
     id = "larkman-ds",

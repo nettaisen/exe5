@@ -1,7 +1,7 @@
 --!strict
--- BblWrap (BN5 chip 0x086): a bubble on the user that takes one hit, grows back 240 ticks later and breaks on elec:
--- BN6's barrier chips (the dimming handler's subtype 14) with BN5's barriers (lib/barriers).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- BblWrap (EXE5 chip 0x086): a bubble on the user that takes one hit, grows back 240 ticks later and breaks on elec:
+-- EXE6's barrier chips (the dimming handler's subtype 14) with EXE5's barriers (lib/barriers).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local barriers = require("../lib/barriers")
 

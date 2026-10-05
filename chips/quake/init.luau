@@ -1,12 +1,12 @@
 --!strict
 -- Quake1, Quake2 and Quake3: the quake series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local bombs = require("../lib/bombs")
 local quake = require("@self/quake")
 
--- Quake1 (BN5 chip 0x023): a bomb lobbed three panels ahead that drops a weight there and, landing on solid ground,
--- cracks the panel and hits around it (level 0): BN5's throw (lib/bombs, action 0x12 subtype 11) and its Quake bomb
+-- Quake1 (EXE5 chip 0x023): a bomb lobbed three panels ahead that drops a weight there and, landing on solid ground,
+-- cracks the panel and hits around it (level 0): EXE5's throw (lib/bombs, action 0x12 subtype 11) and its Quake bomb
 -- (chips/quake/quake, attack object #0x51).
 local quake1 = define.chip {
     id = "quake1",
@@ -24,8 +24,8 @@ local quake1 = define.chip {
     action = bombs.throw { held = bombs.held, thrower = quake.thrower(0) },
 }
 
--- Quake2 (BN5 chip 0x024): a bomb lobbed three panels ahead that drops a weight there and, landing on solid ground,
--- cracks the panel and hits around it (level 1): BN5's throw (lib/bombs, action 0x12 subtype 11) and its Quake bomb
+-- Quake2 (EXE5 chip 0x024): a bomb lobbed three panels ahead that drops a weight there and, landing on solid ground,
+-- cracks the panel and hits around it (level 1): EXE5's throw (lib/bombs, action 0x12 subtype 11) and its Quake bomb
 -- (chips/quake/quake, attack object #0x51).
 local quake2 = define.chip {
     id = "quake2",
@@ -43,8 +43,8 @@ local quake2 = define.chip {
     action = bombs.throw { held = bombs.held, thrower = quake.thrower(1) },
 }
 
--- Quake3 (BN5 chip 0x025): a bomb lobbed three panels ahead that drops a weight there and, landing on solid ground,
--- cracks the panel and hits around it (level 2): BN5's throw (lib/bombs, action 0x12 subtype 11) and its Quake bomb
+-- Quake3 (EXE5 chip 0x025): a bomb lobbed three panels ahead that drops a weight there and, landing on solid ground,
+-- cracks the panel and hits around it (level 2): EXE5's throw (lib/bombs, action 0x12 subtype 11) and its Quake bomb
 -- (chips/quake/quake, attack object #0x51).
 local quake3 = define.chip {
     id = "quake3",

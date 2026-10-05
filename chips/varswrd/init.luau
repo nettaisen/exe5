@@ -1,9 +1,9 @@
 --!strict
--- VarSwrd (BN5 chip 0x037): the navi holds A and enters a direction sequence: a quarter circle forward (down,
+-- VarSwrd (EXE5 chip 0x037): the navi holds A and enters a direction sequence: a quarter circle forward (down,
 -- down-forward, forward) gives LongSwrd, a half circle from back FtrSword, up-forward-down WideSwrd,
 -- down-back-up-forward-down LifeSrd, and back, A+B, forward, A+B SonicBom; letting go of A, or 48 ticks, gives a
--- Sword: BN5's action 0x2A (action.luau).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Sword: EXE5's action 0x2A (action.luau).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local action = require("@self/action")
 local ftrsword = require("./ftrsword")

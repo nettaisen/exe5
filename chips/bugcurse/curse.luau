@@ -1,5 +1,5 @@
 --!strict
--- BugCurse's curse (BN5's attack object #0x80, 0x080D6534; BN5's own): on the enemy navi's panel, shown (sprite 0C-3F,
+-- BugCurse's curse (EXE5's attack object #0x80, 0x080D6534; EXE5's own): on the enemy navi's panel, shown (sprite 0C-3F,
 -- a sound), it waits 59 ticks, then over 5 ticks (3 in the operation battle) hits the panel once a tick with
 -- a bug each (0x080D6644; 0x080D664E in that mode): a one-tick hit (breaking, hitting navis, no spark, running while
 -- dimmed) carrying the bug code and its argument. Then its controller (./controller), which waits on it, moves on.

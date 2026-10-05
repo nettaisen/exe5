@@ -1,5 +1,5 @@
 --!strict
--- Phoenix's dimming controller (BN5's effect object #0x0D, 0x080E1590): ./controllers' with the phoenix
+-- Phoenix's dimming controller (EXE5's effect object #0x0D, 0x080E1590): ./controllers' with the phoenix
 -- (./phoenix).
 
 local controllers = require("./controllers")

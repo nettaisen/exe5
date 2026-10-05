@@ -1,5 +1,5 @@
 --!strict
--- ShadeMan, the navi of the ShadeMan chips (BN5's actor object #0x19, 0x080BD0E8; BN5's own), brought by their
+-- ShadeMan, the navi of the ShadeMan chips (EXE5's actor object #0x19, 0x080BD0E8; EXE5's own), brought by their
 -- navi chip controller. He appears (animation 3), and for 31 ticks his user may put in a command; then he calls
 -- out (animation 5), and 21 ticks later sends his crush (./crush) from the panel ahead; 61 ticks, a bow
 -- (animation 4), and he goes.

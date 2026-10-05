@@ -1,11 +1,11 @@
 --!strict
 -- CrsShld1, CrsShld2 and CrsShld3: the crsshld series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local guard = require("../lib/guard")
 
--- CrsShld1 (BN5 chip 0x0a9): the navi holds up a shield for 60 ticks; the first hit it blocks from the front sends a
--- cross along the row that strikes the first navi it meets: BN5's guard (lib/guard, action 0x1F with subtype 5).
+-- CrsShld1 (EXE5 chip 0x0a9): the navi holds up a shield for 60 ticks; the first hit it blocks from the front sends a
+-- cross along the row that strikes the first navi it meets: EXE5's guard (lib/guard, action 0x1F with subtype 5).
 local crsshld1 = define.chip {
     id = "crsshld1",
     codes = { "B", "F", "V" },
@@ -22,8 +22,8 @@ local crsshld1 = define.chip {
     action = guard.action { ticks = 60, look = guard.looks.crsshld1, counter = { kind = "cross", palette = 0 } },
 }
 
--- CrsShld2 (BN5 chip 0x0aa): the navi holds up a shield for 60 ticks; the first hit it blocks from the front sends a
--- cross along the row that strikes the first navi it meets: BN5's guard (lib/guard, action 0x1F with subtype 6).
+-- CrsShld2 (EXE5 chip 0x0aa): the navi holds up a shield for 60 ticks; the first hit it blocks from the front sends a
+-- cross along the row that strikes the first navi it meets: EXE5's guard (lib/guard, action 0x1F with subtype 6).
 local crsshld2 = define.chip {
     id = "crsshld2",
     codes = { "C", "M", "R" },
@@ -40,8 +40,8 @@ local crsshld2 = define.chip {
     action = guard.action { ticks = 60, look = guard.looks.crsshld2, counter = { kind = "cross", palette = 1 } },
 }
 
--- CrsShld3 (BN5 chip 0x0ab): the navi holds up a shield for 60 ticks; the first hit it blocks from the front sends a
--- cross along the row that strikes the first navi it meets: BN5's guard (lib/guard, action 0x1F with subtype 7).
+-- CrsShld3 (EXE5 chip 0x0ab): the navi holds up a shield for 60 ticks; the first hit it blocks from the front sends a
+-- cross along the row that strikes the first navi it meets: EXE5's guard (lib/guard, action 0x1F with subtype 7).
 local crsshld3 = define.chip {
     id = "crsshld3",
     codes = { "D", "O", "Z" },

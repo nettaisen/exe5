@@ -1,10 +1,10 @@
 --!strict
 -- Roll, RollSP and RollDS: the roll series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- Roll (BN5 chip 0x0dd): Roll whips the enemy navi ahead and heals her user with a heart (./navi).
+-- Roll (EXE5 chip 0x0dd): Roll whips the enemy navi ahead and heals her user with a heart (./navi).
 local roll = define.chip {
     id = "roll",
     codes = { "R" },
@@ -24,7 +24,7 @@ local roll = define.chip {
     navi = navi.summon { rounds = 1, palette = 0, level = 0 },
 }
 
--- RollSP (BN5 chip 0x0de): Roll (../roll/navi), turning her side's holy panels Normal as she comes; its damage by
+-- RollSP (EXE5 chip 0x0de): Roll (../roll/navi), turning her side's holy panels Normal as she comes; its damage by
 -- the holy panels of its user's side (formula 1, 0x0800E8B4).
 local roll_sp = define.chip {
     id = "roll-sp",
@@ -45,7 +45,7 @@ local roll_sp = define.chip {
     navi = navi.summon { rounds = 1, palette = 0, level = 3 },
 }
 
--- RollDS (BN5 chip 0x0df): Roll (../roll/navi) in her dark palette; its damage by its user's side's statistic 3
+-- RollDS (EXE5 chip 0x0df): Roll (../roll/navi) in her dark palette; its damage by its user's side's statistic 3
 -- (formula 23, its table's row 0).
 local roll_ds = define.chip {
     id = "roll-ds",

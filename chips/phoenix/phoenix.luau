@@ -1,5 +1,5 @@
 --!strict
--- The phoenix, Phoenix's (BN5's actor object #0x27, 0x080BFA70; BN5's own), brought by its controller
+-- The phoenix, Phoenix's (EXE5's actor object #0x27, 0x080BFA70; EXE5's own), brought by its controller
 -- (./controllers). It appears at the back corner of its user's side (column 1 or 6, row 3) and, as it comes, picks
 -- 18 target panels: 12 of the middle columns' (3 and 4) and 6 of columns 2 and 5, drawn at random and shuffled.
 -- After a hit of no damage over the whole field it fades in, waits 30 ticks, then drops 18 fireballs (./fireball),

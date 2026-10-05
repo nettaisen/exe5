@@ -1,5 +1,5 @@
 --!strict
--- BN5's arm shots (actions 0x51 and 0x52, 0x080EF64A and 0x080EF6E2: SpShake's and Pulsar's, BN5's own, the same
+-- EXE5's arm shots (actions 0x51 and 0x52, 0x080EF64A and 0x080EF6E2: SpShake's and Pulsar's, EXE5's own, the same
 -- code but for what they fire): the navi raises its buster arm (lib/arm) and on the second tick fires from the
 -- panel ahead; 6 ticks in all, then 5 to stand down.
 

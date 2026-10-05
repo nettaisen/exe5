@@ -1,6 +1,6 @@
 --!strict
--- The panel searches BN5's computer-navi AI runs (./ai, ./place): where to step, where a chip reaches from. Most are
--- BN6's routines (the same code in both games); the BN5-only ones are named by their BN5 address. A search that finds
+-- The panel searches EXE5's computer-navi AI runs (./ai, ./place): where to step, where a chip reaches from. Most are
+-- EXE6's routines (the same code in both games); the EXE5-only ones are named by their EXE5 address. A search that finds
 -- nothing returns nil; one that finds several picks one with a battle RNG draw (`GetPositiveSignedRNG2`, modulo
 -- how many), in the order the original lists them.
 
@@ -161,12 +161,12 @@ function panels.random_relative(x: number, y: number, require: number, forbid: n
     return px, py, #found
 end
 
--- `GetRandomRelativePanelFiltered` (BN5's 0x08012C26): the same over the panel offset list `index` (data.offsets).
+-- `GetRandomRelativePanelFiltered` (EXE5's 0x08012C26): the same over the panel offset list `index` (data.offsets).
 function panels.random_offset(x: number, y: number, require: number, forbid: number, index: number, side: number): (number?, number?, number)
     return panels.random_relative(x, y, require, forbid, data.offsets[index], side)
 end
 
--- BN5's 0x08012C38: the panels from which a chip of reach list `range` (data.ranges) reaches (x, y): the list
+-- EXE5's 0x08012C38: the panels from which a chip of reach list `range` (data.ranges) reaches (x, y): the list
 -- turned the other side's way.
 function panels.reaching(x: number, y: number, require: number, forbid: number, range: number, side: number): (number?, number?, number)
     return panels.random_relative(x, y, require, forbid, data.ranges[range], bit32.bxor(side, 1))
@@ -189,7 +189,7 @@ end
 -- The panels above and below (0x08012D7C).
 local UP_DOWN: { { number } } = { { 0, -1 }, { 0, 1 } }
 
--- BN5's 0x08012D48: the panel above or below the navi it may step onto (`byte_8015C84`'s rows), at random.
+-- EXE5's 0x08012D48: the panel above or below the navi it may step onto (`byte_8015C84`'s rows), at random.
 function panels.random_up_down(navi: Object): (number?, number?)
     local row = STEP[bit32.band(navi.alliance, 1) + 1]
     return panels.random_toward(navi, navi.panel_x, navi.panel_y, row[1], row[2], UP_DOWN)
@@ -224,7 +224,7 @@ end
 -- or a neutral one).
 local OWN_BODIES: { number } = { 0x01800000, 0x02800000 }
 
--- BN5's 0x08013126: of the front panels of the navi's own area it may step onto (`sub_800D1F0`), those whose next
+-- EXE5's 0x08013126: of the front panels of the navi's own area it may step onto (`sub_800D1F0`), those whose next
 -- panel forward is free of its side's and neutral bodies and is one a body may stand on (flag 0x10000): one at
 -- random.
 function panels.front_line(navi: Object, side: number, flip: number): (number?, number?)

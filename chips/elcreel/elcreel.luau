@@ -1,5 +1,5 @@
 --!strict
--- BN5's ElcReel1-3 (action 0x23, 0x080ECE4C) and their reel (attack object #0xA4, 0x080DABBC): BN5's own. The navi
+-- EXE5's ElcReel1-3 (action 0x23, 0x080ECE4C) and their reel (attack object #0xA4, 0x080DABBC): EXE5's own. The navi
 -- raises its reel launcher and, on the action's second tick, the reel leaves from the panel ahead, 26 pixels up,
 -- rolling 8 pixels a tick along the row and hitting navis (hit modifier 1). When it hits something it stops, hidden,
 -- and 5 ticks later hooks every navi beside it, above, below, in front or behind (by the field, not by its facing):

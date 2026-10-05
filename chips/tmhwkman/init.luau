@@ -1,10 +1,10 @@
 --!strict
 -- TmhwkMan, TmhwkMnSP and TmhwkMnDS: the tmhwkman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- TmhwkMan (BN5 chip 0x0fb): TomahawkMan cuts in and brings his tomahawk down on the two columns ahead (./navi).
+-- TmhwkMan (EXE5 chip 0x0fb): TomahawkMan cuts in and brings his tomahawk down on the two columns ahead (./navi).
 local tmhwkman = define.chip {
     id = "tmhwkman",
     codes = { "T" },
@@ -23,7 +23,7 @@ local tmhwkman = define.chip {
     navi = navi.summon,
 }
 
--- TmhwkMnSP (BN5 chip 0x0fc): TomahawkMan cuts in and brings his tomahawk down on the two columns ahead
+-- TmhwkMnSP (EXE5 chip 0x0fc): TomahawkMan cuts in and brings his tomahawk down on the two columns ahead
 -- (../tmhwkman/navi); its damage by how fast its user deleted TomahawkMan SP (rules/sp-chips: formula 11, its table's
 -- row 10).
 local tmhwkmn_sp = define.chip {
@@ -44,7 +44,7 @@ local tmhwkmn_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- TmhwkMnDS (BN5 chip 0x0fd): TomahawkMan, dark, cuts in and brings his tomahawk down on the two columns ahead
+-- TmhwkMnDS (EXE5 chip 0x0fd): TomahawkMan, dark, cuts in and brings his tomahawk down on the two columns ahead
 -- (../tmhwkman/navi); its damage by its user's side's statistic 3 (formula 33, its table's row 10).
 local tmhwkmn_ds = define.chip {
     id = "tmhwkmn-ds",

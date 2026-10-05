@@ -1,8 +1,8 @@
 --!strict
--- WindRack's action (action 0x26, 0x080ED098: BN6's WindRack, `sub_80EE192`, but for its look and its blow): the navi
+-- WindRack's action (action 0x26, 0x080ED098: EXE6's WindRack, `sub_80EE192`, but for its look and its blow): the navi
 -- swings a rack with a swirl of wind around it. On the ninth tick it hits the column ahead, 16 pixels up, for 10
--- ticks, pushing (hit modifier 0x49). 22 ticks, then 6 of recovery. Unlike BN6's: the hit is null-element whatever
--- the chip's, no gusts blow down the rows, and the rack's animation is BN5's (0x080ED17A: a navi's or a player's AI
+-- ticks, pushing (hit modifier 0x49). 22 ticks, then 6 of recovery. Unlike EXE6's: the hit is null-element whatever
+-- the chip's, no gusts blow down the rows, and the rack's animation is EXE5's (0x080ED17A: a navi's or a player's AI
 -- index, but 0x16's and 0x17's 0).
 
 local attachment = require("../../objects/attachment")

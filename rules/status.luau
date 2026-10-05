@@ -1,10 +1,10 @@
 --!strict
--- Statuses (0x0801CEC4, BN6's `off_80209EC`: four groups, paralysis, confusion, blindness and
+-- Statuses (0x0801CEC4, EXE6's `off_80209EC`: four groups, paralysis, confusion, blindness and
 -- immobilization, by level; their bytes are compat's): what a hit's status does to its target, and the HP
--- bug's drain periods (0x0800E02C, BN6's values). The timers are 2 bytes further into the collision
--- record than BN6's (paralysis at +0x1E). Rows past a group's end read the next groups' rows, or the
--- bytes after the table: named for what they read, as BN6's.
--- Written by tools/bn5/gen_rules.py (bn6battle-verify) from the BN5 ROM; people own it now.
+-- bug's drain periods (0x0800E02C, EXE6's values). The timers are 2 bytes further into the collision
+-- record than EXE6's (paralysis at +0x1E). Rows past a group's end read the next groups' rows, or the
+-- bytes after the table: named for what they read, as EXE6's.
+-- Written by tools/exe5/gen_rules.py (bn6battle-verify) from the EXE5 ROM; people own it now.
 
 local status = {
     paralyze_90 = define.status {
@@ -391,39 +391,39 @@ local status = {
         duration = 0,
         timer = { other = 0 },
     },
-    -- BN5's per-form tick table (0x080EB1E8) runs none of BN6's `sub_80F0608` (the Fire charge, a form's
+    -- EXE5's per-form tick table (0x080EB1E8) runs none of EXE6's `sub_80F0608` (the Fire charge, a form's
     -- height): MegaMan's (0x080F04CE) steps GyroSoul's overlay (rules/souls). Its hit intake (0x080178EC) takes a
     -- hit's NaviCust bug (0x0801103E) before the HP bug drains (0x0800DFEC), and a drain bug's argument goes by its
     -- flags (bit 4 adds, bit 5 subtracts, else it raises the level).
     rules = {
         hp_bug_periods = { 0, 40, 35, 30, 25, 20, 15, 10 },
         form_tick = false,
-        -- The mercy flash hides the navi while its timer's bit 1 is clear (0x080137B6; BN6's while it is set).
+        -- The mercy flash hides the navi while its timer's bit 1 is clear (0x080137B6; EXE6's while it is set).
         flash_hides_on_clear = true,
         -- A navi's status word read before its init made its collision data (through the null pointer, from the
         -- BIOS: a round's first tick, the other side's first barrier's visual asking whether the local navi is blind,
-        -- 0x0800CDF4): an interrupt's opcode (read on the console at 0x0800CE18), without BN6's blind bit.
+        -- 0x0800CDF4): an interrupt's opcode (read on the console at 0x0800CE18), without EXE6's blind bit.
         missing_collision_status = 0xE55EC002,
         -- Its status block (0x08017CC8 on) runs the flash's timer first, whatever the battle's flags (0x080173C4),
         -- then the slides, a drag and a flinch, which end a paralysis unless a counter just made it.
-        reactions = "bn5",
+        reactions = "exe5",
         bugs_before_drain = true,
         drain_bug_flags = true,
         -- DarkInvs's no-charge drive: its ticks count down at the intake's end (0x0800DBE0) and their end asks for the
         -- stun strike (action 0x49, the drive's end: chips/darkinvs); the idle hands the step to the systems (the
         -- computer-navi AI, 0x080F03E4); the last 180 ticks flicker gray (0x080136E0).
         no_charge_drive = true,
-        -- BN5's loss of HP (object_subtractHP, 0x0800C6E0; applyDamageToPlayer, 0x080185A2): a player's loss drains
+        -- EXE5's loss of HP (object_subtractHP, 0x0800C6E0; applyDamageToPlayer, 0x080185A2): a player's loss drains
         -- its side's gauge too, a dark MegaMan (emotion 5) brought to 0 holds at 1 HP once a battle and asks for his
         -- last stand (0x0802C16C: the roles' `volley`, rules/emotion/dark-survival), and a hit shows (white, its
         -- sounds) by the register that check leaves.
-        hp_loss = "bn5",
-        -- BN5's emotions (0x08012740): a soul first, then anger, a mood of 0 (a dark MegaMan's), Full Synchro, a mood
+        hp_loss = "exe5",
+        -- EXE5's emotions (0x08012740): a soul first, then anger, a mood of 0 (a dark MegaMan's), Full Synchro, a mood
         -- under 65 worried; its mood setter (0x080127D6) leaves a mood of 0; its anger tick (0x08011A14) passes over
         -- AI index 23.
-        emotions = "bn5",
+        emotions = "exe5",
         -- The weakness request (a dark chip used in a soul, 0x08010070) breaks any form to the base form (0x080122C8).
-        form_break = "bn5",
+        form_break = "exe5",
     },
 }
 

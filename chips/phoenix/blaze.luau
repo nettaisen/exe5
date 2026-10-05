@@ -1,5 +1,5 @@
 --!strict
--- Where Phoenix's fireball lands (BN5's effect object #0x88, 0x080EA4FC; BN5's own): a blaze on the panel, its
+-- Where Phoenix's fireball lands (EXE5's effect object #0x88, 0x080EA4FC; EXE5's own): a blaze on the panel, its
 -- sprite's animation 0 for 6 ticks, 1 for 21, 2 for 3; then it goes.
 
 local blaze = {}

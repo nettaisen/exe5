@@ -1,5 +1,5 @@
 --!strict
--- LarkMan's swoop (BN5's attack object #0xBA, 0x080DD738; BN5's own): LarkMan's body as a hit, which flies in from
+-- LarkMan's swoop (EXE5's attack object #0xBA, 0x080DD738; EXE5's own): LarkMan's body as a hit, which flies in from
 -- below the field two columns behind its navi, diagonally up across three columns, circles back round a center 20
 -- pixels ahead of where it turns, and flies off backward. The navi chip's (variant 5, from LarkMan's navi) acts
 -- and animates while the battle is dimmed. With the navi's command entered (./navi), its body hits for nothing and

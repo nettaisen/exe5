@@ -1,5 +1,5 @@
-# Japanese: BN5's strings by definition key (the Japanese ROMs, EXE5 Team of Blues and Team of
-# Colonel, the same), written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs. Display text only.
+# Japanese: EXE5's strings by definition key (the Japanese ROMs, EXE5 Team of Blues and Team of
+# Colonel, the same), written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs. Display text only.
 
 language = "ja"
 

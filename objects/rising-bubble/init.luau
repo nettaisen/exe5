@@ -1,6 +1,6 @@
 --!strict
--- BN5's rising bubble (effect object #0x14, BN6's code: @exelib/rising-bubble/rising_bubble), BN5's kind; its sprite
--- BN6's small puff.
+-- EXE5's rising bubble (effect object #0x14, EXE6's code: @exelib/rising-bubble/rising_bubble), EXE5's kind; its sprite
+-- EXE6's small puff.
 
 local common = require("@exelib/rising-bubble")
 

@@ -1,7 +1,7 @@
 --!strict
--- BN5's light and dark MegaMan (docs/design/bn5-map.md §6.1). A side's MegaMan is light or dark by his save's
+-- EXE5's light and dark MegaMan (docs/design/exe5-map.md §6.1). A side's MegaMan is light or dark by his save's
 -- light/dark value (NaviStats +0x44, read through 0x08012882): the system's setup, which a setup takes from the
--- save (bn5-compat from a recording's). Two of BN5's rules read it:
+-- save (exe5-compat from a recording's). Two of EXE5's rules read it:
 --
 -- - **A dark MegaMan clears holy panels** (0x08017136, from the navi's intake every tick of the fight): when the
 --   panel he stands on is holy and the value is 499 or less, the panel turns Normal. Any holy panel, whoever made
@@ -12,11 +12,11 @@
 --   (0x080100EC: chip 0x185, action 0x1A's variant 3 with no parameters), which shows a sparkle.
 -- - **The dark chips** (flag 0x20; 0x08010030, before that check): one fizzles in a battle that bars them (battle
 --   effect 0x100000), in a link battle for a light MegaMan (the chips' threshold), and for any navi but MegaMan
---   (or BN5's navi 23). Used, it breaks a soul (0x08010070: the weakness request, 0x080122C8), marks its side
+--   (or EXE5's navi 23). Used, it breaks a soul (0x08010070: the weakness request, 0x080122C8), marks its side
 --   (statistic 2 set to 1), leaves the navi's mood at 0 and ends his
 --   anger, and costs him what the chip's entry of 0x0802C934 sets (a NaviCust bug of the battle: 0x0802C974's
 --   routines; in the operation battle the HP drain one level more instead), the light/dark check following.
--- - **The starting mood** (MegaMan's start, 0x08010EC8, where BN6's `sub_8013892` sets 0x80): by the value
+-- - **The starting mood** (MegaMan's start, 0x08010EC8, where EXE6's `sub_8013892` sets 0x80): by the value
 --   (0x0801283A): under 470 0 (a dark MegaMan's, his face the fifth: 0x0801AF64), under 500 64, from 1000 190, else
 --   the value / 20 + 103 (500: 0x80). A battle that holds the value (battle effect 0x20000) holds it at 500 from his
 --   start.
@@ -29,7 +29,7 @@
 --   (BCMegaMn, the navi's `variant_name`) in Hub Style, else the list's own (the navi's NameID: MegaMan's 0x180).
 --   +0x53 is written once, by the reload (0x08135968): 1 when the NaviCust's path finds no Hub Style (0x08137A58),
 --   else 0; so the name is BCMegaMn exactly in Hub Style. (Battle effect 0x40000 names every entry 0xE6, ChaosLrd:
---   no stage of BN5's content has that effect, and the enemy names have no entry but the navi's: not built.)
+--   no stage of EXE5's content has that effect, and the enemy names have no entry but the navi's: not built.)
 -- - **Its hit bugs** (0x0801103E, the navi's hit NaviCust bug): a hit with hit flag 0x400 brings no bug to a value of
 --   1000 or more (the weapons not reloaded either); code 0xFD is an HP drain of level 1 (code 0x18, argument 1) on a
 --   dark MegaMan (the value's tier, 0x0800DE5C, 2), code 0xFC the same on a value of 500 or more; else neither is
@@ -42,7 +42,7 @@ local operation_battle = require("../lib/operation_battle")
 -- A navi's stats as the costs write them.
 type Stats = Navi
 
--- The dark chips' costs (0x0802C974, by chip: BN5's chips 0xBB to 0xC6), the stats each sets.
+-- The dark chips' costs (0x0802C974, by chip: EXE5's chips 0xBB to 0xC6), the stats each sets.
 local function custom_damage(stats: Stats)
     stats.custom_damage = bit32.band(stats.custom_damage + 100, 0xFFFF)
 end
@@ -91,7 +91,7 @@ export type Setup = {
     karma: number,
 }
 
--- Dark MegaMan's AI index, and BN5's navi 23's (0x0800DE40: a computer navi of either draws in palette 1).
+-- Dark MegaMan's AI index, and EXE5's navi 23's (0x0800DE40: a computer navi of either draws in palette 1).
 local DARK_MEGAMAN = 0x16
 local NAVI_23 = 0x17
 
@@ -128,7 +128,7 @@ local function tier(v: number): number
     return 2
 end
 
--- 0x0800DD94 (BN6's `sub_801002C`): the palette of a navi of the player's kind.
+-- 0x0800DD94 (EXE6's `sub_801002C`): the palette of a navi of the player's kind.
 local function palette(side: number, navi: Object): number?
     if navi.actor_type ~= "player" then
         -- A computer navi: Dark MegaMan's (and navi 23's) 1, any other 0.
@@ -139,7 +139,7 @@ local function palette(side: number, navi: Object): number?
     end
     local stats = battle.navi(side)
     if stats.navi ~= megaman then
-        -- A link navi's (0x0800DA98, by BN5's navi numbers): BN5's content has none; the framework's.
+        -- A link navi's (0x0800DA98, by EXE5's navi numbers): EXE5's content has none; the framework's.
         return nil
     end
     local in_soul = not stats.form.base
@@ -159,7 +159,7 @@ local function palette(side: number, navi: Object): number?
     else
         p = tier(value())
     end
-    -- Hub Style (NaviStats +0x4C: BN5's patch card 111, applied at 0x08138214).
+    -- Hub Style (NaviStats +0x4C: EXE5's patch card 111, applied at 0x08138214).
     if hub and stats.hub_style ~= 0 then
         return p + stats.hub_style * 5 + 20
     end
@@ -174,7 +174,7 @@ local function use_dark_chip(side: number, navi: Object): boolean
     if battle.link() and value() >= LIGHT_CHIPS then
         return false
     end
-    -- (BN5's navi 23 may too; no other navi is in BN5's content.)
+    -- (EXE5's navi 23 may too; no other navi is in EXE5's content.)
     if battle.navi(side).navi ~= megaman then
         return false
     end
@@ -197,7 +197,7 @@ end
 local DRKRECOV = "drkrecov"
 
 -- 0x08025114, from the custom screen's opening (0x08022C5C) after its hand size and before the folder closes up: a
--- worried or dark MegaMan (BN5's emotions 1 and 5: a mood under 65, or 0) is offered a dark chip of his folder. Its
+-- worried or dark MegaMan (EXE5's emotions 1 and 5: a mood under 65, or 0) is offered a dark chip of his folder. Its
 -- dark chips are taken in order, the first at once and each later one in its place on an RNG1 draw's low bit; under
 -- a quarter of his HP, DrkRecov is taken without a draw and, once taken, kept. Unless the folder's first dark chip
 -- is among those the screen deals, the one taken trades places with the place after them. (Its other way in, battle

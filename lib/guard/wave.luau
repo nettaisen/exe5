@@ -1,5 +1,5 @@
 --!strict
--- BN5's shock wave (attack object #0x16, 0x080C739C; BN6's WaveArm wave, `sub_80C6B40`, is the same number with other
+-- EXE5's shock wave (attack object #0x16, 0x080C739C; EXE6's WaveArm wave, `sub_80C6B40`, is the same number with other
 -- code): a wave that hits one panel at a time, along its row. Each segment stands on its panel (a solid one: else it
 -- is gone at once) with its collision on, after its variant's ticks starts the next segment one panel ahead, and goes
 -- when its animation ends (moved off the field, out of sight). A variant may mark the panels it passes (crack,
@@ -67,7 +67,7 @@ local function hide(me: Object): boolean
     return true
 end
 
--- 0x080C74C2: after its ticks, the next segment ahead (BN6's `sub_80C6CE4`); its look's end hides it.
+-- 0x080C74C2: after its ticks, the next segment ahead (EXE6's `sub_80C6CE4`); its look's end hides it.
 local function spread(me: Object)
     if me.phase == 0 then
         me.phase = 1
@@ -114,7 +114,7 @@ local function tick(me: Object)
     me:highlight_collision_panels()
 end
 
--- BN6's `sub_80C6CFC`, BN5's 0x080C7544: what the variant does to its panel.
+-- EXE6's `sub_80C6CFC`, EXE5's 0x080C7544: what the variant does to its panel.
 local function mark(x: number, y: number, v: Variant)
     if v.panel == "cracked" then
         field.crack(x, y)
@@ -177,7 +177,7 @@ wave.kind = define.kind {
     end,
 }
 
--- BN6's `sub_80C6CE4`, BN5's 0x080C752C: a segment of `owner`'s on (x, y), of row `row`, with the damage word, of no
+-- EXE6's `sub_80C6CE4`, EXE5's 0x080C752C: a segment of `owner`'s on (x, y), of row `row`, with the damage word, of no
 -- element. (Its position is the spawner's registers until its init places it.)
 function wave.spawn(owner: Object, x: number, y: number, row: number, damage: number): Object?
     if not ROWS[row] then

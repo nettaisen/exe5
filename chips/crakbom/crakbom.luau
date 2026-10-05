@@ -1,6 +1,6 @@
 --!strict
--- BN5's CrakBom, ParaBom and ResetBom bomb (attack object #0x24, 0x080C91A4: BN6's #0x24, `sub_80C882C`, the same
--- code, which no BN6 chip throws): thrown three panels ahead in 35 ticks (0x080C9406), it lands and hits the column
+-- EXE5's CrakBom, ParaBom and ResetBom bomb (attack object #0x24, 0x080C91A4: EXE6's #0x24, `sub_80C882C`, the same
+-- code, which no EXE6 chip throws): thrown three panels ahead in 35 ticks (0x080C9406), it lands and hits the column
 -- there (region 4) with its chip's hit, a burst on each panel of it; off solid ground it ends in a puff. What
 -- differs is its kind (the record's Param1): 1 CrakBom's hit modifier 3, cracking the column; 2 ParaBom's
 -- paralysis; 3 ResetBom's bug 0xFB (MegaMan loses his body programs), each its burst's palette and its sound.
@@ -109,7 +109,7 @@ local function fly(me: Object, s: State)
         me.phase_init = 4
     end
     -- (On its eighth tick before landing, 0x080E9FD2 spawns effect object 0x83 at the target panel with battle flag
-    -- 0x40, which a netbattle never sets: not ported, bn5-map.md §15.6.)
+    -- 0x40, which a netbattle never sets: not ported, exe5-map.md §15.6.)
     local t = me.timer - 1
     me.timer = t
     if t >= 0 then

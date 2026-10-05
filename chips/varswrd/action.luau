@@ -1,7 +1,7 @@
 --!strict
--- VarSwrd's action (BN5's action 0x2A, 0x080ED4A2: BN6's `sub_80EF62E`'s waiting, BN5's own picks): the navi stands
+-- VarSwrd's action (EXE5's action 0x2A, 0x080ED4A2: EXE6's `sub_80EF62E`'s waiting, EXE5's own picks): the navi stands
 -- holding A and the chip becomes another sword by the direction sequence entered (with A held, each step the whole
--- joypad word, BN6's sequences): LongSwrd, FtrSword, WideSwrd, LifeSrd or SonicBom (0x080ED618). Letting go of A, or
+-- joypad word, EXE6's sequences): LongSwrd, FtrSword, WideSwrd, LifeSrd or SonicBom (0x080ED618). Letting go of A, or
 -- 48 ticks without a sequence, gives a Sword (chip 0x30). The pick's action starts in place (`object_setAttack0`) as
 -- that chip's, with its subtype and parameters and the original damage. In ProtoSoul or ShadowSoul (souls 1 and 8)
 -- the navi waits while A is up.

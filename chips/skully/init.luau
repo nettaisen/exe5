@@ -1,10 +1,10 @@
 --!strict
 -- Skully1, Skully2 and Skully3: the skully series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local skully = require("@self/skully")
 
--- Skully1 (BN5 chip 0x045): skulls that hop toward the nearest enemy, confusing what they hit (BN5's Skully,
+-- Skully1 (EXE5 chip 0x045): skulls that hop toward the nearest enemy, confusing what they hit (EXE5's Skully,
 -- chips/skully/skully: action 0x55).
 local skully1 = define.chip {
     id = "skully1",
@@ -22,7 +22,7 @@ local skully1 = define.chip {
     action = skully.action("skully1/action", skully.skulls(0)),
 }
 
--- Skully2 (BN5 chip 0x046): skulls that hop toward the nearest enemy, confusing what they hit (BN5's Skully,
+-- Skully2 (EXE5 chip 0x046): skulls that hop toward the nearest enemy, confusing what they hit (EXE5's Skully,
 -- chips/skully/skully: action 0x55).
 local skully2 = define.chip {
     id = "skully2",
@@ -40,7 +40,7 @@ local skully2 = define.chip {
     action = skully.action("skully2/action", skully.skulls(1)),
 }
 
--- Skully3 (BN5 chip 0x047): skulls that hop toward the nearest enemy, confusing what they hit (BN5's Skully,
+-- Skully3 (EXE5 chip 0x047): skulls that hop toward the nearest enemy, confusing what they hit (EXE5's Skully,
 -- chips/skully/skully: action 0x55).
 local skully3 = define.chip {
     id = "skully3",

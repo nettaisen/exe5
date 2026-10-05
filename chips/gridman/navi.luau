@@ -1,5 +1,5 @@
 --!strict
--- GridMan, the navi of the GridMan chips (BN5's actor object #0x1F, 0x080BDE5C; BN5's own), brought by their navi
+-- GridMan, the navi of the GridMan chips (EXE5's actor object #0x1F, 0x080BDE5C; EXE5's own), brought by their navi
 -- chip controller. He appears (and goes at once off a solid panel), stands, and dashes forward across the field,
 -- zigzagging between the top and bottom rows, his grid (./grid) waiting at the far column; at each column's center
 -- he snaps to its row and checks the panel (a panel that isn't solid and free sends him away), and from the far

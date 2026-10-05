@@ -1,6 +1,6 @@
 --!strict
 -- The weapon routines that fire a chip, which the patch cards name for MegaMan's B button, charged shot and B+Back
--- special (docs/design/bn5-map.md §15.14): each loads a chip as the attack (0x0800FE78, BN6's `loc_80126EA`'s place:
+-- special (docs/design/exe5-map.md §15.14): each loads a chip as the attack (0x0800FE78, EXE6's `loc_80126EA`'s place:
 -- the chip record's damage, hit parameter, lockout, element, subtype and parameters; no bonus; not charged) and
 -- starts the chip's use. Each weapon is its routine (`megaman/<chip>`), its charge time the charge table's row
 -- (0x0801CA6C) by Charge 0 to 5, Charge 5 reading on into the next row's first entry.
@@ -50,7 +50,7 @@ local function fires(id: string, chip: Chip, ticks: { number }): Weapon
     }
 end
 
--- A guard's B+Back: the chip loaded, and 40 ticks before the next chip; the chip's own action (action 0x1F, BN5's
+-- A guard's B+Back: the chip loaded, and 40 ticks before the next chip; the chip's own action (action 0x1F, EXE5's
 -- guard: the routine names it, the chip's record does too).
 local GUARD_LOCKOUT = 40
 local function guards(id: string, chip: Chip, ticks: { number }): Weapon

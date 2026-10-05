@@ -1,10 +1,10 @@
 --!strict
 -- Tornado and Static: the tornado series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local tornado = require("@self/tornado")
 
--- Tornado (BN5 chip 0x008): action 0x22, BN6's blow with BN5's fan and tornado (chips/tornado/tornado): a plain tornado
+-- Tornado (EXE5 chip 0x008): action 0x22, EXE6's blow with EXE5's fan and tornado (chips/tornado/tornado): a plain tornado
 -- two panels ahead.
 local tornado_chip = define.chip {
     id = "tornado",
@@ -22,7 +22,7 @@ local tornado_chip = define.chip {
     action = tornado.single,
 }
 
--- Static (BN5 chip 0x01b): action 0x22, BN6's blow with BN5's fan and tornado (chips/tornado/tornado): static tornadoes two
+-- Static (EXE5 chip 0x01b): action 0x22, EXE6's blow with EXE5's fan and tornado (chips/tornado/tornado): static tornadoes two
 -- panels ahead and around, more the more kinds of NaviCust bug the navi has, paralyzing by that level.
 local static = define.chip {
     id = "static",

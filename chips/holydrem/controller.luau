@@ -1,5 +1,5 @@
 --!strict
--- HolyDrem's dimming controller (BN5's effect object #0x59, 0x080E6DFC: the same as BN6's BurnSqr controller,
+-- HolyDrem's dimming controller (EXE5's effect object #0x59, 0x080E6DFC: the same as EXE6's BurnSqr controller,
 -- `sub_80E702C`, but for what its effect sends out and where it keeps its flag): the usual dimming phases
 -- (@exelib/dimming), with an effect that sends out HolyDrem's stand-in (./actor) with the damage plus the bonus
 -- and lasts until it is done.
@@ -15,7 +15,7 @@ export type State = {
 }
 
 -- 0x080E6E40: the stand-in on the first tick; the effect ends once it is done (at once if it couldn't be
--- spawned). (BN5's spawner, 0x080BD93E, is passed the controller's row but not its column: the stand-in starts on
+-- spawned). (EXE5's spawner, 0x080BD93E, is passed the controller's row but not its column: the stand-in starts on
 -- column 0 until its init places it on the user.)
 local function effect(me: Object)
     local s = me.state :: State

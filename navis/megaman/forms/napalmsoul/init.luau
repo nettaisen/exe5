@@ -1,5 +1,5 @@
 --!strict
--- NapalmSoul (soul 4, Team ProtoMan's): BN5's Soul Unison with NapalmMan, for a Fire chip given up. MegaMan's sprite
+-- NapalmSoul (soul 4, Team ProtoMan's): EXE5's Soul Unison with NapalmMan, for a Fire chip given up. MegaMan's sprite
 -- in it is 00-04 (0x0800DA58[4]), his element Fire (0x0800E634 by soul); he wears nothing over it (NapalmMan's image
 -- wears his cannon). Its weapons (0x0801CA1C's row 4, loaded by 0x0800DCA0): the buster (routine 0), the fire
 -- bullets (0x19, ./charge), Fire chips charged with A (0x27: any Fire chip but a dimming or dark one, 0x0801090A;

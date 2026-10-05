@@ -1,11 +1,11 @@
 --!strict
 -- Barrier, Barr100 and Barr200: the barrier series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local barriers = require("../lib/barriers")
 
--- Barrier (BN5 chip 0x087): a barrier of 10 HP on the user: BN6's barrier chips (the dimming handler's subtype 14)
--- with BN5's barriers (lib/barriers).
+-- Barrier (EXE5 chip 0x087): a barrier of 10 HP on the user: EXE6's barrier chips (the dimming handler's subtype 14)
+-- with EXE5's barriers (lib/barriers).
 local barrier = define.chip {
     id = "barrier",
     codes = { "B", "L", "S", "*" },
@@ -24,8 +24,8 @@ local barrier = define.chip {
     dimming = barriers.controller.hook(barriers.barrier_10),
 }
 
--- Barr100 (BN5 chip 0x088): a barrier of 100 HP on the user: BN6's barrier chips (the dimming handler's subtype 14)
--- with BN5's barriers (lib/barriers).
+-- Barr100 (EXE5 chip 0x088): a barrier of 100 HP on the user: EXE6's barrier chips (the dimming handler's subtype 14)
+-- with EXE5's barriers (lib/barriers).
 local barr100 = define.chip {
     id = "barr100",
     codes = { "P" },
@@ -43,8 +43,8 @@ local barr100 = define.chip {
     dimming = barriers.controller.hook(barriers.barrier_100),
 }
 
--- Barr200 (BN5 chip 0x089): a barrier of 200 HP on the user: BN6's barrier chips (the dimming handler's subtype 14)
--- with BN5's barriers (lib/barriers).
+-- Barr200 (EXE5 chip 0x089): a barrier of 200 HP on the user: EXE6's barrier chips (the dimming handler's subtype 14)
+-- with EXE5's barriers (lib/barriers).
 local barr200 = define.chip {
     id = "barr200",
     codes = { "W" },

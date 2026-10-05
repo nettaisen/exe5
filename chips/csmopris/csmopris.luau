@@ -1,5 +1,5 @@
 --!strict
--- BN5's CsmoPris (the navi chips' action with the summon table's entry 22, 0x080BFA4A): BN5's own CosmoMan (actor
+-- EXE5's CsmoPris (the navi chips' action with the summon table's entry 22, 0x080BFA4A): EXE5's own CosmoMan (actor
 -- object #0x26, 0x080BF814), brought by the navi chip controller. He appears (and goes at once off a solid panel's
 -- want), poses, rises over the middle row, and sends nine comets (attack object #0x74, 0x080D482C: its variant 4)
 -- from 20 pixels ahead of him along the rows in turn, 20 ticks apart; 60 ticks later he comes back down and goes,

@@ -1,15 +1,15 @@
 --!strict
--- Django, the navi of BN5's Django chips (BN5's actor object #0x24, 0x080BF214; BN5's own: the US BN6's Django
--- slot is empty, and BN6's Japanese Django rides a bike), brought by the navi chip controller. He appears and
+-- Django, the navi of EXE5's Django chips (EXE5's actor object #0x24, 0x080BF214; EXE5's own: the US EXE6's Django
+-- slot is empty, and EXE6's Japanese Django rides a bike), brought by the navi chip controller. He appears and
 -- shuts the first enemy navi ahead in his row in his coffin (./coffin; the navi vanishes), raises his sun
 -- (./sun), which lands with rubble round the coffin (./rubble) and a shaking camera, and purifies it: for as many
 -- ticks as the chip's damage, a hit over the coffin's 3x3 each tick (1 damage, 2 with Otenko on his side; the
 -- first one bugging), under his lights (./lights). Then the navi is let out, and he goes. Without a target, or
 -- standing off a solid panel, he goes after appearing.
 --
--- Waiting on the engine: the first hit's bugs (0xFD with 0x11, DS's 0xFC) are BN5's own codes, which BN5's bug
+-- Waiting on the engine: the first hit's bugs (0xFD with 0x11, DS's 0xFC) are EXE5's own codes, which EXE5's bug
 -- dispatch (0x0801103E) turns into an HP drain on a dark MegaMan (0xFD) or a light one (0xFC, his light/dark
--- value 500 or more); the engine reads BN6's dispatch (`sub_80139F6`), which has neither.
+-- value 500 or more); the engine reads EXE6's dispatch (`sub_80139F6`), which has neither.
 
 local collision = require("../../rules/collision")
 local regions = require("@exelib/regions")
@@ -89,7 +89,7 @@ local function actor_at(x: number, y: number, side: number): Object?
     return nil
 end
 
--- 0x080E155C / 0x080E1572 (BN6's `sub_80E14EC`, `sub_80E1502`): the prisoner vanishes into the coffin, and is
+-- 0x080E155C / 0x080E1572 (EXE6's `sub_80E14EC`, `sub_80E1502`): the prisoner vanishes into the coffin, and is
 -- let out.
 local function shut_in(o: Object)
     if o.actor_type == "player" then

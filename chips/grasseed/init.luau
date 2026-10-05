@@ -1,8 +1,8 @@
 --!strict
--- GrasSeed (BN5 chip 0x02a): a seed thrown three panels ahead that turns the panels around where it lands to grass
--- (only its own if it hit something): BN5's throw (lib/bombs, action 0x12) and its seed (lib/bombs/seed, attack object
+-- GrasSeed (EXE5 chip 0x02a): a seed thrown three panels ahead that turns the panels around where it lands to grass
+-- (only its own if it hit something): EXE5's throw (lib/bombs, action 0x12) and its seed (lib/bombs/seed, attack object
 -- #0x4A).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local bombs = require("../lib/bombs")
 local seed = require("../lib/bombs/seed")

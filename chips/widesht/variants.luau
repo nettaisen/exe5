@@ -1,9 +1,9 @@
 --!strict
--- BN5's wide waves (the shared wave, @exelib/widesht/wave, BN6's attack object #0x3B; BN5's the same code but for
--- its sprite, 10-1d where BN6's is 10-37), as BN5's chips need them, for BN5's wave (./wave): the kinds' speeds are BN6's
--- (`byte_80CB58C`, BN5's 0x080CC880: the same values), the collision types BN5's. A chip names its kind in its
--- record's parameters (+0x10, the attack's +0x0C): WideSht1 to WideSht3 kinds 3 to 5, where BN6's one WideSht has
--- 3; SuprSpr1 to SuprSpr3 kinds 6 to 8, where BN6's one SuprSpr has 6.
+-- EXE5's wide waves (the shared wave, @exelib/widesht/wave, EXE6's attack object #0x3B; EXE5's the same code but for
+-- its sprite, 10-1d where EXE6's is 10-37), as EXE5's chips need them, for EXE5's wave (./wave): the kinds' speeds are EXE6's
+-- (`byte_80CB58C`, EXE5's 0x080CC880: the same values), the collision types EXE5's. A chip names its kind in its
+-- record's parameters (+0x10, the attack's +0x0C): WideSht1 to WideSht3 kinds 3 to 5, where EXE6's one WideSht has
+-- 3; SuprSpr1 to SuprSpr3 kinds 6 to 8, where EXE6's one SuprSpr has 6.
 
 local collision = require("../../rules/collision")
 local wave = require("@exelib/widesht/wave")
@@ -33,9 +33,9 @@ variants.super = wide(0x6_0000, true)
 variants.super2 = wide(0x6_8000, true)
 variants.super3 = wide(0x7_0000, true)
 
--- DarkWide's (kind 9, which BN6's table has and no BN6 chip fires): it goes through, trails afterimages of its
--- own sprite (animation 1: 0x080CC9A6's word 0x11D10, BN6's rock cubes 0x10010) and carries bug 0x14 with
--- argument 2, as BN5's row 0x25 in palette 1 (0x080CC82E).
+-- DarkWide's (kind 9, which EXE6's table has and no EXE6 chip fires): it goes through, trails afterimages of its
+-- own sprite (animation 1: 0x080CC9A6's word 0x11D10, EXE6's rock cubes 0x10010) and carries bug 0x14 with
+-- argument 2, as EXE5's row 0x25 in palette 1 (0x080CC82E).
 variants.dark = wave.variant {
     speed = 0x7_0000,
     pierces = true,

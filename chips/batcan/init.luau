@@ -1,11 +1,11 @@
 --!strict
 -- BatCan1, BatCan2, BatCan3 and BatCan4: the batcan series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local batcan = require("@self/batcan")
 
--- BatCan1 (BN5 chip 0x13b): the navi raises its bat cannon and fires an unseen shot from the panel ahead on the 7th
--- tick: BN6's BatCan (chips/batcan/batcan).
+-- BatCan1 (EXE5 chip 0x13b): the navi raises its bat cannon and fires an unseen shot from the panel ahead on the 7th
+-- tick: EXE6's BatCan (chips/batcan/batcan).
 local batcan1 = define.chip {
     id = "batcan1",
     codes = { "*" },
@@ -22,8 +22,8 @@ local batcan1 = define.chip {
     action = batcan.action { shots = { 3 } },
 }
 
--- BatCan2 (BN5 chip 0x13c): the navi raises its bat cannon and fires an unseen shot from the panel ahead on the 7th
--- tick: BN6's BatCan (chips/batcan/batcan).
+-- BatCan2 (EXE5 chip 0x13c): the navi raises its bat cannon and fires an unseen shot from the panel ahead on the 7th
+-- tick: EXE6's BatCan (chips/batcan/batcan).
 local batcan2 = define.chip {
     id = "batcan2",
     codes = { "S" },
@@ -40,8 +40,8 @@ local batcan2 = define.chip {
     action = batcan.action { shots = { 3 } },
 }
 
--- BatCan3 (BN5 chip 0x13d): the navi raises its bat cannon and fires an unseen shot from the panel ahead on the 7th
--- tick: BN6's BatCan (chips/batcan/batcan).
+-- BatCan3 (EXE5 chip 0x13d): the navi raises its bat cannon and fires an unseen shot from the panel ahead on the 7th
+-- tick: EXE6's BatCan (chips/batcan/batcan).
 local batcan3 = define.chip {
     id = "batcan3",
     codes = { "R" },
@@ -58,8 +58,8 @@ local batcan3 = define.chip {
     action = batcan.action { shots = { 3 } },
 }
 
--- BatCan4 (BN5 chip 0x13e): the navi raises its bat cannon and fires three unseen shots from the panel ahead, 16
--- ticks apart, the last staggering harder: BN6's BatCan4 (chips/batcan/batcan).
+-- BatCan4 (EXE5 chip 0x13e): the navi raises its bat cannon and fires three unseen shots from the panel ahead, 16
+-- ticks apart, the last staggering harder: EXE6's BatCan4 (chips/batcan/batcan).
 local batcan4 = define.chip {
     id = "batcan4",
     codes = { "Z" },

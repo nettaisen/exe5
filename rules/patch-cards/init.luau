@@ -1,5 +1,5 @@
 --!strict
--- BN5's patch-cards system (docs/design/bn5-map.md §15.14): as the round is set up (`round_setup`, after the
+-- EXE5's patch-cards system (docs/design/exe5-map.md §15.14): as the round is set up (`round_setup`, after the
 -- NaviCust's compile and before anything else reads the stats), a player's installed patch cards (the engine's
 -- definitions and the player's setup, `battle.patch_cards`; their effects ./cards.luau's) change MegaMan's stats,
 -- as the original's reload does after the compile (0x0813F97C: the compile, 0x0813FA10; then the cards, 0x08138214;
@@ -8,7 +8,7 @@
 -- The cards (0x08138214): Hub Style (NaviStats +0x4C) cleared, and set with card 111 switched on (0x08137A58: 1,
 -- Team Colonel's routine 2, 0x081382FC); the
 -- block of slots seeded from the stats (0x08137B56) and each switched-on card's effects run over it in the kinds'
--- order (0x08137B00; the run BN6's shares, @exelib/patch-cards/apply); the HP the working HP; then the slots a card
+-- order (0x08137B00; the run EXE6's shares, @exelib/patch-cards/apply); the HP the working HP; then the slots a card
 -- wrote copied into the stats (0x081382B8's 39 routines), some of them through tables, BugStop (the card's, at 1)
 -- holding back the bug slots. Their bug count (0x081384D8: the NaviCust's bug bytes, the encounters' and drops' bugs,
 -- no supports) sets event flag 0x10C4, the emotion window's glitch when the save has cards (0x0813F650: the card

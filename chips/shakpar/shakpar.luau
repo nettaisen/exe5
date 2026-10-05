@@ -1,5 +1,5 @@
 --!strict
--- BN5's ShakPar1-3 (action 0x1A's instant effect 22, 0x080E7FE0): BN5's own. An unseen shaker (effect object #0x66,
+-- EXE5's ShakPar1-3 (action 0x1A's instant effect 22, 0x080E7FE0): EXE5's own. An unseen shaker (effect object #0x66,
 -- 0x080E7F60) on the user's panel sends SpShake's wave (chips/spshake/spshake: attack object #0x68) from the user's side's
 -- back column (column 1, or 6 for a side facing left) along the bottom, the top and the middle rows (0x080E7FDC), 15
 -- ticks apart, then goes. The waves are of its element and its parameters (the record's: the fastest speed, hits

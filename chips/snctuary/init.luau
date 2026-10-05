@@ -1,7 +1,7 @@
 --!strict
--- Snctuary (BN5 chip 0x0d0): every panel of the user's area turns holy: BN6's panel changer
--- (@exelib/panel-changer, @exelib/panel-chips; BN5's the same code).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Snctuary (EXE5 chip 0x0d0): every panel of the user's area turns holy: EXE6's panel changer
+-- (@exelib/panel-changer, @exelib/panel-chips; EXE5's the same code).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local panel_changer = require("../objects/panel-changer")
 local panel_chips = require("../lib/panel_chips")

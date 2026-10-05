@@ -1,10 +1,10 @@
 --!strict
 -- NumbrMan, NumbrMnSP and NumbrMnDS: the numbrman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- NumbrMan (BN5 chip 0x0f2): NumberMan cuts in and throws a die three columns ahead, its face times his damage when it
+-- NumbrMan (EXE5 chip 0x0f2): NumberMan cuts in and throws a die three columns ahead, its face times his damage when it
 -- bursts (./navi).
 local numbrman = define.chip {
     id = "numbrman",
@@ -24,7 +24,7 @@ local numbrman = define.chip {
     navi = navi.summon,
 }
 
--- NumbrMnSP (BN5 chip 0x0f3): NumberMan cuts in and throws a die three columns ahead, its face times his damage when it
+-- NumbrMnSP (EXE5 chip 0x0f3): NumberMan cuts in and throws a die three columns ahead, its face times his damage when it
 -- bursts (../numbrman/navi); its damage by how fast its user deleted NumberMan SP (rules/sp-chips: formula 10, its
 -- table's row 9).
 local numbrmn_sp = define.chip {
@@ -45,7 +45,7 @@ local numbrmn_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- NumbrMnDS (BN5 chip 0x0f4): NumberMan, dark, cuts in and throws a die three columns ahead, its face times his damage
+-- NumbrMnDS (EXE5 chip 0x0f4): NumberMan, dark, cuts in and throws a die three columns ahead, its face times his damage
 -- when it bursts (../numbrman/navi); its damage by its user's side's statistic 3 (formula 32, its table's row 9).
 local numbrmn_ds = define.chip {
     id = "numbrmn-ds",

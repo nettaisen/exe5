@@ -1,10 +1,10 @@
 --!strict
 -- CrakOut, DublCrak and TripCrak: the crakout series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local crack = require("@self/crack")
 
--- CrakOut (BN5 chip 0x05b): action 0x1B, cracks on the panel ahead (chips/crakout/crack).
+-- CrakOut (EXE5 chip 0x05b): action 0x1B, cracks on the panel ahead (chips/crakout/crack).
 local crakout = define.chip {
     id = "crakout",
     codes = { "*" },
@@ -22,7 +22,7 @@ local crakout = define.chip {
     action = crack.action(0),
 }
 
--- DublCrak (BN5 chip 0x05c): action 0x1B, cracks on the panel ahead and the one behind it (chips/crakout/crack).
+-- DublCrak (EXE5 chip 0x05c): action 0x1B, cracks on the panel ahead and the one behind it (chips/crakout/crack).
 local dublcrak = define.chip {
     id = "dublcrak",
     codes = { "*" },
@@ -40,7 +40,7 @@ local dublcrak = define.chip {
     action = crack.action(1),
 }
 
--- TripCrak (BN5 chip 0x05d): action 0x1B, cracks on the column ahead (chips/crakout/crack).
+-- TripCrak (EXE5 chip 0x05d): action 0x1B, cracks on the column ahead (chips/crakout/crack).
 local tripcrak = define.chip {
     id = "tripcrak",
     codes = { "*" },

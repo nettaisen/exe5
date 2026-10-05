@@ -1,5 +1,5 @@
 --!strict
--- BN5's RainyDay (the dimming handler's subtype 61): BN5's own. Its controller (effect object #0x75, 0x080E908C: the
+-- EXE5's RainyDay (the dimming handler's subtype 61): EXE5's own. Its controller (effect object #0x75, 0x080E908C: the
 -- usual dimming phases; its effect, 0x080E90D0) finds the first enemy navi ahead (by columns from the panel ahead,
 -- rows 1 to 3) and puts a rain cloud over it (attack object #0x97, 0x080D97A8), then waits for the cloud. With no
 -- navi ahead it is done at once.

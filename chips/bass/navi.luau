@@ -1,7 +1,7 @@
 --!strict
--- Bass, the navi of BN5's Bass chip (BN5's actor object #0x4F, 0x080C2948): BN6's (@exelib/bass/navi; the same code
+-- Bass, the navi of EXE5's Bass chip (EXE5's actor object #0x4F, 0x080C2948): EXE6's (@exelib/bass/navi; the same code
 -- but for his sprite, 08-13, his cape's animation offset 0x10, his wind-up's and volleys' animations 3 and 4, his
--- last volley's 5, whose end ends him) with BN5's shot (./strike) and BN5's effects 0x41 and 0x12.
+-- last volley's 5, whose end ends him) with EXE5's shot (./strike) and EXE5's effects 0x41 and 0x12.
 
 local common = require("@exelib/bass/navi")
 local strike = require("./strike")

@@ -1,9 +1,9 @@
 --!strict
--- ProtoSoul (soul 1, Team ProtoMan's): BN5's Soul Unison with ProtoMan, for a sword chip given up. MegaMan's sprite
--- in it is 00-01 (0x0800DA58[1]); he changes by BN5's soul change (rules/souls). Its weapons (0x0801CA1C's row 1,
+-- ProtoSoul (soul 1, Team ProtoMan's): EXE5's Soul Unison with ProtoMan, for a sword chip given up. MegaMan's sprite
+-- in it is 00-01 (0x0800DA58[1]); he changes by EXE5's soul change (rules/souls). Its weapons (0x0801CA1C's row 1,
 -- loaded by 0x0800DCA0): the buster (routine 0), the charged slash (3, ./charge), Sword chips charged with A (5,
 -- the A-charge's chips 0x0801090A: any Sword chip but a dimming or dark one; their damage doubled, 0x080103D0),
--- Chaos Unison's (AIData +0x11's routine 6, ./chaos: DrkSword), its B+Back shield (routine 4, ./back: BN5's guard,
+-- Chaos Unison's (AIData +0x11's routine 6, ./chaos: DrkSword), its B+Back shield (routine 4, ./back: EXE5's guard,
 -- action 0x1F, as the Reflect program's).
 
 local attach_points = require("../attach_points")

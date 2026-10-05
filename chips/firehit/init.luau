@@ -1,10 +1,10 @@
 --!strict
 -- FireHit1, FireHit2 and FireHit3: the firehit series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local fist = require("@self/fist")
 
--- FireHit1 (BN5 chip 0x097): action 0x1A's effect 9, BN6's FireHit (chips/firehit/fist: a fist on each row where
+-- FireHit1 (EXE5 chip 0x097): action 0x1A's effect 9, EXE6's FireHit (chips/firehit/fist: a fist on each row where
 -- the first column ahead with one of the other side's has one, at most three panels ahead).
 local firehit1 = define.chip {
     id = "firehit1",
@@ -22,7 +22,7 @@ local firehit1 = define.chip {
     instant = fist.instant,
 }
 
--- FireHit2 (BN5 chip 0x098): action 0x1A's effect 9, BN6's FireHit (chips/firehit/fist: a fist on each row where
+-- FireHit2 (EXE5 chip 0x098): action 0x1A's effect 9, EXE6's FireHit (chips/firehit/fist: a fist on each row where
 -- the first column ahead with one of the other side's has one, at most three panels ahead).
 local firehit2 = define.chip {
     id = "firehit2",
@@ -40,7 +40,7 @@ local firehit2 = define.chip {
     instant = fist.instant,
 }
 
--- FireHit3 (BN5 chip 0x099): action 0x1A's effect 9, BN6's FireHit (chips/firehit/fist: a fist on each row where
+-- FireHit3 (EXE5 chip 0x099): action 0x1A's effect 9, EXE6's FireHit (chips/firehit/fist: a fist on each row where
 -- the first column ahead with one of the other side's has one, at most three panels ahead).
 local firehit3 = define.chip {
     id = "firehit3",

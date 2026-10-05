@@ -1,5 +1,5 @@
 --!strict
--- BN5's RedFrut1-3 (action 0x1A's instant effect 15, 0x080D818C): BN5's own. A fruit (attack object #0x8D,
+-- EXE5's RedFrut1-3 (action 0x1A's instant effect 15, 0x080D818C): EXE5's own. A fruit (attack object #0x8D,
 -- 0x080D7F2C) drops on a random free panel of the field but the back columns, and hops: 40 ticks shown, 4 ticks going
 -- (a puff), then onto a random free panel of the other rows (or of its own, with none), five times; after the sixth
 -- going it is gone. A hit breaks it (one HP); the side whose attack, object or body broke it gets its gift on one of
@@ -29,7 +29,7 @@ local HP = 1
 -- Its collision (0x0E0F0003): a neutral body (row 0x0E) that everything reaches (row 0x0F), hit modifier 0 (the
 -- word's third byte; `sub_8011504` reads no fourth).
 local HIT_MOD = 0
--- NameID 0xE7: actor record 0xE7 (0x08014C94: version 2, AI index 0x21); BN5's swallowing and Poltergeist leave it
+-- NameID 0xE7: actor record 0xE7 (0x08014C94: version 2, AI index 0x21); EXE5's swallowing and Poltergeist leave it
 -- (0x0800D372, 0x080E8CA0).
 local IDENTITY = define.identity {
     id = "red-fruit",
@@ -39,7 +39,7 @@ local IDENTITY = define.identity {
     scrap = false,
     throwable = false,
 }
--- The effects (BN5's table, 0x080DFC94): row 0x15 (14-0D, animation 3) as it comes, row 0x14 (14-0D, animation 2) as
+-- The effects (EXE5's table, 0x080DFC94): row 0x15 (14-0D, animation 3) as it comes, row 0x14 (14-0D, animation 2) as
 -- it goes, row 0x0E (14-01) when broken.
 local COMES = define.effect { sprite = asset.sprite("puff"), anim = 3, palette = 0 }
 local GOES = define.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 }
@@ -262,7 +262,7 @@ local function synchro(navi: Object)
         return
     end
     local stats = battle.navi(navi.alliance)
-    -- BN5's emotion (bn5-map.md §15.10): in battle mode 1 Full Synchro (2) or normal (0); else a soul's 4 first (the
+    -- EXE5's emotion (exe5-map.md §15.10): in battle mode 1 Full Synchro (2) or normal (0); else a soul's 4 first (the
     -- engine's emotion says normal for it), then anger's 3, a mood of 0's 5 (worn out), and 0 to 2 by the mood.
     if battle.mode() ~= 1 and not stats.form.base then
         return

@@ -1,7 +1,7 @@
 --!strict
--- BN5's MoonBlds (action 0x53, 0x080EF78A: BN5's own action, BN6's MoonBld swing, `sub_80EE2A0`, with BN5's Katana
--- step): the navi spins once with a blade (the shared moon blade, @exelib/moonbld/blade: BN5's attack object #0x69,
--- 0x080D31C4, in BN5's sprite and collision rows) that sweeps the eight panels around it from the swing's fourth
+-- EXE5's MoonBlds (action 0x53, 0x080EF78A: EXE5's own action, EXE6's MoonBld swing, `sub_80EE2A0`, with EXE5's Katana
+-- step): the navi spins once with a blade (the shared moon blade, @exelib/moonbld/blade: EXE5's attack object #0x69,
+-- 0x080D31C4, in EXE5's sprite and collision rows) that sweeps the eight panels around it from the swing's fourth
 -- tick, a slash of the chip's damage with bug 0x18. A charged MoonBld steps first and back after (lib/stepsword),
 -- marked moving from the step until the action ends, and leaves an afterimage on the swing's sixth tick.
 
@@ -20,7 +20,7 @@ export type State = {
 
 moonbld.STATE = { timer = "u16", turned = "u32" }
 
--- The blade (attack object #0x69): sprite 10-38, BN5's rows 7 and 5 (0x0705FF01).
+-- The blade (attack object #0x69): sprite 10-38, EXE5's rows 7 and 5 (0x0705FF01).
 moonbld.blade = common.make_kind("moonbld/blade", {
     sprite = asset.sprite("moon-blade"),
     is = collision.slash,

@@ -1,7 +1,7 @@
 --!strict
--- BN5's projectile variants (the original's `off_80C4C78` rows), as BN5's chips need them: for BN5's projectile
--- (./projectile, BN6's code) with BN5's collision types (rules/collision: BN6's rows without the 0x80 self bit,
--- docs/design/bn5-map.md §15.1).
+-- EXE5's projectile variants (the original's `off_80C4C78` rows), as EXE5's chips need them: for EXE5's projectile
+-- (./projectile, EXE6's code) with EXE5's collision types (rules/collision: EXE6's rows without the 0x80 self bit,
+-- docs/design/exe5-map.md §15.1).
 
 local collision = require("../../rules/collision")
 local projectile = require("../projectile")
@@ -21,8 +21,8 @@ variants.charged = projectile.variant { id = "shot/charged", collision = SHOT, h
 -- The cannons' shot (row 1): it staggers (hit modifier 3).
 variants.cannon = projectile.variant { id = "shot/cannon", collision = SHOT, hit_mod = 3, element = "null", spark = sparks.impact }
 
--- The GigaCans' shot (row 0x0C, 0x080C47A8): the blast spark and hit modifier 0x49 (BN6's 3). It doesn't burst:
--- BN5's projectile (0x080C48B0) has none of BN6's row-0x0C bursts, around what it hits or over the last two columns.
+-- The GigaCans' shot (row 0x0C, 0x080C47A8): the blast spark and hit modifier 0x49 (EXE6's 3). It doesn't burst:
+-- EXE5's projectile (0x080C48B0) has none of EXE6's row-0x0C bursts, around what it hits or over the last two columns.
 variants.gigacan = projectile.variant {
     id = "shot/gigacan",
     collision = SHOT,
@@ -31,7 +31,7 @@ variants.gigacan = projectile.variant {
     spark = sparks.blast,
 }
 
--- AirShot's shot (BN5's row 4): it pushes (hit modifier 0x61), without BN6's wind element (BN5 has none).
+-- AirShot's shot (EXE5's row 4): it pushes (hit modifier 0x61), without EXE6's wind element (EXE5 has none).
 variants.air = projectile.variant {
     id = "shot/air",
     collision = { is = collision.pushing, hits = collision.hits_navis },
@@ -41,7 +41,7 @@ variants.air = projectile.variant {
 }
 
 -- ---- The shot programs (NaviStats +0x4D, +0x4F) the patch cards give, and Hub Style's spread ----------------------
--- BN5's projectile (0x080C48B0) reads a row's +3 as the element, +4 as the spark, +8 as the panel type its hit
+-- EXE5's projectile (0x080C48B0) reads a row's +3 as the element, +4 as the spark, +8 as the panel type its hit
 -- leaves (0xFF: none), +9 as the status, +10 and +11 as the bug code and argument; its hit (0x080C4932) cracks the
 -- panel for rows 7 and 0x18 and breaks it for row 0x19, whatever +8 says.
 
@@ -56,7 +56,7 @@ local function charged(id: string, extra: { [string]: any }): ProjectileVariant
     return projectile.variant(spec :: any)
 end
 
--- Row 5: a breaking shot (collision row 6, the breaking spark; BN5 has no secondary elements).
+-- Row 5: a breaking shot (collision row 6, the breaking spark; EXE5 has no secondary elements).
 variants.breaking = projectile.variant {
     id = "shot/breaking",
     collision = { is = collision.breaking, hits = collision.hits_navis },

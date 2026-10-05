@@ -1,11 +1,11 @@
 --!strict
--- ColonelSoul (soul 7, Team Colonel's): BN5's Soul Unison with Colonel, for a Summon chip given up. MegaMan's sprite in
+-- ColonelSoul (soul 7, Team Colonel's): EXE5's Soul Unison with Colonel, for a Summon chip given up. MegaMan's sprite in
 -- it is 00-07 (0x0800DA58[7]), his element Null (0x0800E634 by soul); he wears nothing over it (Colonel's image wears
 -- his cape). Its weapons (0x0801CA1C's row 7, loaded by 0x0800DCA0): the buster (routine 0), the screen divide (0x14,
 -- ./charge), routine 1 on A (the charged shot's: no chip charges in ColonelSoul, 0x0801090A), Chaos Unison's (0x3A:
 -- DrkSonic); no B+Back (0xFF). His sword's arm is the blade's animation 14 (0x080EC038). Its status reset (0x08011C44)
 -- arms its side's army: the obstacles on the other side's panels turn into its soldiers (objects/soldier, the
--- obstacle framework's step; bn5-map.md §15.11), which strike with the damage words it sets.
+-- obstacle framework's step; exe5-map.md §15.11), which strike with the damage words it sets.
 
 local attach_points = require("../attach_points")
 local buster = require("../weapons/buster")

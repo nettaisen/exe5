@@ -1,5 +1,5 @@
 --!strict
--- SearchSoul's reveal (BN5's effect object 0x8F, 0x080EABCC: BN6's `sub_80EA258`, the same code, which BN6's
+-- SearchSoul's reveal (EXE5's effect object 0x8F, 0x080EABCC: EXE6's `sub_80EA258`, the same code, which EXE6's
 -- netbattles never reach), spawned by the status reset in SearchSoul (0x080EACB6): it marks each navi of the other
 -- side that is invisible or flashing with the scope (effect 0x68, 20 pixels up), and on the next tick shows them
 -- again: their flash timer ended, no longer invisible or flashing. Then it goes.

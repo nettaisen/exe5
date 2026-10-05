@@ -1,5 +1,5 @@
 --!strict
--- OmegaRkt's rocket (BN5's attack object #0xB9, 0x080DD4CC; BN5's own): on its side's back column, middle row, on
+-- OmegaRkt's rocket (EXE5's attack object #0xB9, 0x080DD4CC; EXE5's own): on its side's back column, middle row, on
 -- the ground (sprite 0C-51), its body hitting navis (breaking, hit modifier 3). It appears (a sound), 10 ticks on
 -- launches (a sound) and flies forward 4 pixels a tick. What it hits it blows up at (the camera shaken, a white
 -- flash, a sound): a one-tick hit on the 3x3 around it (its damage without the counter byte) and nine explosions

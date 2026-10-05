@@ -1,9 +1,9 @@
 --!strict
--- GreatYo (BN5 chip 0x154): the Program Advance of three YoYos with consecutive codes (or two VarSwrds and a YoYo):
+-- GreatYo (EXE5 chip 0x154): the Program Advance of three YoYos with consecutive codes (or two VarSwrds and a YoYo):
 -- the YoYo throw (@exelib/yoyo/throw, action 0x4A with subtype 1) sending out GreatYo's controller (./controller),
 -- which throws three yoyos, one a row, 4 panels out and 5 spinning rounds (the chip's parameters: the leader Param2 1,
 -- the two followers 2).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local attachment = require("../objects/attachment")
 local controller = require("@self/controller")
@@ -28,7 +28,7 @@ return define.chip {
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
-    -- BN5's recipes (written by tools/bn5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
     -- gauge tries.
     program_advances = {

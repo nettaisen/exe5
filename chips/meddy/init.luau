@@ -1,10 +1,10 @@
 --!strict
 -- Meddy, MeddySP and MeddyDS: the meddy series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- Meddy (BN5 chip 0x0ec): Meddy cuts in and throws two capsules beside the enemy navi, bursting along their lines
+-- Meddy (EXE5 chip 0x0ec): Meddy cuts in and throws two capsules beside the enemy navi, bursting along their lines
 -- (./navi).
 local meddy = define.chip {
     id = "meddy",
@@ -23,7 +23,7 @@ local meddy = define.chip {
     navi = navi.summon,
 }
 
--- MeddySP (BN5 chip 0x0ed): Meddy cuts in and throws two capsules beside the enemy navi, bursting along their lines
+-- MeddySP (EXE5 chip 0x0ed): Meddy cuts in and throws two capsules beside the enemy navi, bursting along their lines
 -- (../meddy/navi); its damage by how fast its user deleted Meddy SP (rules/sp-chips: formula 7, its table's row 6).
 local meddy_sp = define.chip {
     id = "meddy-sp",
@@ -42,7 +42,7 @@ local meddy_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- MeddyDS (BN5 chip 0x0ee): Meddy, dark, cuts in and throws two capsules beside the enemy navi, bursting along their
+-- MeddyDS (EXE5 chip 0x0ee): Meddy, dark, cuts in and throws two capsules beside the enemy navi, bursting along their
 -- lines (../meddy/navi); its damage by its user's side's statistic 3 (formula 29, its table's row 6).
 local meddy_ds = define.chip {
     id = "meddy-ds",

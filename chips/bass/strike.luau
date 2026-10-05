@@ -1,5 +1,5 @@
 --!strict
--- Bass's shot (BN5's attack object #0x72, 0x080D4214; BN6's panel strike descends from it): it highlights its
+-- Bass's shot (EXE5's attack object #0x72, 0x080D4214; EXE6's panel strike descends from it): it highlights its
 -- panel for 10 ticks, then, on a solid panel, shows Bass's burst (his sprite's animation 32) and hits the panel
 -- for a tick; it goes when the burst ends. The navi chip's (its Param1 1) outlasts the battle's end.
 --

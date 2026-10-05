@@ -1,8 +1,8 @@
 --!strict
--- Z Saver's action (BN5's action 0x34, 0x080EE02A): BN6's (@exelib/zsaver/action) in BN5's look, with the Katanas'
+-- Z Saver's action (EXE5's action 0x34, 0x080EE02A): EXE6's (@exelib/zsaver/action) in EXE5's look, with the Katanas'
 -- step (lib/stepsword): a soul's charged Z Saver steps first and back after, leaving two afterimages on each swing's
--- sixth tick; and the command's window (B and back) shuts once A isn't held. Its blade is BN5's sword (lib/swords),
--- its slashes' effects the effect table's rows 0x39 to 0x3B, its boom BN5's sonic boom.
+-- sixth tick; and the command's window (B and back) shuts once A isn't held. Its blade is EXE5's sword (lib/swords),
+-- its slashes' effects the effect table's rows 0x39 to 0x3B, its boom EXE5's sonic boom.
 
 local attachment = require("../../objects/attachment")
 local common = require("@exelib/zsaver/action")

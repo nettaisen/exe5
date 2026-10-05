@@ -1,6 +1,6 @@
 --!strict
--- NumbrBl's dimming controller (BN5's effect object #0x69, 0x080E82DC): BN6's (@exelib/numbrbl/controller) with
--- BN5's effect (0x080E8324), by its phase: the user warps out (30 ticks); NumberMan himself (./numberman) on the
+-- NumbrBl's dimming controller (EXE5's effect object #0x69, 0x080E82DC): EXE6's (@exelib/numbrbl/controller) with
+-- EXE5's effect (0x080E8324), by its phase: the user warps out (30 ticks); NumberMan himself (./numberman) on the
 -- user's panel, until he is done; 30 ticks; the user warps back in (30 ticks); then the undim.
 
 local common = require("@exelib/numbrbl/controller")

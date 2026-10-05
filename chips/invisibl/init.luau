@@ -1,7 +1,7 @@
 --!strict
--- Invisibl (BN5 chip 0x085): its user turns invisible for six seconds: BN6's Invisibl (@exelib/invisibl, the
--- dimming spawner's entry 40; BN5's the same code), 360 ticks (the record's parameter).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Invisibl (EXE5 chip 0x085): its user turns invisible for six seconds: EXE6's Invisibl (@exelib/invisibl, the
+-- dimming spawner's entry 40; EXE5's the same code), 360 ticks (the record's parameter).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local invisible = require("@self/controller")
 

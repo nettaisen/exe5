@@ -1,6 +1,6 @@
 --!strict
--- FstGauge (BN5 chip 0x079): the user's custom gauge fills fast: BN6's (@exelib/gauge-speed; BN5's the same code).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- FstGauge (EXE5 chip 0x079): the user's custom gauge fills fast: EXE6's (@exelib/gauge-speed; EXE5's the same code).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local gauge_speed = require("../lib/gauge_speed")
 

@@ -1,7 +1,7 @@
-# The NaviCust programs (content/bn5/navicust/) by their number, a part id's high bits (the part id is
+# The NaviCust programs (content/exe5/navicust/) by their number, a part id's high bits (the part id is
 # 4 x the number + the variant, whose color the part table gives), which a save's NaviCust list holds
 # (8 bytes a part: +0 the id, +2 its column, +3 its row, +4 its quarter turns). Written by the
-# verification workspace's tools/bn5/gen_content.py (gen_navicust.py) from the part table.
+# verification workspace's tools/exe5/gen_content.py (gen_navicust.py) from the part table.
 
 [programs]
 "airshoes" = 12
@@ -53,7 +53,7 @@
 "undersht" = 13
 
 # Each program's colored variants (a part id's low bits), in the order of its definition's colors
-# (a program's colored variants needn't come first, as BN6's do).
+# (a program's colored variants needn't come first, as EXE6's do).
 [variants]
 "airshoes" = [0]
 "antidmg" = [3]

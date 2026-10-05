@@ -1,6 +1,6 @@
 --!strict
--- MetaGel's gel (BN5's attack object #0x45, 0x080CE02C; BN6's #0x45, `sub_80CCA40`, which no BN6 chip drops): it
--- falls from 256 pixels up onto its panel, 8 a tick, and lands as an aqua hit (BN5's rows 0xA and 5, hit modifier 3,
+-- MetaGel's gel (EXE5's attack object #0x45, 0x080CE02C; EXE6's #0x45, `sub_80CCA40`, which no EXE6 chip drops): it
+-- falls from 256 pixels up onto its panel, 8 a tick, and lands as an aqua hit (EXE5's rows 0xA and 5, hit modifier 3,
 -- the aqua spark); on a panel of the other side's area that is solid and free it stays, taking the panel for its own
 -- side where that side may lose it, and goes after its splash and a second; elsewhere it goes at once in a puff. It
 -- tells its controller (the holder) when it is gone.

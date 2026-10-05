@@ -1,5 +1,5 @@
 --!strict
--- CosmoMan, the navi of the CosmoMan chips (BN5's actor object #0x1D, 0x080BD9AC; BN5's own, built on BN6's
+-- CosmoMan, the navi of the CosmoMan chips (EXE5's actor object #0x1D, 0x080BD9AC; EXE5's own, built on EXE6's
 -- BlastMan template), brought by their navi chip controller. He appears (and goes at once off a solid panel),
 -- takes the field objects around him, sends himself to the sky over the enemy area (./caller), where he calls his
 -- meteors down, waits three seconds, and goes; the controller moves on.

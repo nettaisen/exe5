@@ -1,5 +1,5 @@
 --!strict
--- BN5's Soul Unison change (0x08011F74, BN6's `sub_8014A38`'s place): while the battle is paused at a turn's start,
+-- EXE5's Soul Unison change (0x08011F74, EXE6's `sub_8014A38`'s place): while the battle is paused at a turn's start,
 -- MegaMan unites with the soul his side asked for (the turn's transform record: `navi:form_change_target()`, its
 -- turns and Chaos Unison `navi:form_change_soul()`). The turn-start sequencer (the framework's) waits for it. Every
 -- soul names this action as its `change` (./init).
@@ -156,7 +156,7 @@ end
 function change.update(me: Object, s: State)
     local target = me:form_change_target()
     if target == nil or target.soul == nil then
-        error("BN5's soul change asked for no soul (0x08011F74)")
+        error("EXE5's soul change asked for no soul (0x08011F74)")
     end
     local soul = (target.soul :: any).number :: number
     local _, chaos = me:form_change_soul()

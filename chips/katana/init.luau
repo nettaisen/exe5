@@ -1,10 +1,10 @@
 --!strict
 -- Katana1, Katana2 and Katana3: the katana series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local katana = require("@self/katana")
 
--- Katana1 (BN5 chip 0x03c): two slashes, a wide one and then a long one (BN5's Katana, chips/katana/katana: action 0x54,
+-- Katana1 (EXE5 chip 0x03c): two slashes, a wide one and then a long one (EXE5's Katana, chips/katana/katana: action 0x54,
 -- its own action on the swords' slash; a charged one steps first).
 local katana1 = define.chip {
     id = "katana1",
@@ -22,7 +22,7 @@ local katana1 = define.chip {
     action = katana.action,
 }
 
--- Katana2 (BN5 chip 0x03d): two slashes, a wide one and then a long one (BN5's Katana, chips/katana/katana: action 0x54,
+-- Katana2 (EXE5 chip 0x03d): two slashes, a wide one and then a long one (EXE5's Katana, chips/katana/katana: action 0x54,
 -- its own action on the swords' slash; a charged one steps first).
 local katana2 = define.chip {
     id = "katana2",
@@ -40,7 +40,7 @@ local katana2 = define.chip {
     action = katana.action,
 }
 
--- Katana3 (BN5 chip 0x03e): two slashes, a wide one and then a long one (BN5's Katana, chips/katana/katana: action 0x54,
+-- Katana3 (EXE5 chip 0x03e): two slashes, a wide one and then a long one (EXE5's Katana, chips/katana/katana: action 0x54,
 -- its own action on the swords' slash; a charged one steps first).
 local katana3 = define.chip {
     id = "katana3",

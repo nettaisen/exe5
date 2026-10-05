@@ -1,5 +1,5 @@
 --!strict
--- ChaosLrd's Bass (BN5's actor object #0x51, 0x080C2EB8; BN5's own), brought by the navi chip controller (the summon
+-- ChaosLrd's Bass (EXE5's actor object #0x51, 0x080C2EB8; EXE5's own), brought by the navi chip controller (the summon
 -- table's entry 29) to his side's back column, middle row. As he comes every field object's HP goes to 0, and if an
 -- enemy navi stands in his side's two back columns around the middle row he leaves at once. Else the dark beast
 -- rises behind him (five parts, ./aura) and stays a while; after 143 ticks flames gather (./gather) and he takes

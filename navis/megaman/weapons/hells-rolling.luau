@@ -1,9 +1,9 @@
 --!strict
 -- The patch cards' HelzR (`megaman/hells-rolling`, B↓HelzR, Team Colonel's card 111): weapon routine 0x69
--- (0x0800FE36, calling 0x0800FB52, BN6's `sub_80121F8`'s place: BN5's own numbers) and action 0x47 (0x080EF030,
--- BN6's AirSpin, @exelib/airspin/action) in its variant 2 (0x080EF0C4's third entry, 0x080DEBB6: BN6's
+-- (0x0800FE36, calling 0x0800FB52, EXE6's `sub_80121F8`'s place: EXE5's own numbers) and action 0x47 (0x080EF030,
+-- EXE6's AirSpin, @exelib/airspin/action) in its variant 2 (0x080EF0C4's third entry, 0x080DEBB6: EXE6's
 -- `sub_80E025E`): a seeking whirlwind (attack object #0xC0, 0x080DE910: the shared one, @exelib/airspin/whirl, in
--- BN6's sheet and sound, an enemy navi invisible, submerged or bubbled unseen, 0x080DEC04) onto the first panel
+-- EXE6's sheet and sound, an enemy navi invisible, submerged or bubbled unseen, 0x080DEC04) onto the first panel
 -- ahead of the other side's, (Attack + 1) * 10 damage, hit parameter 0x94, Null.
 
 local airspin = require("@exelib/airspin/action")

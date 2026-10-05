@@ -1,7 +1,7 @@
 --!strict
--- DarkInvs (BN5 chip 0x0bd): a dark chip whose cut-in turns its user dark and gives it to the computer-navi AI for
--- 600 ticks, untouchable (./controller: BN5's effect object #0x18; its end, BN5's action 0x49: ./drive-end).
--- Its record is written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- DarkInvs (EXE5 chip 0x0bd): a dark chip whose cut-in turns its user dark and gives it to the computer-navi AI for
+-- 600 ticks, untouchable (./controller: EXE5's effect object #0x18; its end, EXE5's action 0x49: ./drive-end).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local controller = require("@self/controller")
 

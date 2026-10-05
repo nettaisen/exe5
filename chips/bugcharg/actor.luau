@@ -1,6 +1,6 @@
 --!strict
--- BugCharg's stand-in (BN5's actor object #0x59, 0x080C3A40; BN5's own, on the dimming stand-ins' skeleton:
--- @exelib/dimming/stand_in): drawn as the user (its animation 16), it raises its charger (an attachment: BN5's row
+-- BugCharg's stand-in (EXE5's actor object #0x59, 0x080C3A40; EXE5's own, on the dimming stand-ins' skeleton:
+-- @exelib/dimming/stand_in): drawn as the user (its animation 16), it raises its charger (an attachment: EXE5's row
 -- 0x1C, sprite 0C-43, on attach point 0x18) with a sound, takes in its user's NaviCust bugs (each it clears is a shot
 -- more, past the first; in the operation battle only three of them, three shots each) and the save's emotion
 -- window glitch, and 41 ticks on fires: a heavy shot (objects/flying-shot's row 1) every 16 ticks from the panel ahead,

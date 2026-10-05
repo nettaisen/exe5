@@ -1,5 +1,5 @@
 --!strict
--- BN5's BlakWing (the dimming handler's subtype 32): BN5's own, on BN6's leftover code. Its controller (effect object
+-- EXE5's BlakWing (the dimming handler's subtype 32): EXE5's own, on EXE6's leftover code. Its controller (effect object
 -- #0x54, 0x080E6920: the usual dimming phases; its effect, 0x080E6964) sends out the flock (attack object #0x7E,
 -- 0x080D6230), waits for it, then 60 ticks, and is done.
 --

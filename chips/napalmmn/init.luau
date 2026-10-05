@@ -1,10 +1,10 @@
 --!strict
 -- NapalmMn, NaplmMnSP and NaplmMnDS: the napalmmn series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- NapalmMn (BN5 chip 0x0e3): NapalmMan cuts in and lobs a napalm bomb four panels ahead, its fire spreading around an
+-- NapalmMn (EXE5 chip 0x0e3): NapalmMan cuts in and lobs a napalm bomb four panels ahead, its fire spreading around an
 -- empty panel (./navi).
 local napalmmn = define.chip {
     id = "napalmmn",
@@ -23,7 +23,7 @@ local napalmmn = define.chip {
     navi = navi.summon,
 }
 
--- NaplmMnSP (BN5 chip 0x0e4): NapalmMan cuts in and lobs a napalm bomb four panels ahead, its fire spreading around an
+-- NaplmMnSP (EXE5 chip 0x0e4): NapalmMan cuts in and lobs a napalm bomb four panels ahead, its fire spreading around an
 -- empty panel (../napalmmn/navi); its damage by how fast its user deleted NapalmMan SP (rules/sp-chips: formula 5, its
 -- table's row 4).
 local naplmmn_sp = define.chip {
@@ -43,7 +43,7 @@ local naplmmn_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- NaplmMnDS (BN5 chip 0x0e5): NapalmMan, dark, cuts in and lobs a napalm bomb four panels ahead, its fire spreading
+-- NaplmMnDS (EXE5 chip 0x0e5): NapalmMan, dark, cuts in and lobs a napalm bomb four panels ahead, its fire spreading
 -- around an empty panel (../napalmmn/navi); its damage by its user's side's statistic 3 (formula 27, its table's row
 -- 4).
 local naplmmn_ds = define.chip {

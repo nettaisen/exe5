@@ -1,5 +1,5 @@
 --!strict
--- ToadSoul (soul 12, Team Colonel's): BN5's Soul Unison with ToadMan, for an Aqua chip given up. MegaMan's sprite in
+-- ToadSoul (soul 12, Team Colonel's): EXE5's Soul Unison with ToadMan, for an Aqua chip given up. MegaMan's sprite in
 -- it is 00-0C (0x0800DA58[12]), his element Aqua (0x0800E634 by soul); he wears nothing over it. Its weapons
 -- (0x0801CA1C's row 12, loaded by 0x0800DCA0): the buster (routine 0), the horn's notes (0x2D, ./charge), Aqua chips
 -- charged with A (0x1B: any Aqua chip but a dimming or dark one, 0x0801090A; their damage doubled, 0x080103D0),

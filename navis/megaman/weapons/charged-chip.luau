@@ -1,7 +1,7 @@
 --!strict
 -- MegaMan's A-charge in the souls that charge chips (`megaman/charged-chip`): the original's weapon routines 5, 0x16,
--- 0x18, 0x1B and 0x27 (0x0800F520, empty, as BN6's `nullsub_44`), which differ only in their rows of the charge
--- table. BN5's chip use (0x0800D9CC) never runs them: a charged chip is the chip with the charge's bonus (the soul's
+-- 0x18, 0x1B and 0x27 (0x0800F520, empty, as EXE6's `nullsub_44`), which differ only in their rows of the charge
+-- table. EXE5's chip use (0x0800D9CC) never runs them: a charged chip is the chip with the charge's bonus (the soul's
 -- `charged_bonus`, 0x080103D0), whatever the routine.
 
 local charged_chip = {}

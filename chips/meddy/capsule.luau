@@ -1,5 +1,5 @@
 --!strict
--- A capsule (BN5's attack object #0x0C, 0x080C5F18; BN5's own): thrown from its thrower's panel in an arc to a
+-- A capsule (EXE5's attack object #0x0C, 0x080C5F18; EXE5's own): thrown from its thrower's panel in an arc to a
 -- target panel in 40 ticks, the target lit as it flies. A body with 20 HP that the other side can hit (hit modifier
 -- by its variant), it hits whatever stands on the target as it comes down there (its last 4 ticks). It bursts (an
 -- explosion, a sound) when its HP runs out, when the other side's navi is hit, or when it lands on one; on a panel

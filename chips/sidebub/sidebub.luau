@@ -1,11 +1,11 @@
 --!strict
--- BN5's SideBub1-3 (action 0x1C, 0x080EC832): BN5's own. The navi raises its buster arm and, on the action's
+-- EXE5's SideBub1-3 (action 0x1C, 0x080EC832): EXE5's own. The navi raises its buster arm and, on the action's
 -- second tick, two bubbles (attack object #0x8F, 0x080D8484) rise on the column ahead, one in the row above its own
 -- (its own, from the top row) and one in the row below (its own, from the bottom row). Each waits 16 ticks, then
 -- drifts a panel forward and a row up or down every 31 ticks (the top row's down, the bottom row's up, the middle
 -- row's as its spawner says: the upper bubble's up, the lower's down), turning back at the top and bottom rows.
 -- A bubble hits the other side's navis and objects with the chip's damage and pops on the first it touches; an
--- attack that pops it (it has 1 HP) bursts it, and 20 ticks later it sends an aqua shot forward (BN5's flying shot
+-- attack that pops it (it has 1 HP) bursts it, and 20 ticks later it sends an aqua shot forward (EXE5's flying shot
 -- row 7) with the chip's damage.
 
 local arm_launch = require("../../lib/arm-launch")
@@ -20,7 +20,7 @@ export type State = {
     way: number,
     -- The ticks a drift lasts (its second parameter: the chip's second parameter byte, 30 for each SideBub).
     travel: number,
-    -- Which row of BN5's flying shot it bursts into (its fourth parameter, read through 0x080D86B4).
+    -- Which row of EXE5's flying shot it bursts into (its fourth parameter, read through 0x080D86B4).
     burst: number,
 }
 
@@ -33,7 +33,7 @@ local HIT_MOD = 3
 local WAIT, WAIT_ANIM_AT, BURST_WAIT = 15, 5, 20
 -- How far a drift goes: a panel forward, a row up or down (in pixels).
 local DRIFT_X, DRIFT_Y = 40, 24
--- The rows of BN5's flying shot a bubble's fourth parameter picks (0x080D86B4).
+-- The rows of EXE5's flying shot a bubble's fourth parameter picks (0x080D86B4).
 local BURSTS: { [number]: number } = { [0] = 7, [1] = 8, [2] = 9, [3] = 9 }
 -- What a hit on a navi or an object leaves in its hit flags (0x080D85B4).
 local POPS = 0x0F80_0000
@@ -92,7 +92,7 @@ local function gone(me: Object)
 end
 
 -- 0x080D858E: the hits against it resolve and spark; when the battle is over, gone; an attack that empties its HP
--- bursts it (its body becomes an attack: BN5's 0x08016B9E keeps what it hits, below); a navi or an object it hits
+-- bursts it (its body becomes an attack: EXE5's 0x08016B9E keeps what it hits, below); a navi or an object it hits
 -- pops it; while the battle isn't dimmed, its action; off the field, gone.
 local function tick(me: Object)
     local c = me.collision
@@ -107,7 +107,7 @@ local function tick(me: Object)
         battle.play_sound(SOUND_POP)
         c:set_region(nil)
         me.anim = 1
-        -- (0x08016B9E: its store of what it hits goes astray, so it keeps hitting what it hit: BN5's retype rule.)
+        -- (0x08016B9E: its store of what it hits goes astray, so it keeps hitting what it hit: EXE5's retype rule.)
         me:reset_collision_types(collision.attack, collision.hits_navis, HIT_MOD)
         me.timer = BURST_WAIT
         me.action = BURSTING

@@ -1,7 +1,7 @@
 --!strict
--- BN5's step before a charged sword (AIAttackVars+4, `me.charged`: a soul's charged chip), as its Katanas (action
--- 0x54, 0x080EF9B0) and MoonBlds (action 0x53, 0x080EF7B0) take it, BN6's StepSwrd's: by 1, two panels ahead
--- (0x080125D4, BN6's `sub_8015B00`); by 2, or in ShadowSoul (soul 8), behind the first enemy body it finds ahead
+-- EXE5's step before a charged sword (AIAttackVars+4, `me.charged`: a soul's charged chip), as its Katanas (action
+-- 0x54, 0x080EF9B0) and MoonBlds (action 0x53, 0x080EF7B0) take it, EXE6's StepSwrd's: by 1, two panels ahead
+-- (0x080125D4, EXE6's `sub_8015B00`); by 2, or in ShadowSoul (soul 8), behind the first enemy body it finds ahead
 -- (0x08012538), turned round to face it. With nowhere to step it doesn't swing. It steps back once its last
 -- swing's animation ends (0x080EFBE4, 0x080EF938).
 --
@@ -61,7 +61,7 @@ end
 
 stepsword.behind_enemy = behind_enemy
 
--- The swords' slash's step (action 0x13, 0x080EBD04: @exelib/swords/slash with BN5's `steps`): none uncharged; else,
+-- The swords' slash's step (action 0x13, 0x080EBD04: @exelib/swords/slash with EXE5's `steps`): none uncharged; else,
 -- once `set_off` lets it (not while moving or sliding), behind the enemy in ShadowSoul or by a charge of 2, two
 -- panels ahead by 1, none by any other charge (set off all the same).
 function stepsword.kind(me: Object, set_off: (Object) -> boolean): ("step" | "warp")?

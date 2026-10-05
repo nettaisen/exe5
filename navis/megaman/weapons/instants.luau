@@ -1,13 +1,13 @@
 --!strict
--- The patch cards' charged shots that are instant chip effects (the instant chips' action, BN5's 0x1A, 0x080EC6F6:
+-- The patch cards' charged shots that are instant chip effects (the instant chips' action, EXE5's 0x1A, 0x080EC6F6:
 -- the effect, then back to idle at once): weapon routines that name the action with an effect of theirs.
 --
--- - B↓Invis (`megaman/invisible`, routine 0x47, 0x0800FC3A): effect 2 (0x0800E184, BN6's `sub_8010474`: the same
---   code but for the timer's place in BN5's collision record): the navi turns invisible, flashing, for 120 ticks
+-- - B↓Invis (`megaman/invisible`, routine 0x47, 0x0800FC3A): effect 2 (0x0800E184, EXE6's `sub_8010474`: the same
+--   code but for the timer's place in EXE5's collision record): the navi turns invisible, flashing, for 120 ticks
 --   (the attack's parameters' low halfword), with its sound. (The routine writes only the parameters' first byte:
 --   the second, which the timer's high byte reads, is what the last attack left. The engine keeps no attack
 --   parameters, so it reads 0 here.)
--- - B↓Vacuum (`megaman/vacuum`, routine 0x4C, 0x0800FC82): effect 25 (0x080CEBC8, BN6's `sub_80CD4AC`, TenguCross's
+-- - B↓Vacuum (`megaman/vacuum`, routine 0x4C, 0x0800FC82): effect 25 (0x080CEBC8, EXE6's `sub_80CD4AC`, TenguCross's
 --   wind: the same code): a pulling gust (navis/megaman/gust) down each row from the far column, with its sound.
 
 local common_gust = require("@exelib/gust")

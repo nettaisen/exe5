@@ -1,10 +1,10 @@
 --!strict
 -- ShadoMan, ShadoMnSP and ShadoMnDS: the shadoman series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- ShadoMan (BN5 chip 0x0f8): ShadowMan cuts in and sends three of himself to throw shurikens at the enemies (./navi).
+-- ShadoMan (EXE5 chip 0x0f8): ShadowMan cuts in and sends three of himself to throw shurikens at the enemies (./navi).
 local shadoman = define.chip {
     id = "shadoman",
     codes = { "S" },
@@ -23,7 +23,7 @@ local shadoman = define.chip {
     navi = navi.summon,
 }
 
--- ShadoMnSP (BN5 chip 0x0f9): ShadowMan cuts in and sends three of himself to throw shurikens at the enemies
+-- ShadoMnSP (EXE5 chip 0x0f9): ShadowMan cuts in and sends three of himself to throw shurikens at the enemies
 -- (../shadoman/navi); its damage by how fast its user deleted ShadowMan SP (rules/sp-chips: formula 9, its table's row
 -- 8).
 local shadomn_sp = define.chip {
@@ -44,7 +44,7 @@ local shadomn_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- ShadoMnDS (BN5 chip 0x0fa): ShadowMan, dark, cuts in and sends three of himself to throw shurikens at the enemies
+-- ShadoMnDS (EXE5 chip 0x0fa): ShadowMan, dark, cuts in and sends three of himself to throw shurikens at the enemies
 -- (../shadoman/navi); its damage by its user's side's statistic 3 (formula 31, its table's row 8).
 local shadomn_ds = define.chip {
     id = "shadomn-ds",

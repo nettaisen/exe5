@@ -1,7 +1,7 @@
 --!strict
--- BN5's lance (attack object #0x4F, BN6's #0x6F): BN6's (@exelib/lance/lance, the same code) but for its sprite
--- (0C-2B), sound, and hit (0x080CF904): an attack against attacks of hit modifier 0x10 (BN6's 0x51) with the wood
--- spark; a lance of Param1 1 (DrkLance's, in its second palette) hits as BN5's row 0x25 with bug 0x16 (argument 2).
+-- EXE5's lance (attack object #0x4F, EXE6's #0x6F): EXE6's (@exelib/lance/lance, the same code) but for its sprite
+-- (0C-2B), sound, and hit (0x080CF904): an attack against attacks of hit modifier 0x10 (EXE6's 0x51) with the wood
+-- spark; a lance of Param1 1 (DrkLance's, in its second palette) hits as EXE5's row 0x25 with bug 0x16 (argument 2).
 
 local collision = require("../../rules/collision")
 local lance = require("@exelib/lance")

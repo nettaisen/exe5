@@ -1,10 +1,10 @@
 --!strict
--- Roll, the navi of BN5's Roll chips (BN5's actor object #0x2C, 0x080C06A4): BN6's (@exelib/roll/navi; the same code
--- but for her sprite, her ribbon, BN5's attachment row 6, 0c-0f, and these) with her heart (./heart), and BN5's
+-- Roll, the navi of EXE5's Roll chips (EXE5's actor object #0x2C, 0x080C06A4): EXE6's (@exelib/roll/navi; the same code
+-- but for her sprite, her ribbon, EXE5's attachment row 6, 0c-0f, and these) with her heart (./heart), and EXE5's
 -- additions:
 --
 -- - RollSP's, as she appears (0x080C0794): outside the operation battle, a panel changer on her panel turning
---   her side's holy panels Normal (BN5's change 14: all panels, flickering, 30 ticks, no tick sound).
+--   her side's holy panels Normal (EXE5's change 14: all panels, flickering, 30 ticks, no tick sound).
 -- - Her target in the operation battle (0x080C0CA4): the panel in front of the enemy her side tracks, from her
 --   side, if it holds no body or object; none otherwise.
 -- - As her heart drops (0x080C0B66): her side's navi's mood rises by 50 (0 for a level 5, which no chip has).
@@ -19,7 +19,7 @@ local collision = require("../../rules/collision")
 local sparks = require("../../lib/sparks")
 local operation_battle = require("../../lib/operation_battle")
 
--- The SP's change: its side's holy panels Normal (BN5's `byte_80E272C` row 14, 0x080E2A04).
+-- The SP's change: its side's holy panels Normal (EXE5's `byte_80E272C` row 14, 0x080E2A04).
 local HOLY_TO_NORMAL = panel_changer.change {
     panel = "normal",
     panels = "all",

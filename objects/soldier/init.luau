@@ -1,7 +1,7 @@
 --!strict
--- ColonelSoul's soldiers (BN5's attack object #0x30, 0x080CA834; BN6's ColArmy soldier's number, BN5's own code):
+-- ColonelSoul's soldiers (EXE5's attack object #0x30, 0x080CA834; EXE6's ColArmy soldier's number, EXE5's own code):
 -- what an obstacle turns into where its side's enemy's ColonelSoul can use it (the obstacle framework's step,
--- 0x080CAB02: the rule `effects.obstacle_soldiers` and the role `kinds.obstacle_soldier`, docs/design/bn5-map.md
+-- 0x080CAB02: the rule `effects.obstacle_soldiers` and the role `kinds.obstacle_soldier`, docs/design/exe5-map.md
 -- §15.11). The engine spawns it on the obstacle's panel for the armed side, `gun` its Param1:
 --
 -- - the sword's soldier (`gun` 0: an enemy between the obstacle and the side's back; it faces back) draws for 15 ticks
@@ -34,7 +34,7 @@ local HP = 1
 local HIT_MOD = 3
 local DRAW_SOUND, SHOT_SOUND = asset.sound("sword-swing"), asset.sound("col-army-2")
 -- The slash: over the panel ahead and the one past it (region 2), no spark (0xFF), a slash (row 7) against navis
--- (row 5), hit modifier 3 (r7); its look 16 pixels up, effect 0x17 of BN5's table (0x080DFC94: sprite 0C-14, the
+-- (row 5), hit modifier 3 (r7); its look 16 pixels up, effect 0x17 of EXE5's table (0x080DFC94: sprite 0C-14, the
 -- swords' slash, animation 1).
 local SLASH_TICKS, SLASH_AT = 24, 18
 local SLASH = define.effect { sprite = asset.sprite("sword-slash"), anim = 1, palette = 0 }

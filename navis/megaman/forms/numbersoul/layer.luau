@@ -1,5 +1,5 @@
 --!strict
--- NumberSoul's layer (BN5's actor object 0x54, 0x080C32C4; BN5's own, where BN6's 0x54 is LilBoiler's layer): a second
+-- NumberSoul's layer (EXE5's actor object 0x54, 0x080C32C4; EXE5's own, where EXE6's 0x54 is LilBoiler's layer): a second
 -- sprite on its owner, by its row (0x080C32C0): row 0 NumberMan's face (10-06, on NumberSoul's image), row 1 MegaMan's
 -- in NumberSoul (10-01, his start hook's, 0x0800F07C). It follows its owner's position, visibility, palette, color
 -- shader, white flash, alpha and facing; while its owner isn't in his animation 0 it sits 255 pixels up (its height's

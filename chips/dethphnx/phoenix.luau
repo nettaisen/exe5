@@ -1,5 +1,5 @@
 --!strict
--- DeathPhoenix, DethPhnx's (BN5's actor object #0x28, 0x080BFD98; BN5's own), brought by its controller
+-- DeathPhoenix, DethPhnx's (EXE5's actor object #0x28, 0x080BFD98; EXE5's own), brought by its controller
 -- (../phoenix/controllers). It appears at the back corner of its user's side (column 1 or 6, row 3) and, as it comes,
 -- lists for each row four of the solid panels ahead of it (each row's shuffled, repeated as needed). After a hit of
 -- no damage over the whole field it fades in, waits 30 ticks, then sets 12 fires (./fire), 12 ticks apart: four

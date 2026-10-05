@@ -1,5 +1,5 @@
 --!strict
--- MagnetSoul's magnet field (BN5's attack object 0x75, 0x080D4B60: BN5's own, where BN6's is AirRaid's plane): an
+-- MagnetSoul's magnet field (EXE5's attack object 0x75, 0x080D4B60: EXE5's own, where EXE6's is AirRaid's plane): an
 -- unseen attack on the panel at an offset from its owner, following him, for 30 ticks: an attack against navis
 -- (hit modifier 3, its element's spark), which paralyzes for 90 ticks with no hit modifier when its parameter says.
 -- It goes once it hits something, when its owner lets go of it (his first related object cleared), or when the

@@ -1,10 +1,10 @@
 --!strict
 -- SpShake1, SpShake2 and SpShake3: the spshake series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local spshake = require("@self/spshake")
 
--- SpShake1 (BN5 chip 0x018): an electric wave that snakes along the field from the panel ahead (BN5's SpShake,
+-- SpShake1 (EXE5 chip 0x018): an electric wave that snakes along the field from the panel ahead (EXE5's SpShake,
 -- chips/spshake/spshake: action 0x51).
 local spshake1 = define.chip {
     id = "spshake1",
@@ -22,7 +22,7 @@ local spshake1 = define.chip {
     action = spshake.action("spshake1/action", spshake.waves[1]),
 }
 
--- SpShake2 (BN5 chip 0x019): an electric wave that snakes along the field from the panel ahead (BN5's SpShake,
+-- SpShake2 (EXE5 chip 0x019): an electric wave that snakes along the field from the panel ahead (EXE5's SpShake,
 -- chips/spshake/spshake: action 0x51).
 local spshake2 = define.chip {
     id = "spshake2",
@@ -40,7 +40,7 @@ local spshake2 = define.chip {
     action = spshake.action("spshake2/action", spshake.waves[2]),
 }
 
--- SpShake3 (BN5 chip 0x01a): an electric wave that snakes along the field from the panel ahead (BN5's SpShake,
+-- SpShake3 (EXE5 chip 0x01a): an electric wave that snakes along the field from the panel ahead (EXE5's SpShake,
 -- chips/spshake/spshake: action 0x51).
 local spshake3 = define.chip {
     id = "spshake3",

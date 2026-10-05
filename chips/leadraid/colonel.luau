@@ -1,5 +1,5 @@
 --!strict
--- LeadRaid's Colonel (BN5's actor object #0x22, 0x080BEAF0; BN5's code, which BN6 keeps unused: `sub_80BE4D8`),
+-- LeadRaid's Colonel (EXE5's actor object #0x22, 0x080BEAF0; EXE5's code, which EXE6 keeps unused: `sub_80BE4D8`),
 -- brought by LeadRaid's ProtoMan (./protoman) on their user's panel, 10 pixels behind it and 6 up, in his cape. He
 -- picks his target as he comes: along his row from his own panel, the first panel holding an enemy navi, else the
 -- row's last panel (0x080BED78). He appears (4 ticks), and charges (his glow, ./glow, from his 11th tick) until

@@ -1,5 +1,5 @@
 --!strict
--- Meddy, the navi of BN5's Meddy chips (BN5's actor object #0x12, 0x080BBAA0; BN5's own, built on BN6's navi
+-- Meddy, the navi of EXE5's Meddy chips (EXE5's actor object #0x12, 0x080BBAA0; EXE5's own, built on EXE6's navi
 -- template), brought by their navi chip controller. She appears, a pixel up and nearer (and goes at once off a
 -- panel that isn't solid), stands 40 ticks and winds up (animation 6): 8 ticks in, with a sound, she throws two
 -- capsules (chips/meddy/capsule, variant 0, running while dimmed), each at a panel beside an enemy navi (the first
@@ -72,7 +72,7 @@ end
 
 -- 0x080BBCAA: her next capsule's panel (column 0: none) and its line. Her last capsule's panel is reserved while
 -- she picks: the first enemy navi in the enemy's area (shuffled, not the last one's unless alone), the first panel
--- beside it (BN5 draws a number and takes the first anyway); with none, a panel of the enemy's area (shuffled),
+-- beside it (EXE5 draws a number and takes the first anyway); with none, a panel of the enemy's area (shuffled),
 -- not her last capsule's.
 local function pick(me: Object): (number, number, number)
     local s = me.state :: State

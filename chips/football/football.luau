@@ -1,7 +1,7 @@
 --!strict
--- BN5's Football (the navi chips' action with the summon table's entry 24, 0x080BF7EC): BN5's own GridMan (actor object
+-- EXE5's Football (the navi chips' action with the summon table's entry 24, 0x080BF7EC): EXE5's own GridMan (actor object
 -- #0x25, 0x080BF628), brought by the navi chip controller. He appears (and goes at once off a panel that isn't solid),
--- stands 40 ticks, then kicks four balls (attack object #0x95, 0x080D9258, BN6's leftover code: its variants 4 to 7)
+-- stands 40 ticks, then kicks four balls (attack object #0x95, 0x080D9258, EXE6's leftover code: its variants 4 to 7)
 -- 171, 126, 111 and 96 ticks before the end of his 180; he goes, and the controller moves on.
 --
 -- A ball (variant 4 kicked up from 32 pixels ahead of him, the others unseen until they come down) comes down over a

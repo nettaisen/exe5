@@ -1,5 +1,5 @@
-# English: BN5's strings by definition key (the US ROMs: Team ProtoMan's and Team Colonel's are
-# the same), written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs. A definition holds no display text.
+# English: EXE5's strings by definition key (the US ROMs: Team ProtoMan's and Team Colonel's are
+# the same), written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs. A definition holds no display text.
 
 language = "en"
 

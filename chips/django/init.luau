@@ -1,10 +1,10 @@
 --!strict
 -- Django, DjangoSP and DjangoDS: the django series (each chip's own comment above its definition).
--- Their records are written by tools/bn5/gen_content.py (bn6battle-verify) from the BN5 ROMs.
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi = require("@self/navi")
 
--- Django (BN5 chip 0x116): Django cuts in, shuts the first enemy navi ahead in his row in his coffin and purifies it
+-- Django (EXE5 chip 0x116): Django cuts in, shuts the first enemy navi ahead in his row in his coffin and purifies it
 -- under his sun (./navi): a hit a tick for the chip's damage in ticks.
 local django = define.chip {
     id = "django",
@@ -26,7 +26,7 @@ local django = define.chip {
     navi = navi.summon,
 }
 
--- DjangoSP (BN5 chip 0x117): Django cuts in, shuts the first enemy navi ahead in his row in his coffin and purifies
+-- DjangoSP (EXE5 chip 0x117): Django cuts in, shuts the first enemy navi ahead in his row in his coffin and purifies
 -- it under his sun (../django/navi); its damage (the purification's ticks) by the turn (formula 22, 0x0800E98A: its
 -- table's row 21, a step a turn from the first).
 local django_sp = define.chip {
@@ -49,7 +49,7 @@ local django_sp = define.chip {
     navi = navi.summon_sp,
 }
 
--- DjangoDS (BN5 chip 0x118): Django, dark, cuts in, shuts the first enemy navi ahead in his row in his coffin and
+-- DjangoDS (EXE5 chip 0x118): Django, dark, cuts in, shuts the first enemy navi ahead in his row in his coffin and
 -- purifies it under his sun (../django/navi); its damage (the purification's ticks) by its user's side's statistic 3
 -- (formula 44, its table's row 21).
 local django_ds = define.chip {

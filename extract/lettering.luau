@@ -72,7 +72,7 @@ function lettering.hud(set: Set, base: Hud, names: AssetNames): HudLettering
     end
     return {
         font = gba.tiles(rom, at(rom, hud.FONT), 0x40 * hud.FONT_GLYPHS),
-        font_chars = hud.font_chars(cell),
+        font_chars = hud.font_chars(cell, {}),
         dialogue_font = hud.dialogue_font(rom, cell, dialogue),
         texts = hud.texts(rom),
         banners = banners,

@@ -14,6 +14,7 @@ local place = require("@exelib/extract/place")
 local colors = require("@exelib/extract/colors")
 local banners = require("@exelib/extract/banners")
 local texts = require("@exelib/extract/texts")
+local glyphs = require("@exelib/extract/glyphs")
 local chatbox = require("@exelib/extract/chatbox")
 
 local at = place.at
@@ -121,20 +122,6 @@ function hud.palette(rom: Rom, a: number): Palette
     return colors.masked(gba.palette(rom, a))
 end
 
--- Entry `k` (from 0) of a list of characters, else its number in brackets.
-local function char(list: { string }, k: number): string
-    return list[k + 1] or string.format("[%03x]", k)
-end
-
--- An encoding's characters: the 8x16 font's glyphs, then the dialogue font's past them.
-local function chained(cell: { string }, dialogue: { string }): { string }
-    local out = table.clone(cell)
-    for _, c in dialogue do
-        table.insert(out, c)
-    end
-    return out
-end
-
 -- The HUD's text lines in `rom` (a line with anything but glyphs in it, a text command, is cut there).
 function hud.texts(rom: Rom): { { number } }
     return texts.lines(rom, at(rom, TEXTS), TEXT_END, hud.FONT_GLYPHS)
@@ -148,21 +135,13 @@ end
 -- `rom`'s dialogue font with its advances (a word a glyph), its glyphs drawing `cell` (the 8x16 font's characters),
 -- then `dialogue` (the dialogue font's past them; a glyph past them its number in brackets).
 function hud.dialogue_font(rom: Rom, cell: { string }, dialogue: { string }): DialogueFont
-    local all = chained(cell, dialogue)
-    local chars: { string } = {}
-    for k = 0, DIALOGUE_GLYPHS - 1 do
-        table.insert(chars, char(all, k))
-    end
+    local chars = glyphs.chars(cell, dialogue, DIALOGUE_GLYPHS)
     return font.dialogue(rom, at(rom, DIALOGUE_FONT), at(rom, DIALOGUE_ADVANCES), DIALOGUE_GLYPHS, 4, chars)
 end
 
--- The 8x16 font's characters, of a list of characters (a glyph past them its number in brackets).
-function hud.font_chars(list: { string }): { string }
-    local out: { string } = {}
-    for k = 0, hud.FONT_GLYPHS - 1 do
-        table.insert(out, char(list, k))
-    end
-    return out
+-- The 8x16 font's characters: `cell`'s, then `dialogue`'s past them (a glyph past them its number in brackets).
+function hud.font_chars(cell: { string }, dialogue: { string }): { string }
+    return glyphs.chars(cell, dialogue, hud.FONT_GLYPHS)
 end
 
 -- An emotion-window face of `rom` (4x2 tiles) and the box it brings (2x2; none for a soul's, which shows a count).
@@ -275,7 +254,7 @@ local function worded(rom: Rom, names: AssetNames, h: Hud)
     local cell, dialogue = names.glyphs or {}, names.dialogue_glyphs or {}
     h.font = gba.tiles(rom, at(rom, hud.FONT), 0x40 * hud.FONT_GLYPHS)
     -- (What glyph k draws: the content's name for it, EXE5's text encoding, else its number in brackets.)
-    h.font_chars = hud.font_chars(chained(cell, dialogue))
+    h.font_chars = hud.font_chars(cell, dialogue)
     h.texts = hud.texts(rom)
     local list: { BannerLayout } = {}
     for id = 0, hud.BANNER_COUNT - 1 do

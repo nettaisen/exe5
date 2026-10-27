@@ -20,7 +20,6 @@ local versions = require("./versions")
 
 local at = place.at
 local pointer_in_each = place.pointer_in_each
-local band, rshift = bit32.band, bit32.rshift
 
 local custom = {}
 
@@ -44,28 +43,6 @@ local MAP_CELLS = 15 * 20
 local OK_CORNERS = pointer_in_each({ 0x0802_4710, 0x0802_4714, 0x0802_46CC, 0x0802_46D0 })
 local SOUL_CORNERS = pointer_in_each({ 0x0802_4740, 0x0802_4744, 0x0802_46FC, 0x0802_4700 })
 
--- A number's low byte, signed.
-local function signed8(n: number): number
-    local b = band(n, 0xFF)
-    return if b >= 0x80 then b - 0x100 else b
-end
-
--- A cursor's corners from a table of them: two frames of four, each { y, x, hflip, vflip }.
-local function cursor_corners(rom: Rom, a: number): { { { any } } }
-    local frames: { { { any } } } = {}
-    for f = 0, 1 do
-        local four: { { any } } = {}
-        for k = 0, 3 do
-            local w = rom:u32(a + 16 * f + 4 * k)
-            local hi = rshift(w, 16)
-            local corner: { any } = { signed8(w), signed8(hi), band(hi, 0x1000) ~= 0, band(hi, 0x2000) ~= 0 }
-            table.insert(four, corner)
-        end
-        table.insert(frames, four)
-    end
-    return frames
-end
-
 -- Where the blocks load (EXE6's, all lower by the frame's 0x42 tiles, the column's icons by 0x44: the special button is
 -- two tiles narrower); the hidden slots' fill (0x08025D44: solid 2, EXE6's solid 1); the cursor over OK (0x08024704: at
 -- (0x58, 0x70), EXE6's (0x5B, 0x6E)), its corners read from `OK_CORNERS`.
@@ -86,7 +63,7 @@ local function layout(rom: Rom): CustomLayout
         form_names = 0,
         slot_blank = 2,
         detail_blank = 8,
-        ok_cursor = buttons.cursor(0x58, 0x70, cursor_corners(rom, at(rom, OK_CORNERS))),
+        ok_cursor = buttons.cursor(0x58, 0x70, buttons.corners(rom, at(rom, OK_CORNERS))),
         regular = { 2, 100 },
         column_columns = { 11, 14 },
         column_row = 3,
@@ -281,7 +258,7 @@ local function soul_button(set: Set): ButtonPictures
         tiles = custom.tiles(rom, custom.SOUL_BUTTONS),
         -- (0x08024540: gray when unavailable or picked.)
         sets = "other",
-        cursor = buttons.cursor(SOUL_CURSOR_AT[1], SOUL_CURSOR_AT[2], cursor_corners(rom, at(rom, SOUL_CORNERS))),
+        cursor = buttons.cursor(SOUL_CURSOR_AT[1], SOUL_CURSOR_AT[2], buttons.corners(rom, at(rom, SOUL_CORNERS))),
         picture = custom.picture(rom, { gfx = SOUL_PICTURE, palette = SOUL_PALETTES }),
         palettes = palettes(rom, SOUL_PALETTES, SOUL_PALETTE_COUNT),
         icons = custom.tiles(rom, SOUL_ICONS),

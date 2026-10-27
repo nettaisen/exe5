@@ -20,17 +20,15 @@ return function(): AssetNames
     local chips = data("compat/chips.toml")
     local records = data("compat/records.toml")
     local text = data("compat/text.toml")
-    -- One chip a number, as the compat crate reads chips.toml.
+    -- One chip a number, as the compat crate reads chips.toml (and says it: the later key first).
+    names.unique("chips.toml", chips, function(c: any): number
+        return c.id
+    end, function(earlier: string, later: string, n: number): string
+        return string.format("chips.toml: %s and %s are both chip 0x%03x", later, earlier, n)
+    end)
     local chip_keys: { [number]: string } = {}
-    local chip_of: { [number]: string } = {}
     for _, key in names.sorted(chips) do
-        local id = chips[key].id
-        local other = chip_of[id]
-        if other ~= nil then
-            error(string.format("chips.toml: %s and %s are both chip 0x%03x", key, other, id), 0)
-        end
-        chip_of[id] = key
-        chip_keys[id] = names.key(key)
+        chip_keys[chips[key].id] = names.key(key)
     end
     -- Every background has a number, and a number is one background's.
     local backgrounds = assets.backgrounds or {}

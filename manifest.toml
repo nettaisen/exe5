@@ -20,9 +20,8 @@ depends = ["exelib"]
 text = ["game", "patch_card_effects", "partycust_programs_effects", "patch_card_groups", "bugs", "builds", "auto_battle_lists", "battle_themes", "stats", "rulesets", "lettering", "emotions"]
 # How its assets are extracted (the engine's docs/design/extraction-recipes.md §4.2): every ROM of a complete Legacy
 # Collection, in the order its places read an address by (a ROM's slot): Team ProtoMan's US ROM, Team Colonel's, then
-# their Japanese ones; the primitives its recipe (extract/) needs; and the files outside extract/ it reads.
+# their Japanese ones; and the files outside extract/ its recipe reads.
 [extract]
-primitives = 1
 roms = ["BRBE", "BRKE", "BRBJ", "BRKJ"]
 size = 0x800000
 reads = ["compat/assets.toml", "compat/chips.toml", "compat/panels.toml", "compat/records.toml", "compat/text.toml"]

@@ -18,7 +18,7 @@ local statuses = require("../../rules/status")
 
 local bignoise = {}
 
-local SPRITE = asset.sprite("shademan")
+local SPRITE = require("../shademan/shademan_sprite")
 
 -- ---- The noise ------------------------------------------------------------------------------------------------------
 

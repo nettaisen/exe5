@@ -15,9 +15,12 @@
 local buster = require("./megaman/weapons/buster")
 local c_cannon = require("@self/chip")["c-cannon"]
 local charge = require("@self/charge")
+local colonel_cape_sprite = require("@self/colonel_cape_sprite")
+local colonel_portrait_sprite = require("@self/colonel_portrait_sprite")
+local colonel_sprite = require("@self/colonel_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("colonel"),
+    sprite = colonel_sprite,
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -27,7 +30,7 @@ local navi: NaviDef = {
     -- dialog's script 0x1d, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
     -- content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("colonel-portrait"),
+        portrait = colonel_portrait_sprite,
     },
     own_chip = { chip = c_cannon, code = "C" },
     own_chip_draws = true,
@@ -57,7 +60,7 @@ local navi: NaviDef = {
         ai_index = 7,
         -- The Full Synchro aura's animation: its owner's AI index (the aura's start, 0x080C4608).
         aura_anim = 7,
-        parts = { body = { sprite = asset.sprite("colonel-cape"), anims = 41 } },
+        parts = { body = { sprite = colonel_cape_sprite, anims = 41 } },
         overlay_hooks = { "death", "refresh", "flinch_checked" },
         attach_points = {
             { 0, 16 },

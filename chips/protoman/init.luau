@@ -7,6 +7,9 @@ local common = require("@exelib/protoman/navi")
 local navi = require("@self/navi")
 local navi_chips = require("../lib/navi_chips/chip")
 local sp_chips = require("../rules/sp_chips")
+local protoman_sprite = require("../navis/protoman/protoman_sprite")
+local sword_slash_sprite = require("../sprites/sword_slash")
+local sword_sprite = require("../sprites/sword")
 
 -- ProtoMan (EXE5 chip 0x0ef): ProtoMan cuts in and slashes each enemy navi he can reach: the shared navi
 -- (@exelib/protoman/navi, EXE5's kind ./navi; EXE5's the same code but for his sprite, 08-01, EXE6's 08-0b) with EXE5's
@@ -15,11 +18,11 @@ local sp_chips = require("../rules/sp_chips")
 -- EXE5's effect 0x33 (EXE6's 0x27, the same row), his palette 0 (0x080C1714) and his spawner EXE5's 0x080C1A00.
 
 local LOOK = common.look {
-    sprite = asset.sprite("protoman"),
+    sprite = protoman_sprite,
     palette = 0,
-    sword = attachment.look { sprite = asset.sprite("sword"), palette = 0 },
+    sword = attachment.look { sprite = sword_sprite, palette = 0 },
     sword_anim = 1,
-    slash = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
     spawner_address = 0x080C1A01,
 }
 
@@ -48,11 +51,11 @@ local protoman: Chip = {
 -- fast its user deleted ProtoMan SP (rules/sp_chips: formula 2, its table's row 1).
 
 local LOOK_PROTOMN_SP = common.look {
-    sprite = asset.sprite("protoman"),
+    sprite = protoman_sprite,
     palette = 0,
-    sword = attachment.look { sprite = asset.sprite("sword"), palette = 0 },
+    sword = attachment.look { sprite = sword_sprite, palette = 0 },
     sword_anim = 1,
-    slash = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
     spawner_address = 0x080C1A01,
 }
 
@@ -84,11 +87,11 @@ local protomn_sp: Chip = {
 -- the attachment adds to its row's (0x080B9B0A): 6, the sheet's dark blade (the attachment's own row 0x32's).
 
 local LOOK_PROTOMN_DS = common.look {
-    sprite = asset.sprite("protoman"),
+    sprite = protoman_sprite,
     palette = 3,
-    sword = attachment.look { sprite = asset.sprite("sword"), palette = 6 },
+    sword = attachment.look { sprite = sword_sprite, palette = 6 },
     sword_anim = 1,
-    slash = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
     spawner_address = 0x080C1A01,
 }
 

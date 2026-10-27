@@ -7,14 +7,16 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/bodygrd/shuriken")
 local marker = require("../../lib/navi_chips/marker")
+local shuriken_sprite = require("../../sprites/shuriken")
+local small_puff_sprite = require("../../sprites/small_puff")
 
 local shuriken = {}
 
 shuriken.kind = common.make_kind {
     id = "shuriken",
-    sprite = asset.sprite("shuriken"),
+    sprite = shuriken_sprite,
     land_sound = asset.sound("panel-crack"),
-    puff = new.effect { sprite = asset.sprite("small-puff"), anim = 1, palette = 0 },
+    puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 },
     self_type = collision.thrown_slash,
     target = collision.hits_navis,
     started = function(me: Object)

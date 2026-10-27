@@ -12,7 +12,7 @@ export type State = {
     done: boolean,
 }
 
-local SPRITE = asset.sprite("django-sun")
+local SPRITE = require("./django_sun_sprite")
 
 -- 0x080E9840: its phase, then over him (he moves it).
 local function tick(me: Object)

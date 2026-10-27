@@ -9,12 +9,13 @@ local boomerang = require("@exelib/boomer/boomerang")
 local kind = require("@self/boomerang")
 local collision = require("../rules/collision")
 local sparks = require("../lib/sparks")
+local boomerang_sprite = require("@self/boomerang_sprite")
 
 local VARIANT = boomerang.variant {
     speed = 0x8_0000,
     turn_speed = 314573,
     grass = false,
-    sprite = asset.sprite("boomerang"),
+    sprite = boomerang_sprite,
     is = collision.attack,
     spark = sparks.wood,
 }

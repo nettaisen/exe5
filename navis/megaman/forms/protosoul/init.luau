@@ -16,6 +16,9 @@ local charged_chip = require("../weapons/charged_chip")
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
+local protoman_sprite = require("../../protoman/protoman_sprite")
+local protosoul_sprite = require("@self/protosoul_sprite")
+local sword_sprite = require("../../../sprites/sword")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -24,14 +27,14 @@ local form: FormDef = {
     change = soul_change.action,
     revert = soul_revert.action,
     -- ProtoMan's image as MegaMan unites with him (rules/souls/image).
-    image = soul_image.look { sprite = asset.sprite("protoman") },
-    sprite = asset.sprite("protosoul"),
+    image = soul_image.look { sprite = protoman_sprite },
+    sprite = protosoul_sprite,
     element = "null",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires,
     -- and the blade its swords hold while the charge is armed (lib/swords, 0x080EC082: attachment row 10, the swords'
     -- in palette 5).
-    chaos = { weapon = chaos.weapon, blade = attachment.look { sprite = asset.sprite("sword"), palette = 5 } },
+    chaos = { weapon = chaos.weapon, blade = attachment.look { sprite = sword_sprite, palette = 5 } },
     weapons = {
         buster = buster.weapon,
         charge_shot = charge.weapon,

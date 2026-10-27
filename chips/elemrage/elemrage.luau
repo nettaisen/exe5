@@ -12,6 +12,8 @@ local collision = require("../../rules/collision")
 local flame_common = require("@exelib/elemrage/flame")
 local panel_changer = require("../../objects/panel_changer")
 local sparks = require("../../lib/sparks")
+local rage_claw_sprite = require("./rage_claw_sprite")
+local rage_flame_sprite = require("./rage_flame_sprite")
 
 local elemrage = {}
 
@@ -24,7 +26,7 @@ export type FlameState = ElemFlameState
 -- and the fire arm set none in Param4's high nibble.)
 local FLAME = flame_common.make_kind {
     id = "elemrage/flame",
-    sprite = asset.sprite("rage-flame"),
+    sprite = rage_flame_sprite,
     spreads = true,
     attack = collision.attack,
     attack_480 = collision.attack_480,
@@ -54,7 +56,7 @@ local RAGES: { [string]: { element: number, palette: number } } = {
     magnet = { element = 3, palette = 3 },
 }
 local NONE = { element = 0, palette = 4 }
-local CLAW = attachment.look { sprite = asset.sprite("rage-claw"), palette = 0, attach_point = 0x16 }
+local CLAW = attachment.look { sprite = rage_claw_sprite, palette = 0, attach_point = 0x16 }
 -- (The flame and the claw MegaMan's B↓FireAm fires too: navis/megaman/weapons/fire_arm.)
 elemrage.spawn_flame = spawn_flame
 elemrage.claw = CLAW

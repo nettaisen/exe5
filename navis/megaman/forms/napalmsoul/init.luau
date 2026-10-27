@@ -18,10 +18,13 @@ local darkmetr = require("../../../chips/darkmetr").darkmetr
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
+local napalm_cannon_sprite = require("../../napalmman/napalm_cannon_sprite")
+local napalmman_sprite = require("../../napalmman/napalmman_sprite")
+local napalmsoul_sprite = require("@self/napalmsoul_sprite")
 
 -- NapalmMan's cannon on the soul's image (the body overlays' row 4, 0x0800EE8A): behind him in his animations 20 to 22.
 local CANNON: BodyPart = {
-    sprite = asset.sprite("napalm-cannon"),
+    sprite = napalm_cannon_sprite,
     anims = 23,
     behind = { { 20, 22 } },
 }
@@ -34,8 +37,8 @@ local form: FormDef = {
     revert = soul_revert.action,
     -- NapalmMan's image as MegaMan unites with him (rules/souls/image), with his cannon (0x0800EDBC's routine for the
     -- soul).
-    image = soul_image.wearing(asset.sprite("napalmman"), CANNON),
-    sprite = asset.sprite("napalmsoul"),
+    image = soul_image.wearing(napalmman_sprite, CANNON),
+    sprite = napalmsoul_sprite,
     element = "fire",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:

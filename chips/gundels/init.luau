@@ -4,13 +4,15 @@
 
 local gundels = require("@self/gundels")
 local regions = require("@exelib/regions")
+local sun_beam_ex_sprite = require("@self/sun_beam_ex_sprite")
+local sun_beam_sprite = require("@self/sun_beam_sprite")
 
 -- GunDelS1-3's beam (0x080EDDB8's first look) in the shade and in the sun.
-local BEAM: SunBeamLook = { sprite = asset.sprite("sun-beam"), palette = 0 }
-local BEAM_IN_SUN: SunBeamLook = { sprite = asset.sprite("sun-beam"), palette = 2 }
+local BEAM: SunBeamLook = { sprite = sun_beam_sprite, palette = 0 }
+local BEAM_IN_SUN: SunBeamLook = { sprite = sun_beam_sprite, palette = 2 }
 -- GunDelEX's wider one.
-local WIDE_BEAM: SunBeamLook = { sprite = asset.sprite("sun-beam-ex"), palette = 0 }
-local WIDE_BEAM_IN_SUN: SunBeamLook = { sprite = asset.sprite("sun-beam-ex"), palette = 3 }
+local WIDE_BEAM: SunBeamLook = { sprite = sun_beam_ex_sprite, palette = 0 }
+local WIDE_BEAM_IN_SUN: SunBeamLook = { sprite = sun_beam_ex_sprite, palette = 3 }
 
 -- GunDelS1 (EXE5 chip 0x020): a sun beam that drains the column two panels ahead while A is held, more in the sun, for
 -- at most 60 ticks: EXE5's GunDelSol (chips/gundels/gundels; EXE6's code but for holding A, its collision row and its firing

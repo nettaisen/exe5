@@ -5,11 +5,12 @@
 local attachment = require("../objects/attachment")
 local shooter = require("../lib/cannon")
 local variants = require("../objects/projectile/variants")
+local cannon_sprite = require("@self/cannon_sprite")
 
 -- Their cannons (the attachment table's rows 0 to 2: 0c-01 in palettes 0, 1 and 2), at the navi's attach point 7.
-local CANNON_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 0, attach_point = 7 }
-local HICANNON_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 1, attach_point = 7 }
-local M_CANNON_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 2, attach_point = 7 }
+local CANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 0, attach_point = 7 }
+local HICANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 1, attach_point = 7 }
+local M_CANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 2, attach_point = 7 }
 
 -- Cannon (EXE5 chip 0x001): EXE6's cannon (@exelib/cannon, the original's action 0x14; EXE5's the same code), firing
 -- EXE5's cannon shot.

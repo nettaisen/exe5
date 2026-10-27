@@ -18,6 +18,8 @@ local panel_bursts = require("../objects/panel_bursts")
 local rising_bubble = require("../objects/rising_bubble")
 local sparks = require("../lib/sparks")
 local trajectory = require("../lib/trajectory")
+local black_bomb_sprite = require("@self/black_bomb_sprite")
+local bomb_sprite = require("../sprites/bomb")
 
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
 
@@ -56,13 +58,13 @@ local KIND = black_bomb.make_kind("blkbomb/bomb", {
         class = "field_object",
         version = 2,
         ai_index = 1,
-        look = { sprite = asset.sprite("black-bomb"), anim = 0, palette = 0, shadow = true },
+        look = { sprite = black_bomb_sprite, anim = 0, palette = 0, shadow = true },
     },
     tracked = true,
     set_off_empties_hp = true,
     bursts_as_freed = true,
     crush = "breaks",
-    sprite = asset.sprite("black-bomb"),
+    sprite = black_bomb_sprite,
     spark = sparks.breaking,
     is = collision.neutral_object,
     target = collision.everything,
@@ -79,7 +81,7 @@ local KIND = black_bomb.make_kind("blkbomb/bomb", {
 })
 
 -- What the navi holds while throwing one: the bomb's sprite, palette 4 (EXE5's attachment row 0x1A).
-local HELD = attachment.look { sprite = asset.sprite("bomb"), palette = 4 }
+local HELD = attachment.look { sprite = bomb_sprite, palette = 4 }
 
 local chip: Chip = {
     codes = { "L", "R", "Z" },

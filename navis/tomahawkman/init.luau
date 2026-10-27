@@ -16,9 +16,11 @@ local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local charged_chips = require("./megaman/weapons/charged_chip")
 local t_swing = require("@self/chip")["t-swing"]
+local tomahawkman_portrait_sprite = require("@self/tomahawkman_portrait_sprite")
+local tomahawkman_sprite = require("@self/tomahawkman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("tomahawkman"),
+    sprite = tomahawkman_sprite,
     element = "wood",
     buster_bonus = 3,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -28,7 +30,7 @@ local navi: NaviDef = {
     -- dialog's script 0x20, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
     -- content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("tomahawkman-portrait"),
+        portrait = tomahawkman_portrait_sprite,
     },
     palette_step = 2,
     own_chip = { chip = t_swing, code = "T" },

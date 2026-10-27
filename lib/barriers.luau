@@ -10,13 +10,16 @@
 
 local common_controller = require("@exelib/barriers/controller")
 local common_visual = require("@exelib/barriers/visual")
+local aura_sprite = require("../sprites/aura")
+local barrier_sprite = require("../sprites/barrier")
+local bubble_sprite = require("../sprites/bubble")
 
 local barriers = {}
 
 local visual = common_visual.make { id = "barrier-visual", blows = false }
 barriers.visual = visual
 
-local SPRITE, BUBBLE, AURA = asset.sprite("barrier"), asset.sprite("bubble"), asset.sprite("aura")
+local SPRITE, BUBBLE, AURA = barrier_sprite, bubble_sprite, aura_sprite
 local SOUND, BUBBLE_SOUND, BUBBLE_POP = asset.sound("barrier"), asset.sound("bubble"), asset.sound("bubble-pop")
 local NO_TIMER = 0xFFFF
 

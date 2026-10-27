@@ -8,8 +8,9 @@
 
 local ripple = {}
 
-local SPRITE = asset.sprite("ground-drill-effect")
-local SPLASH = new.effect { sprite = asset.sprite("dive-splash"), anim = 0, palette = 0 }
+local SPRITE = require("./ground_drill_effect_sprite")
+local dive_splash_sprite = require("../../sprites/dive_splash")
+local SPLASH = new.effect { sprite = dive_splash_sprite, anim = 0, palette = 0 }
 
 -- 0x080E4BCA: over the body, on the surface.
 local function follow(me: Object)

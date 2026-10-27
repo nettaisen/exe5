@@ -18,7 +18,7 @@ export type State = {
 
 local rocket = {}
 
-local SPRITE = asset.sprite("omega-rocket")
+local SPRITE = require("./omega_rocket_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_LAUNCH = asset.sound("set-down")
 local SOUND_BLAST = asset.sound("burst")

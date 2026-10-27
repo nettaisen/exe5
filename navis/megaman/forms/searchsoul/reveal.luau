@@ -4,6 +4,8 @@
 -- side that is invisible or flashing with the scope (effect 0x68, 20 pixels up), and on the next tick shows them
 -- again: their flash timer ended, no longer invisible or flashing. Then it goes.
 
+local search_scope_sprite = require("../../../searchman/search_scope_sprite")
+
 local reveal = {}
 
 export type State = {
@@ -12,7 +14,7 @@ export type State = {
 }
 
 -- The scope's mark (effect 0x68: sprite 10-23), 20 pixels up.
-local MARK = new.effect { sprite = asset.sprite("search-scope"), anim = 0, palette = 0 }
+local MARK = new.effect { sprite = search_scope_sprite, anim = 0, palette = 0 }
 local MARK_Z = 20 * 0x1_0000
 
 -- 0x080EAC18: the other side's hidden navis marked.

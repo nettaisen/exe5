@@ -17,6 +17,7 @@ local bullets = require("@exelib/bullet")
 local lib = require("../../lib/buster")
 local navi_level = require("../../lib/navi_level")
 local regions = require("@exelib/regions")
+local vulcan_hit_sprite = require("../../sprites/vulcan_hit")
 
 local buster = {}
 
@@ -45,7 +46,7 @@ local SOUND = asset.sound("col-army-2")
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 0,
-    effect = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 1, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0 },
     single = true,
 }
 

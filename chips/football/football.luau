@@ -21,7 +21,8 @@ local sparks = require("../../lib/sparks")
 
 local football = {}
 
-local SPRITE = asset.sprite("gridman")
+local SPRITE = require("../gridman/gridman_sprite")
+local puff_sprite = require("../../sprites/puff")
 
 -- ---- The ball -------------------------------------------------------------------------------------------------------
 
@@ -30,7 +31,7 @@ local DROP_Z, DROP_VZ, DROP_TICKS = 0x90_0000, 0x8_0000, 30
 local GRAVITY, LAND_Z = 0x1_0000, 0x8_0000
 local HIT_MOD = 3
 local LANDING = new.effect { sprite = SPRITE, anim = 0x11, palette = 0 }
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
 local SOUND_LAND = asset.sound("football-land")
 -- The block it hits: its panel and the ones right and down (0x080D94BC).
 local BLOCK = { { 0, 0 }, { 0, 1 }, { 1, 0 }, { 1, 1 } }

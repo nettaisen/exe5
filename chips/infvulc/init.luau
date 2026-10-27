@@ -12,15 +12,17 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local vulcan = require("./vulcan/vulcan")
+local vulcan_hit_sprite = require("../sprites/vulcan_hit")
+local vulcan_sprite = require("./vulcan/vulcan_sprite")
 
 -- The InfVulcs' gun (0x080EC608: the attachment table's row 0x1F, the Vulcans' sheet in palette 3).
-local GUN = attachment.look { sprite = asset.sprite("vulcan"), palette = 3, attach_point = 14 }
+local GUN = attachment.look { sprite = vulcan_sprite, palette = 3, attach_point = 14 }
 -- Their bullet (row 0xE: EXE6's but for its hit, EXE5's effect 0x3E, the Vulcans' in palette 2; EXE6's a glint): the
 -- panel found and the one behind it, staggering, its hit shown once at the bullet.
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 0, palette = 2 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 2 },
     single = true,
 }
 

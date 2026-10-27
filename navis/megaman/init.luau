@@ -24,9 +24,11 @@ local searchsoul = require("@self/forms/searchsoul").searchsoul
 local shadowsoul = require("@self/forms/shadowsoul").shadowsoul
 local toadsoul = require("@self/forms/toadsoul").toadsoul
 local tomahawksoul = require("@self/forms/tomahawksoul").tomahawksoul
+local megaman_navi_sprite = require("@self/megaman_navi_sprite")
+local megaman_portrait_sprite = require("@self/megaman_portrait_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("megaman-navi"),
+    sprite = megaman_navi_sprite,
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -34,7 +36,7 @@ local navi: NaviDef = {
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 3, past its navi check). Its words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("megaman-portrait"),
+        portrait = megaman_portrait_sprite,
     },
     weapons = { buster = buster.weapon, charge_shot = charged_shot.weapon },
     panel_bonus = { panel = "sea", family = "aqua", damage = 30 },

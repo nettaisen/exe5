@@ -17,7 +17,7 @@ export type State = {
     hits: number,
 }
 
-local SPRITE = asset.sprite("gyrosoul-tornado")
+local SPRITE = require("./gyrosoul_tornado_sprite")
 local SOUND = asset.sound("gyrosoul-tornado")
 -- Its sprite sits this far ahead of its panel, and this far down unless it lies on the ground (16.16).
 local AHEAD, BELOW = 38 * 0x1_0000, 15 * 0x1_0000

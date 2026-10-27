@@ -9,10 +9,11 @@
 local airspin = require("@exelib/airspin/action")
 local collision = require("../../../rules/collision")
 local whirl = require("@exelib/airspin/whirl")
+local bass_anly_shot_sprite = require("../../../chips/bassanly/bass_anly_shot_sprite")
 
 local made = whirl.make {
     id = "megaman/hells-rolling/whirl",
-    sprite = asset.sprite("bass-anly-shot"),
+    sprite = bass_anly_shot_sprite,
     sound = asset.sound("bass-anly-shot"),
     attack = collision.attack,
     hits = collision.hits_navis,

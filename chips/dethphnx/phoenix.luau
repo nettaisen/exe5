@@ -34,7 +34,7 @@ export type State = {
     navi_acting: boolean,
 }
 
-local SPRITE = asset.sprite("phoenix")
+local SPRITE = require("../phoenix/phoenix_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 -- Its animation (DethPhnx's; Phoenix's is 0).
 local ANIM = 1

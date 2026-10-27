@@ -18,17 +18,21 @@ local darktorn = require("../../../chips/darktorn").darktorn
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
+local gyro_propeller_sprite = require("../../gyroman/gyro_propeller_sprite")
+local gyroman_sprite = require("../../gyroman/gyroman_sprite")
+local gyrosoul_propeller_sprite = require("@self/gyrosoul_propeller_sprite")
+local gyrosoul_sprite = require("@self/gyrosoul_sprite")
 
 -- GyroMan's propeller on the soul's image (the body overlays' row 0, 0x0800EE4E): behind him in his animations 0 to 5,
 -- 7, 16 and 17.
 local PROPELLER: BodyPart = {
-    sprite = asset.sprite("gyro-propeller"),
+    sprite = gyro_propeller_sprite,
     anims = 22,
     behind = { { 0, 5 }, { 7, 7 }, { 16, 17 } },
 }
 -- MegaMan's propeller in GyroSoul (the body overlays' row 2, 0x0800F06C): behind him in every animation.
 local SOUL_PROPELLER: BodyPart = {
-    sprite = asset.sprite("gyrosoul-propeller"),
+    sprite = gyrosoul_propeller_sprite,
     anims = 34,
     behind = { { 0, 33 } },
 }
@@ -44,8 +48,8 @@ local form: FormDef = {
     revert = soul_revert.action,
     -- GyroMan's image as MegaMan unites with him (rules/souls/image), in his propeller (0x0800EDBC's routine for the
     -- soul).
-    image = soul_image.wearing(asset.sprite("gyroman"), PROPELLER),
-    sprite = asset.sprite("gyrosoul"),
+    image = soul_image.wearing(gyroman_sprite, PROPELLER),
+    sprite = gyrosoul_sprite,
     element = "null",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:

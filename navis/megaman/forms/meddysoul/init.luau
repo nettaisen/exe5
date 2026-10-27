@@ -15,6 +15,8 @@ local drkrecov = require("../../../chips/drkrecov").drkrecov
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
+local meddy_sprite = require("../../meddy/meddy_sprite")
+local meddysoul_sprite = require("@self/meddysoul_sprite")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -23,10 +25,10 @@ local form: FormDef = {
     change = soul_change.action,
     revert = soul_revert.action,
     -- Meddy's image as MegaMan unites with her (rules/souls/image).
-    image = soul_image.look { sprite = asset.sprite("meddy") },
+    image = soul_image.look { sprite = meddy_sprite },
     -- What it adds to the custom screen (rules/souls gathers it, rules/souls/custom): its capsules (./capsules).
     custom = capsules.custom,
-    sprite = asset.sprite("meddysoul"),
+    sprite = meddysoul_sprite,
     element = "null",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:

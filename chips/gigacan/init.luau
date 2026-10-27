@@ -9,12 +9,13 @@ local recipe_m_cannon = require("./cannon")["m-cannon"]
 local attachment = require("../objects/attachment")
 local shooter = require("../lib/cannon")
 local variants = require("../objects/projectile/variants")
+local cannon_sprite = require("./cannon/cannon_sprite")
 
 -- Their cannons (the arm's rows 0 to 2 of 0x080EC2AC: the attachment table's, 0c-01 in palettes 0, 1 and 2, the
 -- Cannons'), at the navi's attach point 7.
-local GIGACAN1_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 0, attach_point = 7 }
-local GIGACAN2_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 1, attach_point = 7 }
-local GIGACAN3_ARM = attachment.look { sprite = asset.sprite("cannon"), palette = 2, attach_point = 7 }
+local GIGACAN1_ARM = attachment.look { sprite = cannon_sprite, palette = 0, attach_point = 7 }
+local GIGACAN2_ARM = attachment.look { sprite = cannon_sprite, palette = 1, attach_point = 7 }
+local GIGACAN3_ARM = attachment.look { sprite = cannon_sprite, palette = 2, attach_point = 7 }
 
 -- GigaCan1 (EXE5 chip 0x140): the Program Advance of three Cannons of one code (or Attck+10 and two of them): EXE6's
 -- cannon (@exelib/cannon, action 0x14 with subtype 4: the arm's row 0 of 0x080EC2AC, the shot's row 0x0C of 0x080EC2B3)

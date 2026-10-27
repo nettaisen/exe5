@@ -9,7 +9,7 @@ local common = require("@exelib/bassanly/navi")
 local effects = require("../../lib/effects")
 local shot = require("./shot")
 
-local SPRITE = asset.sprite("bass")
+local SPRITE = require("../bass/bass_sprite")
 
 return common.make {
     id = "bassanly/navi",

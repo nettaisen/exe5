@@ -8,6 +8,10 @@ local attachment = require("../../objects/attachment")
 local effects = require("../../lib/effects")
 local collision = require("../../rules/collision")
 local common_blade = require("@exelib/moonbld/blade")
+local moon_blade_sprite = require("../../chips/moonbld/moon_blade_sprite")
+local rock_sprite = require("../../objects/rock/rock_sprite")
+local shadowman_sprite = require("../../navis/shadowman/shadowman_sprite")
+local sword_sprite = require("../../sprites/sword")
 
 local rock = {}
 
@@ -22,7 +26,7 @@ export type State = {
 type ColonelState = { out: { boolean } }
 
 local FALL_FROM, GRAVITY = 0xC00000, -0xC000
-local ROCK, SHADOWMAN = asset.sprite("rock"), asset.sprite("shadowman")
+local ROCK, SHADOWMAN = rock_sprite, shadowman_sprite
 local ANIM_ROCK = 1
 local SOUND_LAND = asset.sound("land")
 -- Its landing's shake (0, 20 ticks).
@@ -32,7 +36,7 @@ local ANIM_APPEAR, APPEAR_TICKS, DUST_Z = 3, 4, 0x1E0000
 -- The slash: animation 5, the sword, the swing's sound; the blade on the 10th tick; blinking from the 11th; gone after
 -- the 41st.
 local ANIM_SLASH, SWORD_ANIM, BLADE_AT, BLINK_FROM, SLASH_TICKS = 5, 8, 9, 0xA, 0x28
-local SWORD = attachment.look { sprite = asset.sprite("sword"), palette = 0 }
+local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local SOUND_SWING = asset.sound("sword-swing")
 -- Action 0x10 (0x020967E4: no action of the rock's starts it): animation 4, its sword let go, 4 ticks, gone.
 local ANIM_LEAVE, LEAVE_TICKS = 4, 4
@@ -41,7 +45,7 @@ local ANIM_LEAVE, LEAVE_TICKS = 4, 4
 -- DS has it, which E-SAPPOU's spawner runs while dimmed (Param3 1): it sweeps on its first tick, its hits resolve while
 -- dimmed (@exelib/moonbld/blade's `ds`).
 rock.blade = common_blade.make_kind("e-sappou/blade", {
-    sprite = asset.sprite("moon-blade"),
+    sprite = moon_blade_sprite,
     is = collision.slash,
     hits = collision.hits_navis,
     ds = true,

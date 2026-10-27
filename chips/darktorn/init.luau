@@ -6,6 +6,7 @@
 local attachment = require("../objects/attachment")
 local tornado = require("./tornado/tornado")
 local dark_costs = require("../lib/dark_costs")
+local hand_fan_sprite = require("./tornado/hand_fan_sprite")
 
 -- Its blow (subtype 3, EXE6's action's third form): HP-bug tornadoes (row 3: bug 0x54, argument 5) spreading back
 -- toward the navi by its side's statistic 3 (0x080CAE7E, EXE6's `sub_80CA19E`: the same tables, `off_80CA1F8`), the
@@ -19,7 +20,7 @@ local BACK_SPREAD = {
     { { 0, 0 }, { -1, 0 }, { 0, -1 }, { 0, 1 }, { 1, 0 } },
 }
 local BLOW = tornado.blow {
-    fan = attachment.look { sprite = asset.sprite("hand-fan"), palette = 1, attach_point = 9 },
+    fan = attachment.look { sprite = hand_fan_sprite, palette = 1, attach_point = 9 },
     fan_palette = 1,
     spread = {
         level = function(me: Object): number

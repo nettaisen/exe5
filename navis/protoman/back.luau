@@ -6,6 +6,7 @@
 -- ticks after it. ProtoSoul's (navis/megaman/forms/protosoul/back) is the same guard with a damage of its own.
 
 local guard = require("../../lib/guard")
+local reflector_shield_sprite = require("../../sprites/reflector_shield")
 
 local back = {}
 
@@ -16,7 +17,7 @@ local REFLECT = guard.action {
     id = "protoman/back/action",
     ticks = TICKS,
     -- The Reflect program's look (row 1 of 0x080CA1F0).
-    look = guard.look { sprite = asset.sprite("reflector-shield"), anim = 2, fade_anim = 3, fade_ticks = 0xE, palette = 0 },
+    look = guard.look { sprite = reflector_shield_sprite, anim = 2, fade_anim = 3, fade_ticks = 0xE, palette = 0 },
     counter = guard.reflect,
 }
 

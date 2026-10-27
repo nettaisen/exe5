@@ -12,7 +12,7 @@ local frog = {}
 
 local FALL_FROM, GRAVITY, LOW = 0xC00000, -0x4000, 0x140000
 local HIT_MOD = 1
-local FROG = asset.sprite("frog")
+local FROG = require("./frog_sprite")
 local SOUND_DROP = asset.sound("drop")
 -- Landed: 20 ticks; the puff 10 pixels up.
 local LANDED_TICKS, PUFF_Z = 0x14, 0xA0000

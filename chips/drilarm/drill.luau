@@ -15,6 +15,7 @@ local collision = require("../../rules/collision")
 local drill = require("@exelib/drilarm/drill")
 local sparks = require("../../lib/sparks")
 local operation_battle = require("../../lib/operation_battle")
+local drill_arm_sprite = require("./drill_arm_sprite")
 
 local exe5_drill = {}
 
@@ -32,7 +33,7 @@ local KIND, spawn = drill.make_kind("drill", {
 })
 exe5_drill.kind = KIND
 
-local ARM = attachment.look { sprite = asset.sprite("drill-arm"), palette = 0, attach_point = 0x13 }
+local ARM = attachment.look { sprite = drill_arm_sprite, palette = 0, attach_point = 0x13 }
 local ARM_DRILLING = 1
 local SOUND = asset.sound("drilarm")
 -- The phases, on the attack's step.

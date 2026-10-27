@@ -34,6 +34,13 @@ local statuses = require("./status")
 local supports = require("../lib/supports/controller")
 local swords = require("../lib/swords")
 local tango = require("../chips/tango").tango
+local blindness_sprite = require("./blindness_sprite")
+local charge_glow_a_sprite = require("./charge_glow_a_sprite")
+local charge_glow_sprite = require("../sprites/charge_glow")
+local confusion_sprite = require("./confusion_sprite")
+local full_synchro_aura_sprite = require("./full_synchro_aura_sprite")
+local hit_marker_sprite = require("../sprites/hit_marker")
+local immobilized_sprite = require("../sprites/immobilized")
 
 local roles: RolesSpec = {
     actions = {
@@ -199,19 +206,19 @@ local roles: RolesSpec = {
     sprites = {
         -- The charge glow of a B charge; of an A charge (14-15). (An armed Chaos Unison charge's, 14-1C, is
         -- ./souls/chaos_charge's.)
-        charge_glow = asset.sprite("charge-glow"),
-        charge_glow_a = asset.sprite("charge-glow-a"),
+        charge_glow = charge_glow_sprite,
+        charge_glow_a = charge_glow_a_sprite,
         -- The status visuals over a navi (0x080E08EC, EXE6's `byte_80E08E4`): confusion's stars and blindness (EXE6's
         -- numbers) and the immobilized one (10-2d, EXE6's 10-00).
-        confusion = asset.sprite("confusion"),
-        blindness = asset.sprite("blindness"),
-        immobilized = asset.sprite("immobilized"),
+        confusion = confusion_sprite,
+        blindness = blindness_sprite,
+        immobilized = immobilized_sprite,
         -- The mark over a navi a damaging weakness hit landed on ("!!": effect object 0x6B, 0x080E84B0, EXE6's code
         -- with its animation 0 alone; spawned by 0x08017254).
-        hit_marker = asset.sprite("hit-marker"),
+        hit_marker = hit_marker_sprite,
         -- The Full Synchro aura (actor object 0x5E, 0x080C4608: 14-16, EXE6's sprite numbers; its animation the navi's
         -- actor record's AI index).
-        full_synchro_aura = asset.sprite("full-synchro-aura"),
+        full_synchro_aura = full_synchro_aura_sprite,
     },
     hooks = {
         -- The first barrier: the navi enters with the barrier its stats name (FstBarr's, EXE6's code), and its

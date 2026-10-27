@@ -24,12 +24,15 @@
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local kcrusher = require("@self/chip").kcrusher
+local knightman_ball_sprite = require("@self/knightman_ball_sprite")
+local knightman_portrait_sprite = require("@self/knightman_portrait_sprite")
+local knightman_sprite = require("@self/knightman_sprite")
 
 -- KnightMan's ball and chain (the body overlays' row 1, 0x0800EE7A): in front.
-local BALL: BodyPart = { sprite = asset.sprite("knightman-ball"), anims = 20 }
+local BALL: BodyPart = { sprite = knightman_ball_sprite, anims = 20 }
 
 local navi: NaviDef = {
-    sprite = asset.sprite("knightman"),
+    sprite = knightman_sprite,
     element = "null",
     buster_bonus = 1,
     move_lag = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 },
@@ -39,7 +42,7 @@ local navi: NaviDef = {
     -- dialog's script 0x21, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
     -- content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("knightman-portrait"),
+        portrait = knightman_portrait_sprite,
     },
     own_chip = { chip = kcrusher, code = "K" },
     own_chip_draws = true,

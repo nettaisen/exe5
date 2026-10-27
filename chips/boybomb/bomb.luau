@@ -9,6 +9,11 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/boybomb/bomb")
 local dimming_chips = require("@exelib/dimming")
+local boy_bomb_sprite = require("./boy_bomb_sprite")
+local explosion_sprite = require("../../sprites/explosion")
+local heal_sprite = require("../../sprites/heal")
+local impact_sprite = require("../../sprites/impact")
+local puff_sprite = require("../../sprites/puff")
 
 local bomb = {}
 
@@ -29,21 +34,21 @@ local SOLID, OCCUPIED = 0x10, 0x0F880080
 -- flips); the obstacle rows, flinch, frozen and bubbled among them.
 local BOMB = common.make {
     id = "boybomb/bomb",
-    sprite = asset.sprite("boy-bomb"),
+    sprite = boy_bomb_sprite,
     identity = new.identity { class = "field_object", version = 1, ai_index = 0x21 },
     body = { is = collision.neutral_body, hits = collision.everything },
     blast = {
         is = collision.attack,
         hits = collision.hits_navis,
-        effect = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 },
+        effect = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
         sound = asset.sound("target-move"),
     },
-    comes = new.effect { sprite = asset.sprite("heal"), anim = 0, palette = 0 },
+    comes = new.effect { sprite = heal_sprite, anim = 0, palette = 0 },
     -- (0x112: 0x080CCE82 loads it as 19 + 255.)
     place_sound = asset.sound("place"),
-    broken = new.effect { sprite = asset.sprite("impact"), anim = 0, palette = 0 },
+    broken = new.effect { sprite = impact_sprite, anim = 0, palette = 0 },
     break_sound = asset.sound("hit-bomb-1"),
-    removed = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 },
+    removed = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
     stand_forbid = { [0] = 0x0B800000, [1] = 0x06800000 },
     push = "any_hit",
     actions = {

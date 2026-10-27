@@ -29,7 +29,7 @@ export type State = {
     hit_at: number,
 }
 
-local SPRITE = asset.sprite("shake-wave")
+local SPRITE = require("./shake_wave_sprite")
 local SOUND = asset.sound("wave")
 local ELEC = 3
 -- The sine: 24 pixels, one swing over 80 pixels (two panels) of travel; it starts at the middle of the turn.

@@ -19,6 +19,8 @@ local double_attack = require("../lib/double_attack")
 local megaman = require("../navis/megaman").megaman
 local napalmman = require("../navis/napalmman").napalmman
 local regions = require("@exelib/regions")
+local vulcan_hit_sprite = require("../sprites/vulcan_hit")
+local vulcan_sprite = require("../chips/vulcan/vulcan_sprite")
 
 type State = DoubleAttackNavi
 
@@ -36,20 +38,20 @@ local HEIGHTS = { 0x08_0000, 0x10_0000, 0x18_0000, 0x20_0000 }
 local MEGAMAN_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 0, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0 },
     single = true,
     hits_while_dimmed = true,
 }
 local NAPALMMAN_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 1, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0 },
     single = true,
     hits_while_dimmed = true,
 }
 -- MegaMan's vulcan (the attachment table's row 0x0B, the Vulcans' gun at his attach point 14): raised in his
 -- animation 0xA, firing in 0xD; its own animation one on as it fires, another as it stops.
-local VULCAN = attachment.look { sprite = asset.sprite("vulcan"), palette = 0, attach_point = 14 }
+local VULCAN = attachment.look { sprite = vulcan_sprite, palette = 0, attach_point = 14 }
 local ANIM_HOLD, ANIM_FIRE = 0xA, 0xD
 local RAISE_TICKS, BETWEEN, LOWER_TICKS = 1, 8, 0xA
 -- NapalmMan's firing animation, and the muzzle flash at his arm (row 0x0D) on his second tick; 5 more ticks between.

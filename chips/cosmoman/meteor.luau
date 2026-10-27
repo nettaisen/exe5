@@ -16,11 +16,12 @@ export type State = {
     look: Identity?,
 }
 
-local SPRITE = asset.sprite("cosmoman")
+local SPRITE = require("./cosmoman_sprite")
+local explosion_sprite = require("../../sprites/explosion")
 local SOUND_FALL = asset.sound("justice-one")
 local SOUND_HIT = asset.sound("hit-bomb-1")
 -- The explosion where it lands (effect 0).
-local EXPLOSION = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
 -- What a panel must hold to take it (solid, or something on it).
 local TAKES = 0x0F80_0010
 

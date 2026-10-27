@@ -41,7 +41,7 @@ export type State = {
     follower: Object?,
 }
 
-local SPRITE = asset.sprite("larkman")
+local SPRITE = require("./larkman_sprite")
 local SOUND_SWOOP = asset.sound("swoop")
 local HIT_MOD = 3
 

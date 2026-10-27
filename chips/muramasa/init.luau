@@ -7,6 +7,7 @@
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
+local sword_slash_sprite = require("../sprites/sword_slash")
 
 local chip: Chip = {
     codes = { "M" },
@@ -27,7 +28,7 @@ local chip: Chip = {
         blade = swords.blade,
         blade_anim = swords.blade_anim,
         hit = { region = regions.long, collision = swords.slashes_navis, hit_mod = 3 },
-        effect = new.effect { sprite = asset.sprite("sword-slash"), anim = 1, palette = 8 },
+        effect = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 8 },
         sound = swords.swing,
     },
     auto_battle = { class = "hurt_into_reach", range = "two_in_row" },

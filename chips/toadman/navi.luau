@@ -17,7 +17,7 @@ export type State = {
 
 local toadman = {}
 
-local SPRITE = asset.sprite("toadman")
+local SPRITE = require("../../navis/toadman/toadman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_PLAY = asset.sound("toad-melody")
 -- His notes (0x080BC9D8): 10 ticks each, the next 6 ticks in, running while dimmed.

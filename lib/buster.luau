@@ -7,11 +7,14 @@
 local arm = require("./arm")
 local attachment = require("../objects/attachment")
 local common = require("@exelib/buster")
+local buster_arm_sprite = require("../sprites/buster_arm")
+local muzzle_flash_sprite = require("../sprites/muzzle_flash")
+local navi_arm_sprite = require("../sprites/navi_arm")
 
 local buster = common.make {
-    flash = attachment.look { sprite = asset.sprite("muzzle-flash"), palette = 0, attach_point = 0x10 },
-    arm = attachment.look { sprite = asset.sprite("buster-arm"), palette = 0 },
-    navi_arm = attachment.look { sprite = asset.sprite("navi-arm"), palette = 0 },
+    flash = attachment.look { sprite = muzzle_flash_sprite, palette = 0, attach_point = 0x10 },
+    arm = attachment.look { sprite = buster_arm_sprite, palette = 0 },
+    navi_arm = attachment.look { sprite = navi_arm_sprite, palette = 0 },
     recovery = require("../rules/buster").recovery,
     -- What stops a shot's panel count (0x0800D99A: one mask whichever side shoots, where EXE6's goes by the side):
     -- bodies, neutral objects, blockers and reservations, and both sides' barrier bits, the shooter's own too (a

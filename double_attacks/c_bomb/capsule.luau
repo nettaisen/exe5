@@ -19,7 +19,8 @@ type State = {
 }
 type Holder = { capsule: Object? }
 
-local SPRITE = asset.sprite("chemical-capsule")
+local SPRITE = require("./chemical_capsule_sprite")
+local explosion_sprite = require("../../sprites/explosion")
 local SOUND_PLACE = asset.sound("place")
 local SOUND_BURST = asset.sound("hit-bomb-1")
 -- Its coming (14 ticks), its fuse once touched (30 ticks).
@@ -27,7 +28,7 @@ local COMING, FUSE = 0xE, 0x1E
 local LIE, TOUCHED = 0x4, 0x8
 -- The explosions (the effect table's row 0 in its palette 3: `sub_801BD3C` with 0x00030000), on the ground; the puff
 -- 20 pixels up.
-local EXPLOSION = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
 local EXPLOSION_PALETTE = 3
 local PUFF_Z = 0x14_0000
 

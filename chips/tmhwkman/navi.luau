@@ -21,11 +21,12 @@ export type State = {
 
 local tmhwkman = {}
 
-local SPRITE = asset.sprite("tomahawkman")
+local SPRITE = require("../../navis/tomahawkman/tomahawkman_sprite")
+local big_slash_sprite = require("../../sprites/big_slash")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SWING = asset.sound("tomahawk-man")
 -- The earth his tomahawk splashes (the effect table's row 0x45).
-local EARTH = new.effect { sprite = asset.sprite("big-slash"), anim = 1, palette = 0 }
+local EARTH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0 }
 local SOLID = 0x10
 -- When his tomahawk lands (ticks left of his swing).
 local STRIKE = 0x32

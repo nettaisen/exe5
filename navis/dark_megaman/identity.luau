@@ -9,6 +9,7 @@
 
 local attach_points = require("../megaman/attach_points")
 local collision = require("../../rules/collision")
+local megaman_sprite = require("../megaman/megaman_sprite")
 
 return new.identity {
     class = "navi",
@@ -17,7 +18,7 @@ return new.identity {
     ai_index = 0x16,
     attach_points = attach_points,
     body = {
-        sprite = asset.sprite("megaman"),
+        sprite = megaman_sprite,
         shadow = true,
         palette_scale = 1,
         palette = 1,

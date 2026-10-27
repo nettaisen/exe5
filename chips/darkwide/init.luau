@@ -8,6 +8,8 @@ local attachment = require("../objects/attachment")
 local collision = require("../rules/collision")
 local widesht = require("./widesht/wave")
 local dark_costs = require("../lib/dark_costs")
+local wide_shooter_sprite = require("./widesht/wide_shooter_sprite")
+local wide_wave_sprite = require("./widesht/wide_wave_sprite")
 
 -- Its wave (kind 9, which EXE6's table has and no EXE6 chip fires): it goes through, trails afterimages of its own
 -- sprite (animation 1: 0x080CC9A6's word 0x11D10, EXE6's rock cubes 0x10010) and carries bug 0x14 with argument 2, as
@@ -20,11 +22,11 @@ local WAVE = widesht.variant {
     collision = collision.attack_480,
     bug = 0x214,
     palette = 1,
-    sprite = asset.sprite("wide-wave"),
-    trail_sprite = asset.sprite("wide-wave"),
+    sprite = wide_wave_sprite,
+    trail_sprite = wide_wave_sprite,
 }
 -- Its shooter (the action's subtype 2's, 0x080ECFDE: the attachment table's row 0x37, the wide shooter in palette 3).
-local SHOOTER = attachment.look { sprite = asset.sprite("wide-shooter"), palette = 3, attach_point = 12 }
+local SHOOTER = attachment.look { sprite = wide_shooter_sprite, palette = 3, attach_point = 12 }
 
 local chip: Chip = {
     codes = { "T" },

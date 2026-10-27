@@ -11,7 +11,7 @@ local cross = {}
 
 type CrossState = { palette: number }
 
-local CROSS_SPRITE = asset.sprite("cross-shield")
+local CROSS_SPRITE = require("./cross_shield_sprite")
 local CROSS_SPEED = 20
 local CROSS_SOUND = asset.sound("bite")
 -- Its actions.

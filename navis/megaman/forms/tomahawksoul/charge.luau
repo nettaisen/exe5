@@ -7,6 +7,7 @@
 
 local collision = require("../../../../rules/collision")
 local regions = require("@exelib/regions")
+local big_slash_sprite = require("../../../../sprites/big_slash")
 
 local charge = {}
 
@@ -22,7 +23,7 @@ local SWING_TICKS, STRIKE_AT, RECOVER_TICKS = 21, 12, 5
 local HIT_MOD = 3
 local WOOD = 4
 -- Effect 0x45: the big slash (sprite 0C-15, animation 1), 16 pixels up.
-local SLASH = new.effect { sprite = asset.sprite("big-slash"), anim = 1, palette = 0 }
+local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0 }
 local SLASH_Z = 16 * 0x1_0000
 
 -- 0x080EEEA0: the swing; the strike on the count's 12; 22 ticks.

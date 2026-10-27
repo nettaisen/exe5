@@ -20,6 +20,7 @@ local falling_meteor = require("@exelib/meteors/falling_meteor")
 local marker = require("./marker")
 local meteor_shower = require("@exelib/meteors/shower")
 local sparks = require("../../lib/sparks")
+local meteor_sprite = require("./meteor_sprite")
 
 local meteors = {}
 
@@ -27,7 +28,7 @@ local meteors = {}
 meteors.row = falling_meteor.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = 3, shake = 1, panel = "none" }
 
 meteors.kind = falling_meteor.make_kind("meteor", {
-    sprite = asset.sprite("meteor"),
+    sprite = meteor_sprite,
     sounds = { fall = asset.sound("justice-one"), land = asset.sound("hit-bomb-1") },
     spark = sparks.of_element,
     -- (Its landing's burst EXE6's.)

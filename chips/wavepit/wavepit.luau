@@ -27,7 +27,7 @@ export type State = {
 
 -- Its look: sheet 0c-3a, animation 0, no shadow (0x080DAE18's 0x00000C3A); its collision (0x04050300): an attack
 -- hitting navis, hit modifier 3.
-local SPRITE = asset.sprite("pit-wave")
+local SPRITE = require("./pit_wave_sprite")
 local SOUND = asset.sound("pit-wave")
 local HIT_MOD = 3
 local SOLID = 0x10

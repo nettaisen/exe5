@@ -20,8 +20,10 @@ local soul_revert = require("../../../rules/souls/revert")
 
 -- The layers' sprites (./layer's rows, 0x080C32C0): NumberMan's face on his image (row 0), MegaMan's in NumberSoul
 -- (row 1).
-local NUMBERMAN_FACE = asset.sprite("numberman-face")
-local NUMBERSOUL_FACE = asset.sprite("numbersoul-face")
+local NUMBERMAN_FACE = require("../../numberman/numberman_face_sprite")
+local NUMBERSOUL_FACE = require("@self/numbersoul_face_sprite")
+local numberman_sprite = require("../../numberman/numberman_sprite")
+local numbersoul_sprite = require("@self/numbersoul_sprite")
 
 
 local form: FormDef = {
@@ -33,7 +35,7 @@ local form: FormDef = {
     -- NumberMan's image as MegaMan unites with him (rules/souls/image): he wears his face, a layer (./layer, row 0)
     -- in the image's second related slot (0x0800EE6E), taken off as the image goes (0x0800EFFA).
     image = soul_image.look {
-        sprite = asset.sprite("numberman"),
+        sprite = numberman_sprite,
         put_on = function(image: Object)
             image.related2 = layer.spawn(image, NUMBERMAN_FACE)
         end,
@@ -44,7 +46,7 @@ local form: FormDef = {
     },
     -- What it adds to the custom screen (rules/souls gathers it, rules/souls/custom): the hand of ten (./hand).
     custom = hand.custom,
-    sprite = asset.sprite("numbersoul"),
+    sprite = numbersoul_sprite,
     element = "null",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:

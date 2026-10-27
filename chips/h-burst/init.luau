@@ -12,9 +12,10 @@ local burst = require("@self/burst")
 local recipe_energbom = require("./energbom").energbom
 local recipe_megenbom = require("./energbom").megenbom
 local recipe_spreader = require("./spreader").spreader
+local spreader_sprite = require("./spreader/spreader_sprite")
 
 local LOOK: HyperBurstLook = {
-    spreader = attachment.look { sprite = asset.sprite("spreader"), palette = 0, attach_point = 11 },
+    spreader = attachment.look { sprite = spreader_sprite, palette = 0, attach_point = 11 },
     -- In the overlay, its animation 0.
     hold = function(me: Object, look: AttachmentLook, which: Slot)
         attachment.attach(me, look, which)

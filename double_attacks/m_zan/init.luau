@@ -17,6 +17,10 @@ local magnetman = require("../navis/magnetman").magnetman
 local protoman = require("../navis/protoman").protoman
 local regions = require("@exelib/regions")
 local status = require("../rules/status")
+local immobilized_sprite = require("../sprites/immobilized")
+local magnet_arm_sprite = require("../navis/magnetman/magnet_arm_sprite")
+local sword_slash_sprite = require("../sprites/sword_slash")
+local sword_sprite = require("../sprites/sword")
 
 -- The navis' own beside the shared (`DoubleAttackNavi`): ProtoMan's search starting at the top of its column (+0x70;
 -- after a slash it goes on below the last enemy).
@@ -30,9 +34,9 @@ local ANIM_IDLE, ANIM_STEP, ANIM_SWING, ANIM_MAGNET = 0, 4, 5, 0x10
 local SOUND_SWING = asset.sound("sword-swing")
 -- His sword (the attachment table's row 3, as his navi chip's) in its animation 1; the slash over the column (the
 -- effect table's row 0x33), 16 pixels up.
-local SWORD = attachment.look { sprite = asset.sprite("sword"), palette = 0 }
+local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWORD_ANIM = 1
-local SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 local SWING_Z = 0x100000
 local HIT_MOD = 1
 -- What ProtoMan looks for (0x02138FB8, by his side): an enemy body; and the panel before it: solid, with no object or
@@ -41,12 +45,12 @@ local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
 local STANDABLE, TAKEN = 0x10, 0x0F800000
 
 -- MagnetMan's magnet arm (the DS's new attachment row 0x3A: 10-3C), animating while dimmed; how long he holds it.
-local MAGNET_ARM = attachment.look { sprite = asset.sprite("magnet-arm"), palette = 0 }
+local MAGNET_ARM = attachment.look { sprite = magnet_arm_sprite, palette = 0 }
 local MAGNET_TICKS = 0x78
 -- The DS's immobilizer (T3 0x3F, the GBA's code but that its linger is its Param1, 0x78, and its Param2 1 plays 0xFD):
 -- MagnetSoul's mark, its guard-breaking hit against navis that immobilizes (status 0x42).
 local IMMOBILIZER = immobilizer.make_kind("m-zan/immobilizer", {
-    sprite = asset.sprite("immobilized"),
+    sprite = immobilized_sprite,
     anim = 1,
     lasts = 0x78,
     sound = asset.sound("bass-anly"),

@@ -17,6 +17,7 @@ local navi_level = require("../../lib/navi_level")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local swords = require("../../lib/swords")
+local screen_divide_sprite = require("./screen_divide_sprite")
 
 local charge = {}
 
@@ -53,7 +54,7 @@ local ENEMY_BODY = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
 -- The slash: AIAttackVars +3's row of 0x080F8AF4 (0x080F8A30 and 0x080F8B00 for the warning) and its effect (0x48
 -- on), row 0, the routine's: the target and the two panels diagonally behind it.
 local REGION = regions.vee
-local SLASH = new.effect { sprite = asset.sprite("screen-divide"), anim = 0, palette = 0 }
+local SLASH = new.effect { sprite = screen_divide_sprite, anim = 0, palette = 0 }
 -- His sword's animation (the attachment's spawn word: row 3, animation 7).
 local BLADE_ANIM = 7
 

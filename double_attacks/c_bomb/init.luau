@@ -16,6 +16,7 @@ local meddy = require("../navis/meddy").meddy
 local napalm_bomb = require("../chips/napalmmn/bomb")
 local napalmman = require("../navis/napalmman").napalmman
 local panels = require("@exelib/panels")
+local target_mark_sprite = require("@self/target_mark_sprite")
 
 -- What each navi keeps besides the shared fields: Meddy's capsule (+0x74), NapalmMan's bomb (+0x78).
 type State = DoubleAttackNavi & {
@@ -32,7 +33,7 @@ local REACH = 4
 local MUZZLE_X, MUZZLE_Z = 0x8_0000, 0x38_0000
 local GRAVITY = -0xA000
 -- The mark on his target (the DS's effect row 0x4C, the GBA's too: 10-1C), for 30 ticks.
-local MARK = new.effect { sprite = asset.sprite("target-mark"), anim = 0, palette = 0 }
+local MARK = new.effect { sprite = target_mark_sprite, anim = 0, palette = 0 }
 local MARK_TICKS = 0x1E
 local SOUND_MARK = asset.sound("mark")
 -- Meddy: her wind-up (animation 16, 60 ticks), the capsule out 20 ticks in (animation 18).

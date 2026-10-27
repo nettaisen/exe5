@@ -5,11 +5,13 @@
 -- user's area to the far edge).
 
 local common = require("@exelib/serchman/scope")
+local search_scope_sprite = require("../../navis/searchman/search_scope_sprite")
+local sight_sprite = require("../../sprites/sight")
 
 return common.make {
     id = "serchman/scope",
-    scope = asset.sprite("search-scope"),
-    sight = asset.sprite("sight"),
+    scope = search_scope_sprite,
+    sight = sight_sprite,
     move_sound = asset.sound("erase-man"),
     lock_sound = asset.sound("mark"),
     bonus_sound = asset.sound("ok-8b"),

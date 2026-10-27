@@ -8,6 +8,7 @@
 local bullet = require("../../../../objects/bullet")
 local bullets = require("@exelib/bullet")
 local regions = require("@exelib/regions")
+local vulcan_hit_sprite = require("../../../../sprites/vulcan_hit")
 
 local charge = {}
 
@@ -26,7 +27,7 @@ local SOUND = asset.sound("col-army-2")
 -- The bullets (rows 0x11 and 0x12, the last one's; EXE6's ColArmy's and ColForce's with their statuses): the panel
 -- found and the one behind it, staggering (the last flinching), the hit shown once at the bullet (effect 0x58: EXE5's
 -- own vulcan hit, its animation 1).
-local HIT = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 1, palette = 0 }
+local HIT = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0 }
 local SHOT = bullet.variant { region = regions.long, hit_mod = 1, effect = HIT, single = true }
 local LAST_SHOT = bullet.variant { region = regions.long, hit_mod = 3, effect = HIT, single = true }
 local RAISE_ANIM, FIRE_ANIM = 16, 17

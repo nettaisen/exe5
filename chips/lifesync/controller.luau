@@ -13,6 +13,7 @@ local marker = require("@exelib/lifesync/marker")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local operation_battle = require("../../lib/operation_battle")
+local hit_sparks_sprite = require("../../sprites/hit_sparks")
 
 local lifesync = {}
 
@@ -40,7 +41,7 @@ local MARK_POINT = 0x1B
 -- (The battle effects that make it only wait: 1, a boss rank; 8, a link battle.)
 
 
-lifesync.marker = marker.make_kind { id = "lifesync/marker", sprite = asset.sprite("hit-sparks"), palette = 2 }
+lifesync.marker = marker.make_kind { id = "lifesync/marker", sprite = hit_sparks_sprite, palette = 2 }
 
 -- 0x080E7356 (EXE6's `sub_80E7486`): if the panel shows the other side's player navi, the first combatant (both
 -- sides' slots) whose collision is on it.

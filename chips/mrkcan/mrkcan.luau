@@ -38,7 +38,8 @@ export type SightState = {
     enemies: number,
 }
 
-local SIGHT_SPRITE = asset.sprite("mark-sight")
+local SIGHT_SPRITE = require("./mark_sight_sprite")
+local mark_cannon_sprite = require("./mark_cannon_sprite")
 local LOCK_SOUND = asset.sound("mark")
 -- The sweep: an arc of 16 ticks, 3 arcs; 120 pixels from the center, which starts 80 pixels behind the owner's
 -- column on the middle row and moves 40 pixels on each arc; it starts at a quarter turn, turning 8 steps a tick,
@@ -249,7 +250,7 @@ local ANIM_ROWS = 0x18
 
 -- The cannons (the attachment table's rows 0x2C to 0x2E, by the chip).
 function mrkcan.cannon(palette: number): AttachmentLook
-    return attachment.look { sprite = asset.sprite("mark-cannon"), palette = palette, attach_point = 18 }
+    return attachment.look { sprite = mark_cannon_sprite, palette = palette, attach_point = 18 }
 end
 
 -- 0x080EF460: the cannon's animation.

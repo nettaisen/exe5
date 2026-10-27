@@ -5,10 +5,11 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/holydrem/shot")
 local sparks = require("../../lib/sparks")
+local holy_dream_shot_sprite = require("./holy_dream_shot_sprite")
 
 return common.make {
     id = "holydrem/shot",
-    sprite = asset.sprite("holy-dream-shot"),
+    sprite = holy_dream_shot_sprite,
     sound = asset.sound("energy-burst"),
     is = collision.thrown_piercing_break,
     hits = collision.hits_navis,

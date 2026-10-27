@@ -6,13 +6,14 @@
 
 local bombs = require("../lib/bombs")
 local seed = require("../lib/bombs/seed")
+local grab_shot_sprite = require("../sprites/grab_shot")
 
 -- Its seed (Param1 0): ice, the sprout (effect 0x29) and its sound.
 local SEED = seed.variant {
     element = 0,
     palette = 0,
     panel = "ice",
-    effect = new.effect { sprite = asset.sprite("grab-shot"), anim = 1, palette = 0 },
+    effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 },
     sound = asset.sound("freeze"),
 }
 

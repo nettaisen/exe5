@@ -9,10 +9,16 @@
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/deltaray/navi")
+local deletion_sprite = require("../../sprites/deletion")
+local follow_effect_sprite = require("./follow_effect_sprite")
+local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local protoman_sprite = require("../../navis/protoman/protoman_sprite")
+local sword_slash_sprite = require("../../sprites/sword_slash")
+local sword_sprite = require("../../sprites/sword")
 
 return common.make {
     id = "deltaray/navi",
-    sprite = asset.sprite("protoman"),
+    sprite = protoman_sprite,
     sounds = {
         appear = asset.sound("appear"),
         arrive = asset.sound("log-in"),
@@ -21,18 +27,18 @@ return common.make {
         burst = asset.sound("delta-ray-2"),
     },
     -- Effects 0x03, 0x35 and 0x33.
-    flash = new.effect { sprite = asset.sprite("deletion"), anim = 0, palette = 0 },
-    mark = new.effect { sprite = asset.sprite("hit-sparks"), anim = 11, palette = 1 },
-    slash = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 },
+    flash = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 },
+    mark = new.effect { sprite = hit_sparks_sprite, anim = 11, palette = 1 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
     -- His sword: EXE5's attachment row 3 (0x080C1D62: 0x10103), its animation 1, stepping while dimmed.
     attach = attachment.attach,
-    sword = attachment.look { sprite = asset.sprite("sword"), palette = 0 },
+    sword = attachment.look { sprite = sword_sprite, palette = 0 },
     sword_anim = 1,
     self_type = collision.slash,
     target = collision.hits_navis,
     finish_anim = 0x11,
     -- His bursts (the follow effect's look 4, 0x080E3E3C, which isn't shown as he is).
-    burst = { id = "deltaray/burst", sprite = asset.sprite("follow-effect"), copies_visibility = false },
+    burst = { id = "deltaray/burst", sprite = follow_effect_sprite, copies_visibility = false },
     flashes = false,
     candidate_x = common.plus_one,
     tracks = true,

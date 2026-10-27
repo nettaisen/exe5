@@ -17,7 +17,8 @@ local effects = require("../../lib/effects")
 local marker = require("../../lib/navi_chips/marker")
 
 -- Its sprite: animation 0 standing, 1 spinning.
-local SPRITE = asset.sprite("air-spin")
+local SPRITE = require("./air_spin_sprite")
+local moon_blade_sprite = require("../moonbld/moon_blade_sprite")
 
 return common.make {
     id = "airspin/top",
@@ -32,7 +33,7 @@ return common.make {
     body = collision.own_body,
     hit_by = collision.hit_by_other_side,
     -- The spin's gust (the effect table's row 0x4F), and its palette offset.
-    gust = new.effect { sprite = asset.sprite("moon-blade"), anim = 0, palette = 0 },
+    gust = new.effect { sprite = moon_blade_sprite, anim = 0, palette = 0 },
     gust_palette = 2,
     gust_side = false,
     gust_self = collision.attack,

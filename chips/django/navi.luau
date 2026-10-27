@@ -41,7 +41,7 @@ export type State = {
 
 local django = {}
 
-local SPRITE = asset.sprite("django")
+local SPRITE = require("./django_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CHARGE = asset.sound("django-charge")
 local SOUND_LAND = asset.sound("rockfall")

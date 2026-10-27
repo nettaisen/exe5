@@ -27,7 +27,7 @@ export type State = {
 
 local gather = {}
 
-local SPRITE = asset.sprite("chaos-beast")
+local SPRITE = require("./chaos_beast_sprite")
 local ANIM = 21
 -- How long it circles in, and the ticks its turning changes at (ticks left).
 local TICKS = 0x1E

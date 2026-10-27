@@ -20,14 +20,15 @@ export type State = {
 
 local knightman = {}
 
-local SPRITE = asset.sprite("knightman")
+local SPRITE = require("../../navis/knightman/knightman_sprite")
+local knightman_ball_sprite = require("../../navis/knightman/knightman_ball_sprite")
 local SOUND_LAND = asset.sound("land")
 local SOUND_SWING = asset.sound("knight-swing")
 -- What he wears (0x0800EE7A: EXE5's body overlay row 1, its sprite 10-47, in front at every animation), stepping
 -- even while paused.
 local CHAIN = new.identity {
     class = "navi",
-    parts = { body = { sprite = asset.sprite("knightman-ball"), anims = 20 } },
+    parts = { body = { sprite = knightman_ball_sprite, anims = 20 } },
 }
 -- Where he drops from and flies off to, how fast he falls faster, and how fast he rises.
 local HEIGHT = 0xA0_0000

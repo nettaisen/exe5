@@ -40,11 +40,12 @@ local BALLS, BALL_TICKS = 6, 0x14
 -- KnightMan's middle and 10 down, falling an eighth of a pixel a tick faster each tick until 26 pixels up; then kicked
 -- (a flash, the effect table's row 0x3C; the hit sound) over 4 ticks to the middle of the panel ahead in its row, at
 -- that height; then 8 pixels a tick forward until 150 pixels past the screen's middle.
-local BALL_SPRITE = asset.sprite("django-rubble")
+local BALL_SPRITE = require("../chips/django/django_rubble_sprite")
+local pink_flash_sprite = require("../sprites/pink_flash")
 local HIT_MOD = 3
 local DROP_Z, DROP_X, DROP_Y = 0xBE0000, 0x12, 0xA
 local FALL_ACCEL, KICK_Z = 0x2000, 0x1A0000
-local KICK = new.effect { sprite = asset.sprite("pink-flash"), anim = 0, palette = 2 }
+local KICK = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2 }
 local SOUND_KICK = asset.sound("damage")
 local KICK_TICKS, KICK_PANEL_AT = 4, 2
 local FLY_SPEED, FLY_RANGE = 0x80000, 0x96

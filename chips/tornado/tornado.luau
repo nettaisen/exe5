@@ -16,6 +16,7 @@ local blows = require("@exelib/tornado/blow")
 local common = require("@exelib/tornado")
 local collision = require("../../rules/collision")
 local sparks = require("../../lib/sparks")
+local tornado_sprite = require("./tornado_sprite")
 
 local tornado = {}
 
@@ -31,7 +32,7 @@ local MAGNET = variant { palette = 2, rearm = 2 }
 local SEA = variant { palette = 5, rearm = 2 }
 
 tornado.kind = common.make_kind("tornado", {
-    sprite = asset.sprite("tornado"),
+    sprite = tornado_sprite,
     sound = asset.sound("aqua-surge"),
     panel_variants = {
         lava = LAVA,

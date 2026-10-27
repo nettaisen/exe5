@@ -10,7 +10,8 @@ local statuses = require("../../rules/status")
 
 local cloud = {}
 
-local SPRITE = asset.sprite("cloudman")
+local SPRITE = require("./cloudman_sprite")
+local thunder_ball_sprite = require("../../sprites/thunder_ball")
 local SOUND_SHOW = asset.sound("panel-poison")
 local SOUND_CHARGE = asset.sound("erase-man-2")
 local SOUND_BOLT = asset.sound("wave")
@@ -19,7 +20,7 @@ local BOLT = flying_shot.variant {
     is = collision.thrown,
     hit_mod = 0,
     element = 3,
-    sprite = asset.sprite("thunder-ball"),
+    sprite = thunder_ball_sprite,
     status = statuses.paralyze_90,
     speed = 0x4_0000,
 }

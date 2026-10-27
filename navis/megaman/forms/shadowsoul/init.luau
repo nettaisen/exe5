@@ -18,6 +18,8 @@ local darkinvs = require("../../../chips/darkinvs").darkinvs
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
+local shadowman_sprite = require("../../shadowman/shadowman_sprite")
+local shadowsoul_sprite = require("@self/shadowsoul_sprite")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -26,8 +28,8 @@ local form: FormDef = {
     change = soul_change.action,
     revert = soul_revert.action,
     -- ShadowMan's image as MegaMan unites with him (rules/souls/image).
-    image = soul_image.look { sprite = asset.sprite("shadowman") },
-    sprite = asset.sprite("shadowsoul"),
+    image = soul_image.look { sprite = shadowman_sprite },
+    sprite = shadowsoul_sprite,
     element = "null",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:

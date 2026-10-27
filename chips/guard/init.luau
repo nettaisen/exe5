@@ -5,7 +5,7 @@
 local guard = require("../lib/guard")
 local wave = require("@self/wave")
 
-local REFLECTOR = asset.sprite("reflector-shield")
+local REFLECTOR = require("../sprites/reflector_shield")
 -- Their counter: a shock wave back along the row (the wave's row 0xC, 0x080ECC10's first byte for all three: animation
 -- 0, 10 ticks a panel) with the chip's damage.
 local WAVE = wave.variant { anim = 0, ticks = 0x0A }

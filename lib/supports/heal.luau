@@ -6,13 +6,15 @@
 local barriers = require("../barriers")
 local common = require("@exelib/supports/heal")
 local trajectory = require("../trajectory")
+local heal_sprite = require("../../sprites/heal")
+local tango_heal_sprite = require("./tango_heal_sprite")
 
 return common.make {
     id = "tango/heal",
-    sprite = asset.sprite("tango-heal"),
+    sprite = tango_heal_sprite,
     sound = asset.sound("heal"),
     -- The sparkle as it lands (EXE5's effect 6, EXE6's row: a recovery's).
-    sparkle = new.effect { sprite = asset.sprite("heal"), anim = 0, palette = 0 },
+    sparkle = new.effect { sprite = heal_sprite, anim = 0, palette = 0 },
     trajectory = trajectory,
     -- 0x080174DA(5), then the barrier's visual (0x080DA77A).
     raise_barrier = function(navi: Object)

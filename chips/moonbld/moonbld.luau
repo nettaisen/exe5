@@ -8,6 +8,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/moonbld/blade")
 local stepsword = require("../../lib/stepsword")
+local moon_blade_sprite = require("./moon_blade_sprite")
 
 local moonbld = {}
 
@@ -22,7 +23,7 @@ moonbld.STATE = { timer = "u16", turned = "u32" }
 
 -- The blade (attack object #0x69): sprite 10-38, EXE5's rows 7 and 5 (0x0705FF01).
 moonbld.blade = common.make_kind("moonbld/blade", {
-    sprite = asset.sprite("moon-blade"),
+    sprite = moon_blade_sprite,
     is = collision.slash,
     hits = collision.hits_navis,
 })

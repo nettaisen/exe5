@@ -13,11 +13,12 @@ local attachment = require("../../objects/attachment")
 local regions = require("@exelib/regions")
 local stepsword = require("../../lib/stepsword")
 local swords = require("../../lib/swords")
+local sword_slash_sprite = require("../../sprites/sword_slash")
 
 -- The slash over two panels (effect 0x17).
-local LONG_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 1, palette = 0 }
+local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
 -- The slash over a column (effect 0x16).
-local WIDE_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
 
 local katana = {}
 

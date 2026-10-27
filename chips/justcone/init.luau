@@ -8,11 +8,12 @@ local collision = require("../rules/collision")
 local common = require("@exelib/justcone/strike")
 local effects = require("../lib/effects")
 local sparks = require("../lib/sparks")
+local justice_one_sprite = require("@self/justice_one_sprite")
 
 -- The fist (attack object #0xAE, 0x080DBDA4).
 local STRIKE = common.make {
     id = "justcone/strike",
-    sprite = asset.sprite("justice-one"),
+    sprite = justice_one_sprite,
     sounds = { fall = asset.sound("justice-one"), land = asset.sound("hit-bomb-1") },
     is = collision.thrown_break,
     hits = collision.hits_navis,

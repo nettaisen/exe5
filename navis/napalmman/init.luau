@@ -18,16 +18,19 @@
 local buster = require("@self/buster")
 local charged_chips = require("./megaman/weapons/charged_chip")
 local napalm = require("@self/chip").napalm
+local napalm_cannon_sprite = require("@self/napalm_cannon_sprite")
+local napalmman_portrait_sprite = require("@self/napalmman_portrait_sprite")
+local napalmman_sprite = require("@self/napalmman_sprite")
 
 -- NapalmMan's cannon (the body overlays' row 4, 0x0800EE8A): behind him in his animations 20 to 22.
 local CANNON: BodyPart = {
-    sprite = asset.sprite("napalm-cannon"),
+    sprite = napalm_cannon_sprite,
     anims = 23,
     behind = { { 20, 22 } },
 }
 
 local navi: NaviDef = {
-    sprite = asset.sprite("napalmman"),
+    sprite = napalmman_sprite,
     element = "fire",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -37,7 +40,7 @@ local navi: NaviDef = {
     -- dialog's script 0x1a, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
     -- content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("napalmman-portrait"),
+        portrait = napalmman_portrait_sprite,
     },
     palette_step = 3,
     own_chip = { chip = napalm, code = "N" },

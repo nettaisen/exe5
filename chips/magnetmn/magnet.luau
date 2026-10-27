@@ -35,7 +35,7 @@ export type State = {
 
 local magnet = {}
 
-local SPRITE = asset.sprite("magnetman")
+local SPRITE = require("../../navis/magnetman/magnetman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CRASH = asset.sound("magnet-crash")
 -- A navi's body among what it hit.

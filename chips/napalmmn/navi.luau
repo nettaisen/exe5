@@ -18,7 +18,8 @@ export type State = {
 
 local napalmman = {}
 
-local SPRITE = asset.sprite("napalmman")
+local SPRITE = require("../../navis/napalmman/napalmman_sprite")
+local napalm_cannon_sprite = require("../../navis/napalmman/napalm_cannon_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("cannon")
 -- What he wears (0x0800EE8A: EXE5's body overlay row 4, its sprite 10-18, behind him in his animations 20 to 22),
@@ -26,7 +27,7 @@ local SOUND_FIRE = asset.sound("cannon")
 local CANNON = new.identity {
     class = "navi",
     parts = {
-        body = { sprite = asset.sprite("napalm-cannon"), anims = 23, behind = { { 20, 22 } } },
+        body = { sprite = napalm_cannon_sprite, anims = 23, behind = { { 20, 22 } } },
     },
 }
 -- His bomb: how far ahead it lands (columns), and where it starts (16.16, ahead and up).

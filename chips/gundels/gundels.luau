@@ -18,6 +18,7 @@ local attachment = require("../../objects/attachment")
 local beam = require("@exelib/gundels/beam")
 local collision = require("../../rules/collision")
 local operation_battle = require("../../lib/operation_battle")
+local gun_del_sol_sprite = require("./gun_del_sol_sprite")
 
 local gundels = {}
 
@@ -60,7 +61,7 @@ local HOLDLESS_AI = 0x17
 
 -- The gun (the attachment table's rows 0x13 to 0x16, by the chip), in its palette.
 function gundels.gun(palette: number): AttachmentLook
-    return attachment.look { sprite = asset.sprite("gun-del-sol"), palette = palette, attach_point = 0x0D }
+    return attachment.look { sprite = gun_del_sol_sprite, palette = palette, attach_point = 0x0D }
 end
 
 local function set_phase(me: Object, step: number)

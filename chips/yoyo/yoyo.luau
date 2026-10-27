@@ -41,7 +41,8 @@ export type State = {
     turned: number,
 }
 
-local SPRITE = asset.sprite("yoyo")
+local SPRITE = require("./yoyo_sprite")
+local yoyo_arm_sprite = require("./yoyo_arm_sprite")
 local SOUND = asset.sound("set-down")
 local HIT_MOD = 1
 local SPEED, ROUND = 0x5_0000, 8
@@ -339,7 +340,7 @@ function yoyo.spawn(owner: Object, x: number, y: number, element: number, z: num
 end
 
 -- The YoYo chips' yoyo arm (row 0x26).
-yoyo.arm = attachment.look { sprite = asset.sprite("yoyo-arm"), palette = 0, attach_point = 0x0F }
+yoyo.arm = attachment.look { sprite = yoyo_arm_sprite, palette = 0, attach_point = 0x0F }
 
 -- YoYo's throw: a yoyo of `spec`.
 function yoyo.action(spec: Spec): Action

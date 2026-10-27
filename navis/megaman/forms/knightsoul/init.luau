@@ -16,9 +16,12 @@ local darkdril = require("../../../chips/darkdril").darkdril
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
+local knightman_ball_sprite = require("../../knightman/knightman_ball_sprite")
+local knightman_sprite = require("../../knightman/knightman_sprite")
+local knightsoul_sprite = require("@self/knightsoul_sprite")
 
 -- KnightMan's ball and chain on the soul's image (the body overlays' row 1, 0x0800EE7A): in front.
-local BALL: BodyPart = { sprite = asset.sprite("knightman-ball"), anims = 20 }
+local BALL: BodyPart = { sprite = knightman_ball_sprite, anims = 20 }
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -28,8 +31,8 @@ local form: FormDef = {
     revert = soul_revert.action,
     -- KnightMan's image as MegaMan unites with him (rules/souls/image), with his ball and chain (0x0800EDBC's routine
     -- for the soul).
-    image = soul_image.wearing(asset.sprite("knightman"), BALL),
-    sprite = asset.sprite("knightsoul"),
+    image = soul_image.wearing(knightman_sprite, BALL),
+    sprite = knightsoul_sprite,
     element = "null",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:

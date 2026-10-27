@@ -9,13 +9,14 @@ local collision = require("../../../../rules/collision")
 local glow = require("../../weapons/glow")
 local immobilizer = require("@exelib/instant/immobilizer")
 local status = require("../../../../rules/status")
+local immobilized_sprite = require("../../../../sprites/immobilized")
 
 local back = {}
 
 -- EXE5's immobilizer: the mark (10-2D, its animation 1), a guard-breaking attack against navis that immobilizes for
 -- 120 ticks (status 0x42), its sound.
 back.immobilizer = immobilizer.make_kind("immobilizer", {
-    sprite = asset.sprite("immobilized"),
+    sprite = immobilized_sprite,
     anim = 1,
     sound = asset.sound("immobilizer"),
     status = status.immobilize_120,
@@ -24,7 +25,7 @@ back.immobilizer = immobilizer.make_kind("immobilizer", {
 })
 
 -- The glow (effect 0x26's parameters 0x141B: 14-1B, animation 0, no shadow).
-local GLOW = asset.sprite("magnetsoul-glow")
+local GLOW = require("./magnetsoul_glow_sprite")
 -- MagnetSoul, by its form's id.
 local MAGNET_SOUL = "magnetsoul"
 -- The wait before the next B+Back (the attack's lockout).

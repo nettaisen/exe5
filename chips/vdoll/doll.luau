@@ -23,7 +23,8 @@ local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
 local trajectory = require("../../lib/trajectory")
 
-local SPRITE = asset.sprite("voodoo-doll")
+local SPRITE = require("./voodoo_doll_sprite")
+local explosion_sprite = require("../../sprites/explosion")
 
 return common.make {
     id = "vdoll/doll",
@@ -47,7 +48,7 @@ return common.make {
     curse = curse,
     exe5_leaving = {
         -- Effect 0x24 (EXE5's table, 0x080DFC94): sheet 14-00 in palette 1.
-        flash = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 1 },
+        flash = new.effect { sprite = explosion_sprite, anim = 0, palette = 1 },
         sound = asset.sound("trap-vanish"),
     },
 }

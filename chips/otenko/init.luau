@@ -13,7 +13,7 @@ local effects = require("../lib/effects")
 local identity = require("@self/identity")
 
 -- Its sheet, 0c-49 (`otenko`: EXE6's JP ROMs' Otenko, the US ROMs' placeholder).
-local SPRITE = asset.sprite("otenko")
+local SPRITE = require("@self/otenko_sprite")
 
 local OTENKO = common.make {
     statue_id = "otenko/statue",

@@ -26,6 +26,8 @@ local hub_shade = require("../navis/megaman/forms/hub_shade")
 local megaman = require("../navis/megaman").megaman
 local base_form = require("../navis/megaman/forms/base").base
 local panels = require("@exelib/panels")
+local buster_arm_sprite = require("../sprites/buster_arm")
+local charge_glow_sprite = require("../sprites/charge_glow")
 
 local double_attack = {}
 
@@ -65,8 +67,8 @@ local COURSE_WAIT = 0x1E
 
 -- The glow at the hand as a navi charges (the DS's new effect rows 0x6D and 0x6E: 14-08 in its animations 0 and 2,
 -- for 40 and 20 ticks), with the buster's charge sounds.
-local CHARGING = new.effect { sprite = asset.sprite("charge-glow"), anim = 0, palette = 0 }
-local CHARGED = new.effect { sprite = asset.sprite("charge-glow"), anim = 2, palette = 0 }
+local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0 }
+local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0 }
 local CHARGING_LASTS, CHARGED_AT = 0x28, 0x14
 local SOUND_CHARGING = asset.sound("buster-charge")
 local SOUND_CHARGED = asset.sound("buster-charged")
@@ -76,7 +78,7 @@ local APPEAR_TICKS, LEAVE_TICKS = 0x14, 4
 local ANIM_IDLE, ANIM_APPEAR, ANIM_LEAVE = 0, 3, 4
 -- MegaMan's buster arm (the attachment table's row 0x23, EXE5's: lib/arm), which he raises in a soul's animation,
 -- Hub Style's 0x0D, or the DS's own 0x0E.
-local ARM = attachment.look { sprite = asset.sprite("buster-arm"), palette = 0 }
+local ARM = attachment.look { sprite = buster_arm_sprite, palette = 0 }
 
 -- A count down of the object's timer: true once it reached 0 (`subs; strh; bgt`).
 function double_attack.ran_out(me: Object): boolean

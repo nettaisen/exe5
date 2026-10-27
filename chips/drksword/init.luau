@@ -9,9 +9,10 @@ local collision = require("../rules/collision")
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
 local dark_costs = require("../lib/dark_costs")
+local big_slash_sprite = require("../sprites/big_slash")
 
 -- Its dark big slash (effect 0x1C).
-local DARK_SLASH = new.effect { sprite = asset.sprite("big-slash"), anim = 0, palette = 2 }
+local DARK_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 2 }
 
 local chip: Chip = {
     codes = { "Z" },

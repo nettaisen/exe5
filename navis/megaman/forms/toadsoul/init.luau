@@ -15,6 +15,8 @@ local darkwide = require("../../../chips/darkwide").darkwide
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
+local toadman_sprite = require("../../toadman/toadman_sprite")
+local toadsoul_sprite = require("@self/toadsoul_sprite")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -23,8 +25,8 @@ local form: FormDef = {
     change = soul_change.action,
     revert = soul_revert.action,
     -- ToadMan's image as MegaMan unites with him (rules/souls/image).
-    image = soul_image.look { sprite = asset.sprite("toadman") },
-    sprite = asset.sprite("toadsoul"),
+    image = soul_image.look { sprite = toadman_sprite },
+    sprite = toadsoul_sprite,
     element = "aqua",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:

@@ -8,13 +8,14 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/flmhook/fire")
 local trajectory = require("../../lib/trajectory")
+local flame_hook_fire_sprite = require("./flame_hook_fire_sprite")
 
 -- Its arc's center behind it, by swing (0x080DFA74), 16.16.
 local BACK: { [number]: number } = { [0] = 0x78_0000, 0x50_0000 }
 
 return common.make({
     id = "bighook/fire",
-    sprite = asset.sprite("flame-hook-fire"),
+    sprite = flame_hook_fire_sprite,
     sound = asset.sound("flame-hook-fire"),
     self_type = collision.breaking,
     target = collision.hits_navis,

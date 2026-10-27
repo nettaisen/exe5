@@ -19,6 +19,10 @@ local projectile = require("../../objects/projectile")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local supports = require("../../rules/party/supports")
+local bomb_sprite = require("../../sprites/bomb")
+local cannon_sprite = require("../../chips/cannon/cannon_sprite")
+local sword_slash_sprite = require("../../sprites/sword_slash")
+local sword_sprite = require("../../sprites/sword")
 
 -- His timer (0x020041E4: RNG2 bits 6–9 into 0x020CC2E8's offsets of 0x020CC2E0's ticks, weights 2/6/6/2).
 local TIMER: { number } = { 130, 130, 170, 170, 170, 170, 170, 170, 210, 210, 210, 210, 210, 210, 250, 250 }
@@ -43,17 +47,17 @@ local WEIGHTS = { [BUSTER] = 6, [SWORD] = 6, [BOMB] = 4 }
 -- His buster: animation 8, the cannon held (the attachment table's row 0); on its 16th tick the cannon's sound and a
 -- shot from the panel ahead 24 pixels up (the DS's projectile row 0x1F: the cannon's, no hit modifier); 29 ticks; then
 -- animation 7, 4 ticks.
-local CANNON = attachment.look { sprite = asset.sprite("cannon"), palette = 0, attach_point = 7 }
+local CANNON = attachment.look { sprite = cannon_sprite, palette = 0, attach_point = 7 }
 local CANNON_SOUND = asset.sound("cannon")
 local SHOT = projectile.variant { id = "shot/megaman-support", collision = { is = collision.attack, hits = collision.hits_navis }, hit_mod = 0, element = "null", spark = sparks.impact }
 -- His sword: animation 5, the sword (row 3), its sound; on its 10th tick a hit over the panel ahead and the one past it
 -- (region 2, a slash at navis, on the ground) and the long slash 16 pixels up (effect 0x17); 22 ticks; then 6.
-local SWORD_LOOK = attachment.look { sprite = asset.sprite("sword"), palette = 0 }
+local SWORD_LOOK = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWING_SOUND = asset.sound("sword-swing")
-local LONG_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 1, palette = 0 }
+local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
 -- His bomb: animation 6, the bomb held (row 4), the throw's sound; on its 10th tick MiniBomb's bomb (the DS's bomb row 0)
 -- from 4 pixels before him, 48 up; 21 ticks; then 6.
-local BOMB_LOOK = attachment.look { sprite = asset.sprite("bomb"), palette = 0 }
+local BOMB_LOOK = attachment.look { sprite = bomb_sprite, palette = 0 }
 local THROW_SOUND = asset.sound("minibomb-throw")
 local THROWER = bombs.thrower(bombs.variant {
     collision = { is = collision.thrown, hits = collision.hits_navis },

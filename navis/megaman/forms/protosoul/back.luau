@@ -9,7 +9,7 @@ local guard = require("../../../../lib/guard")
 
 local back = {}
 
-local REFLECTOR = asset.sprite("reflector-shield")
+local REFLECTOR = require("../../../../sprites/reflector_shield")
 local TICKS = 0x14
 local DAMAGE = 50
 local LOCKOUT = 40

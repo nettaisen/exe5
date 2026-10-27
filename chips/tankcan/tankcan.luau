@@ -8,6 +8,10 @@ local attachment = require("../../objects/attachment")
 local action = require("@exelib/tankcan/action")
 local collision = require("../../rules/collision")
 local shell = require("@exelib/tankcan/shell")
+local explosion_sprite = require("../../sprites/explosion")
+local shell_burst_sprite = require("../../sprites/shell_burst")
+local tank_blast_sprite = require("./tank_blast_sprite")
+local tank_cannon_sprite = require("./tank_cannon_sprite")
 
 local tankcan = {}
 
@@ -16,14 +20,14 @@ tankcan.kind = shell.make_kind("tankcan/shell", {
     hits = collision.hits_navis,
     sound = asset.sound("cannon"),
     hit_sound = asset.sound("burst"),
-    blast = new.effect { sprite = asset.sprite("tank-blast"), anim = 0, palette = 0 },
+    blast = new.effect { sprite = tank_blast_sprite, anim = 0, palette = 0 },
     blast_is = collision.attack,
-    explosion = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 0 },
-    burst = new.effect { sprite = asset.sprite("shell-burst"), anim = 0, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
+    burst = new.effect { sprite = shell_burst_sprite, anim = 0, palette = 0 },
 })
 
 -- The tank cannon (the attachment table's row 0x25), which Colonel's C-Cannon holds too (navis/colonel/chip).
-local CANNON = attachment.look { sprite = asset.sprite("tank-cannon"), palette = 0, attach_point = 8 }
+local CANNON = attachment.look { sprite = tank_cannon_sprite, palette = 0, attach_point = 8 }
 tankcan.cannon = CANNON
 
 -- The TankCans' action (`id`: the key compat names it by, if it does), its shell flying as `flies` says (the attack's parameters: MegaMan's B↓Ccann

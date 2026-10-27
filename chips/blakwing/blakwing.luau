@@ -7,6 +7,8 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/blakwing")
 local sparks = require("../../lib/sparks")
+local black_wing_sprite = require("./black_wing_sprite")
+local puff_sprite = require("../../sprites/puff")
 
 local blakwing = {}
 
@@ -16,8 +18,8 @@ blakwing.hook = common.make {
     flock_id = "blakwing/flock",
     perch_id = "blakwing/perch",
     wing_id = "blakwing/wing",
-    sprite = asset.sprite("black-wing"),
-    puff = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 },
+    sprite = black_wing_sprite,
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
     sounds = { start = asset.sound("place"), flap = asset.sound("black-wing-flap") },
     is = collision.attack_480,
     hits = collision.hits_navis,

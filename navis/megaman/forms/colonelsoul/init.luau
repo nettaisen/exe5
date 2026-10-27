@@ -19,9 +19,13 @@ local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
 local soldiers = require("@self/soldiers")
+local colonel_cape_sprite = require("../../colonel/colonel_cape_sprite")
+local colonel_sprite = require("../../colonel/colonel_sprite")
+local colonelsoul_sprite = require("@self/colonelsoul_sprite")
+local sword_sprite = require("../../../sprites/sword")
 
 -- Colonel's cape on the soul's image (the body overlays' row 3, 0x0800EE5E): in front.
-local CAPE: BodyPart = { sprite = asset.sprite("colonel-cape"), anims = 41 }
+local CAPE: BodyPart = { sprite = colonel_cape_sprite, anims = 41 }
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -30,10 +34,10 @@ local form: FormDef = {
     change = soul_change.action,
     revert = soul_revert.action,
     -- Colonel's image as MegaMan unites with him (rules/souls/image), in his cape (0x0800EDBC's routine for the soul).
-    image = soul_image.wearing(asset.sprite("colonel"), CAPE),
+    image = soul_image.wearing(colonel_sprite, CAPE),
     -- What it adds to the custom screen (rules/souls gathers it, rules/souls/custom): Arm Change (./arm_change).
     custom = arm_change.custom,
-    sprite = asset.sprite("colonelsoul"),
+    sprite = colonelsoul_sprite,
     element = "null",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
@@ -41,7 +45,7 @@ local form: FormDef = {
     -- the charge is armed (lib/swords, 0x080EC082: attachment row 0x32, the swords' in palette 6).
     chaos = {
         weapon = chaos.weapon(drksonic, { 40, 60, 90, 120, 150, 60 }),
-        blade = attachment.look { sprite = asset.sprite("sword"), palette = 6 },
+        blade = attachment.look { sprite = sword_sprite, palette = 6 },
     },
     weapons = {
         buster = buster.weapon,

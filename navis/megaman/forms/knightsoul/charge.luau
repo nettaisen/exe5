@@ -8,6 +8,7 @@
 
 local ball = require("../../../../chips/knightmn/ball")
 local status = require("../../../../rules/status")
+local knightsoul_ball_sprite = require("./knightsoul_ball_sprite")
 
 local charge = {}
 
@@ -26,7 +27,7 @@ local SWING: KnightBallSwing = {
     speed = 12,
     turns = 1,
     status = status.confuse_480,
-    look = ball.look { sprite = asset.sprite("knightsoul-ball"), z = 0, radius = 0x23 },
+    look = ball.look { sprite = knightsoul_ball_sprite, z = 0, radius = 0x23 },
 }
 
 -- 0x080EEB14: the swing; the ball on the count's 4; 15 ticks.

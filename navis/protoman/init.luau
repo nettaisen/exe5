@@ -15,9 +15,11 @@ local back = require("@self/back")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local stepswrd = require("@self/chip").stepswrd
+local protoman_portrait_sprite = require("@self/protoman_portrait_sprite")
+local protoman_sprite = require("@self/protoman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("protoman"),
+    sprite = protoman_sprite,
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -27,7 +29,7 @@ local navi: NaviDef = {
     -- dialog's script 0x17, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
     -- content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("protoman-portrait"),
+        portrait = protoman_portrait_sprite,
     },
     own_chip = { chip = stepswrd, code = "B" },
     own_chip_draws = true,

@@ -10,13 +10,15 @@ local buster = require("../../lib/buster")
 local collision = require("../../rules/collision")
 local shoot = require("@exelib/thunder/shoot")
 local sparks = require("../../lib/sparks")
+local big_thunder_ball_sprite = require("./big_thunder_ball_sprite")
+local thunder_ball_sprite = require("../../sprites/thunder_ball")
 
 local thunder = {}
 
 thunder.kind = ball.make_kind("thunder/ball", {
-    sprite = asset.sprite("thunder-ball"),
+    sprite = thunder_ball_sprite,
     small_anim = 0,
-    big_sprite = asset.sprite("big-thunder-ball"),
+    big_sprite = big_thunder_ball_sprite,
     big_anim = 0,
     is = collision.thrown,
     target = collision.hits_navis,

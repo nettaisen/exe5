@@ -8,14 +8,16 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/supports/rush")
 local statuses = require("../../rules/status")
+local puff_sprite = require("../../sprites/puff")
+local rush_sprite = require("./rush_sprite")
 
 return common.make {
     id = "rush",
-    sprite = asset.sprite("rush"),
+    sprite = rush_sprite,
     appear_sound = asset.sound("place"),
     bite_sound = asset.sound("bite"),
     -- Digging in and out (EXE5's effect 0x14).
-    dust = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 },
+    dust = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
     is = collision.thrown_piercing_break,
     hits = collision.hits_navis,
     status = statuses.paralyze_150,

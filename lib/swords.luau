@@ -40,11 +40,12 @@ function swords.blade_anim(me: Object): number
     return 0
 end
 
-local SLASH = asset.sprite("sword-slash")
+local SLASH = require("../sprites/sword_slash")
+local sword_sprite = require("../sprites/sword")
 
 -- The blade the swords hold (the attachment table's row 3) and the swings' sounds, which they share. (Each sword
 -- states the slash drawn over the panels it hits.)
-swords.blade = attachment.look { sprite = asset.sprite("sword"), palette = 0 }
+swords.blade = attachment.look { sprite = sword_sprite, palette = 0 }
 
 -- 0x080EC082: the blade a sword's holder takes (the attachment row): the swords' (row 3), but MegaMan's (a player of
 -- AI index 0) while a Chaos Unison charge is armed (AIData+0x12, the rules' own B charge: rules/souls/chaos_charge)

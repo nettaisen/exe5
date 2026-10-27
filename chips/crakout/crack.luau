@@ -5,13 +5,14 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/crack")
+local dust_sprite = require("./dust_sprite")
 
 local crack = {}
 
 local CRACK = common.make {
     id = "crakout/crack",
     anim = 12,
-    sprite = asset.sprite("dust"),
+    sprite = dust_sprite,
     sound = asset.sound("bblstar1"),
     -- `object_breakPanelLoud` (EXE5's 0x0800B204): the panel break with its own sound (0xDA).
     break_sound = asset.sound("crack-shot"),

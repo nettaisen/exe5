@@ -37,7 +37,8 @@ export type Flight = { id: string, appears: boolean, runs: boolean, while_dimmed
 
 local gyroman = {}
 
-local SPRITE = asset.sprite("gyroman")
+local SPRITE = require("../../navis/gyroman/gyroman_sprite")
+local gyro_propeller_sprite = require("../../navis/gyroman/gyro_propeller_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 -- (0x104 and 0x105: 0x080BAC56 and 0x080BACBE load them as 5 + 255 and 6 + 255.)
 local SOUND_TAKEOFF = asset.sound("gyro-takeoff")
@@ -49,7 +50,7 @@ local PROPELLER = new.identity {
     class = "navi",
     parts = {
         body = {
-            sprite = asset.sprite("gyro-propeller"),
+            sprite = gyro_propeller_sprite,
             anims = 22,
             behind = { { 0, 5 }, { 7, 7 }, { 16, 17 } },
         },

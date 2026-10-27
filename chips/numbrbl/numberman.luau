@@ -7,11 +7,13 @@ local common_ball = require("@exelib/numbrbl/ball")
 local common = require("@exelib/numbrbl/numberman")
 local collision = require("../../rules/collision")
 local effects = require("../../lib/effects")
+local number_ball_sprite = require("./number_ball_sprite")
+local numberman_sprite = require("../../navis/numberman/numberman_sprite")
 
 -- The balls (EXE5's attack object #0x91, 0x080D895C).
 local ball = common_ball.make {
     id = "numbrbl/ball",
-    sprite = asset.sprite("number-ball"),
+    sprite = number_ball_sprite,
     sit_ticks = 0x1D,
     -- (0x112: 0x080D8A40 loads it as 19 + 255.)
     set_sound = asset.sound("place"),
@@ -25,7 +27,7 @@ local ball = common_ball.make {
 
 return common.make {
     id = "numbrbl/numberman",
-    sprite = asset.sprite("numberman"),
+    sprite = numberman_sprite,
     -- NumbrBl's: navi 9's count, 0x0801D737: 1, by the row of 0x0800DAE8 of the chip's level, 2.
     palette = 0,
     appear = asset.sound("appear"),

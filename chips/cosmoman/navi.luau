@@ -19,7 +19,7 @@ export type State = {
 
 local cosmoman = {}
 
-local SPRITE = asset.sprite("cosmoman")
+local SPRITE = require("./cosmoman_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 
 -- Where his caller goes, by his side (0x080BDB24): the enemy area's middle panel.

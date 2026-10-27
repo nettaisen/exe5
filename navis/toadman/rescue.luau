@@ -24,6 +24,7 @@ local hprecov = require("../../chips/hprecov").hprecov
 local party = require("../../rules/party")
 local regions = require("@exelib/regions")
 local toadman = require("../toadman").toadman
+local toad_note_sprite = require("./toad_note_sprite")
 
 local rescue = {}
 
@@ -35,7 +36,7 @@ export type State = {
 local START, HEAL, END = 0x0, 0x4, 0x8
 local FADE_SPEED = 4
 -- The toad's note: the DS's effect 0x6C (0x02229C14's row: the GBA's sprite 10-44, animation 0).
-local NOTE = new.effect { sprite = asset.sprite("toad-note"), anim = 0, palette = 0 }
+local NOTE = new.effect { sprite = toad_note_sprite, anim = 0, palette = 0 }
 -- The notes' ticks, the heal's, and the step's last.
 local NOTES: { number } = { 0x14, 0x1C, 0x24 }
 local HEALS_AT, ENDS_AT = 0x32, 0x3C

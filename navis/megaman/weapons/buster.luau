@@ -20,6 +20,7 @@ local common = require("@exelib/megaman/buster")
 local lib = require("../../../lib/buster")
 local projectile = require("../../../lib/projectile")
 local variants = require("../../../objects/projectile/variants")
+local spread_flash_sprite = require("./spread_flash_sprite")
 
 local exe5 = {}
 
@@ -36,7 +37,7 @@ local buster = {
         attachment = attachment.kind,
         shot_sound = asset.sound("buster-shot"),
         plain = variants.plain,
-        spread_flash = attachment.look { sprite = asset.sprite("spread-flash"), palette = 0, attach_point = 0 },
+        spread_flash = attachment.look { sprite = spread_flash_sprite, palette = 0, attach_point = 0 },
     },
 }
 

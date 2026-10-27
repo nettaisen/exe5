@@ -4,10 +4,11 @@
 -- left, and the panel and the column ahead highlighted each tick, from the first.
 
 local collision = require("../../rules/collision")
+local shademan_sprite = require("./shademan_sprite")
 
 return require("@exelib/shademan/crush").make {
     id = "shademan/crush",
-    sprite = asset.sprite("shademan"),
+    sprite = shademan_sprite,
     sound = asset.sound("elec-pulse"),
     attack = collision.piercing,
     hits = collision.hits_navis,

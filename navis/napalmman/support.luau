@@ -12,6 +12,8 @@ local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
 local regions = require("@exelib/regions")
 local supports = require("../../rules/party/supports")
+local muzzle_flash_sprite = require("../../sprites/muzzle_flash")
+local vulcan_hit_sprite = require("../../sprites/vulcan_hit")
 
 -- His damage a shot by the side's level (0x020CC204), its hit flags 0x82.
 local DAMAGE: { number } = { 4, 4, 4, 4, 6, 7, 10, 15, 20, 20 }
@@ -31,13 +33,13 @@ local SHOTS = 5
 local ANIM_FIRE = 0xE
 local SHOT_SOUND = asset.sound("col-army-2")
 local HEIGHTS = { 0x08_0000, 0x10_0000, 0x18_0000, 0x20_0000 }
-local FLASH = attachment.look { sprite = asset.sprite("muzzle-flash"), palette = 0, attach_point = 0x10 }
+local FLASH = attachment.look { sprite = muzzle_flash_sprite, palette = 0, attach_point = 0x10 }
 -- The DS's bullet row 0x13 (0x02135BAC): the panel found and the one behind, no hit modifier, the vulcan hit in its
 -- animation 1 (effect 0x58) at the bullet.
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 0,
-    effect = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 1, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0 },
     single = true,
 }
 local FIRE, WAIT = 0, 4

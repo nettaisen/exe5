@@ -17,6 +17,8 @@ local grass = require("@self/grass")
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
+local tomahawkman_sprite = require("../../tomahawkman/tomahawkman_sprite")
+local tomahawksoul_sprite = require("@self/tomahawksoul_sprite")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -25,8 +27,8 @@ local form: FormDef = {
     change = soul_change.action,
     revert = soul_revert.action,
     -- TomahawkMan's image as MegaMan unites with him (rules/souls/image).
-    image = soul_image.look { sprite = asset.sprite("tomahawkman") },
-    sprite = asset.sprite("tomahawksoul"),
+    image = soul_image.look { sprite = tomahawkman_sprite },
+    sprite = tomahawksoul_sprite,
     element = "wood",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:

@@ -28,7 +28,9 @@ export type State = {
 }
 
 -- 0x080CA858: sprite 10-20 with a shadow (`sub_8011504`'s 0x01001020 and 0x01031020: animation 0 or 3).
-local SPRITE = asset.sprite("colonel-soldier")
+local SPRITE = require("@self/colonel_soldier_sprite")
+local sword_slash_sprite = require("../sprites/sword_slash")
+local vulcan_hit_sprite = require("../sprites/vulcan_hit")
 local HP = 1
 -- Its collision (0x13140300): its side's body (row 0x13) that the other side reaches (row 0x14), hit modifier 3.
 local HIT_MOD = 3
@@ -37,7 +39,7 @@ local DRAW_SOUND, SHOT_SOUND = asset.sound("sword-swing"), asset.sound("col-army
 -- (row 5), hit modifier 3 (r7); its look 16 pixels up, effect 0x17 of EXE5's table (0x080DFC94: sprite 0C-14, the
 -- swords' slash, animation 1).
 local SLASH_TICKS, SLASH_AT = 24, 18
-local SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 1, palette = 0 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
 local SLASH_Z = 0x10_0000
 -- The shots: the Vulcans' bullets (row 0xC), three 10 ticks apart, at one of four heights (0x080CAA84, pixels).
 local SHOTS, SHOT_TICKS = 3, 10
@@ -46,7 +48,7 @@ local HEIGHTS = { [0] = 0x08, 0x10, 0x18, 0x20 }
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 0, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0 },
     single = true,
 }
 -- Before striking, each marks the panel ahead in the operation battle (0x080E9FD2: ticks, style).

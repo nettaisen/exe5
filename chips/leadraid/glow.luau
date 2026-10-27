@@ -12,7 +12,7 @@ export type State = {
 
 local glow = {}
 
-local SPRITE = asset.sprite("charge-glow")
+local SPRITE = require("../../sprites/charge_glow")
 local SOUND_CHARGE, SOUND_CHARGED = asset.sound("buster-charge"), asset.sound("buster-charged")
 -- How long it builds (to 0), and its charged animation.
 local BUILD, CHARGED = 0x14, 2

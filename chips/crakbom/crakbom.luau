@@ -24,13 +24,15 @@ export type State = {
 }
 
 -- 0x080C91C8: sprite 0c-02 with a ground shadow, animation 7.
-local SPRITE = asset.sprite("bomb")
+local SPRITE = require("../../sprites/bomb")
+local bomb_burst_sprite = require("./bomb_burst_sprite")
+local puff_sprite = require("../../sprites/puff")
 local ANIM = 7
 local FLIGHT_TICKS, GRAVITY = 35, -0x3000
 -- Effect 0x14: a puff of smoke.
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
 -- The bursts' sheet (effects 0x50 to 0x53, 0x080C93E8: palettes 0 to 3).
-crakbom.burst = asset.sprite("bomb-burst")
+crakbom.burst = bomb_burst_sprite
 
 -- A bomb's variant.
 function crakbom.variant(v: CrakBomVariant): CrakBomVariant

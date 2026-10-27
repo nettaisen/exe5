@@ -13,7 +13,7 @@ local stand_in = require("@exelib/dimming/stand_in")
 local operation_battle = require("../../lib/operation_battle")
 local sparks = require("../../lib/sparks")
 
-local CHARGER_SPRITE = asset.sprite("bug-charger")
+local CHARGER_SPRITE = require("./bug_charger_sprite")
 local CHARGER = attachment.look { sprite = CHARGER_SPRITE, palette = 0, attach_point = 0x18 }
 -- The heavy shot (the flying shot's row 1, 0x080C3BCC): in the charger's sprite.
 local SHOT = flying_shot.variant { hit_mod = 3, element = 0, spark = sparks.heavy, sprite = CHARGER_SPRITE, speed = 0xA_0000 }

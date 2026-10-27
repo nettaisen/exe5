@@ -8,6 +8,7 @@ local charged_shot = require("../weapons/charged_shot")
 
 -- Hub Style's shade (./hub_shade), as an identity wears it.
 local HUB = require("./hub_shade")
+local megaman_sprite = require("../megaman_sprite")
 
 -- 0x0800EE1C (the base form's put-on routine, 0x0800F038's row 0, and MegaMan's actor record's init hook, 0x0800ED90's
 -- row 11, as his init ends): in his base form (+0x2C 0, read again) in Hub Style, what he wore down and the shade on
@@ -23,7 +24,7 @@ end
 
 local form: FormDef = {
     base = true,
-    sprite = asset.sprite("megaman"),
+    sprite = megaman_sprite,
     element = "null",
     buster_bonus = 0,
     weapons = { buster = buster.weapon, charge_shot = charged_shot.weapon },

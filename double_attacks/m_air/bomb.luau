@@ -11,7 +11,7 @@ local status = require("../../rules/status")
 
 local bomb = {}
 
-local SPRITE = asset.sprite("magnet-bomb")
+local SPRITE = require("./magnet_bomb_sprite")
 -- Its height, its fall a tick, and the height it reaches its panel from (16.16).
 local HEIGHT, FALL, REACHES = 0x28_0000, 0x2_0000, 0x14_0000
 -- The DS's spawner's element (0x020A5A06): Elec.

@@ -12,7 +12,7 @@ local regions = require("@exelib/regions")
 
 local strike = {}
 
-local SPRITE = asset.sprite("bass")
+local SPRITE = require("./bass_sprite")
 local SOUND = asset.sound("col-army-2")
 local WARNING = 0xA
 

@@ -10,9 +10,11 @@
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local meddycap = require("@self/chip").meddycap
+local meddy_portrait_sprite = require("@self/meddy_portrait_sprite")
+local meddy_sprite = require("@self/meddy_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("meddy"),
+    sprite = meddy_sprite,
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -22,7 +24,7 @@ local navi: NaviDef = {
     -- dialog's script 0x1c, which script 3's navi check sends her to). Its words are locales/<lang>.toml's; the
     -- content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("meddy-portrait"),
+        portrait = meddy_portrait_sprite,
     },
     own_chip = { chip = meddycap, code = "M" },
     own_chip_draws = true,

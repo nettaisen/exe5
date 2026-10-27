@@ -5,7 +5,7 @@
 
 local toss = {}
 
-local SPRITE = asset.sprite("magnet-bomb")
+local SPRITE = require("./magnet_bomb_sprite")
 local SOUND = asset.sound("magnet-bomb-toss")
 -- The way, in tenths (16.16 offsets from the panel's center: x toward its front).
 local STEPS = 0xA

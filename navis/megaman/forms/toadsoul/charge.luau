@@ -9,6 +9,7 @@
 local attachment = require("../../../../objects/attachment")
 local note = require("../../../../chips/toadman/note")
 local toadman = require("../../../../chips/toadman/navi")
+local toadsoul_horn_sprite = require("./toadsoul_horn_sprite")
 
 local charge = {}
 
@@ -22,7 +23,7 @@ export type State = {
 local HIT_PARAM = 0x94
 local ANIM = 16
 -- His horn (the attachment table's row 0x31: sprite 0C-1F, palette 0, at his position).
-local HORN = attachment.look { sprite = asset.sprite("toadsoul-horn"), palette = 0 }
+local HORN = attachment.look { sprite = toadsoul_horn_sprite, palette = 0 }
 local SOUND = asset.sound("toad-melody")
 -- The routine's parameters (0x0A0600): no dimming, the next note 6 ticks in, each note 10 ticks.
 local CHAIN: { life: number, delay: number, dimmed: boolean } = { life = 10, delay = 6, dimmed = false }

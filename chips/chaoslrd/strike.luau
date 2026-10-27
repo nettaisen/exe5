@@ -13,6 +13,10 @@ local collision = require("../../rules/collision")
 local panel_bursts = require("../../objects/panel_bursts")
 local regions = require("@exelib/regions")
 local trajectory = require("../../lib/trajectory")
+local bass_sprite = require("../bass/bass_sprite")
+local chaos_orb_sprite = require("./chaos_orb_sprite")
+local charge_glow_sprite = require("../../sprites/charge_glow")
+local explosion_sprite = require("../../sprites/explosion")
 
 export type State = {
     -- Its target panel (Param3, Param4; 0 until picked).
@@ -25,15 +29,15 @@ local strike = {}
 -- Its looks as it grows (0x080D6A4C's rows 0 to 3: sprite, animation, palette): the charge glow, the orb, and two of
 -- Bass's animations.
 type Look = { sprite: SpriteAsset, anim: number, palette: number }
-local GLOW: Look = { sprite = asset.sprite("charge-glow"), anim = 0, palette = 2 }
-local ORB: Look = { sprite = asset.sprite("chaos-orb"), anim = 0, palette = 0 }
-local GROWN: Look = { sprite = asset.sprite("bass"), anim = 0x27, palette = 0 }
-local FULL: Look = { sprite = asset.sprite("bass"), anim = 0x28, palette = 0 }
+local GLOW: Look = { sprite = charge_glow_sprite, anim = 0, palette = 2 }
+local ORB: Look = { sprite = chaos_orb_sprite, anim = 0, palette = 0 }
+local GROWN: Look = { sprite = bass_sprite, anim = 0x27, palette = 0 }
+local FULL: Look = { sprite = bass_sprite, anim = 0x28, palette = 0 }
 local SOUND_GROW = asset.sound("point-rise")
 local SOUND_THROW = asset.sound("windrack")
 local SOUND_BLAST = asset.sound("chaos-blast")
 -- The panel bursts' row (0x080E3164) its Param1 + 5 names: 6 (the effect table's row 0x24), with no sound.
-local BURST = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 1 }
+local BURST = new.effect { sprite = explosion_sprite, anim = 0, palette = 1 }
 -- The panels it breaks around its target (0x080162A4's list 15: the 3x3, x toward its facing).
 local AROUND: { { number } } = {
     { 0, 0 },

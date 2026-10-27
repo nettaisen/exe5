@@ -18,7 +18,7 @@ export type State = {
     speed: number,
 }
 
-local SPRITE = asset.sprite("knightman-ball")
+local SPRITE = require("./knightman_ball_sprite")
 local ANIM = 20
 local HIT_MOD = 3
 -- How far from the field's middle it flies, in pixels.

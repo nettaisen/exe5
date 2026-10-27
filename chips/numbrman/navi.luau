@@ -8,10 +8,11 @@ local common = require("@exelib/numbrman/navi")
 local dice = require("./dice")
 local face = require("./face")
 local navi_chips = require("@exelib/navi_chips/navi")
+local numberman_sprite = require("../../navis/numberman/numberman_sprite")
 
 local NUMBERMAN = common.make {
     id = "numbrman/navi",
-    sprite = asset.sprite("numberman"),
+    sprite = numberman_sprite,
     appear = asset.sound("appear"),
     throw = asset.sound("minibomb-throw"),
     face = face,

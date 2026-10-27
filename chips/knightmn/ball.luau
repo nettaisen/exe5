@@ -15,6 +15,7 @@ local math5 = require("../../rules/math")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
+local knightman_ball_sprite = require("../../navis/knightman/knightman_ball_sprite")
 
 export type State = {
     -- How far it turns a tick (its first parameter), the turns it has left (its second), its status (its third)
@@ -35,7 +36,7 @@ function ball.look(l: KnightBallLook): KnightBallLook
 end
 
 -- KnightMan's (variant 0; any but 1 reads as it).
-ball.knightman = ball.look { sprite = asset.sprite("knightman-ball"), z = 0x10_0000, radius = 0x1E }
+ball.knightman = ball.look { sprite = knightman_ball_sprite, z = 0x10_0000, radius = 0x1E }
 
 local function look_of(me: Object): KnightBallLook
     return (me.state :: State).look

@@ -10,6 +10,7 @@ local common = require("@exelib/vdoll/curse")
 local curse_chip = require("../curse").curse
 local sparkles = require("./sparkles")
 local sparks = require("../../lib/sparks")
+local explosion_sprite = require("../../sprites/explosion")
 
 return common.make {
     id = "vdoll/curse",
@@ -19,5 +20,5 @@ return common.make {
     is = collision.thrown_piercing_break,
     hits = collision.hits_navis,
     sparkles = sparkles,
-    sparkle = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 1 },
+    sparkle = new.effect { sprite = explosion_sprite, anim = 0, palette = 1 },
 }

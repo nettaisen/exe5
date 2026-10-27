@@ -15,6 +15,7 @@ local double_attack = require("../lib/double_attack")
 local gyroman = require("../navis/gyroman").gyroman
 local magnetman = require("../navis/magnetman").magnetman
 local toss = require("@self/toss")
+local magnet_arm_sprite = require("../navis/magnetman/magnet_arm_sprite")
 
 -- Its navis' state: the shared fields and GyroMan's next column's center (+0x74).
 type State = DoubleAttackNavi & { next_center: number }
@@ -33,7 +34,7 @@ local SCREEN = 0xA0
 local SOUND_DROP = asset.sound("drop")
 -- MagnetMan's arm (the DS's attachment row 0x3A, 10-3C), raised in his animation 0x10; a bomb
 -- every 5 ticks.
-local MAGNET_ARM = attachment.look { sprite = asset.sprite("magnet-arm"), palette = 0 }
+local MAGNET_ARM = attachment.look { sprite = magnet_arm_sprite, palette = 0 }
 local ANIM_SEND = 0x10
 local SEND_TICKS = 5
 -- GyroMan's and MagnetMan's actions: appear, charge, attack (by phase), after, leave.

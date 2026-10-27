@@ -5,13 +5,14 @@
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local vulcan = require("@self/vulcan")
+local vulcan_hit_sprite = require("../sprites/vulcan_hit")
 
 -- The Vulcans' bullet (row 0xC: EXE6's): the panel found and the one behind it, staggering, its hit shown once at the
 -- bullet.
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 0, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0 },
     single = true,
 }
 
@@ -19,7 +20,7 @@ local SHOT = bullet.variant {
 local SUPER_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = asset.sprite("vulcan-hit"), anim = 0, palette = 1 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 1 },
     single = true,
 }
 

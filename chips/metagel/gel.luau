@@ -6,15 +6,17 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/metagel/gel")
 local sparks = require("../../lib/sparks")
+local meta_gel_sprite = require("./meta_gel_sprite")
+local puff_sprite = require("../../sprites/puff")
 
 return common.make {
     id = "metagel/gel",
-    sprite = asset.sprite("meta-gel"),
+    sprite = meta_gel_sprite,
     drop = asset.sound("drop"),
     land = asset.sound("gel-land"),
     spark = sparks.aqua,
     is = collision.thrown,
     hits = collision.hits_navis,
     takes = common.can_take,
-    puff = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
 }

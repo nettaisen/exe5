@@ -19,8 +19,8 @@ type State = {
     quarter: number,
 }
 
-local SPRITE = asset.sprite("bomb")
-local PRESS = asset.sprite("numtrap-press")
+local SPRITE = require("../../sprites/bomb")
+local PRESS = require("../../navis/numberman/numtrap_press_sprite")
 local SOUND_BURST = asset.sound("drumroll")
 -- The target: three columns ahead. Its flight (60 ticks, falling 0.75 a tick), its turn into the press halfway.
 local AHEAD = 3

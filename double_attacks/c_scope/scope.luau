@@ -16,7 +16,7 @@ type State = {
     rounds: number,
 }
 
-local SPRITE = asset.sprite("search-scope")
+local SPRITE = require("../../navis/searchman/search_scope_sprite")
 local SOUND_STEP = asset.sound("erase-man")
 -- Its offsets by step (0x02135BA8), a step's ticks, its rounds before it rests.
 local OFFSETS = { 0, 1, 2, 1 }

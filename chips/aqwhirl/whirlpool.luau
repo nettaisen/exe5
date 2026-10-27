@@ -19,7 +19,7 @@ export type State = {
     ty: number,
 }
 
-local SPRITE = asset.sprite("aqua-whirl")
+local SPRITE = require("./aqua_whirl_sprite")
 local SOUND = asset.sound("spout-beast-charge")
 local HIT_MOD = 3
 -- 0x080D1A78: the panel flag of an enemy navi, by its side.

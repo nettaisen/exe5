@@ -13,6 +13,8 @@ local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
 local searchman = require("../searchman").searchman
 local shot = require("../../chips/serchman/shot")
+local chip_destruction_spark_sprite = require("../../sprites/chip_destruction_spark")
+local search_scope_sprite = require("./search_scope_sprite")
 
 -- His damage a shot by the side's level (0x020CC378), its hit flags 0x8A.
 local DAMAGE: { number } = { 5, 5, 5, 5, 5, 5, 10, 10, 15, 15 }
@@ -29,8 +31,8 @@ local SHOTS = 5
 -- His scope over the target (the effect table's row 0x68, 20 pixels up) with its sound; his shots (animation 0x11, the
 -- shot's sound), each on its fourth tick of ten; the chip taken (row 0x10, the DS's own: the chip destruction spark;
 -- the GBA's is the pink flash).
-local SCOPE = new.effect { sprite = asset.sprite("search-scope"), anim = 0, palette = 0 }
-local TAKEN = new.effect { sprite = asset.sprite("chip-destruction-spark"), anim = 0, palette = 0 }
+local SCOPE = new.effect { sprite = search_scope_sprite, anim = 0, palette = 0 }
+local TAKEN = new.effect { sprite = chip_destruction_spark_sprite, anim = 0, palette = 0 }
 local SCOPE_SOUND = asset.sound("mark")
 local SHOT_SOUND = asset.sound("col-army-2")
 local APPEAR_SOUND = asset.sound("appear")

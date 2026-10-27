@@ -17,16 +17,19 @@ local airforce = require("@self/chip").airforce
 local buster = require("@self/buster")
 local charge = require("@self/charge")
 local hover = require("@self/hover")
+local gyro_propeller_sprite = require("@self/gyro_propeller_sprite")
+local gyroman_portrait_sprite = require("@self/gyroman_portrait_sprite")
+local gyroman_sprite = require("@self/gyroman_sprite")
 
 -- GyroMan's propeller (the body overlays' row 0, 0x0800EE4E): behind him in his animations 0 to 5, 7, 16 and 17.
 local PROPELLER: BodyPart = {
-    sprite = asset.sprite("gyro-propeller"),
+    sprite = gyro_propeller_sprite,
     anims = 22,
     behind = { { 0, 5 }, { 7, 7 }, { 16, 17 } },
 }
 
 local navi: NaviDef = {
-    sprite = asset.sprite("gyroman"),
+    sprite = gyroman_sprite,
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -36,7 +39,7 @@ local navi: NaviDef = {
     -- dialog's script 0x18, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
     -- content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("gyroman-portrait"),
+        portrait = gyroman_portrait_sprite,
     },
     own_chip = { chip = airforce, code = "G" },
     own_chip_draws = true,

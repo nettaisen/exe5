@@ -15,7 +15,7 @@ export type State = {
     hit_mod: number,
 }
 
-local SPRITE = asset.sprite("air-strike")
+local SPRITE = require("./air_strike_sprite")
 local TICKS = 10
 
 -- 0x080C7EC4: on its panel, on the floor, off its center by two draws; its dust (animation 0, its shadow), facing its

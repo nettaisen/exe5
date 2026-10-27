@@ -16,10 +16,12 @@ local recipe_django_ds = require("./django")["django-ds"]
 local recipe_django_sp = require("./django")["django-sp"]
 local recipe_gundels3 = require("./gundels").gundels3
 local sparks = require("../lib/sparks")
+local pile_beam_sprite = require("@self/pile_beam_sprite")
+local pile_driver_sprite = require("@self/pile_driver_sprite")
 
 local BEAM = beam.make_kind {
     id = "piledrvr/beam",
-    sprite = asset.sprite("pile-beam"),
+    sprite = pile_beam_sprite,
     sound = asset.sound("django-charge"),
     spark = sparks.erase,
     is = collision.piercing_break,
@@ -28,7 +30,7 @@ local BEAM = beam.make_kind {
 
 local PILE = pile.make_kind {
     id = "piledrvr/pile",
-    sprite = asset.sprite("pile-driver"),
+    sprite = pile_driver_sprite,
     sound = asset.sound("pile-driver"),
     beam = BEAM,
 }

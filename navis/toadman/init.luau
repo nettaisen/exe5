@@ -19,6 +19,8 @@ local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local charged_chips = require("./megaman/weapons/charged_chip")
 local s_melody = require("@self/chip")["s-melody"]
+local toadman_portrait_sprite = require("@self/toadman_portrait_sprite")
+local toadman_sprite = require("@self/toadman_sprite")
 
 -- He dives (AIData +0x44's 0x20).
 local function dives(navi: Object)
@@ -26,7 +28,7 @@ local function dives(navi: Object)
 end
 
 local navi: NaviDef = {
-    sprite = asset.sprite("toadman"),
+    sprite = toadman_sprite,
     element = "aqua",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -36,7 +38,7 @@ local navi: NaviDef = {
     -- dialog's script 0x22, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
     -- content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("toadman-portrait"),
+        portrait = toadman_portrait_sprite,
     },
     own_chip = { chip = s_melody, code = "T" },
     own_chip_draws = true,

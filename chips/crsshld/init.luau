@@ -5,7 +5,7 @@
 local cross = require("@self/cross")
 local guard = require("../lib/guard")
 
-local CROSS_SHIELD = asset.sprite("cross-shield")
+local CROSS_SHIELD = require("@self/cross_shield_sprite")
 
 -- A chip's counter: a cross from the panel ahead in its palette (twice the original's parameter), after which the
 -- guard ends at once.

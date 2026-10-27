@@ -16,7 +16,7 @@ local trajectory = require("../../lib/trajectory")
 local cactbal = {}
 
 -- The ball's look: sheet 10-30, animation 4, no shadow (0x080D1AB2, `sub_8011504`'s word 0x00041030).
-local SPRITE = asset.sprite("cactus")
+local SPRITE = require("../../sprites/cactus")
 local ANIM = 4
 local THROW_SOUND, LAND_SOUND = asset.sound("cactus-throw"), asset.sound("cactus-hop")
 -- Its collision (0x04050100): an attack that hits navis, hit modifier 1.

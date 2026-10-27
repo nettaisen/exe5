@@ -14,10 +14,12 @@ local rising_bubble = require("../../objects/rising_bubble")
 local statuses = require("../../rules/status")
 local trajectory = require("../../lib/trajectory")
 local operation_battle = require("../../lib/operation_battle")
+local bomb_sprite = require("../../sprites/bomb")
+local explosion_sprite = require("../../sprites/explosion")
 
 local bug_bomb = {}
 
-local EXPLOSION = new.effect { sprite = asset.sprite("explosion"), anim = 0, palette = 2 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 2 }
 
 -- The bugs (0x080D5148): HP drain +2, custom-screen HP drain +2, emotion swings 1.
 local BUGS = {
@@ -48,7 +50,7 @@ local function pick_bug(me: Object)
 end
 
 bug_bomb.kind = common.make_kind("bugbomb/bomb", {
-    sprite = asset.sprite("bomb"),
+    sprite = bomb_sprite,
     anim = 5,
     -- Its status 0x20.
     is = collision.own_thrown_body,

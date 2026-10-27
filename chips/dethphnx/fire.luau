@@ -16,7 +16,7 @@ export type State = {
     far: boolean,
 }
 
-local SPRITE = asset.sprite("phoenix-flame")
+local SPRITE = require("./phoenix_flame_sprite")
 local SOUND_RISE = asset.sound("col-army")
 local SOUND_BURN = asset.sound("phoenix-burn")
 local RISE = 0xA

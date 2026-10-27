@@ -5,9 +5,10 @@
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
+local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- The slash over two panels (effect 0x17).
-local LONG_SLASH = new.effect { sprite = asset.sprite("sword-slash"), anim = 1, palette = 0 }
+local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
 
 local chip: Chip = {
     codes = { "C", "M", "S" },

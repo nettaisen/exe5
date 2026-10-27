@@ -26,7 +26,7 @@ export type State = {
 
 local meddy = {}
 
-local SPRITE = asset.sprite("meddy")
+local SPRITE = require("../../navis/meddy/meddy_sprite")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_THROW = asset.sound("minibomb-throw")
 local SOLID = 0x10

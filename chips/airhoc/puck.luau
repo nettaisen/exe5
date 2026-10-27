@@ -7,17 +7,19 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/airhocky/puck")
 local sparks = require("../../lib/sparks")
+local hockey_puck_sprite = require("./hockey_puck_sprite")
+local puff_sprite = require("../../sprites/puff")
 
 local puck = {}
 
 puck.kind = common.make_kind("airhoc/puck", {
-    sprite = asset.sprite("hockey-puck"),
+    sprite = hockey_puck_sprite,
     sound = asset.sound("hockey-puck"),
     bounce = asset.sound("bounce"),
     is = collision.breaking,
     hits = collision.hits_navis,
     spark = sparks.breaking,
-    burst = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 },
+    burst = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
 })
 
 -- A puck's row.

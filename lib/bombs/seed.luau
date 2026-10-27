@@ -13,7 +13,9 @@ local common = require("@exelib/bombs/seed")
 
 local seed = {}
 
-local SPRITE = asset.sprite("bomb")
+local SPRITE = require("../../sprites/bomb")
+local puff_sprite = require("../../sprites/puff")
+local small_puff_sprite = require("../../sprites/small_puff")
 
 seed.kind = common.make_kind("seed", {
     sprite = SPRITE,
@@ -21,8 +23,8 @@ seed.kind = common.make_kind("seed", {
     is = collision.attack,
     hits = collision.hits_navis,
     hit_mod = 0,
-    splash = new.effect { sprite = asset.sprite("small-puff"), anim = 0, palette = 0 },
-    puff = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 },
+    splash = new.effect { sprite = small_puff_sprite, anim = 0, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
 })
 
 -- A seed variant: its element, palette, panel, sprout and sound.

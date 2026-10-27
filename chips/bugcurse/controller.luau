@@ -7,6 +7,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/bugcurse")
 local operation_battle = require("../../lib/operation_battle")
+local bug_curse_sprite = require("./bug_curse_sprite")
 
 local controller = {}
 
@@ -14,7 +15,7 @@ local controller = {}
 controller.hook = common.make {
     controller_id = "bugcurse/controller",
     curse_id = "bugcurse/curse",
-    sprite = asset.sprite("bug-curse"),
+    sprite = bug_curse_sprite,
     sound = asset.sound("trap-vanish"),
     untouched = { "invisible", "submerged", "flashing", "bubbled" },
     bugs = { 0x0124, 0x1418, 0x1419, 0x04FF, 0x04FE },

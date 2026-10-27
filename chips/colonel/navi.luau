@@ -33,7 +33,10 @@ local colonel = {}
 -- flash's ticks.
 export type Strike = { command: ((me: Object) -> ())?, land: (me: Object) -> (), flash: number }
 
-local SPRITE = asset.sprite("colonel")
+local SPRITE = require("../../navis/colonel/colonel_sprite")
+local colonel_cape_sprite = require("../../navis/colonel/colonel_cape_sprite")
+local screen_divide_sprite = require("../../navis/colonel/screen_divide_sprite")
+local sword_sprite = require("../../sprites/sword")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_COMMAND = asset.sound("ok-8b")
 local SOUND_SWING = asset.sound("spin")
@@ -41,16 +44,16 @@ local SOUND_SWING = asset.sound("spin")
 -- even while paused.
 local CAPE = new.identity {
     class = "navi",
-    parts = { body = { sprite = asset.sprite("colonel-cape"), anims = 41 } },
+    parts = { body = { sprite = colonel_cape_sprite, anims = 41 } },
 }
 -- His sword (the attachment row 3), its animation 7, animating while dimmed, in his chip's sword palette.
-local SWORD = attachment.look { sprite = asset.sprite("sword"), palette = 0 }
+local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWORD_ANIM = 7
 -- His slashes by his Param2 (0x080BA49C: region, effect row 0x48 + it): rising, falling.
 local SLASH_REGIONS: { [number]: Region } = { [1] = regions.falling, [2] = regions.rising }
 local SLASHES: { [number]: Effect } = {
-    [1] = new.effect { sprite = asset.sprite("screen-divide"), anim = 1, palette = 0 },
-    [2] = new.effect { sprite = asset.sprite("screen-divide"), anim = 2, palette = 0 },
+    [1] = new.effect { sprite = screen_divide_sprite, anim = 1, palette = 0 },
+    [2] = new.effect { sprite = screen_divide_sprite, anim = 2, palette = 0 },
 }
 -- The panels his target holds (0x080BA5B0): an enemy navi's body, by side.
 local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }

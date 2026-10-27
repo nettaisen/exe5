@@ -6,9 +6,10 @@
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
+local big_slash_sprite = require("../sprites/big_slash")
 
 -- The big slash over two columns (effect 0x1B).
-local BIG_SLASH = new.effect { sprite = asset.sprite("big-slash"), anim = 0, palette = 0 }
+local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0 }
 
 local chip: Chip = {
     codes = { "E", "L", "S", "*" },

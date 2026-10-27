@@ -30,9 +30,9 @@ export type FlareState = {
     way: number,
 }
 
-local SATELLITE = asset.sprite("satellite")
-local BEAM = asset.sprite("satellite-beam")
-local FLARE = asset.sprite("satellite-flare")
+local SATELLITE = require("./satellite_sprite")
+local BEAM = require("./satellite_beam_sprite")
+local FLARE = require("./satellite_flare_sprite")
 -- (0x111: 0x080E77C4 loads it as 18 + 255.)
 local SOUND_FIRE = asset.sound("moon-beam")
 

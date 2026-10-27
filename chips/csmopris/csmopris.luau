@@ -18,7 +18,7 @@ local operation_battle = require("../../lib/operation_battle")
 
 local csmopris = {}
 
-local SPRITE = asset.sprite("cosmoman")
+local SPRITE = require("../cosmoman/cosmoman_sprite")
 
 -- ---- The comet ------------------------------------------------------------------------------------------------------
 

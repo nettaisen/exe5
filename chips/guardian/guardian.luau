@@ -21,7 +21,9 @@ local strike = require("./strike")
 
 local guardian = {}
 
-local SPRITE = asset.sprite("guardian-statue")
+local SPRITE = require("./guardian_statue_sprite")
+local lightning_sprite = require("../../sprites/lightning")
+local puff_sprite = require("../../sprites/puff")
 
 guardian.statue = statue.make {
     id = "guardian/statue",
@@ -40,8 +42,8 @@ guardian.statue = statue.make {
         strike = asset.sound("beast-over-burst"),
     },
     -- Effects 0x15 and 0x36 (EXE5's table, 0x080DFC94): sheet 14-0d's animation 3, and 14-14.
-    arrival = new.effect { sprite = asset.sprite("puff"), anim = 3, palette = 0 },
-    burst = new.effect { sprite = asset.sprite("lightning"), anim = 0, palette = 0 },
+    arrival = new.effect { sprite = puff_sprite, anim = 3, palette = 0 },
+    burst = new.effect { sprite = lightning_sprite, anim = 0, palette = 0 },
     is = collision.neutral_body,
     hits = collision.everything,
     strike_is = collision.thrown_piercing_break,

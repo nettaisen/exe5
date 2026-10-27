@@ -15,6 +15,7 @@ local batch = require("@exelib/snake/batch")
 local common = require("@exelib/snake")
 local trajectory = require("../../lib/trajectory")
 local sparks = require("../../lib/sparks")
+local snake_sprite = require("./snake_sprite")
 
 local snake = {}
 
@@ -22,7 +23,7 @@ local snake = {}
 
 snake.kind = common.make_kind("snake/snake", {
     trajectory = trajectory,
-    sprite = asset.sprite("snake"),
+    sprite = snake_sprite,
     rise_sound = asset.sound("appear"),
     leap_sound = asset.sound("aqua-needle-2"),
     wait = 0x30,

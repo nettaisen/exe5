@@ -11,6 +11,7 @@ local navi_level = require("../../lib/navi_level")
 local collision = require("../../rules/collision")
 local marker = require("../../lib/navi_chips/marker")
 local regions = require("@exelib/regions")
+local big_slash_sprite = require("../../sprites/big_slash")
 
 export type State = {
     -- AIAttackVars +0x10: ticks left in the current step.
@@ -24,7 +25,7 @@ local SLASH_AT = 20
 local SOUND = asset.sound("tomahawk-man")
 local HIT_MOD = 3
 -- Effect 0x45: the big slash (sprite 0C-15, animation 1), 16 pixels up.
-local SLASH = new.effect { sprite = asset.sprite("big-slash"), anim = 1, palette = 0 }
+local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0 }
 local SLASH_Z = 16 * 0x1_0000
 
 -- The slash over the panel ahead and the column past it (the damage word plus the Atk+ bonus), and its effect.

@@ -16,6 +16,8 @@ local magnetman = require("../magnetman").magnetman
 local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
 local status = require("../../rules/status")
+local immobilized_sprite = require("../../sprites/immobilized")
+local magnet_arm_sprite = require("./magnet_arm_sprite")
 
 local support = {}
 
@@ -25,12 +27,12 @@ local USED = { [0] = 0x200, [1] = 0x400 }
 local APPEAR_SOUND = asset.sound("appear")
 -- His magnet arm (the DS's attachment row 0x3A: 10-3C, its animation 0), the ticks he holds it, when the barrier comes
 -- and when the enemies are held.
-local MAGNET_ARM = attachment.look { sprite = asset.sprite("magnet-arm"), palette = 0 }
+local MAGNET_ARM = attachment.look { sprite = magnet_arm_sprite, palette = 0 }
 local ANIM_MAGNET, MAGNET_ENDS, BARRIER_AT, HOLD_AT = 0x10, 0x5A, 0x1E, 0x3C
 -- The DS's immobilizer (T3 0x3F, the GBA's code but that its linger is its Param1, 20 here, and its Param2 1 plays
 -- 0xFD): MagnetSoul's mark, its guard-breaking hit against navis that immobilizes (status 0x42).
 local IMMOBILIZER = immobilizer.make_kind("magnetman/immobilizer", {
-    sprite = asset.sprite("immobilized"),
+    sprite = immobilized_sprite,
     anim = 1,
     lasts = 0x14,
     sound = asset.sound("bass-anly"),

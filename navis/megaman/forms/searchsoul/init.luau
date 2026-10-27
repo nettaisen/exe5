@@ -18,6 +18,8 @@ local shuffle = require("@self/shuffle")
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
+local searchman_sprite = require("../../searchman/searchman_sprite")
+local searchsoul_sprite = require("@self/searchsoul_sprite")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
@@ -26,10 +28,10 @@ local form: FormDef = {
     change = soul_change.action,
     revert = soul_revert.action,
     -- SearchMan's image as MegaMan unites with him (rules/souls/image).
-    image = soul_image.look { sprite = asset.sprite("searchman") },
+    image = soul_image.look { sprite = searchman_sprite },
     -- What it adds to the custom screen (rules/souls gathers it, rules/souls/custom): Shuffle (./shuffle).
     custom = shuffle.custom,
-    sprite = asset.sprite("searchsoul"),
+    sprite = searchsoul_sprite,
     element = "null",
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:

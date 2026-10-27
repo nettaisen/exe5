@@ -21,7 +21,7 @@ export type State = {
 
 export type Chain = { life: number, delay: number, dimmed: boolean }
 
-local SPRITE = asset.sprite("toad-note")
+local SPRITE = require("../../navis/toadman/toad_note_sprite")
 local ELEC = 3
 
 -- Action 0 (0x080D6764): its timers.

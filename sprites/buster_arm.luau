@@ -1,0 +1,18 @@
+--!strict
+-- The buster-arm sprite: its animations, each its frames' durations in ticks.
+return asset.sprite("buster-arm", {
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+    { 1, 2, 2, 3 },
+})

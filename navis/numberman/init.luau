@@ -21,11 +21,13 @@ local layer = require("./megaman/forms/numbersoul/layer")
 local numtrap = require("@self/chip").numtrap
 
 -- His face: the layer's row 0's sprite (0x080C32C0).
-local FACE = asset.sprite("numberman-face")
+local FACE = require("@self/numberman_face_sprite")
+local numberman_portrait_sprite = require("@self/numberman_portrait_sprite")
+local numberman_sprite = require("@self/numberman_sprite")
 
 
 local navi: NaviDef = {
-    sprite = asset.sprite("numberman"),
+    sprite = numberman_sprite,
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -35,7 +37,7 @@ local navi: NaviDef = {
     -- dialog's script 0x1f, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
     -- content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("numberman-portrait"),
+        portrait = numberman_portrait_sprite,
     },
     own_chip = { chip = numtrap, code = "N" },
     own_chip_draws = true,

@@ -11,22 +11,24 @@ local action = require("@exelib/widesht/action")
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/widesht/wave")
+local wide_shooter_sprite = require("./wide_shooter_sprite")
+local wide_wave_sprite = require("./wide_wave_sprite")
 
 local wave = {}
 
 wave.kind = common.make_kind {
     id = "widesht/wave",
-    sprite = asset.sprite("wide-wave"),
+    sprite = wide_wave_sprite,
     sound = asset.sound("wide-shot"),
-    trail_sprite = asset.sprite("wide-wave"),
+    trail_sprite = wide_wave_sprite,
     target = collision.hits_navis,
 }
 
 -- EXE5's wide shooter (EXE6's row 0x23's look, EXE5's sprite: its attachment row 0x11, sheet 0c-2a in palette 0 on
 -- point 12). (DarkWide holds its own.)
-local SHOOTER = attachment.look { sprite = asset.sprite("wide-shooter"), palette = 0, attach_point = 12 }
+local SHOOTER = attachment.look { sprite = wide_shooter_sprite, palette = 0, attach_point = 12 }
 
-local SPRITE = asset.sprite("wide-wave")
+local SPRITE = require("./wide_wave_sprite")
 
 -- A wave variant.
 wave.variant = common.variant

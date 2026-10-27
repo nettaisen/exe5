@@ -6,6 +6,7 @@
 
 local attachment = require("../../../../objects/attachment")
 local tornado = require("./tornado")
+local gyrosoul_arm_sprite = require("./gyrosoul_arm_sprite")
 
 local charge = {}
 
@@ -16,7 +17,7 @@ export type State = {
 
 local HIT_PARAM = 0x8A
 -- His arm (the attachment table's row 0x22: sprite 0C-10, palette 0, at his position).
-local ARM = attachment.look { sprite = asset.sprite("gyrosoul-arm"), palette = 0 }
+local ARM = attachment.look { sprite = gyrosoul_arm_sprite, palette = 0 }
 local ANIM = 16
 -- The steps' ticks, and the tick of the first step's count the tornado comes on.
 local BLOW_TICKS, BLOW_AT, RECOVER_TICKS = 30, 25, 5

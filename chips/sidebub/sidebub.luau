@@ -24,7 +24,7 @@ export type State = {
     burst: FlyingShotVariant,
 }
 
-local SPRITE = asset.sprite("side-bubble")
+local SPRITE = require("./side_bubble_sprite")
 local SOUND_RISE = asset.sound("bubble-rise")
 local SOUND_POP = asset.sound("bubble-pop")
 local SOUND_BURST = asset.sound("junk-shot")

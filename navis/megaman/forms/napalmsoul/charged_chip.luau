@@ -17,7 +17,7 @@ export type State = {
 
 local THROW_ANIM, RECOVER_ANIM = 18, 19
 -- The glow's sprite (its parameters 0x141D: 14-1D, animation 0, no shadow).
-local FLASH = asset.sprite("napalmsoul-flash")
+local FLASH = require("./napalmsoul_flash_sprite")
 local THROW_AT, THROW_TICKS, RECOVER_TICKS = 10, 21, 10
 -- The bomb leaves 10 pixels ahead of him and 48 up, falling lighter (16.16 a tick: its variant's, 2).
 local AHEAD, UP = 10 * 0x1_0000, 48 * 0x1_0000

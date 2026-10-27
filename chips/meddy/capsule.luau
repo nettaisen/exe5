@@ -26,8 +26,8 @@ export type State = {
 
 local capsule = {}
 
-local SPRITE = asset.sprite("meddy-capsule")
-local EXPLOSION = asset.sprite("explosion")
+local SPRITE = require("./meddy_capsule_sprite")
+local EXPLOSION = require("../../sprites/explosion")
 local SOUND_BURST = asset.sound("hit-bomb-1")
 
 -- The effect table's row 0 (an explosion), its palette raised by a variant's.

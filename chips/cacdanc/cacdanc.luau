@@ -22,7 +22,8 @@ local cacdanc = {}
 
 -- Its look (`sub_8011504`'s word 0x01041030: sheet 10-30, animation 4, a ground shadow) and collision (0x0A050100: a
 -- thrown thing that hits navis, hit modifier 1).
-local SPRITE = asset.sprite("cactus")
+local SPRITE = require("../../sprites/cactus")
+local puff_sprite = require("../../sprites/puff")
 local ANIM = 4
 local HIT_MOD = 1
 local FALL_SOUND, BOUNCE_SOUND = asset.sound("drop"), asset.sound("cactus-hop")
@@ -31,7 +32,7 @@ local FALL_SOUND, BOUNCE_SOUND = asset.sound("drop"), asset.sound("cactus-hop")
 local START_Z, FALL_GRAVITY = 0xA0_0000, int.i32(0xFFFFC000)
 local BOUNCE_TICKS, BOUNCE_GRAVITY = 10, int.i32(0xFFFF0000)
 -- The puff it goes in (effect row 0x14).
-local PUFF = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
 -- The other side's navis (0x080DC860, 0x080E7F54) and the panels beside one (0x080DC868, 0x080E7F5C).
 local TARGETS = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
 local SOLID = 0x10

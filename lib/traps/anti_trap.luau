@@ -16,15 +16,18 @@ local panel_bursts = require("../../objects/panel_bursts")
 local sparks = require("../sparks")
 local statuses = require("../../rules/status")
 local traps = require("../traps")
+local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local lightning_sprite = require("../../sprites/lightning")
+local spout_splash_sprite = require("../../sprites/spout_splash")
 
 local trap = {}
 
 -- The bursts' looks (the panel bursts' rows 0, 2 and 4; fire and the null element row 3's fiery burst): EXE5's
 -- sheets, whose animations last as EXE5's do (its hit sparks a tick longer than EXE6's). (Elec's is sheet 14-14,
 -- `lightning`.)
-local SPLASH = new.effect { sprite = asset.sprite("spout-splash"), anim = 0, palette = 0 }
-local LIGHTNING = new.effect { sprite = asset.sprite("lightning"), anim = 0, palette = 0 }
-local LEAVES = new.effect { sprite = asset.sprite("hit-sparks"), anim = 5, palette = 0 }
+local SPLASH = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0 }
+local LIGHTNING = new.effect { sprite = lightning_sprite, anim = 0, palette = 0 }
+local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0 }
 
 trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
     strikes = {
@@ -59,7 +62,7 @@ trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
 
 -- (Its sparkle and the sparkle's sound EXE6's numbers.)
 trap.kind = common_trap.make_kind("anti-trap/trap", {
-    sparkle = new.effect { sprite = asset.sprite("hit-sparks"), anim = 7, palette = 0 },
+    sparkle = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0 },
     sparkle_sound = asset.sound("dimming-sparkle"),
     watches = "one",
     self_type = collision.nothing,

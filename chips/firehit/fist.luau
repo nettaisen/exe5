@@ -9,11 +9,12 @@
 local common = require("@exelib/firehit/fist")
 local collision = require("../../rules/collision")
 local sparks = require("../../lib/sparks")
+local fire_hit_sprite = require("./fire_hit_sprite")
 
 local fist = {}
 
 fist.kind = common.make_kind("firehit/fist", {
-    sprite = asset.sprite("fire-hit"),
+    sprite = fire_hit_sprite,
     sound = asset.sound("fire-hit"),
     spark = sparks.fire,
     target = collision.hits_navis,

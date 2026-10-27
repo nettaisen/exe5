@@ -14,7 +14,7 @@ local press = require("./press")
 
 local trap = {}
 
-local SPRITE = asset.sprite("land-mine")
+local SPRITE = require("../../chips/mine/land_mine_sprite")
 local SOUND = asset.sound("tango-land")
 local PALETTE = 1
 local SHOWN_TICKS = 40

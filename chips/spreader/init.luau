@@ -11,6 +11,8 @@ local bullet = require("../objects/bullet")
 local navi_arms = require("../lib/navi_arms")
 local regions = require("@exelib/regions")
 local spreader = require("@exelib/spreadr/action")
+local pink_flash_sprite = require("../sprites/pink_flash")
+local spreader_sprite = require("@self/spreader_sprite")
 
 local LOOK: SpreaderLook = {
     sound = asset.sound("h-burst"),
@@ -26,7 +28,7 @@ local LOOK: SpreaderLook = {
 local BURST = bullet.variant {
     region = regions.square,
     hit_mod = 0,
-    effect = new.effect { sprite = asset.sprite("pink-flash"), anim = 0, palette = 0 },
+    effect = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0 },
     sound = asset.sound("h-burst"),
 }
 
@@ -43,7 +45,7 @@ local chip: Chip = {
     flags = { "has_damage", "standard_library", "library" },
     slot_in_limit = 3,
     action = spreader.action({
-        gun = attachment.look { sprite = asset.sprite("spreader"), palette = 0, attach_point = 11 },
+        gun = attachment.look { sprite = spreader_sprite, palette = 0, attach_point = 11 },
         z = 0x10_0000,
         bullet = BURST,
     }, LOOK),

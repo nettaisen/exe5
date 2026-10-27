@@ -25,7 +25,9 @@ export type State = {
 }
 
 -- 0x080D7F50: sprite 0C-4E without a shadow (`sub_8011504`'s 0x00000C4E), animation 0.
-local SPRITE = asset.sprite("red-fruit")
+local SPRITE = require("./red_fruit_sprite")
+local impact_sprite = require("../../sprites/impact")
+local puff_sprite = require("../../sprites/puff")
 local HP = 1
 -- Its collision (0x0E0F0003): a neutral body (row 0x0E) that everything reaches (row 0x0F), hit modifier 0 (the
 -- word's third byte; `sub_8011504` reads no fourth).
@@ -41,9 +43,9 @@ local IDENTITY = new.identity {
 }
 -- The effects (EXE5's table, 0x080DFC94): row 0x15 (14-0D, animation 3) as it comes, row 0x14 (14-0D, animation 2) as
 -- it goes, row 0x0E (14-01) when broken.
-local COMES = new.effect { sprite = asset.sprite("puff"), anim = 3, palette = 0 }
-local GOES = new.effect { sprite = asset.sprite("puff"), anim = 2, palette = 0 }
-local BROKEN = new.effect { sprite = asset.sprite("impact"), anim = 0, palette = 0 }
+local COMES = new.effect { sprite = puff_sprite, anim = 3, palette = 0 }
+local GOES = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
+local BROKEN = new.effect { sprite = impact_sprite, anim = 0, palette = 0 }
 local APPEAR_SOUND, BREAK_SOUND = asset.sound("appear"), asset.sound("hit-bomb-1")
 local SHOWN_TICKS, PUFF_TICKS = 40, 4
 -- Where it neither drops nor hops (0x080D8280): the back columns, reserved while it looks.

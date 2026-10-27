@@ -10,7 +10,7 @@ local sonic_boom = require("@exelib/swords/sonic_boom")
 local stepsword = require("../../lib/stepsword")
 local swords = require("../../lib/swords")
 
-local SLASH_SPRITE = asset.sprite("sword-slash")
+local SLASH_SPRITE = require("../../sprites/sword_slash")
 
 return {
     action = common.make {

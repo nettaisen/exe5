@@ -5,10 +5,11 @@
 local attachment = require("../objects/attachment")
 local status = require("../rules/status")
 local tornado = require("@self/tornado")
+local hand_fan_sprite = require("@self/hand_fan_sprite")
 
 -- Tornado's fan (the attachment table's row 0xC) and Static's charged one (row 0x17).
-local FAN = attachment.look { sprite = asset.sprite("hand-fan"), palette = 0, attach_point = 9 }
-local CHARGED_FAN = attachment.look { sprite = asset.sprite("hand-fan"), palette = 1, attach_point = 9 }
+local FAN = attachment.look { sprite = hand_fan_sprite, palette = 0, attach_point = 9 }
+local CHARGED_FAN = attachment.look { sprite = hand_fan_sprite, palette = 1, attach_point = 9 }
 
 -- Tornado's blow (subtype 1): one plain tornado (row 1) two panels ahead, for 0x20 ticks (the record's parameters).
 local PLAIN = tornado.variant { palette = 0, rearm = 4, plain = true }

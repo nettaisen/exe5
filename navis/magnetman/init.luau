@@ -14,9 +14,11 @@ local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local charged_chips = require("./megaman/weapons/charged_chip")
 local nstackle = require("@self/chip").nstackle
+local magnetman_portrait_sprite = require("@self/magnetman_portrait_sprite")
+local magnetman_sprite = require("@self/magnetman_sprite")
 
 local navi: NaviDef = {
-    sprite = asset.sprite("magnetman"),
+    sprite = magnetman_sprite,
     element = "elec",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
@@ -26,7 +28,7 @@ local navi: NaviDef = {
     -- dialog's script 0x1b, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
     -- content's own (en) time it.
     run_message = {
-        portrait = asset.sprite("magnetman-portrait"),
+        portrait = magnetman_portrait_sprite,
     },
     palette_step = 2,
     own_chip = { chip = nstackle, code = "M" },

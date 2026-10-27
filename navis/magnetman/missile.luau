@@ -24,7 +24,7 @@ export type State = {
     target: Object?,
 }
 
-local SPRITE = asset.sprite("magnet-missile")
+local SPRITE = require("./magnet_missile_sprite")
 local SOUND = asset.sound("junk-shot")
 -- Its HP (0x080D24E4 by its first parameter: MagnetMan's charge's 4) and its wait (0x080D261C by its second: 0).
 local HP, WAIT = 20, 15

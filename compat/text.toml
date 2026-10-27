@@ -5,7 +5,7 @@
 # §10.5): the stacked SP U+E003 (EXE6's), the stacked DS U+E008 (EXE5's own), the bat U+E006, the stacked MB
 # U+E005, the zenny sign Ƶ, the dialogue font's ○ and ✕. Bytes below 0xE0 are the 8x16 font's glyphs; the
 # dialogue font draws them and bytes 0xE0-0xE3, then the second page's codes E4 00 on (its glyphs 0xE4 +
-# the second byte). exe5-extract writes the fonts' charmaps with it; the locales encode with it.
+# the second byte). The extractor writes the fonts' charmaps with it; the locales encode with it.
 
 first_control = 0xE4
 glyphs = [

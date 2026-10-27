@@ -1,8 +1,8 @@
 # EXE5's asset names, written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs,
 # by EXE6's names for what is EXE6's (gen_content.py's `asset_names`: the songs and sprites whose data is
 # EXE6's, EXE5's music and sprites by the place EXE5's code uses them where EXE6's same code uses a named one,
-# the banners whose records are EXE6's). exe5-extract writes each asset under its name here, the rest under a
-# placeholder (`sprite-cc-ii`, `sound-nnn`, `banner-nn`), which content may not use.
+# the banners whose records are EXE6's). The extractor writes each asset under its name here, the rest under a
+# number (`sprite-cc-ii`, `sound-nnn`, `banner-nn`), which content may not use.
 
 # Sprites: "cc-ii", the category's byte offset in the sprite list (0x08032728) and the index. Category 20 is the
 # chatbox's portraits (a no-running message's speaker: its script's `F5 00 ii`), each from the team's ROM that
@@ -529,7 +529,7 @@ nebula-area = [0x19, 0x1c]  # NebulaArea1 to 5 (0x1c: NebulaArea1, 3 and 5, the 
 # on the SoulServer, whose comp draws 0x15
 nebulagray = 0x1b
 
-# Mugshots: the emotion window's faces, by the number exe5-extract gives them (its hud.rs: the face
+# Mugshots: the emotion window's faces, by the number the recipe gives them (extract/hud.luau: the face
 # table's pictures with their own palettes, then the version souls' with the palettes Chaos Unison
 # shows them in, then Team Colonel's own souls'); then from 0x80 the team navis' faces (its navi
 # mugshots: 0x08019724's pictures, Team ProtoMan's six, then Team Colonel's; two palettes each, normal

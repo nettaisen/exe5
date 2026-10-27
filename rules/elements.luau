@@ -4,9 +4,9 @@
 -- next receiver's first): EXE6's values. The chip families by the numbers its pack has their custom-screen icons
 -- by: EXE6's, with EXE5's recovery and invisible after them (its records' family byte, +6, numbers them its own
 -- way: fire 0, aqua 1, elec 2, wood 3, recovery 4, plus 5, sword 6, invisible 7, cursor 8, summon 9, wind 10,
--- break 11, null 12, program advance 13, special 14; nettai-extract lays the icons out by these); null the
--- non-elemental one. No family adds a secondary element: EXE5 stores a chip's element as its record has it
--- (0x0800FE72, EXE6's `sub_80126E4` without `byte_80129E4`).
+-- break 11, null 12, program advance 13, special 14; the recipe lays the icons out by these, extract/custom.luau's
+-- FAMILY_BYTES); null the non-elemental one. No family adds a secondary element: EXE5 stores a chip's element as
+-- its record has it (0x0800FE72, EXE6's `sub_80126E4` without `byte_80129E4`).
 -- Written by tools/exe5/gen_rules.py (bn6battle-verify) from the EXE5 ROM; people own it now.
 
 return {

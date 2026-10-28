@@ -63,10 +63,12 @@ local function start(me: Object)
             me:set_request(r, false)
         end
         me:set_navi_state("reviving", true)
-        -- (0x0200496C: 0x408800.)
-        for _, state in { "hovering", "trap_armed", "guarded" } :: { NaviStateFlag } do
+        -- (0x0200496C: 0x408800, the guard's among them: the rules' `navi_state`.)
+        for _, state in { "hovering", "trap_armed" } :: { NaviStateFlag } do
             me:set_navi_state(state, false)
         end
+        local own = me.state :: NaviState
+        own.guarded = false
         me.collision:set_region(nil)
         party.spend_rescue(me.alliance)
         battle.screen_fade("dim", FADE_SPEED)

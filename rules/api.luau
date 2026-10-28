@@ -49,6 +49,41 @@ function exe5.sword_pick(side: number): number
     return (rules.state_of(side) :: { sword_pick: number }).sword_pick
 end
 
+-- ColonelSoul's army (exe5-map.md §15.11: the rules' state, ./init): what a side is armed with (navis/megaman/forms/
+-- colonelsoul), and what its soldiers strike with (objects/soldier).
+type Armed = { army: { armed: boolean, melee: number, ranged: number } }
+
+-- Whether the side is armed, and its soldiers' damage words (0x080CAC06, 0x080CAC12): the sword soldier's and the gun
+-- soldier's.
+function exe5.army(side: number): (boolean, number, number)
+    local army = (rules.state_of(side) :: Armed).army
+    return army.armed, army.melee, army.ranged
+end
+
+-- 0x080CAC1E: the side armed (the battle state's +0x5C bit 0x10 or 0x20), with its soldiers' damage words
+-- (0x080CABF8).
+function exe5.arm_army(side: number, melee: number, ranged: number)
+    local army = (rules.state_of(side) :: Armed).army
+    army.armed, army.melee, army.ranged = true, melee, ranged
+end
+
+-- 0x080CABF8 alone: the side's soldiers' damage words, armed or not (BusterUp in ColonelSoul, 0x08011C50).
+function exe5.set_army_words(side: number, melee: number, ranged: number)
+    local army = (rules.state_of(side) :: Armed).army
+    army.melee, army.ranged = melee, ranged
+end
+
+-- 0x080CAC30: the side disarmed, its words left (the status reset's 0x08011B3C, the navi switch's 0x08011918).
+function exe5.disarm_army(side: number)
+    (rules.state_of(side) :: Armed).army.armed = false
+end
+
+-- The side's wind slot (@exelib/wind/registry: the rules' state, ./init), which Wind and Fan's fan fills
+-- (chips/wind/fan) and GyroMan's support reads (navis/gyroman/support).
+function exe5.wind(side: number): WindSlot
+    return (rules.state_of(side) :: { wind: WindSlot }).wind
+end
+
 -- Whether the side has partners (EXE5 DS's party battle: ./party), whose team navis' damage is the DS's
 -- (lib/navi_level).
 function exe5.in_party(side: number): boolean

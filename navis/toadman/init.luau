@@ -58,7 +58,7 @@ local navi: NaviDef = {
     reset = dives,
     -- His entry in the DS's flinch, drag and paralysis hook tables (0x02077B18): his dive's state ends.
     interrupted = function(navi: Object)
-        navi:set_navi_state("diving", false)
+        (navi.state :: NaviState).diving = false
     end,
     -- His fresh stats (his stats row): what a side starts him with.
     fresh = { hp = 300, mega_level = 5, giga_level = 1 },

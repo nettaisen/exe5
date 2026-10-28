@@ -11,6 +11,7 @@ local auto_battle = require("@self/auto_battle")
 local dark_survival = require("@self/emotion/dark_survival")
 local double_attacks = require("@self/double_attacks")
 local emotion = require("@self/emotion")
+local exe5 = require("@self/api")
 local folder = require("@self/folder")
 local fresh_stats = require("@self/fresh_stats")
 local chaos_charge = require("@self/souls/chaos_charge")
@@ -94,6 +95,12 @@ local state: StateSchema = {
     -- The side's sword pick (`sub_802E070` +0x12, which the player's init clears): the swing a variable sword makes
     -- for a navi no buttons drive, which its auto battle draws (./auto_battle/place) and VarSwrd reads (./api).
     sword_pick = "u8",
+    -- ColonelSoul's army (exe5-map.md §15.11, ./api): armed (the battle state's +0x5C bit 0x10 or 0x20, which the
+    -- soul's reset sets and the status reset and the navi switch's end clear), and its soldiers' damage words
+    -- (0x02034000 + 8 × side: the sword soldier's, the gun soldier's), which disarming leaves.
+    army = { armed = "bool", melee = "u32", ranged = "u32" } :: StateSchema,
+    -- The side's wind, and who placed it (@exelib/wind/registry, ./api).
+    wind = { object = "object", source = { "obstacle", "navi" } } :: StateSchema,
     -- The side's auto battle data as its console sent it as the battle started (./auto_battle/block.luau), which a
     -- navi in auto battle plays and turns.
     auto_battle_places = schema.list(auto_battle.block.PLACE, auto_battle.block.PLACES),
@@ -274,8 +281,20 @@ local rules: Rules = {
             { chip = "gridman-sp", frames = 0 },
         },
     },
-    -- The state of each navi no player controls that the rules drive (./auto_battle).
-    navi_state = AI,
+    -- The state of each navi, its object's own (the pack's `NaviState`): of a navi no player controls that the rules
+    -- drive, its AI's (./auto_battle); ColonelSoul's arm chip (AIData +0x32; none: its 0xFFFF), which the soul's change
+    -- and Arm Change set and its charged shot's routine 0x13 loads (navis/megaman/forms/colonelsoul); GyroMan's
+    -- requests to take off and to land (0x10000000 and 0x20000000 of his request word: navis/gyroman/hover); EXE5 DS's
+    -- KnightMan's guard and ToadMan's dive (AIData +0x48's 0x400000 and 0x01000000: navis/knightman/guard,
+    -- navis/toadman), which a soul change, a form's revert or break and ToadMan's rescue end.
+    navi_state = {
+        ai = AI,
+        weapon_chip = "chip",
+        take_off = "bool",
+        land = "bool",
+        guarded = "bool",
+        diving = "bool",
+    },
     -- EXE5's fields on its definitions (docs/design/rules-in-luau.md §7.5), which the engine checks and reads none
     -- of. What a soul's form says for the rules that ask (a soul is named by its form's id; the original tests its
     -- number, NaviStats +0x2C, in each place; the pack's types.d.luau types them): its navi's image at the change
@@ -457,6 +476,15 @@ local rules: Rules = {
         navi_hit_shown = party.navi_hit_shown,
         -- An obstacle where ColonelSoul's army can use it turns into a soldier (objects/soldier).
         obstacle_reaction = soldier.obstacle_reaction,
+        -- The army is disarmed as a navi's status reset starts (0x08011B3C) and as a navi switch finishes (0x08011918),
+        -- before the soul's reset arms it again (./api).
+        status_reset = exe5.disarm_army,
+        switch_finished = exe5.disarm_army,
+        -- A form's revert or break done: EXE5 DS's guard and dive end (0x020605A0, 0x020606AA: the navi's state's).
+        revert_finished = function(_side: number, navi: Object)
+            local s = navi.state :: NaviState
+            s.guarded, s.diving = false, false
+        end,
         -- Full Synchro on a counter, and the NaviCust's swing bug (./emotion).
         round_start = emotion.round_start,
         countered = emotion.countered,

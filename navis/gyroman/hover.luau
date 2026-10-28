@@ -10,8 +10,17 @@
 --
 -- The tick does nothing during his Airforce (his action 7: `during`, which ./init gives it). Its last part tests
 -- the soul (NaviStats +0x2C) for GyroSoul's propeller, as MegaMan's tick does: never his.
+--
+-- His requests (0x10000000 and 0x20000000 of his request word, which his tick sets and his idle and his landing clear,
+-- and no attack's or reaction's end does) are his own state's (the rules' `navi_state`).
+
 
 local hover = {}
+
+-- The navi's own state, which holds his requests.
+local function own(navi: Object): NaviState
+    return navi.state :: NaviState
+end
 
 export type State = {
     -- AIAttackVars +0x10: the step's ticks left.
@@ -63,7 +72,7 @@ hover.action = new.action {
             elseif count(s) then
                 me.anim = 0
                 me:set_navi_state("hovering", false)
-                me:set_request("land", false)
+                own(me).land = false
                 me:end_attack()
             end
         else
@@ -83,24 +92,24 @@ function hover.tick(during: Action): (navi: Object) -> ()
         if not solid then
             if not hovering then
                 navi:set_navi_state("hovering", true)
-                navi:set_request("take_off", true)
+                own(navi).take_off = true
             elseif navi.anim == 0 then
                 navi.anim = ANIM_FLY
             end
         elseif hovering then
-            navi:set_request("land", true)
+            own(navi).land = true
         end
     end
 end
 
 -- 0x080F0978: his idle: a take-off or a landing asked for starts his action 9 in its variant.
 function hover.idle(navi: Object)
-    if navi:request("take_off") then
-        navi:set_request("take_off", false)
+    if own(navi).take_off then
+        own(navi).take_off = false
         navi.attack_variant = 0
         navi:set_attack(hover.action, 0)
-    elseif navi:request("land") then
-        navi:set_request("land", false)
+    elseif own(navi).land then
+        own(navi).land = false
         navi.attack_variant = 1
         navi:set_attack(hover.action, 0)
     end

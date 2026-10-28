@@ -95,8 +95,8 @@ local function emerge(me: Object, s: State, target: FormDef, chaos: boolean)
     if me.step_init == 0 then
         me:set_navi_state("form_change_sprite_held", false)
         -- (EXE5 DS's the guard's and the dive's states too, 0x02060356.)
-        me:set_navi_state("guarded", false)
-        me:set_navi_state("diving", false)
+        local navi = me.state :: NaviState
+        navi.guarded, navi.diving = false, false
         me.related1 = nil
         me.overlay = nil
         local stats = battle.navi(me.alliance)
@@ -108,7 +108,7 @@ local function emerge(me: Object, s: State, target: FormDef, chaos: boolean)
         local souls = rules.state() :: Souls
         souls.turns, souls.chaos = turns, is_chaos
         -- (0x08012102: the record's arm chip, +6, into AIData +0x32: ColonelSoul's Arm Change fills it.)
-        me.weapon_chip = souls.arm_chip
+        navi.weapon_chip = souls.arm_chip
         stats.form = target
         hooks.identity(me, target)
         hooks.start(me, target)

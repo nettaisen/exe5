@@ -8,6 +8,7 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/wind/fan")
+local exe5 = require("../../rules/api")
 local gust = require("../../navis/megaman/gust")
 local explosion_sprite = require("../../sprites/explosion")
 local fan_sprite = require("./fan_sprite")
@@ -31,6 +32,7 @@ local made = common.make {
     is = collision.own_body,
     hits = collision.hit_by_other_side,
     spawn_gust = gust.spawn,
+    wind = exe5.wind,
     absorbs = false,
     far_column_only = true,
 }

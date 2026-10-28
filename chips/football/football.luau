@@ -23,6 +23,7 @@ local football = {}
 
 local SPRITE = require("../gridman/gridman_sprite")
 local puff_sprite = require("../../sprites/puff")
+local navi_left = require("@exelib/navi_chips/left")
 
 -- ---- The ball -------------------------------------------------------------------------------------------------------
 
@@ -250,7 +251,7 @@ local KICKS: { [number]: boolean } = { [171] = true, [126] = true, [111] = true,
 local function done(me: Object)
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:set_lifecycle("destroy")
 end

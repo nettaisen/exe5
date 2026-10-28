@@ -47,6 +47,7 @@ local invalid = require("../chips/invalid").invalid
 local megaman = require("../navis/megaman").megaman
 local party = require("./party")
 local operation_battle = require("../lib/operation_battle")
+local navi_status = require("@exelib/navi_status")
 
 -- The side statistic a dark chip's use sets.
 local DARK_CHIP_USED = 2
@@ -155,7 +156,7 @@ local function use_dark_chip(side: number, navi: Object): boolean
     if stats.mood ~= 0 then
         stats.mood = 0
     end
-    navi:end_anger()
+    navi_status.end_anger(navi, "unless_zero")
     stats.mood = 0
     return true
 end

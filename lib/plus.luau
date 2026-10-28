@@ -15,6 +15,7 @@
 local rising_bubble = require("../objects/rising_bubble")
 local sparkle = require("@exelib/instant/sparkle")
 local operation_battle = require("./operation_battle")
+local chip_hand = require("@exelib/chip_hand")
 
 local plus = {}
 
@@ -61,8 +62,8 @@ function plus.dark(user: Object, _spec: InstantChipSpec)
     end
     local side = user.alliance
     local i = battle.hand_cursor(side)
-    if battle.hand_chip_damages(side, i) then
-        battle.set_hand_attack_bonus(side, i, user.attack_damage)
+    if chip_hand.damages(side, i) then
+        battle.set_hand_entry(side, i, "attack_bonus", user.attack_damage)
         user.plus_tint = TINT
         battle.play_sound(BONUS_SOUND)
         return

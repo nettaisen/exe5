@@ -20,6 +20,7 @@ local regions = require("@exelib/regions")
 local roles = require("../../rules/roles")
 local swords = require("../../lib/swords")
 local sword_slash_sprite = require("../../sprites/sword_slash")
+local navi_status = require("@exelib/navi_status")
 
 -- The slash over a column (effect 0x16).
 local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
@@ -64,7 +65,7 @@ end
 
 -- The invulnerability ends (sub_800EB08's counterpart).
 local function vulnerable(me: Object)
-    me:clear_invulnerable()
+    navi_status.clear_invulnerable(me)
 end
 
 slasher.action = new.action {

@@ -22,6 +22,9 @@ local effects = require("../../lib/effects")
 local hooks = require("./hooks")
 local image = require("./image")
 local shade = require("./shade")
+local navi_status = require("@exelib/navi_status")
+local stop_moving = require("../../lib/stop_moving")
+local looks = require("@exelib/looks")
 
 local change = {}
 
@@ -58,10 +61,10 @@ local function prepare(me: Object)
     me.sprite.white = true
     me:snap_to_future_panel()
     me:face_default()
-    me:reset_charge()
+    navi_status.reset_charge(me)
     flash(me)
     battle.play_sound(FLASH_SOUND)
-    me:stop_moving()
+    stop_moving(me)
     me:set_navi_state("form_change_sprite_held", true)
     set_step(me, IMAGE)
 end
@@ -98,7 +101,7 @@ local function emerge(me: Object, s: State, target: FormDef, chaos: boolean)
         me.overlay = nil
         local stats = battle.navi(me.alliance)
         hooks.finish(me, stats.form)
-        me:load_form_sprite(target)
+        looks.load_form_sprite(me, target)
         s.timer = 10
         me:end_statuses()
         local turns, is_chaos = me:form_change_terms()

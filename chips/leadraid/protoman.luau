@@ -30,6 +30,7 @@ local protoman = {}
 local SPRITE = require("../../navis/protoman/protoman_sprite")
 local sword_slash_sprite = require("../../sprites/sword_slash")
 local sword_sprite = require("../../sprites/sword")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SWING = asset.sound("sword-swing")
 -- His sword (the attachment row 3), its animation 1, animating while dimmed.
@@ -238,7 +239,7 @@ local function leave(me: Object)
         -- (The lifecycle byte alone, as the game stores it.)
         local controller = (me.state :: State).controller
         if controller then
-            navi_chip.navi_left(controller)
+            navi_left(controller)
         end
         me.lifecycle = "destroy"
     end

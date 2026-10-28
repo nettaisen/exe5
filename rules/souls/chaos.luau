@@ -13,6 +13,7 @@ local auto_battle = require("../auto_battle")
 local dark_megaman = require("../../navis/dark_megaman/identity")
 local hooks = require("./hooks")
 local panels = require("../auto_battle/panels")
+local looks = require("@exelib/looks")
 
 local chaos = {}
 
@@ -97,7 +98,7 @@ end
 local function revert(me: Object, _s: State)
     local stats = battle.navi(me.alliance)
     hooks.finish(me, stats.form)
-    me:load_form_sprite(base)
+    looks.load_form_sprite(me, base)
     stats.form = base
     hooks.identity(me, base)
     hooks.settle(me)

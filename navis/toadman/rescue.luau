@@ -25,6 +25,8 @@ local party = require("../../rules/party")
 local regions = require("@exelib/regions")
 local toadman = require("../toadman").toadman
 local toad_note_sprite = require("./toad_note_sprite")
+local navi_status = require("@exelib/navi_status")
+local stop_moving = require("../../lib/stop_moving")
 
 local rescue = {}
 
@@ -69,7 +71,7 @@ local function start(me: Object)
         party.spend_rescue(me.alliance)
         battle.screen_fade("dim", FADE_SPEED)
         me:snap_to_future_panel()
-        me:stop_moving()
+        stop_moving(me)
         me:set_status("guard", false)
         me:set_request("flinch", false)
         me:set_animation(2)
@@ -116,8 +118,8 @@ local function heal(me: Object, s: State)
     s.timer = t
     if t == ENDS_AT then
         me:end_statuses()
-        me:end_anger()
-        me:drop_barrier()
+        navi_status.end_anger(me, "unless_zero")
+        me.collision.barrier = "none"
         me.barrier_visual = nil
         me:set_animation(0)
         set_step(me, END)

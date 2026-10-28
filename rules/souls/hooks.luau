@@ -3,6 +3,8 @@
 -- 0x0800F088, by the soul's number, EXE6's `sub_8011268` and `sub_8011384`: what the form wears, its identity's
 -- parts: GyroSoul's propeller, NumberSoul's layer), and the status reset that settles MegaMan in his new form.
 
+local navi_status = require("@exelib/navi_status")
+
 local hooks = {}
 
 -- 0x0800F024 (r2 0): put on what `form` wears.
@@ -29,12 +31,12 @@ function hooks.settle(me: Object)
     me:reset_status()
     local stats = battle.navi(me.alliance)
     local mood = stats.mood
-    me:end_anger()
+    navi_status.end_anger(me, "unless_zero")
     if mood == 0 then
         stats.mood = 0
     end
     me:set_navi_state("no_charge", false)
-    me:clear_invulnerable()
+    navi_status.clear_invulnerable(me)
 end
 
 return hooks

@@ -5,6 +5,8 @@
 -- in the dark palette, sliding 40 pixels ahead, then fading); then a sound, the navi touchable again, the request
 -- dropped, the navi flashing for 120 ticks, and back to idle.
 
+local looks = require("@exelib/looks")
+
 -- MegaMan, by key (his navi's module reaches this one through his souls' Chaos Unison weapons).
 local MEGAMAN = "megaman"
 
@@ -90,7 +92,7 @@ local function image_init(me: Object)
         return
     end
     local sprite = me.sprite
-    sprite:load_like(navi)
+    looks.load_like(sprite, navi)
     sprite.shadow = "ground"
     me.anim, me.anim_loaded = 0, 0xFF
     sprite.palette = dark_palette(me)

@@ -28,6 +28,7 @@ local shadoman = {}
 
 local SPRITE = require("../../navis/shadowman/shadowman_sprite")
 local small_puff_sprite = require("../../sprites/small_puff")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_THROW = asset.sound("boomerang")
 -- The effect table's row 2: the puff he vanishes in, 32 pixels up.
@@ -145,7 +146,7 @@ local function unseen(me: Object)
     if s.busy[1] == 0 and s.busy[2] == 0 and s.busy[3] == 0 then
         local c = s.controller
         if c then
-            navi_chip.navi_left(c)
+            navi_left(c)
         end
         me:free()
     end
@@ -362,6 +363,5 @@ function shadoman.summon(palette: number): (user: Object, controller: Object, sp
         return o
     end
 end
-
 
 return shadoman

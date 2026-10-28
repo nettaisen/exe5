@@ -20,6 +20,8 @@ export type State = {
 local cosmoman = {}
 
 local SPRITE = require("./cosmoman_sprite")
+local navi_left = require("@exelib/navi_chips/left")
+local looks = require("@exelib/looks")
 local SOUND_APPEAR = asset.sound("appear")
 
 -- Where his caller goes, by his side (0x080BDB24): the enemy area's middle panel.
@@ -54,7 +56,7 @@ end
 local function done(me: Object)
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:set_lifecycle("destroy")
 end
@@ -78,7 +80,7 @@ local function take(me: Object, s: State): number
     local n = 0
     for _, o in field.all_objects(me.alliance) do
         if math.abs(me.panel_x - o.panel_x) <= 1 and math.abs(me.panel_y - o.panel_y) <= 1 then
-            local look = obstacle.absorbed_look(o)
+            local look = looks.absorbed(o)
             if look then
                 s.taken[n + 1] = look
                 n += 1
@@ -172,6 +174,5 @@ function cosmoman.summon(palette: number): (user: Object, controller: Object, sp
         return o
     end
 end
-
 
 return cosmoman

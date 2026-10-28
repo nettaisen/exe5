@@ -12,6 +12,8 @@
 local base = require("../../navis/megaman/forms/base").base
 local effects = require("../../lib/effects")
 local hooks = require("./hooks")
+local stop_moving = require("../../lib/stop_moving")
+local looks = require("@exelib/looks")
 
 local revert = {}
 
@@ -33,11 +35,11 @@ function revert.update(me: Object, s: State)
         if e then
             e.run_while_paused = true
         end
-        me:stop_moving()
+        stop_moving(me)
         local stats = battle.navi(me.alliance)
         hooks.finish(me, stats.form)
         -- sub_800FC9E(0, 0): MegaMan's base sprite.
-        me:load_form_sprite(base)
+        looks.load_form_sprite(me, base)
         stats.form = base
         hooks.identity(me, base)
         hooks.settle(me)

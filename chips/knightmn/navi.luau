@@ -22,6 +22,7 @@ local knightman = {}
 
 local SPRITE = require("../../navis/knightman/knightman_sprite")
 local knightman_ball_sprite = require("../../navis/knightman/knightman_ball_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_LAND = asset.sound("land")
 local SOUND_SWING = asset.sound("knight-swing")
 -- What he wears (0x0800EE7A: EXE5's body overlay row 1, its sprite 10-47, in front at every animation), stepping
@@ -41,7 +42,7 @@ local SWING: KnightBallSwing = { speed = 8, turns = 1, status = statuses.confuse
 local function leave(me: Object)
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:remove_parts(CHAIN)
     -- (0x080B9E60: the state byte alone; his action and phase stay.)
@@ -243,6 +244,5 @@ function knightman.summon(palette: number): (user: Object, controller: Object, s
         return o
     end
 end
-
 
 return knightman

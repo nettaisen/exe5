@@ -19,6 +19,7 @@ local statuses = require("../../rules/status")
 local bignoise = {}
 
 local SPRITE = require("../shademan/shademan_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 
 -- ---- The noise ------------------------------------------------------------------------------------------------------
 
@@ -211,7 +212,7 @@ local function update(me: Object)
         if countdown(me, 4, 4) then
             local controller = (me.state :: State).controller
             if controller then
-                navi_chip.navi_left(controller)
+                navi_left(controller)
             end
             -- (0x080BD6FE: the state byte alone; his action and phase stay.)
             me.lifecycle = "destroy"

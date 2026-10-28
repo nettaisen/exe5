@@ -8,6 +8,7 @@
 
 local dimming_chips = require("@exelib/dimming")
 local standin = require("./stand_in")
+local navi_status = require("@exelib/navi_status")
 
 export type State = {
     -- The stand-in is out (+0x0C, the flag it was given).
@@ -30,7 +31,7 @@ local function start_drive(user: Object)
     user:set_navi_state("no_charge", true)
     user:set_status("untouchable", true)
     user:end_statuses()
-    user:end_anger()
+    navi_status.end_anger(user, "unless_zero")
 end
 
 -- 0x080E22EC: on its first tick the stand-in on the user's panel; once it is done, the drive, and the undim.

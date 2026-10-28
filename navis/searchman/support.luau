@@ -84,7 +84,7 @@ local function fire(me: Object)
             local open = c.barrier == "none" or (c.bubble and c.barrier_timer == 0)
             if open and o:status_timer("freeze") == 0 then
                 battle.advance_hand(o.alliance)
-                o:drop_chip()
+                o.chip = nil
                 o.chips_held = 0
                 local cx, cy = field.center(s.tx, s.ty)
                 battle.effect(Vec3.new(cx, cy, 0x10_0000), TAKEN)
@@ -271,7 +271,7 @@ local function target(side: number): (number?, number?)
     end
     for i = 1, 4 do
         local o = battle.alive_actor_slot(1 - side, i)
-        if o and o.has_chip then
+        if o and o.chip ~= nil then
             return o.panel_x, o.panel_y
         end
     end

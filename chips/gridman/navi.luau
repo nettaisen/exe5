@@ -29,6 +29,7 @@ local gridman = {}
 local SPRITE = require("./gridman_sprite")
 local explosion_sprite = require("../../sprites/explosion")
 local small_puff_sprite = require("../../sprites/small_puff")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_DASH = asset.sound("grid-dash")
 local SOUND_STRIKE = asset.sound("hit-bomb-1")
@@ -77,7 +78,7 @@ local function done(me: Object)
     local s = me.state :: State
     local controller = s.controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     local g = s.grid
     if g then
@@ -234,7 +235,7 @@ gridman.kind = new.kind {
             if battle.over() then
                 local controller = (me.state :: State).controller
                 if controller then
-                    navi_chip.navi_left(controller)
+                    navi_left(controller)
                 end
                 me:set_lifecycle("destroy")
             else
@@ -264,6 +265,5 @@ function gridman.summon(palette: number): (user: Object, controller: Object, spe
         return o
     end
 end
-
 
 return gridman

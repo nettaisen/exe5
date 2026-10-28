@@ -25,6 +25,7 @@ export type State = {
 local larkman = {}
 
 local SPRITE = require("./larkman_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_COMMAND = asset.sound("ok-8b")
 
@@ -138,7 +139,7 @@ local function attack(me: Object)
     elseif left <= 0 then
         local controller = s.controller
         if controller then
-            navi_chip.navi_left(controller)
+            navi_left(controller)
         end
         me:set_lifecycle("destroy")
     end

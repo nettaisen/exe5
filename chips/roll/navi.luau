@@ -21,6 +21,7 @@ local sparks = require("../../lib/sparks")
 local operation_battle = require("../../lib/operation_battle")
 local roll_heart_sprite = require("./roll_heart_sprite")
 local roll_ribbon_sprite = require("./roll_ribbon_sprite")
+local navi_status = require("@exelib/navi_status")
 
 -- What a panel in front of the tracked enemy must be free of (0x080C0CE4): the bodies and objects of a side.
 local OCCUPIED = { [0] = 0x0780_0000, 0x0B80_0000 }
@@ -48,7 +49,7 @@ end
 
 -- 0x080C0B66: her side's navi's mood rises by her chip's amount.
 local function heart_dropped(me: Object)
-    battle.gain_mood(me.alliance, (me.state :: any).mood :: number)
+    navi_status.gain_mood(me.alliance, (me.state :: any).mood :: number)
 end
 
 return common.make {

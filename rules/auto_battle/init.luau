@@ -55,7 +55,10 @@ local function leave(me: Object, s: LeaveState)
         if visual then
             visual:set_lifecycle("destroy")
         end
-        me:drop_links()
+        me.collision.confusion_visual = nil
+        me.collision.blindness_visual = nil
+        me.chips_held = 0
+        me.chip = nil
         s.timer = LEAVE_TICKS
         me.step_init = 4
     end

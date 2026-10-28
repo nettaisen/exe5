@@ -21,6 +21,8 @@
 local shade = require("../souls/shade")
 local operation_battle = require("../../lib/operation_battle")
 local deletion_sprite = require("../../sprites/deletion")
+local navi_status = require("@exelib/navi_status")
+local stop_moving = require("../../lib/stop_moving")
 
 local survival = {}
 
@@ -91,7 +93,7 @@ local function fade_out(me: Object)
         battle.play_sound(FLASH_SOUND)
         -- Not moving, flinching, paralyzed, sliding or dragged, nor asked to slide or be dragged (flags 0x101C40,
         -- 0x110; +0x1F).
-        me:stop_moving()
+        stop_moving(me)
         me:set_status("drag", false)
         me:set_request("drag", false)
         me:set_animation(0)
@@ -140,7 +142,7 @@ local function take_over(me: Object)
     me.in_auto_battle = true
     me:set_navi_state("no_charge", true)
     me:end_statuses()
-    me:end_anger()
+    navi_status.end_anger(me, "unless_zero")
     set_step(me, FADE_IN)
 end
 

@@ -42,6 +42,7 @@ export type State = {
 local django = {}
 
 local SPRITE = require("./django_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CHARGE = asset.sound("django-charge")
 local SOUND_LAND = asset.sound("rockfall")
@@ -320,7 +321,7 @@ local function leave(me: Object)
     if ran_out(me) then
         local controller = (me.state :: State).controller
         if controller then
-            navi_chip.navi_left(controller)
+            navi_left(controller)
         end
         me.lifecycle = "destroy"
     end

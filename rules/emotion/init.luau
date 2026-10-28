@@ -16,6 +16,7 @@
 --   set the bug mid-round, so every navi of the player's kind is ticked.
 
 local operation_battle = require("../lib/operation_battle")
+local navi_status = require("@exelib/navi_status")
 
 local emotion = {}
 
@@ -86,7 +87,7 @@ local function swing(side: number, navi: Object)
         return
     end
     s.swing_ticks[i] = 0
-    navi:end_anger()
+    navi_status.end_anger(navi, "unless_zero")
     local current = s.swung[i]
     local others = {}
     for _, e in SWINGS do
@@ -116,7 +117,7 @@ function emotion.countered(side: number, _victim: Object)
         battle.set_mood(side, 0xFF)
     else
         -- (The count: 0x8000, the mark, and what the tick's other hits counted.)
-        battle.gain_mood(side, 0x8000)
+        navi_status.gain_mood(side, 0x8000)
     end
 end
 

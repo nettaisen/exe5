@@ -26,6 +26,7 @@ local exe5 = require("./api")
 local megaman = require("../navis/megaman").megaman
 local party = require("./party")
 local regions = require("@exelib/regions")
+local navi_status = require("@exelib/navi_status")
 
 local double_attacks = {}
 
@@ -164,7 +165,7 @@ local function land(me: Object, s: FollowUp)
         me.related1 = nil
         me.overlay = nil
         me.collision:set_region(regions.single)
-        me:end_anger()
+        navi_status.end_anger(me, "unless_zero")
         s.timer = LAND_TICKS
         me.step_init = 4
     end

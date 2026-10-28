@@ -14,6 +14,7 @@ local effects = require("../../lib/effects")
 local numberman = require("../numberman").numberman
 local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
+local chip_hand = require("@exelib/chip_hand")
 
 local dice_bonus = {}
 
@@ -167,7 +168,7 @@ local function bonus(me: Object)
         battle.effect(Vec3.new(cx, cy, 0x10_0000), effects.heal)
         battle.play_sound(BONUS_SOUND)
         local side = me.alliance
-        battle.add_hand_attack_bonus(side, battle.hand_cursor(side), s.total)
+        chip_hand.add_bonus(side, battle.hand_cursor(side), "attack_bonus", s.total)
     end
     me.timer -= 1
     if me.timer <= 0 then
@@ -301,11 +302,11 @@ local function rolls(side: number): boolean
     if cursor == 0 then
         return false
     end
-    local used = battle.hand_chip(side, cursor - 1)
+    local used = chip_hand.chip(side, cursor - 1)
     if used == nil or has_flag(used, "dimming") then
         return false
     end
-    local next = battle.hand_chip(side, cursor)
+    local next = chip_hand.chip(side, cursor)
     if next == nil or not has_flag(next, "has_damage") then
         return false
     end

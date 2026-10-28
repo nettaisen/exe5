@@ -55,6 +55,7 @@ export type State = {
 
 -- What it fires between moves, its buster (weapon routine 0x3E: three shots, ./buster).
 local buster: Weapon = require("./buster").weapon
+local navi_status = require("@exelib/navi_status")
 
 -- The two families (`ai.run`, `ai.run_own`): whose auto battle data they play, and where the target a step faces is
 -- searched from.
@@ -254,7 +255,7 @@ local function dodge(navi: Object, s: State, fam: Family)
         end
         s.sub = 8
     elseif s.sub == 8 then
-        navi:reset_charge()
+        navi_status.reset_charge(navi)
         local shot = navi.charge_shot_weapon
         if shot == nil then
             error("the auto-battling navi's dodge ends in its charged shot (sub_80117A4), and it has none")

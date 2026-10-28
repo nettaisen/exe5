@@ -20,6 +20,7 @@ local napalmman = {}
 
 local SPRITE = require("../../navis/napalmman/napalmman_sprite")
 local napalm_cannon_sprite = require("../../navis/napalmman/napalm_cannon_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("cannon")
 -- What he wears (0x0800EE8A: EXE5's body overlay row 4, its sprite 10-18, behind him in his animations 20 to 22),
@@ -38,7 +39,7 @@ local MUZZLE_X, MUZZLE_Z = 0x8_0000, 0x38_0000
 local function leave(me: Object)
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:remove_parts(CANNON)
     -- (0x080BB320: the state byte alone; his action and phase stay.)
@@ -211,6 +212,5 @@ function napalmman.summon(palette: number): (user: Object, controller: Object, s
         return o
     end
 end
-
 
 return napalmman

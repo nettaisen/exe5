@@ -28,6 +28,7 @@ local chaoslrd = {}
 local SPRITE = require("../bass/bass_sprite")
 local GLOW = require("../../sprites/chaos_charge_glow")
 local puff_sprite = require("../../sprites/puff")
+local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_GATHER = asset.sound("trap-vanish")
 local SOUND_SHAPE = asset.sound("point-rise")
@@ -262,7 +263,7 @@ local function leave(me: Object)
     end
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:free()
 end

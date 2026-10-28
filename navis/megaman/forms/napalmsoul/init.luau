@@ -21,6 +21,7 @@ local soul_revert = require("../../../rules/souls/revert")
 local napalm_cannon_sprite = require("../../napalmman/napalm_cannon_sprite")
 local napalmman_sprite = require("../../napalmman/napalmman_sprite")
 local napalmsoul_sprite = require("@self/napalmsoul_sprite")
+local chip_hand = require("@exelib/chip_hand")
 
 -- NapalmMan's cannon on the soul's image (the body overlays' row 4, 0x0800EE8A): behind him in his animations 20 to 22.
 local CANNON: BodyPart = {
@@ -66,10 +67,10 @@ local form: FormDef = {
         end
         local side = navi.alliance
         local i = battle.hand_cursor(side)
-        if not battle.hand_chip_damages(side, i) then
+        if not chip_hand.damages(side, i) then
             return
         end
-        battle.add_hand_attack_bonus(side, i, 10)
+        chip_hand.add_bonus(side, i, "attack_bonus", 10)
         field.set_type(x, y, "normal")
     end,
     charged_chips = { { family = "fire", damaging = false, plain = true } },

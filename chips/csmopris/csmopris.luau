@@ -19,6 +19,7 @@ local operation_battle = require("../../lib/operation_battle")
 local csmopris = {}
 
 local SPRITE = require("../cosmoman/cosmoman_sprite")
+local navi_left = require("@exelib/navi_chips/left")
 
 -- ---- The comet ------------------------------------------------------------------------------------------------------
 
@@ -221,7 +222,7 @@ end
 local function done(me: Object)
     local controller = (me.state :: State).controller
     if controller then
-        navi_chip.navi_left(controller)
+        navi_left(controller)
     end
     me:set_lifecycle("destroy")
 end

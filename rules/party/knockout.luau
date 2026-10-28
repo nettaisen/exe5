@@ -19,6 +19,7 @@
 
 local effects = require("../../lib/effects")
 local regions = require("@exelib/regions")
+local stop_moving = require("../../lib/stop_moving")
 
 local knockout = {}
 
@@ -57,7 +58,7 @@ local function land(me: Object, s: State)
         me:face_default()
         me:reserve_panel(me.future_panel_x, me.future_panel_y)
         me.collision:set_region(nil)
-        me:stop_moving()
+        stop_moving(me)
         me:set_status("guard", false)
         me:set_animation(2)
         me:overlay_stepping("told")

@@ -8,13 +8,14 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/jealousy/controller")
 local operation_battle = require("../../lib/operation_battle")
 local sparks = require("../../lib/sparks")
+local chip_hand = require("@exelib/chip_hand")
 
 local controller = {}
 
 -- 0x080E4596: the chips `o` holds: a player its side's hand from the cursor, another actor its own count (+0x1A).
 local function held(o: Object): number
     if o.actor_type == "player" then
-        return battle.hand_left(o.alliance)
+        return chip_hand.left(o.alliance)
     end
     return o.chips_held
 end

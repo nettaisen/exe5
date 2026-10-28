@@ -18,6 +18,7 @@ export type State = {
 
 local SPRITE = require("./cosmoman_sprite")
 local explosion_sprite = require("../../sprites/explosion")
+local looks = require("@exelib/looks")
 local SOUND_FALL = asset.sound("justice-one")
 local SOUND_HIT = asset.sound("hit-bomb-1")
 -- The explosion where it lands (effect 0).
@@ -30,7 +31,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     local look = s.look
-    local worn = look ~= nil and me:wear_absorbed_look(look)
+    local worn = look ~= nil and looks.wear_absorbed(me, look)
     if not worn then
         -- CosmoMan's meteor (category 8 0x10, animation 10, palette 0), drawn with its sprite.
         sprite:load(SPRITE)

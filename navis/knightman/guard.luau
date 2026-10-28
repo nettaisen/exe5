@@ -201,4 +201,9 @@ function guard.hit_swallowed(side: number, navi: Object)
     s.knightman_pending = 0
 end
 
+-- Whether KnightMan is in the side's party: without him the guard's hooks have nothing to do (rules/init.luau).
+function guard.in_party(side: number): boolean
+    return party.member_of(side, knightman) ~= nil
+end
+
 return guard

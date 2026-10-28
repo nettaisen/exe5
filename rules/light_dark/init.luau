@@ -260,8 +260,14 @@ end
 light_dark.navi_palette = palette
 -- 0x0801103E: a hit's bug by the value.
 light_dark.navi_bug = navi_bug
+-- The clearing is asked (the rules' `navi_panel`) on holy panels alone, while the side's value clears them: from the
+-- round's setup, and as a party switch changes who fights (rules.listen_panels).
+function light_dark.listen(side: number)
+    rules.listen_panels(side, if value(side) <= CLEARS_HOLY then { "holy" } else {})
+end
+
 -- 0x08017136: the holy panel under a dark MegaMan turns Normal.
-function light_dark.navi_intake(side: number, navi: Object)
+function light_dark.navi_panel(side: number, navi: Object)
     if value(side) > CLEARS_HOLY then
         return
     end

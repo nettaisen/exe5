@@ -13,10 +13,11 @@
 --   the emotion swings to one of the table's (0x0801147C: seven normal, seven worried, one angry, one Full Synchro) but
 --   the one it last swung to (every entry of it taken out), drawn from RNG2: angry asks for anger (0x08011ABA: the
 --   request, the mood not consulted), any other sets its mood (0x0801148C) through EXE5's setter. A curse (BugCurse) can
---   set the bug mid-round, so every navi of the player's kind is ticked.
+--   set the bug mid-round: the navi is ticked from then (./ticked).
 
 local operation_battle = require("../lib/operation_battle")
 local navi_status = require("@exelib/navi_status")
+local ticked = require("./ticked")
 
 local emotion = {}
 
@@ -104,11 +105,12 @@ local function swing(side: number, navi: Object)
     end
 end
 
--- The swing runs from the navi's tick, whose bug a curse may set at any time.
+-- The swing runs from the navi's tick, while it has a bug (./ticked); its slot noted from the round's start.
 function emotion.round_start(side: number)
     local navi = battle.player(side)
     if navi ~= nil then
-        navi.ticked = true
+        note(side, navi)
+        ticked.update(side)
     end
 end
 

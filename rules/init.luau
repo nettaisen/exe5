@@ -38,6 +38,7 @@ local save = require("@self/save")
 local shout = require("@self/shout")
 local soldier = require("./objects/soldier")
 local souls = require("@self/souls")
+local ticked = require("@self/ticked")
 
 -- What the tools read of the game's builds, as data (./builds: the versions, a new save's folder): loaded with the
 -- rules, which read none of it.
@@ -411,6 +412,15 @@ local rules: Rules = {
             light_dark.round_setup(side)
             -- The party's partners join (./party).
             party.round_setup(side)
+            -- The hooks asked each fight tick are called only while something can come of them (rules.listen): the
+            -- party's supports and KnightMan's guard with partners; Chaos Unison's drop and the auto battle's drive
+            -- from their starts (./souls/chaos_charge, ./auto_battle); and the holy panel's clearing on holy panels
+            -- while the side's value clears them (./light_dark).
+            rules.listen(side, "fight_tick", party.has_partners(side) and (battle.link() or side == 0))
+            rules.listen(side, "hit_guard", knightman_guard.in_party(side))
+            light_dark.listen(side)
+            rules.listen(side, "weapons_loaded", false)
+            rules.listen(side, "controller", false)
             -- The auto battle data both consoles send, shuffled alike, once for the round (./auto_battle/block.luau).
             if side == 0 then
                 auto_battle.block.send()
@@ -422,11 +432,14 @@ local rules: Rules = {
         starting_mood = light_dark.starting_mood,
         navi_palette = light_dark.navi_palette,
         navi_bug = function(side: number, navi: Object): ("edited" | "spared")?
-            return light_dark.navi_bug(side, navi) or navicust_bugs.navi_bug(side, navi)
+            local done = light_dark.navi_bug(side, navi) or navicust_bugs.navi_bug(side, navi)
+            -- (A curse's swing bug starts the navi's tick: ./ticked.)
+            ticked.update(side)
+            return done
         end,
         -- The NaviCust's hit bug, whenever a hit asks a flinch or a drag (./navicust/bugs).
         navi_flinched = navicust_bugs.navi_flinched,
-        navi_intake = light_dark.navi_intake,
+        navi_panel = light_dark.navi_panel,
         chip_cost = light_dark.chip_cost,
         chip_check = light_dark.chip_check,
         cut_in_barred = light_dark.cut_in_barred,
@@ -483,7 +496,12 @@ local rules: Rules = {
             exe5.disarm_army(side)
             battle.set_hud("opponent_chip_icons", false, side)
         end,
-        switch_finished = exe5.disarm_army,
+        -- (Who fights brings a value and a swing bug of their own: ./light_dark, ./ticked.)
+        switch_finished = function(side: number, _navi: Object)
+            exe5.disarm_army(side)
+            light_dark.listen(side)
+            ticked.update(side)
+        end,
         -- A form's revert or break done: EXE5 DS's guard and dive end (0x020605A0, 0x020606AA: the navi's state's).
         revert_finished = function(_side: number, navi: Object)
             local s = navi.state :: NaviState

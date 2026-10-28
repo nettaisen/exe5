@@ -123,11 +123,31 @@ end
 -- of a setup that says nothing, the send as the round is set up, and what `validate` says of the data.
 auto_battle.block = block
 
+-- Whether a Dark MegaMan is on the field, on either side.
+local function dark_megaman_out(): boolean
+    for side = 0, 1 do
+        for i = 1, 4 do
+            local navi = battle.alive_actor_slot(side, i)
+            if navi ~= nil and navi.actor_type == "navi" and navi.ai_index == DARK_MEGAMAN then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+-- The rules' `controller` is asked from a drive's start (a no-charge state's: DarkInvs's, a dark MegaMan's survival)
+-- or a Dark MegaMan's coming until an idle of the player's finds neither: then all it does is start the drive's state
+-- over, which the state already is (rules.listen; the round's setup turns it off).
+function auto_battle.drive_started(side: number)
+    rules.listen(side, "controller", true)
+end
+
 -- The navi type's idle (action 6) of a navi the rules drive: its AI index's. And the side's player's
 -- idle where it would step (EXE5's no-charge drive, 0x080F03E4): with the no-charge state the AI decides
 -- for it (0x0802B4AC: DarkInvs's drive, on its own side's auto battle data, its state the rules' of the side);
 -- without, that state starts over (0x0802C03A) and its idle goes on.
-function auto_battle.controller(_side: number, navi: Object): ("nothing" | "chip" | "buster" | "moved")?
+function auto_battle.controller(side: number, navi: Object): ("nothing" | "chip" | "buster" | "moved")?
     if navi.actor_type == "player" then
         local s = rules.state().drive
         if navi:navi_state("no_charge") then
@@ -143,6 +163,9 @@ function auto_battle.controller(_side: number, navi: Object): ("nothing" | "chip
         end
         ai.reset(navi, s)
         s.drive_ticks = 0
+        if not dark_megaman_out() then
+            rules.listen(side, "controller", false)
+        end
         return nil
     end
     check(navi)

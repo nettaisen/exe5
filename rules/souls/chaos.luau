@@ -81,6 +81,9 @@ local function vanish(me: Object, s: State)
             local navi = battle.spawn_navi(dark_megaman, x, y :: number, bit32.bxor(me.alliance, 1), me)
             if navi then
                 navi.ticked = true
+                -- (The rules drive him: ../auto_battle.)
+                auto_battle.drive_started(0)
+                auto_battle.drive_started(1)
             end
         end
     end

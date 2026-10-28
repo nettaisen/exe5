@@ -3,6 +3,7 @@
 -- libraries ask of EXE5's rules, which keep it in their state and setup. Content outside rules/ asks it here, never
 -- the rules' state or setup itself.
 
+local auto_battle = require("./auto_battle")
 local party = require("./party")
 
 local exe5 = {}
@@ -24,6 +25,11 @@ end
 -- 500 in a battle that holds it. (The DS's Double Attacks draw their MegaMan by it.)
 function exe5.light_dark_value(side: number): number
     return party.megaman_karma(side)
+end
+
+-- A drive of the side's navi starts (its no-charge state: DarkInvs's), which the rules' auto battle runs.
+function exe5.drive_started(side: number)
+    auto_battle.drive_started(side)
 end
 
 -- 0x0200DEE8: the member of the side's party whose block is of `navi`, the first (none offline for side 1: ./party).

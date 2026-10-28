@@ -18,6 +18,7 @@
 --
 -- His sprite steps every tick, paused or not (`sub_801BCD0`, 0x080187D4).
 
+local auto_battle = require("../auto_battle")
 local overlays = require("@exelib/overlays")
 local shade = require("../souls/shade")
 local operation_battle = require("../../lib/operation_battle")
@@ -149,6 +150,7 @@ local function take_over(me: Object)
     me.no_charge_timer = DRIVE
     me.in_auto_battle = true
     me:set_navi_state("no_charge", true)
+    auto_battle.drive_started(me.alliance)
     me:end_statuses()
     navi_status.end_anger(me, "unless_zero")
     set_step(me, FADE_IN)

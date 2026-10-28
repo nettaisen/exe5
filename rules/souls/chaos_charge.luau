@@ -9,6 +9,7 @@
 -- (`Exe5FormFields`).
 
 local chaos = require("./chaos")
+local ticked = require("../ticked")
 
 local chaos_charge = {}
 
@@ -70,12 +71,17 @@ function chaos_charge.arm(navi: Object)
     navi.b_charge_glow = GLOW
     navi.b_charge_anim = 2 + s.chaos_window
     show_face(navi.alliance)
+    -- (The weapons' load drops it, and its counter runs in the navi's tick, while it is armed.)
+    rules.listen(navi.alliance, "weapons_loaded", true)
+    ticked.update(navi.alliance)
 end
 
 -- 0x0800DCD8: a navi's weapons' load drops the charge, its glow and its animation (the rules' `weapons_loaded`).
 function chaos_charge.drop(side: number, navi: Object)
     navi.b_charge_time, navi.b_charge_glow, navi.b_charge_anim = nil, nil, nil
     show_face(side)
+    rules.listen(side, "weapons_loaded", false)
+    ticked.update(side)
 end
 
 -- The change's start: the chaos level back to 0.

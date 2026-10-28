@@ -7,6 +7,7 @@
 -- timer's end asks for (rules/status's `no_charge_drive`).
 
 local dimming_chips = require("@exelib/dimming")
+local exe5 = require("../../rules/api")
 local standin = require("./stand_in")
 local navi_status = require("@exelib/navi_status")
 
@@ -29,6 +30,7 @@ local function start_drive(user: Object)
     user.no_charge_timer = DRIVE
     user.in_auto_battle = true
     user:set_navi_state("no_charge", true)
+    exe5.drive_started(user.alliance)
     user:set_status("untouchable", true)
     user:end_statuses()
     navi_status.end_anger(user, "unless_zero")

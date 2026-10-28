@@ -477,8 +477,12 @@ local rules: Rules = {
         -- An obstacle where ColonelSoul's army can use it turns into a soldier (objects/soldier).
         obstacle_reaction = soldier.obstacle_reaction,
         -- The army is disarmed as a navi's status reset starts (0x08011B3C) and as a navi switch finishes (0x08011918),
-        -- before the soul's reset arms it again (./api).
-        status_reset = exe5.disarm_army,
+        -- before the soul's reset arms it again (./api). The status reset also takes the opponent's chip icons off the
+        -- side's HUD, which SearchSoul's reset puts back (0x08011C0C).
+        status_reset = function(side: number, _navi: Object)
+            exe5.disarm_army(side)
+            battle.set_hud("opponent_chip_icons", false, side)
+        end,
         switch_finished = exe5.disarm_army,
         -- A form's revert or break done: EXE5 DS's guard and dive end (0x020605A0, 0x020606AA: the navi's state's).
         revert_finished = function(_side: number, navi: Object)

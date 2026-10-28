@@ -9,12 +9,13 @@
 -- - the gun's soldier (`ranged` 1: an enemy ahead on the row) takes aim for 15 ticks and fires three shots (the
 --   Vulcans' bullets) 10 ticks apart at a random one of four heights, with the side's second word.
 --
--- Each reads its word as it strikes (`obstacle.conversion`), then blinks out over 30 ticks, or at once when a hit takes
+-- Each reads its word as it strikes (rules/api's `army`), then blinks out over 30 ticks, or at once when a hit takes
 -- its 1 HP. Its element byte is what the obstacle's search left (0x1D for the sword's, 0 for the gun's).
 
 local bullet = require("./bullet")
 local collision = require("../rules/collision")
 local common_bullet = require("@exelib/bullet")
+local exe5 = require("../rules/api")
 local marker = require("../lib/navi_chips/marker")
 local regions = require("@exelib/regions")
 local visibility = require("@exelib/visibility")
@@ -94,7 +95,7 @@ local function slash(me: Object)
         me.phase_init = 4
     end
     if me.timer == SLASH_AT then
-        local _, word = obstacle.conversion(me.alliance)
+        local _, word = exe5.army(me.alliance)
         local x, y = me.panel_x + me.facing, me.panel_y
         battle.hitbox(me, {
             panel_x = x,
@@ -143,7 +144,7 @@ local function fire(me: Object)
         return
     end
     me.timer = SHOT_TICKS
-    local _, _, word = obstacle.conversion(me.alliance)
+    local _, _, word = exe5.army(me.alliance)
     local z = bit32.lshift(HEIGHTS[bit32.band(battle.rng_positive(), 3)], 16)
     common_bullet.fire(bullet.kind, me, me.panel_x + me.facing, me.panel_y, z, SHOT, 0, word)
     battle.play_sound(SHOT_SOUND)
@@ -272,7 +273,7 @@ local function call(x: number, y: number): (number?, number, number)
         return nil, 0, 0
     end
     local side = bit32.bxor(panel.alliance, 1)
-    if not (obstacle.conversion(side)) then
+    if not exe5.army(side) then
         return nil, 0, 0
     end
     -- The enemy's bodies (0x080CABA8 and 0x080CABF0 by side), and the way the side faces
@@ -303,10 +304,14 @@ local function call(x: number, y: number): (number?, number, number)
 end
 
 -- The rules' `obstacle_reaction` (EXE5's step in its four obstacle reactions, 0x08018000, 0x08018168, 0x080182D4 and
--- 0x08018404, for an obstacle they leave standing outside the dimming and past its first action, while a side is
--- armed): where an armed side can use the obstacle (0x080CAB02), it turns into that side's soldier (0x080CAAE2) and
--- its HP and max HP go to 0 (a word store), so the reaction breaks it (whether a soldier came or the pool was full).
+-- 0x08018404, for an obstacle they leave standing outside the dimming and past its first action): while a side is
+-- armed (the battle state's +0x5C & 0x30), where an armed side can use the obstacle (0x080CAB02), it turns into that
+-- side's soldier (0x080CAAE2) and its HP and max HP go to 0 (a word store), so the reaction breaks it (whether a
+-- soldier came or the pool was full).
 function soldier.obstacle_reaction(_side: number, me: Object)
+    if not exe5.army(0) and not exe5.army(1) then
+        return
+    end
     local x, y = me.panel_x, me.panel_y
     local gun, side, left = call(x, y)
     if gun == nil then

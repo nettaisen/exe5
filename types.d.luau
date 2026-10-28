@@ -200,3 +200,15 @@ export type PartyCustEffect = {
     kind: "hp" | "attack" | "chip_attack" | "support",
     amount: number?,
 }
+
+-- A navi's state (the rules' `navi_state`, rules/init: its object's own), which its own code reads and writes:
+-- ColonelSoul's arm chip (navis/megaman/forms/colonelsoul), GyroMan's requests to take off and to land
+-- (navis/gyroman/hover), EXE5 DS's KnightMan's guard and ToadMan's dive (navis/knightman/guard, navis/toadman). (A
+-- navi the rules drive keeps its AI's state in it too: rules/auto_battle.)
+export type NaviState = {
+    weapon_chip: Chip?,
+    take_off: boolean,
+    land: boolean,
+    guarded: boolean,
+    diving: boolean,
+}

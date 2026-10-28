@@ -25,11 +25,12 @@ local LEAVE_TICKS = 3
 -- Dark MegaMan's AI index, the one this module answers for.
 local DARK_MEGAMAN = 0x16
 
--- What the part reads of the AI's state (./ai's State: AIData +0x83 and +0x88).
+-- What the part reads of the AI's state (./ai's State: AIData +0x83 and +0x88), the navi's own state's `ai` (the
+-- rules' `navi_state`).
 type Lifetime = { timed: boolean, lifetime: number }
 
 local function state(navi: Object): Lifetime
-    return navi.state :: Lifetime
+    return (navi.state :: { ai: Lifetime }).ai
 end
 
 local function check(navi: Object)
@@ -87,7 +88,7 @@ local function idle(navi: Object)
         navi:set_attack(auto_battle.leave, 0)
         return
     end
-    ai.run(navi, navi.state)
+    ai.run(navi, (navi.state :: { ai: any }).ai)
 end
 
 -- 0x08104234 (AI index 0x16's tick): unless the battle is paused or dimmed, his time runs down (not below 0), and in

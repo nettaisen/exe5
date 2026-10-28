@@ -19,7 +19,7 @@ type Screen = {
 }
 -- The rules' state: the screen's record, and the rules' own field it fills (rules/souls): the turn's arm chip (the
 -- transform record's +6; none: its 0xFFFF), which each screen's open clears and the soul change copies into the
--- navi's weapon chip.
+-- navi's weapon chip (the rules' `navi_state`).
 type State = {
     screen: Screen,
     arm_chip: Chip?,
@@ -118,7 +118,8 @@ local custom_screen: SoulCustom = {
             return
         end
         local chip = (s :: State).arm_chip
-        navi.weapon_chip = chip
+        local own = navi.state :: NaviState
+        own.weapon_chip = chip
         local weapons = battle.navi(side).form.weapons
         navi.charge_shot_weapon = if chip ~= nil then arm.weapon elseif weapons ~= nil then weapons.charge_shot else nil
     end,

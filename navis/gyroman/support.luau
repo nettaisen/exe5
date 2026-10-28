@@ -6,6 +6,7 @@
 -- either edge in turn, one every 6). He leaves the bottom screen's panel lit while it lasts; it ends when he is no
 -- longer benched.
 
+local exe5 = require("../../rules/api")
 local gust = require("../megaman/gust")
 local party = require("../../rules/party")
 local panels = require("@exelib/panels")
@@ -64,7 +65,7 @@ end
 local function blow(me: Object)
     local s = me.state :: State
     local side = me.alliance
-    if battle.wind(side) then
+    if exe5.wind(side).object ~= nil then
         return
     end
     local slot = if s.gusts[1] == 0 then 0 elseif s.gusts[2] == 0 then 1 else nil

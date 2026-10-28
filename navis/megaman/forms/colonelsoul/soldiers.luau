@@ -2,6 +2,8 @@
 -- ColonelSoul's soldiers' damage words (0x08011C50), which its status reset arms its side with (./init) and BusterUp
 -- rewrites in it (chips/busterup).
 
+local exe5 = require("../../../../rules/api")
+
 local soldiers = {}
 
 -- 0x08011C50: the words by the buster's Attack (0x0800FE5E: plus one): 40 and 10 more a point for the sword's soldier,
@@ -15,7 +17,7 @@ end
 -- alone).
 function soldiers.reword(navi: Object)
     local melee, ranged = soldiers.words(navi)
-    obstacle.set_conversion_words(navi.alliance, melee, ranged)
+    exe5.set_army_words(navi.alliance, melee, ranged)
 end
 
 return soldiers

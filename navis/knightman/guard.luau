@@ -12,6 +12,11 @@ local party_support = require("../../lib/party_support")
 
 local guard = {}
 
+-- The navi's own state: its guard (the DS's AIData +0x48's 0x400000) and ToadMan's dive (0x01000000).
+local function own(navi: Object): NaviState
+    return navi.state :: NaviState
+end
+
 -- What the guard reads as the side of a panel off the field: the DS's `object_getPanelDataOffset` (0x0208C320) gives
 -- none for one, and the guard reads its record's side unchecked (0x02049794): the byte at address 3, the ARM9's ITCM
 -- (mirrored from 0), whose fourth byte is 0xE9 (its first instruction, a `stmdb`). Never a side.
@@ -34,7 +39,7 @@ local function stand(me: Object)
         battle.play_sound(FLASH_SOUND)
     end
     local navi = me.related1
-    if navi == nil or not navi:navi_state("guarded") then
+    if navi == nil or not own(navi).guarded then
         party_support.go(me, party_support.WARP)
     end
 end
@@ -105,7 +110,7 @@ end
 local function finish(me: Object)
     me.related1 = nil
     me.overlay = nil
-    me:set_navi_state("guarded", false)
+    own(me).guarded = false
     me:exit_attack()
 end
 
@@ -115,12 +120,12 @@ end
 local function update(me: Object, s: ActionState)
     local ahead = field.panel(me.panel_x + me.facing, me.panel_y)
     local side = if ahead then ahead.alliance else OFF_FIELD_SIDE
-    if side == me.alliance or me:navi_state("diving") then
+    if side == me.alliance or own(me).diving then
         me:set_request("guard", false)
         return finish(me)
     end
     if me.step_init == 0 then
-        me:set_navi_state("guarded", true)
+        own(me).guarded = true
         me:set_request("guard", false)
         bring(me.alliance, me)
         me:set_animation(0)
@@ -139,10 +144,10 @@ guard.action = new.action { id = "knightman/guard/action", state = { timer = "u1
 -- 0x02063B72 (the rules' `hit_guard`): a hit no trap caught is swallowed while the navi is guarded, or asks for the
 -- guard; it then needs the navi ready for it (`ready`), a hit at all (the hit flags' 0xFF800000) and damage in it.
 function guard.hit_guard(side: number, navi: Object): boolean
-    if navi:navi_state("guarded") then
+    if own(navi).guarded then
         return true
     end
-    if navi:navi_state("diving") then
+    if own(navi).diving then
         return false
     end
     if navi:request("guard") then

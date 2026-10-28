@@ -15,6 +15,7 @@ local chaos = require("../weapons/chaos")
 local charge = require("@self/charge")
 local charged_shot = require("../weapons/charged_shot")
 local drksonic = require("../../../chips/drksonic").drksonic
+local exe5 = require("../../../rules/api")
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
@@ -53,10 +54,10 @@ local form: FormDef = {
         a_charge = charged_shot.weapon,
     },
     -- 0x08011C44: the damage words (0x08011C50: ./soldiers), then the side armed (0x080CAC1E: the battle state's +0x5C
-    -- bit 0x10 or 0x20). A status reset disarms it again (the engine's).
+    -- bit 0x10 or 0x20). A status reset disarms it again (the rules' `status_reset`, before this).
     reset = function(navi: Object)
         local melee, ranged = soldiers.words(navi)
-        obstacle.arm_conversion(navi.alliance, melee, ranged)
+        exe5.arm_army(navi.alliance, melee, ranged)
     end,
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 0x16-0x1B, Team Colonel's

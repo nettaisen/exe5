@@ -397,11 +397,15 @@ local function swings_of(chip: Chip): { string }
     return swings
 end
 
+-- The side's sword pick, in its rules' state (`sub_802E070` +0x12).
+type SwordPick = { sword_pick: number }
+
 -- 0x0802A330 (`sword_swing`, class 8, VarSwrd's and NeoVari's): the side's sword pick (`sub_802E070` +0x12, which the
 -- sword reads) drawn at random among the chip's swings (VarSwrd's six; NeoVari's four).
 local function swing_pick(navi: Object, s: State)
     local n = #swings_of(chip_of(s))
-    battle.set_sword_pick(navi.alliance, battle.rng_positive() % n)
+    local pick = rules.state_of(navi.alliance) :: SwordPick
+    pick.sword_pick = battle.rng_positive() % n
     s.place_step = 4
     s.place_step_init = 0
 end
@@ -411,9 +415,10 @@ end
 -- next: in place), or the next target and a step anywhere.
 local function swing_reach(navi: Object, s: State)
     local swings = swings_of(chip_of(s))
-    local range: string? = swings[battle.sword_pick(navi.alliance) + 1]
+    local pick = (rules.state_of(navi.alliance) :: SwordPick).sword_pick
+    local range: string? = swings[pick + 1]
     if range == nil then
-        error(string.format("the side's sword pick %d is past its chip's swings (0x0802A3C8)", battle.sword_pick(navi.alliance)))
+        error(string.format("the side's sword pick %d is past its chip's swings (0x0802A3C8)", pick))
     end
     local t = target_of(s)
     if reaches(navi, t, range, panels.front_direction(navi)) then

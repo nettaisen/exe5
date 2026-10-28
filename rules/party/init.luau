@@ -76,7 +76,7 @@ export type Supports = {
     knightman_guard: Object?,
 }
 
-type State = { rescued: boolean, dice_bonus: boolean, supports: Supports }
+type State = { rescued: boolean, dice_bonus: boolean, mag_barr: boolean, supports: Supports }
 
 -- Whether the side has partners.
 function party.has_partners(side: number): boolean
@@ -323,6 +323,17 @@ end
 function party.spend_dice_bonus(side: number)
     local state = rules.state_of(side) :: State
     state.dice_bonus = true
+end
+
+-- MagnetMan's Mag-Barr, once a battle for each side (the DS's battle flags 0x200 and 0x400): whether it is spent, and
+-- spending it.
+function party.mag_barr_spent(side: number): boolean
+    return (rules.state_of(side) :: State).mag_barr
+end
+
+function party.spend_mag_barr(side: number)
+    local state = rules.state_of(side) :: State
+    state.mag_barr = true
 end
 
 -- The damage of a member's own chip (`s` its block) at the side, its formula's (lib/navi_level: in a party the DS's,

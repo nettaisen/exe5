@@ -22,8 +22,6 @@ local magnet_arm_sprite = require("./magnet_arm_sprite")
 local support = {}
 
 local MAG_BARR = chips_mag_barr["mag-barr"]
--- Each side's once-a-battle mark (battle flags 0x200, 0x400).
-local USED = { [0] = 0x200, [1] = 0x400 }
 local APPEAR_SOUND = asset.sound("appear")
 -- His magnet arm (the DS's attachment row 0x3A: 10-3C, its animation 0), the ticks he holds it, when the barrier comes
 -- and when the enemies are held.
@@ -194,10 +192,10 @@ function support.low_hp(side: number, navi: Object): boolean
     if stats.navi == magnetman or navi.collision.barrier ~= "none" or navi.hp >= stats.hp then
         return false
     end
-    if battle.rules_flag(USED[side]) then
+    if party.mag_barr_spent(side) then
         return false
     end
-    battle.set_rules_flag(USED[side])
+    party.spend_mag_barr(side)
     support.controller.send(navi, 0, MAG_BARR)
     return true
 end

@@ -43,6 +43,12 @@ function exe5.light_dark_tier(v: number): number
     return 2
 end
 
+-- The side's sword pick (`sub_802E070` +0x12): the swing a variable sword makes for a navi in auto battle, which its
+-- AI draws (./auto_battle/place).
+function exe5.sword_pick(side: number): number
+    return (rules.state_of(side) :: { sword_pick: number }).sword_pick
+end
+
 -- Whether the side has partners (EXE5 DS's party battle: ./party), whose team navis' damage is the DS's
 -- (lib/navi_level).
 function exe5.in_party(side: number): boolean

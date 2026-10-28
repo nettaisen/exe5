@@ -91,6 +91,9 @@ local state: StateSchema = {
     swing_navis = "object[4]",
     -- The side's own drive under DarkInvs (./auto_battle): the AI's state, as a navi it drives keeps it.
     drive = AI,
+    -- The side's sword pick (`sub_802E070` +0x12, which the player's init clears): the swing a variable sword makes
+    -- for a navi no buttons drive, which its auto battle draws (./auto_battle/place) and VarSwrd reads (./api).
+    sword_pick = "u8",
     -- The side's auto battle data as its console sent it as the battle started (./auto_battle/block.luau), which a
     -- navi in auto battle plays and turns.
     auto_battle_places = schema.list(auto_battle.block.PLACE, auto_battle.block.PLACES),
@@ -116,6 +119,8 @@ local state: StateSchema = {
     shouted = "bool",
     -- NumberMan's DiceBons is spent this battle (navis/numberman/dice_bonus: the party block's +0x13).
     dice_bonus = "bool",
+    -- MagnetMan's Mag-Barr is spent this battle (navis/magnetman/support: the DS's battle flag 0x200 or 0x400).
+    mag_barr = "bool",
     -- The party's supports' (./party's `Supports`: the party block's other fields).
     supports = {
         protoman_used = "bool",

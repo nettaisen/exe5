@@ -8,6 +8,7 @@
 -- 0x08104234), who takes the joypad path.
 
 local common = require("@exelib/varswrd/action")
+local exe5 = require("../../rules/api")
 
 local action = {}
 
@@ -21,7 +22,7 @@ local GAME: VarSwordGame = {
     -- (chips/darkinvs, rules/auto_battle). (NaviStats +0x2A, which the pick reads first, no Team Battle sets.)
     auto_pick = function(me: Object): number?
         if me.in_auto_battle then
-            return battle.sword_pick(me.alliance)
+            return exe5.sword_pick(me.alliance)
         end
         return nil
     end,

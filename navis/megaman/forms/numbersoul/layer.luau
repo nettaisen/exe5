@@ -6,6 +6,8 @@
 -- upper half 0xFF, out of sight), and in it at his height's fraction. It steps unless the battle is paused or dimmed.
 -- Its owner takes it off (0x080C33EA: it goes at its next update).
 
+local looks = require("@exelib/looks")
+
 local layer = {}
 
 export type State = {
@@ -24,7 +26,7 @@ local function follow(me: Object)
     me.pos = Vec3.new(p.x, p.y, int.i32(z))
     me:copy_visibility(owner)
     local look = me.sprite
-    look:copy_from(owner.sprite, "palette", "color_shader", "white", "alpha")
+    looks.copy(look, owner.sprite, "palette", "color_shader", "white", "alpha")
     me.flip = owner.flip
     look:set_flip(bit32.bxor(me.alliance, me.flip))
     if not battle.dimmed() and not battle.paused() then

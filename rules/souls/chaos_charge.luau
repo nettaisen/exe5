@@ -56,12 +56,26 @@ local function push_time(navi: Object, s: State)
     navi.b_charge_time = ticks
 end
 
+-- 0x080125F6: the emotion window shows the soul's Chaos Unison faces while the side's navi's charge is armed (the
+-- window reads it as it draws, 0x08019704: set where the charge is armed or dropped).
+local function show_face(side: number)
+    local navi = battle.player(side)
+    battle.set_hud("face_variant_any_form", navi ~= nil and navi.b_charge_time ~= nil, side)
+end
+
 -- 0x0801216C's end: the charge armed, at the chaos level the change left (0).
 function chaos_charge.arm(navi: Object)
     local s = rules.state() :: State
     push_time(navi, s)
     navi.b_charge_glow = GLOW
     navi.b_charge_anim = 2 + s.chaos_window
+    show_face(navi.alliance)
+end
+
+-- 0x0800DCD8: a navi's weapons' load drops the charge, its glow and its animation (the rules' `weapons_loaded`).
+function chaos_charge.drop(side: number, navi: Object)
+    navi.b_charge_time, navi.b_charge_glow, navi.b_charge_anim = nil, nil, nil
+    show_face(side)
 end
 
 -- The change's start: the chaos level back to 0.

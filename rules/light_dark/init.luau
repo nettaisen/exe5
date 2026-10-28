@@ -249,8 +249,6 @@ function light_dark.round_setup(side: number)
     local hub = battle.navi(side).hub_style ~= 0
     battle.set_hud("face_variant", hub, side)
     battle.set_hud("name_variant", hub and battle.link(), side)
-    -- A soul's Chaos Unison look while its charge is armed (0x080125F6: the face's palette 11 on, ../souls/chaos_charge).
-    battle.set_hud("face_variant_charged", true, side)
 end
 
 -- 0x08010EC8: MegaMan's starting mood.

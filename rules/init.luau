@@ -489,6 +489,8 @@ local rules: Rules = {
             local s = navi.state :: NaviState
             s.guarded, s.diving = false, false
         end,
+        -- A navi's weapons loaded: Chaos Unison's charge dropped (./souls/chaos_charge).
+        weapons_loaded = chaos_charge.drop,
         -- Full Synchro on a counter, and the NaviCust's swing bug (./emotion).
         round_start = emotion.round_start,
         countered = emotion.countered,

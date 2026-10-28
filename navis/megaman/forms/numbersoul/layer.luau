@@ -22,12 +22,9 @@ local function follow(me: Object)
         z = bit32.bor(z, 0xFF_0000)
     end
     me.pos = Vec3.new(p.x, p.y, int.i32(z))
-    me.visible = owner.visible
-    local look, worn = me.sprite, owner.sprite
-    look.palette = worn.palette
-    look.color_shader = worn.color_shader
-    look.white = worn.white
-    look.alpha = worn.alpha
+    me:copy_visibility(owner)
+    local look = me.sprite
+    look:copy_from(owner.sprite, "palette", "color_shader", "white", "alpha")
     me.flip = owner.flip
     look:set_flip(bit32.bxor(me.alliance, me.flip))
     if not battle.dimmed() and not battle.paused() then

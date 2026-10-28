@@ -4,12 +4,13 @@
 -- parts: GyroSoul's propeller, NumberSoul's layer), and the status reset that settles MegaMan in his new form.
 
 local navi_status = require("@exelib/navi_status")
+local overlays = require("@exelib/overlays")
 
 local hooks = {}
 
 -- 0x0800F024 (r2 0): put on what `form` wears.
 function hooks.start(me: Object, form: FormDef)
-    me:put_on_form_overlay(form)
+    overlays.put_on_form(me, form)
 end
 
 -- What MegaMan is taken for follows his form: EXE5 finds his attach points (a chip's icon over him, what he holds) by
@@ -21,7 +22,7 @@ end
 
 -- 0x0800F088: take off what `form` wore.
 function hooks.finish(me: Object, form: FormDef)
-    me:take_off_form_overlay(form)
+    overlays.take_off_form(me, form)
 end
 
 -- The status reset (`sub_80144C0`: the weapons too); 0x08011A94: the anger over, the mood back to 0x80 (EXE5's

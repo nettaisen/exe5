@@ -10,6 +10,7 @@ local ripple = {}
 
 local SPRITE = require("./ground_drill_effect_sprite")
 local dive_splash_sprite = require("../../sprites/dive_splash")
+local visibility = require("@exelib/visibility")
 local SPLASH = new.effect { sprite = dive_splash_sprite, anim = 0, palette = 0 }
 
 -- 0x080E4BCA: over the body, on the surface.
@@ -20,7 +21,7 @@ local function follow(me: Object)
     me.visible = true
     local a = body.anim
     me.anim = if a == 0 then 0 elseif a == 4 then 1 else 2
-    me:hide_from_blind()
+    visibility.hide_from_blind(me)
     if me.phase_init == 0 then
         battle.effect(me.pos, SPLASH)
         me.phase_init = 4

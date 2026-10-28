@@ -150,7 +150,7 @@ local function apply(side: number)
     if #installed > 0 then
         run(stats, installed)
         -- 0x081382A2: the cards' bug flag, which the emotion window reads with cards in the list.
-        battle.set_emotion_window_glitch(side, bug_count(stats) > 0)
+        battle.set_hud("emotion_window_glitch", bug_count(stats) > 0, side)
     else
         stats.hub_style = 0
     end

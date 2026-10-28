@@ -9,6 +9,7 @@
 local attachment = require("../../objects/attachment")
 local common = require("@exelib/bugcharg/actor")
 local flying_shot = require("../../objects/flying_shot")
+local overlays = require("@exelib/overlays")
 local stand_in = require("@exelib/dimming/stand_in")
 local operation_battle = require("../../lib/operation_battle")
 local sparks = require("../../lib/sparks")
@@ -88,7 +89,7 @@ return common.make {
     end,
     wear = stand_in.overlay,
     unwear = function(me: Object, user: Object)
-        me:remove_parts_of(user)
+        overlays.remove_parts_of(me, user)
     end,
     hides_from_blind = true,
     stand_anim = 0x10,
@@ -101,7 +102,7 @@ return common.make {
     -- (0x080C3B50: the bugs, then the save's emotion window glitch.)
     shots = function(me: Object): number
         local shots = take_bugs(me)
-        battle.clear_emotion_window_glitch()
+        battle.set_hud("emotion_window_glitching", false)
         return shots
     end,
     launch = function(me: Object, pos: Vec3, damage: number): Object?

@@ -6,6 +6,8 @@
 -- (actor object 0x2E, 0x080C0EA0: ../emotion/dark-survival), the same code but for its height, its shadow and the
 -- parts it wears (`shade.make`).
 
+local overlays = require("@exelib/overlays")
+
 local SINE: { number } = require("../math").sine
 
 local shade = {}
@@ -98,7 +100,7 @@ function shade.make(spec: Spec): { kind: Kind, spawn: (owner: Object) -> Object?
         me.timer -= 1
         if int.i16(me.timer) < 0 then
             if spec.wears then
-                me:remove_parts_of(me.related1 :: Object)
+                overlays.remove_parts_of(me, me.related1 :: Object)
             end
             me:set_lifecycle("destroy")
             return
@@ -136,7 +138,7 @@ function shade.make(spec: Spec): { kind: Kind, spawn: (owner: Object) -> Object?
         local p = owner.pos
         me.pos = Vec3.new(p.x, p.y + spec.lift, p.z + spec.lift)
         if spec.wears then
-            me:add_parts_of(owner, false, true)
+            overlays.add_parts_of(me, owner, false, true)
         end
         me:set_lifecycle("update")
         tick(me)

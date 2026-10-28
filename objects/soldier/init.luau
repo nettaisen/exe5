@@ -17,6 +17,7 @@ local collision = require("../rules/collision")
 local common_bullet = require("@exelib/bullet")
 local marker = require("../lib/navi_chips/marker")
 local regions = require("@exelib/regions")
+local visibility = require("@exelib/visibility")
 
 local soldier = {}
 
@@ -163,7 +164,7 @@ local function leave(me: Object)
         me.phase_init = 4
     end
     me.visible = true
-    me:hide_from_blind()
+    visibility.hide_from_blind(me)
     -- (The flag's store again: shown even to a blinded viewer.)
     me.visible = true
     if bit32.btest(me.timer, 2) then
@@ -208,7 +209,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me.visible = true
-    me:hide_from_blind()
+    visibility.hide_from_blind(me)
     if not s.hit and me:take_damage(0) < 0 then
         s.hit = true
         next_action(me, LEAVE)

@@ -5,6 +5,7 @@
 -- its controller (./controller) goes on. A user that isn't a player (no chip reaches one) has none: the controller
 -- goes on at once.
 
+local overlays = require("@exelib/overlays")
 local stand_in = require("@exelib/dimming/stand_in")
 
 -- MegaMan, by key (his navi's module reaches this one through his souls' Chaos Unison weapons).
@@ -52,7 +53,7 @@ local function tick(me: Object)
     if left > 0 then
         return
     end
-    me:remove_parts_of(user)
+    overlays.remove_parts_of(me, user)
     dimming.show_user(user)
     battle.play_sound(SOUND)
     release(me)

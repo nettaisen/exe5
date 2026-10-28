@@ -5,6 +5,7 @@
 
 local buster = require("../weapons/buster")
 local charged_shot = require("../weapons/charged_shot")
+local overlays = require("@exelib/overlays")
 
 -- Hub Style's shade (./hub_shade), as an identity wears it.
 local HUB = require("./hub_shade")
@@ -18,7 +19,7 @@ local function put_on(navi: Object)
     if not stats.form.base or stats.hub_style == 0 then
         return
     end
-    navi:take_off_form_overlay(stats.form)
+    overlays.take_off_form(navi, stats.form)
     navi:add_parts(HUB, 0)
 end
 

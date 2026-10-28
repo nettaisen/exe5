@@ -11,6 +11,7 @@
 -- isn't blind to the other side's).
 
 local party = require("../rules/party")
+local visibility = require("@exelib/visibility")
 
 local party_support = {}
 
@@ -174,7 +175,7 @@ function party_support.make(spec: Spec): Support
     -- 0x021FE58D: shown (to a viewer not blind to it); outside the dimming, its action and its sprite.
     local function update(me: Object)
         me.visible = true
-        me:hide_from_blind()
+        visibility.hide_from_blind(me)
         if battle.dimmed() then
             return
         end

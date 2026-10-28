@@ -62,7 +62,11 @@ local form: FormDef = {
     },
     status_reset = { "float_shoes", "floating_body", "air_shoes" },
     tick = function(navi: Object)
-        navi:set_overlay_anim_offset(if navi.primed then PRIMED_ANIM else 0)
+        -- (0x080C451A on what he wears, the propeller.)
+        local propeller = navi.related2
+        if propeller then
+            propeller.extra_anim_offset = if navi.primed then PRIMED_ANIM else 0
+        end
     end,
     priming = {
         by = { family = "wind" },

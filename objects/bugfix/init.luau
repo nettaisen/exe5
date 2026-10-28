@@ -14,6 +14,7 @@
 local common_glow = require("@exelib/bugfix/glow")
 local controller = require("@exelib/bugfix/controller")
 local dimming_chips = require("@exelib/dimming")
+local overlays = require("@exelib/overlays")
 
 local bugfix = {}
 
@@ -25,7 +26,7 @@ bugfix.glow = common_glow.make {
     -- A player navi's overlay (0x0800F0EC: its soul's put-on, NumberSoul's layer).
     wear = function(me: Object, navi: Object)
         if navi.actor_type == "player" then
-            me:add_overlay_of(navi)
+            overlays.add_overlay_of(me, navi)
         end
     end,
 }

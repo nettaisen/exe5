@@ -247,10 +247,10 @@ light_dark.deal = offer_dark_chip
 -- name among the enemy names (0x0801AE3A).
 function light_dark.round_setup(side: number)
     local hub = battle.navi(side).hub_style ~= 0
-    battle.set_face_variant(side, hub)
-    battle.set_name_variant(side, hub and battle.link())
+    battle.set_hud("face_variant", hub, side)
+    battle.set_hud("name_variant", hub and battle.link(), side)
     -- A soul's Chaos Unison look while its charge is armed (0x080125F6: the face's palette 11 on, ../souls/chaos_charge).
-    battle.set_face_variant(side, true, "charged")
+    battle.set_hud("face_variant_charged", true, side)
 end
 
 -- 0x08010EC8: MegaMan's starting mood.

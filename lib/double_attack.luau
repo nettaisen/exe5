@@ -25,6 +25,7 @@ local exe5 = require("../rules/api")
 local hub_shade = require("../navis/megaman/forms/hub_shade")
 local megaman = require("../navis/megaman").megaman
 local base_form = require("../navis/megaman/forms/base").base
+local overlays = require("@exelib/overlays")
 local panels = require("@exelib/panels")
 local buster_arm_sprite = require("../sprites/buster_arm")
 local charge_glow_sprite = require("../sprites/charge_glow")
@@ -144,7 +145,7 @@ local function megaman_overlay(me: Object)
         if form.id == "gyrosoul" then
             me:add_parts(form.identity :: Identity, 1)
         elseif form.id == "numbersoul" then
-            me:put_on_form_overlay(form)
+            overlays.put_on_form(me, form)
         end
         return
     end

@@ -46,7 +46,7 @@ local form: FormDef = {
         -- 0x08011C02: in a link battle (effect 8), the opponent's navi (when there is one) among the console's chip
         -- icons.
         if battle.link() and battle.player(1 - navi.alliance) then
-            battle.show_opponent_chip_icons(navi.alliance)
+            battle.set_hud("opponent_chip_icons", true, navi.alliance)
         end
         reveal.spawn(navi)
     end,

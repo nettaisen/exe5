@@ -7,6 +7,7 @@
 -- Its owner takes it off (0x080C33EA: it goes at its next update).
 
 local looks = require("@exelib/looks")
+local visibility = require("@exelib/visibility")
 
 local layer = {}
 
@@ -24,7 +25,7 @@ local function follow(me: Object)
         z = bit32.bor(z, 0xFF_0000)
     end
     me.pos = Vec3.new(p.x, p.y, int.i32(z))
-    me:copy_visibility(owner)
+    visibility.copy(me, owner)
     local look = me.sprite
     looks.copy(look, owner.sprite, "palette", "color_shader", "white", "alpha")
     me.flip = owner.flip

@@ -8,6 +8,7 @@
 -- (The panel it reads is the engine's holy type, whichever game's stage or chip made it.)
 
 local buster = require("../../lib/buster")
+local overlays = require("@exelib/overlays")
 local shot = require("./shot")
 local stand_in = require("@exelib/dimming/stand_in")
 local grab_shot_sprite = require("../../sprites/grab_shot")
@@ -97,7 +98,7 @@ local function finish(me: Object, s: State)
         return
     end
     s.held = nil
-    me:remove_parts_of(me.related1 :: Object)
+    overlays.remove_parts_of(me, me.related1 :: Object)
     me:set_lifecycle("destroy")
 end
 

@@ -20,6 +20,7 @@ local marker = require("../../lib/navi_chips/marker")
 local regions = require("@exelib/regions")
 local swords = require("../../lib/swords")
 local sword_slash_sprite = require("../../sprites/sword_slash")
+local visibility = require("@exelib/visibility")
 
 -- The slash over two panels (effect 0x17).
 local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
@@ -194,7 +195,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me.visible = true
-    me:hide_from_blind()
+    visibility.hide_from_blind(me)
     if not s.gone then
         if battle.over() then
             me.hp = 0

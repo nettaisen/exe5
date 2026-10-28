@@ -18,6 +18,7 @@
 --   switch and the traps' gone, no flinch asked for, the battle undims, and it idles.
 
 local effects = require("../../lib/effects")
+local overlays = require("@exelib/overlays")
 local regions = require("@exelib/regions")
 
 local knockout = {}
@@ -60,7 +61,7 @@ local function land(me: Object, s: State)
         me:stop_moving()
         me:set_status("guard", false)
         me:set_animation(2)
-        me:overlay_stepping("told")
+        overlays.set_stepping(me, "while_dimmed")
         -- (The second flash is spawned straight after the first, its X and Y what the first's spawn left.)
         battle.effect(me.pos, effects.deletion)
         battle.effect_after_spawn(me.pos.z, effects.deletion)

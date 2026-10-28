@@ -21,6 +21,7 @@
 
 local effects = require("../../lib/effects")
 local hprecov = require("../../chips/hprecov").hprecov
+local overlays = require("@exelib/overlays")
 local party = require("../../rules/party")
 local regions = require("@exelib/regions")
 local toadman = require("../toadman").toadman
@@ -79,7 +80,7 @@ local function start(me: Object)
         if part then
             part.anim_loaded = 0xFF
         end
-        me:overlay_stepping("told")
+        overlays.set_stepping(me, "while_dimmed")
         me.step_init = 4
     end
     if battle.screen_fading() then
@@ -106,8 +107,12 @@ local function heal(me: Object, s: State)
         battle.effect(me.pos, effects.heal)
         battle.play_sound(HEAL_SOUND)
         me.hp = math.min(me.hp + bit32.rshift(me.max_hp, 2), me.max_hp)
-        -- (Its HP number went at 0 HP; the DS's HUD draws its own. Here it shows again.)
-        battle.show_navi_hp(me)
+        -- (Its HP number went at 0 HP; the DS's HUD draws its own. Here it shows again as it shows once the navi is in,
+        -- `sub_801DC7C(0, 0)`: on the other side's console, on both in battle mode 6, none for a body that hides it.)
+        local body = me.identity and me.identity.body
+        if not (body and body.hides_hp) then
+            battle.show_hp(me, { console = if battle.mode() == 6 then nil else bit32.bxor(me.alliance, 1) })
+        end
         me:set_status_timer("flash", FLASHING)
         me:set_status("flashing", true)
         me:set_animation(0)
@@ -127,7 +132,7 @@ end
 -- 0x02004B24
 local function finish(me: Object)
     if me.step_init == 0 then
-        me:overlay_stepping("normal")
+        overlays.set_stepping(me, "normal")
         battle.screen_fade("undim", FADE_SPEED)
         me.step_init = 4
     end

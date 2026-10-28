@@ -63,7 +63,7 @@ local action = new.action {
                 local reserved = me:reserve_panel(x, y)
                 me.panel_x, me.panel_y = 0, if reserved then bit32.band(field.flags(x, y), 0xFF) else 0
                 me:set_coordinates_from_panel()
-                battle.show_hud({ "chip_icons" }, false)
+                battle.set_hud("chip_icons", false)
                 me.step, me.step_init = FLY, 0
             end
         elseif step == FLY then
@@ -87,7 +87,7 @@ local action = new.action {
                 me.panel_x, me.panel_y = x, y
                 me:unreserve_panel(x, y)
                 me:set_coordinates_from_panel()
-                battle.show_hud({ "chip_icons" }, true)
+                battle.set_hud("chip_icons", true)
                 if solid(me) then
                     me.anim = ANIM_RETURN
                 end

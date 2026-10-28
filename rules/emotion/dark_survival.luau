@@ -18,6 +18,7 @@
 --
 -- His sprite steps every tick, paused or not (`sub_801BCD0`, 0x080187D4).
 
+local overlays = require("@exelib/overlays")
 local shade = require("../souls/shade")
 local operation_battle = require("../../lib/operation_battle")
 local deletion_sprite = require("../../sprites/deletion")
@@ -45,8 +46,15 @@ local FADE_OUT, SHADE, TAKE_OVER, FADE_IN = 0x0, 0x4, 0x8, 0xC
 local SHADE_TICKS, SECOND_FLASH = 60, 10
 -- The HUD parts the stand hides and shows (0x0801A418 and 0x0801A398 with 0x4090: draw tasks 4, 7 and 14); in the
 -- last turns (0x0800916A) it shows them without the gauge (0x4080).
-local HUD: { HudPart } = { "gauge", "hp_box", "emotion_window" }
-local HUD_LAST_TURNS: { HudPart } = { "hp_box", "emotion_window" }
+local HUD: { HudField } = { "gauge", "hp_box", "emotion_window" }
+local HUD_LAST_TURNS: { HudField } = { "hp_box", "emotion_window" }
+
+-- The parts shown or hidden, on every console.
+local function show_hud(parts: { HudField }, shown: boolean)
+    for _, part in parts do
+        battle.set_hud(part, shown)
+    end
+end
 
 -- His dark self (actor object 0x2E, 0x080C0EA0; spawned by 0x080C0FE2): Chaos Unison's shade's code, but a pixel up
 -- and on rather than two, its ground shadow kept, and wearing what MegaMan's record puts on while it is out.
@@ -102,13 +110,13 @@ local function fade_out(me: Object)
         if part then
             part.anim_loaded = 0xFF
         end
-        me:overlay_stepping("keep")
+        overlays.keep_stepping(me)
         battle.set_side_stat(me.alliance, STOOD, 1)
         me.step_init = 4
     end
     if not battle.screen_fading() then
-        battle.show_hud(HUD, false)
-        me:overlay_stepping("normal")
+        show_hud(HUD, false)
+        overlays.set_stepping(me, "normal")
         set_step(me, SHADE)
     end
 end
@@ -147,7 +155,7 @@ end
 -- 0x080EFF78: (battle flag 0x20 is cleared too, which nothing reads.)
 local function fade_in(me: Object)
     if me.step_init == 0 then
-        battle.show_hud(if last_turns() then HUD_LAST_TURNS else HUD, true)
+        show_hud(if last_turns() then HUD_LAST_TURNS else HUD, true)
         battle.screen_fade("transform_in", FADE_SPEED)
         me.step_init = 4
     end

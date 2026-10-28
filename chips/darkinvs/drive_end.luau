@@ -5,6 +5,8 @@
 -- in the dark palette, sliding 40 pixels ahead, then fading); then a sound, the navi touchable again, the request
 -- dropped, the navi flashing for 120 ticks, and back to idle.
 
+local overlays = require("@exelib/overlays")
+
 -- MegaMan, by key (his navi's module reaches this one through his souls' Chaos Unison weapons).
 local MEGAMAN = "megaman"
 
@@ -65,7 +67,7 @@ local function fade(me: Object)
         me.anim = 4
     end
     if count(me, 4) <= 0 then
-        me:remove_parts_of(me.related1 :: Object)
+        overlays.remove_parts_of(me, me.related1 :: Object)
         me:set_lifecycle("destroy")
     end
 end
@@ -96,7 +98,7 @@ local function image_init(me: Object)
     sprite.palette = dark_palette(me)
     me.vel = Vec3.new(me.facing * SLIDE * 0x10000, me.vel.y, me.vel.z)
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
-    me:add_parts_of(navi, false, true)
+    overlays.add_parts_of(me, navi, false, true)
     me.visible = true
     me:set_lifecycle("update")
     image_tick(me)

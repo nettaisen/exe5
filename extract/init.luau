@@ -1,7 +1,8 @@
 --!strict
 -- EXE5's extraction recipe (docs/design/extraction-recipes.md): how its pack's assets are extracted from a complete
 -- Legacy Collection's four ROMs (its `roms`). It reads the ROMs through the primitives (content/nettai/extract.d.luau)
--- and returns the asset model; the extractor makes the pack.
+-- and returns the asset model, which the host finishes. The game's root gives it as its `extract` (init.luau), so it
+-- loads with the content.
 --
 -- What an EXE5 pack has: the battle sprites, the field (panels, edges, cycling palettes), the battle backgrounds, the
 -- chips' pictures and icons; the HUD (its fonts, banners, faces and the chatbox) and the custom screen, in EXE6's

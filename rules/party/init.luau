@@ -295,9 +295,19 @@ function party.supports(side: number): Supports
     return (rules.state_of(side) :: State).supports
 end
 
--- 0x02004B80 (the rules' `member_busy`): a member busy while its support acts refuses a switch to it.
+-- 0x02004B80 (the rules' `member_busy`): a member busy while its support acts refuses a switch to it, with the
+-- refusal's sound (0x69): in battle (the navi's input, 0x0203C62E) on every console, as the navi runs on each; on the
+-- custom screen, which runs while paused (0x02013564), on its player's.
 function party.member_busy(side: number, member: number): boolean
-    return party.supports(side).busy[member + 1]
+    if not party.supports(side).busy[member + 1] then
+        return false
+    end
+    if battle.paused() then
+        battle.play_sound_for(side, REFUSED)
+    else
+        battle.play_sound(REFUSED)
+    end
+    return true
 end
 
 -- 0x02004B90: any member busy.

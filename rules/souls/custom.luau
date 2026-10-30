@@ -88,9 +88,18 @@ local function forget_screen(s: any)
     end
 end
 
--- The side's navi's souls (MegaMan's: the forms with a `soul`).
-local function souls_of(side: number): { FormDef }
-    local forms = battle.navi(side).navi.forms
+-- The navi the side's screen is for (the screen's +0x10): the party member a switch on it took (EXE5 DS's state 0x40,
+-- 0x0206391C), else the side's navi.
+local function screen_navi(side: number): NaviDef
+    local member = custom.player(side).member
+    local stats = if member ~= nil then battle.member(side, member) else nil
+    return if stats ~= nil then stats.navi else battle.navi(side).navi
+end
+
+-- The souls of the side's navi, or with `screen`, of the navi its screen is for (MegaMan's: the forms with a
+-- `soul`).
+local function souls_of(side: number, screen: boolean?): { FormDef }
+    local forms = (if screen then screen_navi(side) else battle.navi(side).navi).forms
     local souls: { form_list: { FormDef }? }? = if forms ~= nil then forms.souls else nil
     if souls == nil or souls.form_list == nil then
         return {}
@@ -98,9 +107,9 @@ local function souls_of(side: number): { FormDef }
     return souls.form_list
 end
 
--- The soul a chip of `family` gives up for (the first of the navi's souls for that family).
+-- The soul a chip of `family` gives up for (the first of the screen's navi's souls for that family).
 local function soul_for(side: number, family: string): FormDef?
-    for _, form in souls_of(side) do
+    for _, form in souls_of(side, true) do
         local soul = form.soul
         if soul ~= nil and soul.family == family then
             return form
@@ -134,10 +143,10 @@ local function has_souls(): boolean
     return false
 end
 
--- A soul's bit in the round's souls given: by its place among the side's navi's souls for its Soul Unison, 16
+-- A soul's bit in the round's souls given: by its place among the screen's navi's souls for its Soul Unison, 16
 -- places on for its Chaos Unison.
 local function used_bit(side: number, soul: FormDef, chaos: boolean): number
-    local place = table.find(souls_of(side), soul)
+    local place = table.find(souls_of(side, true), soul)
     if place == nil then
         error(string.format("%s is none of the side's navi's souls", soul.id :: string))
     end
@@ -183,9 +192,10 @@ local function united(side: number): SoulCustom?
 end
 
 -- The same, for the screen's slots (0x08023CF8): they are by the soul the emotion routine leaves in r1 (0x08023C3C:
--- NaviStats +0x2C), which in battle mode 1 is the stats' address instead (0x080127C0): no soul's slots there.
+-- NaviStats +0x2C), which in battle mode 1 is the stats' address instead (0x080127C0): no soul's slots there. A
+-- screen a switch on it gave another navi has none (the screen's +0x10 is that navi).
 local function slots_of(side: number): SoulCustom?
-    return if battle.mode() ~= 1 then united(side) else nil
+    return if battle.mode() ~= 1 and custom.player(side).member == nil then united(side) else nil
 end
 
 -- The soul button (0x08023C54), in the special slot: it offers a form (the state's `offer` and `offer_chaos`).
@@ -194,7 +204,8 @@ custom_souls.button = {
     view = "form_offer",
     -- MegaMan with souls, outside the operation battle, with the save's souls (its Soul Unison), unless his emotion is
     -- worried or dark (0x08012740: in a soul or angry he may; at mood 0 he is dark, below 65 worried, at 0xFF Full
-    -- Synchro).
+    -- Synchro). MegaMan is the navi the screen is for (EXE5 DS's 0x0200AAA0: the screen's +0x10), which a switch on
+    -- the screen changes; the emotion is the side's navi's.
     shown = function(side: number): boolean
         local stats = battle.navi(side)
         local in_soul = stats.form.soul ~= nil
@@ -202,7 +213,7 @@ custom_souls.button = {
         local hidden = not in_soul
             and custom.player(side).emotion ~= "angry"
             and (mood == 0 or (mood ~= 0xFF and mood < 65))
-        return #souls_of(side) > 0 and has_souls() and not operation_battle()
+        return #souls_of(side, true) > 0 and has_souls() and not operation_battle()
             and not hidden
     end,
     -- 0x08024B28: unavailable until the last pick offers a soul, which the button keeps.

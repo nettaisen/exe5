@@ -438,11 +438,11 @@ language = "en"
 
 [navicust_programs]
 "airshoes" = { name = "AirShoes", description = "Move\novr hole" }
-"antidmg" = { name = "AntiDmg", description = "B+Left=\nThrow a\nstar!" }
+"antidmg" = { name = "AntiDmg", description = "Ⓑ+Left=\nThrow a\nstar!" }
 "attck-1" = { name = "Attck+1", description = "MegaBstr\nAttck +1" }
 "attckmax" = { name = "AttckMAX", description = "MegaBstr\nAttckMAX" }
 "autoheal" = { name = "AutoHeal", description = "HP recv\nafter\nbattle" }
-"autorun" = { name = "AutoRun", description = "Run\nwithout\nusing B" }
+"autorun" = { name = "AutoRun", description = "Run\nwithout\nusing Ⓑ" }
 "battery" = { name = "Battery", description = "Attracts\nElec\nViruses!" }
 "beat" = { name = "Beat", description = "VS only!\nSnatches\nMegachps!" }
 "bodypack" = { name = "BodyPack", description = "Armr, Sht\nFlot, Air\n4-pc set" }
@@ -450,7 +450,7 @@ language = "en"
 "bustpack" = { name = "BustPack", description = "Atk/speed\n/charge\n+3 each!" }
 "charge-1" = { name = "Charge+1", description = "MegaBstr\nCharge\n+1" }
 "chargmax" = { name = "ChargMAX", description = "MegaBstr\nCharge\nMAX!" }
-"chivalry" = { name = "Chivalry", description = "Become\nmacho!\nPress L" }
+"chivalry" = { name = "Chivalry", description = "Become\nmacho!\nPress Ⓛ" }
 "collect" = { name = "Collect", description = "Get more\nchips\nfrm enmy" }
 "custom1" = { name = "Custom1", description = "Custom\nScreen\n+1 chip" }
 "custom2" = { name = "Custom2", description = "Custom\nScreen\n+2 chips" }
@@ -465,7 +465,7 @@ language = "en"
 "hp-50" = { name = "HP+50", description = "Max HP\n+50!" }
 "hp-500" = { name = "HP+500", description = "Max HP\n+500!" }
 "hubbatc" = { name = "HubBatc", description = "Maximize\nyour\nability" }
-"humor" = { name = "Humor", description = "Install\nand try\nL" }
+"humor" = { name = "Humor", description = "Install\nand try\nⓁ" }
 "jungle" = { name = "Jungle", description = "Attracts\nWood\nViruses!" }
 "megfldr1" = { name = "MegFldr1", description = "MegaChip\n+1" }
 "megfldr2" = { name = "MegFldr2", description = "MegaChip\n+2" }
@@ -473,9 +473,9 @@ language = "en"
 "navchg-1" = { name = "NavChg+1", description = "1 extra\nNaviChng\nchance!" }
 "navchg-2" = { name = "NavChg+2", description = "2 extra\nNaviChng\nchances!" }
 "oilbody" = { name = "OilBody", description = "Attracts\nFire\nViruses!" }
-"reflect" = { name = "Reflect", description = "B+Left=\nReflect\nattacks!" }
+"reflect" = { name = "Reflect", description = "Ⓑ+Left=\nReflect\nattacks!" }
 "rush" = { name = "Rush", description = "VS only!\nTracks\nenemys" }
-"shield" = { name = "Shield", description = "B+Left=\nStrong\nshield!" }
+"shield" = { name = "Shield", description = "Ⓑ+Left=\nStrong\nshield!" }
 "sneakrun" = { name = "SneakRun", description = "No weak\nenemies" }
 "soulclen" = { name = "SoulClen", description = "Prog to\npurify\nyr soul" }
 "soult-1" = { name = "SoulT+1", description = "DublSoul\neffect\n+1 turn" }
@@ -636,15 +636,15 @@ language = "en"
 "attack_sub" = "Attack-{amount}"
 "attack_times" = "Attack×{amount}"
 "auto_heal" = "AutoHeal"
-"b_button.megaman/buster" = "B-Buster"
-"b_button.megaman/crakout" = "B-Crack"
-"b_button.megaman/minibomb" = "B-Bomb"
-"b_button.megaman/sword" = "B-Sword"
+"b_button.megaman/buster" = "Ⓑ-Buster"
+"b_button.megaman/crakout" = "Ⓑ-Crack"
+"b_button.megaman/minibomb" = "Ⓑ-Bomb"
+"b_button.megaman/sword" = "Ⓑ-Sword"
 "b_button.megaman/tri-buster" = "TriBustr"
-"back_special" = "B+←"
-"back_special.megaman/crsshld1" = "B+←CurS"
-"back_special.megaman/guard1" = "B+←Guard"
-"back_special.megaman/shield" = "B+←Shld"
+"back_special" = "Ⓑ+←"
+"back_special.megaman/crsshld1" = "Ⓑ+←CurS"
+"back_special.megaman/guard1" = "Ⓑ+←Guard"
+"back_special.megaman/shield" = "Ⓑ+←Shld"
 "beat" = "Beat"
 "body.aqua" = "AquaBody"
 "body.elec" = "ElecBody"
@@ -672,38 +672,38 @@ language = "en"
 "charge_shot_kind.shot/charged-uninstalling" = "CSreset"
 "charge_shot_kind.shot/chip-destruction" = "CSchpdst"
 "charge_sub" = "Charge-{amount}"
-"charged_shot.megaman/airhoc" = "B↓AirHoc"
-"charged_shot.megaman/blkbomb" = "B↓BlkBom"
-"charged_shot.megaman/boomer" = "B↓Boomer"
-"charged_shot.megaman/bubble-shot" = "B↓BubSht"
-"charged_shot.megaman/cannball" = "B↓CanBal"
-"charged_shot.megaman/card-shield" = "B↓Shield"
-"charged_shot.megaman/circgun" = "B↓CircG"
-"charged_shot.megaman/drilarm1" = "B↓DrlArm"
-"charged_shot.megaman/drksword" = "B↓DarkS"
-"charged_shot.megaman/fire-arm" = "B↓FireAm"
-"charged_shot.megaman/heat-shot" = "B↓HeatS"
-"charged_shot.megaman/hells-rolling" = "B↓HelzR"
-"charged_shot.megaman/invisible" = "B↓Invis"
-"charged_shot.megaman/katana1" = "B↓Katana"
-"charged_shot.megaman/longswrd" = "B↓LongS"
-"charged_shot.megaman/minibomb" = "B↓MiniBm"
-"charged_shot.megaman/moonbld1" = "B↓MonBld"
-"charged_shot.megaman/poltrgst" = "B↓Poltr"
-"charged_shot.megaman/program-charged-shot" = "B↓ChrgS"
-"charged_shot.megaman/pulsar1" = "B↓Pulsar"
-"charged_shot.megaman/rapid-buster" = "B↓Sbustr"
-"charged_shot.megaman/reflect" = "B↓Rflect"
-"charged_shot.megaman/seaseed" = "B↓SeaSed"
-"charged_shot.megaman/tankcan1" = "B↓Ccann"
-"charged_shot.megaman/thunder" = "B↓Thundr"
-"charged_shot.megaman/tornado" = "B↓Trnado"
-"charged_shot.megaman/vacuum" = "B↓Vacuum"
+"charged_shot.megaman/airhoc" = "Ⓑ↓AirHoc"
+"charged_shot.megaman/blkbomb" = "Ⓑ↓BlkBom"
+"charged_shot.megaman/boomer" = "Ⓑ↓Boomer"
+"charged_shot.megaman/bubble-shot" = "Ⓑ↓BubSht"
+"charged_shot.megaman/cannball" = "Ⓑ↓CanBal"
+"charged_shot.megaman/card-shield" = "Ⓑ↓Shield"
+"charged_shot.megaman/circgun" = "Ⓑ↓CircG"
+"charged_shot.megaman/drilarm1" = "Ⓑ↓DrlArm"
+"charged_shot.megaman/drksword" = "Ⓑ↓DarkS"
+"charged_shot.megaman/fire-arm" = "Ⓑ↓FireAm"
+"charged_shot.megaman/heat-shot" = "Ⓑ↓HeatS"
+"charged_shot.megaman/hells-rolling" = "Ⓑ↓HelzR"
+"charged_shot.megaman/invisible" = "Ⓑ↓Invis"
+"charged_shot.megaman/katana1" = "Ⓑ↓Katana"
+"charged_shot.megaman/longswrd" = "Ⓑ↓LongS"
+"charged_shot.megaman/minibomb" = "Ⓑ↓MiniBm"
+"charged_shot.megaman/moonbld1" = "Ⓑ↓MonBld"
+"charged_shot.megaman/poltrgst" = "Ⓑ↓Poltr"
+"charged_shot.megaman/program-charged-shot" = "Ⓑ↓ChrgS"
+"charged_shot.megaman/pulsar1" = "Ⓑ↓Pulsar"
+"charged_shot.megaman/rapid-buster" = "Ⓑ↓Sbustr"
+"charged_shot.megaman/reflect" = "Ⓑ↓Rflect"
+"charged_shot.megaman/seaseed" = "Ⓑ↓SeaSed"
+"charged_shot.megaman/tankcan1" = "Ⓑ↓Ccann"
+"charged_shot.megaman/thunder" = "Ⓑ↓Thundr"
+"charged_shot.megaman/tornado" = "Ⓑ↓Trnado"
+"charged_shot.megaman/vacuum" = "Ⓑ↓Vacuum"
 "charged_shot.megaman/wideblde" = "B↓WideB"
-"charged_shot.megaman/widesht1" = "B↓Wshot"
-"charged_shot.megaman/wideswrd" = "B↓WideS"
-"charged_shot.megaman/yoyo" = "B↓YoYo"
-"charged_shot.megaman/zap-ring" = "B↓ZapRng"
+"charged_shot.megaman/widesht1" = "Ⓑ↓Wshot"
+"charged_shot.megaman/wideswrd" = "Ⓑ↓WideS"
+"charged_shot.megaman/yoyo" = "Ⓑ↓YoYo"
+"charged_shot.megaman/zap-ring" = "Ⓑ↓ZapRng"
 "chip_recovery" = "ChpRecov"
 "custom_add" = "Custom+{amount}"
 "custom_damage" = "CustDmg"

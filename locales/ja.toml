@@ -438,11 +438,11 @@ language = "ja"
 
 [navicust_programs]
 "airshoes" = { name = "エアシューズ", description = "パネルのないマスでも\nいどうできる!" }
-"antidmg" = { name = "カワリミマジック", description = "B+左のコマンドで\n攻撃をうけたふりして\nしゅりけんをなげる!" }
+"antidmg" = { name = "カワリミマジック", description = "Ⓑ+左のコマンドで\n攻撃をうけたふりして\nしゅりけんをなげる!" }
 "attck-1" = { name = "アタック+1", description = "ロックバスターの\n攻撃力が1アップ!" }
 "attckmax" = { name = "アタックMAX", description = "ロックバスターの\n攻撃力がMAXに!" }
 "autoheal" = { name = "セルフリカバリー", description = "バトルしゅうりょうご\nHPがすこしだけ\nかいふくする" }
-"autorun" = { name = "オートランニング", description = "Bをおしながら\nじゃなくても ナビが\nはしるようになる" }
+"autorun" = { name = "オートランニング", description = "Ⓑをおしながら\nじゃなくても ナビが\nはしるようになる" }
 "battery" = { name = "バッテリーモード", description = "バッテリーじょうたい\nで電気属性ウイルスが\nよってくるようになる" }
 "beat" = { name = "ビートサポート", description = "たいせんせんよう!\nメガクラスいじょうの\nチップをうばいさる" }
 "bodypack" = { name = "ボディパック", description = "アーマー、シャツ\nエア、フロートの\n4てんパック!" }
@@ -450,7 +450,7 @@ language = "ja"
 "bustpack" = { name = "バスターパック", description = "バスターのアタック、\nラピッド、チャージが\nそれぞれ+3!" }
 "charge-1" = { name = "チャージ+1", description = "ロックバスターの\nチャージ力が\n1アップ!" }
 "chargmax" = { name = "チャージMAX", description = "ロックバスターの\nチャージ力が\nMAXに!" }
-"chivalry" = { name = "ダンディズム", description = "おとこのびがくが\nわかるナビになる\nLでかいわ!" }
+"chivalry" = { name = "ダンディズム", description = "おとこのびがくが\nわかるナビになる\nⓁでかいわ!" }
 "collect" = { name = "コレクターズアイ", description = "てきのざんがいから\nチップデータをみつけ\nだすがんりきがアップ" }
 "custom1" = { name = "カスタム1", description = "カスタム画面で\nさいしょにえらべる\nチップ枚数が+1" }
 "custom2" = { name = "カスタム2", description = "カスタム画面で\nさいしょにえらべる\nチップ枚数が+2" }
@@ -465,7 +465,7 @@ language = "ja"
 "hp-50" = { name = "HP+50", description = "マックスHPが\n50ふえる!" }
 "hp-500" = { name = "HP+500", description = "マックスHPが\n500ふえる!" }
 "hubbatc" = { name = "サイトバッチ", description = "せんざいのうりょくを\n100%ひきだす\nキケンなプログラム" }
-"humor" = { name = "ユーモアセンス", description = "きまじめすぎるナビに\nくみこんでLで\nはなしてみてください" }
+"humor" = { name = "ユーモアセンス", description = "きまじめすぎるナビに\nくみこんでⓁで\nはなしてみてください" }
 "jungle" = { name = "ジャングルランド", description = "ジャングルのかおりを\nほうしゅつして木属性\nウイルスをひきつける" }
 "megfldr1" = { name = "メガフォルダ1", description = "フォルダに入れられる\nメガクラスチップの\n枚数が+1" }
 "megfldr2" = { name = "メガフォルダ2", description = "フォルダに入れられる\nメガクラスチップの\n枚数が+2" }
@@ -473,9 +473,9 @@ language = "ja"
 "navchg-1" = { name = "ナビチェンジ+1", description = "ナビチェンジの\nかいすうが\n1かいふえる!" }
 "navchg-2" = { name = "ナビチェンジ+2", description = "ナビチェンジの\nかいすうが\n2かいふえる!" }
 "oilbody" = { name = "オイルボディ", description = "炎属性ウイルスが\n大スキなオイルをぬり\nねらわれやすくなる!" }
-"reflect" = { name = "リフレクト", description = "B+左のコマンドで\n攻撃をはねかえす\nリフレクト!" }
+"reflect" = { name = "リフレクト", description = "Ⓑ+左のコマンドで\n攻撃をはねかえす\nリフレクト!" }
 "rush" = { name = "ラッシュサポート", description = "たいせんせんよう!\nきえたあいてのニオイ\nをかぎつけとびかかる" }
-"shield" = { name = "シールド", description = "B+左のコマンドで\nほとんどの攻撃を\nふせぐシールド!" }
+"shield" = { name = "シールド", description = "Ⓑ+左のコマンドで\nほとんどの攻撃を\nふせぐシールド!" }
 "sneakrun" = { name = "シノビダッシュ", description = "自分よりよわいてきと\nであわなくなる!" }
 "soulclen" = { name = "ソウルクリーナー", description = "おのれのあくぎょうを\nくいあらためるための\nしゅぎょうプログラム" }
 "soult-1" = { name = "ソウルタイム+1", description = "ソウルユニゾンして\nいられるターン数が\n+1される" }
@@ -634,15 +634,15 @@ language = "ja"
 "attack_sub" = "アタック-{amount}"
 "attack_times" = "アタック×{amount}"
 "auto_heal" = "セルフリカバリー"
-"b_button.megaman/buster" = "Bバスター"
-"b_button.megaman/crakout" = "Bクラック"
-"b_button.megaman/minibomb" = "Bミニボム"
-"b_button.megaman/sword" = "Bソード"
+"b_button.megaman/buster" = "Ⓑバスター"
+"b_button.megaman/crakout" = "Ⓑクラック"
+"b_button.megaman/minibomb" = "Ⓑミニボム"
+"b_button.megaman/sword" = "Ⓑソード"
 "b_button.megaman/tri-buster" = "トリプルバスター"
-"back_special" = "B+←"
-"back_special.megaman/crsshld1" = "B+←でカースS"
-"back_special.megaman/guard1" = "B+←でメットG"
-"back_special.megaman/shield" = "B+←でシールド"
+"back_special" = "Ⓑ+←"
+"back_special.megaman/crsshld1" = "Ⓑ+←でカースS"
+"back_special.megaman/guard1" = "Ⓑ+←でメットG"
+"back_special.megaman/shield" = "Ⓑ+←でシールド"
 "beat" = "ビートサポート"
 "body.aqua" = "アクアボディ"
 "body.elec" = "エレキボディ"
@@ -670,38 +670,38 @@ language = "ja"
 "charge_shot_kind.shot/charged-uninstalling" = "CSにリセット"
 "charge_shot_kind.shot/chip-destruction" = "CSチップはかい"
 "charge_sub" = "チャージ-{amount}"
-"charged_shot.megaman/airhoc" = "BためAホッケー"
-"charged_shot.megaman/blkbomb" = "BためブラックB"
-"charged_shot.megaman/boomer" = "Bためブーメラン"
-"charged_shot.megaman/bubble-shot" = "BためバブルS"
-"charged_shot.megaman/cannball" = "Bためホウガン"
-"charged_shot.megaman/card-shield" = "Bためシールド"
-"charged_shot.megaman/circgun" = "BためサークルG"
-"charged_shot.megaman/drilarm1" = "BためドリルA"
-"charged_shot.megaman/drksword" = "BためダークS"
-"charged_shot.megaman/fire-arm" = "BためFアーム"
-"charged_shot.megaman/heat-shot" = "BためヒートS"
-"charged_shot.megaman/hells-rolling" = "BためヘルズR"
-"charged_shot.megaman/invisible" = "Bためインビジ"
-"charged_shot.megaman/katana1" = "BためサムライS"
-"charged_shot.megaman/longswrd" = "BためロングS"
-"charged_shot.megaman/minibomb" = "Bためミニボム"
-"charged_shot.megaman/moonbld1" = "Bためクナイ"
-"charged_shot.megaman/poltrgst" = "BためポルターG"
-"charged_shot.megaman/program-charged-shot" = "BためチャージS"
-"charged_shot.megaman/pulsar1" = "BためパルスB"
-"charged_shot.megaman/rapid-buster" = "BためSバスター"
-"charged_shot.megaman/reflect" = "Bためリフレクト"
-"charged_shot.megaman/seaseed" = "Bためオーシャン"
-"charged_shot.megaman/tankcan1" = "BためCキャノン"
-"charged_shot.megaman/thunder" = "BためサンダーB"
-"charged_shot.megaman/tornado" = "Bためトルネード"
-"charged_shot.megaman/vacuum" = "Bためスイコミ"
+"charged_shot.megaman/airhoc" = "ⒷためAホッケー"
+"charged_shot.megaman/blkbomb" = "ⒷためブラックB"
+"charged_shot.megaman/boomer" = "Ⓑためブーメラン"
+"charged_shot.megaman/bubble-shot" = "ⒷためバブルS"
+"charged_shot.megaman/cannball" = "Ⓑためホウガン"
+"charged_shot.megaman/card-shield" = "Ⓑためシールド"
+"charged_shot.megaman/circgun" = "ⒷためサークルG"
+"charged_shot.megaman/drilarm1" = "ⒷためドリルA"
+"charged_shot.megaman/drksword" = "ⒷためダークS"
+"charged_shot.megaman/fire-arm" = "ⒷためFアーム"
+"charged_shot.megaman/heat-shot" = "ⒷためヒートS"
+"charged_shot.megaman/hells-rolling" = "ⒷためヘルズR"
+"charged_shot.megaman/invisible" = "Ⓑためインビジ"
+"charged_shot.megaman/katana1" = "ⒷためサムライS"
+"charged_shot.megaman/longswrd" = "ⒷためロングS"
+"charged_shot.megaman/minibomb" = "Ⓑためミニボム"
+"charged_shot.megaman/moonbld1" = "Ⓑためクナイ"
+"charged_shot.megaman/poltrgst" = "ⒷためポルターG"
+"charged_shot.megaman/program-charged-shot" = "ⒷためチャージS"
+"charged_shot.megaman/pulsar1" = "ⒷためパルスB"
+"charged_shot.megaman/rapid-buster" = "ⒷためSバスター"
+"charged_shot.megaman/reflect" = "Ⓑためリフレクト"
+"charged_shot.megaman/seaseed" = "Ⓑためオーシャン"
+"charged_shot.megaman/tankcan1" = "ⒷためCキャノン"
+"charged_shot.megaman/thunder" = "ⒷためサンダーB"
+"charged_shot.megaman/tornado" = "Ⓑためトルネード"
+"charged_shot.megaman/vacuum" = "Ⓑためスイコミ"
 "charged_shot.megaman/wideblde" = "BためワイドB"
-"charged_shot.megaman/widesht1" = "BためWショット"
-"charged_shot.megaman/wideswrd" = "BためワイドS"
-"charged_shot.megaman/yoyo" = "Bためヨーヨー"
-"charged_shot.megaman/zap-ring" = "Bためラビリング"
+"charged_shot.megaman/widesht1" = "ⒷためWショット"
+"charged_shot.megaman/wideswrd" = "ⒷためワイドS"
+"charged_shot.megaman/yoyo" = "Ⓑためヨーヨー"
+"charged_shot.megaman/zap-ring" = "Ⓑためラビリング"
 "chip_recovery" = "チップリカバリー"
 "custom_add" = "カスタム+{amount}"
 "custom_damage" = "カスタムダメージ"

@@ -5,7 +5,9 @@
 -- dark (0x08024C00), leaves the picks for the button (the screen's state 0x38, 0x08023694) and is the turn's arm chip
 -- (the transform record's +6, 0x080123FC): at the turn's start ColonelSoul's charged shot fires it (0x080124AE:
 -- AIData +0x32, the weapon routine 0x13: ./arm), for that turn. The chip leaves the folder. B, with the picks as
--- they were, puts it back (0x08024CFC, the screen's).
+-- they were, puts it back (0x08024CFC, the screen's); a click on the button, at any time (nettai's pointer: the
+-- screen's release of a button's held chip), puts it back in the place it left where there is room and it goes with
+-- the picks, else back in the hand.
 
 local arm = require("./arm")
 

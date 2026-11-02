@@ -5,7 +5,7 @@
 -- chips/capsules), drawn by the console's RNG1. A capsule is mixed into the last pick, a chip that deals damage and
 -- has none yet (0x08024C74): the screen's state 0x3C (0x0802373A: the capsule's icon flies to the column, the
 -- soul's choice's flashes), then the chip's pick carries the capsule's effect into the hand (the hand's flag byte,
--- +68: 0x08023824) and the capsule is used. B on the chip frees it (0x08024D78, the screen's).
+-- +68: 0x08023824) and the capsule is used. B on the chip frees it (0x08024D78, the screen's), as its pick taken back anywhere does.
 
 local capsules_chips = require("../../../../chips/capsules")
 

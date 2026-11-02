@@ -84,6 +84,8 @@ local RING = new.kind {
         elseif l == "update" then
             tick(me)
         else
+            -- 0x080138F2: its collision, then itself, freed.
+            me.collision:free()
             me:free()
         end
     end,

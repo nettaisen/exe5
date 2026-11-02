@@ -14,5 +14,6 @@ return {
     navicust_programs = require("@self/navicust"),
     partycust_programs = require("@self/partycust"),
     rules = require("@self/rules"),
+    backgrounds = require("@self/backgrounds"),
     extract = require("@self/extract"),
 }

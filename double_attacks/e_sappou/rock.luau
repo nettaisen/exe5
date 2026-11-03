@@ -8,10 +8,10 @@ local attachment = require("../../objects/attachment")
 local effects = require("../../lib/effects")
 local collision = require("../../rules/collision")
 local common_blade = require("@exelib/moonbld/blade")
-local moon_blade_sprite = require("../../chips/moonbld/moon_blade_sprite")
-local rock_sprite = require("../../objects/rock/rock_sprite")
-local shadowman_sprite = require("../../navis/shadowman/shadowman_sprite")
-local sword_sprite = require("../../sprites/sword")
+local moon_blade_sprite = asset.sprite("moon-blade")
+local rock_sprite = asset.sprite("rock")
+local shadowman_sprite = asset.sprite("shadowman")
+local sword_sprite = asset.sprite("sword")
 
 local rock = {}
 

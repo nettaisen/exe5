@@ -17,7 +17,7 @@ local navi_level = require("../../lib/navi_level")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local swords = require("../../lib/swords")
-local screen_divide_sprite = require("./screen_divide_sprite")
+local screen_divide_sprite = asset.sprite("screen-divide")
 
 local charge = {}
 

@@ -15,7 +15,7 @@ local batch = require("@exelib/snake/batch")
 local common = require("@exelib/snake")
 local trajectory = require("../../lib/trajectory")
 local sparks = require("../../lib/sparks")
-local snake_sprite = require("./snake_sprite")
+local snake_sprite = asset.sprite("snake")
 
 local snake = {}
 

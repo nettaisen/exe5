@@ -20,7 +20,7 @@ local falling_meteor = require("@exelib/meteors/falling_meteor")
 local marker = require("./marker")
 local meteor_shower = require("@exelib/meteors/shower")
 local sparks = require("../../lib/sparks")
-local meteor_sprite = require("./meteor_sprite")
+local meteor_sprite = asset.sprite("meteor")
 
 local meteors = {}
 

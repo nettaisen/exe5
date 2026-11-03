@@ -22,8 +22,8 @@ local cacdanc = {}
 
 -- Its look (`sub_8011504`'s word 0x01041030: sheet 10-30, animation 4, a ground shadow) and collision (0x0A050100: a
 -- thrown thing that hits navis, hit modifier 1).
-local SPRITE = require("../../sprites/cactus")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("cactus")
+local puff_sprite = asset.sprite("puff")
 local ANIM = 4
 local HIT_MOD = 1
 local FALL_SOUND, BOUNCE_SOUND = asset.sound("drop"), asset.sound("cactus-hop")

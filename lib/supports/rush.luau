@@ -8,8 +8,8 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/supports/rush")
 local statuses = require("../../rules/status")
-local puff_sprite = require("../../sprites/puff")
-local rush_sprite = require("./rush_sprite")
+local puff_sprite = asset.sprite("puff")
+local rush_sprite = asset.sprite("rush")
 
 return common.make {
     id = "rush",

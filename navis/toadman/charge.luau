@@ -16,7 +16,7 @@ local collision = require("../../rules/collision")
 local navi_level = require("../../lib/navi_level")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
-local dive_splash_sprite = require("../../sprites/dive_splash")
+local dive_splash_sprite = asset.sprite("dive-splash")
 
 local charge = {}
 

@@ -16,8 +16,8 @@ local cusvolt = {}
 
 -- Its look (`sub_8011504`'s word 0x00000C40: sheet 0c-40, animation 0, no shadow) and collision (0x0A050300: a thrown
 -- thing that hits navis, hit modifier 3), over its panel and the column ahead (region 0x15).
-local SPRITE = require("./volt_beam_sprite")
-local volt_gun_sprite = require("./volt_gun_sprite")
+local SPRITE = asset.sprite("volt-beam")
+local volt_gun_sprite = asset.sprite("volt-gun")
 local HIT_MOD = 3
 -- 40 pixels ahead of its navi, at the navi's attach point 26.
 local AHEAD, ATTACH_POINT = 40, 26

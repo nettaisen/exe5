@@ -9,12 +9,12 @@
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/deltaray/navi")
-local deletion_sprite = require("../../sprites/deletion")
-local follow_effect_sprite = require("./follow_effect_sprite")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
-local protoman_sprite = require("../../navis/protoman/protoman_sprite")
-local sword_slash_sprite = require("../../sprites/sword_slash")
-local sword_sprite = require("../../sprites/sword")
+local deletion_sprite = asset.sprite("deletion")
+local follow_effect_sprite = asset.sprite("follow-effect")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local protoman_sprite = asset.sprite("protoman")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 return common.make {
     id = "deltaray/navi",

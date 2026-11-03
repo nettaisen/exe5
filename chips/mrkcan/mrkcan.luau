@@ -38,8 +38,8 @@ export type SightState = {
     enemies: number,
 }
 
-local SIGHT_SPRITE = require("./mark_sight_sprite")
-local mark_cannon_sprite = require("./mark_cannon_sprite")
+local SIGHT_SPRITE = asset.sprite("mark-sight")
+local mark_cannon_sprite = asset.sprite("mark-cannon")
 local LOCK_SOUND = asset.sound("mark")
 -- The sweep: an arc of 16 ticks, 3 arcs; 120 pixels from the center, which starts 80 pixels behind the owner's
 -- column on the middle row and moves 40 pixels on each arc; it starts at a quarter turn, turning 8 steps a tick,

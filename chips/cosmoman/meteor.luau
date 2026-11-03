@@ -16,8 +16,8 @@ export type State = {
     look: Identity?,
 }
 
-local SPRITE = require("./cosmoman_sprite")
-local explosion_sprite = require("../../sprites/explosion")
+local SPRITE = asset.sprite("cosmoman")
+local explosion_sprite = asset.sprite("explosion")
 local looks = require("@exelib/looks")
 local SOUND_FALL = asset.sound("justice-one")
 local SOUND_HIT = asset.sound("hit-bomb-1")

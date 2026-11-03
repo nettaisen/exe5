@@ -5,7 +5,6 @@
 -- fire), and a flame (./flame) leaping off it every 4 ticks. Then it goes.
 
 local collision = require("../../rules/collision")
-local played = require("@exelib/played")
 local sparks = require("../../lib/sparks")
 local regions = require("@exelib/regions")
 local flame = require("./flame")
@@ -17,7 +16,7 @@ export type State = {
     far: boolean,
 }
 
-local SPRITE = require("./phoenix_flame_sprite")
+local SPRITE = asset.sprite("phoenix-flame")
 local SOUND_RISE = asset.sound("col-army")
 local SOUND_BURN = asset.sound("phoenix-burn")
 local RISE = 0xA
@@ -64,7 +63,7 @@ end
 -- Action 4 (0x080EA662): animation 0 to its end, then 1; 10 ticks of it, and the burn.
 local function rise(me: Object)
     if me.anim == 0 then
-        if not played.ended(me.sprite, RISE_STEPS) then
+        if me.sprite.steps < RISE_STEPS then
             return
         end
         me.anim = 1

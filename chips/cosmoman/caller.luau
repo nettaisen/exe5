@@ -21,7 +21,7 @@ export type State = {
     taken: { Identity? },
 }
 
-local SPRITE = require("./cosmoman_sprite")
+local SPRITE = asset.sprite("cosmoman")
 local SOUND_CALL = asset.sound("elmnt-man")
 
 -- 0x080EA1E0: on its panel's center, a pixel up the field, 95 pixels up (Z's fraction is the spawner's

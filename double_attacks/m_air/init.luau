@@ -15,7 +15,7 @@ local double_attack = require("../lib/double_attack")
 local gyroman = require("../navis/gyroman").gyroman
 local magnetman = require("../navis/magnetman").magnetman
 local toss = require("@self/toss")
-local magnet_arm_sprite = require("../navis/magnetman/magnet_arm_sprite")
+local magnet_arm_sprite = asset.sprite("magnet-arm")
 
 -- Its navis' state: the shared fields and GyroMan's next column's center (+0x74).
 type State = DoubleAttackNavi & { next_center: number }

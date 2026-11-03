@@ -11,7 +11,7 @@ local effects = require("../../lib/effects")
 local gun = require("@exelib/circgun/gun")
 local shot = require("@exelib/circgun/shot")
 local sparks = require("../../lib/sparks")
-local sight_sprite = require("../../sprites/sight")
+local sight_sprite = asset.sprite("sight")
 
 local circgun = {}
 

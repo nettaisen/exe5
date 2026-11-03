@@ -8,7 +8,7 @@ local common = require("@exelib/numbrman/navi")
 local dice = require("./dice")
 local face = require("./face")
 local navi_chips = require("@exelib/navi_chips/navi")
-local numberman_sprite = require("../../navis/numberman/numberman_sprite")
+local numberman_sprite = asset.sprite("numberman")
 
 local NUMBERMAN = common.make {
     id = "numbrman/navi",

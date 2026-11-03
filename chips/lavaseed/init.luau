@@ -6,7 +6,7 @@
 
 local bombs = require("../lib/bombs")
 local seed = require("../lib/bombs/seed")
-local grab_shot_sprite = require("../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 -- Its seed (Param1 3): lava, the sprout (effect 0x55) and its sound.
 local SEED = seed.variant {

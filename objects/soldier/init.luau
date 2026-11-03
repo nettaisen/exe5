@@ -30,9 +30,9 @@ export type State = {
 }
 
 -- 0x080CA858: sprite 10-20 with a shadow (`sub_8011504`'s 0x01001020 and 0x01031020: animation 0 or 3).
-local SPRITE = require("@self/colonel_soldier_sprite")
-local sword_slash_sprite = require("../sprites/sword_slash")
-local vulcan_hit_sprite = require("../sprites/vulcan_hit")
+local SPRITE = asset.sprite("colonel-soldier")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local vulcan_hit_sprite = asset.sprite("vulcan-hit")
 local HP = 1
 -- Its collision (0x13140300): its side's body (row 0x13) that the other side reaches (row 0x14), hit modifier 3.
 local HIT_MOD = 3

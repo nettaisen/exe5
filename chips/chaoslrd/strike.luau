@@ -13,10 +13,10 @@ local collision = require("../../rules/collision")
 local panel_bursts = require("../../objects/panel_bursts")
 local regions = require("@exelib/regions")
 local trajectory = require("../../lib/trajectory")
-local bass_sprite = require("../bass/bass_sprite")
-local chaos_orb_sprite = require("./chaos_orb_sprite")
-local charge_glow_sprite = require("../../sprites/charge_glow")
-local explosion_sprite = require("../../sprites/explosion")
+local bass_sprite = asset.sprite("bass")
+local chaos_orb_sprite = asset.sprite("chaos-orb")
+local charge_glow_sprite = asset.sprite("charge-glow")
+local explosion_sprite = asset.sprite("explosion")
 
 export type State = {
     -- Its target panel (Param3, Param4; 0 until picked).

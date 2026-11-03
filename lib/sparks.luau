@@ -6,13 +6,13 @@
 
 local sparks = {}
 
-local HIT_SPARKS = require("../sprites/hit_sparks")
-local chip_destruction_spark_sprite = require("../sprites/chip_destruction_spark")
-local explosion_sprite = require("../sprites/explosion")
-local hit_marker_sprite = require("../sprites/hit_marker")
-local hit_sprite = require("../sprites/hit")
-local impact_sprite = require("../sprites/impact")
-local pink_flash_sprite = require("../sprites/pink_flash")
+local HIT_SPARKS = asset.sprite("hit-sparks")
+local chip_destruction_spark_sprite = asset.sprite("chip-destruction-spark")
+local explosion_sprite = asset.sprite("explosion")
+local hit_marker_sprite = asset.sprite("hit-marker")
+local hit_sprite = asset.sprite("hit")
+local impact_sprite = asset.sprite("impact")
+local pink_flash_sprite = asset.sprite("pink-flash")
 
 -- By element (null, fire, aqua, elec, wood, and 5): the spark the element routine (EXE6's `sub_801A146`, EXE5's
 -- the same code) gives an attack of that element (hit effects 0 to 5).

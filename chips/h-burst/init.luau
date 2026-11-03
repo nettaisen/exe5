@@ -12,7 +12,7 @@ local burst = require("@self/burst")
 local recipe_energbom = require("./energbom").energbom
 local recipe_megenbom = require("./energbom").megenbom
 local recipe_spreader = require("./spreader").spreader
-local spreader_sprite = require("./spreader/spreader_sprite")
+local spreader_sprite = asset.sprite("spreader")
 
 local LOOK: HyperBurstLook = {
     spreader = attachment.look { sprite = spreader_sprite, palette = 0, attach_point = 11 },

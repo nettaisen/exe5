@@ -17,7 +17,7 @@ export type State = {
 
 local cloudman = {}
 
-local SPRITE = require("./cloudman_sprite")
+local SPRITE = asset.sprite("cloudman")
 local SOUND_APPEAR = asset.sound("appear")
 -- A panel a cloud takes: any but one with these flags (as one word).
 local TAKEN = 0x3F800000

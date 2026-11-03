@@ -18,8 +18,8 @@ local panel_bursts = require("../objects/panel_bursts")
 local rising_bubble = require("../objects/rising_bubble")
 local sparks = require("../lib/sparks")
 local trajectory = require("../lib/trajectory")
-local black_bomb_sprite = require("@self/black_bomb_sprite")
-local bomb_sprite = require("../sprites/bomb")
+local black_bomb_sprite = asset.sprite("black-bomb")
+local bomb_sprite = asset.sprite("bomb")
 
 local SOUND_HIT_BOMB = asset.sound("hit-bomb-1")
 

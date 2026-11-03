@@ -6,7 +6,7 @@
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
-local cross_slash_sprite = require("@self/cross_slash_sprite")
+local cross_slash_sprite = asset.sprite("cross-slash")
 
 local chip: Chip = {
     codes = { "E", "L", "S", "*" },

@@ -5,7 +5,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/serchman/shot")
 local sparks = require("../../lib/sparks")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 return common.make {
     id = "serchman/shot",

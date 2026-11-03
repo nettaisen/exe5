@@ -25,9 +25,9 @@ export type State = {
 }
 
 -- 0x080D7F50: sprite 0C-4E without a shadow (`sub_8011504`'s 0x00000C4E), animation 0.
-local SPRITE = require("./red_fruit_sprite")
-local impact_sprite = require("../../sprites/impact")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("red-fruit")
+local impact_sprite = asset.sprite("impact")
+local puff_sprite = asset.sprite("puff")
 local HP = 1
 -- Its collision (0x0E0F0003): a neutral body (row 0x0E) that everything reaches (row 0x0F), hit modifier 0 (the
 -- word's third byte; `sub_8011504` reads no fourth).

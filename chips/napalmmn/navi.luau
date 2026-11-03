@@ -18,8 +18,8 @@ export type State = {
 
 local napalmman = {}
 
-local SPRITE = require("../../navis/napalmman/napalmman_sprite")
-local napalm_cannon_sprite = require("../../navis/napalmman/napalm_cannon_sprite")
+local SPRITE = asset.sprite("napalmman")
+local napalm_cannon_sprite = asset.sprite("napalm-cannon")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_FIRE = asset.sound("cannon")

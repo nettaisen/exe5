@@ -18,8 +18,8 @@ local darkinvs = require("../../../chips/darkinvs").darkinvs
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
-local shadowman_sprite = require("../../shadowman/shadowman_sprite")
-local shadowsoul_sprite = require("@self/shadowsoul_sprite")
+local shadowman_sprite = asset.sprite("shadowman")
+local shadowsoul_sprite = asset.sprite("shadowsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

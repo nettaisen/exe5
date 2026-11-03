@@ -10,9 +10,9 @@ local bullet = require("../../../objects/bullet")
 local navi_arms = require("../../../lib/navi_arms")
 local regions = require("@exelib/regions")
 local spreader = require("@exelib/spreadr/action")
-local shell_burst_sprite = require("../../../sprites/shell_burst")
-local spout_splash_sprite = require("../../../sprites/spout_splash")
-local spreader_sprite = require("../../../chips/spreader/spreader_sprite")
+local shell_burst_sprite = asset.sprite("shell-burst")
+local spout_splash_sprite = asset.sprite("spout-splash")
+local spreader_sprite = asset.sprite("spreader")
 
 local spreads = {}
 

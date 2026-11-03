@@ -19,7 +19,7 @@ export type State = {
 
 local blizman = {}
 
-local SPRITE = require("./blizzardman_sprite")
+local SPRITE = asset.sprite("blizzardman")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_ROLL = asset.sound("blizzard-windup")
 local SOLID = 0x10

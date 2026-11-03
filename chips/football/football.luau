@@ -21,8 +21,8 @@ local sparks = require("../../lib/sparks")
 
 local football = {}
 
-local SPRITE = require("../gridman/gridman_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("gridman")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 
 -- ---- The ball -------------------------------------------------------------------------------------------------------

@@ -13,8 +13,8 @@ local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
 local searchman = require("../searchman").searchman
 local shot = require("../../chips/serchman/shot")
-local chip_destruction_spark_sprite = require("../../sprites/chip_destruction_spark")
-local search_scope_sprite = require("./search_scope_sprite")
+local chip_destruction_spark_sprite = asset.sprite("chip-destruction-spark")
+local search_scope_sprite = asset.sprite("search-scope")
 
 -- His damage a shot by the side's level (0x020CC378), its hit flags 0x8A.
 local DAMAGE: { number } = { 5, 5, 5, 5, 5, 5, 10, 10, 15, 15 }

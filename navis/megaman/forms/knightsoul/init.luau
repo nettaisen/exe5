@@ -16,9 +16,9 @@ local darkdril = require("../../../chips/darkdril").darkdril
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
-local knightman_ball_sprite = require("../../knightman/knightman_ball_sprite")
-local knightman_sprite = require("../../knightman/knightman_sprite")
-local knightsoul_sprite = require("@self/knightsoul_sprite")
+local knightman_ball_sprite = asset.sprite("knightman-ball")
+local knightman_sprite = asset.sprite("knightman")
+local knightsoul_sprite = asset.sprite("knightsoul")
 
 -- KnightMan's ball and chain on the soul's image (the body overlays' row 1, 0x0800EE7A): in front.
 local BALL: BodyPart = { sprite = knightman_ball_sprite, anims = 20 }

@@ -19,7 +19,7 @@ export type State = {
     left: number,
 }
 
-local SPRITE = require("./skull_sprite")
+local SPRITE = asset.sprite("skull")
 local LIFETIME = 30
 local HEIGHT = 0x14_0000
 -- The enemy bodies by side (0x080D73D4).

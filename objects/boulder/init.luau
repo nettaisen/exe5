@@ -15,7 +15,7 @@ local rock = require("./rock")
 
 local boulder = {}
 
-local SPRITE = require("@self/boulder_sprite")
+local SPRITE = asset.sprite("boulder")
 
 boulder.kind = common.make {
     id = "boulder",

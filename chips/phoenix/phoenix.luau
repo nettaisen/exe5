@@ -25,8 +25,8 @@ export type State = {
     targets: { number },
 }
 
-local SPRITE = require("./phoenix_sprite")
-local heal_sprite = require("../../sprites/heal")
+local SPRITE = asset.sprite("phoenix")
+local heal_sprite = asset.sprite("heal")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_HEAL = asset.sound("heal")
 -- The healing's sparkle (the effect table's row 6).

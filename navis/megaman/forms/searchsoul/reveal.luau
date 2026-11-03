@@ -4,7 +4,7 @@
 -- side that is invisible or flashing with the scope (effect 0x68, 20 pixels up), and on the next tick shows them
 -- again: their flash timer ended, no longer invisible or flashing. Then it goes.
 
-local search_scope_sprite = require("../../../searchman/search_scope_sprite")
+local search_scope_sprite = asset.sprite("search-scope")
 
 local reveal = {}
 

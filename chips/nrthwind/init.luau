@@ -9,7 +9,7 @@
 local collision = require("../rules/collision")
 local controller = require("@exelib/nrthwind/controller")
 local north_wind = require("@exelib/nrthwind/wind")
-local gust_sprite = require("../sprites/gust")
+local gust_sprite = asset.sprite("gust")
 
 -- EXE5's north wind: its sound (0x0AD, dustbrk), its streaks' sheet (EXE5's 0x080E4898 loads its own, 0c-2e, a gust
 -- of white wind, where EXE6's leftover code names 0c-00), and the spawn's side and flip (EXE6's `sub_80CFCD6`).

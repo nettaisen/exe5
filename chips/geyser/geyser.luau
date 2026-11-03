@@ -9,9 +9,9 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/geyser/geyser")
 local sparks = require("../../lib/sparks")
 local trajectory = require("../../lib/trajectory")
-local bomb_sprite = require("../../sprites/bomb")
-local geyser_sprite = require("./geyser_sprite")
-local spout_splash_sprite = require("../../sprites/spout_splash")
+local bomb_sprite = asset.sprite("bomb")
+local geyser_sprite = asset.sprite("geyser")
+local spout_splash_sprite = asset.sprite("spout-splash")
 
 local made = common.make({
     id = "geyser/bomb",

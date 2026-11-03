@@ -8,7 +8,7 @@ local controller = require("@exelib/colorpt/controller")
 local point = require("@exelib/colorpt/point")
 local trajectory = require("../../lib/trajectory")
 local operation_battle = require("../../lib/operation_battle")
-local grab_shot_sprite = require("../../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 local points = point.make {
     id = "colorpt/point",

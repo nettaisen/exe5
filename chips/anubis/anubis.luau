@@ -17,7 +17,7 @@ local statue = require("@exelib/anubis/statue")
 
 local anubis = {}
 
-local SPRITE = require("./anubis_sprite")
+local SPRITE = asset.sprite("anubis")
 
 local made = statue.make {
     id = "anubis/statue",

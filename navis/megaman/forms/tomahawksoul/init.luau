@@ -17,8 +17,8 @@ local grass = require("@self/grass")
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
-local tomahawkman_sprite = require("../../tomahawkman/tomahawkman_sprite")
-local tomahawksoul_sprite = require("@self/tomahawksoul_sprite")
+local tomahawkman_sprite = asset.sprite("tomahawkman")
+local tomahawksoul_sprite = asset.sprite("tomahawksoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

@@ -20,10 +20,10 @@ local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
 local soldiers = require("@self/soldiers")
-local colonel_cape_sprite = require("../../colonel/colonel_cape_sprite")
-local colonel_sprite = require("../../colonel/colonel_sprite")
-local colonelsoul_sprite = require("@self/colonelsoul_sprite")
-local sword_sprite = require("../../../sprites/sword")
+local colonel_cape_sprite = asset.sprite("colonel-cape")
+local colonel_sprite = asset.sprite("colonel")
+local colonelsoul_sprite = asset.sprite("colonelsoul")
+local sword_sprite = asset.sprite("sword")
 
 -- Colonel's cape on the soul's image (the body overlays' row 3, 0x0800EE5E): in front.
 local CAPE: BodyPart = { sprite = colonel_cape_sprite, anims = 41 }

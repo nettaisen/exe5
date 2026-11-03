@@ -7,8 +7,8 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/bodygrd/shuriken")
 local marker = require("../../lib/navi_chips/marker")
-local shuriken_sprite = require("../../sprites/shuriken")
-local small_puff_sprite = require("../../sprites/small_puff")
+local shuriken_sprite = asset.sprite("shuriken")
+local small_puff_sprite = asset.sprite("small-puff")
 
 local shuriken = {}
 

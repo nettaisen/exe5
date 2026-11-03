@@ -10,7 +10,7 @@ local party_support = require("../../lib/party_support")
 local regions = require("@exelib/regions")
 local supports = require("../../rules/party/supports")
 local tomahawkman = require("../tomahawkman").tomahawkman
-local big_slash_sprite = require("../../sprites/big_slash")
+local big_slash_sprite = asset.sprite("big-slash")
 
 -- His damage by the side's level (0x020CC294), its hit flags 0x9E.
 local DAMAGE: { number } = { 40, 40, 40, 40, 50, 50, 70, 80, 90, 90 }

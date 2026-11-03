@@ -33,10 +33,10 @@ local colonel = {}
 -- flash's ticks.
 export type Strike = { command: ((me: Object) -> ())?, land: (me: Object) -> (), flash: number }
 
-local SPRITE = require("../../navis/colonel/colonel_sprite")
-local colonel_cape_sprite = require("../../navis/colonel/colonel_cape_sprite")
-local screen_divide_sprite = require("../../navis/colonel/screen_divide_sprite")
-local sword_sprite = require("../../sprites/sword")
+local SPRITE = asset.sprite("colonel")
+local colonel_cape_sprite = asset.sprite("colonel-cape")
+local screen_divide_sprite = asset.sprite("screen-divide")
+local sword_sprite = asset.sprite("sword")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_COMMAND = asset.sound("ok-8b")
 local SOUND_SWING = asset.sound("spin")

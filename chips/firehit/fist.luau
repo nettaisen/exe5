@@ -9,7 +9,7 @@
 local common = require("@exelib/firehit/fist")
 local collision = require("../../rules/collision")
 local sparks = require("../../lib/sparks")
-local fire_hit_sprite = require("./fire_hit_sprite")
+local fire_hit_sprite = asset.sprite("fire-hit")
 
 local fist = {}
 

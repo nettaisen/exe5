@@ -40,8 +40,8 @@ function swords.blade_anim(me: Object): number
     return 0
 end
 
-local SLASH = require("../sprites/sword_slash")
-local sword_sprite = require("../sprites/sword")
+local SLASH = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 -- The blade the swords hold (the attachment table's row 3) and the swings' sounds, which they share. (Each sword
 -- states the slash drawn over the panels it hits.)

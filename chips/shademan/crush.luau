@@ -4,7 +4,7 @@
 -- left, and the panel and the column ahead highlighted each tick, from the first.
 
 local collision = require("../../rules/collision")
-local shademan_sprite = require("./shademan_sprite")
+local shademan_sprite = asset.sprite("shademan")
 
 return require("@exelib/shademan/crush").make {
     id = "shademan/crush",

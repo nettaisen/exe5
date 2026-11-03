@@ -18,7 +18,7 @@ local attachment = require("../../objects/attachment")
 local beam = require("@exelib/gundels/beam")
 local collision = require("../../rules/collision")
 local operation_battle = require("../../lib/operation_battle")
-local gun_del_sol_sprite = require("./gun_del_sol_sprite")
+local gun_del_sol_sprite = asset.sprite("gun-del-sol")
 
 local gundels = {}
 

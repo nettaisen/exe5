@@ -10,8 +10,8 @@ local party_support = require("../../lib/party_support")
 local protoman = require("../protoman").protoman
 local regions = require("@exelib/regions")
 local supports = require("../../rules/party/supports")
-local sword_slash_sprite = require("../../sprites/sword_slash")
-local sword_sprite = require("../../sprites/sword")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 -- His damage by the side's level (0x020CC1CC), its hit flags 0x94.
 local DAMAGE: { number } = { 20, 50, 70, 70, 90, 90, 110, 140, 150, 150 }

@@ -5,7 +5,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/boomer/boomerang")
 local sparks = require("../../lib/sparks")
-local boomerang_sprite = require("./boomerang_sprite")
+local boomerang_sprite = asset.sprite("boomerang")
 
 return common.make_kind {
     id = "boomer/boomerang",

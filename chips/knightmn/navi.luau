@@ -20,8 +20,8 @@ export type State = {
 
 local knightman = {}
 
-local SPRITE = require("../../navis/knightman/knightman_sprite")
-local knightman_ball_sprite = require("../../navis/knightman/knightman_ball_sprite")
+local SPRITE = asset.sprite("knightman")
+local knightman_ball_sprite = asset.sprite("knightman-ball")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_LAND = asset.sound("land")
 local SOUND_SWING = asset.sound("knight-swing")

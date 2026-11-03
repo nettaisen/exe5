@@ -18,7 +18,7 @@ local operation_battle = require("../../lib/operation_battle")
 
 local csmopris = {}
 
-local SPRITE = require("../cosmoman/cosmoman_sprite")
+local SPRITE = asset.sprite("cosmoman")
 local navi_left = require("@exelib/navi_chips/left")
 
 -- ---- The comet ------------------------------------------------------------------------------------------------------

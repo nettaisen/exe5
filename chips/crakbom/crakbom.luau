@@ -24,9 +24,9 @@ export type State = {
 }
 
 -- 0x080C91C8: sprite 0c-02 with a ground shadow, animation 7.
-local SPRITE = require("../../sprites/bomb")
-local bomb_burst_sprite = require("./bomb_burst_sprite")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("bomb")
+local bomb_burst_sprite = asset.sprite("bomb-burst")
+local puff_sprite = asset.sprite("puff")
 local ANIM = 7
 local FLIGHT_TICKS, GRAVITY = 35, -0x3000
 -- Effect 0x14: a puff of smoke.

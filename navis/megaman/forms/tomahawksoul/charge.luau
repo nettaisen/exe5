@@ -7,7 +7,7 @@
 
 local collision = require("../../../../rules/collision")
 local regions = require("@exelib/regions")
-local big_slash_sprite = require("../../../../sprites/big_slash")
+local big_slash_sprite = asset.sprite("big-slash")
 
 local charge = {}
 

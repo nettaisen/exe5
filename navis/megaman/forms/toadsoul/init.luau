@@ -15,8 +15,8 @@ local darkwide = require("../../../chips/darkwide").darkwide
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
-local toadman_sprite = require("../../toadman/toadman_sprite")
-local toadsoul_sprite = require("@self/toadsoul_sprite")
+local toadman_sprite = asset.sprite("toadman")
+local toadsoul_sprite = asset.sprite("toadsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

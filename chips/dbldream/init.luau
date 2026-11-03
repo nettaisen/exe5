@@ -6,7 +6,7 @@
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
-local big_slash_sprite = require("../sprites/big_slash")
+local big_slash_sprite = asset.sprite("big-slash")
 
 -- The big slash over two columns (effect 0x1B).
 local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0, steps = 15 }

@@ -11,7 +11,7 @@ local buster = require("../../lib/buster")
 local overlays = require("@exelib/overlays")
 local shot = require("./shot")
 local stand_in = require("@exelib/dimming/stand_in")
-local grab_shot_sprite = require("../../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 local actor = {}
 

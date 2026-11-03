@@ -17,8 +17,8 @@ local effects = require("../../lib/effects")
 local marker = require("../../lib/navi_chips/marker")
 
 -- Its sprite: animation 0 standing, 1 spinning.
-local SPRITE = require("./air_spin_sprite")
-local moon_blade_sprite = require("../moonbld/moon_blade_sprite")
+local SPRITE = asset.sprite("air-spin")
+local moon_blade_sprite = asset.sprite("moon-blade")
 
 return common.make {
     id = "airspin/top",

@@ -26,9 +26,9 @@ export type State = {
 
 local gridman = {}
 
-local SPRITE = require("./gridman_sprite")
-local explosion_sprite = require("../../sprites/explosion")
-local small_puff_sprite = require("../../sprites/small_puff")
+local SPRITE = asset.sprite("gridman")
+local explosion_sprite = asset.sprite("explosion")
+local small_puff_sprite = asset.sprite("small-puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_DASH = asset.sound("grid-dash")

@@ -12,8 +12,8 @@
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local satelity = require("@self/chip").satelity
-local searchman_portrait_sprite = require("@self/searchman_portrait_sprite")
-local searchman_sprite = require("@self/searchman_sprite")
+local searchman_portrait_sprite = asset.sprite("searchman-portrait")
+local searchman_sprite = asset.sprite("searchman")
 
 local navi: NaviDef = {
     sprite = searchman_sprite,

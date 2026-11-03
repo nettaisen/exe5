@@ -27,9 +27,9 @@ export type State = {
 
 local protoman = {}
 
-local SPRITE = require("../../navis/protoman/protoman_sprite")
-local sword_slash_sprite = require("../../sprites/sword_slash")
-local sword_sprite = require("../../sprites/sword")
+local SPRITE = asset.sprite("protoman")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SWING = asset.sound("sword-swing")

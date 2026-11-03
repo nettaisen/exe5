@@ -11,7 +11,7 @@ local navi_level = require("../../lib/navi_level")
 local collision = require("../../rules/collision")
 local marker = require("../../lib/navi_chips/marker")
 local regions = require("@exelib/regions")
-local big_slash_sprite = require("../../sprites/big_slash")
+local big_slash_sprite = asset.sprite("big-slash")
 
 export type State = {
     -- AIAttackVars +0x10: ticks left in the current step.

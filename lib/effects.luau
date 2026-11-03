@@ -6,16 +6,16 @@
 
 local effects = {}
 
-local EXPLOSION = require("../sprites/explosion")
-local SMALL_PUFF = require("../sprites/small_puff")
-local PUFF = require("../sprites/puff")
-local burst_sprite = require("../sprites/burst")
-local deletion_sprite = require("../sprites/deletion")
-local heal_sprite = require("../sprites/heal")
-local hit_marker_sprite = require("../sprites/hit_marker")
-local hit_sparks_sprite = require("../sprites/hit_sparks")
-local pink_flash_sprite = require("../sprites/pink_flash")
-local shell_burst_sprite = require("../sprites/shell_burst")
+local EXPLOSION = asset.sprite("explosion")
+local SMALL_PUFF = asset.sprite("small-puff")
+local PUFF = asset.sprite("puff")
+local burst_sprite = asset.sprite("burst")
+local deletion_sprite = asset.sprite("deletion")
+local heal_sprite = asset.sprite("heal")
+local hit_marker_sprite = asset.sprite("hit-marker")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local pink_flash_sprite = asset.sprite("pink-flash")
+local shell_burst_sprite = asset.sprite("shell-burst")
 
 -- Row 0: an explosion: a blast landing, something breaking.
 effects.explosion = new.effect { sprite = EXPLOSION, anim = 0, palette = 0, steps = 22 }

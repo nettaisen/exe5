@@ -9,7 +9,7 @@
 local attachment = require("../../../../objects/attachment")
 local note = require("../../../../chips/toadman/note")
 local toadman = require("../../../../chips/toadman/navi")
-local toadsoul_horn_sprite = require("./toadsoul_horn_sprite")
+local toadsoul_horn_sprite = asset.sprite("toadsoul-horn")
 
 local charge = {}
 

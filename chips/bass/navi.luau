@@ -5,9 +5,9 @@
 
 local common = require("@exelib/bass/navi")
 local strike = require("./strike")
-local bass_sprite = require("./bass_sprite")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
-local puff_sprite = require("../../sprites/puff")
+local bass_sprite = asset.sprite("bass")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local puff_sprite = asset.sprite("puff")
 
 return common.make {
     id = "bass/navi",

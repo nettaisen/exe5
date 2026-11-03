@@ -7,7 +7,6 @@
 --
 -- The actions' phases are the same: 0 the step, 4 the swings' set-up, 0xC the step back, 0x10 the recovery.
 
-local played = require("@exelib/played")
 
 local stepsword = {}
 
@@ -159,7 +158,7 @@ function stepsword.step_back(me: Object, s: State)
         then (battle.navi(me.alliance).navi :: any).animation_steps.warp_out
         elseif anim == SPIN_ANIM then SPIN_STEPS
         else SWING_STEPS
-    if not played.ended(me.sprite, steps) then
+    if me.sprite.steps < steps then
         return
     end
     if s.turned == 1 then

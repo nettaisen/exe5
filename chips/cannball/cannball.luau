@@ -11,9 +11,9 @@ local trajectory = require("../../lib/trajectory")
 local cannball = {}
 
 -- 0x080CB5EC: the bomb's sprite.
-local SPRITE = require("../../sprites/bomb")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("bomb")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local puff_sprite = asset.sprite("puff")
 
 -- What the navi holds throwing one (the attachment table's row 0x1A): the bomb in palette 4.
 cannball.held = attachment.look { sprite = SPRITE, palette = 4 }

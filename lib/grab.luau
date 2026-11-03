@@ -6,7 +6,7 @@
 local collision = require("../rules/collision")
 local controller = require("@exelib/grab/controller")
 local shot = require("@exelib/grab/shot")
-local grab_shot_sprite = require("../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 local shot_kind = shot.make_kind {
     id = "grab/shot",

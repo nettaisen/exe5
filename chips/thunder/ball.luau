@@ -10,8 +10,8 @@ local buster = require("../../lib/buster")
 local collision = require("../../rules/collision")
 local shoot = require("@exelib/thunder/shoot")
 local sparks = require("../../lib/sparks")
-local big_thunder_ball_sprite = require("./big_thunder_ball_sprite")
-local thunder_ball_sprite = require("../../sprites/thunder_ball")
+local big_thunder_ball_sprite = asset.sprite("big-thunder-ball")
+local thunder_ball_sprite = asset.sprite("thunder-ball")
 
 local thunder = {}
 

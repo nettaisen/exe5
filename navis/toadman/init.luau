@@ -19,8 +19,8 @@ local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local charged_chips = require("./megaman/weapons/charged_chip")
 local s_melody = require("@self/chip")["s-melody"]
-local toadman_portrait_sprite = require("@self/toadman_portrait_sprite")
-local toadman_sprite = require("@self/toadman_sprite")
+local toadman_portrait_sprite = asset.sprite("toadman-portrait")
+local toadman_sprite = asset.sprite("toadman")
 
 -- He dives (AIData +0x44's 0x20).
 local function dives(navi: Object)

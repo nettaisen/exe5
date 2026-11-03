@@ -9,11 +9,11 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/boybomb/bomb")
 local dimming_chips = require("@exelib/dimming")
-local boy_bomb_sprite = require("./boy_bomb_sprite")
-local explosion_sprite = require("../../sprites/explosion")
-local heal_sprite = require("../../sprites/heal")
-local impact_sprite = require("../../sprites/impact")
-local puff_sprite = require("../../sprites/puff")
+local boy_bomb_sprite = asset.sprite("boy-bomb")
+local explosion_sprite = asset.sprite("explosion")
+local heal_sprite = asset.sprite("heal")
+local impact_sprite = asset.sprite("impact")
+local puff_sprite = asset.sprite("puff")
 
 local bomb = {}
 

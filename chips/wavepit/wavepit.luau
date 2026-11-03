@@ -10,7 +10,6 @@
 -- palettes are their first parameters.
 
 local collision = require("../../rules/collision")
-local played = require("@exelib/played")
 local sparks = require("../../lib/sparks")
 
 local wavepit = {}
@@ -28,7 +27,7 @@ export type State = {
 
 -- Its look: sheet 0c-3a, animation 0, no shadow (0x080DAE18's 0x00000C3A); its collision (0x04050300): an attack
 -- hitting navis, hit modifier 3.
-local SPRITE = require("./pit_wave_sprite")
+local SPRITE = asset.sprite("pit-wave")
 local SOUND = asset.sound("pit-wave")
 local HIT_MOD = 3
 local SOLID = 0x10
@@ -69,7 +68,7 @@ end
 -- 0x080DAEEC: at its animation's end, gone. (The original tests its frame's flags 0x81, the end's and 0x01; the
 -- content's frames never carried 0x01.)
 local function fade(me: Object)
-    if played.ended(me.sprite, FADE_STEPS) then
+    if me.sprite.steps >= FADE_STEPS then
         me.collision:set_region(nil)
         me:set_lifecycle("destroy")
     end

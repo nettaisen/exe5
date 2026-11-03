@@ -9,7 +9,7 @@ local collision = require("../../../../rules/collision")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local sparks = require("../../../../lib/sparks")
-local search_scope_sprite = require("../../../searchman/search_scope_sprite")
+local search_scope_sprite = asset.sprite("search-scope")
 
 local charge = {}
 

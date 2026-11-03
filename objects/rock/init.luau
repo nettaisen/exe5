@@ -19,10 +19,10 @@ local sparks = require("../lib/sparks")
 
 local rock = {}
 
-local SPRITE = require("@self/rock_sprite")
-local SMALL_PUFF = require("../sprites/small_puff")
-local puff_sprite = require("../sprites/puff")
-local rock_debris_sprite = require("@self/rock_debris_sprite")
+local SPRITE = asset.sprite("rock")
+local SMALL_PUFF = asset.sprite("small-puff")
+local puff_sprite = asset.sprite("puff")
+local rock_debris_sprite = asset.sprite("rock-debris")
 -- Effects 1, 2 and 0x14 (EXE5's table, 0x080DFC94, as EXE6's rows): a splash, dust, a puff.
 local SPLASH = new.effect { sprite = SMALL_PUFF, anim = 0, palette = 0, steps = 16 }
 local DUST = new.effect { sprite = SMALL_PUFF, anim = 1, palette = 0, steps = 16 }

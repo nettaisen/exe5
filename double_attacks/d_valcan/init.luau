@@ -19,8 +19,8 @@ local double_attack = require("../lib/double_attack")
 local megaman = require("../navis/megaman").megaman
 local napalmman = require("../navis/napalmman").napalmman
 local regions = require("@exelib/regions")
-local vulcan_hit_sprite = require("../sprites/vulcan_hit")
-local vulcan_sprite = require("../chips/vulcan/vulcan_sprite")
+local vulcan_hit_sprite = asset.sprite("vulcan-hit")
+local vulcan_sprite = asset.sprite("vulcan")
 
 type State = DoubleAttackNavi
 

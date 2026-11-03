@@ -24,9 +24,9 @@ export type State = {
 
 local colonel = {}
 
-local SPRITE = require("../../navis/colonel/colonel_sprite")
-local screen_divide_sprite = require("../../navis/colonel/screen_divide_sprite")
-local sword_sprite = require("../../sprites/sword")
+local SPRITE = asset.sprite("colonel")
+local screen_divide_sprite = asset.sprite("screen-divide")
+local sword_sprite = asset.sprite("sword")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SWING = asset.sound("spin")
 -- His sword (the attachment row 3), its animation 7, animating while dimmed.

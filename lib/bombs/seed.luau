@@ -13,9 +13,9 @@ local common = require("@exelib/bombs/seed")
 
 local seed = {}
 
-local SPRITE = require("../../sprites/bomb")
-local puff_sprite = require("../../sprites/puff")
-local small_puff_sprite = require("../../sprites/small_puff")
+local SPRITE = asset.sprite("bomb")
+local puff_sprite = asset.sprite("puff")
+local small_puff_sprite = asset.sprite("small-puff")
 
 seed.kind = common.make_kind("seed", {
     sprite = SPRITE,

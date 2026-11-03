@@ -26,8 +26,8 @@ export type State = {
 
 local shadoman = {}
 
-local SPRITE = require("../../navis/shadowman/shadowman_sprite")
-local small_puff_sprite = require("../../sprites/small_puff")
+local SPRITE = asset.sprite("shadowman")
+local small_puff_sprite = asset.sprite("small-puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_THROW = asset.sound("boomerang")

@@ -31,7 +31,7 @@ export type Spec = {
 }
 
 -- MegaMan's base sprite (00-00, 0x0801BE2A with 0x01000000: animation 0, with a ground shadow).
-local SPRITE = require("../../navis/megaman/megaman_sprite")
+local SPRITE = asset.sprite("megaman")
 -- His dark palette.
 local PALETTE = 1
 

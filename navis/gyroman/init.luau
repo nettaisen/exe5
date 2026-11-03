@@ -17,9 +17,9 @@ local airforce = require("@self/chip").airforce
 local buster = require("@self/buster")
 local charge = require("@self/charge")
 local hover = require("@self/hover")
-local gyro_propeller_sprite = require("@self/gyro_propeller_sprite")
-local gyroman_portrait_sprite = require("@self/gyroman_portrait_sprite")
-local gyroman_sprite = require("@self/gyroman_sprite")
+local gyro_propeller_sprite = asset.sprite("gyro-propeller")
+local gyroman_portrait_sprite = asset.sprite("gyroman-portrait")
+local gyroman_sprite = asset.sprite("gyroman")
 
 -- GyroMan's propeller (the body overlays' row 0, 0x0800EE4E): behind him in his animations 0 to 5, 7, 16 and 17.
 local PROPELLER: BodyPart = {

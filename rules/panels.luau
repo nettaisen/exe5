@@ -19,7 +19,7 @@
 
 local panel_types = require("@exelib/panel_types")
 local sparks = require("../lib/sparks")
-local splash_sprite = require("./splash_sprite")
+local splash_sprite = asset.sprite("splash")
 
 -- The steps a magnet slide tries: forward, back, up, down.
 local F, B, U, D = { dx = 1, dy = 0 }, { dx = -1, dy = 0 }, { dx = 0, dy = -1 }, { dx = 0, dy = 1 }

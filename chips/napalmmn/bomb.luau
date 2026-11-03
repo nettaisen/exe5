@@ -32,8 +32,8 @@ export type State = {
 
 local bomb = {}
 
-local SPRITE = require("./napalm_bomb_sprite")
-local napalm_fire_sprite = require("./napalm_fire_sprite")
+local SPRITE = asset.sprite("napalm-bomb")
+local napalm_fire_sprite = asset.sprite("napalm-fire")
 local SOUND_LOB = asset.sound("cannon")
 local SOUND_LAND = asset.sound("target-move")
 -- The fire on a panel (the effect table's row 0x4B: sprite 10-19).

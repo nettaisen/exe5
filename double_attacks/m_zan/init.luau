@@ -17,10 +17,10 @@ local magnetman = require("../navis/magnetman").magnetman
 local protoman = require("../navis/protoman").protoman
 local regions = require("@exelib/regions")
 local status = require("../rules/status")
-local immobilized_sprite = require("../sprites/immobilized")
-local magnet_arm_sprite = require("../navis/magnetman/magnet_arm_sprite")
-local sword_slash_sprite = require("../sprites/sword_slash")
-local sword_sprite = require("../sprites/sword")
+local immobilized_sprite = asset.sprite("immobilized")
+local magnet_arm_sprite = asset.sprite("magnet-arm")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 -- The navis' own beside the shared (`DoubleAttackNavi`): ProtoMan's search starting at the top of its column (+0x70;
 -- after a slash it goes on below the last enemy).

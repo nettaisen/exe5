@@ -5,7 +5,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/holydrem/shot")
 local sparks = require("../../lib/sparks")
-local holy_dream_shot_sprite = require("./holy_dream_shot_sprite")
+local holy_dream_shot_sprite = asset.sprite("holy-dream-shot")
 
 return common.make {
     id = "holydrem/shot",

@@ -7,8 +7,8 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/magnum/gunner")
 local sparks = require("../../lib/sparks")
 local stand_in = require("@exelib/dimming/stand_in")
-local explosion_sprite = require("../../sprites/explosion")
-local sight_sprite = require("../../sprites/sight")
+local explosion_sprite = asset.sprite("explosion")
+local sight_sprite = asset.sprite("sight")
 
 return common.make {
     id = "magnum/gunner",

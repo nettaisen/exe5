@@ -7,8 +7,8 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/blakwing")
 local sparks = require("../../lib/sparks")
-local black_wing_sprite = require("./black_wing_sprite")
-local puff_sprite = require("../../sprites/puff")
+local black_wing_sprite = asset.sprite("black-wing")
+local puff_sprite = asset.sprite("puff")
 
 local blakwing = {}
 

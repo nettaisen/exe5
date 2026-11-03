@@ -7,10 +7,10 @@
 
 local collision = require("../../rules/collision")
 local marker = require("../../lib/navi_chips/marker")
-local dice_sprite = require("./dice_sprite")
-local explosion_sprite = require("../../sprites/explosion")
-local puff_sprite = require("../../sprites/puff")
-local small_puff_sprite = require("../../sprites/small_puff")
+local dice_sprite = asset.sprite("dice")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
+local small_puff_sprite = asset.sprite("small-puff")
 
 return require("@exelib/numbrman/dice").make {
     id = "numbrman/dice",

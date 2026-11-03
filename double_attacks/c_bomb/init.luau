@@ -16,7 +16,7 @@ local meddy = require("../navis/meddy").meddy
 local napalm_bomb = require("../chips/napalmmn/bomb")
 local napalmman = require("../navis/napalmman").napalmman
 local panels = require("@exelib/panels")
-local target_mark_sprite = require("@self/target_mark_sprite")
+local target_mark_sprite = asset.sprite("target-mark")
 
 -- What each navi keeps besides the shared fields: Meddy's capsule (+0x74), NapalmMan's bomb (+0x78).
 type State = DoubleAttackNavi & {

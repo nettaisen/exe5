@@ -17,7 +17,7 @@ local bullets = require("@exelib/bullet")
 local lib = require("../../lib/buster")
 local navi_level = require("../../lib/navi_level")
 local regions = require("@exelib/regions")
-local vulcan_hit_sprite = require("../../sprites/vulcan_hit")
+local vulcan_hit_sprite = asset.sprite("vulcan-hit")
 
 local buster = {}
 

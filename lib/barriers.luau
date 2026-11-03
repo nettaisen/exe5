@@ -10,9 +10,9 @@
 
 local common_controller = require("@exelib/barriers/controller")
 local common_visual = require("@exelib/barriers/visual")
-local aura_sprite = require("../sprites/aura")
-local barrier_sprite = require("../sprites/barrier")
-local bubble_sprite = require("../sprites/bubble")
+local aura_sprite = asset.sprite("aura")
+local barrier_sprite = asset.sprite("barrier")
+local bubble_sprite = asset.sprite("bubble")
 
 local barriers = {}
 

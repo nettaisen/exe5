@@ -15,7 +15,7 @@ local collision = require("../../rules/collision")
 local drill = require("@exelib/drilarm/drill")
 local sparks = require("../../lib/sparks")
 local operation_battle = require("../../lib/operation_battle")
-local drill_arm_sprite = require("./drill_arm_sprite")
+local drill_arm_sprite = asset.sprite("drill-arm")
 
 local exe5_drill = {}
 

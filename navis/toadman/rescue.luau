@@ -25,7 +25,7 @@ local overlays = require("@exelib/overlays")
 local party = require("../../rules/party")
 local regions = require("@exelib/regions")
 local toadman = require("../toadman").toadman
-local toad_note_sprite = require("./toad_note_sprite")
+local toad_note_sprite = asset.sprite("toad-note")
 local navi_status = require("@exelib/navi_status")
 local stop_moving = require("../../lib/stop_moving")
 

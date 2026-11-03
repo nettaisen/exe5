@@ -7,7 +7,7 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/metrknuk/fist")
 local effects = require("../../lib/effects")
 local sparks = require("../../lib/sparks")
-local justice_one_sprite = require("../justcone/justice_one_sprite")
+local justice_one_sprite = asset.sprite("justice-one")
 
 return common.make {
     id = "metrknuk/fist",

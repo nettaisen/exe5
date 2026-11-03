@@ -18,9 +18,9 @@
 local buster = require("@self/buster")
 local charged_chips = require("./megaman/weapons/charged_chip")
 local napalm = require("@self/chip").napalm
-local napalm_cannon_sprite = require("@self/napalm_cannon_sprite")
-local napalmman_portrait_sprite = require("@self/napalmman_portrait_sprite")
-local napalmman_sprite = require("@self/napalmman_sprite")
+local napalm_cannon_sprite = asset.sprite("napalm-cannon")
+local napalmman_portrait_sprite = asset.sprite("napalmman-portrait")
+local napalmman_sprite = asset.sprite("napalmman")
 
 -- NapalmMan's cannon (the body overlays' row 4, 0x0800EE8A): behind him in his animations 20 to 22.
 local CANNON: BodyPart = {

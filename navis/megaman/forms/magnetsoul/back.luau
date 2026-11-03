@@ -9,7 +9,7 @@ local collision = require("../../../../rules/collision")
 local glow = require("../../weapons/glow")
 local immobilizer = require("@exelib/instant/immobilizer")
 local status = require("../../../../rules/status")
-local immobilized_sprite = require("../../../../sprites/immobilized")
+local immobilized_sprite = asset.sprite("immobilized")
 
 local back = {}
 
@@ -25,7 +25,7 @@ back.immobilizer = immobilizer.make_kind("immobilizer", {
 })
 
 -- The glow (effect 0x26's parameters 0x141B: 14-1B, animation 0, no shadow).
-local GLOW = require("./magnetsoul_glow_sprite")
+local GLOW = asset.sprite("magnetsoul-glow")
 -- MagnetSoul, by its form's id.
 local MAGNET_SOUL = "magnetsoul"
 -- The wait before the next B+Back (the attack's lockout).

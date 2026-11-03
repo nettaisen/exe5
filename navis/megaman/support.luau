@@ -19,10 +19,10 @@ local projectile = require("../../objects/projectile")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local supports = require("../../rules/party/supports")
-local bomb_sprite = require("../../sprites/bomb")
-local cannon_sprite = require("../../chips/cannon/cannon_sprite")
-local sword_slash_sprite = require("../../sprites/sword_slash")
-local sword_sprite = require("../../sprites/sword")
+local bomb_sprite = asset.sprite("bomb")
+local cannon_sprite = asset.sprite("cannon")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 -- His timer (0x020041E4: RNG2 bits 6–9 into 0x020CC2E8's offsets of 0x020CC2E0's ticks, weights 2/6/6/2).
 local TIMER: { number } = { 130, 130, 170, 170, 170, 170, 170, 170, 210, 210, 210, 210, 210, 210, 250, 250 }

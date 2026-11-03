@@ -19,8 +19,8 @@ type State = {
 }
 type Holder = { capsule: Object? }
 
-local SPRITE = require("./chemical_capsule_sprite")
-local explosion_sprite = require("../../sprites/explosion")
+local SPRITE = asset.sprite("chemical-capsule")
+local explosion_sprite = asset.sprite("explosion")
 local SOUND_PLACE = asset.sound("place")
 local SOUND_BURST = asset.sound("hit-bomb-1")
 -- Its coming (14 ticks), its fuse once touched (30 ticks).

@@ -15,7 +15,7 @@ export type State = {
     step: number,
 }
 
-local SPRITE = require("./phoenix_flame_sprite")
+local SPRITE = asset.sprite("phoenix-flame")
 local ANIM = 2
 -- Its height before it leaps (the spawn's Z, which its init keeps).
 local Z = 0x4_0000

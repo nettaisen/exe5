@@ -6,7 +6,7 @@
 
 local attachment = require("../../../../objects/attachment")
 local tornado = require("./tornado")
-local gyrosoul_arm_sprite = require("./gyrosoul_arm_sprite")
+local gyrosoul_arm_sprite = asset.sprite("gyrosoul-arm")
 
 local charge = {}
 

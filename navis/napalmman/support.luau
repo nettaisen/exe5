@@ -12,8 +12,8 @@ local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
 local regions = require("@exelib/regions")
 local supports = require("../../rules/party/supports")
-local muzzle_flash_sprite = require("../../sprites/muzzle_flash")
-local vulcan_hit_sprite = require("../../sprites/vulcan_hit")
+local muzzle_flash_sprite = asset.sprite("muzzle-flash")
+local vulcan_hit_sprite = asset.sprite("vulcan-hit")
 
 -- His damage a shot by the side's level (0x020CC204), its hit flags 0x82.
 local DAMAGE: { number } = { 4, 4, 4, 4, 6, 7, 10, 15, 20, 20 }

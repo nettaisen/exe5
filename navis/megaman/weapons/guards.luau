@@ -24,7 +24,7 @@ local guards = {}
 local TICKS = 0x14
 local LOCKOUT = 40
 
-local REFLECTOR = require("../../../sprites/reflector_shield")
+local REFLECTOR = asset.sprite("reflector-shield")
 -- What the Shield program puts into the gauge.
 local SHIELD_GAUGE = 0x580
 

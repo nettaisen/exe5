@@ -5,7 +5,7 @@
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local vulcan = require("@self/vulcan")
-local vulcan_hit_sprite = require("../sprites/vulcan_hit")
+local vulcan_hit_sprite = asset.sprite("vulcan-hit")
 
 -- The Vulcans' bullet (row 0xC: EXE6's): the panel found and the one behind it, staggering, its hit shown once at the
 -- bullet.

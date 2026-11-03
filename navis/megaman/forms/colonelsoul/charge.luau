@@ -10,7 +10,7 @@ local attachment = require("../../../../objects/attachment")
 local collision = require("../../../../rules/collision")
 local regions = require("@exelib/regions")
 local swords = require("../../../../lib/swords")
-local screen_divide_sprite = require("../../../colonel/screen_divide_sprite")
+local screen_divide_sprite = asset.sprite("screen-divide")
 
 local charge = {}
 

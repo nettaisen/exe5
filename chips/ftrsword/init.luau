@@ -6,7 +6,7 @@
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
-local sword_slash_sprite = require("../sprites/sword_slash")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 -- Its slash over three panels (effect 0x2E).
 local LINE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 3, palette = 0, steps = 15 }

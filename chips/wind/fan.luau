@@ -10,9 +10,9 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/wind/fan")
 local exe5 = require("../../rules/api")
 local gust = require("../../navis/megaman/gust")
-local explosion_sprite = require("../../sprites/explosion")
-local fan_sprite = require("./fan_sprite")
-local puff_sprite = require("../../sprites/puff")
+local explosion_sprite = asset.sprite("explosion")
+local fan_sprite = asset.sprite("fan")
+local puff_sprite = asset.sprite("puff")
 
 local fan = {}
 

@@ -8,8 +8,8 @@
 
 local ripple = {}
 
-local SPRITE = require("./ground_drill_effect_sprite")
-local dive_splash_sprite = require("../../sprites/dive_splash")
+local SPRITE = asset.sprite("ground-drill-effect")
+local dive_splash_sprite = asset.sprite("dive-splash")
 local visibility = require("@exelib/visibility")
 local SPLASH = new.effect { sprite = dive_splash_sprite, anim = 0, palette = 0, steps = 25 }
 

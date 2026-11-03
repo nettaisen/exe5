@@ -8,7 +8,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/flmhook/fire")
 local trajectory = require("../../lib/trajectory")
-local flame_hook_fire_sprite = require("./flame_hook_fire_sprite")
+local flame_hook_fire_sprite = asset.sprite("flame-hook-fire")
 
 -- Its arc's center behind it, by swing (0x080DFA74), 16.16.
 local BACK: { [number]: number } = { [0] = 0x78_0000, 0x50_0000 }

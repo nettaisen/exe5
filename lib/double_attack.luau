@@ -27,8 +27,8 @@ local megaman = require("../navis/megaman").megaman
 local base_form = require("../navis/megaman/forms/base").base
 local overlays = require("@exelib/overlays")
 local panels = require("@exelib/panels")
-local buster_arm_sprite = require("../sprites/buster_arm")
-local charge_glow_sprite = require("../sprites/charge_glow")
+local buster_arm_sprite = asset.sprite("buster-arm")
+local charge_glow_sprite = asset.sprite("charge-glow")
 
 local double_attack = {}
 

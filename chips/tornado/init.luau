@@ -5,7 +5,7 @@
 local attachment = require("../objects/attachment")
 local status = require("../rules/status")
 local tornado = require("@self/tornado")
-local hand_fan_sprite = require("@self/hand_fan_sprite")
+local hand_fan_sprite = asset.sprite("hand-fan")
 
 -- Tornado's fan (the attachment table's row 0xC) and Static's charged one (row 0x17).
 local FAN = attachment.look { sprite = hand_fan_sprite, palette = 0, attach_point = 9 }

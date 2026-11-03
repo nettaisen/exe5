@@ -8,7 +8,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/grabbnsh/controller")
 local hand = require("@exelib/grabbnsh/hand")
-local grab_shot_sprite = require("../../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 local hand_kind = hand.make_kind {
     id = "grabbnsh/hand",

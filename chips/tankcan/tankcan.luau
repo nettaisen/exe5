@@ -8,10 +8,10 @@ local attachment = require("../../objects/attachment")
 local action = require("@exelib/tankcan/action")
 local collision = require("../../rules/collision")
 local shell = require("@exelib/tankcan/shell")
-local explosion_sprite = require("../../sprites/explosion")
-local shell_burst_sprite = require("../../sprites/shell_burst")
-local tank_blast_sprite = require("./tank_blast_sprite")
-local tank_cannon_sprite = require("./tank_cannon_sprite")
+local explosion_sprite = asset.sprite("explosion")
+local shell_burst_sprite = asset.sprite("shell-burst")
+local tank_blast_sprite = asset.sprite("tank-blast")
+local tank_cannon_sprite = asset.sprite("tank-cannon")
 
 local tankcan = {}
 

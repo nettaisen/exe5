@@ -22,7 +22,7 @@ local auto_battle = require("../auto_battle")
 local overlays = require("@exelib/overlays")
 local shade = require("../souls/shade")
 local operation_battle = require("../../lib/operation_battle")
-local deletion_sprite = require("../../sprites/deletion")
+local deletion_sprite = asset.sprite("deletion")
 local navi_status = require("@exelib/navi_status")
 local stop_moving = require("../../lib/stop_moving")
 

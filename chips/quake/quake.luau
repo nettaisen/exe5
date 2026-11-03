@@ -10,10 +10,10 @@
 local collision = require("../../rules/collision")
 local regions = require("@exelib/regions")
 local trajectory = require("../../lib/trajectory")
-local bomb_sprite = require("../../sprites/bomb")
-local explosion_sprite = require("../../sprites/explosion")
-local puff_sprite = require("../../sprites/puff")
-local quake_drop_sprite = require("./quake_drop_sprite")
+local bomb_sprite = asset.sprite("bomb")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
+local quake_drop_sprite = asset.sprite("quake-drop")
 
 local quake = {}
 

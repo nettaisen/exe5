@@ -15,9 +15,9 @@ local megaman = require("../navis/megaman").megaman
 local panels = require("@exelib/panels")
 local protoman = require("../navis/protoman").protoman
 local regions = require("@exelib/regions")
-local pink_flash_sprite = require("../sprites/pink_flash")
-local sword_slash_sprite = require("../sprites/sword_slash")
-local sword_sprite = require("../sprites/sword")
+local pink_flash_sprite = asset.sprite("pink-flash")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 type State = DoubleAttackNavi
 

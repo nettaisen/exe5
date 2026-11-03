@@ -8,7 +8,7 @@
 
 local ball = require("../../../../chips/knightmn/ball")
 local status = require("../../../../rules/status")
-local knightsoul_ball_sprite = require("./knightsoul_ball_sprite")
+local knightsoul_ball_sprite = asset.sprite("knightsoul-ball")
 
 local charge = {}
 

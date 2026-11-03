@@ -13,7 +13,7 @@ export type State = {
     stays: boolean,
 }
 
-local SPRITE = require("./gridman_sprite")
+local SPRITE = asset.sprite("gridman")
 
 -- 0x080E6D60: on its panel's center, 32 pixels up the field and 32 down, drawn with its sprite.
 local function init(me: Object)

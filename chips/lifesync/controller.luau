@@ -13,7 +13,7 @@ local marker = require("@exelib/lifesync/marker")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
 local operation_battle = require("../../lib/operation_battle")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 local lifesync = {}
 

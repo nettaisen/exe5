@@ -7,6 +7,7 @@
 -- modifier and no damage until it shows, any panel.
 
 local collision = require("../../rules/collision")
+local played = require("@exelib/played")
 local sparks = require("../../lib/sparks")
 local regions = require("@exelib/regions")
 
@@ -15,6 +16,8 @@ local strike = {}
 local SPRITE = require("./bass_sprite")
 local SOUND = asset.sound("col-army-2")
 local WARNING = 0xA
+-- The burst (Bass's sprite's animation 32) lasts 12 of its steps.
+local BURST_STEPS = 12
 
 -- 0x080D4238: on its panel, its hit set up but nowhere yet.
 local function init(me: Object)
@@ -64,7 +67,7 @@ local function burst(me: Object)
         me.phase = 1
         me.collision:set_region(nil)
     end
-    if bit32.band(me.sprite.frame_flags, 0x80) ~= 0 then
+    if played.ended(me.sprite, BURST_STEPS) then
         me.collision:set_region(nil)
         me:set_lifecycle("destroy")
     end

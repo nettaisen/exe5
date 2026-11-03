@@ -435,6 +435,8 @@ language = "ja"
 "undernet" = { name = "ウラインターネット" }
 "visionburst" = { name = "パストビジョン" }
 "yais-hp" = { name = "やいとのHP" }
+"hong-kong" = { name = "光復香港、時代革命" }
+"taiwan" = { name = "今日の香港、明日の台湾" }
 
 [navicust_programs]
 "airshoes" = { name = "エアシューズ", description = "パネルのないマスでも\nいどうできる!" }
@@ -834,6 +836,8 @@ language = "ja"
 "virus-battle" = "ウイルスバトル"
 "boss-battle" = "ボスバトル"
 "final-battle" = "VS ネビュラグレイ"
+"glory-to-hong-kong" = "香港に栄光あれ"
+"national-anthem-of-the-roc" = "中華民国国歌"
 
 # The stats the rules' overview gives beyond the eight every game's have (en.toml's `[stats]` says what they are). Ours.
 [stats]

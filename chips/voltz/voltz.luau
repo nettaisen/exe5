@@ -53,7 +53,7 @@ local HP = 1
 local DROP_HEIGHT, DROP_SPEED, LOW = 0xA0_0000, 0x4_0000, 16
 local DROP_SOUND, SHOCK_SOUND = asset.sound("voltz-drop"), asset.sound("erase-man-2")
 -- The effects (EXE5's table, 0x080DFC94): row 0x14 (14-0D, animation 2) when evicted.
-local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 -- Landed, shocking, blinking out.
 local LANDED_TICKS, SHOCK_TICKS, BLINK_TICKS = 10, 30, 30
 -- The marker (the operation battle's): 30 ticks, style 9 as it lands.

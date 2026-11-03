@@ -31,7 +31,7 @@ local TWO_WAY = { [0x23] = true, [0x31] = true, [0x33] = true }
 -- (the effect table's row 0x45); 31 ticks.
 local ANIM_APPEAR, ANIM_SWING = 0x10, 0x11
 local SWING_SOUND = asset.sound("tomahawk-man")
-local EARTH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0 }
+local EARTH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 15 }
 local HIT_AT, SWING_ENDS, SWING_Z = 0xA, 0x1E, 0x10_0000
 
 local support = {}

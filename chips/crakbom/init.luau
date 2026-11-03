@@ -9,7 +9,7 @@ local crakbom = require("@self/crakbom")
 
 -- Its bomb (kind 1): the burst in palette 1, a crack's sound, hit modifier 3, cracking the column.
 local BOMB = crakbom.variant {
-    burst = new.effect { sprite = crakbom.burst, anim = 0, palette = 1 },
+    burst = new.effect { sprite = crakbom.burst, anim = 0, palette = 1, steps = 18 },
     sound = asset.sound("panel-crack"),
     hit_mod = 3,
     bug = 0,

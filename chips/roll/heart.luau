@@ -7,7 +7,7 @@ local heal_sprite = require("../../sprites/heal")
 local heart_sprite = require("./heart_sprite")
 local sparkle_sprite = require("./sparkle_sprite")
 
-local SPARKLE = new.effect { sprite = sparkle_sprite, anim = 0, palette = 0 }
+local SPARKLE = new.effect { sprite = sparkle_sprite, anim = 0, palette = 0, steps = 16 }
 
 local heart = common.make {
     id = "roll/heart",
@@ -15,7 +15,7 @@ local heart = common.make {
     anim = 0,
     heal_sound = asset.sound("heal"),
     sparkle = SPARKLE,
-    healed = new.effect { sprite = heal_sprite, anim = 0, palette = 0 },
+    healed = new.effect { sprite = heal_sprite, anim = 0, palette = 0, steps = 14 },
 }
 
 return { kind = heart.kind, spawn = heart.spawn, sparkle = SPARKLE }

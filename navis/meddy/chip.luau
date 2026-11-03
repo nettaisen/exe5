@@ -15,7 +15,7 @@ local CAPSULE = capsule.variant {
     palette = 4,
     hit_mod = 0,
     status = statuses.paralyze_150,
-    explosion = new.effect { sprite = capsule.explosion, anim = 0, palette = 3 },
+    explosion = new.effect { sprite = capsule.explosion, anim = 0, palette = 3, steps = 22 },
 }
 
 local chip: Chip = {

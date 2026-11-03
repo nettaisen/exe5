@@ -18,7 +18,7 @@ local made = common.make({
     water_id = "geyser/water",
     bomb = bomb_sprite,
     geyser = geyser_sprite,
-    splash = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0 },
+    splash = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0, steps = 31 },
     splash_sound = asset.sound("spout-ball"),
     erupt = asset.sound("geyser"),
     attack = collision.attack,

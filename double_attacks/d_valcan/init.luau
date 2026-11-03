@@ -38,14 +38,14 @@ local HEIGHTS = { 0x08_0000, 0x10_0000, 0x18_0000, 0x20_0000 }
 local MEGAMAN_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 },
     single = true,
     hits_while_dimmed = true,
 }
 local NAPALMMAN_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0, steps = 10 },
     single = true,
     hits_while_dimmed = true,
 }

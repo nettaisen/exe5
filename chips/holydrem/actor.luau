@@ -29,7 +29,7 @@ export type State = {
 }
 
 -- The flash on a holy panel the scan takes (effect 41: 0c-13's animation 1).
-local FLASH = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 }
+local FLASH = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, steps = 16 }
 -- The pose (the user's sprite's animation 14); the shots' attach point.
 local POSE, MUZZLE = 14, 29
 -- Ticks to the first shot, between the panels, and after the last.

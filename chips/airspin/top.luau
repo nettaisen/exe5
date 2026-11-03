@@ -33,7 +33,7 @@ return common.make {
     body = collision.own_body,
     hit_by = collision.hit_by_other_side,
     -- The spin's gust (the effect table's row 0x4F), and its palette offset.
-    gust = new.effect { sprite = moon_blade_sprite, anim = 0, palette = 0 },
+    gust = new.effect { sprite = moon_blade_sprite, anim = 0, palette = 0, steps = 10 },
     gust_palette = 2,
     gust_side = false,
     gust_self = collision.attack,

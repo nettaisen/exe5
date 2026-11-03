@@ -8,7 +8,7 @@ local swords = require("../lib/swords")
 local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- Its slash over a column (effect 0x19: WideSwrd's in another palette).
-local WIDE_BLADE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 5 }
+local WIDE_BLADE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 5, steps = 15 }
 
 local chip: Chip = {
     codes = { "A", "L", "V" },

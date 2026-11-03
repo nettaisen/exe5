@@ -16,10 +16,10 @@ return require("@exelib/numbrman/dice").make {
     id = "numbrman/dice",
     sprite = dice_sprite,
     -- The effect table's rows: 0 (the explosion), 2 (the puff off the field), 0x14 (the battle's end), 0x24 (9's).
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
-    puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 },
-    gone = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
-    nine = { explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 1 } },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 22 },
+    puff = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 },
+    gone = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
+    nine = { explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 1, steps = 22 } },
     blow_up = asset.sound("hit-bomb-1"),
     bounce = asset.sound("bug-bomb-land"),
     burst = asset.sound("target-move"),
@@ -31,5 +31,5 @@ return require("@exelib/numbrman/dice").make {
     marker = marker.spawn,
     keeps_top_bit = true,
     -- The puff a quiet die goes in (row 0x12: EXE5 DS's DiceBons' dice).
-    quiet_puff = new.effect { sprite = puff_sprite, anim = 0, palette = 0 },
+    quiet_puff = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 },
 }

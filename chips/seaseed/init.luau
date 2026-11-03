@@ -13,7 +13,7 @@ local SEED = seed.variant {
     element = 0,
     palette = 1,
     panel = "sea",
-    effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 },
+    effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, steps = 16 },
     sound = asset.sound("sand-worm"),
 }
 

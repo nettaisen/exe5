@@ -54,7 +54,7 @@ local SHOT = projectile.variant { id = "shot/megaman-support", collision = { is 
 -- (region 2, a slash at navis, on the ground) and the long slash 16 pixels up (effect 0x17); 22 ticks; then 6.
 local SWORD_LOOK = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWING_SOUND = asset.sound("sword-swing")
-local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
+local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0, steps = 15 }
 -- His bomb: animation 6, the bomb held (row 4), the throw's sound; on its 10th tick MiniBomb's bomb (the DS's bomb row 0)
 -- from 4 pixels before him, 48 up; 21 ticks; then 6.
 local BOMB_LOOK = attachment.look { sprite = bomb_sprite, palette = 0 }

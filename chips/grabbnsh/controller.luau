@@ -22,6 +22,6 @@ local hand_kind = hand.make_kind {
 return common.make {
     id = "grabbnsh/controller",
     hand = hand_kind,
-    returned = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 },
+    returned = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, steps = 16 },
     return_sound = asset.sound("err-select-91"),
 }

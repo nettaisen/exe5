@@ -45,7 +45,7 @@ local pink_flash_sprite = require("../sprites/pink_flash")
 local HIT_MOD = 3
 local DROP_Z, DROP_X, DROP_Y = 0xBE0000, 0x12, 0xA
 local FALL_ACCEL, KICK_Z = 0x2000, 0x1A0000
-local KICK = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2 }
+local KICK = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2, steps = 10 }
 local SOUND_KICK = asset.sound("damage")
 local KICK_TICKS, KICK_PANEL_AT = 4, 2
 local FLY_SPEED, FLY_RANGE = 0x80000, 0x96

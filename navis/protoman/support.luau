@@ -28,7 +28,7 @@ local ANIM_SWING = 5
 local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWORD_ANIM = 1
 local SWING_SOUND = asset.sound("sword-swing")
-local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 local HIT_AT, SWING_ENDS, SWING_Z = 0xA, 0x32, 0x10_0000
 
 -- 0x021FE66D: the swing.

@@ -21,7 +21,7 @@ local mine = land_mine.make_kind {
     },
     sprite = land_mine_sprite,
     hop_sound = asset.sound("hop"),
-    blast = new.effect { sprite = blast_sprite, anim = 0, palette = 0 },
+    blast = new.effect { sprite = blast_sprite, anim = 0, palette = 0, steps = 18 },
     blast_sound = asset.sound("hit-bomb-1"),
     self_type = collision.mine,
     target = collision.hits_both_sides,

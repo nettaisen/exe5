@@ -39,7 +39,7 @@ local FLASH = attachment.look { sprite = muzzle_flash_sprite, palette = 0, attac
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 0,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0, steps = 10 },
     single = true,
 }
 local FIRE, WAIT = 0, 4

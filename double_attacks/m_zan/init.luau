@@ -36,7 +36,7 @@ local SOUND_SWING = asset.sound("sword-swing")
 -- effect table's row 0x33), 16 pixels up.
 local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWORD_ANIM = 1
-local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 local SWING_Z = 0x100000
 local HIT_MOD = 1
 -- What ProtoMan looks for (0x02138FB8, by his side): an enemy body; and the panel before it: solid, with no object or

@@ -13,7 +13,7 @@ local SEED = seed.variant {
     element = 0,
     palette = 3,
     panel = "lava",
-    effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0xC },
+    effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0xC, steps = 16 },
     sound = asset.sound("panel-volcano"),
 }
 

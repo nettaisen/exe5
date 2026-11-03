@@ -8,7 +8,7 @@ local swords = require("../lib/swords")
 local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- Its slash over two panels (effect 0x1A: LongSwrd's in another palette).
-local LONG_BLADE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 5 }
+local LONG_BLADE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 5, steps = 15 }
 
 local chip: Chip = {
     codes = { "E", "L", "P" },

@@ -31,8 +31,8 @@ local KICK_X, KICK_Z, KICK_TICKS = 0x5_0000, 0xC_0000, 30
 local DROP_Z, DROP_VZ, DROP_TICKS = 0x90_0000, 0x8_0000, 30
 local GRAVITY, LAND_Z = 0x1_0000, 0x8_0000
 local HIT_MOD = 3
-local LANDING = new.effect { sprite = SPRITE, anim = 0x11, palette = 0 }
-local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
+local LANDING = new.effect { sprite = SPRITE, anim = 0x11, palette = 0, steps = 14 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 local SOUND_LAND = asset.sound("football-land")
 -- The block it hits: its panel and the ones right and down (0x080D94BC).
 local BLOCK = { { 0, 0 }, { 0, 1 }, { 1, 0 }, { 1, 1 } }

@@ -12,7 +12,7 @@ local dark_costs = require("../lib/dark_costs")
 local big_slash_sprite = require("../sprites/big_slash")
 
 -- Its dark big slash (effect 0x1C).
-local DARK_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 2 }
+local DARK_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 2, steps = 15 }
 
 local chip: Chip = {
     codes = { "Z" },

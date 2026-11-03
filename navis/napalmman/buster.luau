@@ -46,7 +46,7 @@ local SOUND = asset.sound("col-army-2")
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 0,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0, steps = 10 },
     single = true,
 }
 

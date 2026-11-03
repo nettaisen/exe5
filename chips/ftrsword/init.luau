@@ -9,7 +9,7 @@ local swords = require("../lib/swords")
 local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- Its slash over three panels (effect 0x2E).
-local LINE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 3, palette = 0 }
+local LINE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 3, palette = 0, steps = 15 }
 
 local chip: Chip = {
     codes = { "E", "L", "S", "*" },

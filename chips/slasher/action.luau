@@ -23,7 +23,7 @@ local sword_slash_sprite = require("../../sprites/sword_slash")
 local navi_status = require("@exelib/navi_status")
 
 -- The slash over a column (effect 0x16).
-local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 
 local slasher = {}
 

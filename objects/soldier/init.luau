@@ -41,7 +41,7 @@ local DRAW_SOUND, SHOT_SOUND = asset.sound("sword-swing"), asset.sound("col-army
 -- (row 5), hit modifier 3 (r7); its look 16 pixels up, effect 0x17 of EXE5's table (0x080DFC94: sprite 0C-14, the
 -- swords' slash, animation 1).
 local SLASH_TICKS, SLASH_AT = 24, 18
-local SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0, steps = 15 }
 local SLASH_Z = 0x10_0000
 -- The shots: the Vulcans' bullets (row 0xC), three 10 ticks apart, at one of four heights (0x080CAA84, pixels).
 local SHOTS, SHOT_TICKS = 3, 10
@@ -50,7 +50,7 @@ local HEIGHTS = { [0] = 0x08, 0x10, 0x18, 0x20 }
 local SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 },
     single = true,
 }
 -- Before striking, each marks the panel ahead in the operation battle (0x080E9FD2: ticks, style).

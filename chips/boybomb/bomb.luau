@@ -40,15 +40,15 @@ local BOMB = common.make {
     blast = {
         is = collision.attack,
         hits = collision.hits_navis,
-        effect = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
+        effect = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 22 },
         sound = asset.sound("target-move"),
     },
-    comes = new.effect { sprite = heal_sprite, anim = 0, palette = 0 },
+    comes = new.effect { sprite = heal_sprite, anim = 0, palette = 0, steps = 14 },
     -- (0x112: 0x080CCE82 loads it as 19 + 255.)
     place_sound = asset.sound("place"),
-    broken = new.effect { sprite = impact_sprite, anim = 0, palette = 0 },
+    broken = new.effect { sprite = impact_sprite, anim = 0, palette = 0, steps = 19 },
     break_sound = asset.sound("hit-bomb-1"),
-    removed = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    removed = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
     stand_forbid = { [0] = 0x0B800000, [1] = 0x06800000 },
     push = "any_hit",
     actions = {

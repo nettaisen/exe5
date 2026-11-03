@@ -68,8 +68,8 @@ local COURSE_WAIT = 0x1E
 
 -- The glow at the hand as a navi charges (the DS's new effect rows 0x6D and 0x6E: 14-08 in its animations 0 and 2,
 -- for 40 and 20 ticks), with the buster's charge sounds.
-local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0 }
-local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0 }
+local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0, steps = 16 }
+local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0, steps = 16 }
 local CHARGING_LASTS, CHARGED_AT = 0x28, 0x14
 local SOUND_CHARGING = asset.sound("buster-charge")
 local SOUND_CHARGED = asset.sound("buster-charged")

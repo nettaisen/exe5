@@ -19,7 +19,7 @@ local explosion_sprite = require("../../sprites/explosion")
 
 local bug_bomb = {}
 
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 2 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 2, steps = 22 }
 
 -- The bugs (0x080D5148): HP drain +2, custom-screen HP drain +2, emotion swings 1.
 local BUGS = {

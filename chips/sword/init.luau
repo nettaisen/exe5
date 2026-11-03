@@ -8,7 +8,7 @@ local swords = require("../lib/swords")
 local sword_slash_sprite = require("../sprites/sword_slash")
 
 -- Its slash over the panel ahead (effect 0x18).
-local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0 }
+local SWORD_SLASH = new.effect { sprite = sword_slash_sprite, anim = 2, palette = 0, steps = 12 }
 
 local chip: Chip = {
     codes = { "C", "L", "S" },

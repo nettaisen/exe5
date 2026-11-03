@@ -42,8 +42,8 @@ guardian.statue = statue.make {
         strike = asset.sound("beast-over-burst"),
     },
     -- Effects 0x15 and 0x36 (EXE5's table, 0x080DFC94): sheet 14-0d's animation 3, and 14-14.
-    arrival = new.effect { sprite = puff_sprite, anim = 3, palette = 0 },
-    burst = new.effect { sprite = lightning_sprite, anim = 0, palette = 0 },
+    arrival = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 },
+    burst = new.effect { sprite = lightning_sprite, anim = 0, palette = 0, steps = 17 },
     is = collision.neutral_body,
     hits = collision.everything,
     strike_is = collision.thrown_piercing_break,

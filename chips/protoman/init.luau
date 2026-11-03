@@ -22,7 +22,7 @@ local LOOK = common.look {
     palette = 0,
     sword = attachment.look { sprite = sword_sprite, palette = 0 },
     sword_anim = 1,
-    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 },
     spawner_address = 0x080C1A01,
 }
 
@@ -55,7 +55,7 @@ local LOOK_PROTOMN_SP = common.look {
     palette = 0,
     sword = attachment.look { sprite = sword_sprite, palette = 0 },
     sword_anim = 1,
-    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 },
     spawner_address = 0x080C1A01,
 }
 
@@ -91,7 +91,7 @@ local LOOK_PROTOMN_DS = common.look {
     palette = 3,
     sword = attachment.look { sprite = sword_sprite, palette = 6 },
     sword_anim = 1,
-    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 },
     spawner_address = 0x080C1A01,
 }
 

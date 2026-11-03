@@ -25,7 +25,7 @@ local SLASH_AT = 20
 local SOUND = asset.sound("tomahawk-man")
 local HIT_MOD = 3
 -- Effect 0x45: the big slash (sprite 0C-15, animation 1), 16 pixels up.
-local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0 }
+local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 15 }
 local SLASH_Z = 16 * 0x1_0000
 
 -- The slash over the panel ahead and the column past it (the damage word plus the Atk+ bonus), and its effect.

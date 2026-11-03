@@ -33,7 +33,7 @@ local LAVA_BURN = panel_types.burn {
 }
 
 -- The splash of a body a sea panel holds at a move's end (effect 0x63: 0x0801715E).
-local SPLASH = new.effect { sprite = splash_sprite, anim = 0, palette = 0 }
+local SPLASH = new.effect { sprite = splash_sprite, anim = 0, palette = 0, steps = 22 }
 
 return {
     types = {

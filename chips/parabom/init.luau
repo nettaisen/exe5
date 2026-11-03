@@ -10,7 +10,7 @@ local statuses = require("../rules/status")
 
 -- Its bomb (kind 2): the burst in palette 2, the poison panel's sound, paralysis (status 0x10).
 local BOMB = crakbom.variant {
-    burst = new.effect { sprite = crakbom.burst, anim = 0, palette = 2 },
+    burst = new.effect { sprite = crakbom.burst, anim = 0, palette = 2, steps = 18 },
     sound = asset.sound("panel-poison"),
     hit_mod = 0,
     status = statuses.paralyze_90,

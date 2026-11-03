@@ -20,5 +20,5 @@ return common.make {
     is = collision.thrown_piercing_break,
     hits = collision.hits_navis,
     sparkles = sparkles,
-    sparkle = new.effect { sprite = explosion_sprite, anim = 0, palette = 1 },
+    sparkle = new.effect { sprite = explosion_sprite, anim = 0, palette = 1, steps = 22 },
 }

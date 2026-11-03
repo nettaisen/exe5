@@ -14,7 +14,7 @@ export type State = {
 }
 
 -- The scope's mark (effect 0x68: sprite 10-23), 20 pixels up.
-local MARK = new.effect { sprite = search_scope_sprite, anim = 0, palette = 0 }
+local MARK = new.effect { sprite = search_scope_sprite, anim = 0, palette = 0, steps = 18 }
 local MARK_Z = 20 * 0x1_0000
 
 -- 0x080EAC18: the other side's hidden navis marked.

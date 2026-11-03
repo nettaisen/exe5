@@ -32,14 +32,14 @@ local FIRE_AFTER = 10
 local HEAT_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 0,
-    effect = new.effect { sprite = shell_burst_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = shell_burst_sprite, anim = 0, palette = 0, steps = 27 },
     sound = asset.sound("target-move"),
 }
 -- BubSht's (row 4, its effect 0x1F and sound EXE6's): a splash over the panel found and the one behind it.
 local BUBBLE_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 0,
-    effect = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0, steps = 31 },
     sound = asset.sound("spout-ball"),
 }
 

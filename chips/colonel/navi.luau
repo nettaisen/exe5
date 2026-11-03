@@ -52,8 +52,8 @@ local SWORD_ANIM = 7
 -- His slashes by his Param2 (0x080BA49C: region, effect row 0x48 + it): rising, falling.
 local SLASH_REGIONS: { [number]: Region } = { [1] = regions.falling, [2] = regions.rising }
 local SLASHES: { [number]: Effect } = {
-    [1] = new.effect { sprite = screen_divide_sprite, anim = 1, palette = 0 },
-    [2] = new.effect { sprite = screen_divide_sprite, anim = 2, palette = 0 },
+    [1] = new.effect { sprite = screen_divide_sprite, anim = 1, palette = 0, steps = 13 },
+    [2] = new.effect { sprite = screen_divide_sprite, anim = 2, palette = 0, steps = 13 },
 }
 -- The panels his target holds (0x080BA5B0): an enemy navi's body, by side.
 local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }

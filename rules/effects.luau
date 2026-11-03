@@ -14,6 +14,8 @@
 return {
     shake = "battle_rng",
     spark_steps_at_start = false,
+    -- The mark over a navi a damaging weakness hit told about shows for 18 of its sprite's steps.
+    hit_marker_steps = { weakness = 18 },
     retype = "is_alone",
     -- Its damage words (0x080165EC): the damage the low 11 bits, doubled with 0x8000; then 0x4000 the paralysis (status
     -- byte 0x10) without a flinch and no more, else 0x2000 the confusion (0x20) and no more, else 0x1000 the blindness

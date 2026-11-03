@@ -30,7 +30,7 @@ local puff_sprite = require("../../sprites/puff")
 local ANIM = 7
 local FLIGHT_TICKS, GRAVITY = 35, -0x3000
 -- Effect 0x14: a puff of smoke.
-local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 -- The bursts' sheet (effects 0x50 to 0x53, 0x080C93E8: palettes 0 to 3).
 crakbom.burst = bomb_burst_sprite
 

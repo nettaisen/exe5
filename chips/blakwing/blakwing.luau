@@ -19,7 +19,7 @@ blakwing.hook = common.make {
     perch_id = "blakwing/perch",
     wing_id = "blakwing/wing",
     sprite = black_wing_sprite,
-    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
     sounds = { start = asset.sound("place"), flap = asset.sound("black-wing-flap") },
     is = collision.attack_480,
     hits = collision.hits_navis,

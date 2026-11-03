@@ -21,8 +21,8 @@ cannball.held = attachment.look { sprite = SPRITE, palette = 4 }
 local made = common.make({
     id = "cannball/ball",
     sprite = SPRITE,
-    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
-    impact = new.effect { sprite = hit_sparks_sprite, anim = 1, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
+    impact = new.effect { sprite = hit_sparks_sprite, anim = 1, palette = 0, steps = 10 },
     crack = asset.sound("panel-crack"),
     is = collision.thrown_break,
     hits = collision.hits_navis,

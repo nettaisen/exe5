@@ -27,9 +27,9 @@ return {
         is = swords.slashes_navis.is,
         hits = swords.slashes_navis.hits,
         effects = {
-            new.effect { sprite = SLASH_SPRITE, anim = 1, palette = 9 },
-            new.effect { sprite = SLASH_SPRITE, anim = 0, palette = 9 },
-            new.effect { sprite = SLASH_SPRITE, anim = 3, palette = 9 },
+            new.effect { sprite = SLASH_SPRITE, anim = 1, palette = 9, steps = 15 },
+            new.effect { sprite = SLASH_SPRITE, anim = 0, palette = 9, steps = 15 },
+            new.effect { sprite = SLASH_SPRITE, anim = 3, palette = 9, steps = 15 },
         },
         boom = function(owner: Object, x: number, y: number, element: number, damage: number, boom: SonicBoom): Object?
             return sonic_boom.throw(swords.sonic_boom, owner, x, y, element, damage, boom)

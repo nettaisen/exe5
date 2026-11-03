@@ -13,7 +13,7 @@ local SEED = seed.variant {
     element = 0,
     palette = 2,
     panel = "grass",
-    effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 8 },
+    effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 8, steps = 16 },
     sound = asset.sound("grass"),
 }
 

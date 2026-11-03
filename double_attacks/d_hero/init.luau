@@ -34,8 +34,8 @@ local SWORD_ANIM = 1
 -- The flashes each scatters (the effect table's row 0x3C, EXE5's, MegaMan's; row 0x16, the slash, ProtoMan's), three
 -- a volley.
 local FLASHES = {
-    [0] = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2 },
-    [1] = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
+    [0] = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2, steps = 10 },
+    [1] = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 },
 }
 local FLASHES_A_VOLLEY = 3
 -- A volley's hit (0x020A1018): the other side's area (region 0x82 for side 0, 0x81 for side 1), no spark, hitting navis

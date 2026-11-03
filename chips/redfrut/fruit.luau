@@ -43,9 +43,9 @@ local IDENTITY = new.identity {
 }
 -- The effects (EXE5's table, 0x080DFC94): row 0x15 (14-0D, animation 3) as it comes, row 0x14 (14-0D, animation 2) as
 -- it goes, row 0x0E (14-01) when broken.
-local COMES = new.effect { sprite = puff_sprite, anim = 3, palette = 0 }
-local GOES = new.effect { sprite = puff_sprite, anim = 2, palette = 0 }
-local BROKEN = new.effect { sprite = impact_sprite, anim = 0, palette = 0 }
+local COMES = new.effect { sprite = puff_sprite, anim = 3, palette = 0, steps = 4 }
+local GOES = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
+local BROKEN = new.effect { sprite = impact_sprite, anim = 0, palette = 0, steps = 19 }
 local APPEAR_SOUND, BREAK_SOUND = asset.sound("appear"), asset.sound("hit-bomb-1")
 local SHOWN_TICKS, PUFF_TICKS = 40, 4
 -- Where it neither drops nor hops (0x080D8280): the back columns, reserved while it looks.

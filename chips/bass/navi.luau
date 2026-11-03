@@ -20,7 +20,7 @@ return common.make {
     shoot = function(me: Object, x: number, y: number, damage: number)
         strike.spawn(me, x, y, damage)
     end,
-    flash = new.effect { sprite = hit_sparks_sprite, anim = 8, palette = 0 },
-    smoke = new.effect { sprite = puff_sprite, anim = 0, palette = 0 },
+    flash = new.effect { sprite = hit_sparks_sprite, anim = 8, palette = 0, steps = 5 },
+    smoke = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 },
     appear = asset.sound("appear"),
 }

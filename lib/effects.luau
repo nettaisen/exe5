@@ -18,42 +18,42 @@ local pink_flash_sprite = require("../sprites/pink_flash")
 local shell_burst_sprite = require("../sprites/shell_burst")
 
 -- Row 0: an explosion: a blast landing, something breaking.
-effects.explosion = new.effect { sprite = EXPLOSION, anim = 0, palette = 0 }
+effects.explosion = new.effect { sprite = EXPLOSION, anim = 0, palette = 0, steps = 22 }
 
 -- Row 1: a splash of bubbles: something landing in a hole.
-effects.splash = new.effect { sprite = SMALL_PUFF, anim = 0, palette = 0 }
+effects.splash = new.effect { sprite = SMALL_PUFF, anim = 0, palette = 0, steps = 16 }
 
 -- Row 2: dust (a rock breaking), bubbles (Otenko's statue breaking, AntiDmg's shuriken landing), a small splash
 -- (something diving into or out of the field).
-effects.dust = new.effect { sprite = SMALL_PUFF, anim = 1, palette = 0 }
-effects.bubbles = new.effect { sprite = SMALL_PUFF, anim = 1, palette = 0 }
-effects.ripple = new.effect { sprite = SMALL_PUFF, anim = 1, palette = 0 }
+effects.dust = new.effect { sprite = SMALL_PUFF, anim = 1, palette = 0, steps = 16 }
+effects.bubbles = new.effect { sprite = SMALL_PUFF, anim = 1, palette = 0, steps = 16 }
+effects.ripple = new.effect { sprite = SMALL_PUFF, anim = 1, palette = 0, steps = 16 }
 
 -- Row 3: a navi deleted (and a soul's change and revert).
-effects.deletion = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 }
+effects.deletion = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 }
 
 -- Row 5: a burst: a meteor or a fist landing.
-effects.burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0 }
+effects.burst = new.effect { sprite = burst_sprite, anim = 0, palette = 0, steps = 17 }
 
 -- Row 6: HP recovered.
-effects.heal = new.effect { sprite = heal_sprite, anim = 0, palette = 0 }
+effects.heal = new.effect { sprite = heal_sprite, anim = 0, palette = 0, steps = 14 }
 
 -- Row 0x12: a burst of smoke: a navi coming or going in a puff.
-effects.smoke = new.effect { sprite = PUFF, anim = 0, palette = 0 }
+effects.smoke = new.effect { sprite = PUFF, anim = 0, palette = 0, steps = 4 }
 
 -- Row 0x14: a puff of smoke: a thrown thing gone when the battle ends, a field object a chip removes.
-effects.puff = new.effect { sprite = PUFF, anim = 2, palette = 0 }
+effects.puff = new.effect { sprite = PUFF, anim = 2, palette = 0, steps = 4 }
 
 -- Row 0x1E: the flash where a side cut in.
-effects.cut_in_flash = new.effect { sprite = hit_marker_sprite, anim = 0, palette = 0 }
+effects.cut_in_flash = new.effect { sprite = hit_marker_sprite, anim = 0, palette = 0, steps = 18 }
 
 -- Row 0x21: a flash: a gun's shot landing.
-effects.flash = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0 }
+effects.flash = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 }
 
 -- Row 0x22: a fiery burst: a bullet's hit, a sprung trap's counterattack.
-effects.shell_burst = new.effect { sprite = shell_burst_sprite, anim = 0, palette = 0 }
+effects.shell_burst = new.effect { sprite = shell_burst_sprite, anim = 0, palette = 0, steps = 27 }
 
 -- Row 0x2B (EXE6's 0x46): the mark over a navi whose trap sprang (AntiNavi, AntiRecv).
-effects.trap_mark = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0 }
+effects.trap_mark = new.effect { sprite = hit_sparks_sprite, anim = 7, palette = 0, steps = 24 }
 
 return effects

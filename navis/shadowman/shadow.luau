@@ -23,7 +23,7 @@ local sword_slash_sprite = require("../../sprites/sword_slash")
 local visibility = require("@exelib/visibility")
 
 -- The slash over two panels (effect 0x17).
-local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
+local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0, steps = 15 }
 
 local shadow = {}
 

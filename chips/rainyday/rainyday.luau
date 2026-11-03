@@ -25,8 +25,8 @@ local grab_shot_sprite = require("../../sprites/grab_shot")
 local rain_sprite = require("./rain_sprite")
 local Z = 0x3C_0000
 -- The rain under it (effect row 0x61: 0c-37, 20 pixels lower) and a turned panel's splash (row 0x29: 0c-13 animation 1).
-local RAIN = new.effect { sprite = rain_sprite, anim = 0, palette = 0 }
-local SPLASH = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 }
+local RAIN = new.effect { sprite = rain_sprite, anim = 0, palette = 0, steps = 9 }
+local SPLASH = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, steps = 16 }
 local SOUND = asset.sound("drip-shower")
 -- Its hit (`sub_80C53A6`'s word 0x04050201: its panel, the aqua spark, an attack that hits navis; hit modifier 3),
 -- 16 pixels up.

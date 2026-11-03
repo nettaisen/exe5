@@ -27,9 +27,9 @@ return common.make {
         burst = asset.sound("delta-ray-2"),
     },
     -- Effects 0x03, 0x35 and 0x33.
-    flash = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 },
-    mark = new.effect { sprite = hit_sparks_sprite, anim = 11, palette = 1 },
-    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
+    flash = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 },
+    mark = new.effect { sprite = hit_sparks_sprite, anim = 11, palette = 1, steps = 20 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 },
     -- His sword: EXE5's attachment row 3 (0x080C1D62: 0x10103), its animation 1, stepping while dimmed.
     attach = attachment.attach,
     sword = attachment.look { sprite = sword_sprite, palette = 0 },

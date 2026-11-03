@@ -1,0 +1,56 @@
+# EXE5's backgrounds (docs/design/asset-formats.md §8): the background its link battle stages are drawn on, those a
+# link battle picks one of, and each background's music. Presentation, read with the locales: no tick reads any of it,
+# so the content hash leaves it out.
+
+# The background every link battle stage is drawn on (each stage record's, the same one in every record): a round's
+# where it states none and none is picked, and where the one it states isn't here.
+stage = "comp"
+
+# The backgrounds a link battle picks one of at random with its settings (`table[PosRNG2() % 27]`, the table at
+# 0x08129F6C: its backgrounds 0x00 to 0x1A, each once, in the table's order). A liberation's map's number is its
+# area's background (the same load data: compat/assets.toml), so acdc-area, oran-area, scilab-area and undernet are
+# here twice and end-area three times, as the table's numbers are.
+link_battle = [
+    "main-comp", "drill-comp", "lans-hp", "mayls-hp", "dexs-hp", "yais-hp", "comp", "comp-alt", "acdc-area",
+    "oran-area", "scilab-area", "visionburst", "acdc-area", "oran-area", "scilab-area", "end-area", "ship-comp",
+    "scilab-hp", "end-area", "gargcastle-hp", "end-area", "soulserv-comp", "gargoyle-comp", "factory-comp",
+    "undernet", "nebula-area", "undernet"
+]
+
+# Each background's music, the battle theme a round drawn on it plays where the player picked none (docs/app.md §1,
+# "The battle's music"). Each is the theme most of the original's battles on it start (their settings' byte 2; a
+# battle draws the background its settings state, or with 0xFF its map's): the random encounters of the maps that draw
+# it (0x0810F5CC; the encounter lists 0x0801C96C, virus battles but for a conditional navi), the battles their scripts
+# start (list0, 0x08113BF0, by cutscene command 0x53, map-script command 0x26 and the net's coordinate triggers) and
+# the liberations' (list1, 0x081147A4). Lan's HP has no encounters, and its three scripted battles are virus battles
+# (records 23 to 25). A comp or dungeon that ends in a story navi's battle has the boss battles' (the user's pick: by
+# count every one would be the virus battles', its encounters outnumbering them).
+[backgrounds]
+acdc-area = { music = "virus-battle" }
+comp = { music = "virus-battle" }
+comp-alt = { music = "virus-battle" }
+dexs-hp = { music = "virus-battle" }
+# DrillComp4's navi battle ends its dungeon.
+drill-comp = { music = "boss-battle" }
+end-area = { music = "virus-battle" }
+# FactoryComp1 to 4's navi battles, one each.
+factory-comp = { music = "boss-battle" }
+gargcastle-hp = { music = "virus-battle" }
+# GargoylComp3's two navi battles end its dungeon.
+gargoyle-comp = { music = "boss-battle" }
+lans-hp = { music = "virus-battle" }
+# MainComp2's navi battle ends its dungeon.
+main-comp = { music = "boss-battle" }
+mayls-hp = { music = "virus-battle" }
+nebula-area = { music = "virus-battle" }
+# No map's: the two battles against NebulaGray (records 79 and 104, started on SoulServComp) state it.
+nebulagray = { music = "final-battle" }
+oran-area = { music = "virus-battle" }
+scilab-area = { music = "virus-battle" }
+scilab-hp = { music = "virus-battle" }
+# ShipComp3's navi battle ends its dungeon.
+ship-comp = { music = "boss-battle" }
+soulserv-comp = { music = "virus-battle" }
+undernet = { music = "virus-battle" }
+visionburst = { music = "virus-battle" }
+yais-hp = { music = "virus-battle" }

@@ -363,6 +363,9 @@ local rules: Rules = {
             -- blocks, its base HP and its own chip's damage by the side's level, 0 to 9.
             version = { "protoman", "colonel" },
             party = { gauge = "u8", hp = "u16[10]", chip_damage = "u16[10]" },
+            -- How many of its sprite's steps its warp out (animation 4) lasts, which a step sword with nowhere to step
+            -- waits out (lib/swords, lib/stepsword).
+            animation_steps = { warp_out = "u8" },
         },
         form = {
             -- A soul (./souls): the family of the chips given up for it (0x08024BE0's table). A soul is named by its

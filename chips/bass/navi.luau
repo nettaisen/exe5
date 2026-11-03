@@ -14,9 +14,11 @@ return common.make {
     sprite = bass_sprite,
     cape_anim_offset = 0x10,
     raise_anim = 3,
+    raise_steps = 20,
     volley_anim = 4,
     ending = "animation",
     last_anim = 5,
+    last_steps = 10,
     shoot = function(me: Object, x: number, y: number, damage: number)
         strike.spawn(me, x, y, damage)
     end,

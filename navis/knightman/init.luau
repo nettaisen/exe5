@@ -33,6 +33,8 @@ local BALL: BodyPart = { sprite = knightman_ball_sprite, anims = 20 }
 
 local navi: NaviDef = {
     sprite = knightman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 6 },
     element = "null",
     buster_bonus = 1,
     move_lag = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 },

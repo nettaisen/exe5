@@ -21,6 +21,8 @@ local tomahawkman_sprite = require("@self/tomahawkman_sprite")
 
 local navi: NaviDef = {
     sprite = tomahawkman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 3 },
     element = "wood",
     buster_bonus = 3,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

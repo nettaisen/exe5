@@ -15,6 +15,7 @@ local hand_kind = hand.make_kind {
     sprite = grab_shot_sprite,
     fall_sound = asset.sound("grab-shot-2"),
     land_sound = asset.sound("grab-shot"),
+    grab_steps = 16,
     target = collision.hits_navis,
     self_type = collision.thrown_break,
 }

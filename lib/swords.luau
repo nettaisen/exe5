@@ -89,8 +89,13 @@ local STEPS: SlashSteps = {
 }
 
 -- A chip's slash (@exelib/swords/slash), its blade EXE5's attachment, its step EXE5's.
+-- How many of its sprite's steps the navi's warp out (animation 4) lasts: its own (its `animation_steps`).
+function swords.warp_out_steps(me: Object): number
+    return (battle.navi(me.alliance).navi :: any).animation_steps.warp_out
+end
+
 function swords.slash(spec: SlashSpec): Action
-    return slash.action(spec, attachment.kind, { steps = STEPS, hold = hold_in_related })
+    return slash.action(spec, attachment.kind, { steps = STEPS, hold = hold_in_related, warp_out_steps = swords.warp_out_steps })
 end
 
 -- AntiSwrd's counter (the original's navi action 0x48: @exelib/antiswrd/counter) with EXE5's blade and booms; its

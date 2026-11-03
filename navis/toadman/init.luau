@@ -29,6 +29,8 @@ end
 
 local navi: NaviDef = {
     sprite = toadman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 4 },
     element = "aqua",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

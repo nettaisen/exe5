@@ -18,8 +18,10 @@ local thunder = {}
 thunder.kind = ball.make_kind("thunder/ball", {
     sprite = thunder_ball_sprite,
     small_anim = 0,
+    small_steps = { flight = 16, burst = 11 },
     big_sprite = big_thunder_ball_sprite,
     big_anim = 0,
+    big_steps = { flight = 14, burst = 6 },
     is = collision.thrown,
     target = collision.hits_navis,
     hit_mod = 0,

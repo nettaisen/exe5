@@ -10,8 +10,8 @@ local party_support = require("../../lib/party_support")
 local protoman = require("../protoman").protoman
 local regions = require("@exelib/regions")
 local supports = require("../../rules/party/supports")
-local sword_slash_sprite = require("../../sprites/sword_slash")
-local sword_sprite = require("../../sprites/sword")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 -- His damage by the side's level (0x020CC1CC), its hit flags 0x94.
 local DAMAGE: { number } = { 20, 50, 70, 70, 90, 90, 110, 140, 150, 150 }
@@ -28,7 +28,7 @@ local ANIM_SWING = 5
 local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWORD_ANIM = 1
 local SWING_SOUND = asset.sound("sword-swing")
-local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 local HIT_AT, SWING_ENDS, SWING_Z = 0xA, 0x32, 0x10_0000
 
 -- 0x021FE66D: the swing.

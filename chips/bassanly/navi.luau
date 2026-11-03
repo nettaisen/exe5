@@ -9,7 +9,7 @@ local common = require("@exelib/bassanly/navi")
 local effects = require("../../lib/effects")
 local shot = require("./shot")
 
-local SPRITE = require("../bass/bass_sprite")
+local SPRITE = asset.sprite("bass")
 
 return common.make {
     id = "bassanly/navi",
@@ -17,6 +17,7 @@ return common.make {
     cloak = { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x10 },
     sounds = { appear = asset.sound("appear"), raise = asset.sound("bass-anly") },
     anims = { raise = 9, stance = 0xA, fire = 0xB, fire_loop = 0xC, rest = 0xD },
+    steps = { raise = 5, fire = 3 },
     arm = { attach = attachment.attach, look = attachment.look { sprite = SPRITE, palette = 0 }, anim = 0x24 },
     smoke = effects.smoke,
     -- His shots (0x080C2E94): the fastest, seeking enemy navis along the slant.

@@ -19,8 +19,8 @@ local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local charged_chips = require("./megaman/weapons/charged_chip")
 local s_melody = require("@self/chip")["s-melody"]
-local toadman_portrait_sprite = require("@self/toadman_portrait_sprite")
-local toadman_sprite = require("@self/toadman_sprite")
+local toadman_portrait_sprite = asset.sprite("toadman-portrait")
+local toadman_sprite = asset.sprite("toadman")
 
 -- He dives (AIData +0x44's 0x20).
 local function dives(navi: Object)
@@ -29,6 +29,8 @@ end
 
 local navi: NaviDef = {
     sprite = toadman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 4 },
     element = "aqua",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

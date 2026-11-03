@@ -9,7 +9,7 @@ local common = require("@exelib/shademan/navi")
 local crush = require("./crush")
 local navi_chips = require("@exelib/navi_chips/navi")
 local statuses = require("../../rules/status")
-local shademan_sprite = require("./shademan_sprite")
+local shademan_sprite = asset.sprite("shademan")
 
 local SHADEMAN = common.make {
     id = "shademan/navi",

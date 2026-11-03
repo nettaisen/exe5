@@ -5,10 +5,10 @@
 
 local regions = require("@exelib/regions")
 local swords = require("../lib/swords")
-local sword_slash_sprite = require("../sprites/sword_slash")
+local sword_slash_sprite = asset.sprite("sword-slash")
 
 -- The slash over a column (effect 0x16).
-local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local WIDE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 
 local chip: Chip = {
     codes = { "K", "S", "Z" },

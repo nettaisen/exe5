@@ -8,8 +8,8 @@
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local regions = require("@exelib/regions")
-local swirl_sprite = require("./swirl_sprite")
-local wind_rack_sprite = require("./wind_rack_sprite")
+local swirl_sprite = asset.sprite("swirl")
+local wind_rack_sprite = asset.sprite("wind-rack")
 
 local windrack = {}
 
@@ -26,7 +26,7 @@ local ANIM_SWING = 5
 local SOUND = asset.sound("windrack")
 -- The rack (the attachment table's row 0x10), and the swirl around the navi (effect 0x27), 16 pixels up.
 local RACK = attachment.look { sprite = wind_rack_sprite, palette = 0 }
-local SWIRL = new.effect { sprite = swirl_sprite, anim = 0, palette = 0 }
+local SWIRL = new.effect { sprite = swirl_sprite, anim = 0, palette = 0, steps = 24 }
 local HEIGHT = 0x10_0000
 local SWING_TICKS, HIT_AT, RECOVER_TICKS = 0x15, 0x0C, 5
 local HIT_MOD, HIT_TICKS = 0x49, 0x0A

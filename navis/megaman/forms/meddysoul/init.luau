@@ -15,8 +15,8 @@ local drkrecov = require("../../../chips/drkrecov").drkrecov
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
-local meddy_sprite = require("../../meddy/meddy_sprite")
-local meddysoul_sprite = require("@self/meddysoul_sprite")
+local meddy_sprite = asset.sprite("meddy")
+local meddysoul_sprite = asset.sprite("meddysoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

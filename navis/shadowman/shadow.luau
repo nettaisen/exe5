@@ -19,11 +19,11 @@ local collision = require("../../rules/collision")
 local marker = require("../../lib/navi_chips/marker")
 local regions = require("@exelib/regions")
 local swords = require("../../lib/swords")
-local sword_slash_sprite = require("../../sprites/sword_slash")
+local sword_slash_sprite = asset.sprite("sword-slash")
 local visibility = require("@exelib/visibility")
 
 -- The slash over two panels (effect 0x17).
-local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0 }
+local LONG_SLASH = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 0, steps = 15 }
 
 local shadow = {}
 
@@ -40,7 +40,7 @@ export type State = {
     slash_damage: number,
 }
 
-local SPRITE = require("./shadowman_sprite")
+local SPRITE = asset.sprite("shadowman")
 local HP = 1
 local HIT_MOD = 3
 -- Its orders' bit SplitUp sets: slash.

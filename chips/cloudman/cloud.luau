@@ -10,8 +10,8 @@ local statuses = require("../../rules/status")
 
 local cloud = {}
 
-local SPRITE = require("./cloudman_sprite")
-local thunder_ball_sprite = require("../../sprites/thunder_ball")
+local SPRITE = asset.sprite("cloudman")
+local thunder_ball_sprite = asset.sprite("thunder-ball")
 local SOUND_SHOW = asset.sound("panel-poison")
 local SOUND_CHARGE = asset.sound("erase-man-2")
 local SOUND_BOLT = asset.sound("wave")

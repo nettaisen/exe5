@@ -21,13 +21,15 @@ local layer = require("./megaman/forms/numbersoul/layer")
 local numtrap = require("@self/chip").numtrap
 
 -- His face: the layer's row 0's sprite (0x080C32C0).
-local FACE = require("@self/numberman_face_sprite")
-local numberman_portrait_sprite = require("@self/numberman_portrait_sprite")
-local numberman_sprite = require("@self/numberman_sprite")
+local FACE = asset.sprite("numberman-face")
+local numberman_portrait_sprite = asset.sprite("numberman-portrait")
+local numberman_sprite = asset.sprite("numberman")
 
 
 local navi: NaviDef = {
     sprite = numberman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 3 },
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

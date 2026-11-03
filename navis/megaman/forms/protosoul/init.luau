@@ -16,9 +16,9 @@ local charged_chip = require("../weapons/charged_chip")
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
-local protoman_sprite = require("../../protoman/protoman_sprite")
-local protosoul_sprite = require("@self/protosoul_sprite")
-local sword_sprite = require("../../../sprites/sword")
+local protoman_sprite = asset.sprite("protoman")
+local protosoul_sprite = asset.sprite("protosoul")
+local sword_sprite = asset.sprite("sword")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

@@ -4,7 +4,7 @@
 -- is 16 bytes long; past it his animations read on into the tables' pointers and the sprite table (none 0: in front)
 -- and the code after them (its first byte 0: behind, his animation 52).
 
-local hub_shade_sprite = require("../../../sprites/hub_shade")
+local hub_shade_sprite = asset.sprite("hub-shade")
 
 local HUB_SHADE: BodyPart = {
     sprite = hub_shade_sprite,

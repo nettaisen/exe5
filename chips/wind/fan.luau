@@ -10,9 +10,9 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/wind/fan")
 local exe5 = require("../../rules/api")
 local gust = require("../../navis/megaman/gust")
-local explosion_sprite = require("../../sprites/explosion")
-local fan_sprite = require("./fan_sprite")
-local puff_sprite = require("../../sprites/puff")
+local explosion_sprite = asset.sprite("explosion")
+local fan_sprite = asset.sprite("fan")
+local puff_sprite = asset.sprite("puff")
 
 local fan = {}
 
@@ -27,8 +27,8 @@ local made = common.make {
     appear_sound = asset.sound("appear"),
     blow_sound = asset.sound("dustbrk"),
     break_sound = asset.sound("hit-bomb-1"),
-    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 22 },
     is = collision.own_body,
     hits = collision.hit_by_other_side,
     spawn_gust = gust.spawn,

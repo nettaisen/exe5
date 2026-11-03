@@ -10,7 +10,7 @@ local attachment = require("../../../../objects/attachment")
 local collision = require("../../../../rules/collision")
 local regions = require("@exelib/regions")
 local swords = require("../../../../lib/swords")
-local screen_divide_sprite = require("../../../colonel/screen_divide_sprite")
+local screen_divide_sprite = asset.sprite("screen-divide")
 
 local charge = {}
 
@@ -32,7 +32,7 @@ local ENEMY_BODY = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
 -- The slash: AIAttackVars +3's row of 0x080EED64 and its effect (0x48 on: sprite 10-1F), row 0, the routine's (the
 -- only one that starts the action): the target and the two panels diagonally behind it.
 local REGION = regions.vee
-local SLASH = new.effect { sprite = screen_divide_sprite, anim = 0, palette = 0 }
+local SLASH = new.effect { sprite = screen_divide_sprite, anim = 0, palette = 0, steps = 13 }
 -- The sword: the swords' blade, or ColonelSoul's Chaos Unison's while its charge is armed (lib/swords, 0x080EC082).
 
 -- 0x080BA54C

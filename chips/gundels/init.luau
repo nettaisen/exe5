@@ -4,8 +4,8 @@
 
 local gundels = require("@self/gundels")
 local regions = require("@exelib/regions")
-local sun_beam_ex_sprite = require("@self/sun_beam_ex_sprite")
-local sun_beam_sprite = require("@self/sun_beam_sprite")
+local sun_beam_ex_sprite = asset.sprite("sun-beam-ex")
+local sun_beam_sprite = asset.sprite("sun-beam")
 
 -- GunDelS1-3's beam (0x080EDDB8's first look) in the shade and in the sun.
 local BEAM: SunBeamLook = { sprite = sun_beam_sprite, palette = 0 }

@@ -19,8 +19,8 @@ local double_attack = require("../lib/double_attack")
 local megaman = require("../navis/megaman").megaman
 local napalmman = require("../navis/napalmman").napalmman
 local regions = require("@exelib/regions")
-local vulcan_hit_sprite = require("../sprites/vulcan_hit")
-local vulcan_sprite = require("../chips/vulcan/vulcan_sprite")
+local vulcan_hit_sprite = asset.sprite("vulcan-hit")
+local vulcan_sprite = asset.sprite("vulcan")
 
 type State = DoubleAttackNavi
 
@@ -38,14 +38,14 @@ local HEIGHTS = { 0x08_0000, 0x10_0000, 0x18_0000, 0x20_0000 }
 local MEGAMAN_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 },
     single = true,
     hits_while_dimmed = true,
 }
 local NAPALMMAN_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = 1,
-    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0 },
+    effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0, steps = 10 },
     single = true,
     hits_while_dimmed = true,
 }

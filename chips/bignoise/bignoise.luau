@@ -18,7 +18,7 @@ local statuses = require("../../rules/status")
 
 local bignoise = {}
 
-local SPRITE = require("../shademan/shademan_sprite")
+local SPRITE = asset.sprite("shademan")
 local navi_left = require("@exelib/navi_chips/left")
 
 -- ---- The noise ------------------------------------------------------------------------------------------------------

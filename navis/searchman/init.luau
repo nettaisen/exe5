@@ -12,11 +12,13 @@
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local satelity = require("@self/chip").satelity
-local searchman_portrait_sprite = require("@self/searchman_portrait_sprite")
-local searchman_sprite = require("@self/searchman_sprite")
+local searchman_portrait_sprite = asset.sprite("searchman-portrait")
+local searchman_sprite = asset.sprite("searchman")
 
 local navi: NaviDef = {
     sprite = searchman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 4 },
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

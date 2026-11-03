@@ -10,7 +10,7 @@ local sonic_boom = require("@exelib/swords/sonic_boom")
 local stepsword = require("../../lib/stepsword")
 local swords = require("../../lib/swords")
 
-local SLASH_SPRITE = require("../../sprites/sword_slash")
+local SLASH_SPRITE = asset.sprite("sword-slash")
 
 return {
     action = common.make {
@@ -27,9 +27,9 @@ return {
         is = swords.slashes_navis.is,
         hits = swords.slashes_navis.hits,
         effects = {
-            new.effect { sprite = SLASH_SPRITE, anim = 1, palette = 9 },
-            new.effect { sprite = SLASH_SPRITE, anim = 0, palette = 9 },
-            new.effect { sprite = SLASH_SPRITE, anim = 3, palette = 9 },
+            new.effect { sprite = SLASH_SPRITE, anim = 1, palette = 9, steps = 15 },
+            new.effect { sprite = SLASH_SPRITE, anim = 0, palette = 9, steps = 15 },
+            new.effect { sprite = SLASH_SPRITE, anim = 3, palette = 9, steps = 15 },
         },
         boom = function(owner: Object, x: number, y: number, element: number, damage: number, boom: SonicBoom): Object?
             return sonic_boom.throw(swords.sonic_boom, owner, x, y, element, damage, boom)

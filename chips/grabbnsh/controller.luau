@@ -8,13 +8,14 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/grabbnsh/controller")
 local hand = require("@exelib/grabbnsh/hand")
-local grab_shot_sprite = require("../../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 local hand_kind = hand.make_kind {
     id = "grabbnsh/hand",
     sprite = grab_shot_sprite,
     fall_sound = asset.sound("grab-shot-2"),
     land_sound = asset.sound("grab-shot"),
+    grab_steps = 16,
     target = collision.hits_navis,
     self_type = collision.thrown_break,
 }
@@ -22,6 +23,6 @@ local hand_kind = hand.make_kind {
 return common.make {
     id = "grabbnsh/controller",
     hand = hand_kind,
-    returned = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0 },
+    returned = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, steps = 16 },
     return_sound = asset.sound("err-select-91"),
 }

@@ -15,11 +15,13 @@ local back = require("@self/back")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local stepswrd = require("@self/chip").stepswrd
-local protoman_portrait_sprite = require("@self/protoman_portrait_sprite")
-local protoman_sprite = require("@self/protoman_sprite")
+local protoman_portrait_sprite = asset.sprite("protoman-portrait")
+local protoman_sprite = asset.sprite("protoman")
 
 local navi: NaviDef = {
     sprite = protoman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 3 },
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

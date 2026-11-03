@@ -8,8 +8,8 @@ local attachment = require("../objects/attachment")
 local collision = require("../rules/collision")
 local widesht = require("./widesht/wave")
 local dark_costs = require("../lib/dark_costs")
-local wide_shooter_sprite = require("./widesht/wide_shooter_sprite")
-local wide_wave_sprite = require("./widesht/wide_wave_sprite")
+local wide_shooter_sprite = asset.sprite("wide-shooter")
+local wide_wave_sprite = asset.sprite("wide-wave")
 
 -- Its wave (kind 9, which EXE6's table has and no EXE6 chip fires): it goes through, trails afterimages of its own
 -- sprite (animation 1: 0x080CC9A6's word 0x11D10, EXE6's rock cubes 0x10010) and carries bug 0x14 with argument 2, as

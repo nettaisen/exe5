@@ -19,11 +19,13 @@ local back = require("@self/back")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local splitup = require("@self/chip").splitup
-local shadowman_portrait_sprite = require("@self/shadowman_portrait_sprite")
-local shadowman_sprite = require("@self/shadowman_sprite")
+local shadowman_portrait_sprite = asset.sprite("shadowman-portrait")
+local shadowman_sprite = asset.sprite("shadowman")
 
 local navi: NaviDef = {
     sprite = shadowman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 3 },
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

@@ -11,7 +11,7 @@ local throw = require("@exelib/bombs/throw")
 
 local bombs = {}
 
-local SPRITE = require("../sprites/bomb")
+local SPRITE = asset.sprite("bomb")
 
 -- What the navi holds while throwing a bomb.
 bombs.held = attachment.look { sprite = SPRITE, palette = 0 }

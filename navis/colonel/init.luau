@@ -15,12 +15,14 @@
 local buster = require("./megaman/weapons/buster")
 local c_cannon = require("@self/chip")["c-cannon"]
 local charge = require("@self/charge")
-local colonel_cape_sprite = require("@self/colonel_cape_sprite")
-local colonel_portrait_sprite = require("@self/colonel_portrait_sprite")
-local colonel_sprite = require("@self/colonel_sprite")
+local colonel_cape_sprite = asset.sprite("colonel-cape")
+local colonel_portrait_sprite = asset.sprite("colonel-portrait")
+local colonel_sprite = asset.sprite("colonel")
 
 local navi: NaviDef = {
     sprite = colonel_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 4 },
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

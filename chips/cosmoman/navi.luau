@@ -19,7 +19,7 @@ export type State = {
 
 local cosmoman = {}
 
-local SPRITE = require("./cosmoman_sprite")
+local SPRITE = asset.sprite("cosmoman")
 local navi_left = require("@exelib/navi_chips/left")
 local looks = require("@exelib/looks")
 local SOUND_APPEAR = asset.sound("appear")

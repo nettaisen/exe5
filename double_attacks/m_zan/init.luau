@@ -17,10 +17,10 @@ local magnetman = require("../navis/magnetman").magnetman
 local protoman = require("../navis/protoman").protoman
 local regions = require("@exelib/regions")
 local status = require("../rules/status")
-local immobilized_sprite = require("../sprites/immobilized")
-local magnet_arm_sprite = require("../navis/magnetman/magnet_arm_sprite")
-local sword_slash_sprite = require("../sprites/sword_slash")
-local sword_sprite = require("../sprites/sword")
+local immobilized_sprite = asset.sprite("immobilized")
+local magnet_arm_sprite = asset.sprite("magnet-arm")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 -- The navis' own beside the shared (`DoubleAttackNavi`): ProtoMan's search starting at the top of its column (+0x70;
 -- after a slash it goes on below the last enemy).
@@ -36,7 +36,7 @@ local SOUND_SWING = asset.sound("sword-swing")
 -- effect table's row 0x33), 16 pixels up.
 local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWORD_ANIM = 1
-local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 }
+local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 local SWING_Z = 0x100000
 local HIT_MOD = 1
 -- What ProtoMan looks for (0x02138FB8, by his side): an enemy body; and the panel before it: solid, with no object or

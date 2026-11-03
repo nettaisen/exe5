@@ -9,7 +9,7 @@ local crakbom = require("./crakbom/crakbom")
 
 -- Its bomb (kind 3): the burst in palette 3, the poison panel's sound, hit modifier 3, bug 0xFB.
 local BOMB = crakbom.variant {
-    burst = new.effect { sprite = crakbom.burst, anim = 0, palette = 3 },
+    burst = new.effect { sprite = crakbom.burst, anim = 0, palette = 3, steps = 18 },
     sound = asset.sound("panel-poison"),
     hit_mod = 3,
     bug = 0xFB,

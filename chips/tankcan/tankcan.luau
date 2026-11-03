@@ -8,10 +8,10 @@ local attachment = require("../../objects/attachment")
 local action = require("@exelib/tankcan/action")
 local collision = require("../../rules/collision")
 local shell = require("@exelib/tankcan/shell")
-local explosion_sprite = require("../../sprites/explosion")
-local shell_burst_sprite = require("../../sprites/shell_burst")
-local tank_blast_sprite = require("./tank_blast_sprite")
-local tank_cannon_sprite = require("./tank_cannon_sprite")
+local explosion_sprite = asset.sprite("explosion")
+local shell_burst_sprite = asset.sprite("shell-burst")
+local tank_blast_sprite = asset.sprite("tank-blast")
+local tank_cannon_sprite = asset.sprite("tank-cannon")
 
 local tankcan = {}
 
@@ -20,10 +20,10 @@ tankcan.kind = shell.make_kind("tankcan/shell", {
     hits = collision.hits_navis,
     sound = asset.sound("cannon"),
     hit_sound = asset.sound("burst"),
-    blast = new.effect { sprite = tank_blast_sprite, anim = 0, palette = 0 },
+    blast = new.effect { sprite = tank_blast_sprite, anim = 0, palette = 0, steps = 17 },
     blast_is = collision.attack,
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
-    burst = new.effect { sprite = shell_burst_sprite, anim = 0, palette = 0 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 22 },
+    burst = new.effect { sprite = shell_burst_sprite, anim = 0, palette = 0, steps = 27 },
 })
 
 -- The tank cannon (the attachment table's row 0x25), which Colonel's C-Cannon holds too (navis/colonel/chip).

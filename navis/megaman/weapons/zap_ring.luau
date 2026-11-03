@@ -16,8 +16,8 @@ local statuses = require("../../../rules/status")
 
 -- ---- The ring -------------------------------------------------------------------------------------------------------
 
-local SPRITE = require("./zap_ring_sprite")
-local zap_ring_arm_sprite = require("./zap_ring_arm_sprite")
+local SPRITE = asset.sprite("zap-ring")
+local zap_ring_arm_sprite = asset.sprite("zap-ring-arm")
 -- Its row (0x080DF380's row 0, the ZapRng attack's first parameter): its speed (pixels a tick), the status its hits
 -- give, its sound.
 local SPEED, STATUS, SOUND = 10, statuses.paralyze_90, asset.sound("aqua-needle-2")

@@ -2,7 +2,7 @@
 -- Otenko's statue's identity: NameID 0xCF (actor record 0xCF: AI index 0x21, EXE5's field objects'). Django's
 -- navi (../django/navi) tells Otenko on his side by it.
 
-local otenko_sprite = require("./otenko_sprite")
+local otenko_sprite = asset.sprite("otenko")
 
 return new.identity {
     class = "field_object",

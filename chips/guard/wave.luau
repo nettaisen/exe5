@@ -6,7 +6,7 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/guard/wave")
-local shock_wave_sprite = require("./shock_wave_sprite")
+local shock_wave_sprite = asset.sprite("shock-wave")
 
 local wave = {}
 

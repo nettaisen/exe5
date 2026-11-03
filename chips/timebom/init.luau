@@ -5,7 +5,7 @@
 local collision = require("../rules/collision")
 local countdown = require("@exelib/timebom/countdown")
 local timebom = require("@self/timebom")
-local countdown_bomb_sprite = require("@self/countdown_bomb_sprite")
+local countdown_bomb_sprite = asset.sprite("countdown-bomb")
 
 -- What the bombs are and what they react to: a neutral body, hit by everything (rows 0xE and 0xF).
 local BODY = { is = collision.neutral_body, hits = collision.everything }

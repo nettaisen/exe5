@@ -14,11 +14,13 @@ local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local charged_chips = require("./megaman/weapons/charged_chip")
 local nstackle = require("@self/chip").nstackle
-local magnetman_portrait_sprite = require("@self/magnetman_portrait_sprite")
-local magnetman_sprite = require("@self/magnetman_sprite")
+local magnetman_portrait_sprite = asset.sprite("magnetman-portrait")
+local magnetman_sprite = asset.sprite("magnetman")
 
 local navi: NaviDef = {
     sprite = magnetman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 3 },
     element = "elec",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

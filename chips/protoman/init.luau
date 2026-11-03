@@ -7,9 +7,9 @@ local common = require("@exelib/protoman/navi")
 local navi = require("@self/navi")
 local navi_chips = require("../lib/navi_chips/chip")
 local sp_chips = require("../rules/sp_chips")
-local protoman_sprite = require("../navis/protoman/protoman_sprite")
-local sword_slash_sprite = require("../sprites/sword_slash")
-local sword_sprite = require("../sprites/sword")
+local protoman_sprite = asset.sprite("protoman")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 -- ProtoMan (EXE5 chip 0x0ef): ProtoMan cuts in and slashes each enemy navi he can reach: the shared navi
 -- (@exelib/protoman/navi, EXE5's kind ./navi; EXE5's the same code but for his sprite, 08-01, EXE6's 08-0b) with EXE5's
@@ -22,7 +22,7 @@ local LOOK = common.look {
     palette = 0,
     sword = attachment.look { sprite = sword_sprite, palette = 0 },
     sword_anim = 1,
-    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 },
     spawner_address = 0x080C1A01,
 }
 
@@ -55,7 +55,7 @@ local LOOK_PROTOMN_SP = common.look {
     palette = 0,
     sword = attachment.look { sprite = sword_sprite, palette = 0 },
     sword_anim = 1,
-    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 },
     spawner_address = 0x080C1A01,
 }
 
@@ -91,7 +91,7 @@ local LOOK_PROTOMN_DS = common.look {
     palette = 3,
     sword = attachment.look { sprite = sword_sprite, palette = 6 },
     sword_anim = 1,
-    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
+    slash = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 },
     spawner_address = 0x080C1A01,
 }
 

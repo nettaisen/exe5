@@ -24,11 +24,13 @@ local searchsoul = require("@self/forms/searchsoul").searchsoul
 local shadowsoul = require("@self/forms/shadowsoul").shadowsoul
 local toadsoul = require("@self/forms/toadsoul").toadsoul
 local tomahawksoul = require("@self/forms/tomahawksoul").tomahawksoul
-local megaman_navi_sprite = require("@self/megaman_navi_sprite")
-local megaman_portrait_sprite = require("@self/megaman_portrait_sprite")
+local megaman_navi_sprite = asset.sprite("megaman-navi")
+local megaman_portrait_sprite = asset.sprite("megaman-portrait")
 
 local navi: NaviDef = {
     sprite = megaman_navi_sprite,
+    -- How many steps of the sprite he is drawn with (his form's; every soul's alike) his warp out (animation 4) lasts.
+    animation_steps = { warp_out = 4 },
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

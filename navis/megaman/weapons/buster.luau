@@ -20,7 +20,7 @@ local common = require("@exelib/megaman/buster")
 local lib = require("../../../lib/buster")
 local projectile = require("../../../lib/projectile")
 local variants = require("../../../objects/projectile/variants")
-local spread_flash_sprite = require("./spread_flash_sprite")
+local spread_flash_sprite = asset.sprite("spread-flash")
 
 local exe5 = {}
 

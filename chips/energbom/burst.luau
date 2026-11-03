@@ -4,7 +4,7 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/energbom/burst")
-local energy_burst_sprite = require("./energy_burst_sprite")
+local energy_burst_sprite = asset.sprite("energy-burst")
 
 return common.make {
     id = "energbom/burst",

@@ -18,8 +18,8 @@ local shuffle = require("@self/shuffle")
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
-local searchman_sprite = require("../../searchman/searchman_sprite")
-local searchsoul_sprite = require("@self/searchsoul_sprite")
+local searchman_sprite = asset.sprite("searchman")
+local searchsoul_sprite = asset.sprite("searchsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).

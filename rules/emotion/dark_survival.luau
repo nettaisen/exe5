@@ -22,7 +22,7 @@ local auto_battle = require("../auto_battle")
 local overlays = require("@exelib/overlays")
 local shade = require("../souls/shade")
 local operation_battle = require("../../lib/operation_battle")
-local deletion_sprite = require("../../sprites/deletion")
+local deletion_sprite = asset.sprite("deletion")
 local navi_status = require("@exelib/navi_status")
 local stop_moving = require("../../lib/stop_moving")
 
@@ -34,7 +34,7 @@ export type State = {
 }
 
 -- The flash: EXE5's effect 3 (0x080DFC94's row 3: 14-03).
-local FLASH = new.effect { sprite = deletion_sprite, anim = 0, palette = 0 }
+local FLASH = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 }
 local FLASH_SOUND = asset.sound("log-in")
 local CHANGE_SOUND = asset.sound("cross-change")
 -- The side's statistic the stand marks (0x0800931C's byte 1, which 0x0802C16C reads).

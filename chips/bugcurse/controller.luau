@@ -7,7 +7,7 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/bugcurse")
 local operation_battle = require("../../lib/operation_battle")
-local bug_curse_sprite = require("./bug_curse_sprite")
+local bug_curse_sprite = asset.sprite("bug-curse")
 
 local controller = {}
 

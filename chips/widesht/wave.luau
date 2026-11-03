@@ -11,8 +11,8 @@ local action = require("@exelib/widesht/action")
 local attachment = require("../../objects/attachment")
 local collision = require("../../rules/collision")
 local common = require("@exelib/widesht/wave")
-local wide_shooter_sprite = require("./wide_shooter_sprite")
-local wide_wave_sprite = require("./wide_wave_sprite")
+local wide_shooter_sprite = asset.sprite("wide-shooter")
+local wide_wave_sprite = asset.sprite("wide-wave")
 
 local wave = {}
 
@@ -28,7 +28,7 @@ wave.kind = common.make_kind {
 -- point 12). (DarkWide holds its own.)
 local SHOOTER = attachment.look { sprite = wide_shooter_sprite, palette = 0, attach_point = 12 }
 
-local SPRITE = require("./wide_wave_sprite")
+local SPRITE = asset.sprite("wide-wave")
 
 -- A wave variant.
 wave.variant = common.variant

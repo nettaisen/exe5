@@ -16,7 +16,7 @@ local blows = require("@exelib/tornado/blow")
 local common = require("@exelib/tornado")
 local collision = require("../../rules/collision")
 local sparks = require("../../lib/sparks")
-local tornado_sprite = require("./tornado_sprite")
+local tornado_sprite = asset.sprite("tornado")
 
 local tornado = {}
 

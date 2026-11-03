@@ -10,7 +10,7 @@ local collision = require("../../rules/collision")
 local controller = require("@exelib/instruments/controller")
 local effects = require("../effects")
 local instrument = require("@exelib/instruments/instrument")
-local instrument_sprite = require("./instrument_sprite")
+local instrument_sprite = asset.sprite("instrument")
 
 local exe5_instrument = {}
 

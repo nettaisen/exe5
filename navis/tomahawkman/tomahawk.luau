@@ -24,7 +24,7 @@ export type State = {
     across: boolean,
 }
 
-local SPRITE = require("./thrown_tomahawk_sprite")
+local SPRITE = asset.sprite("thrown-tomahawk")
 local SOUND = asset.sound("tomahawk-throw")
 local HEIGHT = 16 * 0x1_0000
 -- Its speed along a row and along the column (16.16).

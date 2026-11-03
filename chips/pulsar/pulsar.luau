@@ -19,10 +19,10 @@ export type State = {
     hit_at: number,
 }
 
-local SPRITE = require("./pulsar_sprite")
-local pulsar_burst_sprite = require("./pulsar_burst_sprite")
+local SPRITE = asset.sprite("pulsar")
+local pulsar_burst_sprite = asset.sprite("pulsar-burst")
 local SOUND, BURST_SOUND = asset.sound("pulsar"), asset.sound("elec-pulse")
-local BURST = new.effect { sprite = pulsar_burst_sprite, anim = 0, palette = 0 }
+local BURST = new.effect { sprite = pulsar_burst_sprite, anim = 0, palette = 0, steps = 32 }
 local HEIGHT, SPEED = 0x18_0000, 0x8_0000
 -- What it may touch and go on bursting: bodies.
 local BODIES = 0x03800000

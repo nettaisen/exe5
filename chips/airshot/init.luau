@@ -10,7 +10,7 @@ local attachment = require("../objects/attachment")
 local navi_arms = require("../lib/navi_arms")
 local projectile = require("../lib/projectile")
 local variants = require("../objects/projectile/variants")
-local air_shooter_sprite = require("@self/air_shooter_sprite")
+local air_shooter_sprite = asset.sprite("air-shooter")
 
 -- EXE5's air shooter (its attachment row 8: EXE6's row 0x13's look, EXE5's sprite).
 local SHOOTER = attachment.look { sprite = air_shooter_sprite, palette = 0, attach_point = 10 }

@@ -26,13 +26,13 @@ export type State = {
 
 local shadoman = {}
 
-local SPRITE = require("../../navis/shadowman/shadowman_sprite")
-local small_puff_sprite = require("../../sprites/small_puff")
+local SPRITE = asset.sprite("shadowman")
+local small_puff_sprite = asset.sprite("small-puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_THROW = asset.sound("boomerang")
 -- The effect table's row 2: the puff he vanishes in, 32 pixels up.
-local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 }
+local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
 -- Where the three appear (0x080BA158): the first panel of his user's side, by side, as { require, forbid }.
 local OWN_AREA = { [0] = { 0, 0x20 }, { 0x20, 0 } }
 local RISE = 0x20_0000

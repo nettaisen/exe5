@@ -18,9 +18,9 @@ local darkmetr = require("../../../chips/darkmetr").darkmetr
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
-local napalm_cannon_sprite = require("../../napalmman/napalm_cannon_sprite")
-local napalmman_sprite = require("../../napalmman/napalmman_sprite")
-local napalmsoul_sprite = require("@self/napalmsoul_sprite")
+local napalm_cannon_sprite = asset.sprite("napalm-cannon")
+local napalmman_sprite = asset.sprite("napalmman")
+local napalmsoul_sprite = asset.sprite("napalmsoul")
 local chip_hand = require("@exelib/chip_hand")
 
 -- NapalmMan's cannon on the soul's image (the body overlays' row 4, 0x0800EE8A): behind him in his animations 20 to 22.

@@ -9,7 +9,7 @@ export type State = {
     done: boolean,
 }
 
-local SPRITE = require("./django_coffin_sprite")
+local SPRITE = asset.sprite("django-coffin")
 
 -- 0x080DE074: on its panel, on the ground, drawn with its sprite (animation 0, loaded with the sprite update).
 local function init(me: Object)

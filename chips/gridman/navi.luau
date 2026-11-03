@@ -26,16 +26,16 @@ export type State = {
 
 local gridman = {}
 
-local SPRITE = require("./gridman_sprite")
-local explosion_sprite = require("../../sprites/explosion")
-local small_puff_sprite = require("../../sprites/small_puff")
+local SPRITE = asset.sprite("gridman")
+local explosion_sprite = asset.sprite("explosion")
+local small_puff_sprite = asset.sprite("small-puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_DASH = asset.sound("grid-dash")
 local SOUND_STRIKE = asset.sound("hit-bomb-1")
 -- The explosions over the enemy area (effect 0) and the puffs behind his dash (effect 2).
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
-local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 22 }
+local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
 local HIT_MOD = 3
 
 -- His dash: 4 pixels a tick forward, 2.5 up or down.

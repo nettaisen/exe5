@@ -5,12 +5,12 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/serchman/shot")
 local sparks = require("../../lib/sparks")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 return common.make {
     id = "serchman/shot",
     z = 0x10_0000,
-    miss = new.effect { sprite = hit_sparks_sprite, anim = 0, palette = 0 },
+    miss = new.effect { sprite = hit_sparks_sprite, anim = 0, palette = 0, steps = 5 },
     plain_type = collision.curse,
     powered_type = collision.collision_1d,
     target = collision.hits_navis,

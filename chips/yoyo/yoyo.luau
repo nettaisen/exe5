@@ -41,8 +41,8 @@ export type State = {
     turned: number,
 }
 
-local SPRITE = require("./yoyo_sprite")
-local yoyo_arm_sprite = require("./yoyo_arm_sprite")
+local SPRITE = asset.sprite("yoyo")
+local yoyo_arm_sprite = asset.sprite("yoyo-arm")
 local SOUND = asset.sound("set-down")
 local HIT_MOD = 1
 local SPEED, ROUND = 0x5_0000, 8

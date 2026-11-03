@@ -18,10 +18,10 @@ local darktorn = require("../../../chips/darktorn").darktorn
 local soul_change = require("../../../rules/souls/change")
 local soul_image = require("../../../rules/souls/image")
 local soul_revert = require("../../../rules/souls/revert")
-local gyro_propeller_sprite = require("../../gyroman/gyro_propeller_sprite")
-local gyroman_sprite = require("../../gyroman/gyroman_sprite")
-local gyrosoul_propeller_sprite = require("@self/gyrosoul_propeller_sprite")
-local gyrosoul_sprite = require("@self/gyrosoul_sprite")
+local gyro_propeller_sprite = asset.sprite("gyro-propeller")
+local gyroman_sprite = asset.sprite("gyroman")
+local gyrosoul_propeller_sprite = asset.sprite("gyrosoul-propeller")
+local gyrosoul_sprite = asset.sprite("gyrosoul")
 
 -- GyroMan's propeller on the soul's image (the body overlays' row 0, 0x0800EE4E): behind him in his animations 0 to 5,
 -- 7, 16 and 17.

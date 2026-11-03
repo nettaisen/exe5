@@ -10,11 +10,13 @@
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local meddycap = require("@self/chip").meddycap
-local meddy_portrait_sprite = require("@self/meddy_portrait_sprite")
-local meddy_sprite = require("@self/meddy_sprite")
+local meddy_portrait_sprite = asset.sprite("meddy-portrait")
+local meddy_sprite = asset.sprite("meddy")
 
 local navi: NaviDef = {
     sprite = meddy_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 3 },
     element = "null",
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },

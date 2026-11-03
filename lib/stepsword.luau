@@ -7,6 +7,7 @@
 --
 -- The actions' phases are the same: 0 the step, 4 the swings' set-up, 0xC the step back, 0x10 the recovery.
 
+
 local stepsword = {}
 
 -- The phases this module moves to, on the attack's step.
@@ -19,6 +20,9 @@ local ENEMY_BODIES = { [0] = 0x04000000, [1] = 0x08000000 }
 -- The rows it looks in, from its own (0x080125C8).
 local ROW_ORDER = { { 1, 2, 3 }, { 2, 1, 3 }, { 3, 1, 2 } }
 local AFTERIMAGE_SHADER = 0xFFE0
+-- The navi's swing (animation 5: Katana's, SonicBom's, Z Saver's) lasts 22 of its sprite's steps, MoonBld's spin
+-- (animation 12) 16 (every navi's and soul's); its warp out (animation 4, with nowhere to step) is its own.
+local WARP_OUT_ANIM, SPIN_ANIM, SWING_STEPS, SPIN_STEPS = 4, 12, 22, 16
 
 -- What the step keeps (+0x34): whether it turned round to step behind the enemy.
 export type State = { turned: number }
@@ -112,7 +116,7 @@ function stepsword.start(me: Object, s: State, moving: boolean)
     end
     if not x or not y then
         s.turned = 0
-        me:set_animation(4)
+        me:set_animation(WARP_OUT_ANIM)
         set_step(me, STEP_BACK)
         return
     end
@@ -149,7 +153,12 @@ end
 
 -- Phase 0xC: back where it stepped from once its animation ends, then the recovery.
 function stepsword.step_back(me: Object, s: State)
-    if not bit32.btest(me.sprite.frame_flags, 0x80) then
+    local anim = me.sprite.animation
+    local steps = if anim == WARP_OUT_ANIM
+        then (battle.navi(me.alliance).navi :: any).animation_steps.warp_out
+        elseif anim == SPIN_ANIM then SPIN_STEPS
+        else SWING_STEPS
+    if me.sprite.steps < steps then
         return
     end
     if s.turned == 1 then

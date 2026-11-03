@@ -16,8 +16,8 @@ local magnetman = require("../magnetman").magnetman
 local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
 local status = require("../../rules/status")
-local immobilized_sprite = require("../../sprites/immobilized")
-local magnet_arm_sprite = require("./magnet_arm_sprite")
+local immobilized_sprite = asset.sprite("immobilized")
+local magnet_arm_sprite = asset.sprite("magnet-arm")
 
 local support = {}
 

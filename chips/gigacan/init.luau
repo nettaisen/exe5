@@ -9,7 +9,7 @@ local recipe_m_cannon = require("./cannon")["m-cannon"]
 local attachment = require("../objects/attachment")
 local shooter = require("../lib/cannon")
 local variants = require("../objects/projectile/variants")
-local cannon_sprite = require("./cannon/cannon_sprite")
+local cannon_sprite = asset.sprite("cannon")
 
 -- Their cannons (the arm's rows 0 to 2 of 0x080EC2AC: the attachment table's, 0c-01 in palettes 0, 1 and 2, the
 -- Cannons'), at the navi's attach point 7.

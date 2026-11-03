@@ -13,10 +13,10 @@ local collision = require("../../rules/collision")
 local panel_bursts = require("../../objects/panel_bursts")
 local regions = require("@exelib/regions")
 local trajectory = require("../../lib/trajectory")
-local bass_sprite = require("../bass/bass_sprite")
-local chaos_orb_sprite = require("./chaos_orb_sprite")
-local charge_glow_sprite = require("../../sprites/charge_glow")
-local explosion_sprite = require("../../sprites/explosion")
+local bass_sprite = asset.sprite("bass")
+local chaos_orb_sprite = asset.sprite("chaos-orb")
+local charge_glow_sprite = asset.sprite("charge-glow")
+local explosion_sprite = asset.sprite("explosion")
 
 export type State = {
     -- Its target panel (Param3, Param4; 0 until picked).
@@ -37,7 +37,7 @@ local SOUND_GROW = asset.sound("point-rise")
 local SOUND_THROW = asset.sound("windrack")
 local SOUND_BLAST = asset.sound("chaos-blast")
 -- The panel bursts' row (0x080E3164) its Param1 + 5 names: 6 (the effect table's row 0x24), with no sound.
-local BURST = new.effect { sprite = explosion_sprite, anim = 0, palette = 1 }
+local BURST = new.effect { sprite = explosion_sprite, anim = 0, palette = 1, steps = 22 }
 -- The panels it breaks around its target (0x080162A4's list 15: the 3x3, x toward its facing).
 local AROUND: { { number } } = {
     { 0, 0 },

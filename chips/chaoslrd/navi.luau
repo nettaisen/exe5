@@ -25,15 +25,15 @@ export type State = {
 
 local chaoslrd = {}
 
-local SPRITE = require("../bass/bass_sprite")
-local GLOW = require("../../sprites/chaos_charge_glow")
-local puff_sprite = require("../../sprites/puff")
+local SPRITE = asset.sprite("bass")
+local GLOW = asset.sprite("chaos-charge-glow")
+local puff_sprite = asset.sprite("puff")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_GATHER = asset.sound("trap-vanish")
 local SOUND_SHAPE = asset.sound("point-rise")
 local SOUND_RAISE = asset.sound("chaos-lord")
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 -- His cape (0x080C38B6's word 0x10011308: a form overlay of his sprite, animations + 0x10, stepping while dimmed).
 local CAPE: FormOverlaySpec = { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x10 }
 -- The navi chip controller calls his spawner (0x080C327E) through r3, which his position's Z takes; his init keeps

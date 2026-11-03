@@ -24,7 +24,7 @@ export type State = {
 
 local larkman = {}
 
-local SPRITE = require("./larkman_sprite")
+local SPRITE = asset.sprite("larkman")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_COMMAND = asset.sound("ok-8b")

@@ -27,11 +27,13 @@ export type State = {
 
 -- Its look: sheet 0c-3a, animation 0, no shadow (0x080DAE18's 0x00000C3A); its collision (0x04050300): an attack
 -- hitting navis, hit modifier 3.
-local SPRITE = require("./pit_wave_sprite")
+local SPRITE = asset.sprite("pit-wave")
 local SOUND = asset.sound("pit-wave")
 local HIT_MOD = 3
 local SOLID = 0x10
 local WAIT = 20
+-- Each segment plays out over 27 of its sprite's steps (its animation's length).
+local FADE_STEPS = 27
 
 -- Its actions.
 local WAIT_ACTION, SPREAD, FADE = 0, 4, 8
@@ -63,9 +65,10 @@ local function spread(me: Object)
     me.action = FADE
 end
 
--- 0x080DAEEC: at its animation's end, gone.
+-- 0x080DAEEC: at its animation's end, gone. (The original tests its frame's flags 0x81, the end's and 0x01; the
+-- content's frames never carried 0x01.)
 local function fade(me: Object)
-    if bit32.btest(me.sprite.frame_flags, 0x81) then
+    if me.sprite.steps >= FADE_STEPS then
         me.collision:set_region(nil)
         me:set_lifecycle("destroy")
     end

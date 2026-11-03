@@ -6,8 +6,8 @@
 local collision = require("../../rules/collision")
 local common = require("@exelib/metagel/gel")
 local sparks = require("../../lib/sparks")
-local meta_gel_sprite = require("./meta_gel_sprite")
-local puff_sprite = require("../../sprites/puff")
+local meta_gel_sprite = asset.sprite("meta-gel")
+local puff_sprite = asset.sprite("puff")
 
 return common.make {
     id = "metagel/gel",
@@ -18,5 +18,5 @@ return common.make {
     is = collision.thrown,
     hits = collision.hits_navis,
     takes = common.can_take,
-    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0 },
+    puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
 }

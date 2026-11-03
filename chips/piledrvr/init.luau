@@ -16,8 +16,8 @@ local recipe_django_ds = require("./django")["django-ds"]
 local recipe_django_sp = require("./django")["django-sp"]
 local recipe_gundels3 = require("./gundels").gundels3
 local sparks = require("../lib/sparks")
-local pile_beam_sprite = require("@self/pile_beam_sprite")
-local pile_driver_sprite = require("@self/pile_driver_sprite")
+local pile_beam_sprite = asset.sprite("pile-beam")
+local pile_driver_sprite = asset.sprite("pile-driver")
 
 local BEAM = beam.make_kind {
     id = "piledrvr/beam",

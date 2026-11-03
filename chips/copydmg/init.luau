@@ -11,7 +11,7 @@ local arm = require("../lib/arm")
 local collision = require("../rules/collision")
 local common_mark = require("@exelib/copydmg/mark")
 local sparks = require("../lib/sparks")
-local hit_sparks_sprite = require("../sprites/hit_sparks")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
 
 -- The mark (EXE5's attack object #0x28, 0x080C9A6C).
 local mark = common_mark.make {

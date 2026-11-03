@@ -15,7 +15,7 @@ local math5 = require("../../rules/math")
 local panels = require("@exelib/panels")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
-local knightman_ball_sprite = require("../../navis/knightman/knightman_ball_sprite")
+local knightman_ball_sprite = asset.sprite("knightman-ball")
 
 export type State = {
     -- How far it turns a tick (its first parameter), the turns it has left (its second), its status (its third)

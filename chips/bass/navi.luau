@@ -5,22 +5,24 @@
 
 local common = require("@exelib/bass/navi")
 local strike = require("./strike")
-local bass_sprite = require("./bass_sprite")
-local hit_sparks_sprite = require("../../sprites/hit_sparks")
-local puff_sprite = require("../../sprites/puff")
+local bass_sprite = asset.sprite("bass")
+local hit_sparks_sprite = asset.sprite("hit-sparks")
+local puff_sprite = asset.sprite("puff")
 
 return common.make {
     id = "bass/navi",
     sprite = bass_sprite,
     cape_anim_offset = 0x10,
     raise_anim = 3,
+    raise_steps = 20,
     volley_anim = 4,
     ending = "animation",
     last_anim = 5,
+    last_steps = 10,
     shoot = function(me: Object, x: number, y: number, damage: number)
         strike.spawn(me, x, y, damage)
     end,
-    flash = new.effect { sprite = hit_sparks_sprite, anim = 8, palette = 0 },
-    smoke = new.effect { sprite = puff_sprite, anim = 0, palette = 0 },
+    flash = new.effect { sprite = hit_sparks_sprite, anim = 8, palette = 0, steps = 5 },
+    smoke = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 },
     appear = asset.sound("appear"),
 }

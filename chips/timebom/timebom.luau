@@ -22,7 +22,7 @@ local panel_bursts = require("../../objects/panel_bursts")
 
 local timebom = {}
 
-local SPRITE = require("./countdown_bomb_sprite")
+local SPRITE = asset.sprite("countdown-bomb")
 
 timebom.kind = countdown.make_kind("timebom/countdown", {
     sprite = SPRITE,

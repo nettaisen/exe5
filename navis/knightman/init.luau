@@ -24,15 +24,17 @@
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local kcrusher = require("@self/chip").kcrusher
-local knightman_ball_sprite = require("@self/knightman_ball_sprite")
-local knightman_portrait_sprite = require("@self/knightman_portrait_sprite")
-local knightman_sprite = require("@self/knightman_sprite")
+local knightman_ball_sprite = asset.sprite("knightman-ball")
+local knightman_portrait_sprite = asset.sprite("knightman-portrait")
+local knightman_sprite = asset.sprite("knightman")
 
 -- KnightMan's ball and chain (the body overlays' row 1, 0x0800EE7A): in front.
 local BALL: BodyPart = { sprite = knightman_ball_sprite, anims = 20 }
 
 local navi: NaviDef = {
     sprite = knightman_sprite,
+    -- How many of its sprite's steps its warp out (animation 4) lasts.
+    animation_steps = { warp_out = 6 },
     element = "null",
     buster_bonus = 1,
     move_lag = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 },

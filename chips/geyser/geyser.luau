@@ -9,16 +9,16 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/geyser/geyser")
 local sparks = require("../../lib/sparks")
 local trajectory = require("../../lib/trajectory")
-local bomb_sprite = require("../../sprites/bomb")
-local geyser_sprite = require("./geyser_sprite")
-local spout_splash_sprite = require("../../sprites/spout_splash")
+local bomb_sprite = asset.sprite("bomb")
+local geyser_sprite = asset.sprite("geyser")
+local spout_splash_sprite = asset.sprite("spout-splash")
 
 local made = common.make({
     id = "geyser/bomb",
     water_id = "geyser/water",
     bomb = bomb_sprite,
     geyser = geyser_sprite,
-    splash = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0 },
+    splash = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0, steps = 31 },
     splash_sound = asset.sound("spout-ball"),
     erupt = asset.sound("geyser"),
     attack = collision.attack,

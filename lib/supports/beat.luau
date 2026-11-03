@@ -3,7 +3,7 @@
 -- NaviCust support that snatches a Mega or Giga chip (0x0800E418). See docs/engine/chips.md §2.10.
 
 local common = require("@exelib/supports/beat")
-local beat_sprite = require("./beat_sprite")
+local beat_sprite = asset.sprite("beat")
 
 return common.make {
     id = "beat",

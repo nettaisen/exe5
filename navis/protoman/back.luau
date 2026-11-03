@@ -6,7 +6,7 @@
 -- ticks after it. ProtoSoul's (navis/megaman/forms/protosoul/back) is the same guard with a damage of its own.
 
 local guard = require("../../lib/guard")
-local reflector_shield_sprite = require("../../sprites/reflector_shield")
+local reflector_shield_sprite = asset.sprite("reflector-shield")
 
 local back = {}
 

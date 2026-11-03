@@ -6,13 +6,14 @@
 local collision = require("../rules/collision")
 local controller = require("@exelib/grab/controller")
 local shot = require("@exelib/grab/shot")
-local grab_shot_sprite = require("../sprites/grab_shot")
+local grab_shot_sprite = asset.sprite("grab-shot")
 
 local shot_kind = shot.make_kind {
     id = "grab/shot",
     sprite = grab_shot_sprite,
     fall_sound = asset.sound("grab-shot-2"),
     land_sound = asset.sound("grab-shot"),
+    landing_steps = 16,
     target = collision.hits_navis,
     self_type = collision.thrown,
     spares = "last_full_column",

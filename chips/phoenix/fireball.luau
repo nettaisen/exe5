@@ -19,7 +19,7 @@ export type State = {
     target_y: number,
 }
 
-local SPRITE = require("../meteors/meteor_sprite")
+local SPRITE = asset.sprite("meteor")
 local SOUND_THROW = asset.sound("justice-one")
 local SOUND_BURST = asset.sound("form-change")
 local FALL = 8

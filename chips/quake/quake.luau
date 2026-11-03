@@ -10,10 +10,10 @@
 local collision = require("../../rules/collision")
 local regions = require("@exelib/regions")
 local trajectory = require("../../lib/trajectory")
-local bomb_sprite = require("../../sprites/bomb")
-local explosion_sprite = require("../../sprites/explosion")
-local puff_sprite = require("../../sprites/puff")
-local quake_drop_sprite = require("./quake_drop_sprite")
+local bomb_sprite = asset.sprite("bomb")
+local explosion_sprite = asset.sprite("explosion")
+local puff_sprite = asset.sprite("puff")
+local quake_drop_sprite = asset.sprite("quake-drop")
 
 local quake = {}
 
@@ -29,8 +29,8 @@ local BOMB, WEIGHT = bomb_sprite, quake_drop_sprite
 local SPEED, GRAVITY, HANG_Z, DROP = 0x40000, -0x3C00, 0x30 * 0x10000, -0x80000
 local HANG_TICKS = 25
 -- Effect 0 (the explosion) on each panel it hits; effect 0x12 (a puff) as it goes.
-local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 }
-local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0 }
+local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 22 }
+local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 local SOUND_LAND = asset.sound("land")
 -- What it is and hits: EXE5's rows 0x15 and 5, hit modifier 3.
 local HIT_MOD = 3

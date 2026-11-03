@@ -15,7 +15,7 @@ export type State = {
 
 local aura = {}
 
-local SPRITE = require("./chaos_beast_sprite")
+local SPRITE = asset.sprite("chaos-beast")
 -- The beast's body, which fades in rather than flashing in.
 local BODY = 0x0D
 local DOWN, UP = 26, 26

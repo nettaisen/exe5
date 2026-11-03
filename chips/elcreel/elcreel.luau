@@ -14,8 +14,8 @@ local sparks = require("../../lib/sparks")
 local elcreel = {}
 
 -- The reel's look: sheet 10-3e, animation 2, no shadow (0x080DABE6, `sub_8011504`'s word 0x0002103E).
-local SPRITE = require("./elec_reel_sprite")
-local reel_launcher_sprite = require("./reel_launcher_sprite")
+local SPRITE = asset.sprite("elec-reel")
+local reel_launcher_sprite = asset.sprite("reel-launcher")
 local ANIM = 2
 -- Its collision (0x0A050100): thrown, hitting navis, hit modifier 1.
 local HIT_MOD = 1
@@ -25,8 +25,8 @@ local SPEED, EDGE = 0x8_0000, 150
 -- the field's obstacles). Each hook's hit: the panel alone, the elec spark (row 3), thrown, hitting navis, hit
 -- modifier 1 (0x080DAD98's 0x0A050301).
 type Hook = { dx: number, dy: number, effect: Effect }
-local VERTICAL = new.effect { sprite = SPRITE, anim = 1, palette = 0 }
-local HORIZONTAL = new.effect { sprite = SPRITE, anim = 2, palette = 0 }
+local VERTICAL = new.effect { sprite = SPRITE, anim = 1, palette = 0, steps = 12 }
+local HORIZONTAL = new.effect { sprite = SPRITE, anim = 2, palette = 0, steps = 12 }
 local HOOKS: { Hook } = {
     { dx = 0, dy = -1, effect = VERTICAL },
     { dx = 1, dy = 0, effect = HORIZONTAL },

@@ -22,7 +22,7 @@ export type State = {
     children: { Object? },
 }
 
-local SPRITE = require("./django_sun_sprite")
+local SPRITE = asset.sprite("django-sun")
 -- The lights' start angles (0x080E9A60).
 local STARTS = { 0x00, 0x55, 0xAA }
 local sine = trajectory.sine

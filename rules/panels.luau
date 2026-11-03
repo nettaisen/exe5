@@ -19,7 +19,7 @@
 
 local panel_types = require("@exelib/panel_types")
 local sparks = require("../lib/sparks")
-local splash_sprite = require("./splash_sprite")
+local splash_sprite = asset.sprite("splash")
 
 -- The steps a magnet slide tries: forward, back, up, down.
 local F, B, U, D = { dx = 1, dy = 0 }, { dx = -1, dy = 0 }, { dx = 0, dy = -1 }, { dx = 0, dy = 1 }
@@ -33,7 +33,7 @@ local LAVA_BURN = panel_types.burn {
 }
 
 -- The splash of a body a sea panel holds at a move's end (effect 0x63: 0x0801715E).
-local SPLASH = new.effect { sprite = splash_sprite, anim = 0, palette = 0 }
+local SPLASH = new.effect { sprite = splash_sprite, anim = 0, palette = 0, steps = 22 }
 
 return {
     types = {

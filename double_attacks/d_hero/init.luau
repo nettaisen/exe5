@@ -15,9 +15,9 @@ local megaman = require("../navis/megaman").megaman
 local panels = require("@exelib/panels")
 local protoman = require("../navis/protoman").protoman
 local regions = require("@exelib/regions")
-local pink_flash_sprite = require("../sprites/pink_flash")
-local sword_slash_sprite = require("../sprites/sword_slash")
-local sword_sprite = require("../sprites/sword")
+local pink_flash_sprite = asset.sprite("pink-flash")
+local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_sprite = asset.sprite("sword")
 
 type State = DoubleAttackNavi
 
@@ -34,8 +34,8 @@ local SWORD_ANIM = 1
 -- The flashes each scatters (the effect table's row 0x3C, EXE5's, MegaMan's; row 0x16, the slash, ProtoMan's), three
 -- a volley.
 local FLASHES = {
-    [0] = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2 },
-    [1] = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0 },
+    [0] = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2, steps = 10 },
+    [1] = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 },
 }
 local FLASHES_A_VOLLEY = 3
 -- A volley's hit (0x020A1018): the other side's area (region 0x82 for side 0, 0x81 for side 1), no spark, hitting navis

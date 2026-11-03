@@ -7,8 +7,8 @@ local collision = require("../../rules/collision")
 local common = require("@exelib/magnum/gunner")
 local sparks = require("../../lib/sparks")
 local stand_in = require("@exelib/dimming/stand_in")
-local explosion_sprite = require("../../sprites/explosion")
-local sight_sprite = require("../../sprites/sight")
+local explosion_sprite = asset.sprite("explosion")
+local sight_sprite = asset.sprite("sight")
 
 return common.make {
     id = "magnum/gunner",
@@ -19,8 +19,8 @@ return common.make {
     blast = asset.sound("target-move"),
     crack = asset.sound("panel-crack"),
     fire_anim = 12,
-    sight = new.effect { sprite = sight_sprite, anim = 0, palette = 0 },
-    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0 },
+    sight = new.effect { sprite = sight_sprite, anim = 0, palette = 0, steps = 21 },
+    explosion = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 22 },
     spark = sparks.heavy,
     is = collision.thrown,
     hits = collision.hits_navis,

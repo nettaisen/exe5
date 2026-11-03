@@ -17,7 +17,7 @@ local collision = require("../rules/collision")
 local double_attack = require("../lib/double_attack")
 local megaman = require("../navis/megaman").megaman
 local regions = require("@exelib/regions")
-local sword_sprite = require("../sprites/sword")
+local sword_sprite = asset.sprite("sword")
 
 -- The navis' own beside the shared (`DoubleAttackNavi`): Colonel's cape while he holds it (+0x74).
 type State = DoubleAttackNavi & { cape: Object? }
@@ -57,7 +57,7 @@ local TAKEN = { [0] = 0x07800000, [1] = 0x0B800000 }
 -- The cape: its sprite and animations (`sub_8011504`'s 0x0019101E: 10-1E, the pack's `colonel-cape`, animation 25,
 -- no shadow; caught, 26); 20 pixels up as it flies, 4 pixels a tick (its Param1, 0x40, by 0x1000), 10 ticks before
 -- it goes; on screen while its X is within 160 pixels of the middle.
-local CAPE_SPRITE = require("../navis/colonel/colonel_cape_sprite")
+local CAPE_SPRITE = asset.sprite("colonel-cape")
 local CAPE_ANIM_FLYING, CAPE_ANIM_CAUGHT = 0x19, 0x1A
 local CAPE_Z = 0x140000
 local CAPE_SPEED = 0x40 * 0x1000

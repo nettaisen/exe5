@@ -202,6 +202,8 @@ local roles: RolesSpec = {
         winner_special = asset.sound("winner-0"),
         winner = asset.sound("winner-1"),
         loser = asset.sound("loser"),
+        -- The start screen's (song 1). No rule plays it; the app plays it across its menus.
+        title_screen = asset.sound("title-screen"),
     },
     sprites = {
         -- The charge glow of a B charge; of an A charge (14-15). (An armed Chaos Unison charge's, 14-1C, is

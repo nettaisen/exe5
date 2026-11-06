@@ -56,7 +56,7 @@ function arm.raise_for(navi: Object, which: Slot, while_dimmed: boolean, holder:
                 palette = 14
             else
                 look, anim = arm.looks.navi, ai - 1
-                if navi:navi_state("no_charge") then
+                if navi.navi_flags.no_charge then
                     palette = 25 - anim
                 end
             end
@@ -71,19 +71,19 @@ function arm.raise_for(navi: Object, which: Slot, while_dimmed: boolean, holder:
                 anim = raised.anim
                 if chaos_charge(navi) ~= 0 then
                     look = arm.looks.chaos
-                    if navi:navi_state("no_charge") then
+                    if navi.navi_flags.no_charge then
                         palette = 10
                     end
                 end
             else
                 local dark = dark_arm(navi)
                 if dark == 0 then
-                    if navi:navi_state("no_charge") then
+                    if navi.navi_flags.no_charge then
                         palette = 14
                     elseif stats.element ~= 0 then
                         palette = 0x1B + stats.element
                     end
-                elseif navi:navi_state("no_charge") then
+                elseif navi.navi_flags.no_charge then
                     anim, palette = 13, 1
                 else
                     anim = 13

@@ -96,11 +96,11 @@ function stepsword.start(me: Object, s: State, moving: boolean)
         return
     end
     -- sub_800E5FC: not while moving or sliding.
-    if me:status("moving") or me:status("sliding") then
+    if me.status.moving or me.status.sliding then
         return
     end
     if moving then
-        me:set_status("moving", true)
+        me.status.moving = true
     end
     me.future_panel_x, me.future_panel_y = me.panel_x, me.panel_y
     me:reserve_panel(me.panel_x, me.panel_y)

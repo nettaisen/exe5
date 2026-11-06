@@ -75,7 +75,7 @@ local roll_ds: Chip = {
     class = "mega",
     rarity = 3,
     mb = 60,
-    damage = { formula = "count", of = { side_stat = 3 }, by_count = { 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80 }, operation_battle = 40 },
+    damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80 }, operation_battle = 40 },
     hit_param = 138,
     lockout = 0,
     flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },

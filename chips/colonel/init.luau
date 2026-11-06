@@ -61,7 +61,7 @@ local colonel_ds: Chip = {
     class = "mega",
     rarity = 3,
     mb = 75,
-    damage = { formula = "count", of = { side_stat = 3 }, by_count = { 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300 }, operation_battle = 200 },
+    damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300 }, operation_battle = 200 },
     hit_param = 158,
     lockout = 0,
     flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },

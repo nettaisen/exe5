@@ -39,7 +39,7 @@ local function ready(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(READY_ANIM)
         s.timer = s.wait
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me.step_init = 4
     end
     local t = s.timer - 1
@@ -63,7 +63,7 @@ local function sing(me: Object, s: State)
     local t = s.timer - 1
     s.timer = int.u16(t)
     if t <= 0 then
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me:exit_attack()
     end
 end

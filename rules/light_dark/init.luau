@@ -49,9 +49,6 @@ local party = require("./party")
 local operation_battle = require("../lib/operation_battle")
 local navi_status = require("@exelib/navi_status")
 
--- The side statistic a dark chip's use sets.
-local DARK_CHIP_USED = 2
-
 -- A value at or below this is a dark MegaMan's for the holy panels (0x08017136: 0x1F3).
 local CLEARS_HOLY = 499
 -- A value at or above this is a light MegaMan's for the chips (0x08010118: 0xEB * 2).
@@ -107,7 +104,7 @@ local function palette(side: number, navi: Object): number?
     local hub = true
     if navi.ai_index == NAVI_23 then
         p = 2
-    elseif navi:navi_state("no_charge") then
+    elseif navi.navi_flags.no_charge then
         p, hub = 1, false
     elseif in_soul then
         -- A soul's: 2 while its Chaos Unison charge is armed (the rules' own B charge: ../souls/chaos_charge).
@@ -140,9 +137,9 @@ local function use_dark_chip(side: number, navi: Object): boolean
     end
     -- In a soul, the soul breaks (the weakness request: 0x080122C8, the status section's `form_break`).
     if not battle.navi(side).form.base then
-        navi:set_request("weakness_hit", true)
+        navi.requests.weakness_hit = true
     end
-    battle.set_side_stat(side, DARK_CHIP_USED, 1)
+    battle.set_side_stat(side, "dark_chip_used", 1)
     -- 0x080127D6: the mood to 0 (unless it is 0); 0x08011A94: to 0x80 (unless it is 0), and anger ends.
     local stats = battle.navi(side)
     if stats.mood ~= 0 then
@@ -239,8 +236,8 @@ light_dark.deal = offer_dark_chip
 -- name among the enemy names (0x0801AE3A).
 function light_dark.round_setup(side: number)
     local hub = battle.navi(side).hub_style ~= 0
-    battle.set_hud("face_variant", hub, side)
-    battle.set_hud("name_variant", hub and battle.link(), side)
+    battle.hud(side).face_variant = hub
+    battle.hud(side).name_variant = hub and battle.link()
 end
 
 -- 0x08010EC8: MegaMan's starting mood.

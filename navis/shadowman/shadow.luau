@@ -200,7 +200,7 @@ local function tick(me: Object)
         if battle.over() then
             me.hp = 0
         end
-        if me:take_damage(0) < 0 then
+        if me:take_damage("damage_sound") == "broken" then
             s.gone = true
             next_action(me, GO)
             c:set_region(nil)

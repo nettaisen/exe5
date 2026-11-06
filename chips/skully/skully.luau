@@ -167,7 +167,7 @@ function skully.action(skulls: Skulls): Action
     local function call(me: Object, s: ActionState)
         if me.step_init == 0 then
             me:set_animation(12)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             battle.play_sound(SOUND)
             me.step_init = 4
             s.timer = 0
@@ -194,7 +194,7 @@ function skully.action(skulls: Skulls): Action
         if t >= 0 then
             return
         end
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me.related1 = nil
         me.overlay = nil
         me:exit_attack()

@@ -208,7 +208,7 @@ local function tick(me: Object)
     local s = state(me)
     local c = me.collision
     c:remove()
-    if me:take_damage(0) < 0 then
+    if me:take_damage("damage_sound") == "broken" then
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, p.z + 0x10_0000), BROKEN)
         battle.play_sound(BREAK_SOUND)
@@ -340,7 +340,7 @@ local function spawn(user: Object, x: number, y: number, spec: Fruit)
         o.panel_x, o.panel_y = x, y
         o.alliance, o.flip = user.alliance, user.flip
         o.run_while_dimmed = true
-        obstacle.register(o, o.alliance, 1)
+        obstacle.register(o, o.alliance, "one_a_side")
     end
 end
 

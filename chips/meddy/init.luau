@@ -60,7 +60,7 @@ local meddy_ds: Chip = {
     class = "mega",
     rarity = 3,
     mb = 63,
-    damage = { formula = "count", of = { side_stat = 3 }, by_count = { 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200 }, operation_battle = 100 },
+    damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200 }, operation_battle = 100 },
     hit_param = 148,
     lockout = 0,
     flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },

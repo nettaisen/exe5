@@ -34,7 +34,7 @@ local START, SHOOT, RECOVER = 0x0, 0x4, 0x8
 -- 0x080EC3DC: three shots to come; the action in use; the first shot at once (the step's next tick).
 local function start(me: Object, _s: State)
     me.attack_count = SHOTS
-    me:set_status("using_action", true)
+    me.status.using_action = true
     me.step, me.step_init = SHOOT, 0
 end
 

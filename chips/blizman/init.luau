@@ -61,7 +61,7 @@ local blizman_ds: Chip = {
     class = "mega",
     rarity = 3,
     mb = 55,
-    damage = { formula = "count", of = { side_stat = 3 }, by_count = { 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180 }, operation_battle = 160 },
+    damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180 }, operation_battle = 160 },
     hit_param = 158,
     lockout = 0,
     flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },

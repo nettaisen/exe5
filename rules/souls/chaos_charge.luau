@@ -61,7 +61,7 @@ end
 -- window reads it as it draws, 0x08019704: set where the charge is armed or dropped).
 local function show_face(side: number)
     local navi = battle.player(side)
-    battle.set_hud("face_variant_any_form", navi ~= nil and navi.b_charge_time ~= nil, side)
+    battle.hud(side).face_variant_any_form = navi ~= nil and navi.b_charge_time ~= nil
 end
 
 -- 0x0801216C's end: the charge armed, at the chaos level the change left (0).
@@ -72,7 +72,7 @@ function chaos_charge.arm(navi: Object)
     navi.b_charge_anim = 2 + s.chaos_window
     show_face(navi.alliance)
     -- (The weapons' load drops it, and its counter runs in the navi's tick, while it is armed.)
-    rules.listen(navi.alliance, "weapons_loaded", true)
+    rules.listening(navi.alliance).weapons_loaded = true
     ticked.update(navi.alliance)
 end
 
@@ -80,7 +80,7 @@ end
 function chaos_charge.drop(side: number, navi: Object)
     navi.b_charge_time, navi.b_charge_glow, navi.b_charge_anim = nil, nil, nil
     show_face(side)
-    rules.listen(side, "weapons_loaded", false)
+    rules.listening(side).weapons_loaded = false
     ticked.update(side)
 end
 
@@ -97,7 +97,7 @@ function chaos_charge.navi_tick(side: number, navi: Object)
         return
     end
     local s = rules.state() :: State
-    if navi.charge_source ~= 2 or navi.charge_level ~= 2 then
+    if navi.charge_source ~= "b" or navi.charge_level ~= "full" then
         s.chaos_counter = 0
         return
     end
@@ -124,19 +124,19 @@ end
 function chaos_charge.release_taken(side: number, navi: Object)
     local s = rules.state() :: State
     if not s.chaos_success then
-        navi:set_navi_state("uninterruptible", true)
-        navi:set_attack(chaos.failure, 6)
+        navi.navi_flags.uninterruptible = true
+        navi:set_attack(chaos.failure, "misfire")
         return
     end
     s.chaos_level = math.min(s.chaos_level + 1, 4)
     push_time(navi, s)
-    -- (0x0800F338: the side's statistic 0 counts it.)
-    battle.bump_side_stat(side, 0, 1)
+    -- (0x0800F338: the side's statistic `chaos_weapons` counts it.)
+    battle.bump_side_stat(side, "chaos_weapons", 1)
     local soul = soul_chaos(side)
     if soul == nil then
         error("the soul has no chaos weapon: its routine 0xFF reads past the weapon routines' table")
     end
-    navi:start_weapon(soul.weapon, 5)
+    navi:start_weapon(soul.weapon, "unspent_chip")
 end
 
 return chaos_charge

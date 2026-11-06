@@ -60,7 +60,7 @@ local shadomn_ds: Chip = {
     class = "mega",
     rarity = 3,
     mb = 80,
-    damage = { formula = "count", of = { side_stat = 3 }, by_count = { 45, 50, 50, 55, 55, 60, 60, 65, 65, 70, 70 }, operation_battle = 70 },
+    damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 45, 50, 50, 55, 55, 60, 60, 65, 65, 70, 70 }, operation_battle = 70 },
     hit_param = 138,
     lockout = 0,
     flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },

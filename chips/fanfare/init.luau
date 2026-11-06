@@ -13,8 +13,8 @@ local INVULNERABLE_TICKS = 4
 -- 0x080D542E: every combatant of its side is invulnerable for a few ticks (`object_setInvulnerableTime`).
 local function cheer(me: Object)
     for _, actor in battle.alive_actors(me.alliance) do
-        actor:set_status_timer("invulnerable", INVULNERABLE_TICKS)
-        actor:set_status("invulnerable", true)
+        actor.status_timers.invulnerable = INVULNERABLE_TICKS
+        actor.status.invulnerable = true
     end
 end
 

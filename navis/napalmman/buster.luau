@@ -65,7 +65,7 @@ end
 local function shoot(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(ANIM)
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me.step_init = 4
         s.timer = 0
     end
@@ -93,7 +93,7 @@ local function recover(me: Object, s: State)
     s.timer = bit32.band(t, 0xFFFF)
     if t < 0 then
         me.related1 = nil
-        if me.actor_type == "player" and me:held("b") then
+        if me.actor_type == "player" and me.held.b then
             me.marker = 4
             me.step, me.step_init = SHOOT, 0
         else
@@ -105,7 +105,7 @@ local function recover(me: Object, s: State)
         return
     end
     local dir = me:held_direction()
-    if dir ~= 0 then
+    if dir ~= nil then
         me.related1 = nil
         me:exit_attack()
         me:start_move(dir)
@@ -125,7 +125,7 @@ buster.action = new.action {
         else
             error(string.format("NapalmMan's buster's step %#x reads past its table (0x080F0F90)", step))
         end
-        if me:request("anti_damage_triggered") or me:request("anti_sword_triggered") then
+        if me.requests.anti_damage_triggered or me.requests.anti_sword_triggered then
             me:check_reactive_abort()
         end
     end,

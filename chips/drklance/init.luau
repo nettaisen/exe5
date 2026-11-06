@@ -15,7 +15,7 @@ local HIT = lance.hit {
     is = collision.attack_480,
     hits = collision.attack,
     spark = sparks.wood,
-    hit_mod = 0x10,
+    hit_mod = { forward = true },
     bug = 0x16,
     bug_arg = 2,
 }
@@ -33,7 +33,8 @@ local chip: Chip = {
     rarity = 4,
     mb = 99,
     damage = 400,
-    hit_param = 158,
+    counter = 30,
+    cant_counter = true,
     lockout = 20,
     flags = { has_damage = true, dark = true, variable_damage = true },
     slot_in_limit = 1,

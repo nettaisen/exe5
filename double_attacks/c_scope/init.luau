@@ -37,7 +37,7 @@ local ANIM_IDLE, ANIM_SHOOT, ANIM_SEARCH = 0, 0xE, 0x11
 local SOUND_SHOT = asset.sound("col-army-2")
 local SOUND_LOCK = asset.sound("mark")
 -- A shot's hit (0x02015A48): the scope's panel (region 1), spark 0, hitting navis as a curse, hit modifier 3.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- 0x02015A48: a shot on the scope's panel.
 local function shoot_at(me: Object, target: Object?)
@@ -53,8 +53,7 @@ local function shoot_at(me: Object, target: Object?)
         hit_effect = sparks.plain,
         target = collision.hits_navis,
         self_type = collision.curse,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
 end
@@ -229,7 +228,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 40,
-    hit_param = 133,
+    counter = 5,
+    cant_counter = true,
     lockout = 0,
     flags = {},
     action = cannon_chips.cannon.action,

@@ -14,7 +14,7 @@ local cusvolt1: Chip = {
     class = "standard",
     rarity = 1,
     mb = 40,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { has_damage = true, damage_shown_variable = true, library = true, variable_damage = true },
     -- (The custom screen shows its damage as "???" on an A, and the damage on another code.)
@@ -35,7 +35,7 @@ local cusvolt2: Chip = {
     class = "standard",
     rarity = 2,
     mb = 55,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { has_damage = true, damage_shown_variable = true, library = true, variable_damage = true },
     -- (The custom screen shows its damage as "???" only on an A, which it never comes as.)
@@ -56,7 +56,7 @@ local cusvolt3: Chip = {
     class = "standard",
     rarity = 3,
     mb = 70,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { has_damage = true, damage_shown_variable = true, library = true, variable_damage = true },
     -- (The custom screen shows its damage as "???" only on an A, which it never comes as.)

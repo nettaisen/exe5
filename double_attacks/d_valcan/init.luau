@@ -37,14 +37,14 @@ local HEIGHTS = { 0x08_0000, 0x10_0000, 0x18_0000, 0x20_0000 }
 -- animations 0 and 1).
 local MEGAMAN_SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 },
     single = true,
     hits_while_dimmed = true,
 }
 local NAPALMMAN_SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0, steps = 10 },
     single = true,
     hits_while_dimmed = true,
@@ -64,7 +64,7 @@ local APPEAR, CHARGE, ATTACK, AFTER, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10
 -- damage word, running while dimmed.
 local function fire(me: Object, variant: BulletVariant)
     local z = HEIGHTS[bit32.band(battle.rng_positive(), 3) + 1]
-    local word = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local word = me.damage_word
     local o = bullets.fire(bullet.kind, me, me.panel_x + me.facing, me.panel_y, z, variant, Element.null, word)
     if o then
         o.run_while_dimmed = true
@@ -235,7 +235,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 40,
-    hit_param = 129,
+    counter = 1,
+    cant_counter = true,
     lockout = 0,
     flags = {},
     action = cannon_chips.cannon.action,

@@ -26,7 +26,7 @@ local BETWEEN, LASTS = 8, 8
 -- By hit, whether it reaches each of the three panels (0x080C82FC).
 local PATTERN = { { true, true, true }, { false, true, true }, { false, false, true } }
 -- A hit's hit modifier: the pattern's byte, which the spawner leaves in r7 (`object_spawnCollisionRegion`'s).
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 
 -- 0x080C82A2: hit `n` (1 to 3): an attack of no spark on each panel the pattern names, at the tornado's height.
 local function hit(me: Object, n: number)
@@ -42,8 +42,7 @@ local function hit(me: Object, n: number)
                 hit_effect = nil,
                 target = collision.hits_navis,
                 self_type = collision.attack_a0,
-                damage = me.damage,
-                stamina = me.stamina,
+                damage = me.damage_word,
                 hit_mod = HIT_MOD,
             })
             if box then
@@ -132,7 +131,7 @@ function tornado.spawn(owner: Object, x: number, y: number, damage: number, grou
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = Element.null
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
         ;(o.state :: State).grounded = grounded == true

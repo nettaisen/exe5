@@ -11,7 +11,7 @@ local vulcan_hit_sprite = asset.sprite("vulcan-hit")
 -- bullet.
 local SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 },
     single = true,
 }
@@ -19,7 +19,7 @@ local SHOT = bullet.variant {
 -- SuprVulc's (row 0x10: EXE6's): the same, its hit brighter.
 local SUPER_SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 1, steps = 10 },
     single = true,
 }
@@ -33,7 +33,7 @@ local vulcan1: Chip = {
     rarity = 0,
     mb = 6,
     damage = 10,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
@@ -50,7 +50,7 @@ local vulcan2: Chip = {
     rarity = 1,
     mb = 18,
     damage = 10,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
@@ -67,7 +67,7 @@ local vulcan3: Chip = {
     rarity = 2,
     mb = 30,
     damage = 10,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
@@ -85,7 +85,7 @@ local suprvulc: Chip = {
     rarity = 3,
     mb = 75,
     damage = 10,
-    hit_param = 4,
+    counter = 4,
     lockout = 0,
     flags = { has_damage = true, library = true },
     slot_in_limit = 1,

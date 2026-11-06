@@ -36,7 +36,7 @@ local function update(me: Object)
     end
     me.timer = EVERY
     local x = me.facing_side * 5 + 1
-    spshake.spawn(me, x, ROWS[s.sent], me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), s.wave)
+    spshake.spawn(me, x, ROWS[s.sent], me.element, me.damage_word, s.wave)
     s.sent += 1
     if s.sent >= WAVES then
         me:set_lifecycle("destroy")
@@ -72,7 +72,7 @@ function shakpar.instant(wave: Wave): (user: Object, spec: InstantChipSpec) -> (
         end
         o.panel_x, o.panel_y = spec.panel_x, spec.panel_y
         o.element = spec.element
-        o:set_damage_word(spec.damage)
+        o.damage_word = spec.damage
         o.alliance, o.flip = user.alliance, user.flip
         o.related1 = user
         ;(o.state :: State).wave = wave

@@ -19,12 +19,12 @@ export type State = {
     hum: number,
 }
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 local ANIM = 16
 local RAISE_TICKS, PULL_TICKS, RECOVER_TICKS = 6, 30, 10
 local HUM_EVERY = 16
 -- The pull's hit modifier: the push of bit 2 (its first row: toward the puller, over the panels).
-local PULL_MOD = 4
+local PULL_MOD: HitModifier = { forward_far = true }
 local SOUND_MAGNET, SOUND_HUM = asset.sound("magnet-pull"), asset.sound("erase-man-2")
 
 -- 0x080EEBBC: the magnet raised; seven ticks on, its field and the pull.
@@ -43,7 +43,7 @@ local function raise(me: Object, s: State)
         return
     end
     s.timer = PULL_TICKS
-    magnet.spawn(me, me.facing, 0, me.attack_element, true, int.u32(me.attack_damage + me.hit_param * 0x10000))
+    magnet.spawn(me, me.facing, 0, me.attack_element, true, me.attack_word)
     battle.play_sound(SOUND_MAGNET)
     battle.play_sound(SOUND_HUM)
     s.hum = 0
@@ -72,8 +72,7 @@ local function pull(me: Object, s: State)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.pull,
-        damage = 0,
-        stamina = 0,
+        damage = damage_word.of { amount = 0, counter = 0 },
         hit_mod = PULL_MOD,
     })
 end
@@ -113,8 +112,7 @@ charge.action = new.action {
 
 -- 0x0800F804 (its parameters' first byte 1, which the action passes on: the magnet paralyzes).
 local function setup(navi: Object): Action
-    navi.attack_damage = 30 + 10 * (battle.navi(navi.alliance).attack + 1)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = 30 + 10 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     navi.attack_element = Element.elec
     return charge.action
 end

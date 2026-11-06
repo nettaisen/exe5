@@ -393,7 +393,7 @@ function double_attack.make(spec: Spec): DoubleAttack
         end
         o.panel_x, o.panel_y = me.panel_x, me.panel_y
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        o.damage_word = me.damage_word
         o.related1 = user
         local s = o.state :: State
         s.role = role
@@ -492,7 +492,7 @@ function double_attack.make(spec: Spec): DoubleAttack
         o.element = element
         o.related1 = user
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         return o
     end
 

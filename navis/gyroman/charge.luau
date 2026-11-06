@@ -17,7 +17,7 @@ export type State = {
     timer: number,
 }
 
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 -- The damage rows' row 2, by his level: a hit's damage.
 local DAMAGE: { number } = { 20, 20, 20, 30, 30, 30, 30 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 2 (0x0203E31E): a base and a step for each attack
@@ -57,7 +57,7 @@ charge.action = new.action {
                 s.timer = RAISE_TICKS
                 marker.spawn(me, ahead, me.panel_y, MARK_TICKS, MARK_STYLE, true)
             elseif count(s) then
-                tornado.spawn(me, ahead, me.panel_y, int.u32(me.attack_damage + me.hit_param * 0x10000), true)
+                tornado.spawn(me, ahead, me.panel_y, me.attack_word, true)
                 battle.play_sound(SOUND)
                 me.step, me.step_init = BLOW, 0
             end
@@ -78,8 +78,7 @@ charge.action = new.action {
 
 -- 0x0800F9D6
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.attack_element = Element.null
     return charge.action
 end

@@ -29,7 +29,7 @@ local function launching(me: Object, s: ActionState, launch: (me: Object, damage
         s.timer = 0
     end
     if s.timer == LAUNCH_AT then
-        launch(me, int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra))
+        launch(me, damage_word.plus(me.attack_word, me.extra))
     end
     local t = s.timer + 1
     s.timer = t

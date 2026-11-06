@@ -9,7 +9,7 @@ local lance = require("@exelib/lance")
 local sparks = require("../lib/sparks")
 
 -- Its hit (0x080CF904's row 0): an attack against attacks of hit modifier 0x10 (EXE6's 0x51) with the wood spark.
-local HIT = lance.hit { is = collision.attack, hits = collision.attack, spark = sparks.wood, hit_mod = 0x10 }
+local HIT = lance.hit { is = collision.attack, hits = collision.attack, spark = sparks.wood, hit_mod = { forward = true } }
 
 local chip: Chip = {
     codes = { "C", "L", "R", "*" },
@@ -19,7 +19,7 @@ local chip: Chip = {
     rarity = 3,
     mb = 42,
     damage = 130,
-    hit_param = 30,
+    counter = 30,
     lockout = 20,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,

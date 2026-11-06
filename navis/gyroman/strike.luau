@@ -12,7 +12,7 @@ local strike = {}
 
 export type State = {
     -- Its hit modifier.
-    hit_mod: number,
+    hit_mod: HitModifierByte,
 }
 
 local SPRITE = asset.sprite("air-strike")
@@ -91,13 +91,13 @@ strike.kind = new.kind {
 
 -- 0x080C7F94: a strike of `owner`'s side and facing on panel (x, y), with the element, its hit modifier and the
 -- damage word.
-function strike.spawn(owner: Object, x: number, y: number, element: Element, hit_mod: number, damage: number): Object?
+function strike.spawn(owner: Object, x: number, y: number, element: Element, hit_mod: HitModifier, damage: number): Object?
     local o = battle.spawn(strike.kind, Vec3.zero)
     if o then
-        (o.state :: State).hit_mod = hit_mod
+        (o.state :: State).hit_mod = hit_modifier.byte(hit_mod)
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
     end
     return o

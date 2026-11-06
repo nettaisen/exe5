@@ -119,7 +119,7 @@ local function napalmman_attack(me: Object)
                 gravity = GRAVITY,
                 target_x = tx,
                 target_y = me.panel_y,
-                damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16)),
+                damage = me.damage_word,
                 while_dimmed = true,
                 -- (The DS's bomb flies the DS's arc.)
                 ds_arc = true,
@@ -201,7 +201,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 40,
-    hit_param = 158,
+    counter = 30,
+    cant_counter = true,
     lockout = 0,
     flags = {},
     action = cannon_chips.cannon.action,

@@ -35,7 +35,7 @@ export type State = {
     unwarned: boolean,
 }
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 -- The damage rows' row 13, by his level.
 local DAMAGE: { number } = { 50, 50, 60, 60, 70, 70, 70 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 13 (0x0203E31E): a base and a step for each attack
@@ -48,7 +48,7 @@ local ANIM_READY, ANIM_DRAW = 24, 5
 local SOUND = asset.sound("spin")
 local DRAW_TICKS, SOUND_AT, SLASH_AT, RECOVER_TICKS = 21, 17, 12, 5
 local COUNTER_TICKS = 16
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- An enemy body, by side (0x080BA5B0).
 local ENEMY_BODY: PanelFlags = { enemy_body = true }
 -- The slash: AIAttackVars +3's row of 0x080F8AF4 (0x080F8A30 and 0x080F8B00 for the warning) and its effect (0x48
@@ -125,8 +125,7 @@ local function draw(me: Object, s: State)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = me.attack_damage,
-            stamina = me.hit_param,
+            damage = me.attack_word,
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(s.target_x, s.target_y)
@@ -178,8 +177,7 @@ charge.action = new.action {
 
 -- 0x0800FC0C (the attack's charged byte, lockout and bonus are left as the last attack had them)
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.attack_element = Element.null
     local s = navi:action_state(charge.action) :: State
     s.wait = 0

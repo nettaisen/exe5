@@ -31,26 +31,26 @@ local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0, s
 
 trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
     strikes = {
-        null = { sound = nil, spark = sparks.breaking, hit_mod = 3, status = nil, burst = effects.shell_burst },
+        null = { sound = nil, spark = sparks.breaking, hit_mod = { flinch = true, flash = true }, status = nil, burst = effects.shell_burst },
         fire = {
             sound = asset.sound("target-move"),
             spark = sparks.fire,
-            hit_mod = 3,
+            hit_mod = { flinch = true, flash = true },
             status = nil,
             burst = effects.shell_burst,
         },
-        aqua = { sound = asset.sound("spout-ball"), spark = sparks.aqua, hit_mod = 3, status = nil, burst = SPLASH },
+        aqua = { sound = asset.sound("spout-ball"), spark = sparks.aqua, hit_mod = { flinch = true, flash = true }, status = nil, burst = SPLASH },
         elec = {
             sound = asset.sound("beast-over-burst"),
             spark = sparks.elec,
-            hit_mod = 3,
+            hit_mod = { flinch = true, flash = true },
             status = statuses.paralyze_90,
             burst = LIGHTNING,
         },
         wood = {
             sound = asset.sound("junk-shot"),
             spark = sparks.wood,
-            hit_mod = 3,
+            hit_mod = { flinch = true, flash = true },
             status = statuses.confuse_480,
             burst = LEAVES,
         },

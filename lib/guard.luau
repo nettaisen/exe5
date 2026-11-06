@@ -94,7 +94,7 @@ function guard.action(spec: Spec): Action
             elseif me.marker == 0 then
                 me.marker = 1
                 local x, y = me.panel_x + me.facing, me.panel_y
-                local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+                local damage = damage_word.plus(me.attack_word, me.extra)
                 if counter(me, x, y, damage) then
                     drop_shield(me)
                     me:exit_attack()

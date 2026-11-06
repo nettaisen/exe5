@@ -70,7 +70,7 @@ local function armed(me: Object)
         end
         battle.play_sound(SOUND)
         local x, y = square(me)
-        press.spawn(me, x, y, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        press.spawn(me, x, y, me.element, me.damage_word)
     end
     me.lifecycle = "destroy"
 end
@@ -136,7 +136,7 @@ function trap.spawn(owner: Object, x: number, y: number, element: Element, damag
         o.element = element
         o.related1 = owner
         o.alliance, o.flip = owner.alliance, owner.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.run_while_dimmed = true
     end
     return o

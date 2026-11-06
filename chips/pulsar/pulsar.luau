@@ -29,7 +29,7 @@ local BODIES: HitNames = { own_other_body = true, enemy_other_body = true, neutr
 -- The burst: 8 ticks after the hit, over the ring around it; its hit lasts 26 ticks.
 local BURST_DELAY, BURST_TICKS = 8, 26
 -- The chips' parameters: the burst's hit modifier and status; the touch's hit modifier (Param4 set).
-local BURST_HIT_MOD, BURST_STATUS, TOUCH_HIT_MOD = 0, status.paralyze_90, 1
+local BURST_HIT_MOD, BURST_STATUS, TOUCH_HIT_MOD = {}, status.paralyze_90, { flinch = true }
 local FLY, BURST_ACTION = 0x0, 0x4
 
 local function finish(me: Object)
@@ -66,8 +66,7 @@ local function burst(me: Object, s: State)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = BURST_HIT_MOD,
         status = BURST_STATUS,
     })
@@ -164,7 +163,7 @@ local function spawn(owner: Object, x: number, y: number, element: Element, dama
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.vel = Vec3.new(SPEED, 0, 0)
     end

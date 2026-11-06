@@ -46,7 +46,7 @@ local function pick_bug(me: Object)
         choice = common.pick(choices, { 0, 1, 2 })
     end
     local b = BUGS[choice]
-    me.collision.bugs = b.arg * 0x100 + b.bug
+    me.collision.bug, me.collision.bug_arg = b.bug, b.arg
 end
 
 bug_bomb.kind = common.make_kind("bugbomb/bomb", {

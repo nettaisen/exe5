@@ -100,9 +100,8 @@ local function burst(me: Object)
         region = regions.square,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 0,
+        damage = me.damage_word,
+        hit_mod = {},
         status = statuses.paralyze_120,
     })
     if h then
@@ -151,7 +150,7 @@ capsule.kind = new.kind {
             if not me:create_collision() then
                 error("C-BOMB's capsule: no collision slot (sub_8011504; the game reads through a null pointer)")
             end
-            me:setup_collision(collision.nothing, collision.everything, 0)
+            me:setup_collision(collision.nothing, collision.everything, {})
             sprite:face(me)
             me.visible = true
             me:set_coordinates_from_panel()
@@ -178,7 +177,7 @@ function capsule.spawn(meddy: Object, x: number, y: number): Object?
     end
     o.panel_x, o.panel_y = x, y
     o.element = Element.null
-    o:set_damage_word(bit32.bor(meddy.damage, bit32.lshift(meddy.stamina, 16)))
+    o.damage_word = meddy.damage_word
     o.alliance, o.flip = meddy.alliance, meddy.flip
     o.related1 = meddy
     ;(o.state :: State).meddy = meddy

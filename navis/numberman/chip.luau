@@ -30,7 +30,7 @@ local action = new.action {
         if step == CALL then
             -- 0x080F16B8: the controller on his panel, with the attack's element, damage word and bonus; its telop
             -- names the chip.
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+            local damage = me.attack_word
             local c = controller.spawn(me, me.attack_element, damage, me.extra)
             dimming.start(me.alliance, true, c, me, { chip = numtrap, bonus = me.extra })
             me.step, me.step_init = LEAVE, 0
@@ -60,7 +60,8 @@ numtrap = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 120, 120, 120, 120, 120, 140, 140 }),
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = { dimming = true, has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,

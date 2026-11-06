@@ -36,7 +36,7 @@ local SOUND_STRIKE = asset.sound("hit-bomb-1")
 -- The explosions over the enemy area (effect 0) and the puffs behind his dash (effect 2).
 local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 22 }
 local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- His dash: 4 pixels a tick forward, 2.5 up or down.
 local DASH_X, DASH_Y = 0x4_0000, 0x2_8000
@@ -186,8 +186,7 @@ local function strike(me: Object)
             hit_effect = sparks.plain,
             target = collision.nothing,
             self_type = collision.attack,
-            damage = me.damage,
-            stamina = me.stamina,
+            damage = me.damage_word,
             hit_mod = HIT_MOD,
         })
         if box then

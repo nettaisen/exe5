@@ -16,7 +16,7 @@ export type State = {
     wait: number,
 }
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 -- The damage rows' row 18, by his level.
 local DAMAGE: { number } = { 60, 60, 60, 60, 60, 80, 80 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 18 (0x0203E31E): a base and a step for each attack
@@ -33,7 +33,7 @@ local function throw(me: Object, s: State)
     if me.step_init == 0 then
         me.step_init = 4
         me.anim = THROW_ANIM
-        tomahawk.throw(me, me.attack_element, int.u32(me.attack_damage + me.hit_param * 0x10000))
+        tomahawk.throw(me, me.attack_element, me.attack_word)
         s.timer = THROW_TICKS
         return
     end
@@ -77,8 +77,7 @@ charge.action = new.action {
 
 -- 0x0800FACA
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.attack_element = Element.null
     local s = navi:action_state(charge.action) :: State
     s.wait = WAIT

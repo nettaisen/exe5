@@ -35,7 +35,7 @@ local sword_slash_sprite = asset.sprite("sword-slash")
 local vulcan_hit_sprite = asset.sprite("vulcan-hit")
 local HP = 1
 -- Its collision (0x13140300): its side's body (row 0x13) that the other side reaches (row 0x14), hit modifier 3.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local DRAW_SOUND, SHOT_SOUND = asset.sound("sword-swing"), asset.sound("col-army-2")
 -- The slash: over the panel ahead and the one past it (region 2), no spark (0xFF), a slash (row 7) against navis
 -- (row 5), hit modifier 3 (r7); its look 16 pixels up, effect 0x17 of EXE5's table (0x080DFC94: sprite 0C-14, the
@@ -49,7 +49,7 @@ local HEIGHTS = { [0] = 0x08, 0x10, 0x18, 0x20 }
 -- The bullet: the panel found and the one behind it, staggering, its hit (the Vulcans') shown once at the bullet.
 local SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 0, steps = 10 },
     single = true,
 }
@@ -106,8 +106,7 @@ local function slash(me: Object)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = bit32.band(word, 0xFFFF),
-            stamina = bit32.rshift(word, 16),
+            damage = word,
             hit_mod = HIT_MOD,
         })
         local px, py = field.center(x, y)
@@ -326,7 +325,7 @@ function soldier.obstacle_reaction(_side: number, me: Object)
         (o.state :: State).ranged = gun
         o.panel_x, o.panel_y = x, y
         o.element = Element.from_byte(bit32.band(left, 0xFF))
-        o.damage, o.stamina = 0, 0
+        o.damage_word = 0
         o.related1 = me
         o.alliance = side
         o.flip = gun == 0

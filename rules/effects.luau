@@ -17,16 +17,24 @@ return {
     -- The mark over a navi a damaging weakness hit told about shows for 18 of its sprite's steps.
     hit_marker_steps = { weakness = 18 },
     retype = "is_alone",
+    -- The damage word's flag bits of the game's own (the engine's, 0x8000, doubles the damage), which its
+    -- reading below and content name.
+    damage_word_bits = {
+        paralysis = 0x4000,
+        confusion = 0x2000,
+        blindness = 0x1000,
+        hp_bug = 0x0800,
+    },
     -- Its damage words (0x080165EC): the damage the low 11 bits, doubled with 0x8000; then 0x4000 the paralysis (status
     -- byte 0x10) without a flinch and no more, else 0x2000 the confusion (0x20) and no more, else 0x1000 the blindness
     -- (0x30); then 0x800 bug code 0x18 with high byte 0x11.
     damage_word = {
         damage = 0x7FF,
         flags = {
-            { bit = 0x4000, status = "damage_word_paralysis", hit_modifier = 0, stop = true },
-            { bit = 0x2000, status = "damage_word_confusion", stop = true },
-            { bit = 0x1000, status = "damage_word_blindness" },
-            { bit = 0x800, bug = 0x1118 },
+            { flag = "paralysis", status = "damage_word_paralysis", hit_modifier = {}, stop = true },
+            { flag = "confusion", status = "damage_word_confusion", stop = true },
+            { flag = "blindness", status = "damage_word_blindness" },
+            { flag = "hp_bug", bug = 0x18, bug_arg = 0x11 },
         },
     },
     palette_flash = "pause_holds",

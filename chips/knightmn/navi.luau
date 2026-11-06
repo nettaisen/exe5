@@ -113,7 +113,7 @@ local function swing(me: Object)
         me.timer = 0x3A
         hold_chain(me, false)
         battle.play_sound(SOUND_SWING)
-        ball.swing(me, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), SWING)
+        ball.swing(me, me.damage_word, SWING)
         me.phase_init = 4
         return
     end

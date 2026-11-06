@@ -26,7 +26,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, 3)
+    me:setup_collision(collision.thrown, collision.hits_navis, { flinch = true, flash = true })
     local c = me.collision
     c:set_hit_effect(sparks.plain)
     c:set_region(nil)
@@ -110,7 +110,7 @@ function strike.spawn(bass: Object, x: number, y: number, damage: number): Objec
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = Element.null
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = bass.alliance, bass.flip
         o.run_while_dimmed = true
     end

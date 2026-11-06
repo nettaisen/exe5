@@ -115,7 +115,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, if s.wave.paralyzes then 0 else 3)
+    me:setup_collision(collision.thrown, collision.hits_navis, if s.wave.paralyzes then {} else { flinch = true, flash = true })
     if s.wave.paralyzes then
         me.collision.status_base = status.paralyze_90
     end
@@ -162,7 +162,7 @@ function spshake.spawn(owner: Object, x: number, y: number, element: Element, da
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         local s = o.state :: State
         s.wave = wave

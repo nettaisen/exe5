@@ -28,7 +28,7 @@ local START, SET_UP, SWING, STEP_BACK, RECOVER = 0x0, 0x4, 0x8, 0xC, 0x10
 local ANIM_SWING = 5
 local SWING_TICKS, THROW_TICK, RECOVER_TICKS = 0x15, 0xC, 5
 -- A charged one's boom's hit modifier (its first parameter becomes 1).
-local CHARGED_HIT_MOD = 1
+local CHARGED_HIT_MOD: HitModifier = { flinch = true }
 
 local function set_step(me: Object, step: number)
     me.step = step
@@ -36,7 +36,7 @@ local function set_step(me: Object, step: number)
 end
 
 -- The action of a chip whose parameters are `hit_mod` (its boom's hit modifier) and `pierces` (it goes through).
-function action.make(hit_mod: number, pierces: boolean): Action
+function action.make(hit_mod: HitModifier, pierces: boolean): Action
     return new.action {
         state = action.STATE,
         update = function(me: Object, s: State)
@@ -61,7 +61,7 @@ function action.make(hit_mod: number, pierces: boolean): Action
                 end
                 if s.timer == THROW_TICK then
                     local charged = me.charged ~= 0
-                    local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+                    local damage = damage_word.plus(me.attack_word, me.extra)
                     local x, y = me.panel_x + me.facing, me.panel_y
                     sonic_boom.throw(swords.sonic_boom, me, x, y, me.attack_element, damage, {
                         hit_mod = if charged then CHARGED_HIT_MOD else hit_mod,
@@ -116,7 +116,7 @@ function action.make(hit_mod: number, pierces: boolean): Action
     }
 end
 
--- SonicBom's: hit modifier 3, not going through.
-action.action = action.make(3, false)
+-- SonicBom's: a flinch and a flash, not going through.
+action.action = action.make({ flinch = true, flash = true }, false)
 
 return action

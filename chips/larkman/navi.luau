@@ -135,7 +135,7 @@ local function attack(me: Object)
     local left = me.timer - 1
     me.timer = left
     if left == 0x50 then
-        swoop.spawn(me, s.palette, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), s.swoop)
+        swoop.spawn(me, s.palette, me.element, me.damage_word, s.swoop)
     elseif left <= 0 then
         local controller = s.controller
         if controller then

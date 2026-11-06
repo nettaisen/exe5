@@ -20,7 +20,7 @@ export type State = {
 
 local SPRITE = asset.sprite("knightman-ball")
 local ANIM = 20
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- How far from the field's middle it flies, in pixels.
 local REACH = 150
 
@@ -104,7 +104,7 @@ function crusher.throw(owner: Object, pos: Vec3, speed: number, damage: number):
     local o = battle.spawn(crusher.kind, pos)
     if o then
         o.alliance, o.flip = owner.alliance, owner.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.element = Element.null
         local s = o.state :: State
         s.speed = speed

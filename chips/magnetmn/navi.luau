@@ -31,10 +31,6 @@ local magnetman = {}
 local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 local NOT_ANY_BODY: PanelCondition = { any_body = false }
 
-local function damage_word(me: Object): number
-    return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
-end
-
 -- `object_isValidPanel`: a battle panel (columns 1 to 6, rows 1 to 3), whatever the number.
 local function on_field(x: number, y: number): boolean
     return x >= 1 and x <= 6 and y >= 1 and y <= 3
@@ -57,7 +53,7 @@ end
 
 -- The chips' (variant 0): hit modifier 1, immobilizing for 60 ticks; it waits for MagnetMan, and runs while dimmed.
 local MAGNET = magnet.variant {
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     status = statuses.immobilize_60,
     waits_for_navi = true,
     runs_while_dimmed = true,
@@ -72,7 +68,7 @@ local function send(me: Object, x: number, pole: number)
         target_x = s.target_x,
         variant = MAGNET,
         palette = s.palette,
-        damage = damage_word(me),
+        damage = me.damage_word,
     })
 end
 
@@ -148,9 +144,8 @@ local function init(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = 1,
-        stamina = 0,
-        hit_mod = 0,
+        damage = damage_word.of { amount = 1, counter = 0 },
+        hit_mod = {},
     })
     me:set_lifecycle("update")
 end

@@ -11,13 +11,23 @@
 -- Written by tools/exe5/gen_rules.py (bn6battle-verify) from the EXE5 ROM; people own it now.
 
 return {
+    -- The hit modifier's bits of the game's own (the engine's, 0x01 a flinch and 0x02 a flash), which
+    -- its push reading and content name: the pushes by the row each picks (toward the navi's front:
+    -- forward or back, as far as it goes or a panel), and the drag.
+    hit_modifier_bits = {
+        forward_far = 0x04,
+        back_far = 0x08,
+        forward = 0x10,
+        back = 0x20,
+        drag = 0x40,
+    },
     -- A push reads the first of bits 2 to 5 of the unflipped hitters' modifier, else the flipped ones' with the
     -- direction reversed (0x0800C9D8); an obstacle's the same from its own rows (0x0800D4B0, the table at 0x0800D53B:
     -- EXE6's four and a fifth of nothing). A push with 0x40 is a drag (0x08017B44, EXE6's `sub_801AEB0`).
     push_reading = {
         reads = "by_hitter_flip",
         bits = 4,
-        drag_bit = 0x40,
+        drag = "drag",
         obstacle_rows = {
             { dx = -1, dy = 0, panels = 6 },
             { dx = 1, dy = 0, panels = 6 },

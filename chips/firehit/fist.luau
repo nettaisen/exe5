@@ -22,6 +22,6 @@ fist.kind = common.make_kind("firehit/fist", {
 })
 
 -- The chips' `instant` hook: the fists hit with modifier 3 (the record's +0x11).
-fist.instant = common.instant(3, fist.kind)
+fist.instant = common.instant({ flinch = true, flash = true }, fist.kind)
 
 return fist

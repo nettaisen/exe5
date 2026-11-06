@@ -110,7 +110,7 @@ local function blade(me: Object)
     if o then
         o.panel_x, o.panel_y = me.panel_x, me.panel_y
         o.element = Element.null
-        o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        o.damage_word = me.damage_word
         o.alliance, o.flip = me.alliance, me.flip
         o.related1 = me
         o.run_while_dimmed = true
@@ -221,7 +221,7 @@ function rock.spawn(colonel: Object, x: number, y: number, wait: number, behind:
     o.element = Element.null
     o.alliance = colonel.alliance
     o.flip = colonel.flip ~= behind
-    o:set_damage_word(bit32.bor(colonel.damage, bit32.lshift(colonel.stamina, 16)))
+    o.damage_word = colonel.damage_word
     o.related1 = colonel
     local s = o.state :: State & { wait: number }
     s.colonel, s.slot, s.wait = colonel, slot, wait;

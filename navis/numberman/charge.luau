@@ -19,7 +19,7 @@ export type State = {
     wait: number,
 }
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 -- The damage rows' row 16, by his level.
 local DAMAGE: { number } = { 10, 10, 10, 10, 10, 20, 20 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 16 (0x0203E31E): a base and a step for each attack
@@ -34,7 +34,7 @@ local THROW_TICKS, THROW_AT, WAIT = 22, 16, 30
 -- The die leaves this high (16.16), for the panel this far ahead.
 local UP, REACH = 24 * 0x1_0000, 3
 -- The throw's parameters (0x00030028): the die's HP, its hits' status (none) and hit modifier.
-local HP, HIT_MOD = 40, 3
+local HP, HIT_MOD = 40, { flinch = true, flash = true }
 -- The faces, by a draw's low four bits (0x080F1664).
 local FACES = { [0] = 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6 }
 
@@ -60,7 +60,7 @@ local function throw(me: Object, s: State)
             hp = HP,
             status = nil,
             hit_mod = HIT_MOD,
-            damage = int.u32(me.attack_damage + me.hit_param * 0x10000),
+            damage = me.attack_word,
             holder = nil,
         })
     elseif t <= 0 then
@@ -101,8 +101,7 @@ charge.action = new.action {
 
 -- 0x0800FAE6
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.attack_element = Element.null
     navi.attack_variant = 0
     local s = navi:action_state(charge.action) :: State

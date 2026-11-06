@@ -16,7 +16,7 @@ local hotbody = {}
 -- that hits navis, hit modifier 3; its region its panel from the start); its sound.
 local SPRITE = asset.sprite("hot-body-flame")
 local SOUND = asset.sound("form-change")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- Its actions: rising (4 ticks), burning (30 ticks, animation 1), dying down (9 ticks, animation 2).
 local RISE, BURN, DIE = 0, 4, 8
 local RISE_TICKS, BURN_TICKS, DIE_TICKS = 4, 30, 9
@@ -165,7 +165,7 @@ local function light(me: Object, x: number, y: number)
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = me.element
-        o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        o.damage_word = me.damage_word
         o.alliance, o.flip = me.alliance, me.flip
         o.related1 = me
     end
@@ -279,13 +279,13 @@ function hotbody.action(rounds: number): Action
     -- bonus; the navi's related1 it); the navi stands; until the fire lets it go.
     local function stand(me: Object, s: State)
         if me.step_init == 0 then
-            local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+            local damage = damage_word.plus(me.attack_word, me.extra)
             -- (Its position is the spawner's registers: the navi's row, the element and the bonus.)
             local o = battle.spawn(hotbody.fire, Vec3.new(me.panel_y, me.attack_element.byte, me.extra))
             if o then
                 o.panel_x, o.panel_y = me.panel_x, me.panel_y
                 o.element = me.attack_element
-                o:set_damage_word(damage)
+                o.damage_word = damage
                 o.alliance, o.flip = me.alliance, me.flip
                 o.related1 = me
                 local fs = o.state :: FireState

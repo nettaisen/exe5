@@ -17,7 +17,7 @@ local NUMBERMAN = common.make {
     throw = asset.sound("minibomb-throw"),
     face = face,
     dice = dice,
-    die = { hp = 0x14, status = nil, hit_mod = 3 },
+    die = { hp = 0x14, status = nil, hit_mod = { flinch = true, flash = true } },
 }
 
 local navi = {}

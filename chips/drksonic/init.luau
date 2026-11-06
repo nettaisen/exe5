@@ -29,9 +29,8 @@ local function stun(me: Object)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.breaking,
-            damage = 0,
-            stamina = 0,
-            hit_mod = 0,
+            damage = damage_word.of { amount = 0, counter = 0 },
+            hit_mod = {},
             status = statuses.paralyze_120,
         })
     end
@@ -45,7 +44,7 @@ local chip: Chip = {
     rarity = 4,
     mb = 99,
     damage = 0,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { dimming = true, dark = true },
     slot_in_limit = 1,

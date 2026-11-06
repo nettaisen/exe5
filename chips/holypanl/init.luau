@@ -14,7 +14,7 @@ local chip: Chip = {
     rarity = 1,
     mb = 24,
     damage = 0,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = { dimming = true, standard_library = true, library = true },
     extra_flags = { free_slot_in = true },

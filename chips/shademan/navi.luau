@@ -23,15 +23,15 @@ local SHADEMAN = common.make {
     commands = {
         {
             steps = { { "down" }, { "down", "right" }, { "right", "a" } },
-            hit = { palette = 1, hit_mod = 0, status = statuses.paralyze_150 },
+            hit = { palette = 1, hit_mod = {}, status = statuses.paralyze_150 },
         },
         {
             steps = { { "down" }, { "down", "left" }, { "left", "a" } },
-            hit = { palette = 9, hit_mod = 3, status = statuses.confuse_960 },
+            hit = { palette = 9, hit_mod = { flinch = true, flash = true }, status = statuses.confuse_960 },
         },
     },
     uncommanded = function(): ShadeManHit
-        return { palette = 0, hit_mod = 3, status = nil }
+        return { palette = 0, hit_mod = { flinch = true, flash = true }, status = nil }
     end,
     bows = true,
 }

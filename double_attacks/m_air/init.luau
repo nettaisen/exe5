@@ -72,7 +72,7 @@ local function drop(me: Object)
     for y = 1, 3 do
         local p = field.panel(me.panel_x, y) :: Panel
         if p.alliance ~= me.alliance then
-            bomb.drop(me, me.panel_x, y, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+            bomb.drop(me, me.panel_x, y, me.damage_word)
             dropped = true
         end
     end
@@ -215,7 +215,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 0,
     damage = 40,
-    hit_param = 168,
+    counter = 40,
+    cant_counter = true,
     lockout = 0,
     flags = {},
     action = cannon_chips.cannon.action,

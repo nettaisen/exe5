@@ -42,7 +42,7 @@ local action = new.action {
         local step = me.step
         if step == AIM or step == AIM_TOO then
             -- 0x080F10BC
-            me.attack_damage = bit32.band(me.attack_damage + me.extra, 0xFFFF)
+            me.attack_word = damage_word.plus_damage(me.attack_word, me.extra)
             s.target_x = math.clamp(me.panel_x + me.facing * 4, 0, 7)
             s.target_y = me.panel_y
             me.status.using_action = true
@@ -64,7 +64,7 @@ local action = new.action {
                     gravity = GRAVITY,
                     target_x = s.target_x,
                     target_y = s.target_y,
-                    damage = int.u32(me.attack_damage + me.hit_param * 0x10000),
+                    damage = me.attack_word,
                 })
                 battle.play_sound(SOUND)
             end
@@ -97,7 +97,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 100, 100, 100, 100, 100, 120, 120 }),
-    hit_param = 158,
+    counter = 30,
+    cant_counter = true,
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,

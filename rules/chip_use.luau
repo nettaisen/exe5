@@ -8,12 +8,21 @@
 return {
     leave_on_use = true,
     anti_navi_sparkle = { dy = 0, z = 16 },
+    -- A hand entry's marks of the game's own (the engine's, 0x01, the folder's Regular chip), which the
+    -- rules below and content name.
+    mark_bits = {
+        white = 0x02,
+        yellow = 0x04,
+        black = 0x08,
+        pink = 0x10,
+        purple = 0x20,
+    },
     -- What a hand entry's marks add to the damage word at the chip's use, by the mark's bit (0x08010368): 0x02 its
     -- 0x4000 (the white capsule: paralysis), 0x04 its 0x2000 (the yellow: confusion), 0x08 its 0x1000 (the black:
     -- blindness), 0x20 its 0x0800 (the purple: the HP bug). And 0x10 (the pink) heals the user a tenth of its HP at
     -- the use (0x0800FFF6).
-    mark_damage = { 0, 0x4000, 0x2000, 0x1000, 0, 0x0800, 0, 0 },
-    mark_heals = 0x10,
+    mark_damage = { white = "paralysis", yellow = "confusion", black = "blindness", purple = "hp_bug" },
+    mark_heals = { pink = true },
     -- Beat takes any Mega or Giga chip, dark or not.
     beat_spares_dark = false,
     -- A navi's idle, its attacks and a dimming's start hide the chip window on the navi's own console only

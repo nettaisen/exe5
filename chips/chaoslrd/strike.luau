@@ -124,9 +124,8 @@ local function burst(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.thrown_break,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = me.run_while_dimmed
@@ -208,7 +207,7 @@ function strike.spawn(owner: Object, pos: Vec3, damage: number): Object?
     local o = battle.spawn(strike.kind, pos)
     if o then
         o.element = Element.null
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

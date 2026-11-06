@@ -79,10 +79,10 @@ local function noise_init(me: Object)
         return
     end
     local is = if battle.mode() == 1 then collision.attack else collision.piercing
-    me:setup_collision(is, collision.hits_navis, 3)
+    me:setup_collision(is, collision.hits_navis, { flinch = true, flash = true })
     sprite:face(me)
     set_region(me, THREE_COLUMNS)
-    me.collision.hit_mod_base = 0
+    me.collision.hit_mod_base = {}
     me.collision.status_base = statuses.paralyze_150
     me.collision:present()
     me.visible = true
@@ -163,7 +163,7 @@ local function attack(me: Object)
             if o then
                 o.panel_x, o.panel_y = me.panel_x + me.facing, me.panel_y
                 o.element = me.element
-                o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+                o.damage_word = me.damage_word
                 o.alliance, o.flip = me.alliance, me.flip
                 o.related1 = me
                 o.run_while_dimmed = true

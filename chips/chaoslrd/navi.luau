@@ -190,7 +190,7 @@ local function throw(me: Object)
     if me.timer == RAISE_AT then
         me.anim = 0x0E
         battle.play_sound(SOUND_RAISE)
-        local word = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+        local word = me.damage_word
         strike.spawn(me, me.pos, word)
     end
     if count_down(me) then

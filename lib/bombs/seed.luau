@@ -22,7 +22,7 @@ seed.kind = common.make_kind("seed", {
     anim = 9,
     is = collision.attack,
     hits = collision.hits_navis,
-    hit_mod = 0,
+    hit_mod = {},
     splash = new.effect { sprite = small_puff_sprite, anim = 0, palette = 0, steps = 16 },
     puff = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
 })

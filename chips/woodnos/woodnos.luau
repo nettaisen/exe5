@@ -19,7 +19,7 @@ local woodnos = {}
 local GEYSER_SPRITE = asset.sprite("wood-geyser")
 local GEYSER_SOUND = asset.sound("wood-geyser")
 -- Its hit (0x080DB254's 0x04050401): the panel alone, the spark of row 4, an attack hitting navis; hit modifier 8.
-local GEYSER_HIT_MOD = 8
+local GEYSER_HIT_MOD: HitModifier = { back_far = true }
 local GEYSER_HIT_AT, GEYSER_TICKS, GEYSER_FADE = 6, 14, 30
 -- Its actions.
 local RISE, FADE = 0, 4
@@ -41,8 +41,7 @@ local function geyser_rise(me: Object)
                 hit_effect = sparks.wood,
                 target = collision.hits_navis,
                 self_type = collision.attack,
-                damage = me.damage,
-                stamina = me.stamina,
+                damage = me.damage_word,
                 hit_mod = GEYSER_HIT_MOD,
             })
         end
@@ -121,7 +120,7 @@ local function geyser(owner: Object, y: number, element: Element, damage: number
     if o then
         o.panel_y = y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end
@@ -136,7 +135,7 @@ export type WaveState = {
 
 local WAVE_SPRITE = asset.sprite("wood-wave")
 local WAVE_SOUND = asset.sound("wood-wave")
-local WAVE_DAMAGE, WAVE_HIT_MOD = 10, 1
+local WAVE_DAMAGE, WAVE_HIT_MOD = 10, { flinch = true }
 local WAVE_SPEED, EDGE = 0x6_0000, 150
 -- The other side's navis' bodies, of WoodNos's wave's side (0x080DB104).
 local TARGETS: PanelFlags = { enemy_body = true }
@@ -211,8 +210,8 @@ local WAVE = new.kind {
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then
-            (me.state :: WaveState).damage = int.u32(me.damage + me.stamina * 0x10000)
-            me.damage = WAVE_DAMAGE
+            (me.state :: WaveState).damage = me.damage_word
+            me.damage_word = damage_word.with_damage(me.damage_word, WAVE_DAMAGE)
             me:set_coordinates_from_panel()
             local sprite = me.sprite
             sprite:load(WAVE_SPRITE)
@@ -246,7 +245,7 @@ local function wave(owner: Object, x: number, y: number, element: Element, damag
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

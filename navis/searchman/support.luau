@@ -16,9 +16,9 @@ local shot = require("../../chips/serchman/shot")
 local chip_destruction_spark_sprite = asset.sprite("chip-destruction-spark")
 local search_scope_sprite = asset.sprite("search-scope")
 
--- His damage a shot by the side's level (0x020CC378), its hit flags 0x8A.
+-- His damage a shot by the side's level (0x020CC378), its counter strength 10 (and it can't counter: 0x8A).
 local DAMAGE: { number } = { 5, 5, 5, 5, 5, 5, 10, 10, 15, 15 }
-local FLAGS = 0x8A
+local COUNTER = 10
 local SERCH_S = chips_serch_s["serch-s"]
 -- The panel flag of the other side's navi, by side (`sub_80E7486`'s): its player navi.
 local ENEMY_NAVI: PanelFlags = { enemy_navi = true }
@@ -92,7 +92,7 @@ local function fire(me: Object)
         end
     end
     -- (0x0220005C: its Param1 0x19, plain, and no hit modifier.)
-    shot.spawn(me, s.tx, s.ty, false, 0)
+    shot.spawn(me, s.tx, s.ty, false, {})
 end
 
 -- 0x021FFE6D: his aim (the scope; 20 ticks), his shots, his wait.
@@ -250,7 +250,7 @@ support.controller = party_support.controller {
             o.panel_x, o.panel_y = me.panel_x, me.panel_y
             o.alliance, o.flip = navi.alliance, navi.flip
             o.element = me.element
-            o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+            o.damage_word = me.damage_word
             o.related1 = navi
             local a = o.state :: ActorState
             a.tx, a.ty, a.controller = s.tx, s.ty, me
@@ -296,7 +296,7 @@ local function call(side: number, link: boolean): boolean
         return false
     end
     party.supports(side).searchman_used = true
-    local damage = bit32.bor(DAMAGE[(party.level(side) or party.LEVEL) + 1], bit32.lshift(FLAGS, 16))
+    local damage = damage_word.of { amount = DAMAGE[(party.level(side) or party.LEVEL) + 1], counter = COUNTER, cant_counter = true }
     -- (0x0222645C.)
     local o = support.controller.send(navi, damage, SERCH_S)
     if o then

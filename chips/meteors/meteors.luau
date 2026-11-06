@@ -25,7 +25,7 @@ local meteor_sprite = asset.sprite("meteor")
 local meteors = {}
 
 -- The Meteors chip's row (row 1). (The showers' are their chips': chips/astroid, chips/darkmetr.)
-meteors.row = falling_meteor.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = 3, shake = 1, panel = "none" }
+meteors.row = falling_meteor.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = { flinch = true, flash = true }, shake = 1, panel = "none" }
 
 meteors.kind = falling_meteor.make_kind("meteor", {
     sprite = meteor_sprite,
@@ -82,7 +82,7 @@ local function tick(me: Object)
     me.timer = v.period
     s.target = meteor_shower.pick(me)
     local x, y = v.aim(s.target)
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     falling_meteor.spawn_kind(meteors.kind, v.row, me, x, y, me.element, damage, false, Vec3.new(y, me.element.byte, 0))
     local drops = me.timer2 - 1
     me.timer2 = drops
@@ -123,7 +123,7 @@ function meteors.instant(variant: ShowerVariant, drops: number): (user: Object, 
         if o then
             o.alliance, o.flip = user.alliance, user.flip
             o.related1 = user
-            o:set_damage_word(spec.damage)
+            o.damage_word = spec.damage
             o.element = FIRE
             o.run_while_dimmed = false
             local s = o.state :: ShowerState

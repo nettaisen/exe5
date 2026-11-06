@@ -7,16 +7,14 @@ local wideswrd = require("../../../../chips/wideswrd").wideswrd
 
 local charge = {}
 
-local HIT_PARAM = 0x94
-
+local COUNTER = 20
 -- 0x0800F60C
 local function setup(navi: Object): Action
     navi.attack_element = Element.null
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = 80 + 10 * (battle.navi(navi.alliance).attack + 1)
+    navi.attack_word = damage_word.of { amount = 80 + 10 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     return assert(wideswrd.action)
 end
 

@@ -39,10 +39,6 @@ local FADE = 0x10
 -- Where the fireballs start: over the phoenix's column at row 2, 50 pixels up.
 local DROP_ROW, DROP_Z = 2, 0x32_0000
 
-local function damage_word(me: Object): number
-    return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
-end
-
 -- 0x080BFD3A: 12 targets of the middle columns, 6 beside them, each drawn (RNG % 6); then shuffled (18 rounds).
 local function pick_targets(me: Object)
     local list: { number } = {}
@@ -84,9 +80,8 @@ local function field_hit(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.collision_27,
-        damage = 0,
-        stamina = 0,
-        hit_mod = 0,
+        damage = damage_word.of { amount = 0, counter = 0 },
+        hit_mod = {},
     })
     if box then
         box.run_while_dimmed = true
@@ -135,7 +130,7 @@ local function drop(me: Object)
     end
     local target = (me.state :: State).targets[me.timer2 + 1]
     local x, y = field.center(me.panel_x, DROP_ROW)
-    fireball.spawn(me, Vec3.new(x, y, DROP_Z), target, damage_word(me))
+    fireball.spawn(me, Vec3.new(x, y, DROP_Z), target, me.damage_word)
     me.timer2 += 1
     if me.timer2 >= TARGETS then
         me:set_action(0x14)
@@ -269,7 +264,7 @@ function phoenix.spawn(owner: Object, user: Object, damage: number): Object?
         o.element = owner.element
         o.related1 = user
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         local s = o.state :: State
         s.controller = owner
     end

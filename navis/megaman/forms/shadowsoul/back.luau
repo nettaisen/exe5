@@ -9,14 +9,12 @@ local anti_damage = require("@exelib/navicust/anti-damage")
 
 local back = {}
 
-local DAMAGE, HIT_PARAM, TICKS, COOLDOWN = 50, 0x94, 30, 50
-
+local DAMAGE, COUNTER, TICKS, COOLDOWN = 50, 20, 30, 50
 back.action = anti_damage.stance("shadowsoul/back/action")
 
 -- 0x0800FBEE (AIAttackVars +3 1, which the counter's start, 0x0800E340, carries as its variant).
 local function setup(navi: Object): Action
-    navi.attack_damage = DAMAGE
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = DAMAGE, counter = COUNTER, cant_counter = true }
     navi.extra = 0
     navi.attack_variant = 1
     local s = navi:action_state(back.action) :: { timer: number }

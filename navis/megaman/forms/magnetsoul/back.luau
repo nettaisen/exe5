@@ -43,8 +43,7 @@ end
 -- 0x0800F9A8
 local function setup(navi: Object)
     navi.attack_lockout = COOLDOWN
-    navi.attack_damage = 0
-    navi.hit_param = 0
+    navi.attack_word = damage_word.of { amount = 0, counter = 0 }
     return nil
 end
 

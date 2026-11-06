@@ -58,7 +58,7 @@ function throw.action(spec: Spec, id: string?): Action
                         line = spec.line,
                         target_x = me.panel_x + REACH * me.facing,
                         target_y = me.panel_y,
-                        damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra),
+                        damage = damage_word.plus(me.attack_word, me.extra),
                         while_dimmed = spec.while_dimmed,
                     })
                     battle.play_sound(SOUND)

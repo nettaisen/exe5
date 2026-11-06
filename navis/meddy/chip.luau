@@ -13,7 +13,7 @@ local throw = require("./throw")
 -- Its capsule (variant 5): palette 4, hit modifier 0, paralyzing for 150 ticks, its explosions in palette 3.
 local CAPSULE = capsule.variant {
     palette = 4,
-    hit_mod = 0,
+    hit_mod = {},
     status = statuses.paralyze_150,
     explosion = new.effect { sprite = capsule.explosion, anim = 0, palette = 3, steps = 22 },
 }
@@ -26,7 +26,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 80, 80, 80, 80, 80, 80, 100 }),
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,

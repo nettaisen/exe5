@@ -53,7 +53,7 @@ local function land(me: Object, s: State)
     local x, y = me.panel_x, me.panel_y
     local hit = s.variant
     battle.region_effects(x, y, regions.wide, me.alliance, hit.burst, 0)
-    local word = int.u32(me.damage + me.stamina * 0x10000)
+    local word = me.damage_word
     battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
@@ -64,8 +64,7 @@ local function land(me: Object, s: State)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.thrown,
-        damage = bit32.band(word, 0xFFFF),
-        stamina = bit32.rshift(word, 16),
+        damage = word,
         hit_mod = hit.hit_mod,
         status = hit.status,
         bug = hit.bug,
@@ -165,7 +164,7 @@ function crakbom.thrower(variant: CrakBomVariant): Thrower
             if o then
                 o.alliance, o.flip = user.alliance, user.flip
                 o.element = Element.null
-                o:set_damage_word(damage)
+                o.damage_word = damage
                 local s = o.state :: State
                 s.variant = variant
                 s.ticks = FLIGHT_TICKS

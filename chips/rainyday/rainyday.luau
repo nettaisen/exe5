@@ -30,7 +30,7 @@ local SPLASH = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, st
 local SOUND = asset.sound("drip-shower")
 -- Its hit (`sub_80C53A6`'s word 0x04050201: its panel, the aqua spark, an attack that hits navis; hit modifier 3),
 -- 16 pixels up.
-local HIT_MOD, HIT_Z = 3, 0x10_0000
+local HIT_MOD, HIT_Z = { flinch = true, flash = true }, 0x10_0000
 local SEA = "sea"
 -- Its actions.
 local WAIT, RAINING, DONE, FADE = 0, 4, 8, 0xC
@@ -57,8 +57,7 @@ local function hit(me: Object)
         hit_effect = sparks.aqua,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
     if o then
@@ -266,7 +265,7 @@ local function effect(me: Object)
         if o then
             o.panel_x, o.panel_y = x, y :: number
             o.element = me.element
-            o:set_damage_word(dimming_chips.damage_plus(me, s.bonus))
+            o.damage_word = dimming_chips.damage_plus(me, s.bonus)
             o.alliance, o.flip = me.alliance, me.flip
             o.related1 = me
             o.run_while_dimmed = true

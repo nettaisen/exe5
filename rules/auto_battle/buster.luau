@@ -55,7 +55,7 @@ local function shoot(me: Object, s: State)
     end
     if s.timer == 1 then
         battle.play_sound(SOUND)
-        projectile.fire(me, { variant = variants.bright, damage = me.attack_damage + int.shl(me.hit_param, 16), z = SHOT_Z })
+        projectile.fire(me, { variant = variants.bright, damage = me.attack_word, z = SHOT_Z })
     end
     s.timer += 1
     if s.timer > 4 then
@@ -104,8 +104,7 @@ buster.action = new.action { id = "auto-battle/buster", state = { timer = schema
 
 -- 0x0800FB06: Attack plus one, no counter byte.
 function buster.setup(navi: Object): Action
-    navi.attack_damage = battle.navi(navi.alliance).attack + 1
-    navi.hit_param = 0
+    navi.attack_word = damage_word.of { amount = battle.navi(navi.alliance).attack + 1, counter = 0 }
     return buster.action
 end
 

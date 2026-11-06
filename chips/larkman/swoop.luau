@@ -43,7 +43,7 @@ export type State = {
 
 local SPRITE = asset.sprite("larkman")
 local SOUND_SWOOP = asset.sound("swoop")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- By look (0x080DD850: 0 and 2, from above the field, are the virus's).
 local ANIMS: { [number]: number } = { [0] = 8, 6, 9, 0xB }
@@ -288,7 +288,7 @@ local function power_up(me: Object, s: State)
     me:reset_collision_types(collision.collision_46, collision.hits_navis, HIT_MOD)
     me.collision.self_damage = 0
     me.sprite.color_shader = 0x1E0
-    s.follower = follower.spawn(me, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+    s.follower = follower.spawn(me, me.element, me.damage_word)
 end
 
 -- 0x080DD890: resolve the hits; act; register again.
@@ -357,7 +357,7 @@ function swoop.spawn(navi: Object, palette: number, element: Element, damage: nu
         s.variant = variant
         o.element = element
         o.related1 = navi
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = navi.alliance, navi.flip
         o.run_while_dimmed = true
     end

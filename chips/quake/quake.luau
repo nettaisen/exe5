@@ -33,7 +33,7 @@ local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0,
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 local SOUND_LAND = asset.sound("land")
 -- What it is and hits: EXE5's rows 0x15 and 5, hit modifier 3.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- 0x080CFED8: lobbed at the panel; over it, it hangs (else off the field it goes).
 local function fly(me: Object)
@@ -199,7 +199,7 @@ function quake.thrower(palette: number, region: Region): Thrower
             if o then
                 o.element = Element.null
                 o.alliance, o.flip = user.alliance, user.flip
-                o:set_damage_word(damage)
+                o.damage_word = damage
                 o.related1 = user
                 local s = o.state :: State
                 s.palette, s.region = palette, region

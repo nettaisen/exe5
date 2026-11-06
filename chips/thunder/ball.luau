@@ -24,7 +24,7 @@ thunder.kind = ball.make_kind("thunder/ball", {
     big_steps = { flight = 14, burst = 6 },
     is = collision.thrown,
     target = collision.hits_navis,
-    hit_mod = 0,
+    hit_mod = {},
     spark = sparks.elec,
     sound = asset.sound("erase-man-2"),
 })

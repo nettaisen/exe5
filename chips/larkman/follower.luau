@@ -8,7 +8,7 @@ local regions = require("@exelib/regions")
 
 local follower = {}
 
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- 0x080DFBB8: panel (0, 0), its hit nowhere until it moves onto the field.
 local function init(me: Object)
@@ -79,7 +79,7 @@ function follower.spawn(swoop: Object, element: Element, damage: number): Object
     local o = battle.spawn(follower.kind, Vec3.zero)
     if o then
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = swoop.alliance, swoop.flip
         o.related1 = swoop
         o.run_while_dimmed = true

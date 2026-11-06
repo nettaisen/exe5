@@ -24,7 +24,7 @@ local RIGHT, DOWN, UP = 20, 12, 192
 local WAIT, FALL = 5, 0x20_0000
 -- The four panels it lands on, from its own (0x080D7E88).
 local PANELS = { { 0, 0 }, { 0, 1 }, { 1, 0 }, { 1, 1 } }
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local GONE_TICKS = 40
 
 -- Its actions.
@@ -86,8 +86,7 @@ local function land(me: Object)
                 hit_effect = sparks.plain,
                 target = collision.hits_navis,
                 self_type = collision.attack,
-                damage = me.damage,
-                stamina = me.stamina,
+                damage = me.damage_word,
                 hit_mod = HIT_MOD,
             })
         end
@@ -164,7 +163,7 @@ function press.spawn(owner: Object, x: number, y: number, element: Element, dama
         o.element = element
         o.related1 = owner
         o.alliance = owner.alliance
-        o:set_damage_word(damage)
+        o.damage_word = damage
     end
     return o
 end

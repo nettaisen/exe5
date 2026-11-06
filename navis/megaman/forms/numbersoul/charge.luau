@@ -15,14 +15,14 @@ export type State = {
     timer: number,
 }
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 local THROW_ANIM = 6
 local SOUND = asset.sound("minibomb-throw")
 local THROW_AT, THROW_TICKS, STAND_TICKS = 9, 21, 30
 -- The die leaves this high (16.16), for the panel this far ahead.
 local UP, REACH = 24 * 0x1_0000, 3
 -- The routine's parameters (0x030014): the die's HP, its hits' status (none) and hit modifier.
-local HP, HIT_MOD = 20, 3
+local HP, HIT_MOD = 20, { flinch = true, flash = true }
 -- The faces, by a draw's low four bits (0x080EE820).
 local FACES = { [0] = 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 6, 6, 6 }
 
@@ -48,7 +48,7 @@ local function throw(me: Object, s: State)
             hp = HP,
             status = nil,
             hit_mod = HIT_MOD,
-            damage = int.u32(me.attack_damage + me.hit_param * 0x10000),
+            damage = me.attack_word,
             holder = nil,
         })
     end
@@ -90,8 +90,7 @@ charge.action = new.action {
 
 -- 0x0800F672
 local function setup(navi: Object): Action
-    navi.attack_damage = 5 + 5 * (battle.navi(navi.alliance).attack + 1)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = 5 + 5 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     return charge.action
 end
 

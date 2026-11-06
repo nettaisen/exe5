@@ -71,7 +71,7 @@ local action = new.action {
         elseif step == FLY then
             -- 0x080F0AEA: from his side's back column, along the row he left.
             local x = if me.alliance == 0 then 1 else 6
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local damage = damage_word.plus(me.attack_word, me.extra)
             s.flight = flight.fly(FLIGHT, me, x, me.future_panel_y, me.attack_element, damage)
             me.step, me.step_init = AWAY, 0
         elseif step == AWAY then
@@ -111,7 +111,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 50, 50, 50, 50, 70, 70, 70 }),
-    hit_param = 138,
+    counter = 10,
+    cant_counter = true,
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,

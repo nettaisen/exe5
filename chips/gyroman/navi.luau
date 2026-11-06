@@ -78,14 +78,10 @@ local ENEMY_NAVI: PanelFlags = { enemy_body = true }
 local SPEED, BETWEEN = 0x3_0000, 0xF
 -- A GyroMan of `flight`.
 function gyroman.make(flight: Flight): Kind
-    local function damage_word(me: Object): number
-        return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
-    end
-
     -- A bomb on his panel (a sound).
     local function drop(me: Object)
         battle.play_sound(SOUND_DROP)
-        bomb.drop(me, me.panel_x, me.panel_y, me.element, flight.while_dimmed, damage_word(me))
+        bomb.drop(me, me.panel_x, me.panel_y, me.element, flight.while_dimmed, me.damage_word)
     end
 
     -- The flight: forward one tick; whether he passed his panel's center (from off it) this tick.
@@ -368,7 +364,7 @@ function gyroman.fly(kind: Kind, user: Object, x: number, y: number, element: El
         o.element = element
         o.related1 = user
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
     end
     return o
 end

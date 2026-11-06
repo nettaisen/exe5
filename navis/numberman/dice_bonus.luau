@@ -97,8 +97,8 @@ local function throw_die(me: Object, x: number, y: number, faces: { number }, sl
         dimmed = true,
         hp = DIE_HP,
         status = nil,
-        hit_mod = 0,
-        damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16)),
+        hit_mod = {},
+        damage = me.damage_word,
         holder = me,
         slot = slot,
         -- (The DS's division routine, 0x02020818, leaves the hardware divider's address in r3.)
@@ -269,7 +269,7 @@ dice_bonus.controller = party_support.controller {
             o.panel_x, o.panel_y = me.panel_x, me.panel_y
             o.alliance, o.flip = navi.alliance, navi.flip
             o.element = me.element
-            o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+            o.damage_word = me.damage_word
             o.related1 = navi;
             (o.state :: ActorState).controller = me
         end

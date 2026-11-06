@@ -46,7 +46,7 @@ local function throw(me: Object)
     me:open_counter_window()
     chain.hide(me)
     local p = me.pos
-    local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+    local damage = damage_word.plus(me.attack_word, me.extra)
     crusher.throw(me, Vec3.new(int.i32(p.x + me.facing * AHEAD), p.y, UP), SPEED, damage)
     battle.play_sound(SOUND)
     me.step, me.step_init = HOLD, 0
@@ -115,7 +115,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 80, 80, 80, 100, 100, 120, 120 }),
-    hit_param = 158,
+    counter = 30,
+    cant_counter = true,
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,

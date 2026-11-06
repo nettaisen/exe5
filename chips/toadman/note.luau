@@ -82,7 +82,7 @@ local function init(me: Object)
     if not me:create_collision() then
         error("ToadMan's note: no collision slot (0x080D66C4 writes through a null pointer)")
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, 0)
+    me:setup_collision(collision.thrown, collision.hits_navis, {})
     sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
@@ -131,7 +131,7 @@ function note.spawn(owner: Object, x: number, y: number, chain: Chain, target: O
     end
     o.panel_x, o.panel_y = x, y
     o.element = ELEC
-    o:set_damage_word(damage or bit32.bor(owner.damage, bit32.lshift(owner.stamina, 16)))
+    o.damage_word = damage or owner.damage_word
     o.alliance, o.flip = owner.alliance, owner.flip
     o.related1 = owner
     local s = o.state :: State

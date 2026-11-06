@@ -36,7 +36,7 @@ local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, ste
 -- Where the three appear (0x080BA158): the first panel of his user's side.
 local OWN_AREA: PanelCondition = { own_area = true }
 local RISE = 0x20_0000
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- `object_getFirstPanelInDirectionFiltered`: from (x, y) along `dir`, the first panel that meets `cond`
 -- (of side `side`; the first checked before the field's edge is); x 0 off the field.
@@ -123,7 +123,7 @@ local function send(me: Object)
                 o.element = me.element
                 o.related1 = user
                 o.alliance, o.flip = user.alliance, user.flip
-                o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+                o.damage_word = me.damage_word
                 local c = o.state :: State
                 c.controller = me
                 c.index = i - 1
@@ -244,7 +244,7 @@ local function throw(me: Object)
         local t = (me.state :: State).target
         local x, y = bit32.band(t, 7), bit32.rshift(t, 4)
         if x ~= 0 then
-            local o = shuriken.spawn(me, x, y, Element.null, HIT_MOD, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+            local o = shuriken.spawn(me, x, y, Element.null, HIT_MOD, me.damage_word)
             if o then
                 o.run_while_dimmed = true
             end

@@ -34,8 +34,7 @@ local function setup(navi: Object): Action
     navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0
-    navi.attack_damage = DAMAGE
+    navi.attack_word = damage_word.of { amount = DAMAGE, counter = 0 }
     navi.attack_lockout = LOCKOUT
     -- (The Chaos Unison charge armed: the rules' own B charge, rules/souls/chaos_charge.)
     return if navi.b_charge_time ~= nil then CHAOS_REFLECT else REFLECT

@@ -27,14 +27,10 @@ local FLAME_EVERY, FLAMES = 4, 10
 -- The hits: at the burn's start on its panel for 25 ticks, 16 ticks in beside it for 31.
 local HIT_Z = 0x10_0000
 
-local function damage_word(me: Object): number
-    return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
-end
-
 -- `sub_80C53A6` (EXE5's 0x080C4DC6): a hit on (x, y) lasting `ticks`, running while dimmed (region 1, hit effect 0,
 -- target 5, self 0xA, hit modifier 3, 16 pixels up).
 local function hit(me: Object, x: number, y: number, ticks: number)
-    local damage = damage_word(me)
+    local damage = me.damage_word
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
@@ -44,9 +40,8 @@ local function hit(me: Object, x: number, y: number, ticks: number)
         hit_effect = sparks.plain,
         target = collision.hits_navis,
         self_type = collision.thrown,
-        damage = bit32.band(damage, 0xFFFF),
-        stamina = bit32.rshift(damage, 16),
-        hit_mod = 3,
+        damage = damage,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -160,7 +155,7 @@ function fire.spawn(phoenix: Object, x: number, y: number, far: boolean, damage:
     local o = battle.spawn(fire.kind, Vec3.zero)
     if o then
         o.panel_x, o.panel_y = x, y
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = phoenix.alliance, phoenix.flip
         o.related1 = phoenix;
         (o.state :: State).far = far

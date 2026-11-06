@@ -34,7 +34,7 @@ export type ShockState = {
 -- 0x080D8732: sprite 04-17 with a ground shadow (`sub_8011504`'s 0x01000417), animation 0; a thrown body (row 0x0A)
 -- reaching the navis (row 5), hit modifier 3 (0x0A050300).
 local SPRITE = asset.sprite("voltz")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- 0x080D8B22: the shock's sprite 10-11 without a shadow (0x00001011), animation 0; the same collision.
 local SHOCK_SPRITE = asset.sprite("thunder-ball")
 local puff_sprite = asset.sprite("puff")
@@ -93,11 +93,6 @@ local function setup(me: Object, sprite_asset: SpriteAsset, shadow: Shadow): boo
     return true
 end
 
--- Its damage word (+0x2C: the damage and the stamina's halfword).
-local function damage_word(me: Object): number
-    return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
-end
-
 -- The panel (x, y) is on the field and not `me`'s side's.
 local function other_sides(me: Object, x: number, y: number): boolean
     if not field.valid(x, y) then
@@ -121,7 +116,7 @@ local function spawn_shock(owner: Object, x: number, y: number, element: Element
         s.way, s.ticks = way, ticks
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
     end
     return o
@@ -154,7 +149,7 @@ local function shock_tick(me: Object)
         if x and y then
             -- (The spawner's r3: the panel lookup's row less 1.)
             local s = me.state :: ShockState
-            spawn_shock(me, x, y, me.element, y - 1, s.way, s.ticks, damage_word(me))
+            spawn_shock(me, x, y, me.element, y - 1, s.way, s.ticks, me.damage_word)
         end
     end
     local life = me.timer2 - 1
@@ -256,7 +251,7 @@ local function shock_around(me: Object)
         local x, y = me.panel_x + way[1] * me.facing, me.panel_y + way[2]
         if other_sides(me, x, y) then
             -- (The spawner's r3: the sensor's Param word, which the shock's init replaces.)
-            spawn_shock(me, x, y, me.element, 0, i, s.shock_ticks, damage_word(me))
+            spawn_shock(me, x, y, me.element, 0, i, s.shock_ticks, me.damage_word)
         end
     end
 end
@@ -381,7 +376,7 @@ local function spawn(user: Object, x: number, y: number, spec: InstantChipSpec, 
         s.palette, s.shock_ticks = palette, shock_ticks
         o.panel_x, o.panel_y = x, y
         o.element = spec.element
-        o:set_damage_word(spec.damage)
+        o.damage_word = spec.damage
         o.alliance, o.flip = user.alliance, user.flip
         obstacle.register(o, o.alliance, "one_a_side")
     end

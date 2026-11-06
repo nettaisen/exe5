@@ -10,7 +10,7 @@ local attachment = require("../../../objects/attachment")
 local elemrage = require("../../../chips/elemrage/elemrage")
 
 -- The attack: 50 damage, hit parameter 20, Fire; its parameters: 5 flames (Param1), 30 ticks (Param2).
-local DAMAGE, HIT_PARAM, FIRE = 50, 20, Element.fire
+local DAMAGE, COUNTER, FIRE = 50, 20, Element.fire
 local COUNT, TICKS = 5, 0x1E
 
 local ANIM, ARM_ANIM, ATTACH_POINT = 10, 1, 20
@@ -25,7 +25,7 @@ export type State = {
 local function fire(me: Object, s: State)
     if me.step_init == 0 then
         -- (The damage word takes the Atk+ bonus, AIAttackVars+8: none, the routine cleared it.)
-        local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+        local damage = damage_word.plus(me.attack_word, me.extra)
         -- (`sub_8018842` reads the attach point unflipped: the flame turns it its own way.)
         local fx, dz = me:attach_point(ATTACH_POINT)
         local dx = fx * me.facing
@@ -90,8 +90,7 @@ return new.weapon {
     -- The charge table's row 0x4E, by Charge 0 to 5: past 4 it reads on into row 0x4F's first entry.
     charge_ticks = { 70, 65, 60, 55, 50, 80 },
     setup = function(navi: Object): Action
-        navi.attack_damage = DAMAGE
-        navi.hit_param = HIT_PARAM
+        navi.attack_word = damage_word.of { amount = DAMAGE, counter = COUNTER }
         navi.attack_element = FIRE
         navi.charged = 0
         navi.extra = 0

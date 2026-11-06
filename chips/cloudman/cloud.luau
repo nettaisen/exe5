@@ -18,7 +18,7 @@ local SOUND_BOLT = asset.sound("wave")
 -- The bolt (the flying shot's row 0xB, 0x080DCB32): thrown, elec, paralyzing for 90 ticks.
 local BOLT = flying_shot.variant {
     is = collision.thrown,
-    hit_mod = 0,
+    hit_mod = {},
     element = Element.elec,
     sprite = thunder_ball_sprite,
     status = statuses.paralyze_90,
@@ -69,7 +69,7 @@ local function charge(me: Object)
     end
     local p = me.pos
     local bolt = flying_shot.launch(me, Vec3.new(p.x + me.facing * 0x10_0000, p.y, 0x10_0000), BOLT,
-        bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        me.damage_word)
     if bolt then
         bolt.run_while_dimmed = true
     end
@@ -149,7 +149,7 @@ function cloud.spawn(owner: Object, x: number, y: number, element: Element, flip
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.flip = flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
         o.run_while_dimmed = true
     end

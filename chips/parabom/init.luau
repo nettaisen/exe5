@@ -12,7 +12,7 @@ local statuses = require("../rules/status")
 local BOMB = crakbom.variant {
     burst = new.effect { sprite = crakbom.burst, anim = 0, palette = 2, steps = 18 },
     sound = asset.sound("panel-poison"),
-    hit_mod = 0,
+    hit_mod = {},
     status = statuses.paralyze_90,
     bug = 0,
     cracks = false,
@@ -26,7 +26,7 @@ local chip: Chip = {
     rarity = 1,
     mb = 34,
     damage = 90,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,

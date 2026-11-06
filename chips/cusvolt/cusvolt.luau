@@ -18,7 +18,7 @@ local cusvolt = {}
 -- thing that hits navis, hit modifier 3), over its panel and the column ahead (region 0x15).
 local SPRITE = asset.sprite("volt-beam")
 local volt_gun_sprite = asset.sprite("volt-gun")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- 40 pixels ahead of its navi, at the navi's attach point 26.
 local AHEAD, ATTACH_POINT = 40, 26
 
@@ -139,12 +139,12 @@ local function fire(me: Object, s: State)
     if s.timer == BEAM_TICK then
         -- 0x080DD468: the beam (its panel and position the dispatcher's registers until its init places it: the
         -- timer, the handler's address, the element and the bonus), the navi's related1 it.
-        local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+        local damage = damage_word.plus(me.attack_word, me.extra)
         local o = battle.spawn(cusvolt.beam, Vec3.new(0x080ED1BD, me.attack_element.byte, me.extra))
         if o then
             o.panel_x, o.panel_y = BEAM_TICK, 0xBD
             o.element = me.attack_element
-            o:set_damage_word(damage)
+            o.damage_word = damage
             o.alliance, o.flip = me.alliance, me.flip
             o.related1 = me
             ;(o.state :: BeamState).navi = me

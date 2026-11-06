@@ -13,9 +13,9 @@ local supports = require("../../rules/party/supports")
 local sword_slash_sprite = asset.sprite("sword-slash")
 local sword_sprite = asset.sprite("sword")
 
--- His damage by the side's level (0x020CC1CC), its hit flags 0x94.
+-- His damage by the side's level (0x020CC1CC), its counter strength 20 (and it can't counter: 0x94).
 local DAMAGE: { number } = { 20, 50, 70, 70, 90, 90, 110, 140, 150, 150 }
-local FLAGS = 0x94
+local COUNTER = 20
 -- Where he may stand (0x020CC1E0): in front of the enemy, else above or below that; solid, nothing on it or reserved,
 -- of either side.
 local OFFSETS: { { { number } } } = { { { 1, 0, 0 } }, { { 1, -1, 0 }, { 1, 1, 0 } } }
@@ -51,9 +51,8 @@ local function swing(me: Object)
             region = regions.wide,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 0,
+            damage = me.damage_word,
+            hit_mod = {},
         })
         local cx, cy = field.center(x, y)
         battle.effect(Vec3.new(cx, cy, SWING_Z), SLASH, me.facing_side)
@@ -96,7 +95,7 @@ function support.tick(side: number)
     end
     local x, y, flip = supports.target(navi, OFFSETS, STAND_ON)
     if x and y then
-        party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGE, FLAGS), m)
+        party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGE, COUNTER), m)
     end
 end
 

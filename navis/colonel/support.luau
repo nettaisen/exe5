@@ -12,9 +12,9 @@ local shell = require("@exelib/tankcan/shell")
 local supports = require("../../rules/party/supports")
 local tankcan = require("../../chips/tankcan/tankcan")
 
--- His damage by the side's level (0x020CC258), its hit flags 0x94.
+-- His damage by the side's level (0x020CC258), its counter strength 20 (and it can't counter: 0x94).
 local DAMAGE: { number } = { 30, 60, 80, 80, 100, 100, 120, 170, 180, 180 }
-local FLAGS = 0x94
+local COUNTER = 20
 -- Where he may stand (0x020CC27C): 5, else 4, 3, 2, 1 columns in front of the enemy, in its row; of his side
 -- (0x020CC26C): solid and his side's own, nothing on it or reserved.
 local OFFSETS: { { { number } } } = { { { 5, 0, 0 } }, { { 4, 0, 0 } }, { { 3, 0, 0 } }, { { 2, 0, 0 } }, { { 1, 0, 0 } } }
@@ -25,7 +25,7 @@ local STAND: PanelCondition = { solid = true, own_area = true, occupied = false 
 -- its hit modifier the DS's shell row 2's (0x48), not cracking; 18 ticks; then 10 more before the cannon goes.
 local ANIM_RAISE, ANIM_FIRE = 0xA, 9
 local RAISE_TICKS, HOLD_TICKS, FIRE_AT, FIRE_ENDS, AFTER_TICKS = 8, 0x1E, 5, 0x12, 0xA
-local SHELL: ShellSpec = { hit_mod = 0x48, cracks = false, shift = 0 }
+local SHELL: ShellSpec = { hit_mod = { back_far = true, drag = true }, cracks = false, shift = 0 }
 local SHELL_Z = 0x10_0000
 local RAISE, HOLD, FIRE, AFTER = 0x0, 0x4, 0x8, 0xC
 
@@ -66,7 +66,7 @@ local function fire(me: Object)
     end
     if me.timer == FIRE_AT then
         battle.shake_camera(1, 0x14)
-        shell.fire(tankcan.kind, me, me.panel_x + me.facing, me.panel_y, SHELL_Z, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), SHELL)
+        shell.fire(tankcan.kind, me, me.panel_x + me.facing, me.panel_y, SHELL_Z, me.damage_word, SHELL)
     end
     me.timer += 1
     if me.timer >= FIRE_ENDS then
@@ -134,7 +134,7 @@ function support.tick(side: number)
     end
     local x, y, flip = supports.target(navi, OFFSETS, STAND, true, side)
     if x and y then
-        party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGE, FLAGS), m)
+        party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGE, COUNTER), m)
     end
 end
 

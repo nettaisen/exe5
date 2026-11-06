@@ -38,7 +38,7 @@ local GATHER, SEND, AWAY, RETURN = 0x0, 0x4, 0x8, 0xC
 local ANIM_GATHER, ANIM_RETURN = 17, 3
 local GATHER_TICKS, RETURN_TICKS = 4, 4
 -- The magnets' variant (their fourth parameter, 1): hit modifier 3, no status; they go at once, and stop while dimmed.
-local VARIANT = magnet.variant { hit_mod = 3, waits_for_navi = false, runs_while_dimmed = false }
+local VARIANT = magnet.variant { hit_mod = { flinch = true, flash = true }, waits_for_navi = false, runs_while_dimmed = false }
 -- A panel holding the other side's navi's body, by side (0x080F137C), and one something stands on.
 local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 local NOT_ANY_BODY: PanelCondition = { any_body = false }
@@ -80,7 +80,7 @@ local function send(me: Object, s: State)
     battle.hud().chip_icons = false
     me.collision:set_region(nil)
     local element = me.attack_element
-    local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+    local damage = damage_word.plus(me.attack_word, me.extra)
     -- (The magnets keep the navi object's own parameter word as their chip's level: a player's is 0, palette 0.)
     local function magnet_at(column: number, pole: number): Object?
         return magnet.spawn(me, column, y, element, {
@@ -129,9 +129,8 @@ local action = new.action {
                     hit_effect = nil,
                     target = collision.hits_navis,
                     self_type = collision.attack,
-                    damage = 1,
-                    stamina = 0,
-                    hit_mod = 0,
+                    damage = damage_word.of { amount = 1, counter = 0 },
+                    hit_mod = {},
                 })
                 me.anim = ANIM_GATHER
                 s.timer = GATHER_TICKS
@@ -178,7 +177,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 80, 80, 80, 100, 100, 120, 120 }),
-    hit_param = 158,
+    counter = 30,
+    cant_counter = true,
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,

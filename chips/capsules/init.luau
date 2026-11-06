@@ -22,13 +22,13 @@ local yelcapsl: Chip = {
     rarity = 0,
     mb = 5,
     damage = 40,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = {},
     slot_in_limit = 1,
     action = cannon_chips.cannon.action,
     -- What it mixes into a chip (the hand's modifier bits: navis/megaman/forms/meddysoul/capsules).
-    capsule_mix = 0x04,
+    capsule_mix = "yellow",
 }
 
 -- BlkCapsl (EXE5 chip 0x17d): the chip it is mixed into blinds (the hand's modifier 0x08). Its record's use is
@@ -41,13 +41,14 @@ local blkcapsl: Chip = {
     rarity = 0,
     mb = 5,
     damage = 100,
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = {},
     slot_in_limit = 1,
     dimming = poltergeist.hook(false),
     -- What it mixes into a chip (the hand's modifier bits: navis/megaman/forms/meddysoul/capsules).
-    capsule_mix = 0x08,
+    capsule_mix = "black",
 }
 
 -- WhiCapsl (EXE5 chip 0x17e): the chip it is mixed into paralyzes (the hand's modifier 0x02). Its record's use is
@@ -60,13 +61,13 @@ local whicapsl: Chip = {
     rarity = 0,
     mb = 6,
     damage = 200,
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = {},
     slot_in_limit = 1,
     dimming = cube.places { variant = rock.variants.ice },
     -- What it mixes into a chip (the hand's modifier bits: navis/megaman/forms/meddysoul/capsules).
-    capsule_mix = 0x02,
+    capsule_mix = "white",
 }
 
 -- PrpCapsl (EXE5 chip 0x17f): the chip it is mixed into gives the HP bug (the hand's modifier 0x20). Its record's use
@@ -79,13 +80,13 @@ local prpcapsl: Chip = {
     rarity = 0,
     mb = 6,
     damage = 0,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = {},
     slot_in_limit = 1,
     dimming = supports.hook("rush"),
     -- What it mixes into a chip (the hand's modifier bits: navis/megaman/forms/meddysoul/capsules).
-    capsule_mix = 0x20,
+    capsule_mix = "purple",
 }
 
 -- PnkCapsl (EXE5 chip 0x180): the user of the chip it is mixed into heals a tenth of its HP at the use (the hand's
@@ -99,13 +100,13 @@ local pnkcapsl: Chip = {
     rarity = 0,
     mb = 6,
     damage = 0,
-    hit_param = 0,
+    counter = 0,
     lockout = 0,
     flags = {},
     slot_in_limit = 1,
     dimming = supports.hook("beat"),
     -- What it mixes into a chip (the hand's modifier bits: navis/megaman/forms/meddysoul/capsules).
-    capsule_mix = 0x10,
+    capsule_mix = "pink",
 }
 
 return { yelcapsl = yelcapsl, blkcapsl = blkcapsl, whicapsl = whicapsl, prpcapsl = prpcapsl, pnkcapsl = pnkcapsl }

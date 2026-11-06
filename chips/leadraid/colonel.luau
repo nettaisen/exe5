@@ -120,9 +120,8 @@ local function strike_x(me: Object)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 3,
+            damage = me.damage_word,
+            hit_mod = { flinch = true, flash = true },
         })
         if box then
             box.run_while_dimmed = true
@@ -265,7 +264,7 @@ function colonel.spawn(protoman: Object): Object?
         o.element = protoman.element
         o.related1 = user
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(bit32.bor(protoman.damage, bit32.lshift(protoman.stamina, 16)))
+        o.damage_word = protoman.damage_word
         local s = o.state :: State
         s.protoman = protoman
         protoman.prevent_anim = 1

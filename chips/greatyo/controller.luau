@@ -26,7 +26,7 @@ local function update(me: Object)
     local s = me.state :: State
     if me.phase_init == 0 then
         local x, y, z = me.panel_x, me.panel_y, me.pos.z
-        local damage = int.u32(me.damage + me.stamina * 0x10000)
+        local damage = me.damage_word
         s.below = yoyo.spawn(me, x, y + 1, me.element, z, damage, s.spec, "below")
         s.above = yoyo.spawn(me, x, y - 1, me.element, z, damage, s.spec, "above")
         s.middle = yoyo.spawn(me, x, y, me.element, z, damage, s.spec, "middle")
@@ -69,7 +69,7 @@ function controller.spawn(thrower: Object, x: number, y: number, z: number, dama
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = Element.null
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = thrower.alliance, thrower.flip
         o.related1 = thrower
         local s = o.state :: State

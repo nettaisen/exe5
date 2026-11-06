@@ -19,7 +19,7 @@ export type State = {
     shots: number,
 }
 
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 local SHOTS = 3
 -- The bullets' heights, by a draw's low two bits (pixels).
 local HEIGHTS = { [0] = 8, 16, 24, 32 }
@@ -28,8 +28,8 @@ local SOUND = asset.sound("col-army-2")
 -- found and the one behind it, staggering (the last flinching), the hit shown once at the bullet (effect 0x58: EXE5's
 -- own vulcan hit, its animation 1).
 local HIT = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0, steps = 10 }
-local SHOT = bullet.variant { region = regions.long, hit_mod = 1, effect = HIT, single = true }
-local LAST_SHOT = bullet.variant { region = regions.long, hit_mod = 3, effect = HIT, single = true }
+local SHOT = bullet.variant { region = regions.long, hit_mod = { flinch = true }, effect = HIT, single = true }
+local LAST_SHOT = bullet.variant { region = regions.long, hit_mod = { flinch = true, flash = true }, effect = HIT, single = true }
 local RAISE_ANIM, FIRE_ANIM = 16, 17
 local RAISE_TICKS, BETWEEN, RECOVER_TICKS = 1, 10, 10
 
@@ -65,7 +65,7 @@ local function fire(me: Object, s: State)
     s.timer = BETWEEN
     local variant = if s.shots > 1 then SHOT else LAST_SHOT
     local z = HEIGHTS[bit32.band(battle.rng_positive(), 3)] * 0x1_0000
-    local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+    local damage = damage_word.plus(me.attack_word, me.extra)
     bullets.fire(bullet.kind, me, me.panel_x + me.facing, me.panel_y, z, variant, me.attack_element, damage)
     battle.play_sound(SOUND)
     s.shots -= 1
@@ -112,8 +112,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = 5 + 5 * (battle.navi(navi.alliance).attack + 1)
+    navi.attack_word = damage_word.of { amount = 5 + 5 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     return charge.action
 end
 

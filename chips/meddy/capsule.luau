@@ -48,7 +48,7 @@ local function line(l: CapsuleLine): CapsuleLine
 end
 
 -- The plain capsule (variant 0): no status, hit modifier 3.
-capsule.plain = capsule.variant { palette = 0, hit_mod = 3, status = nil, explosion = BLOW_UP }
+capsule.plain = capsule.variant { palette = 0, hit_mod = { flinch = true, flash = true }, status = nil, explosion = BLOW_UP }
 -- Its lines: its column (0) and its row (1).
 capsule.column = line { region = regions.wide, panels = { { 0, 0 }, { 0, 1 }, { 0, -1 } }, style = 4, anim = 0 }
 capsule.row = line { region = regions.region_1d, panels = { { 0, 0 }, { -1, 0 }, { 1, 0 } }, style = 0x1D, anim = 1 }
@@ -169,8 +169,7 @@ local function burst(me: Object)
         hit_effect = sparks.plain,
         target = collision.nothing,
         self_type = collision.thrown,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = v.hit_mod,
         status = v.status,
     })
@@ -314,7 +313,7 @@ function capsule.throw(thrower: Object, element: Element, throw: Throw): Object?
         o.future_panel_x, o.future_panel_y = throw.target_x, throw.target_y
         o.panel_x, o.panel_y = thrower.panel_x, thrower.panel_y
         o.element = element
-        o:set_damage_word(throw.damage)
+        o.damage_word = throw.damage
         o.alliance, o.flip = thrower.alliance, thrower.flip
         o.run_while_dimmed = true
     end

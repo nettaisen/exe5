@@ -175,7 +175,7 @@ support.controller = party_support.controller {
             o.panel_x, o.panel_y = me.panel_x, me.panel_y
             o.alliance, o.flip = navi.alliance, navi.flip
             o.element = me.element
-            o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+            o.damage_word = me.damage_word
             o.related1 = navi;
             (o.state :: ActorState).controller = me
         end

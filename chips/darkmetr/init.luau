@@ -18,7 +18,7 @@ local SHOWER = meteors.variant {
     row = falling_meteor.row {
         is = collision.collision_2b,
         hits = collision.hits_navis,
-        hit_mod = 3,
+        hit_mod = { flinch = true, flash = true },
         shake = 2,
         panel = "break",
         bug = 0x19,
@@ -43,7 +43,8 @@ local chip: Chip = {
     rarity = 4,
     mb = 99,
     damage = 100,
-    hit_param = 132,
+    counter = 4,
+    cant_counter = true,
     lockout = 20,
     flags = { has_damage = true, dark = true },
     slot_in_limit = 1,

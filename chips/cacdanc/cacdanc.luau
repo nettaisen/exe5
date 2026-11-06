@@ -25,7 +25,7 @@ local cacdanc = {}
 local SPRITE = asset.sprite("cactus")
 local puff_sprite = asset.sprite("puff")
 local ANIM = 4
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 local FALL_SOUND, BOUNCE_SOUND = asset.sound("drop"), asset.sound("cactus-hop")
 -- It starts 160 pixels up and falls 0.25 pixels a tick faster each tick; the bounce takes 10 ticks, falling a pixel a
 -- tick faster each.
@@ -249,7 +249,7 @@ local function drop(me: Object)
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = me.element
-        o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        o.damage_word = me.damage_word
         o.alliance, o.flip = me.alliance, me.flip
         o.related1 = me
         ;(o.state :: CactusState).palette = (me.state :: DancerState).palette
@@ -318,7 +318,7 @@ function cacdanc.instant(palette: number): (user: Object, spec: InstantChipSpec)
         end
         o.panel_x, o.panel_y = spec.panel_x, spec.panel_y
         o.element = spec.element
-        o:set_damage_word(spec.damage)
+        o.damage_word = spec.damage
         o.alliance, o.flip = user.alliance, user.flip
         o.related1 = user
         o.run_while_dimmed = false

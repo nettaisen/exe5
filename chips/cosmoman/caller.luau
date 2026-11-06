@@ -116,7 +116,7 @@ local function call(me: Object)
     local s = me.state :: State
     local x, y = next_target(me, s)
     local look = if s.called > 2 then s.taken[s.called - 2] else nil
-    meteor.spawn(me, x, y, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), look)
+    meteor.spawn(me, x, y, me.element, me.damage_word, look)
     s.called = int.u8(s.called + 1)
     if s.called < s.count then
         me.timer = 0x1E
@@ -182,7 +182,7 @@ function caller.spawn(cosmoman: Object, x: number, y: number, taken: { Identity?
         o.panel_x, o.panel_y = x, y
         o.element = cosmoman.element
         o.related1 = cosmoman
-        o:set_damage_word(bit32.bor(cosmoman.damage, bit32.lshift(cosmoman.stamina, 16)))
+        o.damage_word = cosmoman.damage_word
         local s = o.state :: State
         s.count = count
         for i = 1, count do

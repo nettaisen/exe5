@@ -27,7 +27,7 @@ snake.kind = common.make_kind("snake/snake", {
     rise_sound = asset.sound("appear"),
     leap_sound = asset.sound("aqua-needle-2"),
     wait = 0x30,
-    strike_element = 4,
+    strike_element = Element.wood,
     strike_spark = sparks.wood,
     strike_hit_mod = { flinch = true, flash = true },
     is = collision.attack,

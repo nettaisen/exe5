@@ -36,7 +36,7 @@ end
 coffin.kind = new.kind {
     id = "django/coffin",
     pool = "attack",
-    state = { done = "bool" },
+    state = { done = schema.bool },
     -- 0x080DE050.
     update = function(me: Object)
         local l = me.lifecycle

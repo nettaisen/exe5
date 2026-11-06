@@ -12,7 +12,7 @@ export type State = {
     timer: number,
 }
 
-armshot.STATE = { timer = "u16" }
+armshot.STATE = { timer = schema.u16 }
 
 local FIRE, RECOVER = 0x0, 0x4
 local ANIM = 0x0E
@@ -26,7 +26,7 @@ function armshot.action(spec: Spec): Action
         if me.step_init == 0 then
             me:set_animation(ANIM)
             arm.raise(me)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me.step_init = 4
             s.timer = 0
         end
@@ -51,7 +51,7 @@ function armshot.action(spec: Spec): Action
         if t >= 0 then
             return
         end
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me.related1 = nil
         me.overlay = nil
         me:exit_attack()

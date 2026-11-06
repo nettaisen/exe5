@@ -249,7 +249,7 @@ end
 hotbody.fire = new.kind {
     id = "hotbody/fire",
     pool = "effect",
-    state = { lit = "u32[5]", last = "u8[8]", count = "u32", navi = "object", rounds = "u8" },
+    state = { lit = schema.array(schema.u32, 5), last = schema.array(schema.u8, 8), count = schema.u32, navi = schema.object, rounds = schema.u8 },
     -- 0x080E6B88.
     update = function(me: Object)
         local l = me.lifecycle
@@ -294,7 +294,7 @@ function hotbody.action(rounds: number): Action
             end
             me:set_animation(0)
             me:open_counter_window()
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0
             me.step_init = 4
         end
@@ -332,7 +332,7 @@ function hotbody.action(rounds: number): Action
         end
     end
 
-    return new.action { state = { timer = "u16" }, args = { rounds = rounds }, update = update_action }
+    return new.action { state = { timer = schema.u16 }, args = { rounds = rounds }, update = update_action }
 end
 
 return hotbody

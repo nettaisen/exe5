@@ -124,10 +124,13 @@ local function init(me: Object)
     battle.play_sound(SOUND)
 end
 
+local SHAKE_WAVE = schema.record_type("shake-wave")
+spshake.SHAKE_WAVE = SHAKE_WAVE
+
 spshake.kind = new.kind {
     id = "spshake/wave",
     pool = "attack",
-    state = { wave = "record:shake-wave", step = "i32", center_y = "i32", hit_at = "u32" },
+    state = { wave = SHAKE_WAVE, step = schema.i32, center_y = schema.i32, hit_at = schema.u32 },
     -- 0x080D2FF8: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
@@ -148,7 +151,7 @@ spshake.kind = new.kind {
 
 -- A chip's wave: its speed (16.16 a tick), whether it paralyzes, its palette.
 function spshake.wave(w: Wave): Wave
-    return new.record("shake-wave", w)
+    return new.record(SHAKE_WAVE, w)
 end
 
 -- 0x080D319E: a wave of `wave` on (x, y) with `element` (the SpShakes' action passes elec) and the damage word.

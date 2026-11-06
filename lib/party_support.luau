@@ -145,7 +145,7 @@ end
 -- A navi's support actor.
 function party_support.make(spec: Spec): Support
     local navi = spec.navi
-    local state: StateSchema = { member = "u8" }
+    local state: StateSchema = { member = schema.u8 }
     for k, v in spec.state or {} do
         state[k] = v
     end
@@ -265,7 +265,7 @@ export type Controller = {
 type ControllerState = { out: boolean }
 
 function party_support.controller(spec: { id: string, state: StateSchema?, bring: (me: Object) -> Object? }): Controller
-    local state: StateSchema = { out = "bool" }
+    local state: StateSchema = { out = schema.bool }
     for k, v in spec.state or {} do
         state[k] = v
     end

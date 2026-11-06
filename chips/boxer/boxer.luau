@@ -78,7 +78,7 @@ end
 boxer.kind = new.kind {
     id = "boxer/boxer",
     pool = "effect",
-    state = { punch = "u8", hit_mod = "u8" },
+    state = { punch = schema.u8, hit_mod = schema.u8 },
     -- 0x080E7CE0.
     update = function(me: Object)
         local l = me.lifecycle

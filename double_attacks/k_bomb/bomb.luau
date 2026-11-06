@@ -123,7 +123,7 @@ end
 bomb.kind = new.kind {
     id = "k-bomb/bomb",
     pool = "attack",
-    state = { quarter = "u8" },
+    state = { quarter = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

@@ -107,7 +107,7 @@ end
 note.kind = new.kind {
     id = "toadman/note",
     pool = "attack",
-    state = { target = "object", next_y = "u8", life = "u8", delay = "u8", dimmed = "bool" },
+    state = { target = schema.object, next_y = schema.u8, life = schema.u8, delay = schema.u8, dimmed = schema.bool },
     -- 0x080D66A0.
     update = function(me: Object)
         local l = me.lifecycle

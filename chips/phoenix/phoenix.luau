@@ -245,7 +245,7 @@ end
 phoenix.kind = new.kind {
     id = "phoenix/phoenix",
     pool = "actor",
-    state = { controller = "object", targets = "u8[18]" },
+    state = { controller = schema.object, targets = schema.array(schema.u8, 18) },
     -- 0x080BFA70.
     update = function(me: Object)
         local l = me.lifecycle

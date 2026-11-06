@@ -81,7 +81,7 @@ end
 scope.kind = new.kind {
     id = "c-scope/scope",
     pool = "effect",
-    state = { origin_x = "u8", origin_y = "u8", step = "u8", stopped = "bool", rounds = "u8" },
+    state = { origin_x = schema.u8, origin_y = schema.u8, step = schema.u8, stopped = schema.bool, rounds = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

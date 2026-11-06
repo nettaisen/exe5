@@ -28,7 +28,7 @@ export type State = {
 }
 
 -- One state for every GunDelSol.
-gundels.STATE = { timer = "u16" }
+gundels.STATE = { timer = schema.u16 }
 
 -- What a chip's GunDelSol holds and fires: its gun, how long it fires at most, the beam in the shade and in the
 -- sun (its look, of 0x080EDDB8, and palette), and its hits' region (the column two panels ahead; GunDelEX's and the
@@ -85,10 +85,10 @@ local function let_go(me: Object): boolean
     if me.actor_type ~= "player" or me.ai_index == HOLDLESS_AI then
         return false
     end
-    if me:navi_state("no_charge") then
+    if me.navi_flags.no_charge then
         return false
     end
-    return not me:held("a")
+    return not me.held.a
 end
 
 -- A chip's GunDelSol.
@@ -98,7 +98,7 @@ function gundels.action(spec: Spec): Action
     -- 0x080EDCEC (`sub_80EDB14`): the gun comes out; 6 ticks later the beam lights up, if A is still held.
     local function wind_up(me: Object, s: State)
         if me.step_init == 0 then
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me:set_animation(ANIM_RAISE)
             me:open_counter_window()
             attachment.attach(me, spec.gun, "overlay")
@@ -166,7 +166,7 @@ function gundels.action(spec: Spec): Action
         if t >= 0 then
             return
         end
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me:set_animation(0)
         me.related1 = nil
         me.overlay = nil
@@ -185,7 +185,7 @@ function gundels.action(spec: Spec): Action
         else
             error(string.format("GunDelSol phase %#x reads past its phase table", step))
         end
-        if me:request("anti_damage_triggered") or me:request("anti_sword_triggered") then
+        if me.requests.anti_damage_triggered or me.requests.anti_sword_triggered then
             me:check_reactive_abort()
         end
     end

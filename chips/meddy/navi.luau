@@ -217,12 +217,12 @@ meddy.kind = new.kind {
     id = "meddy/navi",
     pool = "actor",
     state = {
-        controller = "object",
-        palette = "u8",
-        enemy_x = "u8",
-        enemy_y = "u8",
-        pick_x = "u8",
-        pick_y = "u8",
+        controller = schema.object,
+        palette = schema.u8,
+        enemy_x = schema.u8,
+        enemy_y = schema.u8,
+        pick_x = schema.u8,
+        pick_y = schema.u8,
     },
     -- 0x080BBAA0.
     update = function(me: Object)

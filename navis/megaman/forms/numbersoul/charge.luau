@@ -32,7 +32,7 @@ local function throw(me: Object, s: State)
         me:set_animation(THROW_ANIM)
         battle.play_sound(SOUND)
         me:open_counter_window()
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 0
         me.step_init = 4
     end
@@ -74,7 +74,7 @@ end
 
 charge.action = new.action {
     id = "numbersoul/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080EE77C
     update = function(me: Object, s: State)
         local step = me.step

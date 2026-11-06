@@ -9,10 +9,9 @@ local dark_costs = require("../lib/dark_costs")
 local hand_fan_sprite = asset.sprite("hand-fan")
 
 -- Its blow (subtype 3, EXE6's action's third form): HP-bug tornadoes (row 3: bug 0x54, argument 5) spreading back
--- toward the navi by its side's statistic 3 (0x080CAE7E, EXE6's `sub_80CA19E`: the same tables, `off_80CA1F8`), the
--- charged fan (the attachment table's row 0x17) one palette on.
+-- toward the navi by its side's statistic `reactions` (0x080CAE7E, EXE6's `sub_80CA19E`: the same tables,
+-- `off_80CA1F8`), the charged fan (the attachment table's row 0x17) one palette on.
 local HP_BUG = tornado.variant { palette = 3, rearm = 4, bug = 0x54 + 5 * 0x100 }
-local SIDE_STAT = 3
 local BACK_SPREAD = {
     [0] = { { 0, 0 } },
     { { 0, 0 }, { -1, 0 } },
@@ -24,7 +23,7 @@ local BLOW = tornado.blow {
     fan_palette = 1,
     spread = {
         level = function(me: Object): number
-            return battle.side_stat(me.alliance, SIDE_STAT)
+            return battle.side_stat(me.alliance, "reactions")
         end,
         panels = BACK_SPREAD,
         tornado = { variant = HP_BUG, status = nil, ticks = 0x20 },

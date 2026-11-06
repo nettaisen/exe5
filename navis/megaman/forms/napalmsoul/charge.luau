@@ -38,7 +38,7 @@ local function raise(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(RAISE_ANIM)
         me:open_counter_window()
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me.step_init = 4
         s.timer = RAISE_TICKS
     end
@@ -90,7 +90,7 @@ end
 
 charge.action = new.action {
     id = "napalmsoul/charge/action",
-    state = { timer = "u16", shots = "u16" },
+    state = { timer = schema.u16, shots = schema.u16 },
     -- 0x080EED9A
     update = function(me: Object, s: State)
         local step = me.step

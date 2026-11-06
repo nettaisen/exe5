@@ -186,7 +186,7 @@ export type CactusState = {
 cacdanc.cactus = new.kind {
     id = "cacdanc/cactus",
     pool = "attack",
-    state = { palette = "u8" },
+    state = { palette = schema.u8 },
     -- 0x080DC60C: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
@@ -289,7 +289,7 @@ end
 cacdanc.dancer = new.kind {
     id = "cacdanc/dancer",
     pool = "effect",
-    state = { palette = "u8" },
+    state = { palette = schema.u8 },
     -- 0x080E7E10.
     update = function(me: Object)
         local l = me.lifecycle
@@ -323,7 +323,7 @@ function cacdanc.instant(palette: number): (user: Object, spec: InstantChipSpec)
         o.related1 = user
         o.run_while_dimmed = false
         ;(o.state :: DancerState).palette = palette
-        obstacle.register(o, user.alliance, 1)
+        obstacle.register(o, user.alliance, "one_a_side")
     end
 end
 

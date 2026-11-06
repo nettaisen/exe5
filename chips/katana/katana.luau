@@ -29,7 +29,7 @@ export type State = {
     turned: number,
 }
 
-katana.STATE = { timer = "u16", turned = "u32" }
+katana.STATE = { timer = schema.u16, turned = schema.u32 }
 
 -- The phases, on the attack's step.
 local START, SET_UP, SWING, STEP_BACK, RECOVER = 0x0, 0x4, 0x8, 0xC, 0x10
@@ -72,7 +72,7 @@ katana.action = new.action {
                     old:set_lifecycle("destroy")
                 end
                 attachment.attach(me, swords.held_blade(me), "overlay", { anim = swords.blade_anim(me) })
-                me:set_status("using_action", true)
+                me.status.using_action = true
                 s.timer = 0x15
                 me.step_init = 4
             end

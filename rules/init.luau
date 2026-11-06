@@ -39,6 +39,11 @@ local shout = require("@self/shout")
 local soldier = require("./objects/soldier")
 local souls = require("@self/souls")
 local ticked = require("@self/ticked")
+local dark_costs = require("./lib/dark_costs")
+local double_attack = require("./lib/double_attack")
+local attachment = require("@exelib/attachment")
+local soul_custom = require("@exelib/souls/custom")
+local soul_image = require("@exelib/souls/image")
 
 -- What the tools read of the game's builds, as data (./builds: the versions, a new save's folder): loaded with the
 -- rules, which read none of it.
@@ -49,59 +54,59 @@ require("@self/rulesets")
 -- The auto battle AI's state (./auto_battle/ai.luau's `State`): a navi's it drives (Dark MegaMan's, AIData +0x80 on),
 -- and a side's own drive's under DarkInvs (AIData +0xF0 on), in the side's state.
 local AI: StateSchema = {
-    timed = "bool",
-    lifetime = "u16",
-    drive_ticks = "u16",
-    mode = "u8",
-    step = "u8",
-    sub = "u8",
-    misses = "u8",
-    target_index = "u8",
-    next_target = "u8",
-    shots = "u8",
-    pattern_chip = "u8",
-    entry_chip = "chip",
-    entry_pattern = "u8",
-    since = "u32",
-    place_step = "u8",
-    place_step_init = "u8",
-    place_busy = "bool",
-    place_ready = "bool",
-    place_chip = "chip",
-    place_target = "object",
+    timed = schema.bool,
+    lifetime = schema.u16,
+    drive_ticks = schema.u16,
+    mode = schema.u8,
+    step = schema.u8,
+    sub = schema.u8,
+    misses = schema.u8,
+    target_index = schema.u8,
+    next_target = schema.u8,
+    shots = schema.u8,
+    pattern_chip = schema.u8,
+    entry_chip = schema.chip,
+    entry_pattern = schema.u8,
+    since = schema.u32,
+    place_step = schema.u8,
+    place_step_init = schema.u8,
+    place_busy = schema.bool,
+    place_ready = schema.bool,
+    place_chip = schema.chip,
+    place_target = schema.object,
 }
 
 -- What a side keeps through a round.
 local state: StateSchema = {
     -- Soul Unison (./souls): AIData +0x0F, the soul's turns left (0xFF: none to count), and Chaos Unison; the turn's
     -- arm chip (the transform record's +6; none: its 0xFFFF).
-    turns = schema.role("form_offer.turns", "u8"),
-    chaos = "bool",
-    arm_chip = "chip",
+    turns = schema.role("form_offer.turns", schema.u8),
+    chaos = schema.bool,
+    arm_chip = schema.chip,
     -- The custom screen's (./souls/custom.luau): the round's souls given, the soul button's offer, the soul's
     -- choice's step.
-    souls_used = "u32",
-    offer = schema.role("form_offer.form", "form"),
-    offer_chaos = schema.role("form_offer.alternate", "bool"),
-    unite_step = schema.role("offer_flight.step", "u8"),
-    unite_count = schema.role("offer_flight.count", "u8"),
+    souls_used = schema.u32,
+    offer = schema.role("form_offer.form", schema.form),
+    offer_chaos = schema.role("form_offer.alternate", schema.bool),
+    unite_step = schema.role("offer_flight.step", schema.u8),
+    unite_count = schema.role("offer_flight.count", schema.u8),
     -- The NaviCust's emotion-swing bug (./emotion): AIData +0x3A (ticks toward the next swing) and +0x0B (the
     -- emotion last swung to) of each navi of the player's kind, by its slot on its side's list of alive actors, and the
     -- navi each slot's are of (which keeps them after it leaves the list: its deletion).
-    swing_ticks = "u16[4]",
-    swung = "u8[4]",
-    swing_navis = "object[4]",
+    swing_ticks = schema.array(schema.u16, 4),
+    swung = schema.array(schema.u8, 4),
+    swing_navis = schema.array(schema.object, 4),
     -- The side's own drive under DarkInvs (./auto_battle): the AI's state, as a navi it drives keeps it.
     drive = AI,
     -- The side's sword pick (`sub_802E070` +0x12, which the player's init clears): the swing a variable sword makes
     -- for a navi no buttons drive, which its auto battle draws (./auto_battle/place) and VarSwrd reads (./api).
-    sword_pick = "u8",
+    sword_pick = schema.u8,
     -- ColonelSoul's army (exe5-map.md §15.11, ./api): armed (the battle state's +0x5C bit 0x10 or 0x20, which the
     -- soul's reset sets and the status reset and the navi switch's end clear), and its soldiers' damage words
     -- (0x02034000 + 8 × side: the sword soldier's, the gun soldier's), which disarming leaves.
-    army = { armed = "bool", melee = "u32", ranged = "u32" } :: StateSchema,
+    army = { armed = schema.bool, melee = schema.u32, ranged = schema.u32 } :: StateSchema,
     -- The side's wind, and who placed it (@exelib/wind/registry, ./api).
-    wind = { object = "object", source = { "obstacle", "navi" } } :: StateSchema,
+    wind = { object = schema.object, source = { "obstacle", "navi" } } :: StateSchema,
     -- The side's auto battle data as its console sent it as the battle started (./auto_battle/block.luau), which a
     -- navi in auto battle plays and turns.
     auto_battle_places = schema.list(auto_battle.block.PLACE, auto_battle.block.PLACES),
@@ -110,44 +115,44 @@ local state: StateSchema = {
     screen = souls.custom.screen,
     -- Chaos Unison's charge (./souls/chaos_charge): AIData +0x6C, the chaos level; +0x1C and +0x1F, the cycle's counter
     -- and window; the release's outcome as it was released.
-    chaos_level = "u8",
-    chaos_counter = "u8",
-    chaos_window = "u8",
-    chaos_success = "bool",
+    chaos_level = schema.u8,
+    chaos_counter = schema.u8,
+    chaos_window = schema.u8,
+    chaos_success = schema.bool,
     -- The last navi chip used, of either side (0x0203C430, cleared as the battle starts): the navi chip controllers
     -- keep a chip of the navi chips' block as its navi comes, in both sides' states (./api); DethPhnx brings its navi
     -- again.
-    last_navi_chip = { chip = "chip", element = "u8", damage = "u32" } :: StateSchema,
+    last_navi_chip = { chip = schema.chip, element = schema.u8, damage = schema.u32 } :: StateSchema,
     -- The party battle's Double Attack (./double_attacks): AIData +0x73, spent this round (its 0xFF), else on a paused
     -- switch the member the follow-up launches with.
-    double_attack = { spent = "bool", partner = "u8" } :: StateSchema,
+    double_attack = { spent = schema.bool, partner = schema.u8 } :: StateSchema,
     -- The party battle's (./party): ToadMan's rescue is spent this battle (the DS's party block +0xB).
-    rescued = "bool",
+    rescued = schema.bool,
     -- EXE5 DS's shout is spent this battle (./shout: its battle flag 0x800 or 0x1000).
-    shouted = "bool",
+    shouted = schema.bool,
     -- NumberMan's DiceBons is spent this battle (navis/numberman/dice_bonus: the party block's +0x13).
-    dice_bonus = "bool",
+    dice_bonus = schema.bool,
     -- MagnetMan's Mag-Barr is spent this battle (navis/magnetman/support: the DS's battle flag 0x200 or 0x400).
-    mag_barr = "bool",
+    mag_barr = schema.bool,
     -- The party's supports' (./party's `Supports`: the party block's other fields).
     supports = {
-        protoman_used = "bool",
-        protoman_count = "u8",
-        gyroman_spawned = "bool",
-        napalmman_set = "bool",
-        napalmman_timer = "u16",
-        colonel_used = "bool",
-        colonel_count = "u8",
-        tomahawkman_timer = "u16",
-        tomahawkman_set = "bool",
-        busy = "bool[3]",
-        shadowman_used = "bool",
-        megaman_timer = "u16",
-        megaman_set = "bool",
-        searchman_used = "bool",
-        knightman_pending = "u16",
-        gyroman_gust = "object",
-        knightman_guard = "object",
+        protoman_used = schema.bool,
+        protoman_count = schema.u8,
+        gyroman_spawned = schema.bool,
+        napalmman_set = schema.bool,
+        napalmman_timer = schema.u16,
+        colonel_used = schema.bool,
+        colonel_count = schema.u8,
+        tomahawkman_timer = schema.u16,
+        tomahawkman_set = schema.bool,
+        busy = schema.array(schema.bool, 3),
+        shadowman_used = schema.bool,
+        megaman_timer = schema.u16,
+        megaman_set = schema.bool,
+        searchman_used = schema.bool,
+        knightman_pending = schema.u16,
+        gyroman_gust = schema.object,
+        knightman_guard = schema.object,
     } :: StateSchema,
 }
 
@@ -161,47 +166,47 @@ local rules: Rules = {
     -- (+0x32, signed: the NaviCust's SoulT+1, the patch cards' SoulTm+ and SoulTm-; ./souls reads it at OK,
     -- 0x08024FF6).
     stats = {
-        sun = "bool",
-        chip_drops = "u8",
-        encounters = "u8",
-        hub_style = "u8",
-        soul_turn_bonus = "i8",
+        sun = schema.bool,
+        chip_drops = schema.u8,
+        encounters = schema.u8,
+        hub_style = schema.u8,
+        soul_turn_bonus = schema.i8,
         -- The party battle's (EXE5 DS: ./party): the switches the side may make beside the DS's 3 (+0x17 less 3, which
         -- its fresh stats write and the GBA's don't: NaviCust's NavChg+1 and NavChg+2 raise it, to 5 in all), the
         -- bonus of a team navi's own chip's damage (+0x56: PartyCust's P.Chp, 0x0203BF2C adds it), and whether the
         -- navi may support its party while benched (+0x59: NaviCust's Spport for MegaMan, PartyCust's P.Spport for a
         -- team navi; 0x02004E9C reads it).
-        switch_bonus = "u8",
-        chip_attack_bonus = "u16",
-        supports_party = "bool",
+        switch_bonus = schema.u8,
+        chip_attack_bonus = schema.u16,
+        supports_party = schema.bool,
     },
     -- What a player brings (nettai-match from a match's side, exe5-compat from a recording): a side's facts.
     setup = {
         -- The navi they play: the round's stats are its (`Battle::new` holds them to it). No default: a side states
         -- it.
-        navi = "navi",
+        navi = schema.navi,
         -- Their folder as the save keeps it, an entry with no chip empty (a folder being made); the Regular chip, an
         -- entry of it (from 0), dealt first. (EXE5's folders have no tag chips.) A tool deals the round's battle folder
         -- from them; ./folder checks them (`validate`).
-        folder = schema.list({ chip = "chip", code = "code" }, 30),
-        regular_chip = "u8?",
+        folder = schema.list({ chip = schema.chip, code = schema.code }, 30),
+        regular_chip = schema.optional(schema.u8),
         -- The patch cards they have installed, in their list's order (./patch_cards): each applies (a save's card
         -- switched off is none of the side's: it does nothing in battle). A card each team's ROMs give effects of
         -- their own (card 111, Bass-Cross MegaMan) has the variant chosen for it, a team's (its effects' `variant`s),
         -- as a NaviCust program's color is chosen; a card without variants, none (left out).
-        patch_cards = schema.list({ card = "patch_cards", variant = { "protoman", "colonel" } }, 32),
+        patch_cards = schema.list({ card = schema.entry("patch_cards"), variant = { "protoman", "colonel" } }, 32),
         -- Their NaviCust (./navicust): how far its board has been expanded (none: no NaviCust, the stats as the
         -- setup gives them: a navi but MegaMan's, a recording's), and the programs placed on its 7x7 grid in its
         -- list's order, each in one of its colors (its definition's `colors`), its center at (x, y), turned
         -- `rotation` quarters clockwise, compressed or not.
-        navicust_expansions = "u8?",
+        navicust_expansions = schema.optional(schema.u8),
         navicust_programs = schema.list({
-            program = "navicust_programs",
+            program = schema.entry("navicust_programs"),
             color = { "white", "pink", "yellow", "red", "blue", "green" },
-            x = "u8",
-            y = "u8",
-            rotation = "u8",
-            compressed = "bool",
+            x = schema.u8,
+            y = schema.u8,
+            rotation = schema.u8,
+            compressed = schema.bool,
         }, 49),
         -- Their auto battle data as their save holds it (./auto_battle/block.luau: the block's 42 places and its eight
         -- pattern records), which a navi in auto battle plays of them as their console sends it.
@@ -210,26 +215,26 @@ local rules: Rules = {
         -- What the save brings to the navi's stats (./save): MegaMan's base HP, the Regular memory, fighting in the
         -- sun (+0x22), and a team navi's level (the story's progress). A side that states none has the highest
         -- (`setup_defaults`; a team navi its story's last level, which the tools state, MegaMan none).
-        hp = "u16",
-        reg_up = "u8",
-        sun = "bool",
-        level = "u8?",
+        hp = schema.u16,
+        reg_up = schema.u8,
+        sun = schema.bool,
+        level = schema.optional(schema.u8),
         -- MegaMan's light/dark value (NaviStats +0x44, ./light_dark).
-        karma = "u16",
+        karma = schema.u16,
         -- The souls the save has (./souls; a match's side's `souls`, a recording's its version's), which the custom
         -- screen's soul button may offer, as the save's soul flags (any souls of the game, either version's): as many
         -- as the button's list holds, twelve (0x08024B28 goes through the twelve families of 0x08024BE0, its soul
         -- flags 0x08024BF0's, one a soul: `cmp r6, #13`); none, no soul button, as a save without Soul Unison (event
         -- flag 0) has; and Chaos Unison (event flag 0x236: a dark chip's soul).
-        souls = "form[12]",
-        chaos_unison = "bool",
+        souls = schema.array(schema.form, 12),
+        chaos_unison = schema.bool,
         -- How long the save took to delete each SP navi (./sp_chips: the save's 0x02002670, a battle's copy
         -- 0x0203E560), by its SP chip, in frames.
-        sp_times = schema.list({ chip = "chip", frames = "u16" }, 18),
+        sp_times = schema.list({ chip = schema.chip, frames = schema.u16 }, 18),
         -- The team navis MegaMan brings to a party battle (./party, EXE5 DS's: the save's team, or Navi Select's two in a
         -- link battle), in order, each with its PartyCust programs (./party/partycust: no more than its gauge holds,
         -- ten blocks at most). None: no party.
-        party = schema.list({ navi = "navi", programs = schema.list("partycust_programs", 10) }, 2),
+        party = schema.list({ navi = schema.navi, programs = schema.list(schema.entry("partycust_programs"), 10) }, 2),
     },
     -- A setup that says nothing: what every save brings at its highest, the base HP 1000, the Regular memory 50 and
     -- the sun, no level (MegaMan's); a fresh save's light/dark value (0x08010C00 writes 500: light for the chips, no
@@ -290,11 +295,11 @@ local rules: Rules = {
     -- navis/toadman), which a soul change, a form's revert or break and ToadMan's rescue end.
     navi_state = {
         ai = AI,
-        weapon_chip = "chip",
-        take_off = "bool",
-        land = "bool",
-        guarded = "bool",
-        diving = "bool",
+        weapon_chip = schema.chip,
+        take_off = schema.bool,
+        land = schema.bool,
+        guarded = schema.bool,
+        diving = schema.bool,
     },
     -- EXE5's fields on its definitions (docs/design/rules-in-luau.md §7.5), which the engine checks and reads none
     -- of. What a soul's form says for the rules that ask (a soul is named by its form's id; the original tests its
@@ -306,7 +311,7 @@ local rules: Rules = {
     extends = {
         chip = {
             -- An SP navi chip's damage by its deletion-time step, and in the own-gauges mode (./sp_chips).
-            sp = { by_time = "u16[11]", operation_battle = "u16" },
+            sp = { by_time = schema.array(schema.u16, 11), operation_battle = schema.u16 },
             -- What the auto battle AI reads of it (./auto_battle/place; the record's byte 13 and 23): how the navi gets in
             -- place for it, its positioning class, and for the classes that read one its reach list (./auto_battle/data's,
             -- by name) or its spot test. A chip without it the AI can't play (its class past the table: the original
@@ -315,14 +320,14 @@ local rules: Rules = {
             -- lib/dark_costs), a capsule's mix into the chip it goes into (navis/megaman/forms/meddysoul/capsules,
             -- 0x08023824: the hand's modifier bits), and a chip past the chip pack's list (./folder: its last chip
             -- 0x13A; the BatCans).
-            dark_cost = "record:exe5-dark-cost",
+            dark_cost = dark_costs.EXE5_DARK_COST,
             -- The Double Attack a chip of the DS's is (lib/double_attack; ./double_attacks fires it).
-            double_attack = "record:exe5-double-attack",
-            capsule_mix = "u8",
-            past_the_pack = "bool",
+            double_attack = double_attack.EXE5_DOUBLE_ATTACK,
+            capsule_mix = schema.u8,
+            past_the_pack = schema.bool,
             -- A chip a save can collect though its record has no library flag (./folder: the Giga chips Team Colonel's
             -- library lists, and the Japanese game's gifts, LeadRaid and ChaosLrd).
-            collectible = "bool",
+            collectible = schema.bool,
             -- The version whose saves hold the chip (a team's own Giga chips: each version's library lists its own
             -- six, and a Giga chip isn't traded), which a ruleset's groups go by (./builds' `groups`). None: either
             -- team's (ChaosLrd, which both Japanese games gave out).
@@ -354,7 +359,7 @@ local rules: Rules = {
                         "cross_three_ahead", "around", "columns_three_to_five", "ring_three_ahead", "all_ahead",
                     },
                 },
-                element_trap = "bool",
+                element_trap = schema.bool,
             },
         },
         navi = {
@@ -362,10 +367,10 @@ local rules: Rules = {
             -- party to one team's), and what it is in a party (./party, EXE5 DS's party battle): its PartyCust gauge's
             -- blocks, its base HP and its own chip's damage by the side's level, 0 to 9.
             version = { "protoman", "colonel" },
-            party = { gauge = "u8", hp = "u16[10]", chip_damage = "u16[10]" },
+            party = { gauge = schema.u8, hp = schema.array(schema.u16, 10), chip_damage = schema.array(schema.u16, 10) },
             -- How many of its sprite's steps its warp out (animation 4) lasts, which a step sword with nowhere to step
             -- waits out (lib/swords, lib/stepsword).
-            animation_steps = { warp_out = "u8" },
+            animation_steps = { warp_out = schema.u8 },
         },
         form = {
             -- A soul (./souls): the family of the chips given up for it (0x08024BE0's table). A soul is named by its
@@ -376,16 +381,16 @@ local rules: Rules = {
                     "break", "wood",
                 },
             },
-            image = "record:soul-image",
-            custom = "record:soul-custom",
-            blade_anim = "u8",
-            steps_behind = "bool",
-            var_sword_waits = "bool",
-            emerge_shake = "bool",
+            image = soul_image.SOUL_IMAGE,
+            custom = soul_custom.SOUL_CUSTOM,
+            blade_anim = schema.u8,
+            steps_behind = schema.bool,
+            var_sword_waits = schema.bool,
+            emerge_shake = schema.bool,
             -- A soul's Chaos Unison: the weapon its charge fires, its own cycle (./souls/chaos_charge: the period,
             -- then the windows' bounds; none, the chaos level's row), and the blade its swords hold while the charge
             -- is armed (../lib/swords' `held_blade`; none, the swords' own).
-            chaos = { weapon = "weapon", cycle = "u8[4]", blade = "record:attachment-look" },
+            chaos = { weapon = schema.weapon, cycle = schema.array(schema.u8, 4), blade = attachment.ATTACHMENT_LOOK },
         },
     },
     -- Its own actions, which reach its state: a soul's change and revert (./souls), Dark MegaMan's leave
@@ -415,15 +420,15 @@ local rules: Rules = {
             light_dark.round_setup(side)
             -- The party's partners join (./party).
             party.round_setup(side)
-            -- The hooks asked each fight tick are called only while something can come of them (rules.listen): the
+            -- The hooks asked each fight tick are called only while something can come of them (rules.listening): the
             -- party's supports and KnightMan's guard with partners; Chaos Unison's drop and the auto battle's drive
             -- from their starts (./souls/chaos_charge, ./auto_battle); and the holy panel's clearing on holy panels
             -- while the side's value clears them (./light_dark).
-            rules.listen(side, "fight_tick", party.has_partners(side) and (battle.link() or side == 0))
-            rules.listen(side, "hit_guard", knightman_guard.in_party(side))
+            rules.listening(side).fight_tick = party.has_partners(side) and (battle.link() or side == 0)
+            rules.listening(side).hit_guard = knightman_guard.in_party(side)
             light_dark.listen(side)
-            rules.listen(side, "weapons_loaded", false)
-            rules.listen(side, "controller", false)
+            rules.listening(side).weapons_loaded = false
+            rules.listening(side).controller = false
             -- The auto battle data both consoles send, shuffled alike, once for the round (./auto_battle/block.luau).
             if side == 0 then
                 auto_battle.block.send()
@@ -497,7 +502,7 @@ local rules: Rules = {
         -- side's HUD, which SearchSoul's reset puts back (0x08011C0C).
         status_reset = function(side: number, _navi: Object)
             exe5.disarm_army(side)
-            battle.set_hud("opponent_chip_icons", false, side)
+            battle.hud(side).opponent_chip_icons = false
         end,
         -- (Who fights brings a value and a swing bug of their own: ./light_dark, ./ticked.)
         switch_finished = function(side: number, _navi: Object)
@@ -580,6 +585,8 @@ local rules: Rules = {
     pools = require("@self/pools"),
     reactions = require("@self/reactions"),
     roles = require("@self/roles"),
+    -- The slots of a side's statistics its content names (each the original's counter's).
+    side_stats = { chaos_weapons = 0, last_stand = 1, dark_chip_used = 2, reactions = 3, recoveries = 5 },
     status = require("@self/status").rules,
 }
 

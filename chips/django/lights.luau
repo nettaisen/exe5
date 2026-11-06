@@ -101,7 +101,7 @@ end
 lights.kind = new.kind {
     id = "django/lights",
     pool = "effect",
-    state = { light = "bool", blessed = "bool", done = "bool", children = "object[8]" },
+    state = { light = schema.bool, blessed = schema.bool, done = schema.bool, children = schema.array(schema.object, 8) },
     -- 0x080E9968.
     update = function(me: Object)
         local l = me.lifecycle

@@ -178,7 +178,7 @@ end
 rock.kind = new.kind {
     id = "e-sappou/rock",
     pool = "actor",
-    state = { colonel = "object", slot = "u8", held = "object", wait = "u8" },
+    state = { colonel = schema.object, slot = schema.u8, held = schema.object, wait = schema.u8 },
     update = function(me: Object)
         local s = me.state :: State & { wait: number }
         local l = me.lifecycle

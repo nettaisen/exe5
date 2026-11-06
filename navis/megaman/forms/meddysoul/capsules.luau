@@ -8,6 +8,7 @@
 -- +68: 0x08023824) and the capsule is used. B on the chip frees it (0x08024D78, the screen's), as its pick taken back anywhere does.
 
 local capsules_chips = require("../../../../chips/capsules")
+local soul_custom = require("@exelib/souls/custom")
 
 local capsules = {}
 
@@ -170,17 +171,17 @@ local window: SoulWindow = {
 
 local custom_screen: SoulCustom = {
     state = {
-        capsule_1 = "chip",
-        capsule_2 = "chip",
-        mix_capsule = schema.role("chip_flight.button", "u8"),
-        mix_step = schema.role("chip_flight.step", "u8"),
-        mix_count = schema.role("chip_flight.count", "u8"),
+        capsule_1 = schema.chip,
+        capsule_2 = schema.chip,
+        mix_capsule = schema.role("chip_flight.button", schema.u8),
+        mix_step = schema.role("chip_flight.step", schema.u8),
+        mix_count = schema.role("chip_flight.count", schema.u8),
     },
     buttons = { capsule_1 = button(1), capsule_2 = button(2) },
     windows = { capsule = window },
     deal = deal,
 }
 
-capsules.custom = new.record("soul-custom", custom_screen)
+capsules.custom = new.record(soul_custom.SOUL_CUSTOM, custom_screen)
 
 return capsules

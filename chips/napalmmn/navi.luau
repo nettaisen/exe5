@@ -180,7 +180,7 @@ end
 napalmman.kind = new.kind {
     id = "napalmmn/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8" },
+    state = { controller = schema.object, palette = schema.u8 },
     -- 0x080BB10C.
     update = function(me: Object)
         local l = me.lifecycle

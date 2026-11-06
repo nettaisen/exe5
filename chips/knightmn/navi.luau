@@ -212,7 +212,7 @@ end
 knightman.kind = new.kind {
     id = "knightmn/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8" },
+    state = { controller = schema.object, palette = schema.u8 },
     -- 0x080B9C28.
     update = function(me: Object)
         local l = me.lifecycle

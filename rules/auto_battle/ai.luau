@@ -150,7 +150,7 @@ end
 -- `set_attack` of kind 2): none of a hand's machinery.
 function ai.use_chip(navi: Object, chip: Chip)
     navi:load_chip_attack(chip)
-    navi:start_chip_attack(chip, 2)
+    navi:start_chip_attack(chip, "chip")
 end
 
 -- `sub_80116F6`: a step to (x, y), facing the target a search names: from the pattern's search place (0x0802BA14's),
@@ -223,8 +223,8 @@ local function buster_run(navi: Object, s: State, fam: Family)
     elseif s.sub == 4 then
         -- Its console's chip window closes (0x0802BB7C, 0x0802B612: `sub_801DACC(0x40)` when its side is the local
         -- one, or every console's where the chip-use rules say), until its next idle shows it again.
-        battle.set_hud("chip_window", false, if chip_use.window_hides_every_console then nil else navi.alliance)
-        navi:start_weapon(buster, 1)
+        battle.hud(if chip_use.window_hides_every_console then nil else navi.alliance).chip_window = false
+        navi:start_weapon(buster, "buster")
         s.shots += 1
         if s.shots < 2 then
             s.sub = 0
@@ -261,7 +261,7 @@ local function dodge(navi: Object, s: State, fam: Family)
         if shot == nil then
             error("the auto-battling navi's dodge ends in its charged shot (sub_80117A4), and it has none")
         end
-        navi:start_weapon(shot :: Weapon, 1)
+        navi:start_weapon(shot :: Weapon, "buster")
         s.step = 0
     else
         error(string.format("the auto-battling navi's dodge's step %#x reads past its table (0x0802BBC0)", s.sub))

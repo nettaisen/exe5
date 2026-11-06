@@ -92,7 +92,7 @@ return {
     -- 0x300E8 and the six timers.
     status_end = {
         flags = { "paralyzed", "blind", "immobilized", "confused", "frozen", "bubbled" },
-        requests = 0x300E8,
+        requests = { "paralyze", "confuse", "blind", "immobilize", "freeze", "bubble" },
         timers = { "paralyze", "confuse", "blind", "immobilize", "freeze", "bubble" },
     },
 }

@@ -194,7 +194,7 @@ local chip: Chip = {
     double_attack = double_attack.make {
         id = "e-sappou",
         damage = { 45, 45, 45, 50, 60, 75, 110, 130, 150, 150 },
-        state = { rocks = "u8", out = "bool[8]" },
+        state = { rocks = schema.u8, out = schema.array(schema.bool, 8) },
         roles = {
             -- 0x020940D4's table: Colonel, (10, 10) from the user's spot.
             {

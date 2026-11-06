@@ -208,7 +208,7 @@ local chip: Chip = {
     double_attack = double_attack.make {
         id = "c-bomb",
         damage = { 75, 75, 75, 75, 75, 75, 110, 130, 150, 150 },
-        state = { capsule = "object", bomb = "object" },
+        state = { capsule = schema.object, bomb = schema.object },
         roles = {
             -- 0x02015AFC's table: NapalmMan, (10, 10) from the user's spot.
             {

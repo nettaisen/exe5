@@ -186,7 +186,7 @@ end
 football.ball = new.kind {
     id = "football/ball",
     pool = "attack",
-    state = { kick = "u8" },
+    state = { kick = schema.u8 },
     -- 0x080D9258: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
@@ -333,7 +333,7 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = kicks, [0xC] = leave }
 football.kind = new.kind {
     id = "football/navi",
     pool = "actor",
-    state = { controller = "object", kicked = "u8" },
+    state = { controller = schema.object, kicked = schema.u8 },
     -- 0x080BF628.
     update = function(me: Object)
         local l = me.lifecycle

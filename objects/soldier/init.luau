@@ -211,7 +211,7 @@ local function tick(me: Object)
     c:remove()
     me.visible = true
     visibility.hide_from_blind(me)
-    if not s.hit and me:take_damage(0) < 0 then
+    if not s.hit and me:take_damage("damage_sound") == "broken" then
         s.hit = true
         next_action(me, LEAVE)
         c:set_region(nil)
@@ -337,7 +337,7 @@ end
 soldier.kind = new.kind {
     id = "colonel-soldier",
     pool = "attack",
-    state = { ranged = "u8", hit = "bool" },
+    state = { ranged = schema.u8, hit = schema.bool },
     -- 0x080CA834.
     update = function(me: Object)
         local l = me.lifecycle

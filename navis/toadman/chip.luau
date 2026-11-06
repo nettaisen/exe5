@@ -39,7 +39,7 @@ local function ready(me: Object, s: State)
     if me.step_init == 0 then
         me:set_animation(READY_ANIM)
         s.timer = s.wait
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me.step_init = 4
     end
     local t = s.timer - 1
@@ -63,13 +63,13 @@ local function sing(me: Object, s: State)
     local t = s.timer - 1
     s.timer = int.u16(t)
     if t <= 0 then
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me:exit_attack()
     end
 end
 
 local action = new.action {
-    state = { timer = "u16", target = "object", wait = "u16", sing = "u16" },
+    state = { timer = schema.u16, target = schema.object, wait = schema.u16, sing = schema.u16 },
     -- 0x080FCA36
     update = function(me: Object, s: State)
         local step = me.step

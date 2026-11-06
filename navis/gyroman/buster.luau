@@ -36,7 +36,7 @@ end
 
 buster.action = new.action {
     id = "gyroman/buster/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080F0CAC
     update = function(me: Object, s: State)
         if me.step ~= 0 then

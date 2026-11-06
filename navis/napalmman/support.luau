@@ -96,7 +96,7 @@ support.actor = party_support.make {
     id = "napalmman/support",
     navi = napalmman,
     appear_ticks = 4,
-    state = { shots = "u16" },
+    state = { shots = schema.u16 },
     actions = {
         [party_support.ATTACK] = function(me: Object)
             if me.phase == FIRE then

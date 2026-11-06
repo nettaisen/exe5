@@ -36,7 +36,7 @@ function hooks.settle(me: Object)
     if mood == 0 then
         stats.mood = 0
     end
-    me:set_navi_state("no_charge", false)
+    me.navi_flags.no_charge = false
     navi_status.clear_invulnerable(me)
 end
 

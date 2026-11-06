@@ -97,7 +97,7 @@ end
 bignoise.noise = new.kind {
     id = "bignoise/noise",
     pool = "attack",
-    state = { region = "region" },
+    state = { region = schema.region },
     -- 0x080C4DE0: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
@@ -225,7 +225,7 @@ end
 bignoise.kind = new.kind {
     id = "bignoise/navi",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- 0x080BD510.
     update = function(me: Object)
         local l = me.lifecycle

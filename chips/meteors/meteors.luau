@@ -47,8 +47,10 @@ export type ShowerVariant = {
     more: ((me: Object) -> number)?,
 }
 
+local EXE5_METEOR_SHOWER = schema.record_type("exe5-meteor-shower")
+
 function meteors.variant(v: ShowerVariant): ShowerVariant
-    return new.record("exe5-meteor-shower", v)
+    return new.record(EXE5_METEOR_SHOWER, v)
 end
 
 -- The target's panel, or on some draws a neighbor of it (@exelib/meteors/shower).
@@ -92,7 +94,7 @@ end
 meteors.shower = new.kind {
     id = "meteors/shower",
     pool = "effect",
-    state = { target = "object", variant = "record:exe5-meteor-shower", drops = "u8" },
+    state = { target = schema.object, variant = EXE5_METEOR_SHOWER, drops = schema.u8 },
     -- 0x080E5888
     update = function(me: Object)
         local l = me.lifecycle

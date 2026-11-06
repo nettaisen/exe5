@@ -212,7 +212,7 @@ end
 whirlpool.kind = new.kind {
     id = "aqwhirl/whirlpool",
     pool = "attack",
-    state = { palette = "u8", speed = "u8", tx = "i32", ty = "i32" },
+    state = { palette = schema.u8, speed = schema.u8, tx = schema.i32, ty = schema.i32 },
     -- 0x080D16E0.
     update = function(me: Object)
         local l = me.lifecycle

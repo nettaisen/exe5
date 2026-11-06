@@ -208,7 +208,7 @@ local function tick(me: Object)
     local s = state(me)
     local c = me.collision
     c:remove()
-    if me:take_damage(0) < 0 then
+    if me:take_damage("damage_sound") == "broken" then
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, p.z + 0x10_0000), BROKEN)
         battle.play_sound(BREAK_SOUND)
@@ -241,8 +241,10 @@ end
 -- A chip's gift: what it gives the navi its breaker's side gets it on.
 export type Gift = { give: (navi: Object) -> () }
 
+local REDFRUT_GIFT = schema.record_type("redfrut-gift")
+
 function fruit.gift(give: (navi: Object) -> ()): Gift
-    return new.record("redfrut-gift", { give = give })
+    return new.record(REDFRUT_GIFT, { give = give })
 end
 
 -- 0x080D82BA: one of the side's alive navis at random (one RNG2 draw when it has any).
@@ -309,7 +311,7 @@ end
 fruit.kind = new.kind {
     id = "redfrut/fruit",
     pool = "attack",
-    state = { gift = "record:redfrut-gift", palette = "u8", hops = "u8", breaker = "u8" },
+    state = { gift = REDFRUT_GIFT, palette = schema.u8, hops = schema.u8, breaker = schema.u8 },
     -- 0x080D7F2C.
     update = function(me: Object)
         local l = me.lifecycle
@@ -340,7 +342,7 @@ local function spawn(user: Object, x: number, y: number, spec: Fruit)
         o.panel_x, o.panel_y = x, y
         o.alliance, o.flip = user.alliance, user.flip
         o.run_while_dimmed = true
-        obstacle.register(o, o.alliance, 1)
+        obstacle.register(o, o.alliance, "one_a_side")
     end
 end
 

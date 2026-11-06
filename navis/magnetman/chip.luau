@@ -77,7 +77,7 @@ local function send(me: Object, s: State)
     me:reserve_panel(x, y)
     me.panel_x, me.panel_y = AWAY_X, AWAY_Y
     me:set_coordinates_from_panel()
-    battle.set_hud("chip_icons", false)
+    battle.hud().chip_icons = false
     me.collision:set_region(nil)
     local element = me.attack_element
     local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
@@ -111,7 +111,7 @@ local function send(me: Object, s: State)
 end
 
 local action = new.action {
-    state = { timer = "u16", target_x = "u8", mirror_x = "u8", magnet = "object" },
+    state = { timer = schema.u16, target_x = schema.u8, mirror_x = schema.u8, magnet = schema.object },
     -- 0x080F11EE
     update = function(me: Object, s: State)
         local step = me.step
@@ -119,7 +119,7 @@ local action = new.action {
             -- 0x080F1210
             if me.step_init == 0 then
                 me.step_init = 4
-                me:set_status("moving", true)
+                me.status.moving = true
                 battle.hitbox(me, {
                     panel_x = me.panel_x,
                     panel_y = me.panel_y,
@@ -157,8 +157,8 @@ local action = new.action {
                 me.panel_x, me.panel_y = x, y
                 me:unreserve_panel(x, y)
                 me:set_coordinates_from_panel()
-                battle.set_hud("chip_icons", true)
-                me:set_status("moving", false)
+                battle.hud().chip_icons = true
+                me.status.moving = false
                 me.anim = ANIM_RETURN
                 s.timer = RETURN_TICKS
             elseif count(s) then

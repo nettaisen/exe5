@@ -185,7 +185,7 @@ local function searchman_shots(me: Object)
         if s.scope and not scope.paused(s.scope) then
             -- sub_80103BC: the side's navi.
             local navi = battle.player(me.alliance)
-            if navi and not navi:dimmed_pressed("a") then
+            if navi and not navi.dimmed_pressed.a then
                 return
             end
         end
@@ -236,7 +236,7 @@ local chip: Chip = {
     double_attack = double_attack.make {
         id = "c-scope",
         damage = { 15, 15, 15, 15, 15, 22, 30, 35, 40, 40 },
-        state = { fire = "bool", scope = "object", scope2 = "object" },
+        state = { fire = schema.bool, scope = schema.object, scope2 = schema.object },
         roles = {
             -- 0x0201555C's table: MegaMan, (10, 10) from the user's spot.
             {

@@ -26,8 +26,8 @@ end
 
 -- 0x0800E184: invisible and flashing for the ticks, with the sound.
 local function vanish(user: Object, _spec: InstantChipSpec)
-    user:set_status_timer("flash", INVISIBLE_TICKS)
-    user:set_status("invisible", true)
+    user.status_timers.flash = INVISIBLE_TICKS
+    user.status.invisible = true
     battle.play_sound(INVISIBLE_SOUND)
 end
 

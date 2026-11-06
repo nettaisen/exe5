@@ -145,11 +145,11 @@ caller.kind = new.kind {
     id = "cosmoman/caller",
     pool = "effect",
     state = {
-        count = "u8",
-        called = "u8",
-        target_count = "u8",
-        targets = "object[4]",
-        taken = "identity[8]",
+        count = schema.u8,
+        called = schema.u8,
+        target_count = schema.u8,
+        targets = schema.array(schema.object, 4),
+        taken = schema.array(schema.identity, 8),
     },
     -- 0x080EA1BC.
     update = function(me: Object)

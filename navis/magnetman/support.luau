@@ -139,7 +139,7 @@ end
 support.actor = new.kind {
     id = "magnetman/support",
     pool = "actor",
-    state = { controller = "object", held = "object" },
+    state = { controller = schema.object, held = schema.object },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

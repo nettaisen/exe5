@@ -46,7 +46,7 @@ end
 shakpar.kind = new.kind {
     id = "shakpar/shaker",
     pool = "effect",
-    state = { sent = "u8", wave = "record:shake-wave" },
+    state = { sent = schema.u8, wave = spshake.SHAKE_WAVE },
     -- 0x080E7F60.
     update = function(me: Object)
         local l = me.lifecycle

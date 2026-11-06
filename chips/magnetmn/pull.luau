@@ -79,7 +79,7 @@ end
 pull.kind = new.kind {
     id = "magnetmn/pull",
     pool = "attack",
-    state = { dir = "i8", ahead = "u8", follows_navi = "bool" },
+    state = { dir = schema.i8, ahead = schema.u8, follows_navi = schema.bool },
     -- 0x080D2BE8.
     update = function(me: Object)
         local l = me.lifecycle

@@ -145,7 +145,7 @@ end
 aura.kind = new.kind {
     id = "chaoslrd/aura",
     pool = "effect",
-    state = { anim = "u8", hold = "u16", blink = "u8" },
+    state = { anim = schema.u8, hold = schema.u16, blink = schema.u8 },
     -- 0x080E5A40.
     update = function(me: Object)
         local l = me.lifecycle

@@ -136,7 +136,7 @@ local ACTIONS = { [0] = appear, [4] = gather, [8] = launch, [0xC] = wait, [0x10]
 cosmoman.kind = new.kind {
     id = "cosmoman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", taken = "identity[8]", count = "u8" },
+    state = { controller = schema.object, palette = schema.u8, taken = schema.array(schema.identity, 8), count = schema.u8 },
     -- 0x080BD9AC.
     update = function(me: Object)
         local l = me.lifecycle

@@ -21,8 +21,8 @@ end)
 
 -- 0x080D8130: RedFrut2's: invulnerable for 420 ticks (`object_setInvulnerableTime`).
 local SHIELD_GIFT = fruit.gift(function(navi: Object)
-    navi:set_status_timer("invulnerable", INVULNERABLE_TICKS)
-    navi:set_status("invulnerable", true)
+    navi.status_timers.invulnerable = INVULNERABLE_TICKS
+    navi.status.invulnerable = true
 end)
 
 -- 0x080D813C: RedFrut3's: a player's navi, out of the operation battle, whose emotion (0x0801270C) is one of the
@@ -58,7 +58,7 @@ local redfrut1: Chip = {
     hit_param = 0,
     lockout = 20,
     flags = { "standard_library", "library" },
-    extra_flags = { 128 },
+    extra_flags = { "free_slot_in" },
     slot_in_limit = 3,
     instant = fruit.instant { gift = HEAL_GIFT, palette = 0, hops = 5 },
     auto_battle = { class = "at_once" },
@@ -77,7 +77,7 @@ local redfrut2: Chip = {
     hit_param = 0,
     lockout = 20,
     flags = { "standard_library", "library" },
-    extra_flags = { 128 },
+    extra_flags = { "free_slot_in" },
     slot_in_limit = 3,
     instant = fruit.instant { gift = SHIELD_GIFT, palette = 1, hops = 5 },
     auto_battle = { class = "at_once" },
@@ -96,7 +96,7 @@ local redfrut3: Chip = {
     hit_param = 0,
     lockout = 20,
     flags = { "standard_library", "library" },
-    extra_flags = { 128 },
+    extra_flags = { "free_slot_in" },
     slot_in_limit = 3,
     instant = fruit.instant { gift = SYNCHRO_GIFT, palette = 2, hops = 5 },
     auto_battle = { class = "at_once" },

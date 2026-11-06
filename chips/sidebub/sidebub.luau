@@ -104,7 +104,7 @@ local function tick(me: Object)
         return
     end
     local s = me.state :: State
-    if me.action ~= BURSTING and me:take_damage(0) == -1 then
+    if me.action ~= BURSTING and me:take_damage("damage_sound") == "broken" then
         battle.play_sound(SOUND_POP)
         c:set_region(nil)
         me.anim = 1
@@ -192,7 +192,7 @@ end
 sidebub.bubble = new.kind {
     id = "sidebub/bubble",
     pool = "attack",
-    state = { way = "u8", travel = "u8", burst = "record:flying-shot-variant" },
+    state = { way = schema.u8, travel = schema.u8, burst = flying_shot.FLYING_SHOT_VARIANT },
     -- 0x080D8484.
     update = function(me: Object)
         local l = me.lifecycle

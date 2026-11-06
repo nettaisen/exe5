@@ -85,7 +85,7 @@ end
 
 charge.action = new.action {
     id = "numberman/charge/action",
-    state = { timer = "u16", wait = "u16" },
+    state = { timer = schema.u16, wait = schema.u16 },
     -- 0x080F15D8
     update = function(me: Object, s: State)
         local step = me.step

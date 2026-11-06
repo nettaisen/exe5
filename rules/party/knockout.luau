@@ -60,7 +60,7 @@ local function land(me: Object, s: State)
         me:reserve_panel(me.future_panel_x, me.future_panel_y)
         me.collision:set_region(nil)
         stop_moving(me)
-        me:set_status("guard", false)
+        me.status.guard = false
         me:set_animation(2)
         overlays.set_stepping(me, "while_dimmed")
         -- (The second flash is spawned straight after the first, its X and Y what the first's spawn left.)
@@ -90,8 +90,8 @@ end
 -- 0x0202C4CC
 local function take_back(me: Object)
     me:take_back()
-    me:set_status_timer("flash", FLASHING)
-    me:set_status("flashing", true)
+    me.status_timers.flash = FLASHING
+    me.status.flashing = true
     me:unreserve_panel(me.future_panel_x, me.future_panel_y)
     set_step(me, SETTLE)
 end
@@ -108,11 +108,11 @@ local function settle(me: Object, s: State)
     if left > 0 then
         return
     end
-    for _, state in { "trap_armed", "switch_knockout", "switched", "hovering" } :: { NaviStateFlag } do
-        me:set_navi_state(state, false)
+    for _, state in { "trap_armed", "switch_knockout", "switched", "hovering" } :: { NaviFlag } do
+        (me.navi_flags :: any)[state] = false
     end
     for _, r in { "navi_switch", "switch_knockout", "anti_sword_triggered", "anti_damage_triggered", "flinch" } :: { Request } do
-        me:set_request(r, false)
+        (me.requests :: any)[r] = false
     end
     battle.set_dimmed(false)
     me:exit_attack()
@@ -134,6 +134,6 @@ local function update(me: Object, s: State)
     end
 end
 
-knockout.action = new.action { id = "party/knockout", state = { timer = "u16" }, update = update }
+knockout.action = new.action { id = "party/knockout", state = { timer = schema.u16 }, update = update }
 
 return knockout

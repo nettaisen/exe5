@@ -22,7 +22,7 @@ local function mark(me: Object)
     local s = me.state :: State
     local n = 0
     for _, navi in battle.alive_actors(bit32.bxor(me.alliance, 1)) do
-        if navi:status("invisible") or navi:status("flashing") then
+        if navi.status.invisible or navi.status.flashing then
             local e = battle.effect(navi.pos + Vec3.new(0, 0, MARK_Z), MARK)
             if e then
                 e.run_while_paused = true
@@ -43,9 +43,9 @@ local function show(me: Object)
         if navi == nil then
             break
         end
-        navi:set_status_timer("flash", 0)
-        navi:set_status("invisible", false)
-        navi:set_status("flashing", false)
+        navi.status_timers.flash = 0
+        navi.status.invisible = false
+        navi.status.flashing = false
     end
     me:set_lifecycle("destroy")
 end
@@ -53,7 +53,7 @@ end
 reveal.kind = new.kind {
     id = "searchsoul/reveal",
     pool = "effect",
-    state = { marked = "object[4]" },
+    state = { marked = schema.array(schema.object, 4) },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

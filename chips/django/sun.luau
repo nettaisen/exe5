@@ -56,7 +56,7 @@ end
 sun.kind = new.kind {
     id = "django/sun",
     pool = "effect",
-    state = { blessed = "bool", done = "bool" },
+    state = { blessed = schema.bool, done = schema.bool },
     -- 0x080E97F8.
     update = function(me: Object)
         local l = me.lifecycle

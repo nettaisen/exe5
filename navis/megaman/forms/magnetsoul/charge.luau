@@ -30,7 +30,7 @@ local SOUND_MAGNET, SOUND_HUM = asset.sound("magnet-pull"), asset.sound("erase-m
 -- 0x080EEBBC: the magnet raised; seven ticks on, its field and the pull.
 local function raise(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me:set_animation(ANIM)
         me:open_counter_window()
         s.timer = RAISE_TICKS
@@ -87,7 +87,7 @@ local function recover(me: Object, s: State)
     local t = s.timer - 1
     s.timer = bit32.band(t, 0xFFFF)
     if t < 0 then
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me.related1 = nil
         me:exit_attack()
     end
@@ -95,7 +95,7 @@ end
 
 charge.action = new.action {
     id = "magnetsoul/charge/action",
-    state = { timer = "u16", hum = "u16" },
+    state = { timer = schema.u16, hum = schema.u16 },
     -- 0x080EEB9E
     update = function(me: Object, s: State)
         local step = me.step

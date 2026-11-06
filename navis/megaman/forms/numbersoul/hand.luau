@@ -7,6 +7,8 @@
 -- framework's answer). (In a mode other than 0, 1 and 6 the routine deals five whatever the soul or the level: no
 -- battle the port plays is of one, and nothing answers that yet.)
 
+local soul_custom = require("@exelib/souls/custom")
+
 local hand = {}
 
 -- Its hand.
@@ -23,6 +25,6 @@ local custom_screen: SoulCustom = {
     end,
 }
 
-hand.custom = new.record("soul-custom", custom_screen)
+hand.custom = new.record(soul_custom.SOUL_CUSTOM, custom_screen)
 
 return hand

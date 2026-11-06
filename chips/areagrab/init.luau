@@ -16,7 +16,7 @@ local chip: Chip = {
     hit_param = 138,
     lockout = 0,
     flags = { "dimming", "standard_library", "library" },
-    extra_flags = { 128 },
+    extra_flags = { "free_slot_in" },
     slot_in_limit = 1,
     dimming = grab.area,
     auto_battle = { class = "at_once" },

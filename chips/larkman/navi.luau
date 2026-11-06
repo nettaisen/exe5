@@ -54,11 +54,11 @@ local function command(me: Object, s: State)
         end
     end
     local user = me.related1 :: Object
-    if not user:held("b") then
+    if not user.held.b then
         return
     end
     local key = COMMAND[s.command_steps + 1]
-    if not (key and user:held(key)) then
+    if not (key and (user.held :: any)[key]) then
         return
     end
     s.command_steps += 1
@@ -151,12 +151,12 @@ larkman.kind = new.kind {
     id = "larkman/navi",
     pool = "actor",
     state = {
-        controller = "object",
-        palette = "u8",
-        command_steps = "u32",
-        command_ticks = "i32",
-        commanded = "bool",
-        swoop = "record:larkman-swoop-variant",
+        controller = schema.object,
+        palette = schema.u8,
+        command_steps = schema.u32,
+        command_ticks = schema.i32,
+        commanded = schema.bool,
+        swoop = swoop.LARKMAN_SWOOP_VARIANT,
     },
     -- 0x080BDBFC.
     update = function(me: Object)

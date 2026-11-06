@@ -69,7 +69,7 @@ end
 local function drop_shield(me: Object)
     me.related1 = nil
     me.overlay = nil
-    me:set_status("guard", false)
+    me.status.guard = false
 end
 
 function guard.action(spec: Spec): Action
@@ -79,8 +79,8 @@ function guard.action(spec: Spec): Action
         if me.step_init == 0 then
             local x, z = me:attach_point(SHIELD_POINT)
             SHIELD.spawn(me, Vec3.px(x, 0, z), spec.look)
-            me:set_status("guard", true)
-            me:set_status("using_action", true)
+            me.status.guard = true
+            me.status.using_action = true
             me:set_animation(0)
             me.marker = 0
             me.step_init = 4
@@ -112,7 +112,7 @@ function guard.action(spec: Spec): Action
 
     return new.action {
         id = spec.id,
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         args = spec,
         -- 0x080ECAE6: one phase.
         update = function(me: Object, s: State)

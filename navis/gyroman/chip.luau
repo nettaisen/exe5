@@ -43,7 +43,7 @@ local function count(s: State): boolean
 end
 
 local action = new.action {
-    state = { timer = "u16", flight = "object" },
+    state = { timer = schema.u16, flight = schema.object },
     -- 0x080F0A74
     update = function(me: Object, s: State)
         local step = me.step
@@ -65,7 +65,7 @@ local action = new.action {
                 -- its solid, side, cracked and reserved bits. Its coordinates are off the field until he returns.)
                 me.panel_x, me.panel_y = 0, if reserved then field.low_byte(x, y) else 0
                 me:set_coordinates_from_panel()
-                battle.set_hud("chip_icons", false)
+                battle.hud().chip_icons = false
                 me.step, me.step_init = FLY, 0
             end
         elseif step == FLY then
@@ -89,7 +89,7 @@ local action = new.action {
                 me.panel_x, me.panel_y = x, y
                 me:unreserve_panel(x, y)
                 me:set_coordinates_from_panel()
-                battle.set_hud("chip_icons", true)
+                battle.hud().chip_icons = true
                 if solid(me) then
                     me.anim = ANIM_RETURN
                 end

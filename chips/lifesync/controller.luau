@@ -200,7 +200,7 @@ end
 lifesync.controller = new.kind {
     id = "lifesync/controller",
     pool = "effect",
-    state = { target = "object", synced = "object[4]", marker = "object" },
+    state = { target = schema.object, synced = schema.array(schema.object, 4), marker = schema.object },
     update = dimming_chips.phases { name = "LifeSync", effect = effect },
 }
 

@@ -200,7 +200,7 @@ local function tick(me: Object)
         if battle.over() then
             me.hp = 0
         end
-        if me:take_damage(0) < 0 then
+        if me:take_damage("damage_sound") == "broken" then
             s.gone = true
             next_action(me, GO)
             c:set_region(nil)
@@ -254,7 +254,7 @@ end
 shadow.kind = new.kind {
     id = "shadowman/shadow",
     pool = "actor",
-    state = { held = "object", orders = "u8", gone = "bool", wait = "u8", slash_damage = "u32" },
+    state = { held = schema.object, orders = schema.u8, gone = schema.bool, wait = schema.u8, slash_damage = schema.u32 },
     -- 0x080B9384: its sprite steps unless the battle is dimmed (or paused).
     update = function(me: Object)
         local l = me.lifecycle

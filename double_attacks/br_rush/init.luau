@@ -224,7 +224,7 @@ end
 local cape = new.kind {
     id = "br-rush/cape",
     pool = "attack",
-    state = { owner = "object", released = "bool" },
+    state = { owner = schema.object, released = schema.bool },
     -- 0x02203190: by state; then its sprite steps, paused or not (its Param2 2).
     update = function(me: Object)
         local l = me.lifecycle
@@ -535,7 +535,7 @@ local function megaman_finish(me: Object)
         battle.play_sound(SOUND_SWING)
         me.timer = FINISH_TICKS
         battle.shake_camera(3, 0xA)
-        battle.palette_flash(0, 0xA, true, false)
+        battle.palette_flash("one_layer", 0xA, true, false)
         me.phase_init = 4
     end
     if me.timer == FINISHER_AT then
@@ -658,7 +658,7 @@ local chip: Chip = {
     double_attack = double_attack.make {
         id = "br-rush",
         damage = { 10, 12, 15, 15, 20, 25, 35, 45, 50, 50 },
-        state = { cape = "object" },
+        state = { cape = schema.object },
         roles = {
             -- 0x02032FDC's table: MegaMan, (10, 10) from the user's spot.
             {

@@ -32,7 +32,7 @@ local function swing(me: Object, s: State)
         me:set_animation(ANIM)
         me:open_counter_window()
         battle.play_sound(SOUND)
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = SWING_TICKS
         me.step_init = 4
     end
@@ -80,7 +80,7 @@ end
 
 charge.action = new.action {
     id = "tomahawksoul/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080EEE84
     update = function(me: Object, s: State)
         local step = me.step

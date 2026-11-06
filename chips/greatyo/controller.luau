@@ -46,7 +46,7 @@ end
 controller.kind = new.kind {
     id = "greatyo/controller",
     pool = "effect",
-    state = { middle = "object", below = "object", above = "object", spec = "record:exe5-yoyo" },
+    state = { middle = schema.object, below = schema.object, above = schema.object, spec = yoyo.EXE5_YOYO },
     -- 0x080E89C4.
     update = function(me: Object)
         local l = me.lifecycle

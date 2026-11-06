@@ -25,7 +25,7 @@ local BLOW_TICKS, BLOW_AT, RECOVER_TICKS = 30, 25, 5
 -- 0x080EE974: the arm up; the tornado on the count's 25; then the recovery.
 local function blow(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me:set_animation(ANIM)
         attachment.attach(me, ARM, "overlay", { anim = 0 })
         s.timer = BLOW_TICKS
@@ -58,7 +58,7 @@ end
 
 charge.action = new.action {
     id = "gyrosoul/charge/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080EE958
     update = function(me: Object, s: State)
         local step = me.step

@@ -86,7 +86,7 @@ end
 cusvolt.beam = new.kind {
     id = "cusvolt/beam",
     pool = "attack",
-    state = { navi = "object" },
+    state = { navi = schema.object },
     -- 0x080DD3D0: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
@@ -128,7 +128,7 @@ local function fire(me: Object, s: State)
         me:set_animation(ANIM)
         me:open_counter_window()
         attachment.attach(me, GUN, "overlay")
-        me:set_status("using_action", true)
+        me.status.using_action = true
         if not battle.gauge_full() and battle.mode() ~= 6 and not battle.link() then
             battle.drain_custom_gauge(DRAIN)
         end
@@ -183,7 +183,7 @@ end
 -- A CusVolt's action.
 function cusvolt.action(): Action
     return new.action {
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080ED1A2.
         update = function(me: Object, s: State)
             local step = me.step

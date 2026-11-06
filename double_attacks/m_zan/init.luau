@@ -265,7 +265,7 @@ local chip: Chip = {
     double_attack = double_attack.make {
         id = "m-zan",
         damage = { 50, 50, 70, 80, 90, 100, 180, 200, 240, 240 },
-        state = { from_top = "bool" },
+        state = { from_top = schema.bool },
         roles = {
             -- 0x020A5100's table: ProtoMan, (10, 10) from the user's spot.
             {

@@ -151,7 +151,7 @@ local function tick(me: Object)
     c:remove()
     me:hit_spark()
     local gone = battle.over()
-    if not gone and me:take_damage(0) < 0 then
+    if not gone and me:take_damage("damage_sound") == "broken" then
         battle.effect(me.pos, effects.explosion)
         gone = true
     end
@@ -203,7 +203,7 @@ end
 missile.kind = new.kind {
     id = "magnetman/missile",
     pool = "attack",
-    state = { turned = "bool", target = "object" },
+    state = { turned = schema.bool, target = schema.object },
     -- 0x080D24F0.
     update = function(me: Object)
         local l = me.lifecycle

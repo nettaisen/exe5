@@ -30,9 +30,11 @@ export type State = {
 
 local ball = {}
 
+local KNIGHTMAN_BALL_LOOK = schema.record_type("knightman-ball-look")
+
 -- A ball's look.
 function ball.look(l: KnightBallLook): KnightBallLook
-    return new.record("knightman-ball-look", l)
+    return new.record(KNIGHTMAN_BALL_LOOK, l)
 end
 
 -- KnightMan's (variant 0; any but 1 reads as it).
@@ -129,7 +131,7 @@ end
 ball.kind = new.kind {
     id = "knightmn/ball",
     pool = "attack",
-    state = { speed = "u8", turns = "u8", status = "status", look = "record:knightman-ball-look", radius = "u32" },
+    state = { speed = schema.u8, turns = schema.u8, status = schema.status, look = KNIGHTMAN_BALL_LOOK, radius = schema.u32 },
     -- 0x080C7568.
     update = function(me: Object)
         local l = me.lifecycle

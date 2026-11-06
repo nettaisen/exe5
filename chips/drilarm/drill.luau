@@ -49,7 +49,7 @@ function exe5_drill.action(spec: Spec): Action
     -- 0x080EF4EA: the arm and the drills; draw back when the time is up.
     local function grind(me: Object, s: State)
         if me.step_init == 0 then
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me:set_animation(0x0A)
             attachment.attach(me, ARM, "overlay", { anim = ARM_DRILLING, palette_add = arm_palette })
             -- The damage word (the hit parameter in its high half), plus the Atk+ bonus.
@@ -107,7 +107,7 @@ function exe5_drill.action(spec: Spec): Action
         if t > 0 then
             return
         end
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me.related1 = nil
         me.overlay = nil
         me:exit_attack()
@@ -127,7 +127,7 @@ function exe5_drill.action(spec: Spec): Action
         end
     end
 
-    return new.action { state = { timer = "u16" }, update = update }
+    return new.action { state = { timer = schema.u16 }, update = update }
 end
 
 return exe5_drill

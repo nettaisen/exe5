@@ -302,6 +302,9 @@ function double_attack.enemy_panels(me: Object): { number }
     return panels.filtered_except(me, require, forbid, side)
 end
 
+local EXE5_DOUBLE_ATTACK = schema.record_type("exe5-double-attack")
+double_attack.EXE5_DOUBLE_ATTACK = EXE5_DOUBLE_ATTACK
+
 -- A Double Attack's controller and navis, and what its chip keeps of it (`DoubleAttack`, types.d.luau).
 function double_attack.make(spec: Spec): DoubleAttack
     local roles = spec.roles
@@ -312,7 +315,7 @@ function double_attack.make(spec: Spec): DoubleAttack
         error(string.format("%s: a Double Attack's damage row has ten entries, not %d", spec.id, #spec.damage))
     end
 
-    local state: StateSchema = { controller = "object", role = "u8", partner = "object", held = "object", held2 = "object" }
+    local state: StateSchema = { controller = schema.object, role = schema.u8, partner = schema.object, held = schema.object, held2 = schema.object }
     for k, v in spec.state or {} do
         state[k] = v
     end
@@ -451,7 +454,7 @@ function double_attack.make(spec: Spec): DoubleAttack
     local controller_kind = new.kind {
         id = spec.id .. "/controller",
         pool = "effect",
-        state = { out = "bool[2]" },
+        state = { out = schema.array(schema.bool, 2) },
         update = function(me: Object)
             local l = me.lifecycle
             if l == "init" then
@@ -491,7 +494,7 @@ function double_attack.make(spec: Spec): DoubleAttack
         return o
     end
 
-    return new.record("exe5-double-attack", {
+    return new.record(EXE5_DOUBLE_ATTACK, {
         navis = { roles[1].navi, roles[2].navi },
         damage = spec.damage,
         spawn = spawn,

@@ -16,7 +16,7 @@ local chip: Chip = {
     hit_param = 0,
     lockout = 0,
     flags = { "dimming", "standard_library", "library" },
-    extra_flags = { 2, 128 },
+    extra_flags = { "rush_cancels", "free_slot_in" },
     slot_in_limit = 3,
     dimming = invisible.hook(360),
     auto_battle = { class = "when_visible" },

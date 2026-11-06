@@ -111,10 +111,12 @@ local function init(me: Object)
     tick(me)
 end
 
+local SKULLS = schema.record_type("skulls")
+
 skully.kind = new.kind {
     id = "skully/skull",
     pool = "attack",
-    state = { skulls = "record:skulls", left = "u8" },
+    state = { skulls = SKULLS, left = schema.u8 },
     -- 0x080D7290: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
@@ -149,7 +151,7 @@ spawn = function(owner: Object, x: number, y: number, element: number, damage: n
 end
 
 function skully.skulls(palette: number): Skulls
-    return new.record("skulls", { palette = palette, count = 3, every = 0x0F })
+    return new.record(SKULLS, { palette = palette, count = 3, every = 0x0F })
 end
 
 export type ActionState = {
@@ -166,7 +168,7 @@ function skully.action(skulls: Skulls): Action
     local function call(me: Object, s: ActionState)
         if me.step_init == 0 then
             me:set_animation(12)
-            me:set_status("using_action", true)
+            me.status.using_action = true
             battle.play_sound(SOUND)
             me.step_init = 4
             s.timer = 0
@@ -193,14 +195,14 @@ function skully.action(skulls: Skulls): Action
         if t >= 0 then
             return
         end
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me.related1 = nil
         me.overlay = nil
         me:exit_attack()
     end
 
     return new.action {
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         args = skulls,
         update = function(me: Object, s: ActionState)
             local step = me.step

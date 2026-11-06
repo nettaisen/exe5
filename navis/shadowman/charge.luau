@@ -73,12 +73,12 @@ local function vanish(me: Object, s: State)
         me.step, me.step_init = APPEAR, 0
         return
     end
-    me:set_status("sliding", false)
-    me:set_status("using_action", true)
+    me.status.sliding = false
+    me.status.using_action = true
     me.panel_x, me.panel_y = me.future_panel_x, me.future_panel_y
     me:set_coordinates_from_panel()
     me:update_collision_panels()
-    me:set_status("moving", true)
+    me.status.moving = true
     local p = me.pos
     battle.effect(Vec3.new(p.x, p.y, int.i32(p.z + PUFF_Z)), effects.bubbles)
     me.collision:set_region(nil)
@@ -160,7 +160,7 @@ local function land(me: Object, s: State)
     if me.step_init == 0 then
         me.anim = 0
         s.timer = if me.attack_variant ~= 0 then LAND_TICKS_SHORT else LAND_TICKS
-        me:set_status("moving", false)
+        me.status.moving = false
         me.collision:set_region(regions.single)
         me:unreserve_panel(me.future_panel_x, me.future_panel_y)
         local p = me.pos
@@ -171,7 +171,7 @@ local function land(me: Object, s: State)
     local t = s.timer - 1
     s.timer = int.u16(t)
     if t <= 0 then
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me:exit_attack()
     end
 end
@@ -186,7 +186,7 @@ local STEPS: { [number]: (me: Object, s: State) -> () } = {
 
 charge.action = new.action {
     id = "shadowman/charge/action",
-    state = { timer = "u16", target_x = "u8", target_y = "u8" },
+    state = { timer = schema.u16, target_x = schema.u8, target_y = schema.u8 },
     -- 0x080F95F0
     update = function(me: Object, s: State)
         local step = STEPS[me.step]

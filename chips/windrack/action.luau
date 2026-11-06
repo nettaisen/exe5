@@ -18,7 +18,7 @@ export type State = {
     timer: number,
 }
 
-windrack.STATE = { timer = "u16" }
+windrack.STATE = { timer = schema.u16 }
 
 local SWING, RECOVER = 0x0, 0x4
 
@@ -53,7 +53,7 @@ windrack.action = new.action {
                 me:open_counter_window()
                 battle.play_sound(SOUND)
                 attachment.attach(me, RACK, "related", { anim = rack_anim(me) })
-                me:set_status("using_action", true)
+                me.status.using_action = true
                 local cx, cy = field.center(me.panel_x, me.panel_y)
                 battle.effect(Vec3.new(cx, cy, HEIGHT), SWIRL, bit32.bxor(me.alliance, me.flip))
                 s.timer = SWING_TICKS

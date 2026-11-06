@@ -67,7 +67,7 @@ local django_ds: Chip = {
     class = "mega",
     rarity = 3,
     mb = 68,
-    damage = { formula = "count", of = { side_stat = 3 }, by_count = { 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250 }, operation_battle = 150 },
+    damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250 }, operation_battle = 150 },
     hit_param = 0,
     lockout = 0,
     flags = { "dimming", "library", "variable_damage" },

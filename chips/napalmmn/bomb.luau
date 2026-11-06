@@ -225,13 +225,13 @@ bomb.kind = new.kind {
     id = "napalmmn/bomb",
     pool = "attack",
     state = {
-        gravity = "i32",
-        lights = "bool",
-        ds_arc = "bool",
-        target_x = "u8",
-        target_y = "u8",
-        burning = "u8[8]",
-        count = "u8",
+        gravity = schema.i32,
+        lights = schema.bool,
+        ds_arc = schema.bool,
+        target_x = schema.u8,
+        target_y = schema.u8,
+        burning = schema.array(schema.u8, 8),
+        count = schema.u8,
     },
     -- 0x080CC490.
     update = function(me: Object)

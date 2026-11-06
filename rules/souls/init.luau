@@ -35,7 +35,7 @@ function souls.turn_check(side: number)
     local navi = battle.player(side) :: Object
     local s = rules.state() :: State
     if battle.navi(side).form.soul ~= nil and s.turns == 0 then
-        navi:set_request("revert_form", true)
+        navi.requests.revert_form = true
     end
 end
 

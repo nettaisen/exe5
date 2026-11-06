@@ -187,13 +187,13 @@ mrkcan.sight = new.kind {
     pool = "effect",
     state = {
         slot = slot.TYPE,
-        center_x = "i32",
-        center_y = "i32",
-        advance = "i32",
-        angle = "u32",
-        base = "u32",
-        turn = "i32",
-        enemies = "u32",
+        center_x = schema.i32,
+        center_y = schema.i32,
+        advance = schema.i32,
+        angle = schema.u32,
+        base = schema.u32,
+        turn = schema.i32,
+        enemies = schema.u32,
     },
     -- 0x080E5498 (`sub_80E5710`): by its state, then a sprite step.
     update = function(me: Object)
@@ -240,7 +240,7 @@ export type State = {
     timer: number,
 }
 
-mrkcan.STATE = { timer = "u16" }
+mrkcan.STATE = { timer = schema.u16 }
 
 -- The phases, on the attack's step.
 local AIM, FIRE, RECOVER = 0x0, 0x4, 0x8
@@ -293,7 +293,7 @@ function mrkcan.action(spec: { id: string?, cannon: AttachmentLook }): Action
             me:open_counter_window()
             s.timer = 0
             attachment.attach(me, spec.cannon, "overlay", { anim = cannon_anim(me) })
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me.step_init = 4
             return
         end

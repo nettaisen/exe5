@@ -36,7 +36,7 @@ local START, THROW, HOLD, BACK = 0x0, 0x8, 0xC, 0x10
 
 -- 0x080FBED8: the action is his; the chip's variant goes straight to the throw.
 local function start(me: Object)
-    me:set_status("using_action", true)
+    me.status.using_action = true
     me.step, me.step_init = THROW, 0
 end
 
@@ -84,12 +84,12 @@ local function back(me: Object, s: State)
     end
     me:set_animation(0)
     me.sprite.palette = END_PALETTE
-    me:set_status("using_action", false)
+    me.status.using_action = false
     me:exit_attack()
 end
 
 local action = new.action {
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080FBEB2
     update = function(me: Object, s: State)
         local step = me.step

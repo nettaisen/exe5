@@ -157,7 +157,7 @@ end
 quake.kind = new.kind {
     id = "quake/bomb",
     pool = "attack",
-    state = { palette = "u8", region = "region" },
+    state = { palette = schema.u8, region = schema.region },
     -- 0x080CFE0C.
     update = function(me: Object)
         local l = me.lifecycle

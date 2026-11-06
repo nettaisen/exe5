@@ -49,7 +49,7 @@ end
 grid.kind = new.kind {
     id = "gridman/grid",
     pool = "effect",
-    state = { stays = "bool" },
+    state = { stays = schema.bool },
     -- 0x080E6D3C.
     update = function(me: Object)
         local l = me.lifecycle

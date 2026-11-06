@@ -137,7 +137,7 @@ end
 capsule.kind = new.kind {
     id = "c-bomb/capsule",
     pool = "attack",
-    state = { meddy = "object" },
+    state = { meddy = schema.object },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

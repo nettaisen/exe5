@@ -62,7 +62,7 @@ local serchmn_ds: Chip = {
     class = "mega",
     rarity = 3,
     mb = 72,
-    damage = { formula = "count", of = { side_stat = 3 }, by_count = { 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75 }, operation_battle = 35 },
+    damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75 }, operation_battle = 35 },
     hit_param = 133,
     lockout = 0,
     flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },

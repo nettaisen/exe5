@@ -61,7 +61,7 @@ local cloudmn_ds: Chip = {
     class = "mega",
     rarity = 3,
     mb = 74,
-    damage = { formula = "count", of = { side_stat = 3 }, by_count = { 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110 }, operation_battle = 60 },
+    damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110 }, operation_battle = 60 },
     hit_param = 138,
     lockout = 0,
     flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },

@@ -44,7 +44,7 @@ local function fire(me: Object, s: State)
         me.anim = ANIM
         me:open_counter_window()
         attachment.attach(me, elemrage.claw, "overlay", { anim = ARM_ANIM })
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 0
         me.step_init = 4
     end
@@ -71,7 +71,7 @@ end
 
 local ACTION = new.action {
     id = "megaman/fire-arm/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080F0074.
     update = function(me: Object, s: State)
         if me.step == 0 then

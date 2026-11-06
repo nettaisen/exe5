@@ -140,7 +140,7 @@ local function burst(me: Object)
     end
     battle.shake_camera(3, 0x14)
     battle.play_sound(SOUND_BLAST)
-    battle.palette_flash(1, 4, true, false)
+    battle.palette_flash("two_layers", 4, true, false)
     me:set_lifecycle("destroy")
 end
 
@@ -186,7 +186,7 @@ end
 strike.kind = new.kind {
     id = "chaoslrd/strike",
     pool = "attack",
-    state = { x = "u8", y = "u8" },
+    state = { x = schema.u8, y = schema.u8 },
     -- 0x080D67D8.
     update = function(me: Object)
         local l = me.lifecycle

@@ -146,7 +146,7 @@ local function update(me: Object, s: State)
     -- sprite_forceWhitePalette.
     me.sprite.white = true
     if me.step_init == 0 then
-        me:set_navi_state("no_charge", false)
+        me.navi_flags.no_charge = false
         me:set_animation(1)
         s.timer = STAND
         me.step_init = 4
@@ -160,14 +160,14 @@ local function update(me: Object, s: State)
         return
     end
     battle.play_sound(SOUND)
-    me:set_status("untouchable", false)
-    me:set_request("stun_strike", false)
+    me.status.untouchable = false
+    me.requests.stun_strike = false
     -- 0x08017432: flashing for 120 ticks.
-    me:set_status_timer("flash", FLASH)
-    me:set_status("flashing", true)
+    me.status_timers.flash = FLASH
+    me.status.flashing = true
     me:exit_attack()
 end
 
-drive_end.action = new.action { id = "darkinvs/drive-end", state = { timer = "u16" }, update = update }
+drive_end.action = new.action { id = "darkinvs/drive-end", state = { timer = schema.u16 }, update = update }
 
 return drive_end

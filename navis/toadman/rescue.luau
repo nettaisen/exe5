@@ -61,12 +61,12 @@ local function start(me: Object)
     if me.step_init == 0 then
         battle.set_dimmed(true)
         for _, r in { "navi_switch", "anti_sword_triggered", "anti_damage_triggered", "revival" } :: { Request } do
-            me:set_request(r, false)
+            (me.requests :: any)[r] = false
         end
-        me:set_navi_state("reviving", true)
+        me.navi_flags.reviving = true
         -- (0x0200496C: 0x408800, the guard's among them: the rules' `navi_state`.)
-        for _, state in { "hovering", "trap_armed" } :: { NaviStateFlag } do
-            me:set_navi_state(state, false)
+        for _, state in { "hovering", "trap_armed" } :: { NaviFlag } do
+            (me.navi_flags :: any)[state] = false
         end
         local own = me.state :: NaviState
         own.guarded = false
@@ -75,8 +75,8 @@ local function start(me: Object)
         battle.screen_fade("dim", FADE_SPEED)
         me:snap_to_future_panel()
         stop_moving(me)
-        me:set_status("guard", false)
-        me:set_request("flinch", false)
+        me.status.guard = false
+        me.requests.flinch = false
         me:set_animation(2)
         me.related1 = nil
         me.overlay = nil
@@ -117,8 +117,8 @@ local function heal(me: Object, s: State)
         if not (body and body.hides_hp) then
             battle.show_hp(me, { console = if battle.mode() == 6 then nil else bit32.bxor(me.alliance, 1) })
         end
-        me:set_status_timer("flash", FLASHING)
-        me:set_status("flashing", true)
+        me.status_timers.flash = FLASHING
+        me.status.flashing = true
         me:set_animation(0)
     end
     t += 1
@@ -143,11 +143,11 @@ local function finish(me: Object)
     if battle.screen_fading() then
         return
     end
-    for _, state in { "reviving", "hovering", "trap_armed" } :: { NaviStateFlag } do
-        me:set_navi_state(state, false)
+    for _, state in { "reviving", "hovering", "trap_armed" } :: { NaviFlag } do
+        (me.navi_flags :: any)[state] = false
     end
     for _, r in { "navi_switch", "anti_sword_triggered", "anti_damage_triggered" } :: { Request } do
-        me:set_request(r, false)
+        (me.requests :: any)[r] = false
     end
     battle.set_dimmed(false)
     me.collision:set_region(regions.single)
@@ -169,7 +169,7 @@ local function update(me: Object, s: State)
     me:step_sprite()
 end
 
-rescue.action = new.action { id = "toadman/rescue", state = { timer = "u16" }, update = update }
+rescue.action = new.action { id = "toadman/rescue", state = { timer = schema.u16 }, update = update }
 
 -- 0x020048E8 (the rules' `navi_falling`): the rescue, when ToadMan can.
 function rescue.navi_falling(side: number, navi: Object): boolean

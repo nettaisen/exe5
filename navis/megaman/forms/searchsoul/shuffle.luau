@@ -8,6 +8,8 @@
 -- how many of the hand it deals again: rules/custom_screen's `redeal_kept`): those are shuffled among themselves,
 -- and all but the first kept with the rest of the folder.
 
+local soul_custom = require("@exelib/souls/custom")
+
 local shuffle = {}
 
 local custom_screen: SoulCustom = {
@@ -30,6 +32,6 @@ local custom_screen: SoulCustom = {
     },
 }
 
-shuffle.custom = new.record("soul-custom", custom_screen)
+shuffle.custom = new.record(soul_custom.SOUL_CUSTOM, custom_screen)
 
 return shuffle

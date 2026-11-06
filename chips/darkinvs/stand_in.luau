@@ -76,7 +76,7 @@ end
 standin.kind = new.kind {
     id = "darkinvs/stand-in",
     pool = "actor",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- 0x080BA5C0.
     update = function(me: Object)
         local l = me.lifecycle

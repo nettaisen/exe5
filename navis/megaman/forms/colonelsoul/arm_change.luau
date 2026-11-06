@@ -10,6 +10,7 @@
 -- the picks, else back in the hand.
 
 local arm = require("./arm")
+local soul_custom = require("@exelib/souls/custom")
 
 local arm_change = {}
 
@@ -105,7 +106,7 @@ local window: SoulWindow = {
 }
 
 local custom_screen: SoulCustom = {
-    state = { arm_step = "u8", arm_timer = "u8" },
+    state = { arm_step = schema.u8, arm_timer = schema.u8 },
     buttons = { arm_change = button },
     windows = { arm_change = window },
     -- OK (0x08024EC0): the chip the button holds is the turn's arm chip (0x08025042).
@@ -127,6 +128,6 @@ local custom_screen: SoulCustom = {
     end,
 }
 
-arm_change.custom = new.record("soul-custom", custom_screen)
+arm_change.custom = new.record(soul_custom.SOUL_CUSTOM, custom_screen)
 
 return arm_change

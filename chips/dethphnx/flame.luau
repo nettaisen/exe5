@@ -69,7 +69,7 @@ end
 flame.kind = new.kind {
     id = "dethphnx/flame",
     pool = "effect",
-    state = { angle = "u16", step = "u16" },
+    state = { angle = schema.u16, step = schema.u16 },
     -- 0x080E8ACC.
     update = function(me: Object)
         local l = me.lifecycle

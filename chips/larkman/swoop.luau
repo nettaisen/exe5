@@ -47,9 +47,12 @@ local HIT_MOD = 3
 
 -- By look (0x080DD850: 0 and 2, from above the field, are the virus's).
 local ANIMS: { [number]: number } = { [0] = 8, 6, 9, 0xB }
+local LARKMAN_SWOOP_VARIANT = schema.record_type("larkman-swoop-variant")
+swoop.LARKMAN_SWOOP_VARIANT = LARKMAN_SWOOP_VARIANT
+
 -- A swoop's variant.
 function swoop.variant(v: LarkSwoopVariant): LarkSwoopVariant
-    return new.record("larkman-swoop-variant", v)
+    return new.record(LARKMAN_SWOOP_VARIANT, v)
 end
 local function variant(s: State): LarkSwoopVariant
     return s.variant
@@ -317,19 +320,19 @@ swoop.kind = new.kind {
     id = "larkman/swoop",
     pool = "attack",
     state = {
-        palette = "u8",
-        variant = "record:larkman-swoop-variant",
-        left = "bool",
-        start_x = "u8",
-        dir = "u8",
-        radius = "u32",
-        center_x = "u32",
-        center_y = "u32",
-        angle = "u32",
-        angle_step = "i32",
-        anim_step = "u8",
-        powered = "bool",
-        follower = "object",
+        palette = schema.u8,
+        variant = LARKMAN_SWOOP_VARIANT,
+        left = schema.bool,
+        start_x = schema.u8,
+        dir = schema.u8,
+        radius = schema.u32,
+        center_x = schema.u32,
+        center_y = schema.u32,
+        angle = schema.u32,
+        angle_step = schema.i32,
+        anim_step = schema.u8,
+        powered = schema.bool,
+        follower = schema.object,
     },
     -- 0x080DD738.
     update = function(me: Object)

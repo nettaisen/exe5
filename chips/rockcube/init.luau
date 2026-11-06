@@ -17,7 +17,7 @@ local chip: Chip = {
     hit_param = 158,
     lockout = 0,
     flags = { "dimming", "standard_library", "library" },
-    extra_flags = { 128 },
+    extra_flags = { "free_slot_in" },
     slot_in_limit = 3,
     dimming = cube.places { variant = rock.variants.cube },
     auto_battle = { class = "landing_ahead" },

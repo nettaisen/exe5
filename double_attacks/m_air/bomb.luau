@@ -58,7 +58,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, 0)
+    me:setup_collision(collision.thrown, collision.hits_navis, {})
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
     me.visible = true
     local c = me.collision
@@ -96,7 +96,7 @@ function bomb.drop(owner: Object, x: number, y: number, damage: number): Object?
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = ELEC
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
         o.run_while_dimmed = true

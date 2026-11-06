@@ -110,7 +110,7 @@ slasher.action = new.action {
                 me.step_init = 4
             end
             if s.timer == 0x0C then
-                local word = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+                local word = damage_word.plus(me.attack_word, me.extra)
                 battle.hitbox(me, {
                     panel_x = s.target_x,
                     panel_y = ROW,
@@ -120,9 +120,8 @@ slasher.action = new.action {
                     hit_effect = nil,
                     target = swords.slashes_navis.hits,
                     self_type = swords.slashes_navis.is,
-                    damage = bit32.band(word, 0xFFFF),
-                    stamina = bit32.rshift(word, 16),
-                    hit_mod = 3,
+                    damage = word,
+                    hit_mod = { flinch = true, flash = true },
                 })
                 local cx, cy = field.center(s.target_x, ROW)
                 battle.effect(Vec3.new(cx, cy, 0x10_0000), WIDE_SLASH, bit32.bxor(me.alliance, me.flip), 0)

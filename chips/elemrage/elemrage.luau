@@ -88,7 +88,7 @@ function elemrage.action(count: number, ticks: number): Action
                 panel_changer.spawn(me, me.panel_x, me.panel_y, RESTORE, nil)
             end
             -- (The damage word takes the Atk+ bonus, AIAttackVars+8.)
-            local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+            local damage = damage_word.plus(me.attack_word, me.extra)
             -- (`sub_8018842` reads the attach point unflipped: the flame turns it its own way.)
             local fx, dz = me:attach_point(ATTACH_POINT)
             local dx = fx * me.facing

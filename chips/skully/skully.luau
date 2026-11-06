@@ -78,7 +78,7 @@ local function tick(me: Object)
         me.timer = t
         if t == 0 then
             local x, y = next_panel(me)
-            spawn(me, x, y, me.element, me.damage + me.stamina * 0x10000, me.pos.z, s.skulls, s.left)
+            spawn(me, x, y, me.element, me.damage_word, me.pos.z, s.skulls, s.left)
         end
     end
     c:present()
@@ -98,7 +98,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.attack, collision.hits_navis, 3)
+    me:setup_collision(collision.attack, collision.hits_navis, { flinch = true, flash = true })
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
     me.visible = true
     sprite.palette = s.skulls.palette
@@ -141,7 +141,7 @@ spawn = function(owner: Object, x: number, y: number, element: number, damage: n
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(int.u32(damage))
+        o.damage_word = int.u32(damage)
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
         local s = o.state :: State
@@ -174,7 +174,7 @@ function skully.action(skulls: Skulls): Action
             s.timer = 0
         end
         if s.timer == 4 then
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local damage = damage_word.plus(me.attack_word, me.extra)
             spawn(me, me.panel_x + me.facing, me.panel_y, 0, damage, HEIGHT, skulls, skulls.count)
         end
         local t = s.timer + 1

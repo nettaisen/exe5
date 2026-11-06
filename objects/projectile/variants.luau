@@ -13,20 +13,20 @@ local variants = {}
 local SHOT = { is = collision.attack, hits = collision.hits_navis }
 
 -- The buster's plain shot (row 0).
-variants.plain = projectile.variant { id = "shot/plain", collision = SHOT, hit_mod = 0, element = "null", spark = sparks.plain }
+variants.plain = projectile.variant { id = "shot/plain", collision = SHOT, hit_mod = {}, element = "null", spark = sparks.plain }
 -- A plain shot with the charged shot's spark (row 3): the auto-battling navi's buster's (rules/auto_battle/buster).
-variants.bright = projectile.variant { id = "shot/bright", collision = SHOT, hit_mod = 0, element = "null", spark = sparks.charged }
+variants.bright = projectile.variant { id = "shot/bright", collision = SHOT, hit_mod = {}, element = "null", spark = sparks.charged }
 -- The charged shot (row 6).
-variants.charged = projectile.variant { id = "shot/charged", collision = SHOT, hit_mod = 0, element = "null", spark = sparks.charged }
+variants.charged = projectile.variant { id = "shot/charged", collision = SHOT, hit_mod = {}, element = "null", spark = sparks.charged }
 -- The cannons' shot (row 1): it staggers (hit modifier 3).
-variants.cannon = projectile.variant { id = "shot/cannon", collision = SHOT, hit_mod = 3, element = "null", spark = sparks.impact }
+variants.cannon = projectile.variant { id = "shot/cannon", collision = SHOT, hit_mod = { flinch = true, flash = true }, element = "null", spark = sparks.impact }
 
 -- The GigaCans' shot (row 0x0C, 0x080C47A8): the blast spark and hit modifier 0x49 (EXE6's 3). It doesn't burst:
 -- EXE5's projectile (0x080C48B0) has none of EXE6's row-0x0C bursts, around what it hits or over the last two columns.
 variants.gigacan = projectile.variant {
     id = "shot/gigacan",
     collision = SHOT,
-    hit_mod = 0x49,
+    hit_mod = { flinch = true, back_far = true, drag = true },
     element = "null",
     spark = sparks.blast,
 }
@@ -35,7 +35,7 @@ variants.gigacan = projectile.variant {
 variants.air = projectile.variant {
     id = "shot/air",
     collision = { is = collision.pushing, hits = collision.hits_navis },
-    hit_mod = 0x61,
+    hit_mod = { flinch = true, back = true, drag = true },
     element = "null",
     spark = sparks.impact,
 }
@@ -49,7 +49,7 @@ local function panel(kind: PanelType): PanelHit
     return { effect = "set_type", left_side = kind, right_side = kind }
 end
 local function charged(id: string, extra: { [string]: any }): ProjectileVariant
-    local spec: { [string]: any } = { id = id, collision = SHOT, hit_mod = 0, element = "null", spark = sparks.charged }
+    local spec: { [string]: any } = { id = id, collision = SHOT, hit_mod = {}, element = "null", spark = sparks.charged }
     for k, v in extra do
         spec[k] = v
     end
@@ -60,7 +60,7 @@ end
 variants.breaking = projectile.variant {
     id = "shot/breaking",
     collision = { is = collision.breaking, hits = collision.hits_navis },
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.breaking,
 }
@@ -68,7 +68,7 @@ variants.breaking = projectile.variant {
 variants.cracking = projectile.variant {
     id = "shot/cracking",
     collision = SHOT,
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.plain,
     hit_panel = { effect = "crack" },
@@ -77,24 +77,24 @@ variants.cracking = projectile.variant {
 variants.poisoning = projectile.variant {
     id = "shot/poisoning",
     collision = SHOT,
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.plain,
     hit_panel = panel("poison"),
 }
-variants.grass = projectile.variant { id = "shot/grass", collision = SHOT, hit_mod = 0, element = "null", spark = sparks.plain, hit_panel = panel("grass") }
-variants.ice = projectile.variant { id = "shot/ice", collision = SHOT, hit_mod = 0, element = "null", spark = sparks.plain, hit_panel = panel("ice") }
-variants.sea = projectile.variant { id = "shot/sea", collision = SHOT, hit_mod = 0, element = "null", spark = sparks.plain, hit_panel = panel("sea") }
+variants.grass = projectile.variant { id = "shot/grass", collision = SHOT, hit_mod = {}, element = "null", spark = sparks.plain, hit_panel = panel("grass") }
+variants.ice = projectile.variant { id = "shot/ice", collision = SHOT, hit_mod = {}, element = "null", spark = sparks.plain, hit_panel = panel("ice") }
+variants.sea = projectile.variant { id = "shot/sea", collision = SHOT, hit_mod = {}, element = "null", spark = sparks.plain, hit_panel = panel("sea") }
 -- Row 9: the chip destruction shot, with the chip destruction hit spark (CSchpdst).
 variants.chip_destruction = projectile.variant {
     id = "shot/chip-destruction",
     collision = { is = collision.chip_destruction, hits = collision.hits_navis },
-    hit_mod = 0,
+    hit_mod = {},
     element = "null",
     spark = sparks.chip_destruction,
 }
 -- Row 0x12: Hub Style's spread shot (0x0800F522), the erase beams' spark.
-variants.hub = projectile.variant { id = "shot/hub", collision = SHOT, hit_mod = 0, element = "null", spark = sparks.erase }
+variants.hub = projectile.variant { id = "shot/hub", collision = SHOT, hit_mod = {}, element = "null", spark = sparks.erase }
 -- Rows 0x15 to 0x17: charged shots that confuse, paralyze, blind.
 variants.charged_confusing = charged("shot/charged-confusing", { status = statuses.confuse_480 })
 variants.charged_paralyzing = charged("shot/charged-paralyzing", { status = statuses.paralyze_90 })

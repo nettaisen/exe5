@@ -193,7 +193,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.own_object, collision.hit_by_other_side_or_blockers, 3)
+    me:setup_collision(collision.own_object, collision.hit_by_other_side_or_blockers, { flinch = true, flash = true })
     me.collision:set_hit_effect(sparks.elec)
     me.collision:present()
     me.hp, me.max_hp = HP, HP
@@ -232,7 +232,7 @@ function missile.spawn(owner: Object, x: number, y: number, element: number, dam
         s.target = target
         o.element = element
         o.related1 = owner
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true
     end

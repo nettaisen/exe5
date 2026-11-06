@@ -27,7 +27,7 @@ local HOLD, LOWER = 0xC8, 0x5A
 -- 0x080BC574: the clouds, for each enemy combatant (the last listed first): on the panels behind it, one by one,
 -- while each exists and is free; each faces the enemy. How many were set.
 local function set_clouds(me: Object): number
-    local damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    local damage = me.damage_word
     local enemies = battle.alive_actors(bit32.bxor(me.alliance, 1))
     local set = 0
     for i = #enemies, 1, -1 do

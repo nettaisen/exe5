@@ -23,7 +23,7 @@ local SPRITE = asset.sprite("meteor")
 local SOUND_THROW = asset.sound("justice-one")
 local SOUND_BURST = asset.sound("form-change")
 local FALL = 8
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- `sub_80DCACC`: a and b, `t` eighths of the way to their ends (each step's division truncating).
 local function lerp(a: number, b: number, a1: number, b1: number, t: number): (number, number)
@@ -138,7 +138,7 @@ function fireball.spawn(owner: Object, pos: Vec3, target: number, damage: number
     if o then
         (o.state :: State).target = target
         o.alliance, o.flip = owner.alliance, owner.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.element = 1
         o.run_while_dimmed = true
     end

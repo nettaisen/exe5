@@ -115,9 +115,8 @@ local function purify(me: Object, x: number, y: number, bug: number, bug_arg: nu
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.thrown_piercing_break,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
         bug = bug,
         bug_arg = bug_arg,
     })

@@ -42,7 +42,7 @@ local charged_shot = { action = exe5.action }
 -- 0x0800F5BC.
 function exe5.setup(navi: Object): Action
     local stats = battle.navi(navi.alliance)
-    navi.attack_damage = (stats.attack + 1) * 10
+    navi.attack_word = damage_word.with_damage(navi.attack_word, (stats.attack + 1) * 10)
     local shot = variants.charged
     if bit32.band(battle.rng_positive(), 0x10) ~= 0 then
         shot = stats.charge_shot_kind or variants.plain
@@ -61,11 +61,10 @@ end
 -- the shot the navi's charged-shot program names (NaviStats +0x4F; the charged shot, row 6, when 0).
 function exe5.program_setup(navi: Object): Action
     local stats = battle.navi(navi.alliance)
-    navi.attack_damage = (stats.attack + 1) * 10
+    navi.attack_word = damage_word.of { amount = (stats.attack + 1) * 10, counter = 0 }
     navi.attack_element = 0
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0
     navi.attack_lockout = 0
     local s = navi:action_state(charged_shot.action) :: { projectile: ProjectileVariant? }
     -- (The program's 0 is the projectile table's first row, the plain shot: none, here.)

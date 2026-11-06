@@ -65,7 +65,7 @@ local function throw(me: Object, s: State)
             gravity = GRAVITY,
             target_x = x,
             target_y = y,
-            damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra),
+            damage = damage_word.plus(me.attack_word, me.extra),
         })
     end
     s.timer += 1

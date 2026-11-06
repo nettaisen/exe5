@@ -72,7 +72,7 @@ moonbld.action = new.action {
             end
             if s.timer == BLADE_AT then
                 -- The damage word (the hit parameter in its high half), plus the Atk+ bonus.
-                local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+                local damage = damage_word.plus(me.attack_word, me.extra)
                 common.spawn(moonbld.blade, me, bit32.band(me.extra, 0xFF), SWING_ROUTINE, damage, false)
             end
             local t = s.timer - 1

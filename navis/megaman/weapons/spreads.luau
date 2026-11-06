@@ -31,14 +31,14 @@ local FIRE_AFTER = 10
 -- HeatS's bullet (row 8, its effect 0x22 and sound EXE6's): a burst over the panel found and the one behind it.
 local HEAT_SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 0,
+    hit_mod = {},
     effect = new.effect { sprite = shell_burst_sprite, anim = 0, palette = 0, steps = 27 },
     sound = asset.sound("target-move"),
 }
 -- BubSht's (row 4, its effect 0x1F and sound EXE6's): a splash over the panel found and the one behind it.
 local BUBBLE_SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 0,
+    hit_mod = {},
     effect = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0, steps = 31 },
     sound = asset.sound("spout-ball"),
 }
@@ -66,8 +66,7 @@ spreads.heat = new.weapon {
     -- The charge table's row 0x4A, by Charge 0 to 5: past 4 it reads on into row 0x4B's first entry.
     charge_ticks = { 60, 55, 50, 45, 40, 80 },
     setup = function(navi: Object): Action
-        navi.attack_damage = 40
-        navi.hit_param = 10
+        navi.attack_word = damage_word.of { amount = 40, counter = 10 }
         navi.attack_element = FIRE
         return HEAT
     end,
@@ -79,8 +78,7 @@ spreads.bubble = new.weapon {
     -- The charge table's row 0x56, by Charge 0 to 5: past 4 it reads on into row 0x57's first entry.
     charge_ticks = { 60, 55, 50, 45, 40, 50 },
     setup = function(navi: Object): Action
-        navi.attack_damage = 50
-        navi.hit_param = 10
+        navi.attack_word = damage_word.of { amount = 50, counter = 10 }
         navi.attack_element = AQUA
         return BUBBLE
     end,

@@ -27,7 +27,7 @@ local navi_left = require("@exelib/navi_chips/left")
 -- 0x080D4948's in the operation battle; its turn's speed (0x080D4B54 by its row); its HP (0x080D4820).
 local SPEED, OPERATION_BATTLE_SPEED, TURN_SPEED = 0x4_0000, 0x2_6666, 0x2_6666
 local HP = 10
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- The enemy navis a comet turns toward (0x080D4B48: the other side's body), and what among its hits stops it: any
 -- body (0x0F800000).
 local TARGETS = "enemy_body"
@@ -188,7 +188,7 @@ local function spawn_comet(owner: Object, x: number, y: number, element: number,
     end
     o.element = element
     o.related1 = owner
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.alliance, o.flip = owner.alliance, owner.flip
     o.run_while_dimmed = true
     return o
@@ -290,7 +290,7 @@ local function comets(me: Object)
     local s = me.state :: State
     local _, y = field.center(me.panel_x, s.sent % 3 + 1)
     local x = int.i32(me.pos.x + int.shl(AHEAD * me.facing, 16))
-    spawn_comet(me, x, y, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+    spawn_comet(me, x, y, me.element, me.damage_word)
     s.sent += 1
     if s.sent < COMETS then
         me.timer = EVERY

@@ -70,7 +70,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.collision_36, collision.nothing, 0)
+    me:setup_collision(collision.collision_36, collision.nothing, {})
     me.collision:set_hit_effect(nil)
     me.collision:present()
     me:set_lifecycle("update")

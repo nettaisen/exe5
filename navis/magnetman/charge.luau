@@ -14,7 +14,7 @@ export type State = {
     timer: number,
 }
 
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 -- The damage rows' row 8, by his level.
 local DAMAGE: { number } = { 40, 40, 40, 50, 50, 60, 60 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 8 (0x0203E31E): a base and a step for each attack
@@ -55,7 +55,7 @@ charge.action = new.action {
         elseif step == FIRE then
             -- 0x080F11A2: the missile follows what the attack points at (nothing, from his weapon).
             local p = me.pos
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+            local damage = me.attack_word
             missile.spawn(me, int.i32(p.x + me.facing * AHEAD), p.y, me.attack_element, damage, me.face_target)
             me.step, me.step_init = AFTER, 0
         elseif step == AFTER then
@@ -79,8 +79,7 @@ charge.action = new.action {
 
 -- 0x0800F9BA
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.attack_element = ELEC
     return charge.action
 end

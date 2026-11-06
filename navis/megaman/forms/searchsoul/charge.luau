@@ -23,7 +23,7 @@ export type State = {
     target_y: number,
 }
 
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 -- Panels holding the other side's navi, by side (0x08012F58): its player navi.
 local ENEMY_NAVI = "enemy_navi"
 -- The scope's mark (effect 0x68: sprite 10-23), 20 pixels up.
@@ -33,7 +33,7 @@ local SOUND_MARK, SOUND_SHOT = asset.sound("mark"), asset.sound("col-army-2")
 local ANIM = 17
 local SHOTS, AIM_TICKS, SHOT_TICKS, RECOVER_TICKS = 5, 4, 5, 5
 -- A shot's hit modifier: the last one's flinches (3), the others' don't (1).
-local HIT_MOD, LAST_HIT_MOD = 1, 3
+local HIT_MOD, LAST_HIT_MOD = { flinch = true }, { flinch = true, flash = true }
 
 -- 0x08012E50: the panel of the other side's navi nearest ahead of `me` (none ahead: nearest behind), by column
 -- distance; of those as near as the nearest so far, the later one in the list (rows 3 to 1, columns 6 to 1); nil
@@ -112,8 +112,7 @@ local function shoot(me: Object, s: State)
             hit_effect = sparks.plain,
             target = collision.hits_navis,
             self_type = collision.curse,
-            damage = me.attack_damage,
-            stamina = me.hit_param,
+            damage = me.attack_word,
             hit_mod = if s.shots > 1 then HIT_MOD else LAST_HIT_MOD,
         })
         battle.play_sound(SOUND_SHOT)
@@ -164,8 +163,7 @@ charge.action = new.action {
 
 -- 0x0800F696
 local function setup(navi: Object): Action
-    navi.attack_damage = 10 + 2 * (battle.navi(navi.alliance).attack + 1)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = 10 + 2 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     navi.attack_element = 0
     return charge.action
 end

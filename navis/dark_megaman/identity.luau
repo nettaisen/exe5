@@ -25,7 +25,7 @@ return new.identity {
         hp = 500,
         element = "null",
         body_damage = 10,
-        collision = { body = collision.own_body, target = collision.navi_target, hit_modifier = 3 },
+        collision = { body = collision.own_body, target = collision.navi_target, hit_modifier = { flinch = true, flash = true } },
         flags = { "super_armor", "affected_by_ice", "untouchable" },
         hides_hp = true,
     },

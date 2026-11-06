@@ -18,7 +18,7 @@ local SPRITE = asset.sprite("elec-reel")
 local reel_launcher_sprite = asset.sprite("reel-launcher")
 local ANIM = 2
 -- Its collision (0x0A050100): thrown, hitting navis, hit modifier 1.
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 -- Rolling 8 pixels a tick; gone past 150 pixels either way.
 local SPEED, EDGE = 0x8_0000, 150
 -- The hooks (0x080DAD8C: dx, dy, the effect), and what they catch (0x080DAD84, by side: the other side's navis and
@@ -83,8 +83,7 @@ local function hook(me: Object, x: number, y: number): number
                 hit_effect = sparks.elec,
                 target = collision.hits_navis,
                 self_type = collision.thrown,
-                damage = me.damage,
-                stamina = me.stamina,
+                damage = me.damage_word,
                 hit_mod = HIT_MOD,
             })
             n += 1
@@ -196,7 +195,7 @@ local function spawn(owner: Object, x: number, y: number, element: number, damag
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end
@@ -228,7 +227,7 @@ local function launching(me: Object, s: ActionState)
         s.timer = 0
     end
     if s.timer == LAUNCH_AT then
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_element, damage)
     end
     local t = s.timer + 1

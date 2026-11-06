@@ -175,7 +175,7 @@ function actor.spawn(controller: Object, user: Object, damage: number): Object?
     if o then
         o.panel_x, o.panel_y = 0, controller.panel_y
         o.element = controller.element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.related1 = user
         ;(o.state :: State).controller = controller
         o.alliance, o.flip = user.alliance, user.flip

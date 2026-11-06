@@ -28,14 +28,14 @@ local SPRITE = asset.sprite("side-bubble")
 local SOUND_RISE = asset.sound("bubble-rise")
 local SOUND_POP = asset.sound("bubble-pop")
 local SOUND_BURST = asset.sound("junk-shot")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- Its waits: before the first drift (with the animation set to 0 at 5 left), and before its burst shot.
 local WAIT, WAIT_ANIM_AT, BURST_WAIT = 15, 5, 20
 -- How far a drift goes: a panel forward, a row up or down (in pixels).
 local DRIFT_X, DRIFT_Y = 40, 24
 -- The shot a SideBub's bubble bursts into (the flying shot's row 7: 0x080D86B4's first, which every SideBub's
 -- fourth parameter, 0, picks).
-local BURST = flying_shot.variant { hit_mod = 3, element = 2, sprite = SPRITE, anim = 2, highlight = true, speed = 0x4_0000 }
+local BURST = flying_shot.variant { hit_mod = { flinch = true, flash = true }, element = 2, sprite = SPRITE, anim = 2, highlight = true, speed = 0x4_0000 }
 -- What a hit on a navi or an object leaves in its hit flags (0x080D85B4).
 local POPS: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
 -- Its actions.
@@ -81,7 +81,7 @@ local function bursting(me: Object, s: State)
     me.timer = int.u16(t)
     if t < 0 then
         me.collision:set_region(nil)
-        flying_shot.launch(me, me.pos, s.burst, int.u32(me.damage + me.stamina * 0x10000))
+        flying_shot.launch(me, me.pos, s.burst, me.damage_word)
         battle.play_sound(SOUND_BURST)
         me:set_lifecycle("destroy")
     end
@@ -219,7 +219,7 @@ function sidebub.spawn(owner: Object, x: number, y: number, element: number, dam
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         local s = o.state :: State
         s.way, s.travel, s.burst = way, travel, burst
         o.related1 = owner

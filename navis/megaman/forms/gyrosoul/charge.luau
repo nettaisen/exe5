@@ -15,7 +15,7 @@ export type State = {
     timer: number,
 }
 
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 -- His arm (the attachment table's row 0x22: sprite 0C-10, palette 0, at his position).
 local ARM = attachment.look { sprite = gyrosoul_arm_sprite, palette = 0 }
 local ANIM = 16
@@ -32,7 +32,7 @@ local function blow(me: Object, s: State)
         me.step_init = 4
     end
     if s.timer == BLOW_AT then
-        tornado.spawn(me, me.panel_x + me.facing, me.panel_y, int.u32(me.attack_damage + me.hit_param * 0x10000))
+        tornado.spawn(me, me.panel_x + me.facing, me.panel_y, me.attack_word)
     end
     local t = s.timer - 1
     s.timer = bit32.band(t, 0xFFFF)
@@ -74,8 +74,7 @@ charge.action = new.action {
 
 -- 0x0800F6AE
 local function setup(navi: Object): Action
-    navi.attack_damage = 15 + 5 * (battle.navi(navi.alliance).attack + 1)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = 15 + 5 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     return charge.action
 end
 

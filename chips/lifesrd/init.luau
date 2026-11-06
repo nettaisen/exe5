@@ -25,7 +25,7 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 400,
-    hit_param = 40,
+    counter = 40,
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
@@ -39,7 +39,7 @@ local chip: Chip = {
     action = swords.slash {
         blade = swords.blade,
         blade_anim = swords.blade_anim,
-        hit = { region = regions.wide_long, collision = swords.slashes_navis, hit_mod = 3 },
+        hit = { region = regions.wide_long, collision = swords.slashes_navis, hit_mod = { flinch = true, flash = true } },
         effect = BIG_SLASH,
         sound = swords.big_swing,
     },

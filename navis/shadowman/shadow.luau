@@ -42,7 +42,7 @@ export type State = {
 
 local SPRITE = asset.sprite("shadowman")
 local HP = 1
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- Its orders' bit SplitUp sets: slash.
 local SLASH_ORDER = 2
 local ANIM_APPEAR, ANIM_SWING = 3, 5
@@ -126,8 +126,7 @@ local function swing(me: Object, s: State)
             hit_effect = nil,
             target = collision.attack,
             self_type = collision.slash,
-            damage = bit32.band(s.slash_damage, 0xFFFF),
-            stamina = bit32.rshift(s.slash_damage, 16),
+            damage = s.slash_damage,
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(x, y)
@@ -286,7 +285,7 @@ function shadow.send(owner: Object, x: number, y: number, wait: number, damage: 
     if o then
         o.panel_x, o.panel_y = x, y
         o.alliance, o.flip = owner.alliance, owner.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.related1 = owner
         local s = o.state :: State
         s.wait = wait

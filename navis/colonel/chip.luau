@@ -34,7 +34,7 @@ local SHELL_Z = 0x10_0000
 -- The cannon's recoil (its second animation).
 local CANNON_FIRE = 1
 -- The shell's parameters (none: its collision row 0, hit modifier 0x4B; no cracking, its blast unshifted).
-local SHELL: ShellSpec = { hit_mod = 0x4B, cracks = false, shift = 0 }
+local SHELL: ShellSpec = { hit_mod = { flinch = true, flash = true, back_far = true, drag = true }, cracks = false, shift = 0 }
 
 -- 0x080F8B54: the cannon raised; 8 ticks.
 local function raise(me: Object, s: State)
@@ -83,7 +83,7 @@ local function fire(me: Object, s: State)
     end
     if s.timer == SHELL_TICK then
         battle.shake_camera(1, 0x14)
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         shell.fire(tankcan.kind, me, me.panel_x + me.facing, me.panel_y, SHELL_Z, damage, SHELL)
     end
     local t = s.timer + 1
@@ -138,7 +138,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 80, 80, 100, 100, 120, 120, 120 }),
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = { "has_damage", "library", "variable_damage" },
     slot_in_limit = 1,

@@ -38,7 +38,7 @@ local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWORD_ANIM = 1
 local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 local SWING_Z = 0x100000
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 -- What ProtoMan looks for (0x02138FB8, by his side): an enemy body; and the panel before it: solid, with no body on
 -- it.
 local ENEMY_BODY = "enemy_body"
@@ -169,8 +169,7 @@ local function swing(me: Object)
             region = regions.wide,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = me.damage,
-            stamina = me.stamina,
+            damage = me.damage_word,
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(x, y)
@@ -258,7 +257,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 40,
-    hit_param = 158,
+    counter = 30,
+    cant_counter = true,
     lockout = 0,
     flags = {},
     action = cannon_chips.cannon.action,

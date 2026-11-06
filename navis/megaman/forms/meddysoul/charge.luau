@@ -14,7 +14,7 @@ export type State = {
     timer: number,
 }
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 local THROW_ANIM = 6
 local SOUND = asset.sound("minibomb-throw")
 local THROW_AT, THROW_TICKS, RECOVER_TICKS = 9, 21, 5
@@ -36,7 +36,7 @@ local function throw(me: Object, s: State)
             line = capsule.column,
             target_x = me.panel_x + REACH * me.facing,
             target_y = me.panel_y,
-            damage = int.u32(me.attack_damage + me.hit_param * 0x10000),
+            damage = me.attack_word,
             while_dimmed = false,
         })
         me.related1 = nil
@@ -79,8 +79,7 @@ charge.action = new.action {
 
 -- 0x0800F728
 local function setup(navi: Object): Action
-    navi.attack_damage = 30 + 10 * (battle.navi(navi.alliance).attack + 1)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = 30 + 10 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     navi.attack_element = 0
     return charge.action
 end

@@ -37,6 +37,6 @@ function tankcan.make_action(flies: ShellSpec, id: string?): Action
 end
 
 -- The TankCans' action: their shell (the records' parameters: row 0, hit modifier 0x4B; cracking).
-tankcan.action = tankcan.make_action({ hit_mod = 0x4B, cracks = true, shift = 0 })
+tankcan.action = tankcan.make_action({ hit_mod = { flinch = true, flash = true, back_far = true, drag = true }, cracks = true, shift = 0 })
 
 return tankcan

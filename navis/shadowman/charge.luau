@@ -28,7 +28,7 @@ export type State = {
     target_y: number,
 }
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 -- The damage rows' row 14, by his level.
 local DAMAGE: { number } = { 60, 60, 60, 80, 80, 100, 100 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 14 (0x0203E31E): a base and a step for each attack
@@ -46,7 +46,7 @@ local APPEAR_TICKS, THROW_TICKS = 3, 15
 -- The waits up there and down again: variant 0's, and the others'.
 local HOLD_TICKS, HOLD_TICKS_SHORT = 60, 20
 local LAND_TICKS, LAND_TICKS_SHORT = 50, 20
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 -- The steps, on the attack's step.
 local VANISH, APPEAR, THROW, HOLD, LAND = 0x0, 0x4, 0x8, 0xC, 0x10
 
@@ -120,7 +120,7 @@ local function throw(me: Object, s: State)
         battle.play_sound(SOUND_THROW)
         local x, y = target(me, s)
         if x and y then
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+            local damage = me.attack_word
             shuriken.spawn(antidmg.shuriken, me, x, y, 0, HIT_MOD, damage, me.flip, int.i32(me.pos.z + THROW_Z))
         end
         me.step_init = 4
@@ -199,8 +199,7 @@ charge.action = new.action {
 
 -- 0x0800F98E (the count's low byte alone is written: its high byte is what an earlier action left).
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.attack_variant = 1
     navi.attack_count = bit32.bor(bit32.band(navi.attack_count, 0xFF00), 1)
     return charge.action

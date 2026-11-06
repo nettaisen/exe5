@@ -21,7 +21,7 @@ local GUN = attachment.look { sprite = vulcan_sprite, palette = 3, attach_point 
 -- panel found and the one behind it, staggering, its hit shown once at the bullet.
 local SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 1,
+    hit_mod = { flinch = true },
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 0, palette = 2, steps = 10 },
     single = true,
 }
@@ -36,7 +36,7 @@ local infvulc1: Chip = {
     rarity = 0,
     mb = 5,
     damage = 20,
-    hit_param = 2,
+    counter = 2,
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
@@ -61,7 +61,7 @@ local infvulc2: Chip = {
     rarity = 0,
     mb = 5,
     damage = 20,
-    hit_param = 2,
+    counter = 2,
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
@@ -86,7 +86,7 @@ local infvulc3: Chip = {
     rarity = 0,
     mb = 5,
     damage = 20,
-    hit_param = 2,
+    counter = 2,
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,

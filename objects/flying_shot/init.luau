@@ -29,7 +29,7 @@ flying_shot.FLYING_SHOT_VARIANT = FLYING_SHOT_VARIANT
 -- centers and draws its first part with the sprite.)
 function flying_shot.variant(r: {
     is: CollisionType?,
-    hit_mod: number,
+    hit_mod: HitModifier,
     element: number,
     spark: Spark?,
     sprite: SpriteAsset,
@@ -164,7 +164,7 @@ function flying_shot.launch(owner: Object, pos: Vec3, variant: FlyingShotVariant
     local o = battle.spawn(flying_shot.kind, pos)
     if o then
         (o.state :: State).variant = variant
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

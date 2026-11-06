@@ -106,7 +106,7 @@ local function roll(me: Object)
     if left == THROW then
         battle.play_sound(SOUND_ROLL)
         local p = me.pos
-        balls.spawn(BALL, me, p.x + me.facing * 0x14_0000, p.y, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        balls.spawn(BALL, me, p.x + me.facing * 0x14_0000, p.y, me.element, me.damage_word)
     elseif left == DOWN then
         me.anim = 0
     elseif left < 0 then

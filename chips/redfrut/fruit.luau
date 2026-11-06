@@ -31,7 +31,7 @@ local puff_sprite = asset.sprite("puff")
 local HP = 1
 -- Its collision (0x0E0F0003): a neutral body (row 0x0E) that everything reaches (row 0x0F), hit modifier 0 (the
 -- word's third byte; `sub_8011504` reads no fourth).
-local HIT_MOD = 0
+local HIT_MOD: HitModifier = {}
 -- NameID 0xE7: actor record 0xE7 (0x08014C94: version 2, AI index 0x21); EXE5's swallowing and Poltergeist leave it
 -- (0x0800D372, 0x080E8CA0).
 local IDENTITY = new.identity {

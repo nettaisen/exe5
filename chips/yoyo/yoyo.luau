@@ -44,7 +44,7 @@ export type State = {
 local SPRITE = asset.sprite("yoyo")
 local yoyo_arm_sprite = asset.sprite("yoyo-arm")
 local SOUND = asset.sound("set-down")
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 local SPEED, ROUND = 0x5_0000, 8
 local OUT, SPIN, BACK = 0, 4, 8
 
@@ -334,7 +334,7 @@ function yoyo.spawn(owner: Object, x: number, y: number, element: number, z: num
         s.spec, s.slot = spec, slot
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
         o.run_while_dimmed = true

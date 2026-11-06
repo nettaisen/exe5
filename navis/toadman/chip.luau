@@ -55,7 +55,7 @@ local function sing(me: Object, s: State)
         me:set_animation(SING_ANIM)
         me:open_counter_window(COUNTER_TICKS)
         s.timer = s.sing
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         note.spawn(me, me.panel_x + me.facing, me.panel_y, CHAIN, s.target, damage)
         battle.play_sound(SOUND)
         me.step_init = 4
@@ -91,7 +91,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 80, 80, 80, 80, 80, 80, 80 }),
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = { "has_damage", "library", "variable_damage" },
     slot_in_limit = 1,

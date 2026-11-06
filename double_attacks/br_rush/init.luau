@@ -36,7 +36,7 @@ local SHOTS_AT: { number } = { 0x1E, 0xF }
 local FINISHER_AT, CAPE_AT = 0xB, 0xB
 -- Where both wait off the field: panel (0, 0), 190 pixels up.
 local AWAY_Z = 0xBE0000
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 local ANIM_IDLE, ANIM_LAND, ANIM_LEAP, ANIM_SHOOT, ANIM_SWING = 0, 3, 4, 0xE, 5
 local ANIM_THROW, ANIM_COLONEL_LEAP, ANIM_COLONEL_LAND, ANIM_RUSH, ANIM_FINISH = 0x11, 0x17, 0x16, 0x13, 0x10
@@ -208,7 +208,7 @@ local function cape_init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.attack, collision.hits_navis, 0)
+    me:setup_collision(collision.attack, collision.hits_navis, {})
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
     me.collision:set_hit_effect(nil)
     me:set_coordinates_from_panel()
@@ -251,7 +251,7 @@ local function throw_cape(me: Object, x: number, y: number)
     end
     o.panel_x, o.panel_y = x, y
     o.element = 0
-    o:set_damage_word(0)
+    o.damage_word = 0
     o.alliance, o.flip = me.alliance, me.flip
     o.related1 = me
     o.run_while_dimmed = true
@@ -274,8 +274,7 @@ local function hit(me: Object)
         region = regions.single,
         target = collision.hits_navis,
         self_type = collision.slash,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
 end
@@ -651,7 +650,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 40,
-    hit_param = 133,
+    counter = 5,
+    cant_counter = true,
     lockout = 0,
     flags = {},
     action = cannon_chips.cannon.action,

@@ -242,7 +242,7 @@ function party_support.send(support: Support, navi: Object, x: number, y: number
     o.panel_x, o.panel_y = x, y
     o.alliance = navi.alliance
     o.flip = flip
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.related1 = navi;
     (o.state :: State).member = member
     party.supports(navi.alliance).busy[member + 1] = true
@@ -318,7 +318,7 @@ function party_support.controller(spec: { id: string, state: StateSchema?, bring
             o.element = 0
             o.related1 = navi
             o.alliance, o.flip = navi.alliance, navi.flip
-            o:set_damage_word(damage)
+            o.damage_word = damage
         end
         dimming.start(navi.alliance, true, o, navi, { chip = chip })
         return o

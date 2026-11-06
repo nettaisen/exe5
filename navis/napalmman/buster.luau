@@ -26,7 +26,7 @@ export type State = {
     timer: number,
 }
 
-local HIT_PARAM = 0x82
+local COUNTER = 2
 -- The damage rows' row 6, by his level: a bullet's damage.
 local DAMAGE: { number } = { 5, 5, 5, 5, 5, 7, 7 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 6 (0x0203E31E): a base and a step for each attack
@@ -45,7 +45,7 @@ local SOUND = asset.sound("col-army-2")
 -- (effect 0x58: EXE5's own vulcan hit, its animation 1).
 local SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 0,
+    hit_mod = {},
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0, steps = 10 },
     single = true,
 }
@@ -56,7 +56,7 @@ local SHOOT, RECOVER = 0x0, 0x4
 -- 0x080F1062: a bullet from the panel ahead, at a height a draw picks, of the attack's element, damage and bonus.
 local function fire(me: Object)
     local z = HEIGHTS[bit32.band(battle.rng_positive(), 3)] * 0x1_0000
-    local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+    local damage = damage_word.plus(me.attack_word, me.extra)
     bullets.fire(bullet.kind, me, me.panel_x + me.facing, me.panel_y, z, SHOT, me.attack_element, damage)
 end
 
@@ -133,8 +133,7 @@ buster.action = new.action {
 
 -- 0x0800FBC0
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.attack_element = 0
     navi.charged = 0
     navi.extra = 0

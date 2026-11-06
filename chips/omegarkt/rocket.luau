@@ -54,9 +54,8 @@ local function hit(me: Object, x: number, y: number, region: Region, damage: num
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = bit32.band(damage, 0xFFFF),
-        stamina = bit32.rshift(damage, 16),
-        hit_mod = 3,
+        damage = damage,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -72,7 +71,7 @@ end
 -- 0x080DD670: a column's blast: a hit on it (a column of three from the middle row) and an explosion on each of its
 -- panels.
 local function blast_column(me: Object, x: number)
-    hit(me, x, 2, regions.wide, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+    hit(me, x, 2, regions.wide, me.damage_word)
     for y = 1, 3 do
         explode(x, y)
     end
@@ -178,7 +177,7 @@ local function init(me: Object)
     if not me:create_collision() then
         error("OmegaRkt's rocket without a collision slot (0x080DD4FA doesn't check)")
     end
-    me:setup_collision(collision.breaking, collision.hits_navis, 3)
+    me:setup_collision(collision.breaking, collision.hits_navis, { flinch = true, flash = true })
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
     me.visible = true
     me.collision:present()
@@ -210,7 +209,7 @@ function rocket.spawn(controller: Object, x: number, y: number, element: number,
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = controller.alliance, controller.flip
         o.related1 = controller
         local s = o.state :: State

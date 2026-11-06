@@ -40,7 +40,7 @@ local FADE = 0x10
 local DROP_ROW, DROP_Z = 2, 0x32_0000
 
 local function damage_word(me: Object): number
-    return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    return me.damage_word
 end
 
 -- 0x080BFD3A: 12 targets of the middle columns, 6 beside them, each drawn (RNG % 6); then shuffled (18 rounds).
@@ -84,9 +84,8 @@ local function field_hit(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.collision_27,
-        damage = 0,
-        stamina = 0,
-        hit_mod = 0,
+        damage = damage_word.of { amount = 0, counter = 0 },
+        hit_mod = {},
     })
     if box then
         box.run_while_dimmed = true
@@ -269,7 +268,7 @@ function phoenix.spawn(owner: Object, user: Object, damage: number): Object?
         o.element = owner.element
         o.related1 = user
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         local s = o.state :: State
         s.controller = owner
     end

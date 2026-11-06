@@ -136,7 +136,7 @@ local function throw(me: Object)
             line = if line == 1 then capsule.row else capsule.column,
             target_x = x,
             target_y = y,
-            damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16)),
+            damage = me.damage_word,
         })
     end
 end

@@ -21,7 +21,7 @@ export type State = {
     -- The punch in the round (+0x60).
     punch: number,
     -- The fists' hit modifier (its parameters' second byte, the record's +0x11).
-    hit_mod: number,
+    hit_mod: HitModifierByte,
 }
 
 -- 0x080E7D86: a punch on row `y` from column `x` on.
@@ -45,7 +45,7 @@ local function punch(me: Object, x: number, y: number)
         tx, ty = bit32.band(p, 7), bit32.rshift(p, 4)
     end
     local s = me.state :: State
-    common_fist.spawn(fist.kind, me, assert(tx), assert(ty), me.element, 0, s.hit_mod, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+    common_fist.spawn(fist.kind, me, assert(tx), assert(ty), me.element, 0, s.hit_mod, me.damage_word)
 end
 
 -- 0x080E7D0C: every 12 ticks a punch (the first at once); three rounds of three.
@@ -96,7 +96,7 @@ boxer.kind = new.kind {
 -- The chips' `instant` hook (0x080E7D68): the boxer on the user's panel, its side and facing, with the chip's element
 -- and damage word; `hit_mod`, the fists'. (Its position is the dispatcher's registers: the user's row, the element
 -- and the user's height.)
-function boxer.instant(hit_mod: number): (user: Object, spec: InstantChipSpec) -> ()
+function boxer.instant(hit_mod: HitModifier): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, spec: InstantChipSpec)
         local o = battle.spawn(boxer.kind, Vec3.new(spec.panel_y, spec.element, spec.z))
         if not o then
@@ -104,11 +104,11 @@ function boxer.instant(hit_mod: number): (user: Object, spec: InstantChipSpec) -
         end
         o.panel_x, o.panel_y = spec.panel_x, spec.panel_y
         o.element = spec.element
-        o:set_damage_word(spec.damage)
+        o.damage_word = spec.damage
         o.alliance, o.flip = user.alliance, user.flip
         o.related1 = user
         o.run_while_dimmed = false
-        ;(o.state :: State).hit_mod = hit_mod
+        ;(o.state :: State).hit_mod = hit_modifier.byte(hit_mod)
     end
 end
 

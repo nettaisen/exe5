@@ -153,7 +153,7 @@ local function locked(me: Object, s: SightState)
         target = collision.hits_navis,
         self_type = collision.attack,
         damage = 0,
-        hit_mod = 0,
+        hit_mod = {},
         status = status.paralyze_120,
     })
     me.phase_init = 4
@@ -299,7 +299,7 @@ function mrkcan.action(spec: { id: string?, cannon: AttachmentLook }): Action
         end
         if s.timer == FIRE_AT then
             battle.play_sound(SHOT_SOUND)
-            local word = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local word = damage_word.plus(me.attack_word, me.extra)
             battle.hitbox(me, {
                 panel_x = bit32.extract(me.marker, 8, 8),
                 panel_y = bit32.extract(me.marker, 16, 8),
@@ -309,9 +309,8 @@ function mrkcan.action(spec: { id: string?, cannon: AttachmentLook }): Action
                 hit_effect = sparks.impact,
                 target = collision.hits_navis,
                 self_type = collision.attack,
-                damage = bit32.band(word, 0xFFFF),
-                stamina = bit32.rshift(word, 16),
-                hit_mod = 3,
+                damage = word,
+                hit_mod = { flinch = true, flash = true },
             })
         end
         local t = s.timer + 1

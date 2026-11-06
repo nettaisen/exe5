@@ -30,7 +30,7 @@ local navi_left = require("@exelib/navi_chips/left")
 local KICK_X, KICK_Z, KICK_TICKS = 0x5_0000, 0xC_0000, 30
 local DROP_Z, DROP_VZ, DROP_TICKS = 0x90_0000, 0x8_0000, 30
 local GRAVITY, LAND_Z = 0x1_0000, 0x8_0000
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local LANDING = new.effect { sprite = SPRITE, anim = 0x11, palette = 0, steps = 14 }
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 local SOUND_LAND = asset.sound("football-land")
@@ -142,8 +142,7 @@ local function land(me: Object)
                 hit_effect = sparks.plain,
                 target = collision.hits_navis,
                 self_type = collision.thrown,
-                damage = me.damage,
-                stamina = me.stamina,
+                damage = me.damage_word,
                 hit_mod = HIT_MOD,
             })
             if o then
@@ -228,7 +227,7 @@ local function spawn_ball(owner: Object, pos: Vec3, element: number, kick: numbe
     end
     o.element = element
     o.related1 = owner
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.alliance, o.flip = owner.alliance, owner.flip
     ;(o.state :: BallState).kick = kick
     o.run_while_dimmed = true
@@ -306,7 +305,7 @@ local function kicks(me: Object)
         end
         local p = me.pos
         local pos = Vec3.new(int.i32(p.x + int.shl(32 * me.facing, 16)), p.y, 0x30_0000)
-        spawn_ball(me, pos, me.element, s.kicked + 1, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        spawn_ball(me, pos, me.element, s.kicked + 1, me.damage_word)
         s.kicked += 1
     elseif left <= 0 then
         me:set_action(0xC)

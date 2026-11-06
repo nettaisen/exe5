@@ -131,9 +131,8 @@ local function fly(me: Object)
                 hit_effect = nil,
                 target = collision.hits_navis,
                 self_type = collision.attack,
-                damage = me.damage,
-                stamina = me.stamina,
-                hit_mod = 3,
+                damage = me.damage_word,
+                hit_mod = { flinch = true, flash = true },
             })
             if box then
                 box.run_while_dimmed = me.run_while_dimmed
@@ -210,7 +209,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, 3)
+    me:setup_collision(collision.thrown, collision.hits_navis, { flinch = true, flash = true })
     local c = me.collision
     c:set_hit_effect(nil)
     c:set_region(nil)
@@ -284,7 +283,7 @@ function bomb.lob(owner: Object, pos: Vec3, lob: Lob): Object?
     s.target_x, s.target_y = lob.target_x, lob.target_y
     o.alliance, o.flip = owner.alliance, owner.flip
     o.element = 1
-    o:set_damage_word(lob.damage)
+    o.damage_word = lob.damage
     if lob.while_dimmed then
         o.run_while_dimmed = true
     end

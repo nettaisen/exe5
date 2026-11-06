@@ -98,7 +98,7 @@ local function fire(me: Object)
             gravity = -0xA000,
             target_x = tx,
             target_y = me.panel_y,
-            damage = bit32.bor(me.damage, bit32.lshift(me.stamina, 16)),
+            damage = me.damage_word,
             while_dimmed = true,
         })
         battle.play_sound(SOUND_FIRE)

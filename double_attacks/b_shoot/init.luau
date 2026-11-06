@@ -42,7 +42,7 @@ local BALLS, BALL_TICKS = 6, 0x14
 -- that height; then 8 pixels a tick forward until 150 pixels past the screen's middle.
 local BALL_SPRITE = asset.sprite("django-rubble")
 local pink_flash_sprite = asset.sprite("pink-flash")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local DROP_Z, DROP_X, DROP_Y = 0xBE0000, 0x12, 0xA
 local FALL_ACCEL, KICK_Z = 0x2000, 0x1A0000
 local KICK = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 2, steps = 10 }
@@ -204,7 +204,7 @@ local function drop_ball(me: Object, row: number)
     end
     o.panel_x, o.panel_y = me.panel_x, me.panel_y
     o.element = 0
-    o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+    o.damage_word = me.damage_word
     o.alliance, o.flip = me.alliance, me.flip
     o.related1 = me
     o.run_while_dimmed = true
@@ -354,7 +354,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 40,
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = {},
     action = cannon_chips.cannon.action,

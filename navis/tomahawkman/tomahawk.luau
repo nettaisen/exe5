@@ -29,7 +29,7 @@ local SOUND = asset.sound("tomahawk-throw")
 local HEIGHT = 16 * 0x1_0000
 -- Its speed along a row and along the column (16.16).
 local SPEED, CROSSING_SPEED = 0x4_0000, 0x2_8000
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- An enemy's body on a panel, by its side (0x080DCD74, 0x080DCE00).
 local ENEMY_BODY = "enemy_body"
 
@@ -203,7 +203,7 @@ function tomahawk.throw(owner: Object, element: number, damage: number): Object?
     local o = battle.spawn(tomahawk.kind, Vec3.new(p.x, p.y, 0))
     if o then
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
     end
     return o

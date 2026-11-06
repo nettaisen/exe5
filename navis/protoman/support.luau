@@ -51,9 +51,8 @@ local function swing(me: Object)
             region = regions.wide,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = me.damage,
-            stamina = me.stamina,
-            hit_mod = 0,
+            damage = me.damage_word,
+            hit_mod = {},
         })
         local cx, cy = field.center(x, y)
         battle.effect(Vec3.new(cx, cy, SWING_Z), SLASH, bit32.bxor(me.alliance, me.flip))

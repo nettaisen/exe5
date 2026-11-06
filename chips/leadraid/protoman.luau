@@ -176,9 +176,8 @@ local function slash(me: Object)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.slash,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true

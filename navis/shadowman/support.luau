@@ -76,9 +76,8 @@ local function strike_update(me: Object)
         region = regions.single,
         target = collision.hits_navis,
         self_type = collision.attack,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 0,
+        damage = me.damage_word,
+        hit_mod = {},
         status = kind.status,
     })
     battle.play_sound(BURST_SOUND)
@@ -113,7 +112,7 @@ local function send_strike(me: Object, x: number, y: number, kind: number)
         o.element = 0
         o.related1 = me
         o.alliance, o.flip = me.alliance, me.flip
-        o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)));
+        o.damage_word = me.damage_word;
         (o.state :: StrikeState).kind = kind
     end
 end

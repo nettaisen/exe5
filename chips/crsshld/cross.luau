@@ -50,7 +50,7 @@ local function cross_strike(me: Object)
     if t > 0 then
         return
     end
-    me:setup_collision(collision.attack, collision.hits_navis, 3)
+    me:setup_collision(collision.attack, collision.hits_navis, { flinch = true, flash = true })
     me.timer = 4
     me.action, me.phase, me.phase_init = DONE, 0, 0
 end
@@ -105,7 +105,7 @@ local function cross_init(me: Object)
     if not me:create_collision() then
         error("CrsShld's cross has no collision: 0x080DB27C goes on through a null pointer")
     end
-    me:setup_collision(collision.nothing, collision.hits_navis, 0)
+    me:setup_collision(collision.nothing, collision.hits_navis, {})
     sprite:set_flip(bit32.bxor(me.alliance, me.flip))
     me.visible = true
     sprite.palette = (me.state :: CrossState).palette
@@ -146,7 +146,7 @@ function cross.spawn(owner: Object, x: number, y: number, element: number, damag
         (o.state :: CrossState).palette = palette
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

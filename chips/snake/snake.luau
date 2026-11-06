@@ -29,7 +29,7 @@ snake.kind = common.make_kind("snake/snake", {
     wait = 0x30,
     strike_element = 4,
     strike_spark = sparks.wood,
-    strike_hit_mod = 3,
+    strike_hit_mod = { flinch = true, flash = true },
     is = collision.attack,
     hits = collision.hits_navis,
     joined = function(_me: Object) end,

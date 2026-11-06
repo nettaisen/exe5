@@ -17,7 +17,7 @@ local chip: Chip = {
     rarity = 4,
     mb = 81,
     damage = { formula = "hp_lost", cap = 999 },
-    hit_param = 50,
+    counter = 50,
     lockout = 0,
     flags = { "has_damage", "damage_shown_variable", "library", "variable_damage" },
     -- (The custom screen shows its damage as "???" only on an A, which it never comes as.)
@@ -27,7 +27,7 @@ local chip: Chip = {
     action = swords.slash {
         blade = swords.blade,
         blade_anim = swords.blade_anim,
-        hit = { region = regions.long, collision = swords.slashes_navis, hit_mod = 3 },
+        hit = { region = regions.long, collision = swords.slashes_navis, hit_mod = { flinch = true, flash = true } },
         effect = new.effect { sprite = sword_slash_sprite, anim = 1, palette = 8, steps = 15 },
         sound = swords.swing,
     },

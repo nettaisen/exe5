@@ -40,7 +40,7 @@ local FLASHES = {
 local FLASHES_A_VOLLEY = 3
 -- A volley's hit (0x020A1018): the other side's area (region 0x82 for side 0, 0x81 for side 1), no spark, hitting navis
 -- as a slash, hit modifier 3.
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- 0x020A1040: a flash on a panel of the other side's area but its own, at random (one `rng_positive` draw when there
 -- is one), facing its way.
@@ -71,8 +71,7 @@ local function hit(me: Object)
         region = regions.other_area[me.alliance],
         target = collision.hits_navis,
         self_type = collision.slash,
-        damage = me.damage,
-        stamina = me.stamina,
+        damage = me.damage_word,
         hit_mod = HIT_MOD,
     })
 end
@@ -170,7 +169,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 5,
     damage = 40,
-    hit_param = 131,
+    counter = 3,
+    cant_counter = true,
     lockout = 0,
     flags = {},
     action = cannon_chips.cannon.action,

@@ -118,7 +118,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.breaking, collision.hits_navis, 3)
+    me:setup_collision(collision.breaking, collision.hits_navis, { flinch = true, flash = true })
     local c = me.collision
     c:set_hit_effect(sparks.breaking)
     c:present()
@@ -155,7 +155,7 @@ function ball.spawn(owner: Object, damage: number, swing: Swing): Object?
         local s = o.state :: State
         s.speed, s.turns, s.status, s.look = swing.speed, swing.turns, swing.status, swing.look
         o.related1 = owner
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
         o.element = 0
     end

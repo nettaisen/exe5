@@ -16,11 +16,11 @@ export type State = {
     timer: number,
 }
 
-local HIT_PARAM = 0x9E
+local COUNTER = 30
 local ANIM = 16
 local SOUND = asset.sound("tomahawk-man")
 local SWING_TICKS, STRIKE_AT, RECOVER_TICKS = 21, 12, 5
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local WOOD = 4
 -- Effect 0x45: the big slash (sprite 0C-15, animation 1), 16 pixels up.
 local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 15 }
@@ -47,8 +47,7 @@ local function swing(me: Object, s: State)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = me.attack_damage,
-            stamina = me.hit_param,
+            damage = me.attack_word,
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(x, y)
@@ -99,8 +98,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = 70 + 10 * (battle.navi(navi.alliance).attack + 1)
+    navi.attack_word = damage_word.of { amount = 70 + 10 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     return charge.action
 end
 

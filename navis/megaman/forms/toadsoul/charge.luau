@@ -20,7 +20,7 @@ export type State = {
     target: Object?,
 }
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 local ANIM = 16
 -- His horn (the attachment table's row 0x31: sprite 0C-1F, palette 0, at his position).
 local HORN = attachment.look { sprite = toadsoul_horn_sprite, palette = 0 }
@@ -38,7 +38,7 @@ local function blow(me: Object, s: State)
         me.status.using_action = true
         attachment.attach(me, HORN, "overlay", { anim = 0 })
         battle.play_sound(SOUND)
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+        local damage = me.attack_word
         note.spawn(me, me.panel_x + me.facing, me.panel_y, CHAIN, s.target, damage)
         me.step_init = 4
     end
@@ -85,8 +85,7 @@ local function setup(navi: Object): Action
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
-    navi.attack_damage = 20 + 10 * (battle.navi(navi.alliance).attack + 1)
+    navi.attack_word = damage_word.of { amount = 20 + 10 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     local s = navi:action_state(charge.action) :: State
     s.target = toadman.find_target(navi)
     return charge.action

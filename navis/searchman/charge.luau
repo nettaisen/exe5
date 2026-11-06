@@ -9,7 +9,7 @@ local shots = require("../megaman/forms/searchsoul/charge")
 
 local charge = {}
 
-local HIT_PARAM = 0x8A
+local COUNTER = 10
 -- The damage rows' row 4, by his level: a shot's damage.
 local DAMAGE: { number } = { 10, 10, 10, 10, 10, 10, 15 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 4 (0x0203E31E): a base and a step for each attack
@@ -21,8 +21,7 @@ local PARTY: { { number } } = {
 
 -- 0x0800FB1A
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.attack_element = 0
     return shots.action
 end

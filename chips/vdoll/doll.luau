@@ -37,7 +37,7 @@ return common.make {
     },
     is = collision.neutral_body,
     hits = collision.everything,
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     -- 0x08016C3C(0): hit effect 0.
     spark = sparks.plain,
     breaking_hits = { "own_body", "enemy_body", "neutral", "break" },

@@ -10,7 +10,7 @@ export type FlyingShotVariant = {
     -- the hit modifier).
     is: CollisionType,
     hits: CollisionType,
-    hit_mod: number,
+    hit_mod: HitModifier,
     -- Its element byte.
     element: number,
     -- Its hit spark (0xFF: none).
@@ -43,7 +43,7 @@ export type KnightBallSwing = { speed: number, turns: number, status: Status?, l
 export type CrakBomVariant = {
     burst: Effect,
     sound: Sound,
-    hit_mod: number,
+    hit_mod: HitModifier,
     status: Status?,
     bug: number,
     cracks: boolean,
@@ -68,7 +68,7 @@ export type LarkSwoopVariant = {
 -- parameter, 0x080D2DE0 and 0x080D2DEC): its hit modifier and status; whether
 -- it waits for MagnetMan to be done sending (else it goes at once), and
 -- whether it acts and animates while the battle is dimmed.
-export type MagnetVariant = { hit_mod: number, status: Status?, waits_for_navi: boolean, runs_while_dimmed: boolean }
+export type MagnetVariant = { hit_mod: HitModifier, status: Status?, waits_for_navi: boolean, runs_while_dimmed: boolean }
 
 -- A Meddy capsule's variant (chips/meddy/capsule: the original's first
 -- parameter): its palette (0x080C5FE8), its body's and its burst's hit
@@ -77,7 +77,7 @@ export type MagnetVariant = { hit_mod: number, status: Status?, waits_for_navi: 
 -- and its line (its second parameter: 0x080C628C, 0x080C6298, 0x080C633C):
 -- its burst's region, the panels it explodes on, its target's marker style
 -- and its animation as it sits.
-export type CapsuleVariant = { palette: number, hit_mod: number, status: Status?, explosion: Effect }
+export type CapsuleVariant = { palette: number, hit_mod: HitModifier, status: Status?, explosion: Effect }
 export type CapsuleLine = { region: Region, panels: { { number } }, style: number, anim: number }
 
 -- A button a soul adds to the custom screen (a `ButtonSpec` of the souls

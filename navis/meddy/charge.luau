@@ -10,7 +10,7 @@ local throw = require("./throw")
 
 local charge = {}
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 -- The damage rows' row 10, by her level.
 local DAMAGE: { number } = { 80, 80, 80, 80, 80, 80, 100 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 10 (0x0203E31E): a base and a step for each attack
@@ -24,9 +24,8 @@ charge.action = throw.action({ variant = capsule.plain, line = capsule.column, w
 
 -- 0x0800FAA2
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.extra = 0
-    navi.hit_param = HIT_PARAM
     navi.attack_element = 0
     return charge.action
 end

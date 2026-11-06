@@ -29,7 +29,7 @@ export type State = {
 -- hitting navis, hit modifier 3.
 local SPRITE = asset.sprite("pit-wave")
 local SOUND = asset.sound("pit-wave")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local WAIT = 20
 -- Each segment plays out over 27 of its sprite's steps (its animation's length).
 local FADE_STEPS = 27
@@ -58,7 +58,7 @@ end
 -- fades.
 local function spread(me: Object)
     if me.collision.region then
-        local damage = int.u32(me.damage + me.stamina * 0x10000)
+        local damage = me.damage_word
         wavepit.spawn(me, me.panel_x + me.facing, me.panel_y, me.element, damage, (me.state :: State).palette, false)
     end
     me.action = FADE
@@ -161,7 +161,7 @@ function wavepit.spawn(owner: Object, x: number, y: number, element: number, dam
         s.palette, s.anywhere = palette, anywhere
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

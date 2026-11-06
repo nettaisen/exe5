@@ -30,7 +30,7 @@ local action = new.action {
         if step == CALL then
             -- 0x080F0E18: the controller, with the attack's element, damage word and bonus; its telop names the
             -- chip.
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+            local damage = me.attack_word
             local c = controller.spawn(me, me.attack_element, damage, me.extra)
             dimming.start(me.alliance, true, c, me, { chip = satelity, bonus = me.extra })
             me.step, me.step_init = LEAVE, 0
@@ -60,7 +60,8 @@ satelity = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 100, 100, 100, 100, 100, 100, 100 }),
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = { "dimming", "has_damage", "library", "variable_damage" },
     slot_in_limit = 1,

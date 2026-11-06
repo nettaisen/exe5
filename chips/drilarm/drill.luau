@@ -53,7 +53,7 @@ function exe5_drill.action(spec: Spec): Action
             me:set_animation(0x0A)
             attachment.attach(me, ARM, "overlay", { anim = ARM_DRILLING, palette_add = arm_palette })
             -- The damage word (the hit parameter in its high half), plus the Atk+ bonus.
-            local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
+            local damage = damage_word.plus(me.attack_word, me.extra)
             spawn(me, me.attack_element, HEIGHT, damage, { ticks = ticks, bugs = spec.bugs })
             me:open_counter_window()
             s.timer = ticks + 0x0A

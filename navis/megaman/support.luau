@@ -48,7 +48,7 @@ local WEIGHTS = { [BUSTER] = 6, [SWORD] = 6, [BOMB] = 4 }
 -- animation 7, 4 ticks.
 local CANNON = attachment.look { sprite = cannon_sprite, palette = 0, attach_point = 7 }
 local CANNON_SOUND = asset.sound("cannon")
-local SHOT = projectile.variant { id = "shot/megaman-support", collision = { is = collision.attack, hits = collision.hits_navis }, hit_mod = 0, element = "null", spark = sparks.impact }
+local SHOT = projectile.variant { id = "shot/megaman-support", collision = { is = collision.attack, hits = collision.hits_navis }, hit_mod = {}, element = "null", spark = sparks.impact }
 -- His sword: animation 5, the sword (row 3), its sound; on its 10th tick a hit over the panel ahead and the one past it
 -- (region 2, a slash at navis, on the ground) and the long slash 16 pixels up (effect 0x17); 22 ticks; then 6.
 local SWORD_LOOK = attachment.look { sprite = sword_sprite, palette = 0 }
@@ -60,7 +60,7 @@ local BOMB_LOOK = attachment.look { sprite = bomb_sprite, palette = 0 }
 local THROW_SOUND = asset.sound("minibomb-throw")
 local THROWER = bombs.thrower(bombs.variant {
     collision = { is = collision.thrown, hits = collision.hits_navis },
-    hit_mod = 0,
+    hit_mod = {},
     palette = 0,
     anim = 1,
     blast = regions.single,
@@ -115,7 +115,7 @@ local function fell_below(me: Object, ticks: number): boolean
 end
 
 local function damage_word(me: Object): number
-    return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
+    return me.damage_word
 end
 
 -- 0x021FEED1, 0x021FEF2D: the buster.
@@ -167,9 +167,8 @@ local function sword(me: Object)
                 region = regions.long,
                 target = collision.hits_navis,
                 self_type = collision.slash,
-                damage = me.damage,
-                stamina = me.stamina,
-                hit_mod = 0,
+                damage = me.damage_word,
+                hit_mod = {},
             })
             local cx, cy = field.center(x, y)
             battle.effect(Vec3.new(cx, cy, 0x10_0000), LONG_SLASH, bit32.bxor(me.alliance, me.flip))

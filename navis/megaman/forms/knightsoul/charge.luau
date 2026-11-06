@@ -17,7 +17,7 @@ export type State = {
     timer: number,
 }
 
-local HIT_PARAM = 0x9E
+local COUNTER = 30
 local SWING_ANIM, AFTER_ANIM = 16, 17
 local SOUND = asset.sound("knight-swing")
 local SWING_AT, SWING_TICKS, HOLD_TICKS = 4, 15, 15
@@ -41,7 +41,7 @@ local function swing(me: Object, s: State)
     end
     if s.timer == SWING_AT then
         battle.play_sound(SOUND)
-        ball.spawn(me, int.u32(me.attack_damage + me.hit_param * 0x10000), SWING)
+        ball.spawn(me, me.attack_word, SWING)
     end
     s.timer += 1
     if s.timer >= SWING_TICKS then
@@ -90,8 +90,7 @@ charge.action = new.action {
 
 -- 0x0800F7A6 (its AIAttackVars +3 1, +0x28 his second related object and +0x30 0, which the action doesn't read).
 local function setup(navi: Object): Action
-    navi.attack_damage = 30 + 10 * (battle.navi(navi.alliance).attack + 1)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = 30 + 10 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     navi.marker = 0
     return charge.action
 end

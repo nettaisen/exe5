@@ -25,7 +25,7 @@ export type State = {
     timer: number,
 }
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 -- The damage rows' row 22, by his level.
 local DAMAGE: { number } = { 100, 100, 100, 100, 100, 100, 100 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 22 (0x0203E31E): a base and a step for each attack
@@ -44,7 +44,7 @@ local COUNTER_TICKS = 60
 -- What he rises a tick as he surfaces, and how high his strike hits (16.16).
 local RISE, STRIKE_Z = 8 * 0x1_0000, 16 * 0x1_0000
 local AQUA = 2
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- The panel flags (0x080F1C98, 0x080F1C68): a body of the other side's, by his side; a panel that can be stood on;
 -- any body.
 local ENEMY_BODY, STANDS, BODY = "enemy_body", "solid", "any_body"
@@ -165,8 +165,7 @@ local function strike(me: Object, s: State)
             hit_effect = sparks.aqua,
             target = collision.hits_navis,
             self_type = collision.attack,
-            damage = me.attack_damage,
-            stamina = me.hit_param,
+            damage = me.attack_word,
             hit_mod = HIT_MOD,
         })
     end
@@ -260,8 +259,7 @@ charge.action = new.action {
 
 -- 0x0800FA1C
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.attack_variant = 0
     return charge.action
 end

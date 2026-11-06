@@ -53,11 +53,10 @@ function exe5.setup(navi: Object): Action
         return charged_shot.setup(navi)
     end
     local stats = battle.navi(navi.alliance)
-    navi.attack_damage = stats.attack + stats.navi.buster_bonus
+    navi.attack_word = damage_word.of { amount = stats.attack + stats.navi.buster_bonus, counter = 0 }
     navi.attack_element = 0
     navi.charged = 0
     navi.extra = 0
-    navi.hit_param = 0
     navi.attack_lockout = 0
     local program = variants.plain
     if bit32.band(battle.rng_positive(), 4) ~= 0 then

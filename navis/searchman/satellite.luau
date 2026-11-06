@@ -92,7 +92,7 @@ local function spawn_flare(beam: Object, x: number, y: number, way: number, s: S
         o.panel_x, o.panel_y = x, y
         o.element = beam.element
         o.related1 = beam
-        o:set_damage_word(bit32.bor(beam.damage, bit32.lshift(beam.stamina, 16)))
+        o.damage_word = beam.damage_word
         o.alliance, o.flip = beam.alliance, beam.flip
         o.run_while_dimmed = true
     end
@@ -107,7 +107,7 @@ local function spawn_beam(sat: Object, s: State): Object?
         b.while_dimmed, b.ticks = s.while_dimmed, s.ticks
         o.panel_x, o.panel_y = sat.panel_x, sat.panel_y
         o.element = sat.element
-        o:set_damage_word(bit32.bor(sat.damage, bit32.lshift(sat.stamina, 16)))
+        o.damage_word = sat.damage_word
         o.related1 = sat.related1
         o.alliance, o.flip = sat.alliance, sat.flip
         if s.while_dimmed then
@@ -248,9 +248,8 @@ local function beam_init(me: Object, s: State)
         hit_effect = nil,
         target = collision.hits_navis,
         self_type = collision.curse,
-        damage = me.damage,
-        stamina = me.stamina,
-        hit_mod = 3,
+        damage = me.damage_word,
+        hit_mod = { flinch = true, flash = true },
     })
     if box then
         box.run_while_dimmed = true
@@ -325,7 +324,7 @@ local function flare_init(me: Object, f: FlareState)
         me:free()
         return
     end
-    me:setup_collision(collision.attack, collision.hits_navis, 3)
+    me:setup_collision(collision.attack, collision.hits_navis, { flinch = true, flash = true })
     me.collision:set_region(nil)
     me.collision:present()
     me:set_lifecycle("update")
@@ -414,7 +413,7 @@ function satellite.spawn(owner: Object, x: number, y: number, element: number, d
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.related1 = owner
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         if while_dimmed then
             o.run_while_dimmed = true

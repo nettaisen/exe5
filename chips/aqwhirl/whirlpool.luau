@@ -21,7 +21,7 @@ export type State = {
 
 local SPRITE = asset.sprite("aqua-whirl")
 local SOUND = asset.sound("spout-beast-charge")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- 0x080D1A78: the panel flag of an enemy navi, by its side: the other side's body.
 local ENEMY_NAVI = "enemy_body"
 
@@ -247,7 +247,7 @@ function whirlpool.spawn(
         s.palette, s.speed = palette, speed
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner
     end

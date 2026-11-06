@@ -27,7 +27,7 @@ local LOOK: SpreaderLook = {
 -- Its bullet (row 3: EXE6's with EXE5's flash, effect 0x21, and sound): a burst over the 3x3 around the panel found.
 local BURST = bullet.variant {
     region = regions.square,
-    hit_mod = 0,
+    hit_mod = {},
     effect = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
     sound = asset.sound("h-burst"),
 }
@@ -40,7 +40,7 @@ local chip: Chip = {
     rarity = 1,
     mb = 10,
     damage = 30,
-    hit_param = 10,
+    counter = 10,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     slot_in_limit = 3,

@@ -11,7 +11,7 @@ local regions = require("@exelib/regions")
 local frog = {}
 
 local FALL_FROM, GRAVITY, LOW = 0xC00000, -0x4000, 0x140000
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 local FROG = asset.sprite("frog")
 local SOUND_DROP = asset.sound("drop")
 -- Landed: 20 ticks; the puff 10 pixels up.
@@ -131,7 +131,7 @@ function frog.spawn(toadman: Object, x: number, y: number): Object?
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = 2
-        o:set_damage_word(bit32.bor(toadman.damage, bit32.lshift(toadman.stamina, 16)))
+        o.damage_word = toadman.damage_word
         o.alliance, o.flip = toadman.alliance, toadman.flip
         o.related1 = toadman
         o.run_while_dimmed = true

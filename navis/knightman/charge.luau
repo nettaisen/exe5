@@ -24,7 +24,7 @@ export type State = {
     wait: number,
 }
 
-local HIT_PARAM = 0x9E
+local COUNTER = 30
 -- The damage rows' row 20, by his level.
 local DAMAGE: { number } = { 80, 80, 80, 100, 100, 120, 120 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 20 (0x0203E31E): a base and a step for each attack
@@ -71,7 +71,7 @@ local function swing(me: Object, s: State)
         s.timer = SWING_TICKS
         chain.hide(me)
         battle.play_sound(SOUND)
-        ball.spawn(me, int.u32(me.attack_damage + me.hit_param * 0x10000), SWING)
+        ball.spawn(me, me.attack_word, SWING)
         me.step_init = 4
         return
     end
@@ -107,8 +107,7 @@ charge.action = new.action {
 
 -- 0x0800F776
 local function setup(navi: Object): Action
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     navi.attack_variant = 1
     local s = navi:action_state(charge.action) :: State
     s.wait = 0

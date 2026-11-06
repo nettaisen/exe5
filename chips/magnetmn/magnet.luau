@@ -278,7 +278,7 @@ function magnet.spawn(navi: Object, x: number, y: number, element: number, spec:
         o.panel_x, o.panel_y = x, y
         o.element = element
         o.related1 = navi
-        o:set_damage_word(spec.damage)
+        o.damage_word = spec.damage
         o.alliance, o.flip = navi.alliance, navi.flip
         o.run_while_dimmed = true
     end

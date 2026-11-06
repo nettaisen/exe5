@@ -105,7 +105,7 @@ function controller.spawn(user: Object, element: number, damage: number, bonus: 
         o.element = element
         o.related1 = user
         o.alliance, o.flip = user.alliance, user.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
     end
     return o
 end

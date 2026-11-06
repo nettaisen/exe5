@@ -22,11 +22,11 @@ export type State = {
     target_y: number,
 }
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 local ANIM = 5
 local SOUND = asset.sound("spin")
 local DRAW_TICKS, SLASH_AT, RECOVER_TICKS = 21, 9, 5
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- An enemy body, by side (0x080BA5B0).
 local ENEMY_BODY = "enemy_body"
 -- The slash: AIAttackVars +3's row of 0x080EED64 and its effect (0x48 on: sprite 10-1F), row 0, the routine's (the
@@ -73,8 +73,7 @@ local function draw(me: Object, s: State)
             hit_effect = nil,
             target = collision.hits_navis,
             self_type = collision.slash,
-            damage = me.attack_damage,
-            stamina = me.hit_param,
+            damage = me.attack_word,
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(s.target_x, s.target_y)
@@ -121,8 +120,7 @@ charge.action = new.action {
 
 -- 0x0800F7E4
 local function setup(navi: Object): Action
-    navi.attack_damage = 40 + 10 * (battle.navi(navi.alliance).attack + 1)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = 40 + 10 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
     local s = navi:action_state(charge.action) :: State
     s.target_x, s.target_y = target(navi)
     return charge.action

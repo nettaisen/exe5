@@ -25,7 +25,7 @@ local STAND: PanelCondition = { require = { "solid", "own_area" }, forbid = "occ
 -- its hit modifier the DS's shell row 2's (0x48), not cracking; 18 ticks; then 10 more before the cannon goes.
 local ANIM_RAISE, ANIM_FIRE = 0xA, 9
 local RAISE_TICKS, HOLD_TICKS, FIRE_AT, FIRE_ENDS, AFTER_TICKS = 8, 0x1E, 5, 0x12, 0xA
-local SHELL: ShellSpec = { hit_mod = 0x48, cracks = false, shift = 0 }
+local SHELL: ShellSpec = { hit_mod = { back_far = true, drag = true }, cracks = false, shift = 0 }
 local SHELL_Z = 0x10_0000
 local RAISE, HOLD, FIRE, AFTER = 0x0, 0x4, 0x8, 0xC
 
@@ -66,7 +66,7 @@ local function fire(me: Object)
     end
     if me.timer == FIRE_AT then
         battle.shake_camera(1, 0x14)
-        shell.fire(tankcan.kind, me, me.panel_x + me.facing, me.panel_y, SHELL_Z, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)), SHELL)
+        shell.fire(tankcan.kind, me, me.panel_x + me.facing, me.panel_y, SHELL_Z, me.damage_word, SHELL)
     end
     me.timer += 1
     if me.timer >= FIRE_ENDS then

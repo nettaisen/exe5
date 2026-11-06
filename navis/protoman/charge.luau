@@ -9,7 +9,7 @@ local wideswrd = require("../../chips/wideswrd").wideswrd
 
 local charge = {}
 
-local HIT_PARAM = 0x94
+local COUNTER = 20
 -- The damage rows' row 0, by his level.
 local DAMAGE: { number } = { 60, 60, 70, 70, 80, 80, 80 }
 -- In a party (EXE5 DS's party battle), the DS's link table's row 0 (0x0203E31E): a base and a step for each attack
@@ -22,8 +22,7 @@ local PARTY: { { number } } = {
 -- 0x0800F8CE
 local function setup(navi: Object): Chip
     navi:load_chip_attack(wideswrd)
-    navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
-    navi.hit_param = HIT_PARAM
+    navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
     return wideswrd
 end
 

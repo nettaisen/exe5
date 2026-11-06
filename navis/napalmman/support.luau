@@ -37,7 +37,7 @@ local FLASH = attachment.look { sprite = muzzle_flash_sprite, palette = 0, attac
 -- animation 1 (effect 0x58) at the bullet.
 local SHOT = bullet.variant {
     region = regions.long,
-    hit_mod = 0,
+    hit_mod = {},
     effect = new.effect { sprite = vulcan_hit_sprite, anim = 1, palette = 0, steps = 10 },
     single = true,
 }
@@ -62,7 +62,7 @@ local function fire(me: Object)
     if me.timer == 1 then
         battle.play_sound(SHOT_SOUND)
         local z = HEIGHTS[bit32.band(battle.rng_positive(), 3) + 1]
-        bullets.fire(bullet.kind, me, me.panel_x + me.facing, me.panel_y, z, SHOT, me.element, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+        bullets.fire(bullet.kind, me, me.panel_x + me.facing, me.panel_y, z, SHOT, me.element, me.damage_word)
         attachment.attach(me, FLASH, "related", { anim = 0, while_dimmed = true })
     end
     me.timer += 1

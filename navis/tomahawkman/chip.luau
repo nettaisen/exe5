@@ -23,7 +23,7 @@ local RAISE_TICKS, SWING_TICKS, RECOVER_TICKS = 30, 30, 30
 -- The swing's count when the slash lands.
 local SLASH_AT = 20
 local SOUND = asset.sound("tomahawk-man")
-local HIT_MOD = 3
+local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- Effect 0x45: the big slash (sprite 0C-15, animation 1), 16 pixels up.
 local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 15 }
 local SLASH_Z = 16 * 0x1_0000
@@ -31,7 +31,7 @@ local SLASH_Z = 16 * 0x1_0000
 -- The slash over the panel ahead and the column past it (the damage word plus the Atk+ bonus), and its effect.
 local function slash(me: Object)
     local x, y = me.panel_x + me.facing, me.panel_y
-    local word = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+    local word = damage_word.plus(me.attack_word, me.extra)
     battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
@@ -41,8 +41,7 @@ local function slash(me: Object)
         hit_effect = nil,
         target = collision.nothing,
         self_type = collision.slash,
-        damage = bit32.band(word, 0xFFFF),
-        stamina = bit32.rshift(word, 16),
+        damage = word,
         hit_mod = HIT_MOD,
     })
     local cx, cy = field.center(x, y)
@@ -125,7 +124,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 100, 100, 100, 100, 100, 120, 120 }),
-    hit_param = 158,
+    counter = 30,
+    cant_counter = true,
     lockout = 0,
     flags = { "has_damage", "library", "variable_damage" },
     slot_in_limit = 1,

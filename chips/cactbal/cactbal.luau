@@ -20,7 +20,7 @@ local SPRITE = asset.sprite("cactus")
 local ANIM = 4
 local THROW_SOUND, LAND_SOUND = asset.sound("cactus-throw"), asset.sound("cactus-hop")
 -- Its collision (0x04050100): an attack that hits navis, hit modifier 1.
-local HIT_MOD = 1
+local HIT_MOD: HitModifier = { flinch = true }
 -- Falling 0.25 pixels a tick faster each tick.
 local GRAVITY = int.i32(0xFFFFC000)
 -- The first hop: two panels in 15 ticks; then one panel in 10.
@@ -211,7 +211,7 @@ local function throw(owner: Object, pos: Vec3, damage: number, palette: number):
     if o then
         o.element = 4
         o.alliance, o.flip = owner.alliance, owner.flip
-        o:set_damage_word(damage)
+        o.damage_word = damage
         ;(o.state :: State).palette = palette
     end
     return o
@@ -240,7 +240,7 @@ function cactbal.action(palette: number): Action
             me.step_init = 4
         end
         if s.timer == THROW_AT then
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+            local damage = damage_word.plus(me.attack_word, me.extra)
             local p = me.pos
             throw(me, Vec3.new(p.x, p.y, p.z + 0x10_0000), damage, palette)
         end

@@ -85,9 +85,8 @@ local function burst(me: Object)
                 region = regions.single,
                 target = collision.hits_navis,
                 self_type = collision.attack,
-                damage = me.damage,
-                stamina = me.stamina,
-                hit_mod = 3,
+                damage = me.damage_word,
+                hit_mod = { flinch = true, flash = true },
                 status = statuses.confuse_480,
             })
             if h then
@@ -166,7 +165,7 @@ function bomb.spawn(thrower: Object, pos: Vec3, quarter: number): Object?
     (o.state :: State).quarter = quarter
     o.element = 0
     o.alliance, o.flip = thrower.alliance, thrower.flip
-    o:set_damage_word(bit32.bor(thrower.damage, bit32.lshift(thrower.stamina, 16)))
+    o.damage_word = thrower.damage_word
     o.related1 = thrower
     o.run_while_dimmed = true
     return o

@@ -22,7 +22,8 @@ local chip: Chip = {
     rarity = 4,
     mb = 99,
     damage = 400,
-    hit_param = 158,
+    counter = 30,
+    cant_counter = true,
     lockout = 0,
     flags = { "has_damage", "dark", "variable_damage" },
     slot_in_limit = 1,
@@ -32,7 +33,7 @@ local chip: Chip = {
         hit = {
             region = regions.wide_long,
             collision = { is = collision.collision_11, hits = collision.hits_navis },
-            hit_mod = 3,
+            hit_mod = { flinch = true, flash = true },
             bug = 0x14,
             bug_arg = 2,
         },

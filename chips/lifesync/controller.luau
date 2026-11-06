@@ -91,7 +91,7 @@ local function aim(me: Object)
                 target = collision.hits_navis,
                 self_type = collision.attack,
                 damage = 50,
-                hit_mod = 3,
+                hit_mod = { flinch = true, flash = true },
             })
             if h then
                 h.run_while_dimmed = true

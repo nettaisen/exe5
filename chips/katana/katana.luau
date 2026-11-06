@@ -37,8 +37,8 @@ local START, SET_UP, SWING, STEP_BACK, RECOVER = 0x0, 0x4, 0x8, 0xC, 0x10
 -- The swings' hits and slashes, the last swing first (0x080EFBC4, 0x080EFBE0): the long slash (region 2, hit
 -- modifier 3, effect 0x17) and before it the wide one (region 4, hit modifier 1, effect 0x16).
 local SWINGS = {
-    [1] = { region = regions.long, hit_mod = 3, effect = LONG_SLASH },
-    [2] = { region = regions.wide, hit_mod = 1, effect = WIDE_SLASH },
+    [1] = { region = regions.long, hit_mod = { flinch = true, flash = true }, effect = LONG_SLASH },
+    [2] = { region = regions.wide, hit_mod = { flinch = true }, effect = WIDE_SLASH },
 }
 
 local function set_step(me: Object, step: number)
@@ -93,7 +93,7 @@ katana.action = new.action {
                     error(string.format("Katana swing %d reads past its tables", me.attack_count))
                 end
                 local x, y = me.panel_x + me.facing, me.panel_y
-                local word = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+                local word = damage_word.plus(me.attack_word, me.extra)
                 battle.hitbox(me, {
                     panel_x = x,
                     panel_y = y,
@@ -102,8 +102,7 @@ katana.action = new.action {
                     hit_effect = nil,
                     target = swords.slashes_navis.hits,
                     self_type = swords.slashes_navis.is,
-                    damage = bit32.band(word, 0xFFFF),
-                    stamina = bit32.rshift(word, 16),
+                    damage = word,
                     hit_mod = sw.hit_mod,
                     bug = 0,
                     bug_arg = 0,

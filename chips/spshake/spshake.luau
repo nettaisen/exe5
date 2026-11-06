@@ -160,7 +160,7 @@ function spshake.spawn(owner: Object, x: number, y: number, element: number, dam
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         local s = o.state :: State
         s.wave = wave

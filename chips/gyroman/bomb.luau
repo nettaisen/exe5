@@ -125,7 +125,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, 3)
+    me:setup_collision(collision.thrown, collision.hits_navis, { flinch = true, flash = true })
     local c = me.collision
     c:set_hit_effect(nil)
     c:set_region(nil)
@@ -161,7 +161,7 @@ function bomb.drop(owner: Object, x: number, y: number, element: number, while_d
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
-        o:set_damage_word(damage)
+        o.damage_word = damage
         o.alliance = owner.alliance
         if while_dimmed then
             o.run_while_dimmed = true

@@ -11,7 +11,7 @@ local crakbom = require("./crakbom/crakbom")
 local BOMB = crakbom.variant {
     burst = new.effect { sprite = crakbom.burst, anim = 0, palette = 3, steps = 18 },
     sound = asset.sound("panel-poison"),
-    hit_mod = 3,
+    hit_mod = { flinch = true, flash = true },
     bug = 0xFB,
     cracks = false,
 }
@@ -24,7 +24,7 @@ local chip: Chip = {
     rarity = 2,
     mb = 50,
     damage = 100,
-    hit_param = 30,
+    counter = 30,
     lockout = 0,
     flags = { "has_damage", "standard_library", "library" },
     slot_in_limit = 3,

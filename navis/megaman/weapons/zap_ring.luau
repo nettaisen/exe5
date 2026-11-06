@@ -65,7 +65,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.attack, collision.hits_navis, 0)
+    me:setup_collision(collision.attack, collision.hits_navis, {})
     me.collision.status_base = STATUS
     me.collision:set_hit_effect(sparks.of_element(me.element))
     me.collision:present()
@@ -100,7 +100,7 @@ local function send(owner: Object, x: number, y: number, element: number, z: num
     end
     o.panel_x, o.panel_y = x, y
     o.element = element
-    o:set_damage_word(damage)
+    o.damage_word = damage
     o.alliance, o.flip = owner.alliance, owner.flip
     o.related1 = owner
     return o
@@ -131,7 +131,7 @@ local function hold(me: Object, s: State)
     end
     if s.timer == SEND_AT then
         -- (The damage word takes the Atk+ bonus, AIAttackVars+6; the ring's row is the parameters' first byte: 0.)
-        local damage = int.u32(me.attack_damage + me.hit_param * 0x10000 + me.extra)
+        local damage = damage_word.plus(me.attack_word, me.extra)
         send(me, me.panel_x + me.facing, me.panel_y, me.attack_element, RING_Z, damage)
     end
     local t = s.timer - 1
@@ -178,8 +178,7 @@ return new.weapon {
     -- The charge table's row 0x42, by Charge 0 to 5: past 4 it reads on into row 0x43's first entry.
     charge_ticks = { 90, 85, 80, 75, 70, 60 },
     setup = function(navi: Object): Action
-        navi.attack_damage = 30
-        navi.hit_param = 10
+        navi.attack_word = damage_word.of { amount = 30, counter = 10 }
         navi.attack_element = 3
         navi.charged = 0
         navi.extra = 0

@@ -22,7 +22,7 @@ local action = new.action {
     update = function(me: Object)
         local x, y = aim.nearest_enemy(me)
         if x and y then
-            local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
+            local damage = me.attack_word
             shadow.send(me, x - me.facing, y, WAIT, damage, int.u32(damage + me.extra))
         end
         me:exit_attack()
@@ -37,7 +37,8 @@ local chip: Chip = {
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 80, 80, 80, 80, 80, 100, 100 }),
-    hit_param = 148,
+    counter = 20,
+    cant_counter = true,
     lockout = 0,
     flags = { "has_damage", "library", "variable_damage" },
     slot_in_limit = 1,

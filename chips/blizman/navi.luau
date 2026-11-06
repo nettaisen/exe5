@@ -38,7 +38,6 @@ local ROLLER = rollers.make_kind {
             enemy_other_body = true,
             neutral = true,
         },
-        row_offset = 0x248,
     },
 }
 -- His snowball (EXE5's attack object #0xB2, 0x080DC880).

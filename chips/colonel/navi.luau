@@ -56,7 +56,7 @@ local SLASHES: { [number]: Effect } = {
     [2] = new.effect { sprite = screen_divide_sprite, anim = 2, palette = 0, steps = 13 },
 }
 -- The panels his target holds (0x080BA5B0): an enemy navi's body, by side.
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelFlags = { enemy_body = true }
 -- When he strikes, and when his swing's sound plays (ticks left).
 local STRIKE, SWING = 0xC, 0x11
 

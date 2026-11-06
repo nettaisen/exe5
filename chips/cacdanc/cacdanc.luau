@@ -35,7 +35,7 @@ local BOUNCE_TICKS, BOUNCE_GRAVITY = 10, int.i32(0xFFFF0000)
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 -- The other side's navis (0x080DC860, 0x080E7F54: the other side's body) and the panels beside one (0x080DC868,
 -- 0x080E7F5C).
-local TARGETS = "enemy_body"
+local TARGETS: PanelFlags = { enemy_body = true }
 
 -- Its actions.
 local FALL, BOUNCE = 0, 4
@@ -226,7 +226,7 @@ export type DancerState = {
 -- 0x080E7EAC: a cactus on a random panel with one of the other side's navis on it, or on a coin flip on a random
 -- solid one beside that.
 local function drop(me: Object)
-    local list = panels.filtered(TARGETS, nil, me.alliance)
+    local list = panels.filtered(TARGETS, me.alliance)
     if #list == 0 then
         return
     end

@@ -34,22 +34,21 @@ local SOUND_THROW = asset.sound("boomerang")
 -- The effect table's row 2: the puff he vanishes in, 32 pixels up.
 local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
 -- Where the three appear (0x080BA158): the first panel of his user's side.
-local OWN_AREA = "own_area"
+local OWN_AREA: PanelCondition = { own_area = true }
 local RISE = 0x20_0000
 local HIT_MOD = 3
 
--- `object_getFirstPanelInDirectionFiltered`: from (x, y) along `dir`, the first panel that meets (require, forbid)
+-- `object_getFirstPanelInDirectionFiltered`: from (x, y) along `dir`, the first panel that meets `cond`
 -- (of side `side`; the first checked before the field's edge is); x 0 off the field.
 local function first_panel(
     x: number,
     y: number,
-    require: PanelFlags?,
-    forbid: PanelFlags?,
+    cond: PanelCondition?,
     dir: number,
     side: number
 ): (number, number)
     while true do
-        if field.check(x, y, require, forbid, side) then
+        if field.check(x, y, cond, side) then
             return x, y
         end
         x += dir
@@ -112,7 +111,7 @@ local function send(me: Object)
     local targeted: { [number]: boolean } = {}
     for i = 1, 3 do
         local row = 4 - i
-        local x, y = first_panel(start, row, OWN_AREA, nil, me.facing, me.alliance)
+        local x, y = first_panel(start, row, OWN_AREA, me.facing, me.alliance)
         if x ~= 0 then
             local target = pick_target(me, x, targeted)
             local user = me.related1 :: Object

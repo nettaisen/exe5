@@ -37,7 +37,13 @@ local DRIFT_X, DRIFT_Y = 40, 24
 -- fourth parameter, 0, picks).
 local BURST = flying_shot.variant { hit_mod = 3, element = 2, sprite = SPRITE, anim = 2, highlight = true, speed = 0x4_0000 }
 -- What a hit on a navi or an object leaves in its hit flags (0x080D85B4).
-local POPS: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
+local POPS: HitNames = {
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
+}
 -- Its actions.
 local WAITING, DRIFTING, BURSTING = 0x0, 0x4, 0x8
 

@@ -159,7 +159,9 @@ local function count_type(kind: PanelType, side: number): number
 end
 
 -- The panels' flag `solid` (0x10), which the step conditions require of a panel (`sub_8010368`'s table).
-local STANDABLE = "solid"
+local STANDABLE: PanelFlags = { solid = true }
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
+local SOLID_NOT_OCCUPIED: PanelCondition = { solid = true, occupied = false }
 
 -- A panel's position packed as the original lists it.
 local function packed(x: number, y: number): number
@@ -192,8 +194,8 @@ local function reach_from_here(navi: Object, s: State)
         end
         return settle(navi, s)
     end
-    local require, forbid, of = panels.step_condition(navi)
-    local x, y = panels.reaching(t.panel_x, t.panel_y, require, forbid, range, navi.alliance, of)
+    local cond, of = panels.step_condition(navi)
+    local x, y = panels.reaching(t.panel_x, t.panel_y, cond, range, navi.alliance, of)
     if x == nil then
         return give_up(navi, s)
     end
@@ -228,7 +230,7 @@ local SPOTS: { [string]: (navi: Object, t: Object) -> boolean } = {
         return t.panel_x == back or t.panel_y == 1 or t.panel_y == 3
     end,
     behind_target_up_open = function(navi: Object, t: Object): boolean
-        return field.check(t.panel_x - panels.front_direction(navi), t.panel_y - 1, STANDABLE, "any_body")
+        return field.check(t.panel_x - panels.front_direction(navi), t.panel_y - 1, SOLID_NOT_ANY_BODY)
     end,
 }
 
@@ -264,10 +266,10 @@ local function landing_ahead(navi: Object, s: State)
     if landing(navi.panel_x + panels.enemy_direction(navi), navi.panel_y) then
         return in_place(s)
     end
-    local require, forbid, of = panels.step_condition(navi)
+    local cond, of = panels.step_condition(navi)
     local dir = panels.front_direction(navi)
     local found = {}
-    for _, p in panels.filtered(require, forbid, nil, of) do
+    for _, p in panels.filtered(cond, nil, of) do
         local x, y = bit32.band(p, 7), bit32.rshift(p, 4)
         if field.valid(x + dir, y) and landing(x + dir, y) then
             table.insert(found, packed(x, y))
@@ -285,13 +287,13 @@ end
 -- next target and a step anywhere.
 local function behind(navi: Object, s: State)
     local t = target_of(s)
-    local require, forbid, of = panels.step_condition(navi)
-    local x, y = panels.behind(navi, t.panel_x, t.panel_y, require, forbid, 0, of)
+    local cond, of = panels.step_condition(navi)
+    local x, y = panels.behind(navi, t.panel_x, t.panel_y, cond, 0, of)
     if x ~= nil then
         return go(navi, s, 4, x, y :: number)
     end
-    require, forbid, of = panels.step_condition(navi)
-    local bx, by, lx = panels.behind(navi, t.panel_x, t.panel_y, require, forbid, 1, of)
+    cond, of = panels.step_condition(navi)
+    local bx, by, lx = panels.behind(navi, t.panel_x, t.panel_y, cond, 1, of)
     if bx ~= nil and lx + panels.front_direction(navi) == t.panel_x then
         return go(navi, s, 4, bx, by :: number)
     end
@@ -299,21 +301,21 @@ local function behind(navi: Object, s: State)
 end
 
 -- The other side's bodies a side looks for (0x0802A114: panel flag 0x04000000 for side 0, 0x08000000 for 1).
-local ENEMY_BODIES = "enemy_body"
+local ENEMY_BODIES: PanelCondition = { enemy_body = true }
 
 -- 0x0802A050 (`three_ahead_near_enemy`, class 5): a panel it may step onto whose panel three ahead (as it faces) is on
 -- the field and not one a body stands on (not solid), with an enemy on one of the eight panels around that one (the
 -- offset list `around`, 16): a step
 -- there; else not ready and a step anywhere.
 local function three_ahead_near_enemy(navi: Object, s: State)
-    local require, forbid, of = panels.step_condition(navi)
+    local cond, of = panels.step_condition(navi)
     local ahead = panels.front_direction(navi) * 3
     local found = {}
-    for _, p in panels.filtered(require, forbid, nil, of) do
+    for _, p in panels.filtered(cond, nil, of) do
         local x, y = bit32.band(p, 7), bit32.rshift(p, 4)
         local ax = x + ahead
         if field.valid(ax, y) and not field.any(ax, y, STANDABLE) then
-            local _, _, n = panels.random_offset(ax, y, ENEMY_BODIES, nil, "around", navi.alliance, of)
+            local _, _, n = panels.random_offset(ax, y, ENEMY_BODIES, "around", navi.alliance, of)
             if n ~= 0 then
                 table.insert(found, packed(x, y))
             end
@@ -331,8 +333,7 @@ end
 local function before_enemies(
     navi: Object,
     element: number,
-    require: PanelFlags?,
-    forbid: PanelFlags?,
+    cond: PanelCondition?,
     of: number
 ): (number?, number?)
     local back = -panels.front_direction(navi) * 3
@@ -342,7 +343,7 @@ local function before_enemies(
         local e = battle.alive_actor_slot(other, i)
         if e ~= nil and (element == 0xFF or e.element == element) then
             local x, y = e.panel_x + back, e.panel_y
-            if field.check(x, y, require, forbid, of) then
+            if field.check(x, y, cond, of) then
                 table.insert(found, packed(x, y))
             end
         end
@@ -353,10 +354,10 @@ end
 -- 0x0802A138 (`lava_ahead`, class 6): a panel it may step onto whose panel three ahead is lava (0x0802A184); else three
 -- before a fire enemy, else before any; else not ready and a step anywhere.
 local function lava_ahead(navi: Object, s: State)
-    local require, forbid, of = panels.step_condition(navi)
+    local cond, of = panels.step_condition(navi)
     local ahead = panels.front_direction(navi) * 3
     local found = {}
-    for _, p in panels.filtered(require, forbid, nil, of) do
+    for _, p in panels.filtered(cond, nil, of) do
         local x, y = bit32.band(p, 7), bit32.rshift(p, 4)
         if field.valid(x + ahead, y) and kind_at(x + ahead, y) == "lava" then
             table.insert(found, packed(x, y))
@@ -364,12 +365,12 @@ local function lava_ahead(navi: Object, s: State)
     end
     local x, y = pick(found)
     if x == nil then
-        require, forbid, of = panels.step_condition(navi)
-        x, y = before_enemies(navi, 1, require, forbid, of)
+        cond, of = panels.step_condition(navi)
+        x, y = before_enemies(navi, 1, cond, of)
     end
     if x == nil then
-        require, forbid, of = panels.step_condition(navi)
-        x, y = before_enemies(navi, 0xFF, require, forbid, of)
+        cond, of = panels.step_condition(navi)
+        x, y = before_enemies(navi, 0xFF, cond, of)
     end
     if x == nil then
         return settle(navi, s)
@@ -383,8 +384,8 @@ end
 local function gauge_reach(navi: Object, s: State)
     if battle.gauge_damage(navi.alliance) >= 100 then
         local t = target_of(s)
-        local require, forbid, of = panels.step_condition(navi)
-        local x, y = panels.reaching(t.panel_x, t.panel_y, require, forbid, "two_columns_ahead", navi.alliance, of)
+        local cond, of = panels.step_condition(navi)
+        local x, y = panels.reaching(t.panel_x, t.panel_y, cond, "two_columns_ahead", navi.alliance, of)
         if x ~= nil then
             return go(navi, s, 4, x, y :: number)
         end
@@ -432,8 +433,8 @@ local function swing_reach(navi: Object, s: State)
         end
         return settle(navi, s)
     end
-    local require, forbid, of = panels.step_condition(navi)
-    local x, y = panels.reaching(t.panel_x, t.panel_y, require, forbid, range, navi.alliance, of)
+    local cond, of = panels.step_condition(navi)
+    local x, y = panels.reaching(t.panel_x, t.panel_y, cond, range, navi.alliance, of)
     if x == nil then
         return give_up(navi, s)
     end
@@ -443,12 +444,12 @@ end
 -- Panel conditions of a side (its tables by side are each other's mirror): `when_enemy_in_area`'s (0x0802A448: an
 -- enemy in the side's area), `when_hole_in_area`'s (0x0802A608: a panel of the side's area no body stands on: not
 -- solid), `when_area_lost`'s and `when_area_whole`'s (0x0802A744: the side's area).
-local ENEMY_IN_AREA: PanelCondition = { require = { "enemy_body", "own_area" } }
-local HOLE_IN_AREA: PanelCondition = { require = "own_area", forbid = "solid" }
-local OWN_AREA: PanelCondition = { require = "own_area" }
+local ENEMY_IN_AREA: PanelCondition = { enemy_body = true, own_area = true }
+local HOLE_IN_AREA: PanelCondition = { own_area = true, solid = false }
+local OWN_AREA: PanelCondition = { own_area = true }
 
 local function any_panel(c: PanelCondition, side: number): boolean
-    return #panels.filtered(c.require, c.forbid, nil, bit32.band(side, 1)) > 0
+    return #panels.filtered(c, nil, bit32.band(side, 1)) > 0
 end
 
 -- 0x0802A3F0 (`when_enemy_in_area`, class 9): an enemy stands in the navi's area: in place, else not ready and a step
@@ -473,14 +474,13 @@ end
 local function behind_target(
     navi: Object,
     t: Object,
-    require: PanelFlags?,
-    forbid: PanelFlags?,
+    cond: PanelCondition?,
     of: number
 ): (number?, number?)
     local back = -panels.front_direction(navi)
     for _, n in { 3, 2, 1 } do
         local x, y = t.panel_x + back * n, t.panel_y
-        if field.check(x, y, require, forbid, of) then
+        if field.check(x, y, cond, of) then
             -- (A panel in column 0 would read as none: 0x0802A4B0 tests x. None is on the field.)
             return x, y
         end
@@ -491,8 +491,8 @@ end
 -- 0x0802A4A4 (`before_target`, class 11): a step to the farthest of the three panels before the target it may step
 -- onto; else the next target and a step anywhere.
 local function before_target(navi: Object, s: State)
-    local require, forbid, of = panels.step_condition(navi)
-    local x, y = behind_target(navi, target_of(s), require, forbid, of)
+    local cond, of = panels.step_condition(navi)
+    local x, y = behind_target(navi, target_of(s), cond, of)
     if x == nil then
         return give_up(navi, s)
     end
@@ -515,12 +515,12 @@ end
 -- body stands on (solid) and free of bodies, blockers and reservations (`occupied`): a step there; else not ready and
 -- a step anywhere.
 local function three_ahead_open(navi: Object, s: State)
-    local require, forbid, of = panels.step_condition(navi)
+    local cond, of = panels.step_condition(navi)
     local ahead = panels.front_direction(navi) * 3
     local found = {}
-    for _, p in panels.filtered(require, forbid, nil, of) do
+    for _, p in panels.filtered(cond, nil, of) do
         local x, y = bit32.band(p, 7), bit32.rshift(p, 4)
-        if field.valid(x + ahead, y) and field.check(x + ahead, y, STANDABLE, "occupied") then
+        if field.valid(x + ahead, y) and field.check(x + ahead, y, SOLID_NOT_OCCUPIED) then
             table.insert(found, packed(x, y))
         end
     end
@@ -544,7 +544,7 @@ end
 
 -- 0x0802A728: the panels of the side's area now.
 local function area_now(side: number): number
-    return #panels.filtered(OWN_AREA.require, OWN_AREA.forbid, nil, bit32.band(side, 1))
+    return #panels.filtered(OWN_AREA, nil, bit32.band(side, 1))
 end
 
 -- 0x0802A6F0 (`when_area_lost`, class 15): the navi's area is smaller than at the start: in place, else not ready and a
@@ -628,10 +628,10 @@ local function enemy_barrier(navi: Object): boolean
 end
 
 -- 0x0802A93A: a panel it may step onto whose panel ahead (as it faces) is on the field, of its side and not holy.
-local function own_ahead(navi: Object, require: PanelFlags?, forbid: PanelFlags?, of: number): (number?, number?)
+local function own_ahead(navi: Object, cond: PanelCondition?, of: number): (number?, number?)
     local dir = panels.front_direction(navi)
     local found = {}
-    for _, p in panels.filtered(require, forbid, nil, of) do
+    for _, p in panels.filtered(cond, nil, of) do
         local x, y = bit32.band(p, 7), bit32.rshift(p, 4)
         local ahead = field.panel(x + dir, y)
         if field.valid(x + dir, y) and ahead ~= nil and ahead.alliance == navi.alliance and ahead.kind ~= "holy" then
@@ -644,8 +644,8 @@ end
 -- 0x0802A90C (`own_panel_ahead`, class 22): a step to a panel whose panel ahead is the navi's own and not holy; else
 -- not ready and a step anywhere.
 local function own_panel_ahead(navi: Object, s: State)
-    local require, forbid, of = panels.step_condition(navi)
-    local x, y = own_ahead(navi, require, forbid, of)
+    local cond, of = panels.step_condition(navi)
+    local x, y = own_ahead(navi, cond, of)
     if x == nil then
         return settle(navi, s)
     end
@@ -678,7 +678,7 @@ end
 
 -- The panels that stop `to_back`'s walk (0x0802ABE0, by side: 0x0D800000 for side 0, 0x0E800000 for 1): both sides'
 -- bodies, the other side's other bodies, neutral objects.
-local WALK_STOP: { PanelFlag } = { "own_body", "enemy_body", "enemy_other_body", "neutral" }
+local WALK_STOP: PanelFlags = { own_body = true, enemy_body = true, enemy_other_body = true, neutral = true }
 
 -- 0x0802AB82: from (x, y) on along `dir`, until a panel off the field or one a body stands on, the panels that meet
 -- the conditions (of side `of`).
@@ -687,14 +687,13 @@ local function walk(
     x: number,
     y: number,
     dir: number,
-    require: PanelFlags?,
-    forbid: PanelFlags?,
+    cond: PanelCondition?,
     of: number,
     out: { number }
 )
     local side = bit32.band(navi.alliance, 1)
     while field.valid(x, y) and not field.any(x, y, WALK_STOP, side) do
-        if field.check(x, y, require, forbid, of) then
+        if field.check(x, y, cond, of) then
             table.insert(out, packed(x, y))
         end
         x += dir
@@ -703,12 +702,12 @@ end
 
 -- 0x0802AB1E: each row's panels from the back of the navi's area (as it faces) forward until a body: one at random;
 -- none: anywhere of its own area.
-local function back_rows(navi: Object, require: PanelFlags?, forbid: PanelFlags?, of: number): (number, number)
+local function back_rows(navi: Object, cond: PanelCondition?, of: number): (number, number)
     local dir = -panels.front_direction(navi)
     local start = if dir < 0 then 6 else 1
     local found = {}
     for y = 1, 3 do
-        walk(navi, start, y, dir, require, forbid, of, found)
+        walk(navi, start, y, dir, cond, of, found)
     end
     local x, y = pick(found)
     if x == nil then
@@ -720,8 +719,8 @@ end
 -- 0x0802AAE8 (`to_back`, class 27): a step to a panel at the back of its area. (The search always finds one: the branch
 -- for none, the next target and a step anywhere, tests a column of 0.)
 local function to_back(navi: Object, s: State)
-    local require, forbid, of = panels.step_condition(navi)
-    local x, y = back_rows(navi, require, forbid, of)
+    local cond, of = panels.step_condition(navi)
+    local x, y = back_rows(navi, cond, of)
     if x == 0 then
         return give_up(navi, s)
     end
@@ -744,8 +743,8 @@ local function hurt_reach(navi: Object, s: State)
         s.place_step, s.place_step_init = 4, 0
         return
     end
-    local require, forbid, of = panels.step_condition(navi)
-    local x, y = panels.reaching(t.panel_x, t.panel_y, require, forbid, range, navi.alliance, of)
+    local cond, of = panels.step_condition(navi)
+    local x, y = panels.reaching(t.panel_x, t.panel_y, cond, range, navi.alliance, of)
     if x == nil then
         return give_up(navi, s)
     end
@@ -767,19 +766,21 @@ end
 -- on it): any. Side 1's flags are the word at 0x0802ADA4, the next routine's code (the table read with the stride
 -- 16), 0x58097838: they require broken, holy, lava and ice at once, the flags of four types, and a panel is of one
 -- type, so no panel meets them: side 1's list is empty, and the answer no.
-local ENEMY_ROWS = "enemy_body"
+local ENEMY_ROWS: PanelCondition = { enemy_body = true }
+
+local NOT_ANY_BODY: PanelCondition = { any_body = false }
 
 local function free_ahead_of_enemies(navi: Object): boolean
     if bit32.band(navi.alliance, 1) == 1 then
         return false
     end
     local dir = panels.front_direction(navi)
-    local list = panels.filtered(ENEMY_ROWS, nil, navi, 0)
+    local list = panels.filtered(ENEMY_ROWS, navi, 0)
     local n = 0
     for i = #list, 1, -1 do
         local x, y = bit32.band(list[i], 7), bit32.rshift(list[i], 4)
         local k = 1
-        while field.check(x + dir * k, y, nil, "any_body") do
+        while field.check(x + dir * k, y, NOT_ANY_BODY) do
             n += 1
             k += 1
         end
@@ -788,16 +789,16 @@ local function free_ahead_of_enemies(navi: Object): boolean
 end
 
 -- The special panels (0x0802ADF2's bits: 0x20E00, magnet, grass, ice and sea; 0x21E00 with FloatShoes on, lava too).
-local SPECIAL: { PanelFlag } = { "magnet", "grass", "ice", "sea" }
-local FLOAT_SHOE_SPECIAL: { PanelFlag } = { "magnet", "grass", "ice", "lava", "sea" }
+local SPECIAL: PanelFlags = { magnet = true, grass = true, ice = true, sea = true }
+local FLOAT_SHOE_SPECIAL: PanelFlags = { magnet = true, grass = true, ice = true, lava = true, sea = true }
 
 -- 0x0802ADF2: the panels it may step onto (of side `of`) that are special.
-local function special_panel(navi: Object, require: PanelFlags?, forbid: PanelFlags?, of: number): (number?, number?)
+local function special_panel(navi: Object, cond: PanelCondition?, of: number): (number?, number?)
     local special = if navi.status.float_shoe then FLOAT_SHOE_SPECIAL else SPECIAL
     local found = {}
     for x = 1, 6 do
         for y = 1, 3 do
-            if field.check(x, y, require, forbid, of) and field.any(x, y, special) then
+            if field.check(x, y, cond, of) and field.any(x, y, special) then
                 table.insert(found, packed(x, y))
             end
         end
@@ -807,8 +808,8 @@ end
 
 -- 0x0802ADBC (`to_special_panel`, class 32): a step to such a panel; else the next target and a step anywhere.
 local function to_special_panel(navi: Object, s: State)
-    local require, forbid, of = panels.step_condition(navi)
-    local x, y = special_panel(navi, require, forbid, of)
+    local cond, of = panels.step_condition(navi)
+    local x, y = special_panel(navi, cond, of)
     if x == nil then
         return give_up(navi, s)
     end

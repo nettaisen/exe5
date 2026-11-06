@@ -54,8 +54,8 @@ capsule.column = line { region = regions.wide, panels = { { 0, 0 }, { 0, 1 }, { 
 capsule.row = line { region = regions.region_1d, panels = { { 0, 0 }, { -1, 0 }, { 1, 0 } }, style = 0x1D, anim = 1 }
 -- The other side's bodies (its navi's among them), other bodies or neutral objects among what hit it (0x080C60A8), and
 -- an enemy navi's body on a panel (0x080C61B0).
-local NAVI_HIT: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
-local ENEMY_NAVI = "enemy_body"
+local NAVI_HIT: HitNames = { enemy_body = true, enemy_other_body = true, neutral = true }
+local ENEMY_NAVI: PanelFlags = { enemy_body = true }
 local HP = 0x14
 local FLIGHT = 0x28
 local GRAVITY = -0xC000

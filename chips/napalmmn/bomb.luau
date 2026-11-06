@@ -41,7 +41,7 @@ local FIRE = new.effect { sprite = napalm_fire_sprite, anim = 0, palette = 0, st
 -- Its flight's ticks.
 local FLIGHT = 0x2D
 -- A panel something stands on (as one word).
-local TAKEN = "any_body"
+local TAKEN: PanelFlags = { any_body = true }
 -- How long it hits.
 local BURST = 4
 

@@ -26,7 +26,7 @@ local FACES_1: { number } = { 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6 }
 local FACES_2: { number } = { 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6 }
 -- Where a die may land, of his side (0x0222728C): solid, with no body or enemy object on it; else (0x0222729C) any
 -- panel on the field.
-local AIM: PanelCondition = { require = "solid", forbid = { "any_body", "enemy_object" } }
+local AIM: PanelCondition = { solid = true, any_body = false, enemy_object = false }
 -- A die: 20 HP, no status or hit modifier, running while dimmed, thrown from 24 pixels above him.
 local DIE_HP, DIE_Z = 0x14, 0x18_0000
 local THROW_SOUND = asset.sound("minibomb-throw")
@@ -37,8 +37,8 @@ local LEAD_IN, APPEAR, READY, THROW, BONUS, STAND, WARP, LEAD_OUT = 0x0, 0x4, 0x
 
 type ActorState = { controller: Object?, dice: { boolean }, total: number, navi: Object? }
 
-local function has_flag(chip: Chip, flag: string): boolean
-    return chip.flags ~= nil and table.find(chip.flags, flag) ~= nil
+local function has_flag(chip: Chip, flag: ChipFlag): boolean
+    return chip.flags ~= nil and chip.flags[flag] == true
 end
 
 local function countdown(me: Object, ticks: number): boolean
@@ -61,14 +61,14 @@ local function aim(me: Object, ex: number, ey: number): (number?, number?, boole
     local side = me.alliance
     local front = if bit32.bxor(side, me.flip) == 0 then 1 else -1
     local start = bit32.bxor(bit32.bxor(side, me.flip), 1) * 5 + 1
-    local require, forbid = AIM.require, AIM.forbid
+    local cond: PanelCondition? = AIM
     local second = false
     while true do
         local found: { number } = {}
         local x = start
         while x ~= me.panel_x do
             for y = 1, 3 do
-                if not (x == ex and y == ey) and field.check(x, y, require, forbid, side) then
+                if not (x == ex and y == ey) and field.check(x, y, cond, side) then
                     table.insert(found, x + y * 0x10)
                 end
             end
@@ -82,7 +82,7 @@ local function aim(me: Object, ex: number, ey: number): (number?, number?, boole
             return nil, nil, true
         end
         second = true
-        require, forbid = nil, nil
+        cond = nil
     end
 end
 

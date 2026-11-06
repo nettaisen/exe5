@@ -120,6 +120,8 @@ local function puff(me: Object)
     battle.effect(Vec3.new(x, y, z * 0x1_0000), PUFF, 0, 0, 0)
 end
 
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
+
 -- Action 8 (0x080BDFC8): the dash (animation 12, its sound every 32 ticks), a puff every 4 ticks.
 local function dash(me: Object)
     local s = me.state :: State
@@ -144,7 +146,7 @@ local function dash(me: Object)
         -- (0x080BE01E adds 0 to his damage.)
         s.crossed = int.u8(s.crossed + 1)
         -- (A panel he crosses must be solid, with no body on it.)
-        if not field.check(me.panel_x, me.panel_y, "solid", "any_body") then
+        if not field.check(me.panel_x, me.panel_y, SOLID_NOT_ANY_BODY) then
             me:set_action(0x10)
             return
         end

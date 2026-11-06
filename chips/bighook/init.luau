@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 240,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     slot_in_limit = 1,
     megaman = "light",
     -- (Its user stays on the field while the hook strikes: 0x080E1910, navi 26.)

@@ -35,7 +35,7 @@ local chip: Chip = {
     damage = 400,
     hit_param = 158,
     lockout = 20,
-    flags = { "has_damage", "dark", "variable_damage" },
+    flags = { has_damage = true, dark = true, variable_damage = true },
     slot_in_limit = 1,
     instant = lance.instant_of(exe5_lance.kind, 1, HIT),
     -- What its use costs its user (rules/light_dark).

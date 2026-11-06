@@ -24,7 +24,12 @@ local roll_ribbon_sprite = asset.sprite("roll-ribbon")
 local navi_status = require("@exelib/navi_status")
 
 -- What a panel in front of the tracked enemy must be free of (0x080C0CE4): the bodies and objects of a side.
-local OCCUPIED: { PanelFlag } = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
+local FREE_IN_FRONT: PanelCondition = {
+    enemy_body = false,
+    own_other_body = false,
+    enemy_other_body = false,
+    neutral = false,
+}
 
 -- 0x080C0794: her chip's change (RollSP's), outside the operation battle.
 local function appeared(me: Object)
@@ -41,7 +46,7 @@ local function tracked_target(me: Object): (number, number)
         error("Roll looks for the enemy her side tracks, but it tracks none (the game reads through a null pointer)")
     end
     local x, y = t.panel_x - (1 - me.alliance * 2), t.panel_y
-    if field.check(x, y, nil, OCCUPIED, me.alliance) then
+    if field.check(x, y, FREE_IN_FRONT, me.alliance) then
         return x, y
     end
     return 0, 0

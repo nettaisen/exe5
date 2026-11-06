@@ -23,7 +23,7 @@ local SPRITE = asset.sprite("aqua-whirl")
 local SOUND = asset.sound("spout-beast-charge")
 local HIT_MOD = 3
 -- 0x080D1A78: the panel flag of an enemy navi, by its side: the other side's body.
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelFlags = { enemy_body = true }
 
 -- The actions: down (or up) its column, forward, up, back, home.
 local DOWN, FORWARD, UP, BACK, HOME = 0x0, 0x4, 0x8, 0xC, 0x10

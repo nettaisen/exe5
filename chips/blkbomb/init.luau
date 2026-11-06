@@ -93,7 +93,7 @@ local chip: Chip = {
     damage = 210,
     hit_param = 40,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = bombs.throw { held = HELD, thrower = black_bomb.thrower(KIND) },
     auto_battle = { class = "lava_ahead" },

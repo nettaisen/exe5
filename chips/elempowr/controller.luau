@@ -24,7 +24,7 @@ local function back_to_normal(flag: PanelFlag): PanelChange
         panels = "all",
         flicker = true,
         ticks = 30,
-        condition = { require = flag, forbid = "missing" },
+        condition = { [flag] = true, missing = false },
         tick_sound = panel_changer.TICK_SOUND,
         change_sound = panel_changer.CHANGE_SOUND,
     }

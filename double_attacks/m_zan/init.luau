@@ -41,9 +41,8 @@ local SWING_Z = 0x100000
 local HIT_MOD = 1
 -- What ProtoMan looks for (0x02138FB8, by his side): an enemy body; and the panel before it: solid, with no body on
 -- it.
-local ENEMY_BODY = "enemy_body"
-local TAKEN = "any_body"
-local STANDABLE = "solid"
+local ENEMY_BODY: PanelCondition = { enemy_body = true }
+local STANDABLE: PanelCondition = { solid = true, any_body = false }
 
 -- MagnetMan's magnet arm (the DS's new attachment row 0x3A: 10-3C), animating while dimmed; how long he holds it.
 local MAGNET_ARM = attachment.look { sprite = magnet_arm_sprite, palette = 0 }
@@ -95,9 +94,9 @@ local function search(me: Object)
             at = "check"
         end
         if at == "check" then
-            if field.check(x, y, ENEMY_BODY, nil, me.alliance) then
+            if field.check(x, y, ENEMY_BODY, me.alliance) then
                 local bx = x - front
-                if (bx == user.panel_x and y == user.panel_y) or field.check(bx, y, STANDABLE, TAKEN) then
+                if (bx == user.panel_x and y == user.panel_y) or field.check(bx, y, STANDABLE) then
                     me.future_panel_x, me.future_panel_y = x, y
                     s.from_top = false
                     me.phase, me.phase_init = 4, 0

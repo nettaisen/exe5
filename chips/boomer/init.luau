@@ -30,7 +30,7 @@ local chip: Chip = {
     damage = 60,
     hit_param = 10,
     lockout = 30,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     -- (Strong: EXE5's instant chip dispatch leaves 0x01000005 in the boomerang's parameters, its Param4 1.)
     instant = boomerang.instant(kind, VARIANT, true),

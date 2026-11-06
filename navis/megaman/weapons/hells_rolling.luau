@@ -17,7 +17,7 @@ local made = whirl.make {
     sound = asset.sound("bass-anly-shot"),
     attack = collision.attack,
     hits = collision.hits_navis,
-    hidden = { "invisible", "submerged", "bubbled" },
+    hidden = { invisible = true, submerged = true, bubbled = true },
 }
 
 local SPIN = airspin.action { id = "megaman/hells-rolling/action", whirlwind = made.sender }

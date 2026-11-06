@@ -30,8 +30,14 @@ local HP = 10
 local HIT_MOD = 3
 -- The enemy navis a comet turns toward (0x080D4B48: the other side's body), and what among its hits stops it: any
 -- body (0x0F800000).
-local TARGETS = "enemy_body"
-local BODIES: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
+local TARGETS: PanelFlags = { enemy_body = true }
+local BODIES: HitNames = {
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
+}
 -- Its sound and its flying animation (by its row: row 1's).
 local SOUND, FLYING_ANIM = asset.sound("cosmo-comet"), 18
 

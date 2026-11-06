@@ -25,8 +25,8 @@ local chip: Chip = {
     damage = 20,
     hit_param = 20,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
-    extra_flags = { "free_slot_in" },
+    flags = { has_damage = true, standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
     slot_in_limit = 3,
     action = airshot.action({ shooter = SHOOTER, shot = variants.air, recovery = 10 }, {
         sound = asset.sound("h-burst"),

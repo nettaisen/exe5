@@ -15,7 +15,7 @@ local chip: Chip = {
     damage = 30,
     hit_param = 133,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     dimming = snake.hook,
     auto_battle = { class = "when_hole_in_area" },

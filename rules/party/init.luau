@@ -110,7 +110,7 @@ end
 
 -- MegaMan's light/dark value: the save's (`karma`), 500 in a battle that holds it.
 function party.megaman_karma(side: number): number
-    if battle.has_effect("karma_held") then
+    if battle.effects.karma_held then
         return 500
     end
     return (rules.setup_of(side) :: Setup).karma
@@ -282,7 +282,7 @@ end
 -- left out; the draw stays.
 function party.chip_ready(side: number, _navi: Object, chip: Chip)
     if party.has_partners(side) and battle.party(side).active == 0 then
-        if chip.flags ~= nil and table.find(chip.flags, "has_damage") ~= nil then
+        if chip.flags ~= nil and chip.flags.has_damage then
             battle.console_rng_positive(side)
         end
     end

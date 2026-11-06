@@ -39,7 +39,7 @@ local SPRITE = asset.sprite("magnetman")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CRASH = asset.sound("magnet-crash")
 -- A navi's body among what it hit (either side's).
-local NAVI_HIT: { HitName } = { "own_body", "enemy_body" }
+local NAVI_HIT: HitNames = { own_body = true, enemy_body = true }
 local SPEED = 0x8_0000
 
 local MAGNET_VARIANT = schema.record_type("magnet-variant")

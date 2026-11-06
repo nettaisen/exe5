@@ -31,8 +31,8 @@ type State = {
 -- The chip's icon blinks for this long.
 local BLINK = 30
 
-local function has(chip: Chip, flag: string): boolean
-    return table.find(chip.flags or {}, flag) ~= nil
+local function has(chip: Chip, flag: ChipFlag): boolean
+    return chip.flags ~= nil and chip.flags[flag] == true
 end
 
 -- The button: two cells wide, leading on to the special slot and back to slot 7.

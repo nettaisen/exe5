@@ -26,7 +26,7 @@ return new.identity {
         element = "null",
         body_damage = 10,
         collision = { body = collision.own_body, target = collision.navi_target, hit_modifier = 3 },
-        flags = { "super_armor", "affected_by_ice", "untouchable" },
+        flags = { super_armor = true, affected_by_ice = true, untouchable = true },
         hides_hp = true,
     },
 }

@@ -77,7 +77,7 @@ local navi: NaviDef = {
         -- The Full Synchro aura's animation: its owner's AI index (the aura's start, 0x080C4608).
         aura_anim = 2,
         parts = { body = PROPELLER },
-        overlay_hooks = { "death", "refresh", "flinch_checked" },
+        overlay_hooks = { death = true, refresh = true, flinch_checked = true },
         attach_points = {
             { 0, 16 },
             { 0, 14 },

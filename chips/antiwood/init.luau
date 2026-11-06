@@ -15,7 +15,7 @@ local chip: Chip = {
     damage = 200,
     hit_param = 178,
     lockout = 0,
-    flags = { "dimming", "has_damage", "standard_library", "library" },
+    flags = { dimming = true, has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     dimming = anti_trap.hook(4),
     auto_battle = { class = "when_trap_free", element_trap = true },

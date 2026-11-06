@@ -129,7 +129,7 @@ local function offer(side: number): (FormDef?, boolean)
         return nil, false
     end
     local chip = last.chip
-    local chaos = table.find(chip.flags or {}, "dark") ~= nil
+    local chaos = chip.flags ~= nil and chip.flags.dark == true
     if chaos and not (rules.setup() :: Setup).chaos_unison then
         return nil, false
     end

@@ -41,8 +41,14 @@ local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, s
 local SLASH_Z = 0x10_0000
 -- What he looks for (0x080BE5BC, 0x080BE594: an enemy navi's body), and a panel he can stand on: solid, with no body
 -- on it but his side's navi's (0x080BE560, 0x080BE4E8).
-local ENEMY_NAVI = "enemy_body"
-local NOT_FREE: { PanelFlag } = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
+local ENEMY_NAVI: PanelFlags = { enemy_body = true }
+local STAND_ON: PanelCondition = {
+    solid = true,
+    enemy_body = false,
+    own_other_body = false,
+    enemy_other_body = false,
+    neutral = false,
+}
 -- His place beside his user's panel (pixels ahead and down), his NameID's attach point 0 (sprite 08-01's: 0, 0), where
 -- his glow sits.
 local AHEAD, DOWN = 10, 6
@@ -75,7 +81,7 @@ local function search(me: Object, column: boolean): (number?, number)
     local x = me.panel_x
     local tx = x
     while field.valid(x + me.facing, y) do
-        if field.check(x, y, "solid", NOT_FREE, me.alliance) then
+        if field.check(x, y, STAND_ON, me.alliance) then
             tx = x
             local found = if column then enemy_in_column(me, x + me.facing) else enemy_on(me, x + me.facing, y)
             if found then

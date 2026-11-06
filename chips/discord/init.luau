@@ -28,7 +28,7 @@ local chip: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 3,
     -- EXE5's row 1; its identity the actor record 0xDE (0x08014C94: version 5, AI index 0x21).
     dimming = exe5_instrument.hook(instrument.instrument {

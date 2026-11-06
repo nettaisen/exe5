@@ -42,7 +42,7 @@ local chip: Chip = {
     damage = 30,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = spreader.action({
         gun = attachment.look { sprite = spreader_sprite, palette = 0, attach_point = 11 },

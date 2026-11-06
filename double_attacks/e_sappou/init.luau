@@ -52,13 +52,15 @@ local function colonel_charge(me: Object)
     me:set_action(8)
 end
 
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
+
 -- 0x02094514: a rock on (x, y) where that panel is the other side's, solid and empty.
 local function place(me: Object, x: number, y: number, behind: boolean)
     local panel = if field.valid(x, y) then field.panel(x, y) else nil
     if panel == nil or panel.alliance == me.alliance then
         return
     end
-    if not field.check(x, y, "solid", "any_body") then
+    if not field.check(x, y, SOLID_NOT_ANY_BODY) then
         return
     end
     local s = me.state :: State
@@ -68,6 +70,8 @@ local function place(me: Object, x: number, y: number, behind: boolean)
     rock.spawn(me, x, y, int.u8(s.rocks * NEXT_WAIT + FIRST_WAIT), behind, s.rocks)
     s.rocks += 1
 end
+
+local ENEMY_BODY: PanelCondition = { enemy_body = true }
 
 -- 0x020944B0: for each panel an enemy's body stands on (0x02094568: rows 1 to 3, each from the column behind him
 -- forward), a rock in front of it and one behind.
@@ -79,7 +83,7 @@ local function drop(me: Object)
     while field.valid(first, y) do
         local x = first
         repeat
-            if field.check(x, y, "enemy_body", nil, me.alliance) then
+            if field.check(x, y, ENEMY_BODY, me.alliance) then
                 table.insert(found, { x, y })
             end
             x += d

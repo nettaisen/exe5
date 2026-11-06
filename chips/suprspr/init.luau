@@ -28,7 +28,7 @@ local suprspr1: Chip = {
     damage = 100,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     slot_in_limit = 1,
     -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
@@ -55,7 +55,7 @@ local suprspr2: Chip = {
     damage = 120,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     slot_in_limit = 1,
     -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
@@ -82,7 +82,7 @@ local suprspr3: Chip = {
     damage = 140,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     slot_in_limit = 1,
     -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
     -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own

@@ -24,7 +24,7 @@ local SOUND_HIT = asset.sound("hit-bomb-1")
 -- The explosion where it lands (effect 0).
 local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 22 }
 -- What a panel must hold to take it (solid, or something on it).
-local TAKES: { PanelFlag } = { "any_body", "solid" }
+local TAKES: PanelFlags = { any_body = true, solid = true }
 
 -- 0x080DE72C: its look; over its caller's column on its target's row, 72 pixels up, heading for the target.
 local function init(me: Object)

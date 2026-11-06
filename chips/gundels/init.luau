@@ -27,7 +27,7 @@ local gundels1: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     slot_in_limit = 3,
     megaman = "light",
     action = gundels.action {
@@ -53,7 +53,7 @@ local gundels2: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     slot_in_limit = 3,
     megaman = "light",
     action = gundels.action {
@@ -79,7 +79,7 @@ local gundels3: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
+    flags = { standard_library = true, library = true },
     slot_in_limit = 3,
     megaman = "light",
     action = gundels.action {
@@ -105,7 +105,7 @@ local gundelex: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "library" },
+    flags = { library = true },
     slot_in_limit = 1,
     megaman = "light",
     action = gundels.action {

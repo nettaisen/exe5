@@ -16,10 +16,10 @@ local chip: Chip = {
     damage = 160,
     hit_param = 30,
     lockout = 20,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 3,
     -- Its pit (row 0 of 0x080DAFA0): a sea panel (flag 0x20000), which turns Normal; the wave in palette 0.
-    instant = wavepit.instant { require = "sea", mends = true, palette = 0 },
+    instant = wavepit.instant { panel = { sea = true }, mends = true, palette = 0 },
     auto_battle = { class = "when_any_sea" },
 }
 

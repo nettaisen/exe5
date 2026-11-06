@@ -35,10 +35,10 @@ local THROW = 0x84
 type Filter = PanelCondition
 -- Of her side: an enemy navi in the enemy's area (0x080BBE74); a free solid panel of the enemy's area, then any free
 -- one of it (0x080BBE88, 0x080BBEBC); a panel of the enemy's area (0x080BBE9C).
-local ENEMY_NAVI: Filter = { require = { "enemy_body", "enemy_area" } }
-local BESIDE: Filter = { require = { "solid", "enemy_area" }, forbid = "occupied" }
-local BESIDE_ANY: Filter = { require = "enemy_area", forbid = "occupied" }
-local ENEMY_AREA: Filter = { require = "enemy_area" }
+local ENEMY_NAVI: Filter = { enemy_body = true, enemy_area = true }
+local BESIDE: Filter = { solid = true, enemy_area = true, occupied = false }
+local BESIDE_ANY: Filter = { enemy_area = true, occupied = false }
+local ENEMY_AREA: Filter = { enemy_area = true }
 -- The panels beside a navi, in order (0x080BBEB0): behind and ahead (a capsule there bursts along its row), above
 -- and below (along its column).
 local AROUND = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } }
@@ -48,7 +48,7 @@ local function beside(x: number, y: number, f: Filter, side: number): { number }
     local list: { number } = {}
     for _, o in AROUND do
         local px, py = x + o[1], y + o[2]
-        if field.check(int.u8(px), int.u8(py), f.require, f.forbid, side) then
+        if field.check(int.u8(px), int.u8(py), f, side) then
             list[#list + 1] = panels.pack(px, py)
         end
     end
@@ -64,7 +64,7 @@ local function pick(me: Object): (number, number, number)
     me:reserve_panel(s.pick_x, s.pick_y)
     local x, y, line = 0, 0, 0
     local found = false
-    local enemies = panels.filtered_except(me, ENEMY_NAVI.require, ENEMY_NAVI.forbid, me.alliance)
+    local enemies = panels.filtered_except(me, ENEMY_NAVI, me.alliance)
     local ex: number?, ey: number? = nil, nil
     if #enemies == 1 then
         ex, ey = panels.x(enemies[1]), panels.y(enemies[1])
@@ -103,7 +103,7 @@ local function pick(me: Object): (number, number, number)
     if not found then
         -- (Shuffled from its side's order: docs/engine/side-symmetry.md.)
         local cond = ENEMY_AREA
-        local area = panels.filtered_except(me, cond.require, cond.forbid, me.alliance, me.alliance)
+        local area = panels.filtered_except(me, cond, me.alliance, me.alliance)
         if #area == 0 then
             error("Meddy's pick (0x080BBCAA) finds no panel of the enemy's area and stores stale stack")
         end

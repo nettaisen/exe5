@@ -14,9 +14,10 @@ local sparks = require("../../lib/sparks")
 
 local wavepit = {}
 
--- What starts a chip's wave (its row of 0x080DAFA0, by the chip's first parameter): the panel flags it needs and those
--- it mustn't have, whether the panel turns Normal, and the wave's palette. Each chip states its own.
-export type Pit = { require: PanelFlags?, forbid: PanelFlags?, mends: boolean, palette: number }
+-- What starts a chip's wave (its row of 0x080DAFA0, by the chip's first parameter): what its panel must be (the flags
+-- it needs and those it mustn't have), whether the panel turns Normal, and the wave's palette. Each chip states its
+-- own.
+export type Pit = { panel: PanelCondition, mends: boolean, palette: number }
 
 export type State = {
     -- Its palette (its first parameter), and whether it may stand off solid ground (its second: MudWave's first
@@ -176,7 +177,7 @@ function wavepit.instant(pit: Pit): (user: Object, spec: InstantChipSpec) -> ()
         for y = 1, 3 do
             local x = back
             while field.valid(x, y) do
-                if field.check(x, y, pit.require, pit.forbid) then
+                if field.check(x, y, pit.panel) then
                     wavepit.spawn(user, x, y, spec.element, spec.damage, pit.palette, not pit.mends)
                     if pit.mends then
                         field.set_type(x, y, "normal")

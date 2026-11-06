@@ -139,7 +139,7 @@ local WAVE_SOUND = asset.sound("wood-wave")
 local WAVE_DAMAGE, WAVE_HIT_MOD = 10, 1
 local WAVE_SPEED, EDGE = 0x6_0000, 150
 -- The other side's navis' bodies, of WoodNos's wave's side (0x080DB104).
-local TARGETS = "enemy_body"
+local TARGETS: PanelFlags = { enemy_body = true }
 
 -- 0x080DB096: a geyser in each row where the other side's navi stands, from the user's side's front edge (column 5
 -- for side 0, 2 for side 1) on; with none, in its own row.

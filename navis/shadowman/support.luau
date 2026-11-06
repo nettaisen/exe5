@@ -19,7 +19,7 @@ local status = require("../../rules/status")
 local support = {}
 
 -- Where he may appear (0x020CC3A8), by side: of the side's own area, nothing on it or reserved.
-local APPEAR: PanelCondition = { require = "own_area", forbid = "occupied" }
+local APPEAR: PanelCondition = { own_area = true, occupied = false }
 
 -- His readying (animation 0x11, 31 ticks), his strikes and the ticks between them.
 local ANIM_READY, READY_TICKS, STRIKES, STRIKE_EVERY = 0x11, 0x1F, 9, 8
@@ -40,10 +40,10 @@ local STRIKE_KINDS: { Strike } = {
 }
 
 -- Where a strike lands (0x022271E0, 0x022271F0), by side: the enemy area's panels without an enemy body, or with one.
-local OPEN: PanelCondition = { require = "enemy_area", forbid = "enemy_body" }
-local ENEMY: PanelCondition = { require = { "enemy_body", "enemy_area" } }
+local OPEN: PanelCondition = { enemy_area = true, enemy_body = false }
+local ENEMY: PanelCondition = { enemy_body = true, enemy_area = true }
 -- The panel flag of the other side's navi, by side (`sub_80E7486`'s): its player navi.
-local ENEMY_NAVI = "enemy_navi"
+local ENEMY_NAVI: PanelFlags = { enemy_navi = true }
 
 -- A strike: its panel marked every other four ticks, its burst after 15 (the effect table's row 0 in the kind's
 -- palette, 0x90's sound) with a hit on the panel: no damage, the kind's status.
@@ -159,7 +159,7 @@ local function aim(me: Object, on_enemy: boolean): (number?, number?)
     local x = bit32.bxor(turned, 1) * 5 + 1
     repeat
         for y = 1, 3 do
-            if field.check(x, y, cond.require, cond.forbid, side) and not (on_enemy and status_free(x, y, side)) then
+            if field.check(x, y, cond, side) and not (on_enemy and status_free(x, y, side)) then
                 local p: number = panels.pack(x, y)
                 table.insert(found, p)
             end
@@ -260,7 +260,7 @@ function support.low_hp(side: number, navi: Object): boolean
     if battle.navi(side).navi == shadowman then
         return false
     end
-    local found = panels.filtered_except(navi, APPEAR.require, APPEAR.forbid, side)
+    local found = panels.filtered_except(navi, APPEAR, side)
     if #found == 0 then
         return false
     end

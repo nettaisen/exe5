@@ -21,7 +21,7 @@ local chip: Chip = {
     damage = 130,
     hit_param = 30,
     lockout = 20,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     instant = lance.instant_of(exe5_lance.kind, 0, HIT),
     auto_battle = { class = "at_once" },

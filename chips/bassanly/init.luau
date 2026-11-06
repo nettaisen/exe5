@@ -20,7 +20,7 @@ local chip: Chip = {
     damage = 160,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi" },
+    flags = { dimming = true, has_damage = true, navi = true },
     slot_in_limit = 1,
     -- (Past the navi chips' block: AntiNavi lets it through, and it isn't kept as the last navi chip.)
     navi = navi_chips.make {

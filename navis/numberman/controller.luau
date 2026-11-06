@@ -25,7 +25,7 @@ local AHEAD = 2
 local ANIM_SET = 12
 local SOUND = asset.sound("hockey-puck")
 -- A panel of the other side's that can be stood on, with nothing on it, of the controller's side (0x080E4E28).
-local FREE: PanelCondition = { require = { "solid", "enemy_area" }, forbid = "occupied" }
+local FREE: PanelCondition = { solid = true, enemy_area = true, occupied = false }
 
 -- 0x080E4DC8: 30 ticks on its user's panel; then the panel two ahead: free, the trap goes there; else the undim.
 local function look(me: Object)
@@ -44,7 +44,7 @@ local function look(me: Object)
     end
     local x, y = me.panel_x + AHEAD * me.facing, me.panel_y
     me.future_panel_x, me.future_panel_y = x, y
-    if field.check(x, y, FREE.require, FREE.forbid, me.alliance) then
+    if field.check(x, y, FREE, me.alliance) then
         me.phase, me.phase_init = SET, 0
     else
         dimming_chips.done(me)

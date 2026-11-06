@@ -294,12 +294,14 @@ function double_attack.leave(me: Object, takes_off: boolean)
     me:set_lifecycle("destroy")
 end
 
--- The panels of the other side's area but the navi's own (`object_getPanelsExceptCurrentFiltered` by its side: flag
--- 0x20 for side 0, none of it for side 1), in its side's order, packed (@exelib/panels).
+-- The other side's area, of a side (flag 0x20 for side 0, none of it for side 1).
+local ENEMY_AREA: PanelCondition = { enemy_area = true }
+
+-- The panels of the other side's area but the navi's own (`object_getPanelsExceptCurrentFiltered` by its side), in
+-- its side's order, packed (@exelib/panels).
 function double_attack.enemy_panels(me: Object): { number }
     local side = me.alliance
-    local require, forbid = if side == 0 then 0x20 else 0, if side == 0 then 0 else 0x20
-    return panels.filtered_except(me, require, forbid, side)
+    return panels.filtered_except(me, ENEMY_AREA, side)
 end
 
 local EXE5_DOUBLE_ATTACK = schema.record_type("exe5-double-attack")

@@ -54,8 +54,8 @@ local BACK_COLUMNS = { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 6, 1 }, { 6, 2 }, { 6, 3 
 local HIDDEN_PARTS = { [0] = 0x1F000000, 0x2F000000, 0x37000000, 0x3B000000, 0x3D000000, 0x3E000000, 0x3F000000 }
 -- What broke it (0x080D828C, by side: side 0's attacks, objects, bodies and other bodies, 0xAA000000; side 1's,
 -- 0x55000000): its own side's, and the other side's.
-local OWN_SIDE: { HitName } = { "own_attack", "own_object", "own_body", "own_other_body" }
-local ENEMY_SIDE: { HitName } = { "enemy_attack", "enemy_object", "enemy_body", "enemy_other_body" }
+local OWN_SIDE: HitNames = { own_attack = true, own_object = true, own_body = true, own_other_body = true }
+local ENEMY_SIDE: HitNames = { enemy_attack = true, enemy_object = true, enemy_body = true, enemy_other_body = true }
 local NONE = 0xFF
 
 -- The actions (0x080D8008).
@@ -98,6 +98,8 @@ local function sparing_back_columns(me: Object, look: () -> { number }): (number
     return x, y
 end
 
+local SOLID_NOT_OCCUPIED: PanelCondition = { solid = true, occupied = false }
+
 -- `object_getPanelsIgnoreColumnFiltered` (0x0800B5B0): the free panels of every row but `y`, top row first, left
 -- to right.
 local function other_rows(y: number): { number }
@@ -105,7 +107,7 @@ local function other_rows(y: number): { number }
     for row = 1, 3 do
         if row ~= y then
             for x = 1, 6 do
-                if field.check(x, row, "solid", "occupied") then
+                if field.check(x, row, SOLID_NOT_OCCUPIED) then
                     list[#list + 1] = panels.pack(x, row)
                 end
             end
@@ -118,7 +120,7 @@ end
 local function row_of(y: number): { number }
     local list = {}
     for x = 1, 6 do
-        if field.check(x, y, "solid", "occupied") then
+        if field.check(x, y, SOLID_NOT_OCCUPIED) then
             list[#list + 1] = panels.pack(x, y)
         end
     end
@@ -356,7 +358,7 @@ function fruit.instant(spec: Fruit): (user: Object, spec: InstantChipSpec) -> ()
         local ux, uy = user.panel_x, user.panel_y
         user:reserve_panel(ux, uy)
         local x, y = sparing_back_columns(user, function()
-            return panels.filtered("solid", "occupied")
+            return panels.filtered(SOLID_NOT_OCCUPIED)
         end)
         if x ~= 0 then
             spawn(user, x, y, spec)

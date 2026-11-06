@@ -228,7 +228,7 @@ rainyday.cloud = new.kind {
 -- ---- The controller -------------------------------------------------------------------------------------------------
 
 -- The enemy navis (0x080E9180: the other side's body).
-local TARGETS = "enemy_body"
+local TARGETS: PanelFlags = { enemy_body = true }
 
 export type ControllerState = {
     -- The Atk+ bonus (+0x32): it adds to the cloud's damage word.

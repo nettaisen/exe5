@@ -27,8 +27,8 @@ local chip: Chip = {
     damage = 10,
     hit_param = 10,
     lockout = 10,
-    flags = { "standard_library", "library" },
-    extra_flags = { "free_slot_in" },
+    flags = { standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
     slot_in_limit = 3,
     action = bombs.throw {
         held = seed.held(SEED),

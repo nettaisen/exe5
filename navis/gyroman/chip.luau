@@ -113,7 +113,7 @@ local chip: Chip = {
     damage = navi_level.row({ 50, 50, 50, 50, 70, 70, 70 }),
     hit_param = 138,
     lockout = 0,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     action = action,
 }

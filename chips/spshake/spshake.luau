@@ -53,6 +53,8 @@ local function move(me: Object, s: State)
     me:highlight_collision_panels()
 end
 
+local NOT_ANY_BODY: PanelCondition = { any_body = false }
+
 -- 0x080D30E0.
 local function tick(me: Object)
     local c = me.collision
@@ -68,7 +70,7 @@ local function tick(me: Object)
             if here ~= s.hit_at then
                 c:set_region(regions.single)
             end
-        elseif not field.check(me.panel_x, me.panel_y, nil, "any_body") then
+        elseif not field.check(me.panel_x, me.panel_y, NOT_ANY_BODY) then
             me:set_lifecycle("destroy")
             return
         else

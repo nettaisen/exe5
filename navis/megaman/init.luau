@@ -84,7 +84,7 @@ local navi: NaviDef = {
         aura_anim = 0,
         -- He wears what his soul does: his death hook takes it off (0x0800EFCC, his record's category 2), and an
         -- animation change (0x0800F11C by AI index 0), a flinch and a drag (0x080F0500) restart it.
-        overlay_hooks = { "death", "refresh", "flinch", "drag" },
+        overlay_hooks = { death = true, refresh = true, flinch = true, drag = true },
         attach_points = attach_points,
     },
 }

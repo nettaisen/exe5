@@ -67,7 +67,7 @@ local RESTORE = panel_changer.change {
     panels = "own",
     flicker = true,
     ticks = 30,
-    condition = { require = "own_area", forbid = "missing" },
+    condition = { own_area = true, missing = false },
     tick_sound = panel_changer.TICK_SOUND,
     change_sound = panel_changer.CHANGE_SOUND,
 }

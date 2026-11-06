@@ -21,7 +21,7 @@ local DAMAGE: { number } = { 5, 5, 5, 5, 5, 5, 10, 10, 15, 15 }
 local FLAGS = 0x8A
 local SERCH_S = chips_serch_s["serch-s"]
 -- The panel flag of the other side's navi, by side (`sub_80E7486`'s): its player navi.
-local ENEMY_NAVI = "enemy_navi"
+local ENEMY_NAVI: PanelFlags = { enemy_navi = true }
 
 -- His actor's actions: the lead-in (4 ticks), the appearance (animation 3, 4 ticks), a wait (16), the aim and the
 -- shots, a wait (20), the warp out (animation 4, 4 ticks), the lead-out (4 ticks).

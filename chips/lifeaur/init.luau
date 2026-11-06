@@ -15,7 +15,7 @@ local chip: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     slot_in_limit = 1,
     dimming = barriers.controller.hook(barriers.life_aura),
     auto_battle = { class = "when_unbarriered" },

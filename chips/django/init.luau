@@ -17,7 +17,7 @@ local django: Chip = {
     damage = 120,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     slot_in_limit = 1,
     megaman = "light",
     -- (In the navi chips' block though the US record lacks the `navi` flag: AntiNavi turns it back, and it is kept
@@ -44,7 +44,7 @@ local django_sp: Chip = {
     damage = { formula = "count", of = "turns_before", by_count = { 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250 }, operation_battle = 200 },
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library", "variable_damage" },
+    flags = { dimming = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     megaman = "light",
     -- (In the navi chips' block though the US record lacks the `navi` flag: AntiNavi turns it back, and it is kept
@@ -70,7 +70,7 @@ local django_ds: Chip = {
     damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250 }, operation_battle = 150 },
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library", "variable_damage" },
+    flags = { dimming = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     megaman = "dark",
     -- (In the navi chips' block though the US record lacks the `navi` flag: AntiNavi turns it back, and it is kept

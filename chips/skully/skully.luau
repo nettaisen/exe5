@@ -23,7 +23,7 @@ local SPRITE = asset.sprite("skull")
 local LIFETIME = 30
 local HEIGHT = 0x14_0000
 -- The enemy bodies (0x080D73D4, by side: the other side's body).
-local ENEMY_BODIES = "enemy_body"
+local ENEMY_BODIES: PanelFlags = { enemy_body = true }
 -- No enemy in that line.
 local NONE = 0xFF
 

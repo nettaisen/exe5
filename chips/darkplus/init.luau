@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 50,
     hit_param = 0,
     lockout = 20,
-    flags = { "dark" },
+    flags = { dark = true },
     slot_in_limit = 1,
     instant = plus.dark,
     -- What its use costs its user (rules/light_dark).

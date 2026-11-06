@@ -125,7 +125,7 @@ end
 
 -- 0x08010030: a dark chip's use; false when it fizzles.
 local function use_dark_chip(side: number, navi: Object): boolean
-    if battle.has_effect("dark_chips_fizzle") then
+    if battle.effects.dark_chips_fizzle then
         return false
     end
     if battle.link() and value(side) >= LIGHT_CHIPS then
@@ -173,7 +173,7 @@ local function offer_dark_chip(side: number)
     local first, taken = nil, nil
     for place, entry in ipairs(folder) do
         local chip = if entry then entry.chip else nil
-        if chip and table.find(chip.flags or {}, "dark") then
+        if chip and chip.flags and chip.flags.dark then
             if taken == nil then
                 first, taken = place, place
             elseif low and chip.id == DRKRECOV then
@@ -206,7 +206,7 @@ local function cost(side: number, chip: Chip)
 end
 
 -- The hit flag that a high value turns a bug away for (0x0801103E).
-local HIT_FLAG_SPARES_LIGHT = "dark"
+local HIT_FLAG_SPARES_LIGHT: HitNames = { dark = true }
 -- An HP drain of level 1 (code 0x18, argument 1): what 0xFD and 0xFC become.
 local HP_DRAIN_1 = 0x0118
 local DARK_DRAIN, LIGHT_DRAIN = 0xFD, 0xFC
@@ -252,7 +252,7 @@ light_dark.navi_bug = navi_bug
 -- The clearing is asked (the rules' `navi_panel`) on holy panels alone, while the side's value clears them: from the
 -- round's setup, and as a party switch changes who fights (rules.listen_panels).
 function light_dark.listen(side: number)
-    rules.listen_panels(side, if value(side) <= CLEARS_HOLY then { "holy" } else {})
+    rules.listen_panels(side, if value(side) <= CLEARS_HOLY then { holy = true } else {})
 end
 
 -- 0x08017136: the holy panel under a dark MegaMan turns Normal.
@@ -273,7 +273,7 @@ function light_dark.chip_cost(side: number, navi: Object, chip: Chip?): Chip?
     if chip == nil then
         return nil
     end
-    if table.find(chip.flags or {}, "dark") and not use_dark_chip(side, navi) then
+    if chip.flags and chip.flags.dark and not use_dark_chip(side, navi) then
         return invalid
     end
     cost(side, chip)

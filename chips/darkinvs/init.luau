@@ -16,7 +16,7 @@ local chip: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "dark" },
+    flags = { dimming = true, dark = true },
     slot_in_limit = 1,
     dimming = controller.hook,
     -- What its use costs its user (rules/light_dark).

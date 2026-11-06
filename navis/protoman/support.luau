@@ -19,7 +19,7 @@ local FLAGS = 0x94
 -- Where he may stand (0x020CC1E0): in front of the enemy, else above or below that; solid, nothing on it or reserved,
 -- of either side.
 local OFFSETS: { { { number } } } = { { { 1, 0, 0 } }, { { 1, -1, 0 }, { 1, 1, 0 } } }
-local REQUIRE, FORBID = "solid", "occupied"
+local STAND_ON: PanelCondition = { solid = true, occupied = false }
 
 -- His swing (animation 5, his sword: the attachment table's row 3 in its animation 1, the swing's sound), its hit on
 -- its 11th tick, 16 pixels up (the panel ahead and the two beside it, as a slash at navis), the slash shown there (the
@@ -94,7 +94,7 @@ function support.tick(side: number)
     if navi == nil or battle.navi(side).navi == protoman or party.any_busy(side) then
         return
     end
-    local x, y, flip = supports.target(navi, OFFSETS, REQUIRE, FORBID)
+    local x, y, flip = supports.target(navi, OFFSETS, STAND_ON)
     if x and y then
         party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGE, FLAGS), m)
     end

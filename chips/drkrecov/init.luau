@@ -22,7 +22,7 @@ local chip: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dark" },
+    flags = { dark = true },
     slot_in_limit = 1,
     action = heal.action { hp = 1000, mood = 0 },
     -- What its use costs its user (rules/light_dark).

@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 50,
     hit_param = 10,
     lockout = 20,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     slot_in_limit = 1,
     instant = side_special.instant,
     auto_battle = { class = "at_once" },

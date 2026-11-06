@@ -28,8 +28,8 @@ export type State = {
 local magnetman = {}
 
 -- A panel holding an enemy navi's body, by side (0x080BB100), and one something stands on.
-local ENEMY_NAVI = "enemy_body"
-local TAKEN = "any_body"
+local ENEMY_NAVI: PanelCondition = { enemy_body = true }
+local NOT_ANY_BODY: PanelCondition = { any_body = false }
 
 local function damage_word(me: Object): number
     return bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
@@ -45,7 +45,7 @@ end
 local function find_target(me: Object): number
     local x, y = me.panel_x, me.panel_y
     while true do
-        if field.check(x, y, ENEMY_NAVI, nil, me.alliance) then
+        if field.check(x, y, ENEMY_NAVI, me.alliance) then
             return x
         end
         x += me.facing
@@ -138,7 +138,7 @@ local function init(me: Object)
     s.target_x = int.u8(target)
     local mirror = s.target_x + (s.target_x - me.panel_x)
     s.mirror_x = int.u8(mirror)
-    s.paired = on_field(mirror, me.panel_y) and field.check(s.mirror_x, me.panel_y, nil, TAKEN)
+    s.paired = on_field(mirror, me.panel_y) and field.check(s.mirror_x, me.panel_y, NOT_ANY_BODY)
     battle.hitbox(me, {
         panel_x = me.panel_x,
         panel_y = me.panel_y,

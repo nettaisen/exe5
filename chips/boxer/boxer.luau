@@ -15,7 +15,7 @@ local boxer = {}
 local ROWS = { [0] = 2, [1] = 1, [2] = 3 }
 local PUNCHES, ROUNDS, EVERY = 3, 3, 12
 -- What a punch looks for on a panel (0x080E7E08: the other side's bodies and the neutral objects).
-local TARGETS: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
+local TARGETS: PanelFlags = { enemy_body = true, enemy_other_body = true, neutral = true }
 
 export type State = {
     -- The punch in the round (+0x60).

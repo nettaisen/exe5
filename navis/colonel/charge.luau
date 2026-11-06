@@ -50,7 +50,7 @@ local DRAW_TICKS, SOUND_AT, SLASH_AT, RECOVER_TICKS = 21, 17, 12, 5
 local COUNTER_TICKS = 16
 local HIT_MOD = 3
 -- An enemy body, by side (0x080BA5B0).
-local ENEMY_BODY = "enemy_body"
+local ENEMY_BODY: PanelFlags = { enemy_body = true }
 -- The slash: AIAttackVars +3's row of 0x080F8AF4 (0x080F8A30 and 0x080F8B00 for the warning) and its effect (0x48
 -- on), row 0, the routine's: the target and the two panels diagonally behind it.
 local REGION = regions.vee

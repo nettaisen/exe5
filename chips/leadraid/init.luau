@@ -21,7 +21,7 @@ local chip: Chip = {
     damage = 200,
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage" },
+    flags = { dimming = true, has_damage = true },
     slot_in_limit = 1,
     art_palette = { 0x0000, 0x67DE, 0x5AF8, 0x35CF, 0x2507, 0x5E05, 0x4120, 0x28A5, 0x32DF, 0x25DA, 0x14DC, 0x0031, 0x352A, 0x14A5, 0x3F4D, 0x2E66 },
     navi = navi_chips.make {

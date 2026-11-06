@@ -38,7 +38,7 @@ local chip: Chip = {
     damage = 300,
     hit_param = 158,
     lockout = 0,
-    flags = { "has_damage", "dark" },
+    flags = { has_damage = true, dark = true },
     slot_in_limit = 1,
     action = widesht.action { wave = WAVE, waves = 1, z = 0, shooter = SHOOTER },
     -- What its use costs its user (rules/light_dark).

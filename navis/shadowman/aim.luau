@@ -5,7 +5,7 @@
 local aim = {}
 
 -- An enemy's body, by side (0x08013090: the other side's body), and the rows looked at, by his row (0x08013098).
-local ENEMY_BODY = "enemy_body"
+local ENEMY_BODY: PanelFlags = { enemy_body = true }
 local ROWS: { [number]: { number } } = { [1] = { 1, 2, 3 }, [2] = { 2, 1, 3 }, [3] = { 3, 1, 2 } }
 
 -- The panel of the nearest enemy body ahead of `me`; none: nil.

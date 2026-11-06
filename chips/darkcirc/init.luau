@@ -19,7 +19,7 @@ local chip: Chip = {
     damage = 300,
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "has_damage", "dark", "variable_damage" },
+    flags = { dimming = true, has_damage = true, dark = true, variable_damage = true },
     slot_in_limit = 1,
     dimming = circgun.hook(circgun.variant {
         period = 2,

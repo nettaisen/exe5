@@ -17,7 +17,7 @@ local shadoman: Chip = {
     damage = 40,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
@@ -41,7 +41,7 @@ local shadomn_sp: Chip = {
     damage = sp_chips.damage,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
@@ -63,7 +63,7 @@ local shadomn_ds: Chip = {
     damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 45, 50, 50, 55, 55, 60, 60, 65, 65, 70, 70 }, operation_battle = 70 },
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },
+    flags = { dimming = true, has_damage = true, navi = true, damage_shown_variable = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {

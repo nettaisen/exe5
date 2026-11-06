@@ -18,7 +18,7 @@ gust.kind = common.make_kind("gust", {
     weak_when_unseen = true,
     -- The panels it can blow over (0x080CEB94, by side: the other side's area; its third row, read for a side of 2,
     -- is code: require 0xB427B500, forbid 0xF7342049).
-    panels = { require = "enemy_area" },
+    panels = { enemy_area = true },
 })
 
 -- 0x080CEBA4: a gust on (x, y) for side `alliance` and flip `flip`, blowing as `how` says, with the damage word

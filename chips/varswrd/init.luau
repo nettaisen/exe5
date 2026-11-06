@@ -23,7 +23,7 @@ local chip: Chip = {
     damage = 160,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = action.action {
         -- The sequences (0x080ED4E4), facing right (flip 0) and mirrored, as joypad words with A held: 0x81 A+down, 0x91

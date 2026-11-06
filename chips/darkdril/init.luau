@@ -23,7 +23,7 @@ local chip: Chip = {
     damage = 100,
     hit_param = 132,
     lockout = 0,
-    flags = { "has_damage", "dark" },
+    flags = { has_damage = true, dark = true },
     slot_in_limit = 1,
     action = drill.action { ticks = 60, arm_palette = 1, bugs = 0x1FA },
     -- What its use costs its user (rules/light_dark).

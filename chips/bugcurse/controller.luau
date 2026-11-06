@@ -17,7 +17,7 @@ controller.hook = common.make {
     curse_id = "bugcurse/curse",
     sprite = bug_curse_sprite,
     sound = asset.sound("trap-vanish"),
-    untouched = { "invisible", "submerged", "flashing", "bubbled" },
+    untouched = { invisible = true, submerged = true, flashing = true, bubbled = true },
     bugs = { 0x0124, 0x1418, 0x1419, 0x04FF, 0x04FE },
     operation_battle = operation_battle,
     operation_bugs = { 0x1218, 0x04F9, 0x0814 },

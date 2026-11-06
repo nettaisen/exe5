@@ -45,7 +45,7 @@ local chip: Chip = {
     damage = 100,
     hit_param = 132,
     lockout = 20,
-    flags = { "has_damage", "dark" },
+    flags = { has_damage = true, dark = true },
     slot_in_limit = 1,
     instant = meteors.instant(SHOWER, 0),
     -- What its use costs its user (rules/light_dark).

@@ -19,7 +19,7 @@ local energbom: Chip = {
     damage = 40,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = bombs.throw {
         held = bombs.held,
@@ -48,7 +48,7 @@ local megenbom: Chip = {
     damage = 60,
     hit_param = 10,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = bombs.throw {
         held = bombs.held,

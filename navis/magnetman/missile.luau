@@ -32,8 +32,14 @@ local HP, WAIT = 20, 15
 local SPEED, TURNED_SPEED = 0x4_0000, 0x2_6666
 local ANIM_UP, ANIM_DOWN = 1, 2
 -- A panel holding the other side's navi's body, by side (0x080D27D8), and a body among what it hit.
-local ENEMY_NAVI = "enemy_body"
-local BODY_HIT: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
+local ENEMY_NAVI: PanelCondition = { enemy_body = true }
+local BODY_HIT: HitNames = {
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
+}
 
 -- Its turn up or down its column toward row `y`, from the panel's center `cx`: none toward its own row.
 local function turn(me: Object, y: number, cx: number)
@@ -66,7 +72,7 @@ local function turn_to_column(me: Object, cx: number)
     end
     local rows = {}
     for y = 1, 3 do
-        if field.check(me.panel_x, y, ENEMY_NAVI, nil, me.alliance) then
+        if field.check(me.panel_x, y, ENEMY_NAVI, me.alliance) then
             table.insert(rows, y)
         end
     end

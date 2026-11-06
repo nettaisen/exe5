@@ -18,7 +18,7 @@ local numbrman: Chip = {
     damage = 30,
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
@@ -42,7 +42,7 @@ local numbrmn_sp: Chip = {
     damage = sp_chips.damage,
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
@@ -64,7 +64,7 @@ local numbrmn_ds: Chip = {
     damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90 }, operation_battle = 50 },
     hit_param = 158,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },
+    flags = { dimming = true, has_damage = true, navi = true, damage_shown_variable = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {

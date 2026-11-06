@@ -18,7 +18,7 @@ local chip: Chip = {
     damage = 40,
     hit_param = 5,
     lockout = 50,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = flick.action {
         kind = puck.kind,

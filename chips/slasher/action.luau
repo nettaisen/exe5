@@ -39,7 +39,7 @@ slasher.STATE = { timer = schema.u16, target_x = schema.u8 }
 local START, WAIT, SLASH, RECOVER = 0x0, 0x4, 0x8, 0xC
 -- What the column search looks for (0x0800FF08, by side): the other side's player navi on its own side's area; and
 -- where it starts, by side (0x0800FF18).
-local SEARCH: PanelCondition = { require = { "enemy_navi", "own_area" } }
+local SEARCH: PanelCondition = { enemy_navi = true, own_area = true }
 local FROM = { [0] = 1, [1] = 6 }
 local ROW = 2
 
@@ -49,7 +49,7 @@ local function find(me: Object): number
     local x = FROM[me.alliance]
     while true do
         for y = 3, 1, -1 do
-            if field.check(x, y, SEARCH.require, SEARCH.forbid, me.alliance) then
+            if field.check(x, y, SEARCH, me.alliance) then
                 return x
             end
         end

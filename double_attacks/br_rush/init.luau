@@ -50,9 +50,14 @@ local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local MEGAMAN_SWORD_ANIM, COLONEL_SWORD_ANIM = 0, 7
 -- What Colonel looks for (0x020DDE30, by his side): an enemy body; and the panel before it (0x020DDE38): solid, with no
 -- enemy body, other body or neutral object on it.
-local ENEMY_BODY = "enemy_body"
-local STANDABLE = "solid"
-local TAKEN: { PanelFlag } = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
+local ENEMY_BODY: PanelCondition = { enemy_body = true }
+local STANDABLE: PanelCondition = {
+    solid = true,
+    enemy_body = false,
+    own_other_body = false,
+    enemy_other_body = false,
+    neutral = false,
+}
 
 -- The cape: its sprite and animations (`sub_8011504`'s 0x0019101E: 10-1E, the pack's `colonel-cape`, animation 25,
 -- no shadow; caught, 26); 20 pixels up as it flies, 4 pixels a tick (its Param1, 0x40, by 0x1000), 10 ticks before
@@ -314,8 +319,8 @@ local function search(me: Object): (number, number)
     local y = me.panel_y
     local x = me.panel_x + front
     while field.valid(x, y) do
-        local stands = field.check(x - front, y, STANDABLE, TAKEN, me.alliance)
-        if field.check(x, y, ENEMY_BODY, nil, me.alliance) and stands then
+        local stands = field.check(x - front, y, STANDABLE, me.alliance)
+        if field.check(x, y, ENEMY_BODY, me.alliance) and stands then
             return x - front, y
         end
         x += front

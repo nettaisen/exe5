@@ -19,7 +19,7 @@ local chip: Chip = {
     damage = 200,
     hit_param = 158,
     lockout = 0,
-    flags = { "has_damage", "dark" },
+    flags = { has_damage = true, dark = true },
     slot_in_limit = 1,
     action = thunder.shoot {
         -- Its ball (12 panels, the original's DarkThnd's): big, of EXE5's row 0x2B.

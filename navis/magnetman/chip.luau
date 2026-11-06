@@ -40,8 +40,8 @@ local GATHER_TICKS, RETURN_TICKS = 4, 4
 -- The magnets' variant (their fourth parameter, 1): hit modifier 3, no status; they go at once, and stop while dimmed.
 local VARIANT = magnet.variant { hit_mod = 3, waits_for_navi = false, runs_while_dimmed = false }
 -- A panel holding the other side's navi's body, by side (0x080F137C), and one something stands on.
-local ENEMY_NAVI = "enemy_body"
-local TAKEN = "any_body"
+local ENEMY_NAVI: PanelCondition = { enemy_body = true }
+local NOT_ANY_BODY: PanelCondition = { any_body = false }
 -- Where he is while away (off the field).
 local AWAY_X, AWAY_Y = 10, 10
 
@@ -54,7 +54,7 @@ end
 -- holding an enemy navi's body; 0 if none before the field's end.
 local function find_target(me: Object, x: number, y: number): number
     while true do
-        if field.check(x, y, ENEMY_NAVI, nil, me.alliance) then
+        if field.check(x, y, ENEMY_NAVI, me.alliance) then
             return x
         end
         x += me.facing
@@ -97,7 +97,7 @@ local function send(me: Object, s: State)
     if target ~= 0 then
         -- 0x080F1384: the panel as far past the target as he is short of it, if it is on the field and free.
         local mirror = target + (target - x)
-        if not field.check(mirror, y, nil, TAKEN) then
+        if not field.check(mirror, y, NOT_ANY_BODY) then
             mirror = 0
         end
         s.mirror_x = mirror
@@ -180,7 +180,7 @@ local chip: Chip = {
     damage = navi_level.row({ 80, 80, 80, 100, 100, 120, 120 }),
     hit_param = 158,
     lockout = 0,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     action = action,
 }

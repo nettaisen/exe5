@@ -251,7 +251,7 @@ end
 -- What the search looks for (0x080CABA8 and 0x080CABF0, by side): the body of the armed side's enemy. And the word it
 -- tests, which it leaves in r2 when the gun's soldier answers (the soldier's position and element byte come of it):
 -- the panel flag of side 1's body, 0x04000000, for side 0, of side 0's, 0x08000000, for side 1.
-local ENEMY_BODY = "enemy_body"
+local ENEMY_BODY: PanelFlags = { enemy_body = true }
 local ENEMY_BODY_WORD = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
 -- What EXE5's `object_getPanelParameters` leaves in r2: the address it calls `_object_getPanelDataOffset` through
 -- (0x0800BD1C, Thumb), which the search leaves in turn when the sword's soldier answers; the soldier's element byte
@@ -293,7 +293,7 @@ local function call(x: number, y: number): (number?, number, number)
     end
     px = x + dir
     while true do
-        if field.check(column(px), y, ENEMY_BODY, nil, side) then
+        if field.check(column(px), y, ENEMY_BODY, side) then
             return 1, side, ENEMY_BODY_WORD[side]
         end
         px += dir

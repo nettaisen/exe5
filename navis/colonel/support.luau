@@ -18,7 +18,7 @@ local FLAGS = 0x94
 -- Where he may stand (0x020CC27C): 5, else 4, 3, 2, 1 columns in front of the enemy, in its row; of his side
 -- (0x020CC26C): solid and his side's own, nothing on it or reserved.
 local OFFSETS: { { { number } } } = { { { 5, 0, 0 } }, { { 4, 0, 0 } }, { { 3, 0, 0 } }, { { 2, 0, 0 } }, { { 1, 0, 0 } } }
-local STAND: PanelCondition = { require = { "solid", "own_area" }, forbid = "occupied" }
+local STAND: PanelCondition = { solid = true, own_area = true, occupied = false }
 
 -- His cannon: raised (animation 0xA, the tank cannon: the attachment table's row 0x25) for 8 ticks, held 30; fired
 -- (animation 9, the cannon's animation 1): on its sixth tick a shake and the shell from the panel ahead, 16 pixels up,
@@ -132,7 +132,7 @@ function support.tick(side: number)
     if navi == nil or battle.navi(side).navi == colonel or party.any_busy(side) then
         return
     end
-    local x, y, flip = supports.target(navi, OFFSETS, STAND.require, STAND.forbid, true, side)
+    local x, y, flip = supports.target(navi, OFFSETS, STAND, true, side)
     if x and y then
         party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGE, FLAGS), m)
     end

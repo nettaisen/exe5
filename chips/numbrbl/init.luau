@@ -15,7 +15,7 @@ local chip: Chip = {
     damage = { formula = "hp_last_digits" },
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "damage_shown_variable", "library", "variable_damage" },
+    flags = { dimming = true, has_damage = true, damage_shown_variable = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     -- Five balls (the original's by the chip's level, its first parameter 2, and three).
     dimming = controller.hook(5),

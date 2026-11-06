@@ -33,7 +33,7 @@ local HOOKS: { Hook } = {
     { dx = 0, dy = 1, effect = VERTICAL },
     { dx = -1, dy = 0, effect = HORIZONTAL },
 }
-local CATCHES: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
+local CATCHES: PanelFlags = { enemy_body = true, enemy_other_body = true, neutral = true }
 local HOOK_LIFETIME = 20
 -- Waiting before the hooks, and between the shocks.
 local WAIT = 5

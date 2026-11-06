@@ -34,7 +34,7 @@ local chip: Chip = {
     damage = 280,
     hit_param = 178,
     lockout = 20,
-    flags = { "has_damage", "library" },
+    flags = { has_damage = true, library = true },
     slot_in_limit = 1,
     megaman = "light",
     instant = STRIKE.instant,

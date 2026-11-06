@@ -197,7 +197,7 @@ local function decide(navi: Object, s: State, fam: Family)
     local chip = e :: Chip
     s.entry_chip, s.entry_pattern = chip, 0
     -- (The record's byte 9 bit 0, 0x0802BAEA: its `dimming` flag.)
-    if table.find(chip.flags or {}, "dimming") ~= nil and s.misses == 0 then
+    if chip.flags and chip.flags.dimming and s.misses == 0 then
         s.step = 0x18
         return
     end

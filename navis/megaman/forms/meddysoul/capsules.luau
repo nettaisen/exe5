@@ -64,7 +64,7 @@ end
 -- 0x08024C74: a capsule goes into the last pick: a chip that deals damage, with no capsule yet.
 local function state(side: number, _s: any): "selectable" | "unavailable"
     local last = custom.last_pick(side)
-    if last == nil or last.attached or table.find(last.chip.flags or {}, "has_damage") == nil then
+    if last == nil or last.attached or not (last.chip.flags and last.chip.flags.has_damage) then
         return "unavailable"
     end
     return "selectable"

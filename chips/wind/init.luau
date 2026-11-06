@@ -18,8 +18,8 @@ local wind: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
-    extra_flags = { "free_slot_in" },
+    flags = { dimming = true, standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
     slot_in_limit = 3,
     -- 0x080CE72C's first row; NameID 0xD6: actor record 0xD6 (0x08014C94: version 3, AI index 0x21).
     dimming = controller.hook(fan.variant {
@@ -50,8 +50,8 @@ local fan_chip: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
-    extra_flags = { "free_slot_in" },
+    flags = { dimming = true, standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
     slot_in_limit = 3,
     -- 0x080CE72C's second row; NameID 0xD7: actor record 0xD7 (0x08014C94: version 4, AI index 0x21).
     dimming = controller.hook(fan.variant {

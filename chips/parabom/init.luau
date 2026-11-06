@@ -28,7 +28,7 @@ local chip: Chip = {
     damage = 90,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = bombs.throw { held = bombs.held, held_anim = 6, thrower = crakbom.thrower(BOMB) },
     auto_battle = { class = "into_reach", range = "column_three_ahead" },

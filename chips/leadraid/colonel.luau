@@ -39,7 +39,7 @@ local X: { { region: Region, effect: Effect } } = {
     { region = regions.single, effect = new.effect { sprite = screen_divide_sprite, anim = 2, palette = 0, steps = 13 } },
 }
 -- The panels his target holds (0x080BEDE0): an enemy navi's body, by side.
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelFlags = { enemy_body = true }
 -- His place beside his user's panel (pixels behind and up), his NameID's attach point 0 (sprite 08-07's: 0, 16),
 -- where his glow sits.
 local BEHIND, UP = 10, 6

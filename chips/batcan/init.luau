@@ -16,7 +16,7 @@ local batcan1: Chip = {
     damage = 40,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     slot_in_limit = 1,
     action = batcan.action { shots = { 3 } },
     -- Past the chip pack's list (its last chip 0x13A): no folder holds it (rules/folder).
@@ -36,7 +36,7 @@ local batcan2: Chip = {
     damage = 40,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     slot_in_limit = 1,
     action = batcan.action { shots = { 3 } },
     -- Past the chip pack's list (its last chip 0x13A): no folder holds it (rules/folder).
@@ -56,7 +56,7 @@ local batcan3: Chip = {
     damage = 40,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     slot_in_limit = 1,
     action = batcan.action { shots = { 3 } },
     -- Past the chip pack's list (its last chip 0x13A): no folder holds it (rules/folder).
@@ -76,7 +76,7 @@ local batcan4: Chip = {
     damage = 40,
     hit_param = 30,
     lockout = 0,
-    flags = { "has_damage" },
+    flags = { has_damage = true },
     slot_in_limit = 1,
     action = batcan.action { shots = { 1, 1, 3 } },
     -- Past the chip pack's list (its last chip 0x13A): no folder holds it (rules/folder).

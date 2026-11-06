@@ -17,7 +17,7 @@ local chip: Chip = {
     damage = 200,
     hit_param = 40,
     lockout = 0,
-    flags = { "has_damage", "standard_library", "library" },
+    flags = { has_damage = true, standard_library = true, library = true },
     slot_in_limit = 3,
     action = bombs.throw { held = bombs.held, thrower = geyser.thrower() },
     auto_battle = { class = "three_ahead_near_enemy" },

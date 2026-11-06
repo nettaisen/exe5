@@ -16,7 +16,7 @@ local chip: Chip = {
     damage = 140,
     hit_param = 20,
     lockout = 0,
-    flags = { "dimming" },
+    flags = { dimming = true },
     slot_in_limit = 1,
     dimming = bugfix.liberation,
     auto_battle = { class = "at_once" },

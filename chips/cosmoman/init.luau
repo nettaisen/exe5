@@ -18,7 +18,7 @@ local cosmoman: Chip = {
     damage = 70,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
@@ -42,7 +42,7 @@ local cosmomn_sp: Chip = {
     damage = sp_chips.damage,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
@@ -64,7 +64,7 @@ local cosmomn_ds: Chip = {
     damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130 }, operation_battle = 70 },
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },
+    flags = { dimming = true, has_damage = true, navi = true, damage_shown_variable = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {

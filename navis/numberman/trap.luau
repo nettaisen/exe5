@@ -21,7 +21,7 @@ local SHOWN_TICKS = 40
 -- The upper half of its height once it is hidden.
 local HIDDEN = 0xFF
 -- The other side's bodies and other bodies, of its side (0x080DF2E0).
-local ENEMY: { PanelFlag } = { "enemy_body", "enemy_other_body" }
+local ENEMY: PanelFlags = { enemy_body = true, enemy_other_body = true }
 -- Where the press's top left panel may be from the trap's (0x080DF378), in the order they are drawn from.
 local SQUARES = { { 0, 0 }, { 0, -1 }, { -1, 0 }, { -1, -1 } }
 -- Its actions.

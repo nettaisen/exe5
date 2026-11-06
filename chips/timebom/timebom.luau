@@ -43,14 +43,14 @@ timebom.kind = countdown.make_kind("timebom/countdown", {
 
 -- What the search for each row's panel looks for, of the user's side (0x080E351C: the other side's panels;
 -- 0x080E34B0: the user's).
-local OTHER_SIDES: PanelCondition = { require = "enemy_area" }
-local OWN_SIDES: PanelCondition = { require = "own_area" }
+local OTHER_SIDES: PanelCondition = { enemy_area = true }
+local OWN_SIDES: PanelCondition = { own_area = true }
 
 -- `object_getFirstPanelInDirectionFiltered`: from (x, y) by `step` columns, the first panel meeting `cond` (of side
 -- `side`), while the panels are on the field (nil: none).
 local function first(x: number, y: number, cond: PanelCondition, step: number, side: number): number?
     while true do
-        if field.check(x, y, cond.require, cond.forbid, side) then
+        if field.check(x, y, cond, side) then
             return x
         end
         x += step
@@ -59,6 +59,8 @@ local function first(x: number, y: number, cond: PanelCondition, step: number, s
         end
     end
 end
+
+local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
 
 -- 0x080E3420: the panel the bomb goes on (nil: none).
 local function target(me: Object): (number?, number?)
@@ -74,7 +76,7 @@ local function target(me: Object): (number?, number?)
             if near and near ~= 0 then
                 -- (The panel the bomb goes on: solid, no body on it.)
                 local x = near + me.facing
-                if field.check(x, y, "solid", "any_body") then
+                if field.check(x, y, SOLID_NOT_ANY_BODY) then
                     table.insert(rows, { x, y })
                 end
             end

@@ -43,7 +43,7 @@ local form: FormDef = {
         back_special = back.weapon,
     },
     charged_chips = { { family = "sword", damaging = false, plain = true } },
-    status_reset = { "float_shoes", "floating_body" },
+    status_reset = { float_shoes = true, floating_body = true },
     move_lag = 0,
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 0x16-0x1B, Team Colonel's

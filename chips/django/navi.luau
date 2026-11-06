@@ -49,7 +49,7 @@ local SOUND_LAND = asset.sound("rockfall")
 local SOUND_BEAM = asset.sound("sun-beam")
 
 -- What he looks for ahead in his row (0x080BF594): an enemy navi's body.
-local ENEMY_NAVI = "enemy_body"
+local ENEMY_NAVI: PanelFlags = { enemy_body = true }
 -- Where the rubble falls (0x080BF608): beside the coffin's panel.
 local RUBBLE_AT = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } }
 -- The purifying hits: element 5 (the sun's), on the coffin's 3x3, no spark; the first bugs its chip's.

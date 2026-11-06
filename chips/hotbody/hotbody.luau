@@ -128,7 +128,7 @@ hotbody.flame = new.kind {
 -- ---- The fire -------------------------------------------------------------------------------------------------------
 
 -- What a flame spreads onto (0x080E6CC4): the other side's bodies and other bodies, and neutral objects; and solid.
-local SPREADS_ONTO: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
+local SPREADS_ONTO: PanelFlags = { enemy_body = true, enemy_other_body = true, neutral = true }
 -- The eight panels around one (0x080E6CCC), clockwise from the one above.
 local AROUND = { { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 }, { -1, -1 } }
 local EVERY = 30

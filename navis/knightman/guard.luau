@@ -25,16 +25,16 @@ local OFF_FIELD_SIDE = 0xE9
 local GUARD_TICKS = 0x3C
 local FLASH_SOUND = asset.sound("own-hit")
 -- A hit at all (the hit flags' 0xFF800000): either side's attack, object, body or other body, or a neutral object's.
-local ANY_HIT: { HitName } = {
-    "own_attack",
-    "enemy_attack",
-    "own_object",
-    "enemy_object",
-    "own_body",
-    "enemy_body",
-    "own_other_body",
-    "enemy_other_body",
-    "neutral",
+local ANY_HIT: HitNames = {
+    own_attack = true,
+    enemy_attack = true,
+    own_object = true,
+    enemy_object = true,
+    own_body = true,
+    enemy_body = true,
+    own_other_body = true,
+    enemy_other_body = true,
+    neutral = true,
 }
 
 type ActorState = { member: number, flash: boolean, kept: boolean }

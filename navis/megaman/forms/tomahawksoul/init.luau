@@ -36,7 +36,7 @@ local form: FormDef = {
     chaos = { weapon = chaos.weapon(drklance, { 40, 60, 90, 120, 150, 40 }) },
     -- A hit's status doesn't take (the hit intake, 0x08017942: soul 10 skips 0x0801733C, a counter's paralysis
     -- with it).
-    traits = { "status_immune" },
+    traits = { status_immune = true },
     weapons = {
         buster = buster.weapon,
         charge_shot = charge.weapon,

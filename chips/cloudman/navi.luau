@@ -20,7 +20,7 @@ local cloudman = {}
 local SPRITE = asset.sprite("cloudman")
 local SOUND_APPEAR = asset.sound("appear")
 -- A panel a cloud takes: any but one with these flags (as one word).
-local TAKEN: { PanelFlag } = { "any_body", "own_object", "enemy_object" }
+local CLOUD_PANEL: PanelCondition = { any_body = false, own_object = false, enemy_object = false }
 -- How long he holds his arms up, and when (ticks left) he lowers them.
 local HOLD, LOWER = 0xC8, 0x5A
 
@@ -38,7 +38,7 @@ local function set_clouds(me: Object): number
         while true do
             -- (Past the field's columns the game reads no panel, as a byte reads none.)
             local x = int.u8(enemy.panel_x + back * n)
-            if not field.check(x, enemy.panel_y, nil, TAKEN) then
+            if not field.check(x, enemy.panel_y, CLOUD_PANEL) then
                 break
             end
             cloud.spawn(me, x, enemy.panel_y, me.element, flip, damage)

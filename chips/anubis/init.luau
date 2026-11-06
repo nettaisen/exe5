@@ -18,7 +18,7 @@ local chip: Chip = {
     damage = 1,
     hit_param = 0,
     lockout = 0,
-    flags = { "dimming", "library" },
+    flags = { dimming = true, library = true },
     slot_in_limit = 1,
     megaman = "dark",
     dimming = anubis.controller.hook(STATUE),

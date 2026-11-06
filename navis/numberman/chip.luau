@@ -62,7 +62,7 @@ numtrap = {
     damage = navi_level.row({ 120, 120, 120, 120, 120, 140, 140 }),
     hit_param = 148,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library", "variable_damage" },
+    flags = { dimming = true, has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     action = action,
 } :: Chip

@@ -74,7 +74,7 @@ local navi: NaviDef = {
                 wearer.related2 = layer.spawn(wearer, FACE)
             end,
         },
-        overlay_hooks = { "death" },
+        overlay_hooks = { death = true },
         attach_points = {
             { 0, 0 },
             { 0, 10 },

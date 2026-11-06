@@ -19,9 +19,9 @@ local chip: Chip = {
     damage = { formula = "hp_lost", cap = 999 },
     hit_param = 50,
     lockout = 0,
-    flags = { "has_damage", "damage_shown_variable", "library", "variable_damage" },
+    flags = { has_damage = true, damage_shown_variable = true, library = true, variable_damage = true },
     -- (The custom screen shows its damage as "???" only on an A, which it never comes as.)
-    traits = { "hides_damage_as_a" },
+    traits = { hides_damage_as_a = true },
     slot_in_limit = 1,
     megaman = "dark",
     action = swords.slash {

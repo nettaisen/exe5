@@ -35,7 +35,7 @@ local SOUND_UP = asset.sound("hub")
 local SOUND_DOWN = asset.sound("lifesync")
 local SOUND_WARNING = asset.sound("err-select-91")
 -- The other side's player navi stands there (0x080E7394).
-local ENEMY_NAVI = "enemy_navi"
+local ENEMY_NAVI: PanelFlags = { enemy_navi = true }
 -- The marker's attach point on its target's sprite.
 local MARK_POINT = 0x1B
 -- (The battle effects that make it only wait: 1, a boss rank; 8, a link battle.)

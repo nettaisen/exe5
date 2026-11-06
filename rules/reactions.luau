@@ -34,7 +34,7 @@ return {
         float_shoe_needs_self_bit = false,
         bubbled_as_submerged = true,
         elec_reaches_submerged = true,
-        guard_breaks_to = { "breaks_guard", "break" },
+        guard_breaks_to = { breaks_guard = true, ["break"] = true },
         guard_before_untouchable = false,
         guard_marks_direction = true,
     },
@@ -82,17 +82,17 @@ return {
     -- are his idle's to clear.) A cut-in's ask clears the chip's and the charged chip's requests with itself
     -- (0x080145AC: 0x80C).
     request_clears = {
-        attack = { "rules_release" },
-        paralysis = { "anti_sword_triggered", "rules_release" },
-        flinch = { "anti_sword_triggered", "rules_release" },
-        drag = { "anti_sword_triggered", "rules_release" },
-        cut_in = { "chip", "charged_chip" },
+        attack = { rules_release = true },
+        paralysis = { anti_sword_triggered = true, rules_release = true },
+        flinch = { anti_sword_triggered = true, rules_release = true },
+        drag = { anti_sword_triggered = true, rules_release = true },
+        cut_in = { chip = true, charged_chip = true },
     },
     -- What a navi's statuses' end clears (as EXE6's `sub_801A264`): the six statuses' flags (0x8001E800), the requests
     -- 0x300E8 and the six timers.
     status_end = {
-        flags = { "paralyzed", "blind", "immobilized", "confused", "frozen", "bubbled" },
-        requests = { "paralyze", "confuse", "blind", "immobilize", "freeze", "bubble" },
-        timers = { "paralyze", "confuse", "blind", "immobilize", "freeze", "bubble" },
+        flags = { paralyzed = true, blind = true, immobilized = true, confused = true, frozen = true, bubbled = true },
+        requests = { paralyze = true, confuse = true, blind = true, immobilize = true, freeze = true, bubble = true },
+        timers = { paralyze = true, confuse = true, blind = true, immobilize = true, freeze = true, bubble = true },
     },
 }

@@ -40,7 +40,7 @@ local SOUND_MARK = asset.sound("mark")
 local ANIM_WIND_UP, ANIM_PLACE = 0x10, 0x12
 local PLACE_AT = 0x28
 -- The panels the capsule may go on (0x020D80B0, by side): the other side's, solid, with no one on them.
-local CAPSULE_PANELS: PanelCondition = { require = { "solid", "enemy_area" }, forbid = "any_body" }
+local CAPSULE_PANELS: PanelCondition = { solid = true, enemy_area = true, any_body = false }
 
 -- A team navi appears wearing what it wears (0x02015B0C, 0x02015D58: its NameID's actor record a player's,
 -- `sub_8011420` with Param3 1).
@@ -158,7 +158,7 @@ local function capsule_panel(me: Object): (number?, number?)
     while field.valid(x, 1) do
         for y = 1, 3 do
             local ahead = x == me.panel_x + REACH * f and y == me.panel_y
-            if field.check(x, y, cond.require, cond.forbid, me.alliance) and not ahead then
+            if field.check(x, y, cond, me.alliance) and not ahead then
                 local packed: number = panels.pack(x, y)
                 table.insert(list, packed)
             end

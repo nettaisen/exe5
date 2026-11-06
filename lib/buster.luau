@@ -19,7 +19,7 @@ local buster = common.make {
     -- What stops a shot's panel count (0x0800D99A: one mask whichever side shoots, where EXE6's goes by the side):
     -- bodies, neutral objects, blockers and reservations, both sides' other bodies, the shooter's own too (a capsule
     -- of its own sitting in its row).
-    closed = "occupied",
+    closed = { occupied = true },
     attachment = attachment.kind,
 }
 

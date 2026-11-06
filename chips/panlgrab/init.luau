@@ -15,7 +15,7 @@ local chip: Chip = {
     damage = 10,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "standard_library", "library" },
+    flags = { dimming = true, standard_library = true, library = true },
     slot_in_limit = 1,
     dimming = grab.panel,
     auto_battle = { class = "at_once" },

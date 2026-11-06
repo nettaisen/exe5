@@ -15,8 +15,8 @@ local crakout: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
-    extra_flags = { "free_slot_in" },
+    flags = { standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
     slot_in_limit = 3,
     -- (0x080C7818's row 0: the panel ahead.)
     action = crack.action({ { 0, 0 } }),
@@ -34,8 +34,8 @@ local dublcrak: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
-    extra_flags = { "free_slot_in" },
+    flags = { standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
     slot_in_limit = 3,
     -- (Row 1: the panel ahead and the one behind it.)
     action = crack.action({ { 0, 0 }, { 1, 0 } }),
@@ -53,8 +53,8 @@ local tripcrak: Chip = {
     damage = 0,
     hit_param = 0,
     lockout = 0,
-    flags = { "standard_library", "library" },
-    extra_flags = { "free_slot_in" },
+    flags = { standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
     slot_in_limit = 3,
     -- (Row 2: the column ahead.)
     action = crack.action({ { 0, 0 }, { 0, -1 }, { 0, 1 } }),

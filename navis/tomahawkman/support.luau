@@ -19,8 +19,8 @@ local FLAGS = 0x9E
 local TIMER: { number } = { 180, 180, 240, 240, 240, 240, 240, 240, 350, 350, 350, 350, 350, 350, 400, 400 }
 -- Of his side: the panels he searches from (0x020CC2C0: his side's own) and those he may stand on (0x020CC2D0: solid
 -- and his side's own, nothing on it or reserved).
-local SEARCH: PanelCondition = { require = "own_area" }
-local STAND: PanelCondition = { require = { "solid", "own_area" }, forbid = "occupied" }
+local SEARCH: PanelCondition = { own_area = true }
+local STAND: PanelCondition = { solid = true, own_area = true, occupied = false }
 -- The panel patterns where he may face back too (`GetBattlePanelColumnPattern`).
 local TWO_WAY = { [0x23] = true, [0x31] = true, [0x33] = true }
 
@@ -86,7 +86,7 @@ support.actor = party_support.make {
 -- (of side `side`); nil once off the field.
 local function first(x: number, y: number, cond: PanelCondition, dir: number, side: number): number?
     while true do
-        if field.check(x, y, cond.require, cond.forbid, side) then
+        if field.check(x, y, cond, side) then
             return x
         end
         x += dir
@@ -141,7 +141,7 @@ local function search(side: number, flip: number): (number?, number?)
             end
             local good: { { number } } = {}
             for _, p in found do
-                local stands = field.check(p[1], p[2], STAND.require, STAND.forbid, side)
+                local stands = field.check(p[1], p[2], STAND, side)
                 if reaches(side, p[1] + front, p[2], front) and stands then
                     table.insert(good, p)
                 end
@@ -157,7 +157,7 @@ local function search(side: number, flip: number): (number?, number?)
             end
         elseif step == "middle" then
             local x = first(start, 2, SEARCH, back, side)
-            if x and field.check(x, 2, STAND.require, STAND.forbid, side) and reaches(side, x + front, 2, front) then
+            if x and field.check(x, 2, STAND, side) and reaches(side, x + front, 2, front) then
                 return x, 2
             end
             if tried then

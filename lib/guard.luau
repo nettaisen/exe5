@@ -55,7 +55,7 @@ export type State = {
 -- The shield sits at the navi's sprite attach point 6.
 local SHIELD_POINT = 6
 -- A hit that breaks guards (the collision's hit flag 2).
-local BREAKS_GUARD = "break"
+local BREAKS_GUARD: HitNames = { ["break"] = true }
 -- The Reflect program's shot's height.
 local SHOT_Z = 0x14_0000
 

@@ -60,7 +60,7 @@ local form: FormDef = {
         charge_shot = charge.weapon,
         a_charge = charged_shot.weapon,
     },
-    status_reset = { "float_shoes", "floating_body", "air_shoes" },
+    status_reset = { float_shoes = true, floating_body = true, air_shoes = true },
     tick = function(navi: Object)
         -- (0x080C451A on what he wears, the propeller.)
         local propeller = navi.related2

@@ -13,7 +13,7 @@ local HOLY_TO_NORMAL = panel_changer.change {
     panels = "all",
     flicker = true,
     ticks = 0x1E,
-    condition = { require = { "holy", "own_area" }, forbid = "missing" },
+    condition = { holy = true, own_area = true, missing = false },
     change_sound = asset.sound("panel-change"),
 }
 
@@ -28,7 +28,7 @@ local roll: Chip = {
     damage = 20,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "library" },
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
     slot_in_limit = 1,
     megaman = "light",
     -- (AntiRecv springs on her heal; she brings her user back herself.)
@@ -53,7 +53,7 @@ local roll_sp: Chip = {
     damage = { formula = "count", of = { own_panels = "holy" }, by_count = { 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80 }, operation_battle = 50 },
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },
+    flags = { dimming = true, has_damage = true, navi = true, damage_shown_variable = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     megaman = "light",
     -- (AntiRecv springs on her heal; she brings her user back herself.)
@@ -78,7 +78,7 @@ local roll_ds: Chip = {
     damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80 }, operation_battle = 40 },
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },
+    flags = { dimming = true, has_damage = true, navi = true, damage_shown_variable = true, library = true, variable_damage = true },
     slot_in_limit = 1,
     megaman = "dark",
     -- (AntiRecv springs on her heal; she brings her user back herself.)

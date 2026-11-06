@@ -23,7 +23,7 @@ local THROW_AT, THROW_TICKS, RECOVER_TICKS = 10, 21, 10
 local AHEAD, UP = 10 * 0x1_0000, 48 * 0x1_0000
 local GRAVITY = -0x4000
 -- An enemy's body, by side (0x080126D0: the other side's body).
-local ENEMY_BODY = "enemy_body"
+local ENEMY_BODY: PanelFlags = { enemy_body = true }
 -- The rows a column is searched in, by his row (0x080126D8).
 local ROWS = { { 1, 2, 3 }, { 2, 1, 3 }, { 3, 1, 2 } }
 

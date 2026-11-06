@@ -23,7 +23,7 @@ local TIMER: { number } = { 130, 130, 170, 170, 170, 170, 170, 170, 210, 210, 21
 -- Where he may stand (0x020CC228): 5, else 4, 3, 2, 1 columns in front of the enemy, in its row; of his side
 -- (0x020CC218): solid and his side's own, nothing on it or reserved.
 local OFFSETS: { { { number } } } = { { { 5, 0, 0 } }, { { 4, 0, 0 } }, { { 3, 0, 0 } }, { { 2, 0, 0 } }, { { 1, 0, 0 } } }
-local STAND: PanelCondition = { require = { "solid", "own_area" }, forbid = "occupied" }
+local STAND: PanelCondition = { solid = true, own_area = true, occupied = false }
 
 -- His shots (five), each: his firing animation 0xE, on its second tick the shot's sound, a bullet from the panel ahead
 -- at a height drawn from RNG2 (8, 16, 24 or 32 pixels: 0x02227114) and his muzzle flash (the attachment table's row
@@ -145,7 +145,7 @@ function support.tick(side: number)
     end
     local x, y, flip
     if not party.any_busy(side) then
-        x, y, flip = supports.target(navi, OFFSETS, STAND.require, STAND.forbid, false, side)
+        x, y, flip = supports.target(navi, OFFSETS, STAND, false, side)
     end
     if x == nil or y == nil then
         reset(side)

@@ -267,7 +267,10 @@ local status = {
         -- battle is paused; the custom screen's while the side's screen is up (0x0800E034: the status's bits 5, the
         -- table at 0x0800E084, EXE6's values).
         hp_drain = { periods = { 0, 40, 35, 30, 25, 20, 15, 10 }, stops_while_paused = true },
-        custom_drain = { periods = { 0, 40, 30, 20, 10, 5, 3, 2 }, status = { "selecting", "custom_screen" } },
+        custom_drain = {
+            periods = { 0, 40, 30, 20, 10, 5, 3, 2 },
+            status = { selecting = true, custom_screen = true },
+        },
         form_tick = false,
         form_keeps_back_special = false,
         -- The mercy flash hides the navi while its timer's bit 1 is clear (0x080137B6; EXE6's while it is set).

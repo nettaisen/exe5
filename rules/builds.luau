@@ -43,7 +43,14 @@ return {
     -- The facts a build never states: every build plays at the most the game allows, so these are always the rules'
     -- defaults (the most Regular memory, the sun, a team navi's last level, every SP navi deleted in no time, the auto
     -- battle data's pattern records as nothing learned, Chaos Unison).
-    at_defaults = { "reg_up", "sun", "level", "sp_times", "auto_battle_records", "chaos_unison" },
+    at_defaults = {
+        reg_up = true,
+        sun = true,
+        level = true,
+        sp_times = true,
+        auto_battle_records = true,
+        chaos_unison = true,
+    },
     -- A new build is its group's souls and each choice's first preset (a light MegaMan), with this.
     new = {
         -- The folder a new save starts with: the first folder of the ROM's folder table, which the new game routine

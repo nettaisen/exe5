@@ -87,7 +87,7 @@ local form: FormDef = {
         attach_points = attach_points,
         -- MegaMan's record's death hook (0x0800EFCC): it takes off whatever is in the second related slot, the layer
         -- (and a stand-in's copy of it, as the stand-in goes: 0x080C4496).
-        overlay_hooks = { "death" },
+        overlay_hooks = { death = true },
     },
 }
 

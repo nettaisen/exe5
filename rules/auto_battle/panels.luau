@@ -13,8 +13,7 @@ local panels = table.clone(shared)
 function panels.random_offset(
     x: number,
     y: number,
-    require: PanelFlags?,
-    forbid: PanelFlags?,
+    cond: PanelCondition?,
     name: string,
     side: number,
     of: number?
@@ -23,7 +22,7 @@ function panels.random_offset(
     if list == nil then
         error(string.format("no panel offset list %s in the AI's data", name))
     end
-    return shared.random_relative(x, y, require, forbid, list, side, of)
+    return shared.random_relative(x, y, cond, list, side, of)
 end
 
 -- EXE5's 0x08012C38: the panels from which a chip of reach list `range` (data.ranges, by name) reaches (x, y): the list
@@ -31,8 +30,7 @@ end
 function panels.reaching(
     x: number,
     y: number,
-    require: PanelFlags?,
-    forbid: PanelFlags?,
+    cond: PanelCondition?,
     range: string,
     side: number,
     of: number?
@@ -41,7 +39,7 @@ function panels.reaching(
     if list == nil then
         error(string.format("no reach list %s in the AI's data", range))
     end
-    return shared.reaching(x, y, require, forbid, list, side, of)
+    return shared.reaching(x, y, cond, list, side, of)
 end
 
 return panels

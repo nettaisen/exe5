@@ -51,7 +51,7 @@ local START_BEHIND, ADVANCE = 0x50_0000, 0x28_0000
 local START_ANGLE, TURN = 0x40_0000, -0x8_0000
 -- The enemy bodies (0x080E5520, by side: the other side's body), and the original's words of them, which the
 -- sight's state keeps.
-local ENEMY_BODIES = "enemy_body"
+local ENEMY_BODIES: PanelFlags = { enemy_body = true }
 local ENEMY_BODY_WORDS = { [0] = 0x04000000, [1] = 0x08000000 }
 -- The lock-on: no damage, element 5, paralysis for 120 ticks (status 0x11), on the panel alone.
 local LOCK_ELEMENT = 5

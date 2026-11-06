@@ -15,10 +15,10 @@ local chip: Chip = {
     damage = 170,
     hit_param = 30,
     lockout = 20,
-    flags = { "has_damage", "library", "variable_damage" },
+    flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 3,
     -- Its pit (row 2 of 0x080DAFA0): a hole (not solid: no flag 0x10), which stays; the wave in palette 2.
-    instant = wavepit.instant { forbid = "solid", mends = false, palette = 2 },
+    instant = wavepit.instant { panel = { solid = false }, mends = false, palette = 2 },
     auto_battle = { class = "when_any_hole" },
 }
 

@@ -16,7 +16,7 @@ local chip: Chip = {
     damage = 150,
     hit_param = 138,
     lockout = 0,
-    flags = { "dimming", "has_damage", "library" },
+    flags = { dimming = true, has_damage = true, library = true },
     slot_in_limit = 1,
     dimming = poltergeist.hook(false),
     auto_battle = { class = "when_any_field_object" },

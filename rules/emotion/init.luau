@@ -34,7 +34,7 @@ type State = {
 -- 0x0801147C: the emotions the swing draws from (0 normal, 1 worried, 2 angry, 3 Full Synchro).
 local SWINGS = { 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 3 }
 -- 0x0801148C: the mood each sets (angry's unused).
-local SWING_MOODS = { [0] = 0x99, [1] = 0x3F, [2] = 0x00, [3] = 0xFF }
+local SWING_MOODS: { [number]: Mood } = { [0] = 0x99, [1] = 0x3F, [2] = 0x00, [3] = "full_synchro" }
 local ANGRY = 2
 
 -- Note the navi's slot on its side's list (1 to 4), where it is on it, as the slot of its swing state.

@@ -36,8 +36,6 @@ local LIGHT = 470
 -- A team navi's light/dark value: its record's (+0x44), which 0x08010C00 writes 500 and a battle leaves (a build
 -- states none: every value a team navi's record holds in Tango's saves, 500 to 608, reads alike).
 local PARTNER_KARMA = 500
--- The battle effect that holds MegaMan's value at 500 (0x08010EDC).
-local VALUE_HELD = 0x20000
 
 export type Partner = {
     navi: NaviDef?,
@@ -112,7 +110,7 @@ end
 
 -- MegaMan's light/dark value: the save's (`karma`), 500 in a battle that holds it.
 function party.megaman_karma(side: number): number
-    if bit32.btest(battle.effects(), VALUE_HELD) then
+    if battle.has_effect("karma_held") then
         return 500
     end
     return (rules.setup_of(side) :: Setup).karma

@@ -29,4 +29,11 @@ return {
     -- The battle's counts of fight ticks (BattleState +0x0E and +0x16, while neither paused nor dimmed: 0x08006EF6):
     -- 20 and 180.
     fight_cycles = { 20, 180 },
+    -- Its battle effects of its own (the settings' word), which its stages and rules name besides the engine's
+    -- (`full_hp`, `link`...): the folder dealt with its Regular chip and tag chips first and shuffled (EXE6's
+    -- `sub_800A3E4`); the battle's end changes the light/dark value and MegaMan's maximum HP by what the side did
+    -- (0x08007CA0: 0x0801289C and 0x0801299E, outside a link battle; nothing here keeps a save); the light/dark
+    -- value held at 500 (0x08010EDC: ./party); dark chips fizzle (0x0801003C: ./light_dark). The engine reads
+    -- none of them but through `battle.has_effect`.
+    effect_bits = { shuffled_folder = 0x80, karma_changes = 0x800, karma_held = 0x20000, dark_chips_fizzle = 0x100000 },
 }

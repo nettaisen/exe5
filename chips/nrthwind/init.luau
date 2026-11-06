@@ -37,7 +37,7 @@ local chip: Chip = {
     hit_param = 0,
     lockout = 0,
     flags = { "dimming", "standard_library", "library" },
-    extra_flags = { 128 },
+    extra_flags = { "free_slot_in" },
     slot_in_limit = 3,
     dimming = DIMMING,
     auto_battle = { class = "when_enemy_barrier" },

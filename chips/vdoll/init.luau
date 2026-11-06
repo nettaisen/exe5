@@ -18,7 +18,7 @@ local chip: Chip = {
     hit_param = 10,
     lockout = 0,
     flags = { "standard_library", "library" },
-    extra_flags = { 128 },
+    extra_flags = { "free_slot_in" },
     slot_in_limit = 3,
     action = bombs.throw { held = bombs.held, thrower = doll.thrower() },
     auto_battle = { class = "three_ahead_open" },

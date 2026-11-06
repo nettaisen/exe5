@@ -20,7 +20,6 @@ local chip: Chip = {
     hit_param = 168,
     lockout = 0,
     flags = { "dimming", "has_damage" },
-    extra_flags = { 4, 16 },
     slot_in_limit = 1,
     dimming = controller.hook,
     auto_battle = { class = "at_once" },

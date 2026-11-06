@@ -54,14 +54,6 @@ local CLEARS_HOLY = 499
 -- A value at or above this is a light MegaMan's for the chips (0x08010118: 0xEB * 2).
 local LIGHT_CHIPS = 470
 
--- The battle effect of dark chips that fizzle (0x0801003C). (The one that holds the light/dark value at 500,
--- 0x08010EDC, ../party reads.)
-local DARK_CHIPS_FIZZLE = 0x100000
-
-local function effect(bit: number): boolean
-    return bit32.band(battle.effects(), bit) ~= 0
-end
-
 export type Setup = {
     -- The save's light/dark value, its karma (NaviStats +0x44): 0 to 1000; a fresh save's 500 (0x08010C00), the
     -- setup's default. (A match's side's `karma`, which nettai-match writes by this field's name.)
@@ -133,7 +125,7 @@ end
 
 -- 0x08010030: a dark chip's use; false when it fizzles.
 local function use_dark_chip(side: number, navi: Object): boolean
-    if effect(DARK_CHIPS_FIZZLE) then
+    if battle.has_effect("dark_chips_fizzle") then
         return false
     end
     if battle.link() and value(side) >= LIGHT_CHIPS then

@@ -106,7 +106,6 @@ local gundelex: Chip = {
     hit_param = 0,
     lockout = 0,
     flags = { "library" },
-    extra_flags = { 1 },
     slot_in_limit = 1,
     megaman = "light",
     action = gundels.action {

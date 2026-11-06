@@ -2,394 +2,261 @@
 -- Statuses (0x0801CEC4, EXE6's `off_80209EC`: four groups, paralysis, confusion, blindness and
 -- immobilization, by level; their bytes are compat's): what a hit's status does to its target, and the HP
 -- bug's drain periods (0x0800E02C, EXE6's values). The timers are 2 bytes further into the collision
--- record than EXE6's (paralysis at +0x1E). Rows past a group's end read the next groups' rows, or the
--- bytes after the table: named for what they read, as EXE6's.
+-- record than EXE6's (paralysis at +0x1E), and each raises its timer's request. Rows past a group's end
+-- read the next groups' rows, named for what they read, as EXE6's; those past the table's end, which
+-- nothing inflicts, it leaves out.
 -- Written by tools/exe5/gen_rules.py (bn6battle-verify) from the EXE5 ROM; people own it now.
 
 local status = {
     paralyze_90 = new.status {
         id = "paralyze-90",
-        requests = 0x00000008,
         duration = 90,
         timer = "paralyze",
     },
     paralyze_120 = new.status {
         id = "paralyze-120",
-        requests = 0x00000008,
         duration = 120,
         timer = "paralyze",
     },
     paralyze_150 = new.status {
         id = "paralyze-150",
-        requests = 0x00000008,
         duration = 150,
         timer = "paralyze",
     },
     paralyze_4 = new.status {
         id = "paralyze-4",
-        requests = 0x00000008,
         duration = 4,
         timer = "paralyze",
     },
     paralyze_300 = new.status {
         id = "paralyze-300",
-        requests = 0x00000008,
         duration = 300,
         timer = "paralyze",
     },
     paralyze_600 = new.status {
         id = "paralyze-600",
-        requests = 0x00000008,
         duration = 600,
         timer = "paralyze",
     },
     confuse_480_past_paralyze = new.status {
         id = "confuse-480-past-paralyze",
-        requests = 0x00000080,
         duration = 480,
         timer = "confuse",
     },
     confuse_720_past_paralyze = new.status {
         id = "confuse-720-past-paralyze",
-        requests = 0x00000080,
         duration = 720,
         timer = "confuse",
     },
     confuse_960_past_paralyze = new.status {
         id = "confuse-960-past-paralyze",
-        requests = 0x00000080,
         duration = 960,
         timer = "confuse",
     },
     confuse_4_past_paralyze = new.status {
         id = "confuse-4-past-paralyze",
-        requests = 0x00000080,
         duration = 4,
         timer = "confuse",
     },
     confuse_300_past_paralyze = new.status {
         id = "confuse-300-past-paralyze",
-        requests = 0x00000080,
         duration = 300,
         timer = "confuse",
     },
     confuse_600_past_paralyze = new.status {
         id = "confuse-600-past-paralyze",
-        requests = 0x00000080,
         duration = 600,
         timer = "confuse",
     },
     blind_480_past_paralyze = new.status {
         id = "blind-480-past-paralyze",
-        requests = 0x00000020,
         duration = 480,
         timer = "blind",
     },
     blind_720_past_paralyze = new.status {
         id = "blind-720-past-paralyze",
-        requests = 0x00000020,
         duration = 720,
         timer = "blind",
     },
     blind_1200_past_paralyze = new.status {
         id = "blind-1200-past-paralyze",
-        requests = 0x00000020,
         duration = 1200,
         timer = "blind",
     },
     blind_4_past_paralyze = new.status {
         id = "blind-4-past-paralyze",
-        requests = 0x00000020,
         duration = 4,
         timer = "blind",
     },
     confuse_480 = new.status {
         id = "confuse-480",
-        requests = 0x00000080,
         duration = 480,
         timer = "confuse",
     },
     confuse_720 = new.status {
         id = "confuse-720",
-        requests = 0x00000080,
         duration = 720,
         timer = "confuse",
     },
     confuse_960 = new.status {
         id = "confuse-960",
-        requests = 0x00000080,
         duration = 960,
         timer = "confuse",
     },
     confuse_4 = new.status {
         id = "confuse-4",
-        requests = 0x00000080,
         duration = 4,
         timer = "confuse",
     },
     confuse_300 = new.status {
         id = "confuse-300",
-        requests = 0x00000080,
         duration = 300,
         timer = "confuse",
     },
     confuse_600 = new.status {
         id = "confuse-600",
-        requests = 0x00000080,
         duration = 600,
         timer = "confuse",
     },
     blind_480_past_confuse = new.status {
         id = "blind-480-past-confuse",
-        requests = 0x00000020,
         duration = 480,
         timer = "blind",
     },
     blind_720_past_confuse = new.status {
         id = "blind-720-past-confuse",
-        requests = 0x00000020,
         duration = 720,
         timer = "blind",
     },
     blind_1200_past_confuse = new.status {
         id = "blind-1200-past-confuse",
-        requests = 0x00000020,
         duration = 1200,
         timer = "blind",
     },
     blind_4_past_confuse = new.status {
         id = "blind-4-past-confuse",
-        requests = 0x00000020,
         duration = 4,
         timer = "blind",
     },
     blind_300_past_confuse = new.status {
         id = "blind-300-past-confuse",
-        requests = 0x00000020,
         duration = 300,
         timer = "blind",
     },
     blind_600_past_confuse = new.status {
         id = "blind-600-past-confuse",
-        requests = 0x00000020,
         duration = 600,
         timer = "blind",
     },
     immobilize_2_past_confuse = new.status {
         id = "immobilize-2-past-confuse",
-        requests = 0x00000040,
         duration = 2,
         timer = "immobilize",
     },
     immobilize_60_past_confuse = new.status {
         id = "immobilize-60-past-confuse",
-        requests = 0x00000040,
         duration = 60,
         timer = "immobilize",
     },
     immobilize_120_past_confuse = new.status {
         id = "immobilize-120-past-confuse",
-        requests = 0x00000040,
         duration = 120,
         timer = "immobilize",
     },
     immobilize_4_past_confuse = new.status {
         id = "immobilize-4-past-confuse",
-        requests = 0x00000040,
         duration = 4,
         timer = "immobilize",
     },
     blind_480 = new.status {
         id = "blind-480",
-        requests = 0x00000020,
         duration = 480,
         timer = "blind",
     },
     blind_720 = new.status {
         id = "blind-720",
-        requests = 0x00000020,
         duration = 720,
         timer = "blind",
     },
     blind_1200 = new.status {
         id = "blind-1200",
-        requests = 0x00000020,
         duration = 1200,
         timer = "blind",
     },
     blind_4 = new.status {
         id = "blind-4",
-        requests = 0x00000020,
         duration = 4,
         timer = "blind",
     },
     blind_300 = new.status {
         id = "blind-300",
-        requests = 0x00000020,
         duration = 300,
         timer = "blind",
     },
     blind_600 = new.status {
         id = "blind-600",
-        requests = 0x00000020,
         duration = 600,
         timer = "blind",
     },
     immobilize_2_past_blind = new.status {
         id = "immobilize-2-past-blind",
-        requests = 0x00000040,
         duration = 2,
         timer = "immobilize",
     },
     immobilize_60_past_blind = new.status {
         id = "immobilize-60-past-blind",
-        requests = 0x00000040,
         duration = 60,
         timer = "immobilize",
     },
     immobilize_120_past_blind = new.status {
         id = "immobilize-120-past-blind",
-        requests = 0x00000040,
         duration = 120,
         timer = "immobilize",
     },
     immobilize_4_past_blind = new.status {
         id = "immobilize-4-past-blind",
-        requests = 0x00000040,
         duration = 4,
         timer = "immobilize",
     },
     immobilize_300_past_blind = new.status {
         id = "immobilize-300-past-blind",
-        requests = 0x00000040,
         duration = 300,
         timer = "immobilize",
     },
     immobilize_600_past_blind = new.status {
         id = "immobilize-600-past-blind",
-        requests = 0x00000040,
         duration = 600,
         timer = "immobilize",
     },
-    after_table_1_past_blind = new.status {
-        id = "after-table-1-past-blind",
-        requests = 0x00000000,
-        duration = 65535,
-        timer = "collision_panel",
-    },
-    after_table_2_past_blind = new.status {
-        id = "after-table-2-past-blind",
-        requests = 0xffff0000,
-        duration = 30,
-        timer = { other = 0 },
-    },
-    after_table_3_past_blind = new.status {
-        id = "after-table-3-past-blind",
-        requests = 0x0032ffff,
-        duration = 0,
-        timer = { other = 255 },
-    },
-    after_table_4_past_blind = new.status {
-        id = "after-table-4-past-blind",
-        requests = 0x00000050,
-        duration = 65535,
-        timer = { other = 100 },
-    },
     immobilize_2 = new.status {
         id = "immobilize-2",
-        requests = 0x00000040,
         duration = 2,
         timer = "immobilize",
     },
     immobilize_60 = new.status {
         id = "immobilize-60",
-        requests = 0x00000040,
         duration = 60,
         timer = "immobilize",
     },
     immobilize_120 = new.status {
         id = "immobilize-120",
-        requests = 0x00000040,
         duration = 120,
         timer = "immobilize",
     },
     immobilize_4 = new.status {
         id = "immobilize-4",
-        requests = 0x00000040,
         duration = 4,
         timer = "immobilize",
     },
     immobilize_300 = new.status {
         id = "immobilize-300",
-        requests = 0x00000040,
         duration = 300,
         timer = "immobilize",
     },
     immobilize_600 = new.status {
         id = "immobilize-600",
-        requests = 0x00000040,
         duration = 600,
         timer = "immobilize",
-    },
-    after_table_1_past_immobilize = new.status {
-        id = "after-table-1-past-immobilize",
-        requests = 0x00000000,
-        duration = 65535,
-        timer = "collision_panel",
-    },
-    after_table_2_past_immobilize = new.status {
-        id = "after-table-2-past-immobilize",
-        requests = 0xffff0000,
-        duration = 30,
-        timer = { other = 0 },
-    },
-    after_table_3_past_immobilize = new.status {
-        id = "after-table-3-past-immobilize",
-        requests = 0x0032ffff,
-        duration = 0,
-        timer = { other = 255 },
-    },
-    after_table_4_past_immobilize = new.status {
-        id = "after-table-4-past-immobilize",
-        requests = 0x00000050,
-        duration = 65535,
-        timer = { other = 100 },
-    },
-    after_table_5_past_immobilize = new.status {
-        id = "after-table-5-past-immobilize",
-        requests = 0xffff0000,
-        duration = 150,
-        timer = { other = 0 },
-    },
-    after_table_6_past_immobilize = new.status {
-        id = "after-table-6-past-immobilize",
-        requests = 0x00c8ffff,
-        duration = 0,
-        timer = { other = 255 },
-    },
-    after_table_7_past_immobilize = new.status {
-        id = "after-table-7-past-immobilize",
-        requests = 0x00000001,
-        duration = 65535,
-        timer = { other = 1 },
-    },
-    after_table_8_past_immobilize = new.status {
-        id = "after-table-8-past-immobilize",
-        requests = 0x0bb800c8,
-        duration = 200,
-        timer = { other = 0 },
-    },
-    after_table_9_past_immobilize = new.status {
-        id = "after-table-9-past-immobilize",
-        requests = 0x00000000,
-        duration = 0,
-        timer = { other = 0 },
-    },
-    after_table_10_past_immobilize = new.status {
-        id = "after-table-10-past-immobilize",
-        requests = 0x00000000,
-        duration = 0,
-        timer = { other = 0 },
     },
     -- EXE5's per-form tick table (0x080EB1E8) runs none of EXE6's `sub_80F0608` (the Fire charge, a form's
     -- height): MegaMan's (0x080F04CE) steps GyroSoul's overlay (rules/souls). Its hit intake (0x080178EC) takes a
@@ -400,7 +267,7 @@ local status = {
         -- battle is paused; the custom screen's while the side's screen is up (0x0800E034: the status's bits 5, the
         -- table at 0x0800E084, EXE6's values).
         hp_drain = { periods = { 0, 40, 35, 30, 25, 20, 15, 10 }, stops_while_paused = true },
-        custom_drain = { periods = { 0, 40, 30, 20, 10, 5, 3, 2 }, status = 0x5 },
+        custom_drain = { periods = { 0, 40, 30, 20, 10, 5, 3, 2 }, status = { "selecting", "custom_screen" } },
         form_tick = false,
         form_keeps_back_special = false,
         -- The mercy flash hides the navi while its timer's bit 1 is clear (0x080137B6; EXE6's while it is set).
@@ -429,7 +296,7 @@ local status = {
         -- Its defensive chips (0x08029A60): AntiDmg, or the trap the navi's status arms, catches a hit of any damage
         -- (one of none passes); AntiSwrd any sword's hit (the hit flags 0x2000). A caught hit leaves the navi's pending
         -- requests (0x08029AE0 zeroes the hit alone): a move that ended on ice that tick slides.
-        anti_traps = { damage_min = 1, armed_swallows_below = false, sword_spares = 0, drops_requests = 0 },
+        anti_traps = { damage_min = 1, armed_swallows_below = false, sword_spares = 0, drops_requests = {} },
         -- A chip-destroying hit (hit flag 0x10: 0x0801709A) takes a player's whole hand, the cursor back at its first
         -- chip. (EXE5's leaves the navi's chip requests, and one pending uses chip 0xFFFF's record, past the chip table:
         -- the engine ends it instead, docs/design/exe5-map.md §15.6.)

@@ -32,7 +32,7 @@ local boxer1: Chip = {
         { order = 9, sequence = { recipe_hotbody1, recipe_hotbody1, recipe_firehit1 }, operation_battle_only = true },
         { order = 45, code_run = { chip = recipe_firehit1, count = 3 } },
     },
-    instant = boxer.instant(1),
+    instant = boxer.instant({ flinch = true }),
     auto_battle = { class = "at_once" },
 }
 
@@ -58,7 +58,7 @@ local boxer2: Chip = {
         { order = 10, sequence = { recipe_hotbody2, recipe_hotbody2, recipe_firehit2 }, operation_battle_only = true },
         { order = 46, code_run = { chip = recipe_firehit2, count = 3 } },
     },
-    instant = boxer.instant(1),
+    instant = boxer.instant({ flinch = true }),
     auto_battle = { class = "at_once" },
 }
 
@@ -84,7 +84,7 @@ local boxer3: Chip = {
         { order = 11, sequence = { recipe_hotbody3, recipe_hotbody3, recipe_firehit3 }, operation_battle_only = true },
         { order = 47, code_run = { chip = recipe_firehit3, count = 3 } },
     },
-    instant = boxer.instant(1),
+    instant = boxer.instant({ flinch = true }),
     auto_battle = { class = "at_once" },
 }
 

@@ -54,7 +54,7 @@ local function wait(me: Object)
     me.visible = true
     me.anim, me.anim_loaded = 0x20, 0x20
     sprite:set_animation(0x20)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     c:set_region(regions.single)
     battle.play_sound(SOUND)
     me:set_action(4)
@@ -109,7 +109,7 @@ function strike.spawn(bass: Object, x: number, y: number, damage: number): Objec
     local o = battle.spawn(strike.kind, Vec3.zero)
     if o then
         o.panel_x, o.panel_y = x, y
-        o.element = 0
+        o.element = Element.null
         o.damage_word = damage
         o.alliance, o.flip = bass.alliance, bass.flip
         o.run_while_dimmed = true

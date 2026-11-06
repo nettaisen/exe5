@@ -109,12 +109,12 @@ end
 -- 0x080BEC5A: his X on his target: each half's hit (running while dimmed) and its effect (running while dimmed).
 local function strike_x(me: Object)
     local x, y = me.future_panel_x, me.future_panel_y
-    local flip = bit32.bxor(me.alliance, me.flip)
+    local flip = me.facing_side
     for _, half in X do
         local box = battle.hitbox(me, {
             panel_x = x,
             panel_y = y,
-            element = 0,
+            element = Element.null,
             z = 0,
             region = half.region,
             hit_effect = nil,
@@ -224,7 +224,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "ground"
     me.anim, me.anim_loaded = 3, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = 0
     me:set_coordinates_from_panel()
     local p = me.pos
@@ -258,7 +258,7 @@ colonel.kind = new.kind {
 -- element and 0, until his init places him.)
 function colonel.spawn(protoman: Object): Object?
     local user = protoman.related1 :: Object
-    local o = battle.spawn(colonel.kind, Vec3.new(protoman.panel_y, protoman.element, 0))
+    local o = battle.spawn(colonel.kind, Vec3.new(protoman.panel_y, protoman.element.byte, 0))
     if o then
         o.panel_x, o.panel_y = protoman.panel_x, protoman.panel_y
         o.element = protoman.element

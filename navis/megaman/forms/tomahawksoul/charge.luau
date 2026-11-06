@@ -21,7 +21,7 @@ local ANIM = 16
 local SOUND = asset.sound("tomahawk-man")
 local SWING_TICKS, STRIKE_AT, RECOVER_TICKS = 21, 12, 5
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
-local WOOD = 4
+local WOOD = Element.wood
 -- Effect 0x45: the big slash (sprite 0C-15, animation 1), 16 pixels up.
 local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 15 }
 local SLASH_Z = 16 * 0x1_0000
@@ -51,7 +51,7 @@ local function swing(me: Object, s: State)
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(x, y)
-        battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, bit32.bxor(me.alliance, me.flip))
+        battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, me.facing_side)
     end
     local t = s.timer - 1
     s.timer = bit32.band(t, 0xFFFF)

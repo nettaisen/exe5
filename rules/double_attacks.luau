@@ -21,7 +21,6 @@
 
 local chips = require("../double_attacks")
 local effects = require("../lib/effects")
-local element = require("@exelib/element")
 local exe5 = require("./api")
 local megaman = require("../navis/megaman").megaman
 local party = require("./party")
@@ -34,7 +33,6 @@ local double_attacks = {}
 -- paused path the outgoing member the follow-up launches with.
 type State = { double_attack: { spent: boolean, partner: number } }
 
-local FULL_SYNCHRO = 0xFF
 
 local function state(side: number): { spent: boolean, partner: number }
     local s = rules.state_of(side) :: State?
@@ -66,8 +64,8 @@ local function dark_megaman(side: number): boolean
 end
 
 -- 0x02042DC0: the launcher, for `navi`, which came in for `partner`, whose mood as it left was `mood`.
-local function launch(side: number, navi: Object, partner: NaviDef, mood: number)
-    if mood ~= FULL_SYNCHRO then
+local function launch(side: number, navi: Object, partner: NaviDef, mood: Mood)
+    if mood ~= "full_synchro" then
         return
     end
     local s = state(side)
@@ -92,14 +90,14 @@ local function launch(side: number, navi: Object, partner: NaviDef, mood: number
         error(string.format("a Double Attack's damage row read at level %d", level))
     end
     local word = damage_word.of { amount = damage, counter = chip.counter :: number, cant_counter = chip.cant_counter }
-    local controller = attack.spawn(navi, element.byte(chip.element :: string), word)
+    local controller = attack.spawn(navi, Element.new(chip.element :: ElementName), word)
     dimming.start(side, true, controller, navi, { chip = chip })
     s.spent = true
 end
 
 -- 0x02042E74: the trigger, on the paused path.
-local function triggers(side: number, partner: NaviDef, mood: number): boolean
-    if mood ~= FULL_SYNCHRO then
+local function triggers(side: number, partner: NaviDef, mood: Mood): boolean
+    if mood ~= "full_synchro" then
         return false
     end
     if state(side).spent then
@@ -120,7 +118,7 @@ local function triggers(side: number, partner: NaviDef, mood: number): boolean
 end
 
 -- The rules' `navi_switched`: a party's switch settled, `navi` in for `member`, whose mood as it left was `mood`.
-function double_attacks.navi_switched(side: number, navi: Object, member: number, mood: number)
+function double_attacks.navi_switched(side: number, navi: Object, member: number, mood: Mood)
     local out = battle.member(side, member)
     if out == nil then
         error(string.format("side %d switched out of member %d, which its party hasn't", side, member))
@@ -198,7 +196,7 @@ local function wait_and_launch(me: Object, s: FollowUp)
     if partner == nil then
         error(string.format("side %d's Double Attack follow-up names member %d, which its party hasn't", side, state(side).partner))
     end
-    launch(side, me, partner.navi, FULL_SYNCHRO)
+    launch(side, me, partner.navi, "full_synchro")
     me:exit_attack()
 end
 

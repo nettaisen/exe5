@@ -98,7 +98,7 @@ boxer.kind = new.kind {
 -- and the user's height.)
 function boxer.instant(hit_mod: HitModifier): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, spec: InstantChipSpec)
-        local o = battle.spawn(boxer.kind, Vec3.new(spec.panel_y, spec.element, spec.z))
+        local o = battle.spawn(boxer.kind, Vec3.new(spec.panel_y, spec.element.byte, spec.z))
         if not o then
             return
         end

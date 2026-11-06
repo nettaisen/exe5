@@ -48,7 +48,7 @@ end
 
 -- `object_getFrontDirection`: +1 facing right, -1 facing left.
 local function front_direction(me: Object): number
-    return if bit32.bxor(me.alliance, me.flip) == 0 then 1 else -1
+    return if me.facing_side == 0 then 1 else -1
 end
 
 -- 20 ticks forward, two pixels a tick (0x080C05C4).
@@ -131,7 +131,7 @@ function shade.make(spec: Spec): { kind: Kind, spawn: (owner: Object) -> Object?
         sprite.shadow = spec.shadow
         me.anim, me.anim_loaded = 0, 0xFF
         -- (0x0801892E's end, 0x0800C896 and 0x08002DC0: the sprite faces its object's way, which the load forgets.)
-        sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        sprite:face(me)
         me.visible = true
         sprite.palette = PALETTE
         local owner = me.related1 :: Object

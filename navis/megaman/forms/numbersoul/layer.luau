@@ -29,7 +29,7 @@ local function follow(me: Object)
     local look = me.sprite
     looks.copy(look, owner.sprite, "palette", "color_shader", "white", "alpha")
     me.flip = owner.flip
-    look:set_flip(bit32.bxor(me.alliance, me.flip))
+    look:face(me)
     if not battle.dimmed() and not battle.paused() then
         me:update_sprite()
     end
@@ -46,7 +46,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = (me.related1 :: Object).sprite.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 

@@ -48,7 +48,7 @@ local function init(me: Object)
     local s = me.state :: State
     me.sprite.palette = s.palette
     me.vel = Vec3.new(me.facing * DASH_X, if me.panel_y == 1 then DASH_Y else -DASH_Y, me.vel.z)
-    s.end_x = if bit32.bxor(me.alliance, me.flip) == 0 then 6 else 1
+    s.end_x = if me.facing_side == 0 then 6 else 1
     local g = grid.spawn(me, s.end_x, 2)
     if g then
         s.grid = g
@@ -178,7 +178,7 @@ local function strike(me: Object)
         local box = battle.hitbox(me, {
             panel_x = me.panel_x,
             panel_y = me.panel_y,
-            element = 0,
+            element = Element.null,
             z = 0,
             region = enemy,
             hit_effect = sparks.plain,

@@ -45,7 +45,7 @@ local form: FormDef = {
         a_charge = charged_chips.routine({ 80, 80, 80, 80, 80, 120 }),
     },
     charged_chips = { { family = "break", damaging = false, plain = true } },
-    charged_bonus = { damage = 0xFF },
+    charged_bonus = { damage = "again" },
     front_guard = 50,
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 0x16-0x1B, Team Colonel's

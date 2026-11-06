@@ -162,7 +162,7 @@ local function init(me: Object)
         error("ElcReel's reel has no collision: 0x080DABE0 goes on through a null pointer")
     end
     me:setup_collision(collision.thrown, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me.collision:set_hit_effect(sparks.of_element(me.element))
     me.vel = Vec3.new(me.facing * SPEED, me.vel.y, me.vel.z)
@@ -190,8 +190,8 @@ elcreel.reel = new.kind {
 
 -- 0x080DACDE and `sub_801155A`: a reel of `owner`'s on (x, y), with the element and the damage word, 26 pixels up.
 -- (Its X and Y are the spawner's registers, the panel's Y and the element, until its init places it.)
-local function spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
-    local o = battle.spawn(elcreel.reel, Vec3.new(y, element, 0x1A_0000))
+local function spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
+    local o = battle.spawn(elcreel.reel, Vec3.new(y, element.byte, 0x1A_0000))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

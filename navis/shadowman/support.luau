@@ -109,7 +109,7 @@ local function send_strike(me: Object, x: number, y: number, kind: number)
     local o = battle.spawn(support.strike)
     if o then
         o.panel_x, o.panel_y = x, y
-        o.element = 0
+        o.element = Element.null
         o.related1 = me
         o.alliance, o.flip = me.alliance, me.flip
         o.damage_word = me.damage_word;
@@ -151,11 +151,11 @@ end
 -- with an enemy body (`on_enemy`) or without one, one drawn with RNG2.
 local function aim(me: Object, on_enemy: boolean): (number?, number?)
     local side = me.alliance
-    local turned = bit32.bxor(side, me.flip)
+    local turned = me.facing_side
     local back = if turned == 0 then -1 else 1
     local cond = if on_enemy then ENEMY else OPEN
     local found: { number } = {}
-    local x = bit32.bxor(turned, 1) * 5 + 1
+    local x = battle.other_side(turned) * 5 + 1
     repeat
         for y = 1, 3 do
             if field.check(x, y, cond.require, cond.forbid, side) and not (on_enemy and status_free(x, y, side)) then

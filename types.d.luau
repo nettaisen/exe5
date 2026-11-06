@@ -12,7 +12,7 @@ export type FlyingShotVariant = {
     hits: CollisionType,
     hit_mod: HitModifier,
     -- Its element byte.
-    element: number,
+    element: Element,
     -- Its hit spark (0xFF: none).
     spark: Spark?,
     sprite: SpriteAsset,
@@ -168,7 +168,7 @@ export type DarkCost = { apply: (stats: Navi) -> () }
 export type DoubleAttack = {
     navis: { NaviDef },
     damage: { number },
-    spawn: (user: Object, element: number, damage: number) -> Object?,
+    spawn: (user: Object, element: Element, damage: number) -> Object?,
 }
 
 -- What every Double Attack's navi keeps (lib/double_attack): its controller

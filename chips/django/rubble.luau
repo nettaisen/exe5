@@ -53,7 +53,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "ground"
     me.anim, me.anim_loaded = 0, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     battle.effect(me.pos, PUFF, 0, 0, 0)
     me:set_lifecycle("update")

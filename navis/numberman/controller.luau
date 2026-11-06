@@ -97,8 +97,8 @@ controller.kind = new.kind {
 -- 0x080E4E98: the controller for `user`, on his panel, of his side and facing, with the attack's element and
 -- damage word and the chip's bonus. (Its position is the spawner's registers: the row, the element and the bonus
 -- as its height's upper half.)
-function controller.spawn(user: Object, element: number, damage: number, bonus: number): Object?
-    local o = battle.spawn(controller.kind, Vec3.new(user.panel_y, element, int.i32(bonus * 0x1_0000)))
+function controller.spawn(user: Object, element: Element, damage: number, bonus: number): Object?
+    local o = battle.spawn(controller.kind, Vec3.new(user.panel_y, element.byte, int.i32(bonus * 0x1_0000)))
     if o then
         (o.state :: State).bonus = bonus
         o.panel_x, o.panel_y = user.panel_x, user.panel_y

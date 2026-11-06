@@ -59,7 +59,7 @@ local function target(me: Object, s: State): (number?, number?)
         return s.target_x, s.target_y
     end
     -- 0x0800E148: the other side's player.
-    local enemy = battle.player(bit32.bxor(me.alliance, 1))
+    local enemy = battle.player(battle.other_side(me.alliance))
     if enemy == nil then
         return nil, nil
     end
@@ -121,7 +121,7 @@ local function throw(me: Object, s: State)
         local x, y = target(me, s)
         if x and y then
             local damage = me.attack_word
-            shuriken.spawn(antidmg.shuriken, me, x, y, 0, HIT_MOD, damage, me.flip, int.i32(me.pos.z + THROW_Z))
+            shuriken.spawn(antidmg.shuriken, me, x, y, Element.null, HIT_MOD, damage, me.flip, int.i32(me.pos.z + THROW_Z))
         end
         me.step_init = 4
         return

@@ -65,7 +65,7 @@ local function init(me: Object)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = ANIM, 0xFF
     me.visible = true
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_panel_from_coordinates()
     me.vel = Vec3.new(me.facing * s.speed * 0x1000, me.vel.y, me.vel.z)
     battle.effect(me.pos, effects.dust)
@@ -105,7 +105,7 @@ function crusher.throw(owner: Object, pos: Vec3, speed: number, damage: number):
     if o then
         o.alliance, o.flip = owner.alliance, owner.flip
         o.damage_word = damage
-        o.element = 0
+        o.element = Element.null
         local s = o.state :: State
         s.speed = speed
     end

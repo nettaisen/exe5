@@ -119,7 +119,7 @@ local function draw(me: Object, s: State)
         battle.hitbox(me, {
             panel_x = s.target_x,
             panel_y = s.target_y,
-            element = 0,
+            element = Element.null,
             z = 0,
             region = REGION,
             hit_effect = nil,
@@ -129,7 +129,7 @@ local function draw(me: Object, s: State)
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(s.target_x, s.target_y)
-        battle.effect(Vec3.new(cx, cy, 0), SLASH, bit32.bxor(me.alliance, me.flip))
+        battle.effect(Vec3.new(cx, cy, 0), SLASH, me.facing_side)
     end
     local t = s.timer - 1
     s.timer = bit32.band(t, 0xFFFF)
@@ -178,7 +178,7 @@ charge.action = new.action {
 -- 0x0800FC0C (the attack's charged byte, lockout and bonus are left as the last attack had them)
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     local s = navi:action_state(charge.action) :: State
     s.wait = 0
     s.target_x, s.target_y = target(navi)

@@ -34,7 +34,7 @@ local function hit(me: Object, x: number, y: number, ticks: number)
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
-        element = 0,
+        element = Element.null,
         z = HIT_Z,
         region = regions.single,
         hit_effect = sparks.plain,
@@ -120,7 +120,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "ground"
     me.anim, me.anim_loaded = 0, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.under_objects = true
     me.visible = true
     me:set_coordinates_from_panel()

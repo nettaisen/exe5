@@ -40,7 +40,7 @@ local HIT_MOD, LAST_HIT_MOD = { flinch = true }, { flinch = true, flash = true }
 -- for none.
 local function find(me: Object): (number?, number?)
     local list = panels.filtered_except(me, ENEMY_NAVI, nil, me.alliance)
-    local right = bit32.bxor(me.alliance, me.flip) == 0
+    local right = me.facing_side == 0
     local function pick(ahead: boolean): { number }
         local out: { number } = {}
         for _, p in list do
@@ -164,7 +164,7 @@ charge.action = new.action {
 -- 0x0800F696
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = 10 + 2 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     return charge.action
 end
 

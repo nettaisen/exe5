@@ -108,7 +108,7 @@ local function init(me: Object)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0x14, 0xFF
     me.visible = true
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.timer = 0
     place(me)
     me:set_panel_from_coordinates()
@@ -157,7 +157,7 @@ function ball.spawn(owner: Object, damage: number, swing: Swing): Object?
         o.related1 = owner
         o.damage_word = damage
         o.alliance = owner.alliance
-        o.element = 0
+        o.element = Element.null
     end
     return o
 end

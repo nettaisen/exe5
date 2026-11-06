@@ -124,7 +124,7 @@ slasher.action = new.action {
                     hit_mod = { flinch = true, flash = true },
                 })
                 local cx, cy = field.center(s.target_x, ROW)
-                battle.effect(Vec3.new(cx, cy, 0x10_0000), WIDE_SLASH, bit32.bxor(me.alliance, me.flip), 0)
+                battle.effect(Vec3.new(cx, cy, 0x10_0000), WIDE_SLASH, me.facing_side, 0)
             end
             local t = s.timer - 1
             s.timer = t

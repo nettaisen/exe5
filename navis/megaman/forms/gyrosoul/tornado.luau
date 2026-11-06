@@ -88,7 +88,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     local p = me.pos
     me.pos = Vec3.new(int.i32(p.x + me.facing * AHEAD), p.y, if s.grounded then 0 else -BELOW)
     battle.play_sound(SOUND)
@@ -130,7 +130,7 @@ function tornado.spawn(owner: Object, x: number, y: number, damage: number, grou
     local o = battle.spawn(tornado.kind, Vec3.new(y, 0, 0))
     if o then
         o.panel_x, o.panel_y = x, y
-        o.element = 0
+        o.element = Element.null
         o.damage_word = damage
         o.alliance, o.flip = owner.alliance, owner.flip
         o.related1 = owner

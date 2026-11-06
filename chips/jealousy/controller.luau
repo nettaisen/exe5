@@ -23,7 +23,7 @@ end
 -- 0x080E4562: the most chips any of the other side's actors holds.
 local function most_held(me: Object): number
     local most = 0
-    local other = bit32.bxor(me.alliance, 1)
+    local other = battle.other_side(me.alliance)
     for i = 1, 4 do
         local o = battle.alive_actor_slot(other, i)
         if o then

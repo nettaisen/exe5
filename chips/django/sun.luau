@@ -46,7 +46,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     sprite.palette = if (me.state :: State).blessed then 3 else 0
     me:set_lifecycle("update")

@@ -39,7 +39,7 @@ local form: FormDef = {
         a_charge = charged_chips.routine({ 20, 20, 20, 20, 20, 20 }),
     },
     charged_chips = { { family = "aqua", damaging = false, plain = true } },
-    charged_bonus = { damage = 0xFF },
+    charged_bonus = { damage = "again" },
     reset = function(navi: Object)
         navi.navi_flags.dives = true
     end,

@@ -127,7 +127,7 @@ local function far_blast(me: Object)
         me.phase_init = 4
         return
     end
-    local turn = bit32.bxor(me.alliance, me.flip)
+    local turn = me.facing_side
     if me.timer == 0x1C then
         blast_column(me, 6 - 5 * turn)
     elseif me.timer == 0x19 then
@@ -178,7 +178,7 @@ local function init(me: Object)
         error("OmegaRkt's rocket without a collision slot (0x080DD4FA doesn't check)")
     end
     me:setup_collision(collision.breaking, collision.hits_navis, { flinch = true, flash = true })
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me.collision:present()
     me:set_lifecycle("update")
@@ -204,8 +204,8 @@ rocket.kind = new.kind {
 
 -- 0x080DD64A: a rocket of `controller`'s side and facing on (x, y) with `element` and the damage word, which the
 -- controller waits on; running while dimmed. (Its position is the spawner's registers: the row, the element and 0.)
-function rocket.spawn(controller: Object, x: number, y: number, element: number, damage: number): Object?
-    local o = battle.spawn(rocket.kind, Vec3.new(y, element, 0))
+function rocket.spawn(controller: Object, x: number, y: number, element: Element, damage: number): Object?
+    local o = battle.spawn(rocket.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

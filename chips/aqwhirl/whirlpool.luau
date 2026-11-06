@@ -193,7 +193,7 @@ local function init(me: Object)
         error("AqWhirl's whirlpool: no collision slot (0x0800F1A0; the game reads through a null pointer)")
     end
     me:setup_collision(collision.attack, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me:set_coordinates_from_panel()
     local p = me.pos
@@ -236,12 +236,12 @@ function whirlpool.spawn(
     owner: Object,
     x: number,
     y: number,
-    element: number,
+    element: Element,
     palette: number,
     speed: number,
     damage: number
 ): Object?
-    local o = battle.spawn(whirlpool.kind, Vec3.new(y, element, 0))
+    local o = battle.spawn(whirlpool.kind, Vec3.new(y, element.byte, 0))
     if o then
         local s = o.state :: State
         s.palette, s.speed = palette, speed
@@ -257,7 +257,7 @@ end
 -- What AqWhirl sends: a whirlpool in `palette` at `speed` (the chip's parameters).
 function whirlpool.sender(palette: number, speed: number): AirSpinSender
     return {
-        send = function(user: Object, x: number, y: number, element: number, damage: number): Object?
+        send = function(user: Object, x: number, y: number, element: Element, damage: number): Object?
             return whirlpool.spawn(user, x, y, element, palette, speed, damage)
         end,
     }

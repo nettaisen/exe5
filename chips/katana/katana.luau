@@ -81,7 +81,7 @@ katana.action = new.action {
                 battle.afterimage(me, me.pos, {
                     sprite = swords.blade.sprite,
                     anim = swords.blade_anim(me),
-                    flip = stepsword.flip(me),
+                    facing = me.facing_side,
                     color_shader = 0xFFE0,
                     lifetime = 0x1E,
                     shadow = "with_sprite",
@@ -97,7 +97,7 @@ katana.action = new.action {
                 battle.hitbox(me, {
                     panel_x = x,
                     panel_y = y,
-                    element = 0,
+                    element = Element.null,
                     region = sw.region,
                     hit_effect = nil,
                     target = swords.slashes_navis.hits,
@@ -108,7 +108,7 @@ katana.action = new.action {
                     bug_arg = 0,
                 })
                 local cx, cy = field.center(x, y)
-                battle.effect(Vec3.new(cx, cy, 0x10 * 0x10000), sw.effect, stepsword.flip(me), 0)
+                battle.effect(Vec3.new(cx, cy, 0x10 * 0x10000), sw.effect, me.facing_side, 0)
             end
             local t = s.timer - 1
             s.timer = t

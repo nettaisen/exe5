@@ -23,7 +23,7 @@ local REFLECT = guard.action {
 
 -- 0x0800F6CC
 local function setup(navi: Object): Action
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.attack_word = damage_word.of { amount = battle.navi(navi.alliance).back_special_damage, counter = 0 }

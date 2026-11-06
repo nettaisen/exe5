@@ -80,7 +80,7 @@ charge.action = new.action {
 -- 0x0800F728
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = 30 + 10 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     return charge.action
 end
 

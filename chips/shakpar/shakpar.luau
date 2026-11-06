@@ -35,7 +35,7 @@ local function update(me: Object)
         return
     end
     me.timer = EVERY
-    local x = bit32.bxor(me.alliance, me.flip) * 5 + 1
+    local x = me.facing_side * 5 + 1
     spshake.spawn(me, x, ROWS[s.sent], me.element, me.damage_word, s.wave)
     s.sent += 1
     if s.sent >= WAVES then
@@ -66,7 +66,7 @@ shakpar.kind = new.kind {
 -- and the user's height.)
 function shakpar.instant(wave: Wave): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, spec: InstantChipSpec)
-        local o = battle.spawn(shakpar.kind, Vec3.new(spec.panel_y, spec.element, spec.z))
+        local o = battle.spawn(shakpar.kind, Vec3.new(spec.panel_y, spec.element.byte, spec.z))
         if not o then
             return
         end

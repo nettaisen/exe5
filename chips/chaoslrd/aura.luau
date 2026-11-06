@@ -135,7 +135,7 @@ local function init(me: Object)
     sprite:step()
     -- sprite_noShadow: the first part is drawn with the sprite.
     sprite.shadow = "with_sprite"
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     local p = me.pos
     me.pos = Vec3.new(p.x, whole_add(p.y, DOWN), whole_add(p.z, UP))
     me:set_lifecycle("update")

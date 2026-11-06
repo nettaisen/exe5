@@ -22,7 +22,7 @@ local PARTY: { { number } } = {
 -- 0x0800FB1A
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     return shots.action
 end
 

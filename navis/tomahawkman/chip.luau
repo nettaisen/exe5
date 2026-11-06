@@ -45,7 +45,7 @@ local function slash(me: Object)
         hit_mod = HIT_MOD,
     })
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, me.facing_side)
 end
 
 -- 0x080F17F0: the tomahawk goes up; 30 ticks. (In the operation battle a marker over the panel ahead.)

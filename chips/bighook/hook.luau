@@ -12,12 +12,12 @@ local sparks = require("../../lib/sparks")
 
 -- Its flames' column (0x080EA8F4: 2 + 3 * (1 - (side ^ flip))).
 local function column(me: Object): number
-    return 2 + 3 * bit32.bxor(bit32.bxor(me.alliance, me.flip), 1)
+    return 2 + 3 * battle.other_side(me.facing_side)
 end
 
 local made = common.make {
     id = "bighook/hook",
-    flame = function(owner: Object, x: number, y: number, element: number, damage: number, swing: number, flames: FlameHookFlames): Object?
+    flame = function(owner: Object, x: number, y: number, element: Element, damage: number, swing: number, flames: FlameHookFlames): Object?
         return fire.swing(owner, x, y, element, damage, { swing = swing, variant = flames.variant, spark = flames.spark })
     end,
     keeps_element = false,

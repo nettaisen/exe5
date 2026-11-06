@@ -13,7 +13,7 @@ local made = common.make {
     id = "wind/controller",
     spawn_fan = fan.spawn,
     position = function(user: Object, spec: DimmingChipSpec): Vec3
-        return Vec3.new(user.panel_y, spec.element, HOOK_ADDRESS)
+        return Vec3.new(user.panel_y, spec.element.byte, HOOK_ADDRESS)
     end,
 }
 

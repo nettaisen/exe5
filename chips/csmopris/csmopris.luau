@@ -144,7 +144,7 @@ local function comet_init(me: Object)
     local speed = if operation_battle() then OPERATION_BATTLE_SPEED else SPEED
     me.vel = Vec3.new(int.mul32(me.facing, speed), 0, me.vel.z)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -181,7 +181,7 @@ csmopris.comet = new.kind {
 
 -- 0x080D4AC4: a comet at `pos` (16 pixels up), from `owner`, with the element and damage word, of its side and
 -- facing, running while dimmed.
-local function spawn_comet(owner: Object, x: number, y: number, element: number, damage: number): Object?
+local function spawn_comet(owner: Object, x: number, y: number, element: Element, damage: number): Object?
     local o = battle.spawn(csmopris.comet, Vec3.new(x, y, 0x10_0000))
     if not o then
         return nil
@@ -339,7 +339,7 @@ csmopris.kind = new.kind {
             -- 0x080BF838: on his panel, on the ground, 08-10 with a ground shadow, palette 0 (0x0800DA8A's for
             -- level 0), facing his way.
             navi_chips.stand(me, SPRITE, "ground", true)
-            me.sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            me.sprite:face(me)
             me:set_lifecycle("update")
         elseif l == "update" then
             -- 0x080BF886: at the battle's end the controller moves on and he goes.

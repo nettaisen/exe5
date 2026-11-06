@@ -31,7 +31,7 @@ export type State = {
 
 local SPRITE = asset.sprite("shake-wave")
 local SOUND = asset.sound("wave")
-local ELEC = 3
+local ELEC = Element.elec
 -- The sine: 24 pixels, one swing over 80 pixels (two panels) of travel; it starts at the middle of the turn.
 local AMPLITUDE, SWING, START = 24, 0x50_0000, 0x8000
 
@@ -100,7 +100,7 @@ local function init(me: Object)
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = s.wave.palette
     local vx = int.mul32(s.wave.speed, me.facing)
     me.vel = Vec3.new(vx, me.vel.y, me.vel.z)
@@ -155,8 +155,8 @@ function spshake.wave(w: Wave): Wave
 end
 
 -- 0x080D319E: a wave of `wave` on (x, y) with `element` (the SpShakes' action passes elec) and the damage word.
-function spshake.spawn(owner: Object, x: number, y: number, element: number, damage: number, wave: Wave): Object?
-    local o = battle.spawn(spshake.kind, Vec3.new(y, element, 0))
+function spshake.spawn(owner: Object, x: number, y: number, element: Element, damage: number, wave: Wave): Object?
+    local o = battle.spawn(spshake.kind, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

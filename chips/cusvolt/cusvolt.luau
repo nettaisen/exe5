@@ -75,7 +75,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.thrown, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.collision:set_region(regions.fan)
     me.visible = true
     follow(me)
@@ -140,7 +140,7 @@ local function fire(me: Object, s: State)
         -- 0x080DD468: the beam (its panel and position the dispatcher's registers until its init places it: the
         -- timer, the handler's address, the element and the bonus), the navi's related1 it.
         local damage = damage_word.plus(me.attack_word, me.extra)
-        local o = battle.spawn(cusvolt.beam, Vec3.new(0x080ED1BD, me.attack_element, me.extra))
+        local o = battle.spawn(cusvolt.beam, Vec3.new(0x080ED1BD, me.attack_element.byte, me.extra))
         if o then
             o.panel_x, o.panel_y = BEAM_TICK, 0xBD
             o.element = me.attack_element

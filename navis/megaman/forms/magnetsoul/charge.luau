@@ -66,7 +66,7 @@ local function pull(me: Object, s: State)
     battle.hitbox(me, {
         panel_x = me.panel_x + me.facing,
         panel_y = me.panel_y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.row,
         hit_effect = nil,
@@ -113,7 +113,7 @@ charge.action = new.action {
 -- 0x0800F804 (its parameters' first byte 1, which the action passes on: the magnet paralyzes).
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = 30 + 10 * (battle.navi(navi.alliance).attack + 1), counter = COUNTER, cant_counter = true }
-    navi.attack_element = 3
+    navi.attack_element = Element.elec
     return charge.action
 end
 

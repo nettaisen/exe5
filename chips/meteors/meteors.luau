@@ -64,7 +64,7 @@ export type ShowerState = {
     drops: number,
 }
 
-local FIRE = 1
+local FIRE = Element.fire
 
 -- 0x080E58EC
 local function tick(me: Object)
@@ -83,7 +83,7 @@ local function tick(me: Object)
     s.target = meteor_shower.pick(me)
     local x, y = v.aim(s.target)
     local damage = me.damage_word
-    falling_meteor.spawn_kind(meteors.kind, v.row, me, x, y, me.element, damage, false, Vec3.new(y, me.element, 0))
+    falling_meteor.spawn_kind(meteors.kind, v.row, me, x, y, me.element, damage, false, Vec3.new(y, me.element.byte, 0))
     local drops = me.timer2 - 1
     me.timer2 = drops
     if drops <= 0 then
@@ -119,7 +119,7 @@ meteors.shower = new.kind {
 -- more), Fire, not running while dimmed.
 function meteors.instant(variant: ShowerVariant, drops: number): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, spec: InstantChipSpec)
-        local o = battle.spawn(meteors.shower, Vec3.new(spec.panel_y, spec.element, spec.z))
+        local o = battle.spawn(meteors.shower, Vec3.new(spec.panel_y, spec.element.byte, spec.z))
         if o then
             o.alliance, o.flip = user.alliance, user.flip
             o.related1 = user

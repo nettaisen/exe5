@@ -17,7 +17,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)

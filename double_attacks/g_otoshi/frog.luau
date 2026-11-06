@@ -99,7 +99,7 @@ local function init(me: Object)
         error("G-OTOSHI's frog: no collision record was free")
     end
     me:setup_collision(collision.thrown, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me.collision:set_region(nil)
     me.collision:present()
@@ -130,7 +130,7 @@ function frog.spawn(toadman: Object, x: number, y: number): Object?
     local o = battle.spawn(frog.kind)
     if o then
         o.panel_x, o.panel_y = x, y
-        o.element = 2
+        o.element = Element.aqua
         o.damage_word = toadman.damage_word
         o.alliance, o.flip = toadman.alliance, toadman.flip
         o.related1 = toadman

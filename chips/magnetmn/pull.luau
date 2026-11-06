@@ -100,7 +100,7 @@ pull.kind = new.kind {
 
 -- 0x080D2CBA with variant 1: a pull of `magnet`'s side on (x, y) with `element`, `dir` of it, 20 pixels ahead,
 -- running while paused and dimmed. (Its position is the spawner's registers, which its init overwrites.)
-function pull.spawn(magnet: Object, x: number, y: number, element: number, dir: number): Object?
+function pull.spawn(magnet: Object, x: number, y: number, element: Element, dir: number): Object?
     local o = battle.spawn(pull.kind, Vec3.zero)
     if o then
         local s = o.state :: State
@@ -117,7 +117,7 @@ end
 
 -- 0x080D2CBA with variant 0: a pull of `navi`'s side on (x, y) with `element`, `dir` of the navi, which it follows,
 -- 40 pixels ahead.
-function pull.spawn_for_navi(navi: Object, x: number, y: number, element: number, dir: number): Object?
+function pull.spawn_for_navi(navi: Object, x: number, y: number, element: Element, dir: number): Object?
     local o = battle.spawn(pull.kind, Vec3.zero)
     if o then
         local s = o.state :: State

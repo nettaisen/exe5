@@ -23,6 +23,8 @@ end
 local OFF_FIELD_SIDE = 0xE9
 -- The guard's ticks; the swallowed hit's sound on KnightMan.
 local GUARD_TICKS = 0x3C
+-- The damage slots a hit counts in (null to wood: not the drain's).
+local ELEMENTS: { ElementName } = { "null", "fire", "aqua", "elec", "wood" }
 local FLASH_SOUND = asset.sound("own-hit")
 -- A hit at all (the hit flags' 0xFF800000): either side's attack, object, body or other body, or a neutral object's.
 local ANY_HIT: { HitName } = {
@@ -173,7 +175,7 @@ function guard.hit_guard(side: number, navi: Object): boolean
         return false
     end
     local any = 0
-    for e = 0, 4 do
+    for _, e in ELEMENTS do
         any = bit32.bor(any, c:element_damage(e))
     end
     if any == 0 then
@@ -189,7 +191,7 @@ end
 function guard.hit_swallowed(side: number, navi: Object)
     local c = navi.collision
     local sum = 0
-    for e = 0, 4 do
+    for _, e in ELEMENTS do
         sum += c:element_damage(e)
     end
     local here = field.panel(navi.panel_x, navi.panel_y)

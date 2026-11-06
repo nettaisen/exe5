@@ -75,7 +75,7 @@ local function run(stats: Navi, installed: { InstalledPatchCard })
         mega = stats.mega_level,
         giga = stats.giga_level,
         soul_time = bit32.band(stats.soul_turn_bonus, 0xFF),
-        body = bit32.band(stats.element + 4, 0xFF),
+        body = bit32.band(stats.element.byte + 4, 0xFF),
     }
     local hp, written = apply_cards.run(installed, cards.GAME, stats.max_hp, slot)
     stats.max_hp = hp
@@ -90,7 +90,7 @@ local function run(stats: Navi, installed: { InstalledPatchCard })
     if copy("mega") then stats.mega_level = slot.mega end
     if copy("giga") then stats.giga_level = slot.giga end
     if copy("soul_time") then stats.soul_turn_bonus = apply_cards.signed_byte(slot.soul_time) end
-    if copy("body") then stats.element = bit32.band(slot.body - 4, 0xFF) end
+    if copy("body") then stats.element = Element.from_byte(bit32.band(slot.body - 4, 0xFF)) end
     if copy("super_armor") then stats.super_armor = slot.super_armor end
     if copy("status_guard") then stats.status_guard = slot.status_guard end
     if copy("float_shoes") then stats.float_shoes = slot.float_shoes end

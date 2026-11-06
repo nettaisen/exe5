@@ -95,7 +95,7 @@ local function burst(me: Object)
     local h = battle.hitbox(me, {
         panel_x = me.panel_x,
         panel_y = me.panel_y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.square,
         target = collision.hits_navis,
@@ -151,7 +151,7 @@ capsule.kind = new.kind {
                 error("C-BOMB's capsule: no collision slot (sub_8011504; the game reads through a null pointer)")
             end
             me:setup_collision(collision.nothing, collision.everything, {})
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me.visible = true
             me:set_coordinates_from_panel()
             local p = me.pos
@@ -176,7 +176,7 @@ function capsule.spawn(meddy: Object, x: number, y: number): Object?
         return nil
     end
     o.panel_x, o.panel_y = x, y
-    o.element = 0
+    o.element = Element.null
     o.damage_word = meddy.damage_word
     o.alliance, o.flip = meddy.alliance, meddy.flip
     o.related1 = meddy

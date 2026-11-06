@@ -350,7 +350,7 @@ function double_attack.make(spec: Spec): DoubleAttack
         me.anim, me.anim_loaded = 0, 0
         sprite:set_animation(0)
         me.visible = true
-        sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        sprite:face(me)
         -- (Its NameID the DS sets as it appears, this same tick.)
         me.identity = role.navi.identity
         me:set_lifecycle("update")
@@ -481,7 +481,7 @@ function double_attack.make(spec: Spec): DoubleAttack
     -- The DS's spawner (0x020A4DF8 and its copies): the controller on `user`'s panel, of its side and facing, with the
     -- chip's element and the damage word. (Its position is what the launcher's registers held: its course never reads
     -- it.)
-    local function spawn(user: Object, element: number, damage: number): Object?
+    local function spawn(user: Object, element: Element, damage: number): Object?
         local o = battle.spawn(controller_kind)
         if not o then
             return nil

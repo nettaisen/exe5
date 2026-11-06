@@ -10,7 +10,7 @@ local grab_shot_sprite = asset.sprite("grab-shot")
 
 -- Its seed (Param1 1): sea, the sprout (effect 0x29) and its sound.
 local SEED = seed.variant {
-    element = 0,
+    element = Element.null,
     palette = 1,
     panel = "sea",
     effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0, steps = 16 },

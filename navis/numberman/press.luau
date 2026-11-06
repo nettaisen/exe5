@@ -113,7 +113,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -156,7 +156,7 @@ press.kind = new.kind {
 }
 
 -- 0x080D7EA0: a press of `owner`'s side over the four panels from (x, y), with the element and the damage word.
-function press.spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
+function press.spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
     local o = battle.spawn(press.kind, Vec3.zero)
     if o then
         o.panel_x, o.panel_y = x, y

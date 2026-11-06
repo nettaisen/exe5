@@ -15,7 +15,7 @@ local made = common.make {
     spawn_rock = rock.spawn,
     place_sound = asset.sound("place"),
     position = function(user: Object, spec: DimmingChipSpec): Vec3
-        return Vec3.new(user.panel_y, spec.element, HOOK_ADDRESS)
+        return Vec3.new(user.panel_y, spec.element.byte, HOOK_ADDRESS)
     end,
 }
 

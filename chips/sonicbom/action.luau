@@ -72,7 +72,7 @@ function action.make(hit_mod: HitModifier, pierces: boolean): Action
                         battle.afterimage(me, me.pos, {
                             sprite = swords.blade.sprite,
                             anim = swords.blade_anim(me),
-                            flip = stepsword.flip(me),
+                            facing = me.facing_side,
                             color_shader = 0xFFE0,
                             lifetime = 0x1E,
                             shadow = "with_sprite",

@@ -92,13 +92,13 @@ local GEYSER = new.kind {
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(int.i32(p.x + facing * 40 * 0x10000), p.y, 0)
-            me.flip = bit32.bxor(me.flip, 1)
+            me.flip = not me.flip
             local sprite = me.sprite
             sprite:load(GEYSER_SPRITE)
             -- (0x0801892E with a shadow byte of 0: `sprite_noShadow`, the first part drawn with the sprite.)
             sprite.shadow = "with_sprite"
             me.anim, me.anim_loaded = 0, 0xFF
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me.visible = true
             battle.play_sound(GEYSER_SOUND)
             me.lifecycle = "update"
@@ -115,8 +115,8 @@ local GEYSER = new.kind {
 
 -- 0x080DB238 and `sub_801155A`: a geyser of `owner`'s in row `y` with the element and the damage word. (Its X is
 -- what the spawn left in a register; its init places it.)
-local function geyser(owner: Object, y: number, element: number, damage: number)
-    local o = battle.spawn(GEYSER, Vec3.new(y, element, 0))
+local function geyser(owner: Object, y: number, element: Element, damage: number)
+    local o = battle.spawn(GEYSER, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_y = y
         o.element = element
@@ -147,7 +147,7 @@ local function geysers(me: Object)
         error(string.format("WoodNos's wave's side %d reads past 0x080DB104", me.alliance))
     end
     local facing = me.facing
-    local first = bit32.bxor(me.alliance, 1) * 3 + 2
+    local first = battle.other_side(me.alliance) * 3 + 2
     local damage = (me.state :: WaveState).damage
     local n = 0
     for y = 1, 3 do
@@ -221,7 +221,7 @@ local WAVE = new.kind {
                 error("WoodNos's wave has no collision: 0x080DAFE8 goes on through a null pointer")
             end
             me:setup_collision(collision.attack, collision.hits_navis, WAVE_HIT_MOD)
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me.visible = true
             me.collision:set_hit_effect(sparks.of_element(me.element))
             me.vel = Vec3.new(me.facing * WAVE_SPEED, me.vel.y, me.vel.z)
@@ -240,8 +240,8 @@ local WAVE = new.kind {
 
 -- 0x080DB07E and `sub_801155A`: a wave of `owner`'s on (x, y) with the element and the damage word, 20 pixels up.
 -- (Its X and Y are the spawner's registers, the panel's Y and the element, until its init places it.)
-local function wave(owner: Object, x: number, y: number, element: number, damage: number)
-    local o = battle.spawn(WAVE, Vec3.new(y, element, 0x14_0000))
+local function wave(owner: Object, x: number, y: number, element: Element, damage: number)
+    local o = battle.spawn(WAVE, Vec3.new(y, element.byte, 0x14_0000))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

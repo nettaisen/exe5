@@ -164,7 +164,7 @@ local function swing(me: Object)
         double_attack.hit(me, {
             panel_x = x,
             panel_y = y,
-            element = 0,
+            element = Element.null,
             z = SWING_Z,
             region = regions.wide,
             target = collision.hits_navis,
@@ -173,7 +173,7 @@ local function swing(me: Object)
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(x, y)
-        battle.effect(Vec3.new(cx, cy, SWING_Z), SLASH, bit32.bxor(me.alliance, me.flip))
+        battle.effect(Vec3.new(cx, cy, SWING_Z), SLASH, me.facing_side)
     end
     if double_attack.ran_out(me) then
         me.phase, me.phase_init = 0, 0

@@ -52,7 +52,7 @@ local WAIT = 0x1E
 -- 0x02226278
 local function gate(side: number, navi: Object): boolean
     local stats = battle.navi(side)
-    if stats.mood == 0xFF then
+    if stats.mood == "full_synchro" then
         return false
     end
     if stats.navi.forms ~= nil and battle.emotion(side) ~= "worried" then
@@ -143,7 +143,7 @@ local function update(me: Object)
                 set_phase(me, ACT)
                 return
             end
-            battle.set_mood(me.alliance, 0xFF)
+            battle.set_mood(me.alliance, "full_synchro")
             me.timer = WAIT
             me.phase_init = 4
         end

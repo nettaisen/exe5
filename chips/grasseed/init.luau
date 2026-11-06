@@ -10,7 +10,7 @@ local grab_shot_sprite = asset.sprite("grab-shot")
 
 -- Its seed (Param1 2): grass, the sprout (effect 0x54) and its sound.
 local SEED = seed.variant {
-    element = 0,
+    element = Element.null,
     palette = 2,
     panel = "grass",
     effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 8, steps = 16 },

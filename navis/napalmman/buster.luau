@@ -134,7 +134,7 @@ buster.action = new.action {
 -- 0x0800FBC0
 local function setup(navi: Object): Action
     navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = 0

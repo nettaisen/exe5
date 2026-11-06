@@ -167,7 +167,7 @@ local function sword(me: Object)
                 hit_mod = {},
             })
             local cx, cy = field.center(x, y)
-            battle.effect(Vec3.new(cx, cy, 0x10_0000), LONG_SLASH, bit32.bxor(me.alliance, me.flip))
+            battle.effect(Vec3.new(cx, cy, 0x10_0000), LONG_SLASH, me.facing_side)
         end
         local t = me.timer - 1
         me.timer = t

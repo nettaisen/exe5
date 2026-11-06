@@ -86,7 +86,7 @@ controller.kind = new.kind {
 
 -- 0x080E4D42: the controller for `user`, with the attack's element and damage word and the chip's bonus. (It takes
 -- no panel: its own stays the spawner's zero until the scope gives it the target's.)
-function controller.spawn(user: Object, element: number, damage: number, bonus: number): Object?
+function controller.spawn(user: Object, element: Element, damage: number, bonus: number): Object?
     local o = battle.spawn(controller.kind, Vec3.zero)
     if o then
         (o.state :: State).bonus = bonus

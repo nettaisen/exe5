@@ -15,7 +15,7 @@ local SPRITE = asset.sprite("magnet-bomb")
 -- Its height, its fall a tick, and the height it reaches its panel from (16.16).
 local HEIGHT, FALL, REACHES = 0x28_0000, 0x2_0000, 0x14_0000
 -- The DS's spawner's element (0x020A5A06): Elec.
-local ELEC = 3
+local ELEC = Element.elec
 
 -- 0x02094BC8: the hits against it resolve and spark; hit, it goes (hidden, no region); else from 20 pixels down its
 -- panel is its region, and it falls; below the ground it goes. Its registration presents either way.
@@ -59,7 +59,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.thrown, collision.hits_navis, {})
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     local c = me.collision
     c.status_base = status.paralyze_120

@@ -30,7 +30,7 @@ return new.weapon {
     charge_ticks = { 140, 130, 120, 110, 100, 60 },
     setup = function(navi: Object): Action
         navi.attack_word = damage_word.of { amount = (battle.navi(navi.alliance).attack + 1) * 10, counter = COUNTER, cant_counter = true }
-        navi.attack_element = 0
+        navi.attack_element = Element.null
         navi.extra = 0
         return SPIN
     end,

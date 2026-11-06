@@ -178,7 +178,7 @@ custom_souls.button = {
         local mood = stats.mood
         local hidden = not in_soul
             and custom.player(side).emotion ~= "angry"
-            and (mood == 0 or (mood ~= 0xFF and mood < 65))
+            and (mood == 0 or (mood ~= "full_synchro" and (mood :: number) < 65))
         return #souls_of(side, true) > 0 and has_souls() and not operation_battle()
             and not hidden
     end,

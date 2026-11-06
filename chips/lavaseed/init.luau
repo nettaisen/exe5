@@ -10,7 +10,7 @@ local grab_shot_sprite = asset.sprite("grab-shot")
 
 -- Its seed (Param1 3): lava, the sprout (effect 0x55) and its sound.
 local SEED = seed.variant {
-    element = 0,
+    element = Element.null,
     palette = 3,
     panel = "lava",
     effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0xC, steps = 16 },

@@ -52,7 +52,7 @@ local navi: NaviDef = {
     },
     -- The chips A charges, and what a charged one gains (its damage again).
     charged_chips = { family = "aqua", damaging = false, plain = true },
-    charged_bonus = { damage = 0xFF },
+    charged_bonus = { damage = "again" },
     -- 0x080F199C
     post_init = dives,
     -- His entry in a navi switch's tail (0x080119A0 in the table 0x08011964 that 0x08011902 calls after it clears the

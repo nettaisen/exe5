@@ -57,7 +57,7 @@ local function next_panel(me: Object): (number, number)
     return x + dx, y + dy
 end
 
-local spawn: (owner: Object, x: number, y: number, element: number, damage: number, z: number, skulls: Skulls, left: number) -> Object?
+local spawn: (owner: Object, x: number, y: number, element: Element, damage: number, z: number, skulls: Skulls, left: number) -> Object?
 
 -- 0x080D72F8: its hits take its region; it lasts 30 ticks, calling the next skull on its 15th.
 local function tick(me: Object)
@@ -99,7 +99,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.attack, collision.hits_navis, { flinch = true, flash = true })
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     sprite.palette = s.skulls.palette
     me.collision.status_base = status.confuse_480
@@ -136,8 +136,8 @@ skully.kind = new.kind {
 }
 
 -- 0x080D7340: a skull on (x, y) at height `z` with `element` and the damage word, `left` more to come.
-spawn = function(owner: Object, x: number, y: number, element: number, damage: number, z: number, skulls: Skulls, left: number): Object?
-    local o = battle.spawn(skully.kind, Vec3.new(y, element, z))
+spawn = function(owner: Object, x: number, y: number, element: Element, damage: number, z: number, skulls: Skulls, left: number): Object?
+    local o = battle.spawn(skully.kind, Vec3.new(y, element.byte, z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element
@@ -175,7 +175,7 @@ function skully.action(skulls: Skulls): Action
         end
         if s.timer == 4 then
             local damage = damage_word.plus(me.attack_word, me.extra)
-            spawn(me, me.panel_x + me.facing, me.panel_y, 0, damage, HEIGHT, skulls, skulls.count)
+            spawn(me, me.panel_x + me.facing, me.panel_y, Element.null, damage, HEIGHT, skulls, skulls.count)
         end
         local t = s.timer + 1
         s.timer = t

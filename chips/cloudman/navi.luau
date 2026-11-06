@@ -28,12 +28,12 @@ local HOLD, LOWER = 0xC8, 0x5A
 -- while each exists and is free; each faces the enemy. How many were set.
 local function set_clouds(me: Object): number
     local damage = me.damage_word
-    local enemies = battle.alive_actors(bit32.bxor(me.alliance, 1))
+    local enemies = battle.alive_actors(battle.other_side(me.alliance))
     local set = 0
     for i = #enemies, 1, -1 do
         local enemy = enemies[i]
         local back = -enemy.facing
-        local flip = bit32.bxor(enemy.flip, 1)
+        local flip = not enemy.flip
         local n = 1
         while true do
             -- (Past the field's columns the game reads no panel, as a byte reads none.)

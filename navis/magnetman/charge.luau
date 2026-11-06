@@ -23,7 +23,7 @@ local PARTY: { { number } } = {
     { 20, 10 }, { 20, 10 }, { 20, 10 }, { 20, 10 }, { 30, 10 },
     { 30, 10 }, { 40, 10 }, { 40, 10 }, { 40, 10 }, { 40, 10 },
 }
-local ELEC = 3
+local ELEC = Element.elec
 local ANIM = 12
 local COUNTER_TICKS, AIM_TICKS, AFTER_TICKS = 10, 5, 30
 -- How far ahead of him the missile appears (16.16).

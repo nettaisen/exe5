@@ -70,7 +70,7 @@ local OWN: Family = { own = true }
 -- (0x0802B4AC's family searches from a column) the words the game reads run on: past side 0's four actor slots, side
 -- 1's; past side 1's, the field-object registry (side 0's three slots, then side 1's).
 local function target_at(navi: Object, i: number): Object?
-    local other = bit32.bxor(navi.alliance, 1)
+    local other = battle.other_side(navi.alliance)
     if i == 0 then
         return field.object_slot(other, 1)
     end
@@ -125,7 +125,7 @@ ai.skip_target = place.skip_target
 -- The side whose auto battle data it plays: the other side's (0x0802BEEA, 0x0802BEFE, 0x0802BF1C, 0x0802C0DC), or its own
 -- (0x0802BEE6, 0x0802BEFA, 0x0802BF16, 0x0802C0D6).
 local function auto_battle_side(navi: Object, fam: Family): number
-    return if fam.own then navi.alliance else bit32.bxor(navi.alliance, 1)
+    return if fam.own then navi.alliance else battle.other_side(navi.alliance)
 end
 
 -- 0x0802BF1C (0x0802BF16): the played entry goes last; nothing missed since.

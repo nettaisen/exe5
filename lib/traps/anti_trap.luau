@@ -31,23 +31,23 @@ local LEAVES = new.effect { sprite = hit_sparks_sprite, anim = 5, palette = 0, s
 
 trap.strike_kind = common_strike.make_kind("anti-trap/strike", {
     strikes = {
-        [0] = { sound = nil, spark = sparks.breaking, hit_mod = { flinch = true, flash = true }, status = nil, burst = effects.shell_burst },
-        [1] = {
+        null = { sound = nil, spark = sparks.breaking, hit_mod = { flinch = true, flash = true }, status = nil, burst = effects.shell_burst },
+        fire = {
             sound = asset.sound("target-move"),
             spark = sparks.fire,
             hit_mod = { flinch = true, flash = true },
             status = nil,
             burst = effects.shell_burst,
         },
-        [2] = { sound = asset.sound("spout-ball"), spark = sparks.aqua, hit_mod = { flinch = true, flash = true }, status = nil, burst = SPLASH },
-        [3] = {
+        aqua = { sound = asset.sound("spout-ball"), spark = sparks.aqua, hit_mod = { flinch = true, flash = true }, status = nil, burst = SPLASH },
+        elec = {
             sound = asset.sound("beast-over-burst"),
             spark = sparks.elec,
             hit_mod = { flinch = true, flash = true },
             status = statuses.paralyze_90,
             burst = LIGHTNING,
         },
-        [4] = {
+        wood = {
             sound = asset.sound("junk-shot"),
             spark = sparks.wood,
             hit_mod = { flinch = true, flash = true },
@@ -72,8 +72,8 @@ trap.kind = common_trap.make_kind("anti-trap/trap", {
     strike_kind = trap.strike_kind,
 })
 
--- The `dimming` hook of the Anti chip of `element` (1 fire, 2 aqua, 3 elec, 4 wood: its first parameter plus one).
-function trap.hook(element: number)
+-- The `dimming` hook of the Anti chip of `element` (fire to wood: its first parameter plus one, by number).
+function trap.hook(element: ElementName)
     return traps.hook(traps.trap {
         set = function(controller: Object, user: Object, chip: Chip?, bonus: number): Object?
             return common_trap.spawn(trap.kind, controller, user, chip, bonus, element)

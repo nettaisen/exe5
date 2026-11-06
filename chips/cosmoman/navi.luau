@@ -32,7 +32,7 @@ local function init(me: Object)
     navi_chips.stand(me, SPRITE, "ground", true)
     local s = me.state :: State
     me.sprite.palette = s.palette
-    me.sprite:set_flip(me.alliance)
+    me.sprite:face_side(me.alliance)
     me:set_lifecycle("update")
 end
 

@@ -245,7 +245,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 2, 2
     sprite:set_animation(2)
     sprite.palette = v.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -304,7 +304,7 @@ export type Throw = {
 -- 0x080C62D8: a capsule of `thrower`'s side and facing from its panel, with `element`, its flags running it while
 -- dimmed (its third parameter says whether it does: 2 by default). (Its position is the spawner's registers, which
 -- its init overwrites.)
-function capsule.throw(thrower: Object, element: number, throw: Throw): Object?
+function capsule.throw(thrower: Object, element: Element, throw: Throw): Object?
     local o = battle.spawn(capsule.kind, Vec3.zero)
     if o then
         local s = o.state :: State

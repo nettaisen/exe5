@@ -67,7 +67,7 @@ local function draw(me: Object, s: State)
         battle.hitbox(me, {
             panel_x = s.target_x,
             panel_y = s.target_y,
-            element = 0,
+            element = Element.null,
             z = 0,
             region = REGION,
             hit_effect = nil,
@@ -77,7 +77,7 @@ local function draw(me: Object, s: State)
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(s.target_x, s.target_y)
-        battle.effect(Vec3.new(cx, cy, 0), SLASH, bit32.bxor(me.alliance, me.flip))
+        battle.effect(Vec3.new(cx, cy, 0), SLASH, me.facing_side)
     end
     local t = s.timer - 1
     s.timer = bit32.band(t, 0xFFFF)

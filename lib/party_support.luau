@@ -161,7 +161,7 @@ function party_support.make(spec: Spec): Support
         me:set_coordinates_from_panel()
         local p = me.pos
         me.pos = Vec3.new(p.x, p.y, 0)
-        sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        sprite:face(me)
         sprite.palette = if spec.palette then spec.palette(me) else 0
         me.identity = navi.identity
         if spec.wears then
@@ -232,9 +232,9 @@ function party_support.release(me: Object)
     party.supports(me.alliance).busy[(me.state :: State).member + 1] = false
 end
 
--- 0x021FF280: `support` for the side's navi `navi` on (x, y), its flip `flip`, with the damage word, `member` busy
+-- 0x021FF280: `support` for the side's navi `navi` on (x, y), turned or not (`flip`), with the damage word, `member` busy
 -- while it acts; its panel reserved. Nil when the actor pool is full.
-function party_support.send(support: Support, navi: Object, x: number, y: number, flip: number, damage: number, member: number): Object?
+function party_support.send(support: Support, navi: Object, x: number, y: number, flip: boolean, damage: number, member: number): Object?
     local o = battle.spawn(support.kind)
     if not o then
         return nil
@@ -315,7 +315,7 @@ function party_support.controller(spec: { id: string, state: StateSchema?, bring
         local o = battle.spawn(kind)
         if o then
             o.panel_x, o.panel_y = navi.panel_x, navi.panel_y
-            o.element = 0
+            o.element = Element.null
             o.related1 = navi
             o.alliance, o.flip = navi.alliance, navi.flip
             o.damage_word = damage

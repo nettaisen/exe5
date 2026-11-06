@@ -119,7 +119,7 @@ local function init(me: Object)
     local v = me.vel
     me.vel = Vec3.new(v.x, v.y, FALL)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     if not me:create_collision() then
         me:free()
@@ -156,7 +156,7 @@ bomb.kind = new.kind {
 
 -- 0x080C7E72: a bomb of `owner`'s side on (x, y) with `element` and the damage word, running while dimmed if
 -- `while_dimmed` (its variant's: the chip's 1). (Its position is the spawner's registers, which its init overwrites.)
-function bomb.drop(owner: Object, x: number, y: number, element: number, while_dimmed: boolean, damage: number): Object?
+function bomb.drop(owner: Object, x: number, y: number, element: Element, while_dimmed: boolean, damage: number): Object?
     local o = battle.spawn(bomb.kind, Vec3.zero)
     if o then
         o.panel_x, o.panel_y = x, y

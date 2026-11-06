@@ -59,10 +59,10 @@ local function init(me: Object)
     end
     me.vel = Vec3.new(vx, me.vel.y, 0x7_0000)
     if look == nil then
-        sprite:set_flip(if vx < 0 then 1 else 0)
+        sprite:face_side(if vx < 0 then 1 else 0)
     elseif not worn then
         -- (A look that shows nothing: CosmoMan's meteor, flipped by its side.)
-        sprite:set_flip(me.alliance)
+        sprite:face_side(me.alliance)
     end
     me:set_lifecycle("update")
 end
@@ -144,7 +144,7 @@ meteor.kind = new.kind {
 }
 
 -- 0x080DE8D4: a meteor of `caller` onto (x, y), with its element, damage word and look (none: CosmoMan's own).
-function meteor.spawn(caller: Object, x: number, y: number, element: number, damage: number, look: Identity?): Object?
+function meteor.spawn(caller: Object, x: number, y: number, element: Element, damage: number, look: Identity?): Object?
     local o = battle.spawn(meteor.kind, Vec3.zero)
     if o then
         o.future_panel_x, o.future_panel_y = x, y

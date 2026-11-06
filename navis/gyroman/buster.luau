@@ -65,7 +65,7 @@ local function setup(navi: Object): Action
     if field.solid(navi.panel_x, navi.panel_y) then
         return megaman_buster.setup(navi)
     end
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.hit_param = HIT_PARAM
     navi.attack_damage = battle.navi(navi.alliance).attack + 1
     return buster.action

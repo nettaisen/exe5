@@ -115,7 +115,7 @@ local function heal(me: Object, s: State)
         -- `sub_801DC7C(0, 0)`: on the other side's console, on both in battle mode 6, none for a body that hides it.)
         local body = me.identity and me.identity.body
         if not (body and body.hides_hp) then
-            battle.show_hp(me, { console = if battle.mode() == 6 then nil else bit32.bxor(me.alliance, 1) })
+            battle.show_hp(me, { console = if battle.mode() == 6 then nil else battle.other_side(me.alliance) })
         end
         me.status_timers.flash = FLASHING
         me.status.flashing = true

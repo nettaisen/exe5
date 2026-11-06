@@ -77,7 +77,7 @@ local function vanish(me: Object, s: State)
         local x, y = landing(me)
         if x ~= nil then
             -- (EXE5's 0x08006AAE: NameID 0x18D for the other side; the navi type's tick runs for him from the start.)
-            local navi = battle.spawn_navi(dark_megaman, x, y :: number, bit32.bxor(me.alliance, 1), me)
+            local navi = battle.spawn_navi(dark_megaman, x, y :: number, battle.other_side(me.alliance), me)
             if navi then
                 navi.ticked = true
                 -- (The rules drive him: ../auto_battle.)

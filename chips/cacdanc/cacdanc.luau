@@ -169,7 +169,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.thrown, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me.collision:set_hit_effect(sparks.of_element(me.element))
     me.collision:set_region(nil)
@@ -245,7 +245,7 @@ local function drop(me: Object)
         end
     end
     -- 0x080DC79A: its position is the spawner's registers until its init places it.
-    local o = battle.spawn(cacdanc.cactus, Vec3.new(y, me.element, 0))
+    local o = battle.spawn(cacdanc.cactus, Vec3.new(y, me.element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = me.element
@@ -312,7 +312,7 @@ cacdanc.dancer = new.kind {
 -- position is the dispatcher's registers: the user's row, the element and the user's height.)
 function cacdanc.instant(palette: number): (user: Object, spec: InstantChipSpec) -> ()
     return function(user: Object, spec: InstantChipSpec)
-        local o = battle.spawn(cacdanc.dancer, Vec3.new(spec.panel_y, spec.element, spec.z))
+        local o = battle.spawn(cacdanc.dancer, Vec3.new(spec.panel_y, spec.element.byte, spec.z))
         if not o then
             return
         end

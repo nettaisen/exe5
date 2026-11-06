@@ -110,7 +110,7 @@ end
 -- 0x08104284: the Dark MegaMen on the side across from `side` (its alive actors of actor type navi and AI index
 -- 0x16) see their time up.
 function auto_battle.dismiss(side: number)
-    local other = bit32.bxor(side, 1)
+    local other = battle.other_side(side)
     for i = 1, 4 do
         local navi = battle.alive_actor_slot(other, i)
         if navi ~= nil and navi.actor_type == "navi" and navi.ai_index == DARK_MEGAMAN then
@@ -153,11 +153,13 @@ function auto_battle.controller(side: number, navi: Object): ("nothing" | "chip"
         if navi.navi_flags.no_charge then
             -- A drive started since its last step (its timer above the one it stepped with): the state
             -- from the start, as the drive's start leaves it (0x0802C03A, then AIData +0xF0 set again).
-            if navi.no_charge_timer > s.drive_ticks then
+            -- (A drive counts down: none that EXE5 starts holds.)
+            local left = navi.no_charge_timer :: number
+            if left > s.drive_ticks then
                 ai.reset(navi, s)
                 navi.in_auto_battle = true
             end
-            s.drive_ticks = navi.no_charge_timer
+            s.drive_ticks = left
             ai.run_own(navi, s)
             return "nothing"
         end

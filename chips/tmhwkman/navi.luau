@@ -98,7 +98,7 @@ local function strike(me: Object)
         box.run_while_dimmed = true
     end
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, 0x10_0000), EARTH, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0x10_0000), EARTH, me.facing_side)
 end
 
 -- Action 0xC (0x080BC000): the swing (its sound), 61 ticks (to -1); the tomahawk lands at 50 left.

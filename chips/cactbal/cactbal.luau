@@ -173,7 +173,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.attack, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me.collision:set_hit_effect(sparks.of_element(me.element))
     ;(me.state :: State).hops = 0
@@ -209,7 +209,7 @@ cactbal.ball = new.kind {
 local function throw(owner: Object, pos: Vec3, damage: number, palette: number): Object?
     local o = battle.spawn(cactbal.ball, pos)
     if o then
-        o.element = 4
+        o.element = Element.wood
         o.alliance, o.flip = owner.alliance, owner.flip
         o:set_damage_word(damage)
         ;(o.state :: State).palette = palette

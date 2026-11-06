@@ -54,7 +54,7 @@ function exe5.setup(navi: Object): Action
     end
     local stats = battle.navi(navi.alliance)
     navi.attack_damage = stats.attack + stats.navi.buster_bonus
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.hit_param = 0

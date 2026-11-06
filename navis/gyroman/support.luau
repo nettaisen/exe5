@@ -47,7 +47,7 @@ local support = {}
 -- gusts back or isn't the area's); 0 if the nearest holds them back.
 local function start_column(me: Object, y: number): number
     local side = me.alliance
-    local x = panels.closest_in_row(bit32.bxor(bit32.bxor(side, me.flip), 1), y, AREA, nil, side)
+    local x = panels.closest_in_row(battle.other_side(me.facing_side), y, AREA, nil, side)
     if field.any(x, y, BLOCKED) then
         return 0
     end
@@ -81,7 +81,7 @@ local function blow(me: Object)
         s.row = 3
     end
     if TWO_WAY[battle.panel_pattern()] then
-        gust.spawn(s.edge * 5 + 1, s.row, side, bit32.bxor(s.edge, 1), { pulls = true }, 0, me, slot)
+        gust.spawn(s.edge * 5 + 1, s.row, side, s.edge == 0, { pulls = true }, 0, me, slot)
         s.edge = bit32.bxor(s.edge, 1)
         s.wait = EDGE_WAIT
     else
@@ -169,7 +169,7 @@ function support.tick(side: number)
             local lasts = LASTS[bit32.band(bit32.rshift(battle.rng(), 15), 0xF) + 1]
             local o = battle.spawn(support.kind)
             if o then
-                o.alliance, o.flip = side, 0
+                o.alliance, o.flip = side, false
                 o.run_while_dimmed = false
                 o.timer = lasts
                 s.gyroman_gust = o

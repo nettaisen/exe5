@@ -32,7 +32,7 @@ return new.weapon {
     setup = function(navi: Object): Action
         navi.attack_damage = (battle.navi(navi.alliance).attack + 1) * 10
         navi.hit_param = HIT_PARAM
-        navi.attack_element = 0
+        navi.attack_element = Element.null
         navi.extra = 0
         return SPIN
     end,

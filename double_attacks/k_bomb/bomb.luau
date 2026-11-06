@@ -135,7 +135,7 @@ bomb.kind = new.kind {
             sprite.shadow = "ground"
             me.anim, me.anim_loaded = 1, 0xFF
             me.visible = true
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me:set_panel_from_coordinates()
             local f = me.facing
             me.future_panel_x, me.future_panel_y = me.panel_x + AHEAD * f, me.panel_y
@@ -164,7 +164,7 @@ function bomb.spawn(thrower: Object, pos: Vec3, quarter: number): Object?
         return nil
     end
     (o.state :: State).quarter = quarter
-    o.element = 0
+    o.element = Element.null
     o.alliance, o.flip = thrower.alliance, thrower.flip
     o:set_damage_word(bit32.bor(thrower.damage, bit32.lshift(thrower.stamina, 16)))
     o.related1 = thrower

@@ -80,7 +80,7 @@ local function noise_init(me: Object)
     end
     local is = if battle.mode() == 1 then collision.attack else collision.piercing
     me:setup_collision(is, collision.hits_navis, 3)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     set_region(me, THREE_COLUMNS)
     me.collision.hit_mod_base = 0
     me.collision.status_base = statuses.paralyze_150
@@ -159,7 +159,7 @@ local function attack(me: Object)
     elseif p == 8 then
         -- 0x080BD658: the noise from the panel ahead (running while dimmed); 40 ticks.
         if me.phase_init == 0 then
-            local o = battle.spawn(bignoise.noise, Vec3.new(me.panel_y, me.element, 0))
+            local o = battle.spawn(bignoise.noise, Vec3.new(me.panel_y, me.element.byte, 0))
             if o then
                 o.panel_x, o.panel_y = me.panel_x + me.facing, me.panel_y
                 o.element = me.element
@@ -236,7 +236,7 @@ bignoise.kind = new.kind {
             sprite.shadow = "ground"
             me.anim, me.anim_loaded = 3, 3
             sprite:set_animation(3)
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(p.x, p.y, 0)

@@ -129,8 +129,8 @@ trap.kind = new.kind {
 -- 0x080DF2E8: a trap of `owner`'s (its controller's) side and facing on (x, y), with the element and the damage
 -- word, running while dimmed. (Its position is the spawner's registers: the row, the element and `fraction`, the
 -- controller's bonus, which stays its height's lower half.)
-function trap.spawn(owner: Object, x: number, y: number, element: number, damage: number, fraction: number): Object?
-    local o = battle.spawn(trap.kind, Vec3.new(y, element, fraction))
+function trap.spawn(owner: Object, x: number, y: number, element: Element, damage: number, fraction: number): Object?
+    local o = battle.spawn(trap.kind, Vec3.new(y, element.byte, fraction))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

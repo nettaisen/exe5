@@ -29,26 +29,26 @@ local function distance(x0: number, y0: number, x1: number, y1: number): number
 end
 
 -- 0x020038E4: a panel around `enemy` (dx by its facing) of the first group of `offsets` with any that passes
--- (`require`, `forbid`, of side `of`), one of those drawn with RNG2; and the flip the support takes there (the last
--- entry's of the group, its flip byte against the enemy's flip). Nil when the enemy isn't on the field or no group has
--- one.
+-- (`require`, `forbid`, of side `of`), one of those drawn with RNG2; and whether the support is turned there (the last
+-- entry's of the group, its flip byte, 1 turned, against the enemy's turn). Nil when the enemy isn't on the field or no
+-- group has one.
 function supports.around(
     enemy: Object,
     offsets: { { { number } } },
     require: PanelFlags?,
     forbid: PanelFlags?,
     of: number?
-): (number?, number?, number)
+): (number?, number?, boolean)
     local ex, ey = enemy.panel_x, enemy.panel_y
     if not field.valid(ex, ey) then
-        return nil, nil, 0
+        return nil, nil, false
     end
     local dir = enemy.facing
     for _, group in offsets do
         local found: { number } = {}
-        local flip = 0
+        local flip = false
         for _, e in group do
-            flip = bit32.bxor(e[3], enemy.flip)
+            flip = (e[3] ~= 0) ~= enemy.flip
             local x, y = ex + e[1] * dir, ey + e[2]
             if field.check(x, y, require, forbid, of) then
                 table.insert(found, x + y * 0x10)
@@ -59,7 +59,7 @@ function supports.around(
             return bit32.band(pick, 7), bit32.rshift(pick, 4), flip
         end
     end
-    return nil, nil, 0
+    return nil, nil, false
 end
 
 -- 0x02003864 (`farthest`: 0x02003D28): of the enemies on the other side's list of alive actors, in slot order, each
@@ -72,9 +72,9 @@ function supports.target(
     forbid: PanelFlags?,
     farthest: boolean?,
     of: number?
-): (number?, number?, number)
+): (number?, number?, boolean)
     local best = if farthest then 0 else 0xFF
-    local bx: number?, by: number?, bflip = nil, nil, 0
+    local bx: number?, by: number?, bflip = nil, nil, false
     local other = 1 - navi.alliance
     for i = 1, 4 do
         local enemy = battle.alive_actor_slot(other, i)

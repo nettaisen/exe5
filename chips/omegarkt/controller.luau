@@ -20,7 +20,7 @@ local controller = {}
 local function effect(me: Object)
     local s = me.state :: State
     if me.phase_init == 0 then
-        local x = bit32.bxor(me.alliance, me.flip) * 5 + 1
+        local x = me.facing_side * 5 + 1
         s.rocket = rocket.spawn(me, x, 2, me.element, dimming_chips.damage_plus(me, s.bonus))
         me.timer = 0x1E
         me.phase_init = 4

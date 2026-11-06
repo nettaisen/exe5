@@ -109,7 +109,7 @@ local function palette(side: number, navi: Object): number?
     elseif in_soul then
         -- A soul's: 2 while its Chaos Unison charge is armed (the rules' own B charge: ../souls/chaos_charge).
         return if navi.b_charge_time ~= nil then 2 else 0
-    elseif stats.mood == 0xFF then
+    elseif stats.mood == "full_synchro" then
         p = 4
     elseif stats.mood == 0 then
         p = if value(side) < LIGHT_CHIPS then 2 else 3
@@ -120,7 +120,8 @@ local function palette(side: number, navi: Object): number?
     if hub and stats.hub_style ~= 0 then
         return p + stats.hub_style * 5 + 20
     end
-    return p + (if in_soul then 0 else stats.element) * 5
+    -- (The palettes by the element's number, five apart.)
+    return p + (if in_soul then 0 else stats.element.byte) * 5
 end
 
 -- 0x08010030: a dark chip's use; false when it fizzles.

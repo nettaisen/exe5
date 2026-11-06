@@ -21,7 +21,7 @@ local MARK_Z = 20 * 0x1_0000
 local function mark(me: Object)
     local s = me.state :: State
     local n = 0
-    for _, navi in battle.alive_actors(bit32.bxor(me.alliance, 1)) do
+    for _, navi in battle.alive_actors(battle.other_side(me.alliance)) do
         if navi.status.invisible or navi.status.flashing then
             local e = battle.effect(navi.pos + Vec3.new(0, 0, MARK_Z), MARK)
             if e then

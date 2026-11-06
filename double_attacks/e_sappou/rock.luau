@@ -90,7 +90,7 @@ local function copy(me: Object)
         local sprite = me.sprite
         sprite:load(SHADOWMAN)
         sprite.shadow = "ground"
-        sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+        sprite:face(me)
         me.anim, me.anim_loaded = ANIM_APPEAR, 0xFF
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, int.i32(p.z + DUST_Z)), effects.dust)
@@ -109,7 +109,7 @@ local function blade(me: Object)
     local o = battle.spawn(rock.blade, Vec3.new(me.panel_y, 0, 0))
     if o then
         o.panel_x, o.panel_y = me.panel_x, me.panel_y
-        o.element = 0
+        o.element = Element.null
         o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
         o.alliance, o.flip = me.alliance, me.flip
         o.related1 = me
@@ -189,7 +189,7 @@ rock.kind = new.kind {
             sprite.shadow = "ground"
             me.anim, me.anim_loaded = ANIM_ROCK, 0xFF
             me.visible = true
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(p.x, p.y, FALL_FROM)
@@ -218,9 +218,9 @@ function rock.spawn(colonel: Object, x: number, y: number, wait: number, behind:
         return nil
     end
     o.panel_x, o.panel_y = x, y
-    o.element = 0
+    o.element = Element.null
     o.alliance = colonel.alliance
-    o.flip = bit32.bxor(colonel.flip, if behind then 1 else 0)
+    o.flip = colonel.flip ~= behind
     o:set_damage_word(bit32.bor(colonel.damage, bit32.lshift(colonel.stamina, 16)))
     o.related1 = colonel
     local s = o.state :: State & { wait: number }

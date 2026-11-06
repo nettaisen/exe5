@@ -168,7 +168,7 @@ function gyroman.make(flight: Flight): Kind
         if me.phase_init == 0 then
             me.phase_init = 4
             me.anim = 0x14
-            me.panel_x = if bit32.bxor(me.alliance, me.flip) ~= 0 then 6 else 1
+            me.panel_x = if me.facing_side ~= 0 then 6 else 1
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(int.i32(p.x - me.facing * 0x4_0000), int.i32(p.y + 0x1_0000), int.i32(p.z - 0x1_0000))
@@ -355,8 +355,8 @@ end
 -- 0x080BAE8A: GyroMan the navi's flight of `kind` (Airforce's) for `user` (himself), along row `y` from column `x`,
 -- with the element and the damage word: the same object with its fourth parameter 1, its first his user's (a
 -- player's: 0, palette 0), and no controller.
-function gyroman.fly(kind: Kind, user: Object, x: number, y: number, element: number, damage: number): Object?
-    local o = battle.spawn(kind, Vec3.new(y, element, 0))
+function gyroman.fly(kind: Kind, user: Object, x: number, y: number, element: Element, damage: number): Object?
+    local o = battle.spawn(kind, Vec3.new(y, element.byte, 0))
     if o then
         local s = o.state :: State
         s.palette = 0

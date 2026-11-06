@@ -36,7 +36,7 @@ end
 function toadman.find_target(me: Object): Object?
     local x, y = me.panel_x + me.facing, me.panel_y
     local best: Object? = nil
-    for _, o in battle.alive_actors(bit32.bxor(me.alliance, 1)) do
+    for _, o in battle.alive_actors(battle.other_side(me.alliance)) do
         if in_cone(me, x, y, o.panel_x, o.panel_y) then
             local b = best
             if not b then
@@ -152,7 +152,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
     sprite.palette = s.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)

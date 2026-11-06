@@ -51,7 +51,7 @@ local function shuffle(list: { number }, n: number)
     local here = battle.local_side()
     order.apply(list, 0, battle.console_shuffle_order(here, n, n))
     for _ = 1, 2 * n do
-        battle.console_rng_positive(bit32.bxor(here, 1))
+        battle.console_rng_positive(battle.other_side(here))
     end
 end
 
@@ -204,7 +204,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 1, 1
     sprite:set_animation(1)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_panel_from_coordinates()
     if not me:create_collision() then
         me:free()
@@ -283,7 +283,7 @@ function bomb.lob(owner: Object, pos: Vec3, lob: Lob): Object?
     s.ds_arc = lob.ds_arc == true
     s.target_x, s.target_y = lob.target_x, lob.target_y
     o.alliance, o.flip = owner.alliance, owner.flip
-    o.element = 1
+    o.element = Element.fire
     o:set_damage_word(lob.damage)
     if lob.while_dimmed then
         o.run_while_dimmed = true

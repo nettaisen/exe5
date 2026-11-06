@@ -68,7 +68,7 @@ function controller.spawn(thrower: Object, x: number, y: number, z: number, dama
     local o = battle.spawn(controller.kind, Vec3.new(y, 0, z))
     if o then
         o.panel_x, o.panel_y = x, y
-        o.element = 0
+        o.element = Element.null
         o:set_damage_word(damage)
         o.alliance, o.flip = thrower.alliance, thrower.flip
         o.related1 = thrower

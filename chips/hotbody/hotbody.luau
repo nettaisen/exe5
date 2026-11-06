@@ -97,7 +97,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.attack, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     battle.play_sound(SOUND)
     me.lifecycle = "update"
@@ -161,7 +161,7 @@ local function light(me: Object, x: number, y: number)
     s.count += 1
     s.last[s.count] = bit32.bor(x, bit32.lshift(y, 4))
     -- 0x080DA480: its position is the spawner's registers until its init places it.
-    local o = battle.spawn(hotbody.flame, Vec3.new(y, me.element, me.pos.z))
+    local o = battle.spawn(hotbody.flame, Vec3.new(y, me.element.byte, me.pos.z))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = me.element
@@ -281,7 +281,7 @@ function hotbody.action(rounds: number): Action
         if me.step_init == 0 then
             local damage = me.attack_damage + me.hit_param * 0x10000 + me.extra
             -- (Its position is the spawner's registers: the navi's row, the element and the bonus.)
-            local o = battle.spawn(hotbody.fire, Vec3.new(me.panel_y, me.attack_element, me.extra))
+            local o = battle.spawn(hotbody.fire, Vec3.new(me.panel_y, me.attack_element.byte, me.extra))
             if o then
                 o.panel_x, o.panel_y = me.panel_x, me.panel_y
                 o.element = me.attack_element

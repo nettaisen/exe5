@@ -48,14 +48,14 @@ export type State = {
 }
 
 -- The panel types that give an element (0x080EFDE4): the element, the flames' palette.
-local RAGES: { [string]: { element: number, palette: number } } = {
-    lava = { element = 1, palette = 0 },
-    sea = { element = 2, palette = 1 },
-    ice = { element = 2, palette = 1 },
-    grass = { element = 4, palette = 2 },
-    magnet = { element = 3, palette = 3 },
+local RAGES: { [string]: { element: Element, palette: number } } = {
+    lava = { element = Element.fire, palette = 0 },
+    sea = { element = Element.aqua, palette = 1 },
+    ice = { element = Element.aqua, palette = 1 },
+    grass = { element = Element.wood, palette = 2 },
+    magnet = { element = Element.elec, palette = 3 },
 }
-local NONE = { element = 0, palette = 4 }
+local NONE = { element = Element.null, palette = 4 }
 local CLAW = attachment.look { sprite = rage_claw_sprite, palette = 0, attach_point = 0x16 }
 -- (The flame and the claw MegaMan's B↓FireAm fires too: navis/megaman/weapons/fire_arm.)
 elemrage.spawn_flame = spawn_flame
@@ -83,7 +83,7 @@ function elemrage.action(count: number, ticks: number): Action
             local rage = (p and RAGES[p.kind]) or NONE
             me.attack_element = rage.element
             s.palette = rage.palette
-            s.raged = rage.element ~= 0
+            s.raged = rage.element ~= Element.null
             if s.raged then
                 panel_changer.spawn(me, me.panel_x, me.panel_y, RESTORE, nil)
             end

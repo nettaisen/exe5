@@ -17,7 +17,7 @@ local chip: Chip = {
     lockout = 0,
     flags = { "dimming", "has_damage", "standard_library", "library" },
     slot_in_limit = 3,
-    dimming = anti_trap.hook(2),
+    dimming = anti_trap.hook("aqua"),
     auto_battle = { class = "when_trap_free", element_trap = true },
 }
 

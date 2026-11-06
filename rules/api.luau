@@ -98,17 +98,18 @@ end
 
 -- The last navi chip used, of either side (0x0203C430): the chip, and the element and the damage word, bonus included,
 -- its navi came with; nil before any.
-export type LastNaviChip = { chip: Chip, element: number, damage: number }
+export type LastNaviChip = { chip: Chip, element: Element, damage: number }
 
+-- (The state keeps the element's byte.)
 type Kept = { last_navi_chip: { chip: Chip?, element: number, damage: number } }
 
 -- 0x080E1880's: a navi chip of the block is the last navi chip used, its navi come with `element` and `damage`.
-function exe5.keep_navi_chip(chip: Chip?, element: number, damage: number)
+function exe5.keep_navi_chip(chip: Chip?, element: Element, damage: number)
     for side = 0, 1 do
         local s = rules.state_of(side) :: Kept?
         if s then
             local last = s.last_navi_chip
-            last.chip, last.element, last.damage = chip, element, damage
+            last.chip, last.element, last.damage = chip, element.byte, damage
         end
     end
 end
@@ -123,7 +124,7 @@ function exe5.last_navi_chip(): LastNaviChip?
     if chip == nil then
         return nil
     end
-    return { chip = chip, element = last.element, damage = last.damage }
+    return { chip = chip, element = Element.from_byte(last.element), damage = last.damage }
 end
 
 return exe5

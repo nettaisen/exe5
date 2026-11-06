@@ -127,7 +127,7 @@ local function satellite_init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -233,7 +233,7 @@ local function beam_init(me: Object, s: State)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.timer = BEAM_TICKS
     local tx, ty = me.panel_x + REACH * me.facing, me.panel_y
     field.crack(tx, ty)
@@ -318,7 +318,7 @@ local function flare_init(me: Object, f: FlareState)
     sprite:set_animation(anim)
     sprite.palette = 0
     if f.way == 1 then
-        sprite:set_flip(1)
+        sprite:face_side(1)
     end
     me.vel = Vec3.new(step[1] * FLARE_SPEED_X, step[2] * FLARE_SPEED_Y, 0)
     if not me:create_collision() then
@@ -406,7 +406,7 @@ flare_kind = new.kind {
 
 -- 0x080E7810: a satellite for `owner` (a dimming controller, or whoever calls it down) on panel (x, y), with its
 -- element and damage word; `while_dimmed` and `ticks` are its parameters.
-function satellite.spawn(owner: Object, x: number, y: number, element: number, damage: number, while_dimmed: boolean, ticks: number): Object?
+function satellite.spawn(owner: Object, x: number, y: number, element: Element, damage: number, while_dimmed: boolean, ticks: number): Object?
     local o = battle.spawn(satellite.kind, Vec3.zero)
     if o then
         local s = o.state :: State

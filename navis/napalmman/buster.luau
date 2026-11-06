@@ -135,7 +135,7 @@ buster.action = new.action {
 local function setup(navi: Object): Action
     navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
     navi.hit_param = HIT_PARAM
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.attack_lockout = 0

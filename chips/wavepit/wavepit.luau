@@ -118,7 +118,7 @@ local function init(me: Object)
         error("the wave has no collision: 0x080DADE0 goes on through a null pointer")
     end
     me:setup_collision(collision.attack, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = s.palette
     me.timer = WAIT
     me.vel = Vec3.new(me.facing, me.vel.y, me.vel.z)
@@ -154,8 +154,8 @@ wavepit.kind = new.kind {
 -- 0x080DAF02 and `sub_801155A`: a segment of `owner`'s on (x, y) with the element and the damage word, in `palette`,
 -- standing off solid ground too when `anywhere`. (Its position is the spawner's registers until its init places
 -- it.)
-function wavepit.spawn(owner: Object, x: number, y: number, element: number, damage: number, palette: number, anywhere: boolean): Object?
-    local o = battle.spawn(wavepit.kind, Vec3.new(y, element, 0))
+function wavepit.spawn(owner: Object, x: number, y: number, element: Element, damage: number, palette: number, anywhere: boolean): Object?
+    local o = battle.spawn(wavepit.kind, Vec3.new(y, element.byte, 0))
     if o then
         local s = o.state :: State
         s.palette, s.anywhere = palette, anywhere

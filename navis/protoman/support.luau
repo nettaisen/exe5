@@ -46,7 +46,7 @@ local function swing(me: Object)
         battle.hitbox(me, {
             panel_x = x,
             panel_y = y,
-            element = 0,
+            element = Element.null,
             z = SWING_Z,
             region = regions.wide,
             target = collision.hits_navis,
@@ -56,7 +56,7 @@ local function swing(me: Object)
             hit_mod = 0,
         })
         local cx, cy = field.center(x, y)
-        battle.effect(Vec3.new(cx, cy, SWING_Z), SLASH, bit32.bxor(me.alliance, me.flip))
+        battle.effect(Vec3.new(cx, cy, SWING_Z), SLASH, me.facing_side)
     end
     me.timer += 1
     if me.timer > SWING_ENDS then

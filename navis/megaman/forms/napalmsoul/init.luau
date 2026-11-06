@@ -74,7 +74,7 @@ local form: FormDef = {
         field.set_type(x, y, "normal")
     end,
     charged_chips = { { family = "fire", damaging = false, plain = true } },
-    charged_bonus = { damage = 0xFF },
+    charged_bonus = { damage = "again" },
     charged_action = charged_chip.action,
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 5-10, the version's souls'); in its

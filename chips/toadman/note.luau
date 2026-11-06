@@ -22,7 +22,7 @@ export type State = {
 export type Chain = { life: number, delay: number, dimmed: boolean }
 
 local SPRITE = asset.sprite("toad-note")
-local ELEC = 3
+local ELEC = Element.elec
 
 -- Action 0 (0x080D6764): its timers.
 local function start(me: Object)
@@ -83,7 +83,7 @@ local function init(me: Object)
         error("ToadMan's note: no collision slot (0x080D66C4 writes through a null pointer)")
     end
     me:setup_collision(collision.thrown, collision.hits_navis, 0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
@@ -99,7 +99,7 @@ local function init(me: Object)
     c.status_base = status.paralyze_90
     c:present()
     -- (0x08002DBE: its sprite unflipped after all.)
-    sprite:set_flip(0)
+    sprite:face_side(0)
     me:set_lifecycle("update")
     tick(me)
 end

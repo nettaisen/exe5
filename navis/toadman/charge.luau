@@ -43,7 +43,7 @@ local DOWN_TICKS, UNDER_TICKS, SURFACE_TICKS, STRIKE_AT, STRIKE_TICKS, HOLD_TICK
 local COUNTER_TICKS = 60
 -- What he rises a tick as he surfaces, and how high his strike hits (16.16).
 local RISE, STRIKE_Z = 8 * 0x1_0000, 16 * 0x1_0000
-local AQUA = 2
+local AQUA = Element.aqua
 local HIT_MOD = 3
 -- The panel flags (0x080F1C98, 0x080F1C68): a body of the other side's, by his side; a panel that can be stood on;
 -- any body.

@@ -75,7 +75,7 @@ follower.kind = new.kind {
 }
 
 -- 0x080DFC60: the follower of `swoop`, with its element and damage word.
-function follower.spawn(swoop: Object, element: number, damage: number): Object?
+function follower.spawn(swoop: Object, element: Element, damage: number): Object?
     local o = battle.spawn(follower.kind, Vec3.zero)
     if o then
         o.element = element

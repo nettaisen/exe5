@@ -88,7 +88,7 @@ end
 -- 0x080DD76C.
 local function init(me: Object)
     local s = me.state :: State
-    s.left = bit32.bxor(me.alliance, me.flip) ~= 0
+    s.left = me.facing_side ~= 0
     place(me, s)
     s.dir = (if s.left then 2 else 0) + (if me.panel_y ~= 0 then 1 else 0)
     local sprite = me.sprite
@@ -349,7 +349,7 @@ swoop.kind = new.kind {
 }
 
 -- 0x080DDA60: LarkMan's swoop from `navi` of `variant`, in the chip's palette, with its element and damage word.
-function swoop.spawn(navi: Object, palette: number, element: number, damage: number, variant: LarkSwoopVariant): Object?
+function swoop.spawn(navi: Object, palette: number, element: Element, damage: number, variant: LarkSwoopVariant): Object?
     local o = battle.spawn(swoop.kind, Vec3.zero)
     if o then
         local s = o.state :: State

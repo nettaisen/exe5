@@ -57,7 +57,7 @@ local function land(me: Object, s: State)
     battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.wide,
         -- None.
@@ -143,7 +143,7 @@ crakbom.kind = new.kind {
             me.anim, me.anim_loaded = ANIM, ANIM
             sprite:set_animation(ANIM)
             sprite.palette = 0
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me:set_panel_from_coordinates()
             me:set_lifecycle("update")
             tick(me)
@@ -164,7 +164,7 @@ function crakbom.thrower(variant: CrakBomVariant): Thrower
             local o = battle.spawn(crakbom.kind, pos)
             if o then
                 o.alliance, o.flip = user.alliance, user.flip
-                o.element = 0
+                o.element = Element.null
                 o:set_damage_word(damage)
                 local s = o.state :: State
                 s.variant = variant

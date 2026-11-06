@@ -120,7 +120,7 @@ local function swing(me: Object, s: State)
         battle.hitbox(me, {
             panel_x = x,
             panel_y = y,
-            element = 0,
+            element = Element.null,
             z = 0,
             region = regions.long,
             hit_effect = nil,
@@ -131,7 +131,7 @@ local function swing(me: Object, s: State)
             hit_mod = HIT_MOD,
         })
         local cx, cy = field.center(x, y)
-        battle.effect(Vec3.new(cx, cy, EFFECT_Z), LONG_SLASH, bit32.bxor(me.alliance, me.flip))
+        battle.effect(Vec3.new(cx, cy, EFFECT_Z), LONG_SLASH, me.facing_side)
     end
     local t = me.timer - 1
     me.timer = int.u16(t)
@@ -235,7 +235,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.hp, me.max_hp = HP, HP
     me:set_coordinates_from_panel()
     local p = me.pos

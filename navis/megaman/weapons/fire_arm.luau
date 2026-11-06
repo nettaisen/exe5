@@ -10,7 +10,7 @@ local attachment = require("../../../objects/attachment")
 local elemrage = require("../../../chips/elemrage/elemrage")
 
 -- The attack: 50 damage, hit parameter 20, Fire; its parameters: 5 flames (Param1), 30 ticks (Param2).
-local DAMAGE, HIT_PARAM, FIRE = 50, 20, 1
+local DAMAGE, HIT_PARAM, FIRE = 50, 20, Element.fire
 local COUNT, TICKS = 5, 0x1E
 
 local ANIM, ARM_ANIM, ATTACH_POINT = 10, 1, 20

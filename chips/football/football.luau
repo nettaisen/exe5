@@ -49,7 +49,7 @@ export type BallState = {
 
 -- 0x080D957C: its block by its kick and side; none behind its owner.
 local function navi_target(me: Object, s: BallState): (number?, number?)
-    local side = bit32.bxor(me.alliance, me.flip)
+    local side = me.facing_side
     local t = TARGETS[side][s.kick]
     local owner = me.related1 :: Object
     -- (The original's facing right takes a block in its owner's column, facing left not: nettai's as the
@@ -121,7 +121,7 @@ local function fall(me: Object)
         return
     end
     me.pos = Vec3.new(p.x, p.y, LAND_Z)
-    battle.effect(me.pos, LANDING, bit32.bxor(me.alliance, me.flip))
+    battle.effect(me.pos, LANDING, me.facing_side)
     me:set_action(0xC)
 end
 
@@ -201,7 +201,7 @@ football.ball = new.kind {
             me.anim, me.anim_loaded = 14, 14
             sprite:set_animation(14)
             sprite.palette = 0
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me:set_lifecycle("update")
             if (me.state :: BallState).kick > 1 then
                 me.visible = false
@@ -221,7 +221,7 @@ football.ball = new.kind {
 
 -- 0x080D94D4: the ball of kick `kick` at (x, y, z) from `owner`, with the element and damage word, of its side and
 -- facing, running while dimmed.
-local function spawn_ball(owner: Object, pos: Vec3, element: number, kick: number, damage: number): Object?
+local function spawn_ball(owner: Object, pos: Vec3, element: Element, kick: number, damage: number): Object?
     local o = battle.spawn(football.ball, pos)
     if not o then
         return nil
@@ -341,7 +341,7 @@ football.kind = new.kind {
             -- 0x080BF64C: on his panel, on the ground, 08-12 with a ground shadow, palette 0 (0x0800DA8A's for level
             -- 0), facing his way.
             navi_chips.stand(me, SPRITE, "ground", true)
-            me.sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            me.sprite:face(me)
             me:set_lifecycle("update")
         elseif l == "update" then
             -- 0x080BF69A: at the battle's end the controller moves on and he goes.

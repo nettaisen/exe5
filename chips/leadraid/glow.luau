@@ -21,7 +21,7 @@ local BUILD, CHARGED = 0x14, 2
 local function follow(me: Object)
     local s = me.state :: State
     local leader = me.related1 :: Object
-    local dx = if bit32.bxor(leader.alliance, leader.flip) == 0 then s.dx else -s.dx
+    local dx = if leader.facing_side == 0 then s.dx else -s.dx
     local p = leader.pos
     me.pos = Vec3.new(int.i32(p.x + dx), p.y, int.i32(p.z + s.dz))
 end
@@ -54,7 +54,7 @@ local function init(me: Object)
     -- sprite_noShadow: the first part is drawn with the sprite.
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me:set_lifecycle("update")
     tick(me)

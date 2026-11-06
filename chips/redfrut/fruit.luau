@@ -51,7 +51,15 @@ local SHOWN_TICKS, PUFF_TICKS = 40, 4
 -- Where it neither drops nor hops (0x080D8280): the back columns, reserved while it looks.
 local BACK_COLUMNS = { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 6, 1 }, { 6, 2 }, { 6, 3 } }
 -- Its sprite parts not drawn by the hops left (0x080D8314: 6 for more than 5).
-local HIDDEN_PARTS = { [0] = 0x1F000000, 0x2F000000, 0x37000000, 0x3B000000, 0x3D000000, 0x3E000000, 0x3F000000 }
+local HIDDEN_PARTS: { [number]: HiddenParts } = {
+    [0] = { [3] = true, [4] = true, [5] = true, [6] = true, [7] = true },
+    [1] = { [2] = true, [4] = true, [5] = true, [6] = true, [7] = true },
+    [2] = { [2] = true, [3] = true, [5] = true, [6] = true, [7] = true },
+    [3] = { [2] = true, [3] = true, [4] = true, [6] = true, [7] = true },
+    [4] = { [2] = true, [3] = true, [4] = true, [5] = true, [7] = true },
+    [5] = { [2] = true, [3] = true, [4] = true, [5] = true, [6] = true },
+    [6] = { [2] = true, [3] = true, [4] = true, [5] = true, [6] = true, [7] = true },
+}
 -- What broke it (0x080D828C, by side: side 0's attacks, objects, bodies and other bodies, 0xAA000000; side 1's,
 -- 0x55000000): its own side's, and the other side's.
 local OWN_SIDE: { HitName } = { "own_attack", "own_object", "own_body", "own_other_body" }
@@ -295,12 +303,12 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.neutral_body, collision.everything, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me.identity = IDENTITY
     me.hp, me.max_hp = HP, HP
     sprite.palette = s.palette
-    sprite:set_flip(0)
+    sprite:face_side(0)
     -- (sub_8002EAC: a drawing flag of the sprite's.)
     me.collision:present()
     s.breaker = NONE

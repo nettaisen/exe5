@@ -89,7 +89,7 @@ local function grow(me: Object)
         end
         if t == 0x0F then
             -- The middle of the other side's area: column 5 for a side facing right, 2 for one facing left.
-            s.x = bit32.bxor(bit32.bxor(me.alliance, me.flip), 1) * 3 + 2
+            s.x = battle.other_side(me.facing_side) * 3 + 2
             s.y = 2
         end
     end
@@ -118,7 +118,7 @@ local function burst(me: Object)
     local box = battle.hitbox(me, {
         panel_x = s.x,
         panel_y = s.y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.square,
         hit_effect = nil,
@@ -175,7 +175,7 @@ end
 local function init(me: Object)
     look(me, GLOW)
     me.visible = true
-    me.sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    me.sprite:face(me)
     me.timer = 0x69
     local p = me.pos
     me.pos = Vec3.new(whole_add(p.x, me.facing * 0x2E), whole_add(p.y, 8), whole_add(p.z, 0x32))
@@ -207,7 +207,7 @@ strike.kind = new.kind {
 function strike.spawn(owner: Object, pos: Vec3, damage: number): Object?
     local o = battle.spawn(strike.kind, pos)
     if o then
-        o.element = 0
+        o.element = Element.null
         o:set_damage_word(damage)
         o.alliance, o.flip = owner.alliance, owner.flip
         o.run_while_dimmed = true

@@ -106,7 +106,7 @@ local function cross_init(me: Object)
         error("CrsShld's cross has no collision: 0x080DB27C goes on through a null pointer")
     end
     me:setup_collision(collision.nothing, collision.hits_navis, 0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     sprite.palette = (me.state :: CrossState).palette
     me.vel = Vec3.new(me.facing * CROSS_SPEED * 0x10000, me.vel.y, me.vel.z)
@@ -140,8 +140,8 @@ local CROSS = new.kind {
 
 -- 0x080DB398 and `sub_801155A`: a cross of `owner`'s on (x, y), with the element and the damage word, in palette
 -- `palette`. (Its X and Y are the spawner's registers until its init places it.)
-function cross.spawn(owner: Object, x: number, y: number, element: number, damage: number, palette: number): Object?
-    local o = battle.spawn(CROSS, Vec3.new(y, element, 0))
+function cross.spawn(owner: Object, x: number, y: number, element: Element, damage: number, palette: number): Object?
+    local o = battle.spawn(CROSS, Vec3.new(y, element.byte, 0))
     if o then
         (o.state :: CrossState).palette = palette
         o.panel_x, o.panel_y = x, y

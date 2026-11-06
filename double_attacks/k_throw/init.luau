@@ -34,7 +34,7 @@ local ANIM_FLY, ANIM_LAND = 4, 3
 -- The arc's target: three panels ahead, 2 pixels down, 2 up; its fall a tick.
 local REACH, TARGET_DY, TARGET_Z, GRAVITY = 3, 0x20000, 0x20000, -0xC000
 -- The hit: element 4 (Wood), on his panel, a breaking spark, hitting navis as a thrown breaking attack, hit modifier 3.
-local WOOD, HIT_MOD = 4, 3
+local WOOD, HIT_MOD = Element.wood, 3
 -- On a hole: the smoke 20 pixels up. On a solid panel: the cameras' shake (3, 60 ticks), the landing's sound, the 3x3
 -- cracked (`sub_80DB48A`, region 0x0F), 30 ticks.
 local SMOKE_Z = 0x140000

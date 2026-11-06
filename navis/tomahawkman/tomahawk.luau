@@ -163,7 +163,7 @@ local function init(me: Object, s: State)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -198,7 +198,7 @@ tomahawk.kind = new.kind {
 -- (The game spawns it at the registers' values and then stores X and Y; its init sets Z's high half alone, so the
 -- low half stays what r3 held: the thrower's AI data's address, which his update's 0x080136E0 leaves there. Nothing
 -- reads a fraction of a pixel of height: here it is 0, compat's `scratch_z_fraction`.)
-function tomahawk.throw(owner: Object, element: number, damage: number): Object?
+function tomahawk.throw(owner: Object, element: Element, damage: number): Object?
     local p = owner.pos
     local o = battle.spawn(tomahawk.kind, Vec3.new(p.x, p.y, 0))
     if o then

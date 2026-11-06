@@ -80,8 +80,9 @@ function arm.raise_for(navi: Object, which: Slot, while_dimmed: boolean, holder:
                 if dark == 0 then
                     if navi.navi_flags.no_charge then
                         palette = 14
-                    elseif stats.element ~= 0 then
-                        palette = 0x1B + stats.element
+                    elseif stats.element ~= Element.null then
+                        -- (The palettes by the element's number, from 0x1C.)
+                        palette = 0x1B + stats.element.byte
                     end
                 elseif navi.navi_flags.no_charge then
                     anim, palette = 13, 1

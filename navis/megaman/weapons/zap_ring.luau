@@ -93,8 +93,8 @@ local RING = new.kind {
 
 -- 0x080DF47A: a ring from (x, y) with the element, height and damage word, of `owner`'s side and facing. (Its
 -- position is the spawner's registers until its init places it: its row, its element and its height.)
-local function send(owner: Object, x: number, y: number, element: number, z: number, damage: number): Object?
-    local o = battle.spawn(RING, Vec3.new(y, element, z))
+local function send(owner: Object, x: number, y: number, element: Element, z: number, damage: number): Object?
+    local o = battle.spawn(RING, Vec3.new(y, element.byte, z))
     if not o then
         return nil
     end
@@ -180,7 +180,7 @@ return new.weapon {
     setup = function(navi: Object): Action
         navi.attack_damage = 30
         navi.hit_param = 10
-        navi.attack_element = 3
+        navi.attack_element = Element.elec
         navi.charged = 0
         navi.extra = 0
         navi.attack_lockout = 0

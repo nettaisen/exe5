@@ -126,7 +126,7 @@ local function cape_caught(me: Object)
         me:set_coordinates_from_panel()
         local p = me.pos
         me.pos = Vec3.new(p.x, p.y, 0)
-        me.sprite:set_flip(bit32.bxor(bit32.bxor(me.alliance, me.flip), 1))
+        me.sprite:face_side(battle.other_side(me.facing_side))
         me.phase_init = 4
     end
     local s = me.state :: CapeState
@@ -209,7 +209,7 @@ local function cape_init(me: Object)
         return
     end
     me:setup_collision(collision.attack, collision.hits_navis, 0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.collision:set_hit_effect(nil)
     me:set_coordinates_from_panel()
     local p = me.pos
@@ -250,7 +250,7 @@ local function throw_cape(me: Object, x: number, y: number)
         return
     end
     o.panel_x, o.panel_y = x, y
-    o.element = 0
+    o.element = Element.null
     o:set_damage_word(0)
     o.alliance, o.flip = me.alliance, me.flip
     o.related1 = me
@@ -269,7 +269,7 @@ local function hit(me: Object)
     double_attack.hit(me, {
         panel_x = me.panel_x + me.facing,
         panel_y = me.panel_y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.single,
         target = collision.hits_navis,

@@ -33,7 +33,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -91,7 +91,7 @@ strike.kind = new.kind {
 
 -- 0x080C7F94: a strike of `owner`'s side and facing on panel (x, y), with the element, its hit modifier and the
 -- damage word.
-function strike.spawn(owner: Object, x: number, y: number, element: number, hit_mod: number, damage: number): Object?
+function strike.spawn(owner: Object, x: number, y: number, element: Element, hit_mod: number, damage: number): Object?
     local o = battle.spawn(strike.kind, Vec3.zero)
     if o then
         (o.state :: State).hit_mod = hit_mod

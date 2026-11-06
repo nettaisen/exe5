@@ -201,7 +201,7 @@ local function init(me: Object)
         sprite:step()
     end
     sprite.palette = (me.state :: State).palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:add_parts(CHAIN, 1)
     me:set_coordinates_from_panel()
     local p = me.pos

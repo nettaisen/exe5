@@ -19,7 +19,7 @@ local SOUND_BOLT = asset.sound("wave")
 local BOLT = flying_shot.variant {
     is = collision.thrown,
     hit_mod = 0,
-    element = 3,
+    element = Element.elec,
     sprite = thunder_ball_sprite,
     status = statuses.paralyze_90,
     speed = 0x4_0000,
@@ -119,7 +119,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 6, 6
     sprite:set_animation(6)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
     tick(me)
 end
@@ -141,9 +141,9 @@ cloud.kind = new.kind {
     end,
 }
 
--- 0x080DCB6E: a cloud of `owner`'s on (x, y) with `element`, its flip `flip`, the damage word and the owner's
+-- 0x080DCB6E: a cloud of `owner`'s on (x, y) with `element`, turned or not (`flip`), the damage word and the owner's
 -- side, running while dimmed. (Its position is the spawner's registers, which its init overwrites.)
-function cloud.spawn(owner: Object, x: number, y: number, element: number, flip: number, damage: number): Object?
+function cloud.spawn(owner: Object, x: number, y: number, element: Element, flip: boolean, damage: number): Object?
     local o = battle.spawn(cloud.kind, Vec3.zero)
     if o then
         o.panel_x, o.panel_y = x, y

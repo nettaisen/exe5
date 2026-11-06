@@ -17,7 +17,7 @@ local function hub_afterimage(me: Object, flip: number)
     if battle.navi(me.alliance).hub_style == 0 then
         return
     end
-    battle.afterimage(me, me.pos, { sprite = HUB_SHADE, anim = 8, flip = flip, lifetime = 0x1E, color_shader = 0x8318 })
+    battle.afterimage(me, me.pos, { sprite = HUB_SHADE, anim = 8, facing = flip, lifetime = 0x1E, color_shader = 0x8318 })
 end
 
 local LOOK: CannonLook = {

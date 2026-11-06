@@ -23,18 +23,18 @@ local chip: Chip = {
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
     action = action.action {
-        -- The sequences (0x080EDF24), facing right (flip 0) and mirrored, as joypad words with A held: 0x81 A+down,
-        -- 0x11 A+right, 0x21 A+left, 0x41 A+up, 0x03 A+B.
+        -- The sequences (0x080EDF24, joypad words each ending in 0), not turned (facing right on side 0) and turned,
+        -- each step the buttons held, A among them.
         sequences = {
-            [0] = {
-                { 0x81, 0x11, 0x41, 0 },
-                { 0x21, 0x11, 0x21, 0x03, 0 },
-                { 0x41, 0x03, 0x81, 0x03, 0x41, 0x03, 0 },
+            unturned = {
+                { { a = true, down = true }, { a = true, right = true }, { a = true, up = true } },
+                { { a = true, left = true }, { a = true, right = true }, { a = true, left = true }, { a = true, b = true } },
+                { { a = true, up = true }, { a = true, b = true }, { a = true, down = true }, { a = true, b = true }, { a = true, up = true }, { a = true, b = true } },
             },
-            [1] = {
-                { 0x81, 0x21, 0x41, 0 },
-                { 0x11, 0x21, 0x11, 0x03, 0 },
-                { 0x41, 0x03, 0x81, 0x03, 0x41, 0x03, 0 },
+            turned = {
+                { { a = true, down = true }, { a = true, left = true }, { a = true, up = true } },
+                { { a = true, right = true }, { a = true, left = true }, { a = true, right = true }, { a = true, b = true } },
+                { { a = true, up = true }, { a = true, b = true }, { a = true, down = true }, { a = true, b = true }, { a = true, up = true }, { a = true, b = true } },
             },
         },
         -- CrosSwrd, SprSonic, DblDream (0x080EE024: chips 0x176 to 0x178); a Sword (chip 0x30).

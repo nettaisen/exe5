@@ -159,7 +159,7 @@ end
 
 charge.action = new.action {
     id = "colonel/charge/action",
-    state = { timer = "u16", count = "u16", target_x = "u8", target_y = "u8", wait = "u16", unwarned = "bool" },
+    state = { timer = schema.u16, count = schema.u16, target_x = schema.u8, target_y = schema.u8, wait = schema.u16, unwarned = schema.bool },
     -- 0x080F89AE: the step, then the count.
     update = function(me: Object, s: State)
         local step = me.step

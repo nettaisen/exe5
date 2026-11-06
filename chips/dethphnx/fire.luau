@@ -139,7 +139,7 @@ end
 fire.kind = new.kind {
     id = "dethphnx/fire",
     pool = "effect",
-    state = { far = "bool" },
+    state = { far = schema.bool },
     -- 0x080EA5E4.
     update = function(me: Object)
         local l = me.lifecycle

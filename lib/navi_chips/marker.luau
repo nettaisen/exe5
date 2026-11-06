@@ -30,7 +30,7 @@ end
 marker.kind = new.kind {
     id = "dice-marker",
     pool = "effect",
-    state = { style = "u8" },
+    state = { style = schema.u8 },
     -- 0x080E9F38.
     update = function(me: Object)
         local l = me.lifecycle

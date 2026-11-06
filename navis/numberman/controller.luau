@@ -93,7 +93,7 @@ end
 controller.kind = new.kind {
     id = "numberman/numtrap/controller",
     pool = "effect",
-    state = { bonus = "u16" },
+    state = { bonus = schema.u16 },
     -- 0x080E4D68.
     update = dimming_chips.phases { name = "NumTrap", effect = effect },
 }

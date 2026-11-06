@@ -91,7 +91,7 @@ end
 support.strike = new.kind {
     id = "shadowman/ambush-strike",
     pool = "effect",
-    state = { kind = "u8" },
+    state = { kind = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then
@@ -238,7 +238,7 @@ support.actor = party_support.make {
     -- (0x021FEDA9: his parts stay on until he is destroyed.)
     warp_keeps_parts = true,
     actions = { [party_support.ATTACK] = ambush },
-    state = { kind = "u8", on_enemy = "bool" },
+    state = { kind = schema.u8, on_enemy = schema.bool },
 }
 
 -- 0x020040C4 and 0x02004D84 (the rules' `low_hp`, after Mag-Barr): once a battle (the party block's +0xF, spent even

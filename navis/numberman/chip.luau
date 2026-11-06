@@ -23,7 +23,7 @@ local LEAVE_TICKS = 10
 local numtrap: Chip
 
 local action = new.action {
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080F169C
     update = function(me: Object, s: State)
         local step = me.step

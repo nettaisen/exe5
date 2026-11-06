@@ -211,7 +211,7 @@ end
 support.actor = new.kind {
     id = "searchman/support",
     pool = "actor",
-    state = { tx = "u8", ty = "u8", shots = "u8", fired = "bool", controller = "object" },
+    state = { tx = schema.u8, ty = schema.u8, shots = schema.u8, fired = schema.bool, controller = schema.object },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then
@@ -241,7 +241,7 @@ support.actor = new.kind {
 -- undim.
 support.controller = party_support.controller {
     id = "searchman/support-controller",
-    state = { tx = "u8", ty = "u8" },
+    state = { tx = schema.u8, ty = schema.u8 },
     bring = function(me: Object): Object?
         local s = me.state :: ControllerState
         local navi = me.related1 :: Object

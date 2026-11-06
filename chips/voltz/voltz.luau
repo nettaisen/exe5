@@ -187,7 +187,7 @@ end
 shock_kind = new.kind {
     id = "voltz/shock",
     pool = "attack",
-    state = { way = "u8", ticks = "u8" },
+    state = { way = schema.u8, ticks = schema.u8 },
     -- 0x080D8AF0.
     update = function(me: Object)
         local l = me.lifecycle
@@ -349,7 +349,7 @@ end
 voltz.kind = new.kind {
     id = "voltz/sensor",
     pool = "attack",
-    state = { palette = "u8", shock_ticks = "u8" },
+    state = { palette = schema.u8, shock_ticks = schema.u8 },
     -- 0x080D86E8.
     update = function(me: Object)
         local l = me.lifecycle

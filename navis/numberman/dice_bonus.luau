@@ -233,7 +233,7 @@ end
 dice_bonus.actor = new.kind {
     id = "numberman/dice-bonus",
     pool = "actor",
-    state = { controller = "object", dice = "bool[2]", total = "u16", navi = "object" },
+    state = { controller = schema.object, dice = schema.array(schema.bool, 2), total = schema.u16, navi = schema.object },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

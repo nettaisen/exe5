@@ -19,7 +19,7 @@ export type State = {
     turned: number,
 }
 
-moonbld.STATE = { timer = "u16", turned = "u32" }
+moonbld.STATE = { timer = schema.u16, turned = schema.u32 }
 
 -- The blade (attack object #0x69): sprite 10-38, EXE5's rows 7 and 5 (0x0705FF01).
 moonbld.blade = common.make_kind("moonbld/blade", {

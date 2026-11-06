@@ -72,7 +72,7 @@ end
 
 auto_battle.leave = new.action {
     id = "auto-battle/leave",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     update = leave,
 }
 

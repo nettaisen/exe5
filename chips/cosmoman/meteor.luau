@@ -119,7 +119,7 @@ local ACTIONS = { [0] = fall, [4] = land }
 meteor.kind = new.kind {
     id = "cosmoman/meteor",
     pool = "attack",
-    state = { look = "identity" },
+    state = { look = schema.identity },
     -- 0x080DE708.
     update = function(me: Object)
         local l = me.lifecycle

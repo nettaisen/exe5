@@ -14,7 +14,7 @@ export type State = {
 glow.kind = new.kind {
     id = "megaman/glow",
     pool = "effect",
-    state = { sprite = "sprite", anim = "u8", shadow = "bool" },
+    state = { sprite = schema.sprite, anim = schema.u8, shadow = schema.bool },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

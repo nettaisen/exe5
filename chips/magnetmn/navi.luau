@@ -159,7 +159,7 @@ end
 magnetman.kind = new.kind {
     id = "magnetmn/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", target_x = "u8", mirror_x = "u8", paired = "bool" },
+    state = { controller = schema.object, palette = schema.u8, target_x = schema.u8, mirror_x = schema.u8, paired = schema.bool },
     -- 0x080BAF2C.
     update = function(me: Object)
         local l = me.lifecycle

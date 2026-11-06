@@ -331,7 +331,7 @@ local ACTIONS = { [0] = appear, [4] = pose, [8] = rise, [0xC] = comets, [0x10] =
 csmopris.kind = new.kind {
     id = "csmopris/navi",
     pool = "actor",
-    state = { controller = "object", sent = "u8" },
+    state = { controller = schema.object, sent = schema.u8 },
     -- 0x080BF814.
     update = function(me: Object)
         local l = me.lifecycle

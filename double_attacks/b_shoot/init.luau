@@ -180,7 +180,7 @@ end
 local ball = new.kind {
     id = "b-shoot/ball",
     pool = "attack",
-    state = { row = "u8", from = "vec3", to = "vec3" },
+    state = { row = schema.u8, from = schema.vec3, to = schema.vec3 },
     -- 0x02033DA4: by state, then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
@@ -361,7 +361,7 @@ local chip: Chip = {
     double_attack = double_attack.make {
         id = "b-shoot",
         damage = { 30, 30, 35, 40, 45, 50, 90, 100, 120, 120 },
-        state = { next_row = "u8" },
+        state = { next_row = schema.u8 },
         roles = {
             -- 0x020DDE54's table: MegaMan, (-16, 10) from the user's spot.
             {

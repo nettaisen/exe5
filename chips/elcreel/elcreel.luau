@@ -256,7 +256,7 @@ local function recover(me: Object, s: ActionState)
 end
 
 elcreel.action = new.action {
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080ECE4C.
     update = function(me: Object, s: ActionState)
         local step = me.step

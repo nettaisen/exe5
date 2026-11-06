@@ -187,7 +187,7 @@ local function update(me: Object, s: State)
     me:step_sprite()
 end
 
-survival.action = new.action { id = "dark-survival", state = { timer = "u16" }, update = update }
+survival.action = new.action { id = "dark-survival", state = { timer = schema.u16 }, update = update }
 
 -- 0x0802C16C (the rules' `hp_emptied`: object_subtractHP, 0x0800C6E0, at 0 HP): a player MegaMan (AIData +0, +1:
 -- actor type 2, AI index 0), not in the operation battle (NaviStats +0x2A clear, which its init reads, 0x0802D590),

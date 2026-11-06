@@ -134,6 +134,6 @@ local function update(me: Object, s: State)
     end
 end
 
-knockout.action = new.action { id = "party/knockout", state = { timer = "u16" }, update = update }
+knockout.action = new.action { id = "party/knockout", state = { timer = schema.u16 }, update = update }
 
 return knockout

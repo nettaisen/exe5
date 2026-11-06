@@ -329,12 +329,12 @@ phoenix.kind = new.kind {
     id = "dethphnx/phoenix",
     pool = "actor",
     state = {
-        controller = "object",
-        rows = "u8[12]",
-        order = "u8",
-        fire = "u8",
-        round = "u8",
-        navi_acting = "bool",
+        controller = schema.object,
+        rows = schema.array(schema.u8, 12),
+        order = schema.u8,
+        fire = schema.u8,
+        round = schema.u8,
+        navi_acting = schema.bool,
     },
     -- 0x080BFD98.
     update = function(me: Object)

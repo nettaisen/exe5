@@ -53,7 +53,7 @@ end
 reveal.kind = new.kind {
     id = "searchsoul/reveal",
     pool = "effect",
-    state = { marked = "object[4]" },
+    state = { marked = schema.array(schema.object, 4) },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

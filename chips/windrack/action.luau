@@ -18,7 +18,7 @@ export type State = {
     timer: number,
 }
 
-windrack.STATE = { timer = "u16" }
+windrack.STATE = { timer = schema.u16 }
 
 local SWING, RECOVER = 0x0, 0x4
 

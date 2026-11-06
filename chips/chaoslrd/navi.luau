@@ -271,7 +271,7 @@ end
 chaoslrd.kind = new.kind {
     id = "chaoslrd/navi",
     pool = "actor",
-    state = { controller = "object", red = "u8", green = "u8", blue = "u8" },
+    state = { controller = schema.object, red = schema.u8, green = schema.u8, blue = schema.u8 },
     -- 0x080C2EB8.
     update = function(me: Object)
         local l = me.lifecycle

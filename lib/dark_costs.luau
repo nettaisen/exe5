@@ -6,8 +6,11 @@
 
 local dark_costs = {}
 
+local EXE5_DARK_COST = schema.record_type("exe5-dark-cost")
+dark_costs.EXE5_DARK_COST = EXE5_DARK_COST
+
 function dark_costs.cost(apply: (stats: Navi) -> ()): DarkCost
-    return new.record("exe5-dark-cost", { apply = apply })
+    return new.record(EXE5_DARK_COST, { apply = apply })
 end
 
 -- The custom screen's damage, 100 more (DarkCirc's, DarkTorn's).

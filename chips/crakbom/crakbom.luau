@@ -34,9 +34,11 @@ local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4
 -- The bursts' sheet (effects 0x50 to 0x53, 0x080C93E8: palettes 0 to 3).
 crakbom.burst = bomb_burst_sprite
 
+local CRAKBOM_VARIANT = schema.record_type("crakbom-variant")
+
 -- A bomb's variant.
 function crakbom.variant(v: CrakBomVariant): CrakBomVariant
-    return new.record("crakbom-variant", v)
+    return new.record(CRAKBOM_VARIANT, v)
 end
 
 -- A puff where it is, and gone.
@@ -128,7 +130,7 @@ end
 crakbom.kind = new.kind {
     id = "crakbom/bomb",
     pool = "attack",
-    state = { variant = "record:crakbom-variant", ticks = "u8", target_x = "u8", target_y = "u8" },
+    state = { variant = CRAKBOM_VARIANT, ticks = schema.u8, target_x = schema.u8, target_y = schema.u8 },
     -- 0x080C91A4.
     update = function(me: Object)
         local l = me.lifecycle

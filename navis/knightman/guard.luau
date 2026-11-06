@@ -61,7 +61,7 @@ guard.actor = party_support.make {
             party.supports(me.alliance).knightman_guard = nil
         end
     end,
-    state = { flash = "bool", kept = "bool" },
+    state = { flash = schema.bool, kept = schema.bool },
 }
 
 -- 0x02004604: the navi stands at its area's front edge (the panel ahead on the field and the other side's), the light
@@ -139,7 +139,7 @@ local function update(me: Object, s: ActionState)
     end
 end
 
-guard.action = new.action { id = "knightman/guard/action", state = { timer = "u16" }, update = update }
+guard.action = new.action { id = "knightman/guard/action", state = { timer = schema.u16 }, update = update }
 
 -- 0x02063B72 (the rules' `hit_guard`): a hit no trap caught is swallowed while the navi is guarded, or asks for the
 -- guard; it then needs the navi ready for it (`ready`), a hit at all (the hit flags' 0xFF800000) and damage in it.

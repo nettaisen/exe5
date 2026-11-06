@@ -80,7 +80,7 @@ end
 controller.kind = new.kind {
     id = "elempowr/controller",
     pool = "effect",
-    state = { busy = "bool" },
+    state = { busy = schema.bool },
     -- 0x080E9B68.
     update = dimming_chips.phases { name = "ElemPowr", effect = effect },
 }

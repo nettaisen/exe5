@@ -294,16 +294,19 @@ local function gone(me: Object)
     me:free()
 end
 
+local EXE5_YOYO = schema.record_type("exe5-yoyo")
+yoyo.EXE5_YOYO = EXE5_YOYO
+
 yoyo.kind = new.kind {
     id = "yoyo/yoyo",
     pool = "attack",
     state = {
-        spec = "record:exe5-yoyo",
+        spec = EXE5_YOYO,
         slot = { "related", "middle", "below", "above" },
-        left = "i32",
-        hit = "u32",
-        back = "i32",
-        turned = "u32",
+        left = schema.i32,
+        hit = schema.u32,
+        back = schema.i32,
+        turned = schema.u32,
     },
     -- 0x080D00A8.
     update = function(me: Object)
@@ -319,7 +322,7 @@ yoyo.kind = new.kind {
 }
 
 function yoyo.spec(spec: Spec): Spec
-    return new.record("exe5-yoyo", spec)
+    return new.record(EXE5_YOYO, spec)
 end
 
 -- 0x080D0346: a yoyo for `owner` on (x, y) at height `z`, with `element` and the damage word, flying as `spec`

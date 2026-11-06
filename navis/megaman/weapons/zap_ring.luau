@@ -159,7 +159,7 @@ end
 
 local ACTION = new.action {
     id = "megaman/zap-ring/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080EFFC8.
     update = function(me: Object, s: State)
         if me.step == 0 then

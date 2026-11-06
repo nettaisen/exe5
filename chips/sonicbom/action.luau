@@ -20,7 +20,7 @@ export type State = {
     turned: number,
 }
 
-action.STATE = { timer = "u16", turned = "u32" }
+action.STATE = { timer = schema.u16, turned = schema.u32 }
 
 -- The phases, on the attack's step.
 local START, SET_UP, SWING, STEP_BACK, RECOVER = 0x0, 0x4, 0x8, 0xC, 0x10

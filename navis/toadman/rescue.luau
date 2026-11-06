@@ -169,7 +169,7 @@ local function update(me: Object, s: State)
     me:step_sprite()
 end
 
-rescue.action = new.action { id = "toadman/rescue", state = { timer = "u16" }, update = update }
+rescue.action = new.action { id = "toadman/rescue", state = { timer = schema.u16 }, update = update }
 
 -- 0x020048E8 (the rules' `navi_falling`): the rescue, when ToadMan can.
 function rescue.navi_falling(side: number, navi: Object): boolean

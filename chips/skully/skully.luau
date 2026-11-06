@@ -112,10 +112,12 @@ local function init(me: Object)
     tick(me)
 end
 
+local SKULLS = schema.record_type("skulls")
+
 skully.kind = new.kind {
     id = "skully/skull",
     pool = "attack",
-    state = { skulls = "record:skulls", left = "u8" },
+    state = { skulls = SKULLS, left = schema.u8 },
     -- 0x080D7290: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
@@ -150,7 +152,7 @@ spawn = function(owner: Object, x: number, y: number, element: number, damage: n
 end
 
 function skully.skulls(palette: number): Skulls
-    return new.record("skulls", { palette = palette, count = 3, every = 0x0F })
+    return new.record(SKULLS, { palette = palette, count = 3, every = 0x0F })
 end
 
 export type ActionState = {
@@ -201,7 +203,7 @@ function skully.action(skulls: Skulls): Action
     end
 
     return new.action {
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         args = skulls,
         update = function(me: Object, s: ActionState)
             local step = me.step

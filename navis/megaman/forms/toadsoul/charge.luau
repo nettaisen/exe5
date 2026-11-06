@@ -66,7 +66,7 @@ end
 
 charge.action = new.action {
     id = "toadsoul/charge/action",
-    state = { timer = "u16", target = "object" },
+    state = { timer = schema.u16, target = schema.object },
     -- 0x080EF5A2
     update = function(me: Object, s: State)
         local step = me.step

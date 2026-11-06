@@ -189,7 +189,7 @@ end
 rocket.kind = new.kind {
     id = "omegarkt/rocket",
     pool = "attack",
-    state = { controller = "object" },
+    state = { controller = schema.object },
     -- 0x080DD4CC.
     update = function(me: Object)
         local l = me.lifecycle

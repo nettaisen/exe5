@@ -116,7 +116,7 @@ end
 support.kind = new.kind {
     id = "gyroman/support",
     pool = "effect",
-    state = { wait = "u16", row = "u8", edge = "u8", gusts = "u8[2]" },
+    state = { wait = schema.u16, row = schema.u8, edge = schema.u8, gusts = schema.array(schema.u8, 2) },
     update = function(me: Object)
         local l = me.lifecycle
         if l == "init" then

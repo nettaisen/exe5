@@ -54,7 +54,7 @@ end
 controller.kind = new.kind {
     id = "darkinvs/controller",
     pool = "effect",
-    state = { busy = "bool" },
+    state = { busy = schema.bool },
     -- 0x080E22A8.
     update = dimming_chips.phases { name = "DarkInvs", effect = effect },
 }

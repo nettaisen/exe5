@@ -186,7 +186,7 @@ local STEPS: { [number]: (me: Object, s: State) -> () } = {
 
 charge.action = new.action {
     id = "shadowman/charge/action",
-    state = { timer = "u16", target_x = "u8", target_y = "u8" },
+    state = { timer = schema.u16, target_x = schema.u8, target_y = schema.u8 },
     -- 0x080F95F0
     update = function(me: Object, s: State)
         local step = STEPS[me.step]

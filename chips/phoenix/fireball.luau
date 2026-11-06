@@ -117,7 +117,7 @@ end
 fireball.kind = new.kind {
     id = "phoenix/fireball",
     pool = "attack",
-    state = { target = "u8", start = "vec3", target_x = "i32", target_y = "i32" },
+    state = { target = schema.u8, start = schema.vec3, target_x = schema.i32, target_y = schema.i32 },
     -- 0x080DF490.
     update = function(me: Object)
         local l = me.lifecycle

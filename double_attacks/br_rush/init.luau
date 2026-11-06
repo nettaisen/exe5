@@ -224,7 +224,7 @@ end
 local cape = new.kind {
     id = "br-rush/cape",
     pool = "attack",
-    state = { owner = "object", released = "bool" },
+    state = { owner = schema.object, released = schema.bool },
     -- 0x02203190: by state; then its sprite steps, paused or not (its Param2 2).
     update = function(me: Object)
         local l = me.lifecycle
@@ -659,7 +659,7 @@ local chip: Chip = {
     double_attack = double_attack.make {
         id = "br-rush",
         damage = { 10, 12, 15, 15, 20, 25, 35, 45, 50, 50 },
-        state = { cape = "object" },
+        state = { cape = schema.object },
         roles = {
             -- 0x02032FDC's table: MegaMan, (10, 10) from the user's spot.
             {

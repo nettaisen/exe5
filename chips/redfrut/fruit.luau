@@ -241,8 +241,10 @@ end
 -- A chip's gift: what it gives the navi its breaker's side gets it on.
 export type Gift = { give: (navi: Object) -> () }
 
+local REDFRUT_GIFT = schema.record_type("redfrut-gift")
+
 function fruit.gift(give: (navi: Object) -> ()): Gift
-    return new.record("redfrut-gift", { give = give })
+    return new.record(REDFRUT_GIFT, { give = give })
 end
 
 -- 0x080D82BA: one of the side's alive navis at random (one RNG2 draw when it has any).
@@ -309,7 +311,7 @@ end
 fruit.kind = new.kind {
     id = "redfrut/fruit",
     pool = "attack",
-    state = { gift = "record:redfrut-gift", palette = "u8", hops = "u8", breaker = "u8" },
+    state = { gift = REDFRUT_GIFT, palette = schema.u8, hops = schema.u8, breaker = schema.u8 },
     -- 0x080D7F2C.
     update = function(me: Object)
         local l = me.lifecycle

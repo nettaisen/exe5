@@ -317,13 +317,13 @@ shadoman.kind = new.kind {
     id = "shadoman/navi",
     pool = "actor",
     state = {
-        controller = "object",
-        index = "u8",
-        palette = "u8",
-        sent = "bool",
-        delay = "u8",
-        target = "u8",
-        busy = "u8[3]",
+        controller = schema.object,
+        index = schema.u8,
+        palette = schema.u8,
+        sent = schema.bool,
+        delay = schema.u8,
+        target = schema.u8,
+        busy = schema.array(schema.u8, 3),
     },
     -- 0x080B9E98: the unseen one, whatever his lifecycle (no sprite); one sent, by its lifecycle.
     update = function(me: Object)

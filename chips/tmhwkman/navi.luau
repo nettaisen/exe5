@@ -142,7 +142,7 @@ end
 tmhwkman.kind = new.kind {
     id = "tmhwkman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8" },
+    state = { controller = schema.object, palette = schema.u8 },
     -- 0x080BBED0.
     update = function(me: Object)
         local l = me.lifecycle

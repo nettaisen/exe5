@@ -26,8 +26,8 @@ block.RECORDS = places.RECORDS
 block.RECORD_CHIPS = 5
 
 -- The setup's and the state's types.
-local CHIP_PLACE: StateSchema = { chip = "chip", zero = "bool" }
-local RECORD: StateSchema = { dx = "i8", dy = "i8", chips = schema.list(CHIP_PLACE, block.RECORD_CHIPS), score = "u32" }
+local CHIP_PLACE: StateSchema = { chip = schema.chip, zero = schema.bool }
+local RECORD: StateSchema = { dx = schema.i8, dy = schema.i8, chips = schema.list(CHIP_PLACE, block.RECORD_CHIPS), score = schema.u32 }
 
 block.PLACE = places.PLACE
 block.CHIP_PLACE = CHIP_PLACE

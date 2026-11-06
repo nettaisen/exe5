@@ -204,7 +204,7 @@ end
 missile.kind = new.kind {
     id = "magnetman/missile",
     pool = "attack",
-    state = { turned = "bool", target = "object" },
+    state = { turned = schema.bool, target = schema.object },
     -- 0x080D24F0.
     update = function(me: Object)
         local l = me.lifecycle

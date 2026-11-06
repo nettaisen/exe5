@@ -86,7 +86,7 @@ end
 cusvolt.beam = new.kind {
     id = "cusvolt/beam",
     pool = "attack",
-    state = { navi = "object" },
+    state = { navi = schema.object },
     -- 0x080DD3D0: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
@@ -183,7 +183,7 @@ end
 -- A CusVolt's action.
 function cusvolt.action(): Action
     return new.action {
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         -- 0x080ED1A2.
         update = function(me: Object, s: State)
             local step = me.step

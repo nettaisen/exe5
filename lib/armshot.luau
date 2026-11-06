@@ -12,7 +12,7 @@ export type State = {
     timer: number,
 }
 
-armshot.STATE = { timer = "u16" }
+armshot.STATE = { timer = schema.u16 }
 
 local FIRE, RECOVER = 0x0, 0x4
 local ANIM = 0x0E

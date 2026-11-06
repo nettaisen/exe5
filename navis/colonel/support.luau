@@ -93,7 +93,7 @@ support.actor = party_support.make {
     id = "colonel/support",
     navi = colonel,
     appear_ticks = 4,
-    state = { held = "object" },
+    state = { held = schema.object },
     actions = {
         [party_support.ATTACK] = function(me: Object)
             local p = me.phase

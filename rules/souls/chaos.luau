@@ -130,6 +130,6 @@ local function update(me: Object, s: State)
     end
 end
 
-chaos.failure = new.action { id = "souls/chaos-failure", state = { timer = "u16" }, update = update }
+chaos.failure = new.action { id = "souls/chaos-failure", state = { timer = schema.u16 }, update = update }
 
 return chaos

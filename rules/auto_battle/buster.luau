@@ -100,7 +100,7 @@ local function update(me: Object, s: State)
     end
 end
 
-buster.action = new.action { id = "auto-battle/buster", state = { timer = "u16" }, update = update }
+buster.action = new.action { id = "auto-battle/buster", state = { timer = schema.u16 }, update = update }
 
 -- 0x0800FB06: Attack plus one, no counter byte.
 function buster.setup(navi: Object): Action

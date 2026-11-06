@@ -53,7 +53,7 @@ end
 layer.kind = new.kind {
     id = "numbersoul/layer",
     pool = "actor",
-    state = { sprite = "sprite" },
+    state = { sprite = schema.sprite },
     -- 0x080C32C4
     update = function(me: Object)
         local l = me.lifecycle

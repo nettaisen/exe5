@@ -288,7 +288,7 @@ end
 protoman.kind = new.kind {
     id = "leadraid/protoman",
     pool = "actor",
-    state = { controller = "object", colonel = "object", glow = "object" },
+    state = { controller = schema.object, colonel = schema.object, glow = schema.object },
     -- 0x080BE1C8.
     update = function(me: Object)
         local l = me.lifecycle

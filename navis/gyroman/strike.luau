@@ -69,7 +69,7 @@ end
 strike.kind = new.kind {
     id = "gyroman/strike",
     pool = "attack",
-    state = { hit_mod = "u8" },
+    state = { hit_mod = schema.u8 },
     -- 0x080C7EA0.
     update = function(me: Object)
         local l = me.lifecycle

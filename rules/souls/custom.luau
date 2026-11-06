@@ -46,46 +46,12 @@ local TURNS, MAX_TURNS, CHAOS_TURNS = 3, 9, 1
 -- their declared types (this module's end gathers them with the souls' buttons and windows).
 local screen: StateSchema = {}
 
--- The whole numbers a state field may be declared as.
-local INTEGERS: { [string]: boolean } = { u8 = true, u16 = true, u32 = true, i8 = true, i16 = true, i32 = true }
-
--- What a fresh state holds in a field declared as `kind` (a state starts all zero, like the game's scratch): 0 for a
--- number, false for a boolean, the first of a list of variants, and for anything else (a definition, an asset, an
--- object) none.
-local function fresh(kind: SchemaField): any
-    if type(kind) == "table" then
-        return kind[1]
-    elseif kind == "bool" then
-        return false
-    elseif kind == "vec3" then
-        return Vec3.new(0, 0, 0)
-    elseif INTEGERS[kind] then
-        return 0
-    end
-    return nil
-end
-
 -- 0x08022CA2: the screen's record is zeroed as it opens. What every soul keeps of a screen (`screen`) is back as a
--- fresh state has it, from the fields' own declarations, whatever soul the side's navi is in: a soul's fields don't
--- outlast the screen they were set on.
+-- fresh state has it, whatever soul the side's navi is in: a soul's fields don't outlast the screen they were set on.
+-- (A record given a table of none of its fields holds each of them zero: a number 0, a flag false, a list of
+-- variants its first, a definition, an asset or an object none.)
 local function forget_screen(s: any)
-    local kept = s.screen
-    for name, declared in screen do
-        -- (A field the engine knows by a role is of its role's declared type: `schema.role(role, T)`'s `T`.)
-        local kind: SchemaField = if type(declared) == "table" and (declared :: any).__role then (declared :: any).of else declared
-        local element, count
-        if type(kind) == "string" then
-            element, count = string.match(kind, "^(.+)%[(%d+)%]$")
-        end
-        if element ~= nil then
-            -- (An array: each of its elements.)
-            for i = 1, tonumber(count) :: number do
-                kept[name][i] = fresh(element)
-            end
-        else
-            kept[name] = fresh(kind)
-        end
-    end
+    s.screen = {}
 end
 
 -- The navi the side's screen is for (the screen's +0x10): the party member a switch on it took (EXE5 DS's state 0x40,

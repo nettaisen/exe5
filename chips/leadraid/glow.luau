@@ -63,7 +63,7 @@ end
 glow.kind = new.kind {
     id = "leadraid/glow",
     pool = "effect",
-    state = { dx = "i32", dz = "i32" },
+    state = { dx = schema.i32, dz = schema.i32 },
     -- 0x080EA0EC.
     update = function(me: Object)
         local l = me.lifecycle

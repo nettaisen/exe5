@@ -69,7 +69,7 @@ local function sing(me: Object, s: State)
 end
 
 local action = new.action {
-    state = { timer = "u16", target = "object", wait = "u16", sing = "u16" },
+    state = { timer = schema.u16, target = schema.object, wait = schema.u16, sing = schema.u16 },
     -- 0x080FCA36
     update = function(me: Object, s: State)
         local step = me.step

@@ -209,7 +209,7 @@ end
 rainyday.cloud = new.kind {
     id = "rainyday/cloud",
     pool = "attack",
-    state = { scan_x = "i32", scan_y = "i32", dir = "i32", rain = "object", controller = "object" },
+    state = { scan_x = schema.i32, scan_y = schema.i32, dir = schema.i32, rain = schema.object, controller = schema.object },
     -- 0x080D97A8: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
@@ -284,7 +284,7 @@ end
 rainyday.controller = new.kind {
     id = "rainyday/controller",
     pool = "effect",
-    state = { bonus = "u16", cloud = "object" },
+    state = { bonus = schema.u16, cloud = schema.object },
     -- 0x080E908C.
     update = dimming_chips.phases { name = "RainyDay", effect = effect },
 }

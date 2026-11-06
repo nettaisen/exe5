@@ -71,7 +71,7 @@ end
 
 local ACTION = new.action {
     id = "megaman/fire-arm/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080F0074.
     update = function(me: Object, s: State)
         if me.step == 0 then

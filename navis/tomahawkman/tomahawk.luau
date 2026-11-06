@@ -178,7 +178,7 @@ end
 tomahawk.kind = new.kind {
     id = "tomahawkman/tomahawk",
     pool = "attack",
-    state = { row = "u8", turns = "u8", across = "bool" },
+    state = { row = schema.u8, turns = schema.u8, across = schema.bool },
     -- 0x080DCB98
     update = function(me: Object)
         local s = me.state :: State

@@ -112,7 +112,7 @@ local function send(me: Object, s: State)
 end
 
 local action = new.action {
-    state = { timer = "u16", target_x = "u8", mirror_x = "u8", magnet = "object" },
+    state = { timer = schema.u16, target_x = schema.u8, mirror_x = schema.u8, magnet = schema.object },
     -- 0x080F11EE
     update = function(me: Object, s: State)
         local step = me.step

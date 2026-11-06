@@ -224,7 +224,7 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = dash, [0xC] = strike, [0x10] 
 gridman.kind = new.kind {
     id = "gridman/navi",
     pool = "actor",
-    state = { controller = "object", palette = "u8", end_x = "u8", crossed = "u8", grid = "object" },
+    state = { controller = schema.object, palette = schema.u8, end_x = schema.u8, crossed = schema.u8, grid = schema.object },
     -- 0x080BDE5C.
     update = function(me: Object)
         local l = me.lifecycle

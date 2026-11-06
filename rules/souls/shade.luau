@@ -147,7 +147,7 @@ function shade.make(spec: Spec): { kind: Kind, spawn: (owner: Object) -> Object?
     local kind = new.kind {
         id = spec.id,
         pool = "actor",
-        state = { speed = "i32" },
+        state = { speed = schema.i32 },
         -- 0x080C0544: the state, then its sprite steps.
         update = function(me: Object)
             local l = me.lifecycle

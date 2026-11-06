@@ -222,7 +222,7 @@ local chip: Chip = {
     double_attack = double_attack.make {
         id = "m-air",
         damage = { 60, 60, 60, 70, 80, 90, 150, 180, 200, 200 },
-        state = { next_center = "i32" },
+        state = { next_center = schema.i32 },
         roles = {
             -- 0x020A55B0's table: GyroMan, (10, 10) from the user's spot.
             {

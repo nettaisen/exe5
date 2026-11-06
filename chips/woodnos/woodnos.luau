@@ -207,7 +207,7 @@ end
 local WAVE = new.kind {
     id = "woodnos/wave",
     pool = "attack",
-    state = { damage = "u32" },
+    state = { damage = schema.u32 },
     -- 0x080DAFC4.
     update = function(me: Object)
         local l = me.lifecycle

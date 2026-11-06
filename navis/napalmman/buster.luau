@@ -114,7 +114,7 @@ end
 
 buster.action = new.action {
     id = "napalmman/buster/action",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     -- 0x080F0F6C: its step; then a trap chip's catch takes over (the reactive defenses' check).
     update = function(me: Object, s: State)
         local step = me.step

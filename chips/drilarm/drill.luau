@@ -127,7 +127,7 @@ function exe5_drill.action(spec: Spec): Action
         end
     end
 
-    return new.action { state = { timer = "u16" }, update = update }
+    return new.action { state = { timer = schema.u16 }, update = update }
 end
 
 return exe5_drill

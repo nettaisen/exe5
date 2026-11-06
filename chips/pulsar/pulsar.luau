@@ -140,7 +140,7 @@ end
 pulsar.kind = new.kind {
     id = "pulsar/pulse",
     pool = "attack",
-    state = { hit_at = "u32" },
+    state = { hit_at = schema.u32 },
     -- 0x080D32D0: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle

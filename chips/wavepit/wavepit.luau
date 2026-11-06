@@ -133,7 +133,7 @@ end
 wavepit.kind = new.kind {
     id = "wavepit/wave",
     pool = "attack",
-    state = { palette = "u8", anywhere = "bool" },
+    state = { palette = schema.u8, anywhere = schema.bool },
     -- 0x080DADBC.
     update = function(me: Object)
         local l = me.lifecycle

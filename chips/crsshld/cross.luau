@@ -122,7 +122,7 @@ end
 local CROSS = new.kind {
     id = "crsshld/cross",
     pool = "attack",
-    state = { palette = "u8" },
+    state = { palette = schema.u8 },
     -- 0x080DB258.
     update = function(me: Object)
         local l = me.lifecycle

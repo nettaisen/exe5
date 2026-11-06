@@ -42,9 +42,11 @@ local SOUND_CRASH = asset.sound("magnet-crash")
 local NAVI_HIT = 0x0C00_0000
 local SPEED = 0x8_0000
 
+local MAGNET_VARIANT = schema.record_type("magnet-variant")
+
 -- A magnet's variant.
 function magnet.variant(v: MagnetVariant): MagnetVariant
-    return new.record("magnet-variant", v)
+    return new.record(MAGNET_VARIANT, v)
 end
 
 local function variant_of(me: Object): MagnetVariant
@@ -224,14 +226,14 @@ magnet.kind = new.kind {
     id = "magnetmn/magnet",
     pool = "attack",
     state = {
-        pole = "u8",
-        paired = "u8",
-        target_x = "u8",
-        variant = "record:magnet-variant",
-        palette = "u8",
-        hit_navi = "bool",
-        stop_x = "i32",
-        shake = "i32",
+        pole = schema.u8,
+        paired = schema.u8,
+        target_x = schema.u8,
+        variant = MAGNET_VARIANT,
+        palette = schema.u8,
+        hit_navi = schema.bool,
+        stop_x = schema.i32,
+        shake = schema.i32,
     },
     -- 0x080D2CEC.
     update = function(me: Object)

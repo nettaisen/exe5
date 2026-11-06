@@ -84,7 +84,7 @@ end
 crusher.kind = new.kind {
     id = "knightman/crusher",
     pool = "attack",
-    state = { speed = "u8" },
+    state = { speed = schema.u8 },
     -- 0x080C724C
     update = function(me: Object)
         local l = me.lifecycle

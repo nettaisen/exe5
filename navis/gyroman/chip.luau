@@ -44,7 +44,7 @@ local function count(s: State): boolean
 end
 
 local action = new.action {
-    state = { timer = "u16", flight = "object" },
+    state = { timer = schema.u16, flight = schema.object },
     -- 0x080F0A74
     update = function(me: Object, s: State)
         local step = me.step

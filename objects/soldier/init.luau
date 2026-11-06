@@ -337,7 +337,7 @@ end
 soldier.kind = new.kind {
     id = "colonel-soldier",
     pool = "attack",
-    state = { ranged = "u8", hit = "bool" },
+    state = { ranged = schema.u8, hit = schema.bool },
     -- 0x080CA834.
     update = function(me: Object)
         local l = me.lifecycle

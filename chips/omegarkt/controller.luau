@@ -33,7 +33,7 @@ end
 controller.kind = new.kind {
     id = "omegarkt/controller",
     pool = "effect",
-    state = { bonus = "u16", rocket = "object" },
+    state = { bonus = schema.u16, rocket = schema.object },
     -- 0x080E95BC.
     update = dimming_chips.phases { name = "OmegaRkt", effect = effect },
 }

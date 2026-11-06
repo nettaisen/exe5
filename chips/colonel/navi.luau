@@ -242,15 +242,17 @@ local function init(me: Object)
     me:set_lifecycle("update")
 end
 
+local COLONEL_STRIKE = schema.record_type("colonel-strike")
+
 colonel.kind = new.kind {
     id = "colonel/navi",
     pool = "actor",
     state = {
-        controller = "object",
-        palette = "u8",
-        sword_palette = "u8",
-        strike = "record:colonel-strike",
-        slash = "u8",
+        controller = schema.object,
+        palette = schema.u8,
+        sword_palette = schema.u8,
+        strike = COLONEL_STRIKE,
+        slash = schema.u8,
     },
     -- 0x080BA280.
     update = function(me: Object)
@@ -272,7 +274,7 @@ colonel.kind = new.kind {
 
 -- A chip's strike.
 function colonel.strike(strike: Strike): Strike
-    return new.record("colonel-strike", strike)
+    return new.record(COLONEL_STRIKE, strike)
 end
 
 -- The Colonel chips' strike: his slash (rising, or falling on the command), a 20-tick flash.

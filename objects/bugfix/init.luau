@@ -90,7 +90,7 @@ end
 local LIBERATION = new.kind {
     id = "liberation/controller",
     pool = "effect",
-    state = { busy = "bool" },
+    state = { busy = schema.bool },
     -- 0x080EA740.
     update = dimming_chips.phases { name = "Liberation", effect = liberation },
 }

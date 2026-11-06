@@ -168,7 +168,7 @@ end
 shout.kind = new.kind {
     id = "shout",
     pool = "effect",
-    state = { strength = "u8", kind = "u8" },
+    state = { strength = schema.u8, kind = schema.u8 },
     update = update,
 }
 

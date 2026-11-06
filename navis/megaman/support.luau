@@ -220,7 +220,7 @@ support.actor = party_support.make {
     wears = wears,
     warp_keeps_parts = true,
     appear_ticks = 0x14,
-    state = { attack = "u8" },
+    state = { attack = schema.u8 },
     actions = {
         -- 0x021FEE91: back as the battle ends or he is on the field again; else his attack.
         [party_support.ATTACK] = function(me: Object)

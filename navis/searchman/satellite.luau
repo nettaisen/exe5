@@ -203,7 +203,7 @@ end
 satellite.kind = new.kind {
     id = "searchman/satelity/satellite",
     pool = "effect",
-    state = { while_dimmed = "bool", ticks = "u8" },
+    state = { while_dimmed = schema.bool, ticks = schema.u8 },
     -- 0x080E767C.
     update = function(me: Object)
         local s = me.state :: State
@@ -279,7 +279,7 @@ end
 beam_kind = new.kind {
     id = "searchman/satelity/beam",
     pool = "effect",
-    state = { while_dimmed = "bool", ticks = "u8" },
+    state = { while_dimmed = schema.bool, ticks = schema.u8 },
     -- 0x080E7888.
     update = function(me: Object)
         local s = me.state :: State
@@ -383,7 +383,7 @@ end
 flare_kind = new.kind {
     id = "searchman/satelity/flare",
     pool = "attack",
-    state = { while_dimmed = "bool", ticks = "u8", way = "u8" },
+    state = { while_dimmed = schema.bool, ticks = schema.u8, way = schema.u8 },
     -- 0x080DC010.
     update = function(me: Object)
         local f = me.state :: FlareState

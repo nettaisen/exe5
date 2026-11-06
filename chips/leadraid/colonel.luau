@@ -240,7 +240,7 @@ end
 colonel.kind = new.kind {
     id = "leadraid/colonel",
     pool = "actor",
-    state = { protoman = "object", go = "bool", glow = "object" },
+    state = { protoman = schema.object, go = schema.bool, glow = schema.object },
     -- 0x080BEAF0.
     update = function(me: Object)
         local l = me.lifecycle

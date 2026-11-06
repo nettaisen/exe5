@@ -28,7 +28,7 @@ export type State = {
 }
 
 -- One state for every GunDelSol.
-gundels.STATE = { timer = "u16" }
+gundels.STATE = { timer = schema.u16 }
 
 -- What a chip's GunDelSol holds and fires: its gun, how long it fires at most, the beam in the shade and in the
 -- sun (its look, of 0x080EDDB8, and palette), and its hits' region (the column two panels ahead; GunDelEX's and the

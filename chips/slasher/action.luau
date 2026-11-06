@@ -34,7 +34,7 @@ export type State = {
     target_x: number,
 }
 
-slasher.STATE = { timer = "u16", target_x = "u8" }
+slasher.STATE = { timer = schema.u16, target_x = schema.u8 }
 
 local START, WAIT, SLASH, RECOVER = 0x0, 0x4, 0x8, 0xC
 -- What the column search looks for, by side (0x0800FF08): a panel's flags required and forbidden; and where it

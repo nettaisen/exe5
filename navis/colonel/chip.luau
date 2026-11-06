@@ -112,7 +112,7 @@ end
 
 local action: Action
 action = new.action {
-    state = { timer = "u16", wait = "u16" },
+    state = { timer = schema.u16, wait = schema.u16 },
     -- 0x080F8B30
     update = function(me: Object, s: State)
         local step = me.step

@@ -168,6 +168,6 @@ local function update(me: Object, s: State)
     me:exit_attack()
 end
 
-drive_end.action = new.action { id = "darkinvs/drive-end", state = { timer = "u16" }, update = update }
+drive_end.action = new.action { id = "darkinvs/drive-end", state = { timer = schema.u16 }, update = update }
 
 return drive_end

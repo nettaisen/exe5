@@ -99,7 +99,7 @@ end
 tornado.kind = new.kind {
     id = "gyrosoul/tornado",
     pool = "attack",
-    state = { grounded = "bool", hits = "u16" },
+    state = { grounded = schema.bool, hits = schema.u16 },
     -- 0x080C8194: its state; then its sprite steps unless the battle is dimmed.
     update = function(me: Object)
         local l = me.lifecycle

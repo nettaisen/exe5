@@ -186,7 +186,7 @@ end
 cactbal.ball = new.kind {
     id = "cactbal/ball",
     pool = "attack",
-    state = { hops = "u32", palette = "u8" },
+    state = { hops = schema.u32, palette = schema.u8 },
     -- 0x080D1A88.
     update = function(me: Object)
         local l = me.lifecycle
@@ -267,7 +267,7 @@ function cactbal.action(palette: number): Action
     end
 
     return new.action {
-        state = { timer = "u16" },
+        state = { timer = schema.u16 },
         args = { palette = palette },
         -- 0x080EF0F4.
         update = function(me: Object, s: ActionState)

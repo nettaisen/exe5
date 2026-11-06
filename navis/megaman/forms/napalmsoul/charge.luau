@@ -90,7 +90,7 @@ end
 
 charge.action = new.action {
     id = "napalmsoul/charge/action",
-    state = { timer = "u16", shots = "u16" },
+    state = { timer = schema.u16, shots = schema.u16 },
     -- 0x080EED9A
     update = function(me: Object, s: State)
         local step = me.step

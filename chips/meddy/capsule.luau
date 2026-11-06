@@ -35,12 +35,16 @@ capsule.explosion = EXPLOSION
 -- Its burst where it is: the explosion in palette 0.
 local BLOW_UP = new.effect { sprite = EXPLOSION, anim = 0, palette = 0, steps = 22 }
 
+local CAPSULE_VARIANT = schema.record_type("capsule-variant")
+
 -- A capsule's variant, and a line.
 function capsule.variant(v: CapsuleVariant): CapsuleVariant
-    return new.record("capsule-variant", v)
+    return new.record(CAPSULE_VARIANT, v)
 end
+local CAPSULE_LINE = schema.record_type("capsule-line")
+
 local function line(l: CapsuleLine): CapsuleLine
-    return new.record("capsule-line", l)
+    return new.record(CAPSULE_LINE, l)
 end
 
 -- The plain capsule (variant 0): no status, hit modifier 3.
@@ -261,7 +265,7 @@ end
 capsule.kind = new.kind {
     id = "meddy/capsule",
     pool = "attack",
-    state = { variant = "record:capsule-variant", line = "record:capsule-line", while_dimmed = "bool" },
+    state = { variant = CAPSULE_VARIANT, line = CAPSULE_LINE, while_dimmed = schema.bool },
     -- 0x080C5F18.
     update = function(me: Object)
         local l = me.lifecycle

@@ -187,7 +187,7 @@ end
 -- The soul change, as the pause handler runs it: one of rules/souls's actions (./init).
 change.action = new.action {
     id = "souls/change",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     update = change.update,
 }
 

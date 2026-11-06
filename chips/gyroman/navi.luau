@@ -303,7 +303,7 @@ function gyroman.make(flight: Flight): Kind
     return new.kind {
         id = flight.id,
         pool = "actor",
-        state = { controller = "object", palette = "u8", run = "bool", bombs = "u8" },
+        state = { controller = schema.object, palette = schema.u8, run = schema.bool, bombs = schema.u8 },
         -- 0x080BAA80.
         update = function(me: Object)
             local l = me.lifecycle

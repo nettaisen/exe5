@@ -205,7 +205,7 @@ end
 -- Action 0x5C (0x02042ED8, its table 0x020E0B40): the rules' `follow_up` (rules/roles.luau).
 double_attacks.follow_up = new.action {
     id = "double-attack-follow-up",
-    state = { timer = "u16" },
+    state = { timer = schema.u16 },
     update = function(me: Object, s: FollowUp)
         local step = me.step
         if step == LAND then

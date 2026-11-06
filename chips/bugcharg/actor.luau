@@ -102,7 +102,7 @@ return common.make {
     -- (0x080C3B50: the bugs, then the save's emotion window glitch.)
     shots = function(me: Object): number
         local shots = take_bugs(me)
-        battle.set_hud("emotion_window_glitching", false)
+        battle.hud().emotion_window_glitching = false
         return shots
     end,
     launch = function(me: Object, pos: Vec3, damage: number): Object?

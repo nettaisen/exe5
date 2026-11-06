@@ -96,7 +96,7 @@ end
 
 -- 0x08029C00: a hit would reach the target: it is neither invisible, invulnerable nor flashing (its flags 0x20A).
 local function hittable(target: Object): boolean
-    return not (target:status("invisible") or target:status("invulnerable") or target:status("flashing"))
+    return not (target.status.invisible or target.status.invulnerable or target.status.flashing)
 end
 
 -- `sub_80116F6`: a step to (x, y), the step's end lag its own (`sub_8010332`), facing the target.
@@ -604,7 +604,7 @@ end
 
 -- 0x0802A83C (`when_visible`, class 19): the navi is neither invisible nor submerged (its flags 6).
 local function visible(navi: Object): boolean
-    return not (navi:status("invisible") or navi:status("submerged"))
+    return not (navi.status.invisible or navi.status.submerged)
 end
 
 -- 0x0802A86C (`when_unbarriered`, class 20): the navi has no barrier (its collision record's +0x06).
@@ -766,7 +766,7 @@ end
 
 -- 0x0802ADF2: the panels it may step onto with any of the special panel bits (0x20E00; 0x21E00 with FloatShoes on).
 local function special_panel(navi: Object, require: number, forbid: number): (number?, number?)
-    local mask = if navi:status("float_shoe") then 0x21E00 else 0x20E00
+    local mask = if navi.status.float_shoe then 0x21E00 else 0x20E00
     local found = {}
     for x = 1, 6 do
         for y = 1, 3 do

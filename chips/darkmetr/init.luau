@@ -31,7 +31,7 @@ local SHOWER = meteors.variant {
         return target.panel_x, target.panel_y
     end,
     more = function(me: Object): number
-        return math.min(battle.side_stat(me.alliance, 3), 3) * 2 + 10
+        return math.min(battle.side_stat(me.alliance, "reactions"), 3) * 2 + 10
     end,
 }
 

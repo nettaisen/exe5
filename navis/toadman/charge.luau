@@ -88,7 +88,7 @@ local function dive(me: Object, s: State)
             me.step, me.step_init = HOME, 0
             return
         end
-        me:set_status("moving", true)
+        me.status.moving = true
         me:set_animation(ANIM_DOWN)
         s.timer = DOWN_TICKS
         me.step_init = 4
@@ -132,7 +132,7 @@ local function surface(me: Object, s: State)
         me:set_coordinates_from_panel()
         me:update_collision_panels()
         me:set_animation(ANIM_SURFACE)
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = SURFACE_TICKS
         battle.effect(me.pos, SPLASH)
         battle.play_sound(SOUND_SURFACE)
@@ -220,7 +220,7 @@ end
 -- 0x080F1BF6: the move over; 20 ticks standing; then back to idle.
 local function stand(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("moving", false)
+        me.status.moving = false
         me:set_animation(0)
         s.timer = STAND_TICKS
         me.step_init = 4

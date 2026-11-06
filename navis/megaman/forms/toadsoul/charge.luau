@@ -35,7 +35,7 @@ local function blow(me: Object, s: State)
         me:set_animation(ANIM)
         me:open_counter_window()
         s.timer = 0
-        me:set_status("using_action", true)
+        me.status.using_action = true
         attachment.attach(me, HORN, "overlay", { anim = 0 })
         battle.play_sound(SOUND)
         local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
@@ -57,7 +57,7 @@ local function recover(me: Object, s: State)
     local t = s.timer - 1
     s.timer = bit32.band(t, 0xFFFF)
     if t <= 0 then
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me.related1 = nil
         me.overlay = nil
         me:exit_attack()

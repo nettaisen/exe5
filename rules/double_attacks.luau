@@ -131,7 +131,7 @@ function double_attacks.navi_switched(side: number, navi: Object, member: number
     end
     if triggers(side, out.navi, mood) then
         state(side).partner = member
-        navi:set_request("follow_up", true)
+        navi.requests.follow_up = true
     end
 end
 
@@ -158,9 +158,9 @@ local function land(me: Object, s: FollowUp)
         battle.effect(Vec3.new(p.x, p.y, 0x100000), effects.deletion)
         battle.play_sound(SOUND_SWITCH)
         for _, flag in { "guard", "moving", "flinching", "paralyzed", "sliding" } :: { StatusFlag } do
-            me:set_status(flag, false)
+            (me.status :: any)[flag] = false
         end
-        me:set_request("slide", false)
+        me.requests.slide = false
         me:set_animation(0)
         me.related1 = nil
         me.overlay = nil
@@ -188,10 +188,10 @@ local function wait_and_launch(me: Object, s: FollowUp)
     if t >= 0 then
         return
     end
-    me:set_navi_state("trap_armed", false)
-    me:set_navi_state("following_up", false)
-    me:set_request("anti_damage_triggered", false)
-    me:set_request("anti_sword_triggered", false)
+    me.navi_flags.trap_armed = false
+    me.navi_flags.following_up = false
+    me.requests.anti_damage_triggered = false
+    me.requests.anti_sword_triggered = false
     battle.set_dimmed(false)
     local side = me.alliance
     local partner = battle.member(side, state(side).partner)

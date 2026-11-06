@@ -41,7 +41,7 @@ local form: FormDef = {
     charged_chips = { { family = "aqua", damaging = false, plain = true } },
     charged_bonus = { damage = 0xFF },
     reset = function(navi: Object)
-        navi:set_navi_state("dives", true)
+        navi.navi_flags.dives = true
     end,
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 0x16-0x1B, Team Colonel's

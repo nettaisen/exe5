@@ -297,7 +297,7 @@ function hotbody.action(rounds: number): Action
             end
             me:set_animation(0)
             me:open_counter_window()
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0
             me.step_init = 4
         end

@@ -82,7 +82,7 @@ local function fire(me: Object)
         if o then
             local c = o.collision
             local open = c.barrier == "none" or (c.bubble and c.barrier_timer == 0)
-            if open and o:status_timer("freeze") == 0 then
+            if open and o.status_timers.freeze == 0 then
                 battle.advance_hand(o.alliance)
                 o.chip = nil
                 o.chips_held = 0

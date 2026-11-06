@@ -141,7 +141,7 @@ local function burst(me: Object)
     end
     battle.shake_camera(3, 0x14)
     battle.play_sound(SOUND_BLAST)
-    battle.palette_flash(1, 4, true, false)
+    battle.palette_flash("two_layers", 4, true, false)
     me:set_lifecycle("destroy")
 end
 

@@ -105,7 +105,7 @@ end
 -- 0x080F8A34: the sword drawn; its sound on the count's 17, the slash on its 12; 21 ticks.
 local function draw(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me:set_animation(ANIM_DRAW)
         attachment.attach(me, swords.blade, "overlay", { anim = BLADE_ANIM })
         me:open_counter_window(COUNTER_TICKS)
@@ -135,7 +135,7 @@ local function draw(me: Object, s: State)
     local t = s.timer - 1
     s.timer = bit32.band(t, 0xFFFF)
     if t <= 0 then
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me.step, me.step_init = RECOVER, 0
     end
     warn(me, s)

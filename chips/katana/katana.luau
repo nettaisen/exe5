@@ -72,7 +72,7 @@ katana.action = new.action {
                     old:set_lifecycle("destroy")
                 end
                 attachment.attach(me, swords.held_blade(me), "overlay", { anim = swords.blade_anim(me) })
-                me:set_status("using_action", true)
+                me.status.using_action = true
                 s.timer = 0x15
                 me.step_init = 4
             end

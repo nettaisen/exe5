@@ -21,7 +21,7 @@ local BOMB = countdown.variant {
         ai_index = 0x21,
         look = { sprite = countdown_bomb_sprite, anim = 1, palette = 0, shadow = true, keeps_flip = true },
     },
-    class = 1,
+    class = "one_a_side",
     collision = BODY,
 }
 
@@ -36,7 +36,7 @@ local BIG_BOMB = countdown.variant {
         ai_index = 0x21,
         look = { sprite = countdown_bomb_sprite, anim = 3, palette = 0, shadow = true, keeps_flip = true },
     },
-    class = 1,
+    class = "one_a_side",
     collision = BODY,
     strong_shake = true,
 }

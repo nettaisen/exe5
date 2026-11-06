@@ -21,7 +21,7 @@ local OTENKO = common.make {
     sprite = SPRITE,
     identity = identity,
     lifetime = 0x258,
-    class = 1,
+    class = "one_a_side",
     sounds = { appear = asset.sound("appear") },
     is = collision.own_body,
     hits = collision.hit_by_other_side,

@@ -255,7 +255,7 @@ function party.rescue(side: number, navi: Object, toadman: NaviDef): boolean
     if not party.may_support(side, toadman) then
         return false
     end
-    navi:set_request("revival", true)
+    navi.requests.revival = true
     return true
 end
 

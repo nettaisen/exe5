@@ -21,8 +21,8 @@ end)
 
 -- 0x080D8130: RedFrut2's: invulnerable for 420 ticks (`object_setInvulnerableTime`).
 local SHIELD_GIFT = fruit.gift(function(navi: Object)
-    navi:set_status_timer("invulnerable", INVULNERABLE_TICKS)
-    navi:set_status("invulnerable", true)
+    navi.status_timers.invulnerable = INVULNERABLE_TICKS
+    navi.status.invulnerable = true
 end)
 
 -- 0x080D813C: RedFrut3's: a player's navi, out of the operation battle, whose emotion (0x0801270C) is one of the

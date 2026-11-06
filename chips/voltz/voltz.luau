@@ -383,7 +383,7 @@ local function spawn(user: Object, x: number, y: number, spec: InstantChipSpec, 
         o.element = spec.element
         o:set_damage_word(spec.damage)
         o.alliance, o.flip = user.alliance, user.flip
-        obstacle.register(o, o.alliance, 1)
+        obstacle.register(o, o.alliance, "one_a_side")
     end
     return o
 end

@@ -187,7 +187,7 @@ local function slash(me: Object)
     local cx, cy = field.center(x, y)
     battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, bit32.bxor(me.alliance, me.flip))
     battle.shake_camera(3, 0x0A)
-    battle.palette_flash(0, 0x0A, true, false)
+    battle.palette_flash("one_layer", 0x0A, true, false)
 end
 
 -- Action 8, phase 8 (0x080BE364): his sword out (animation 5) with its sound; at 12 left the slash; 21 ticks; then

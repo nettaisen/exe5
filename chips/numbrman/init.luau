@@ -63,7 +63,7 @@ local numbrmn_ds: Chip = {
     class = "mega",
     rarity = 3,
     mb = 66,
-    damage = { formula = "count", of = { side_stat = 3 }, by_count = { 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90 }, operation_battle = 50 },
+    damage = { formula = "count", of = { side_stat = "reactions" }, by_count = { 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90 }, operation_battle = 50 },
     hit_param = 158,
     lockout = 0,
     flags = { "dimming", "has_damage", "navi", "damage_shown_variable", "library", "variable_damage" },

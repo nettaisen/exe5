@@ -42,7 +42,7 @@ local function raise(me: Object, s: State)
         me:set_animation(ANIM_RAISE)
         me:open_counter_window(COUNTER_TICKS)
         s.timer = RAISE_TICKS
-        me:set_status("using_action", true)
+        me.status.using_action = true
         attachment.attach(me, tankcan.cannon, "overlay")
         me.step_init = 4
         return

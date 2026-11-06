@@ -63,7 +63,7 @@ moonbld.action = new.action {
                 me:set_animation(ANIM_SPIN)
                 me:open_counter_window()
                 battle.play_sound(SOUND)
-                me:set_status("using_action", true)
+                me.status.using_action = true
                 s.timer = SWING_TICKS
                 me.step_init = 4
             end
@@ -94,7 +94,7 @@ moonbld.action = new.action {
             stepsword.step_back(me, s)
         elseif step == RECOVER then
             -- 0x080EF974: no longer moving; back to idle.
-            me:set_status("moving", false)
+            me.status.moving = false
             me.related1 = nil
             me.overlay = nil
             me:exit_attack()

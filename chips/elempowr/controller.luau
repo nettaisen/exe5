@@ -15,8 +15,6 @@ export type State = {
     busy: boolean,
 }
 
--- The side's bonuses (`battle.add_special_bonus`'s index): the Atk+ bonus (the side state's +0x36).
-local ATTACK_BONUS = 0
 local PER_PANEL, MAX_PANELS = 10, 9
 -- The flag bit each type's panels have (EXE5's panel types' words, 0x0800BCF0), what any panel the change touches
 -- mustn't have (0x8000), and the change by type.
@@ -69,7 +67,7 @@ local function effect(me: Object)
         panel_changer.spawn(me, me.panel_x, me.panel_y, change, me)
         s.busy = true
         local bonus = PER_PANEL * math.min(count(kind), MAX_PANELS)
-        battle.add_special_bonus(me.alliance, ATTACK_BONUS, bonus)
+        battle.add_special_bonus(me.alliance, "attack", bonus)
         me.phase_init = 4
     end
     if not s.busy then

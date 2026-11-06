@@ -211,7 +211,7 @@ local function tick(me: Object)
     c:remove()
     me.visible = true
     visibility.hide_from_blind(me)
-    if not s.hit and me:take_damage(0) < 0 then
+    if not s.hit and me:take_damage("damage_sound") == "broken" then
         s.hit = true
         next_action(me, LEAVE)
         c:set_region(nil)

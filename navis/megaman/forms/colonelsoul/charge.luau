@@ -55,7 +55,7 @@ end
 -- 0x080EECC4: the sword drawn; the slash on the count's 9; 21 ticks.
 local function draw(me: Object, s: State)
     if me.step_init == 0 then
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me:set_animation(ANIM)
         attachment.attach(me, swords.held_blade(me), "related", { anim = swords.blade_anim(me) })
         me:open_counter_window()
@@ -83,7 +83,7 @@ local function draw(me: Object, s: State)
     local t = s.timer - 1
     s.timer = bit32.band(t, 0xFFFF)
     if t <= 0 then
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me.step, me.step_init = 4, 0
     end
 end

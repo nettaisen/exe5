@@ -202,7 +202,7 @@ local function tick(me: Object)
         me.lifecycle = "destroy"
         return
     end
-    if me:take_damage(0) < 0 or bit32.band(c.hit_flags, NAVI_HIT[me.alliance]) ~= 0 then
+    if me:take_damage("damage_sound") == "broken" or bit32.band(c.hit_flags, NAVI_HIT[me.alliance]) ~= 0 then
         blow_up(me)
         c:set_region(nil)
         -- (0x080C608E, as at the battle's end: the state byte alone.)

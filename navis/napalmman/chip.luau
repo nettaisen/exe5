@@ -42,7 +42,7 @@ local action = new.action {
         local step = me.step
         if step == AIM or step == AIM_TOO then
             -- 0x080F10BC
-            me.attack_word = damage_word.with_damage(me.attack_word, bit32.band(me.attack_damage + me.extra, 0xFFFF))
+            me.attack_word = damage_word.plus_damage(me.attack_word, me.extra)
             s.target_x = math.clamp(me.panel_x + me.facing * 4, 0, 7)
             s.target_y = me.panel_y
             me.status.using_action = true

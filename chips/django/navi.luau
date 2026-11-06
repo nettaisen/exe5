@@ -350,11 +350,11 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, 0)
     local tx, ty = find_target(me)
     me.future_panel_x, me.future_panel_y = tx, ty
-    s.drain_ticks = bit32.band(me.damage, 0xFFF)
-    me.damage = 1
+    s.drain_ticks = damage_word.amount(me.damage_word)
+    me.damage_word = damage_word.with_damage(me.damage_word, 1)
     if blessed(me) then
         s.blessed = true
-        me.damage = bit32.band(me.damage, 0xF000) + bit32.band(me.damage, 0xFFF) * 2
+        me.damage_word = damage_word.with_damage(me.damage_word, damage_word.flag_word(me.damage_word) + damage_word.amount(me.damage_word) * 2)
     end
     me:set_lifecycle("update")
     act(me)

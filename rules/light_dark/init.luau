@@ -208,7 +208,7 @@ end
 -- The hit flag that a high value turns a bug away for (0x0801103E).
 local HIT_FLAG_SPARES_LIGHT = "dark"
 -- An HP drain of level 1 (code 0x18, argument 1): what 0xFD and 0xFC become.
-local HP_DRAIN_1 = 0x0118
+local HP_DRAIN, HP_DRAIN_LEVEL = 0x18, 1
 local DARK_DRAIN, LIGHT_DRAIN = 0xFD, 0xFC
 
 -- 0x0801103E's light and dark part: "spared" (nothing follows, not even the weapons' reload), or nil (the NaviCust's
@@ -219,10 +219,14 @@ local function navi_bug(side: number, navi: Object): "spared"?
     if c:hit_any(HIT_FLAG_SPARES_LIGHT) and v >= 1000 then
         return "spared"
     end
-    local code = bit32.band(c.inflicted_bugs, 0xFF)
+    local code = c.inflicted_bug
     if code == DARK_DRAIN or code == LIGHT_DRAIN then
         local takes = if code == DARK_DRAIN then tier(v) == 2 else v >= 500
-        c.inflicted_bugs = if takes then HP_DRAIN_1 else 0
+        if takes then
+            c.inflicted_bug, c.inflicted_bug_arg = HP_DRAIN, HP_DRAIN_LEVEL
+        else
+            c.inflicted_bug, c.inflicted_bug_arg = 0, 0
+        end
     end
     return nil
 end

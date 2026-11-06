@@ -15,9 +15,9 @@ local supports = require("../../rules/party/supports")
 local muzzle_flash_sprite = asset.sprite("muzzle-flash")
 local vulcan_hit_sprite = asset.sprite("vulcan-hit")
 
--- His damage a shot by the side's level (0x020CC204), its hit flags 0x82.
+-- His damage a shot by the side's level (0x020CC204), its counter strength 2 (and it can't counter: 0x82).
 local DAMAGE: { number } = { 4, 4, 4, 4, 6, 7, 10, 15, 20, 20 }
-local FLAGS = 0x82
+local COUNTER = 2
 -- His timer (0x02003BB0: RNG2 bits 6–9 into 0x020CC248's offsets of 0x020CC240's ticks, weights 2/6/6/2).
 local TIMER: { number } = { 130, 130, 170, 170, 170, 170, 170, 170, 210, 210, 210, 210, 210, 210, 250, 250 }
 -- Where he may stand (0x020CC228): 5, else 4, 3, 2, 1 columns in front of the enemy, in its row; of his side
@@ -151,7 +151,7 @@ function support.tick(side: number)
         reset(side)
         return
     end
-    party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGE, FLAGS), m)
+    party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGE, COUNTER), m)
 end
 
 return support

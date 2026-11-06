@@ -80,7 +80,7 @@ end
 -- 0x080DD6AE: it blew up on what it hit: a hit on the 3x3 around it (the damage's halfword alone) and nine explosions.
 local function blow_up(me: Object)
     boom()
-    hit(me, me.panel_x, me.panel_y, regions.square, me.damage)
+    hit(me, me.panel_x, me.panel_y, regions.square, damage_word.damage(me.damage_word))
     for _, o in AROUND do
         explode(me.panel_x + o[1] * me.facing, me.panel_y + o[2])
     end

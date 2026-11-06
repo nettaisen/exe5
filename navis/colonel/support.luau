@@ -12,9 +12,9 @@ local shell = require("@exelib/tankcan/shell")
 local supports = require("../../rules/party/supports")
 local tankcan = require("../../chips/tankcan/tankcan")
 
--- His damage by the side's level (0x020CC258), its hit flags 0x94.
+-- His damage by the side's level (0x020CC258), its counter strength 20 (and it can't counter: 0x94).
 local DAMAGE: { number } = { 30, 60, 80, 80, 100, 100, 120, 170, 180, 180 }
-local FLAGS = 0x94
+local COUNTER = 20
 -- Where he may stand (0x020CC27C): 5, else 4, 3, 2, 1 columns in front of the enemy, in its row; of his side
 -- (0x020CC26C): solid and his side's own, nothing on it or reserved.
 local OFFSETS: { { { number } } } = { { { 5, 0, 0 } }, { { 4, 0, 0 } }, { { 3, 0, 0 } }, { { 2, 0, 0 } }, { { 1, 0, 0 } } }
@@ -134,7 +134,7 @@ function support.tick(side: number)
     end
     local x, y, flip = supports.target(navi, OFFSETS, STAND.require, STAND.forbid, true, side)
     if x and y then
-        party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGE, FLAGS), m)
+        party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGE, COUNTER), m)
     end
 end
 

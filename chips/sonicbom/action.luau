@@ -116,7 +116,7 @@ function action.make(hit_mod: HitModifier, pierces: boolean): Action
     }
 end
 
--- SonicBom's: hit modifier 3, not going through.
-action.action = action.make(3, false)
+-- SonicBom's: a flinch and a flash, not going through.
+action.action = action.make({ flinch = true, flash = true }, false)
 
 return action

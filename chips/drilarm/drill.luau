@@ -42,7 +42,7 @@ local WAIT, DRILL, DRAW_BACK = 0x0, 0x4, 0x8
 local HEIGHT = 0x10_0000
 -- A drill chip's action: how long its drills hit (DrilArm's record's Param2, 24; DarkDril's 60), the palette its arm
 -- adds (DarkDril's 1) and the bug its drills' hits carry (DarkDril's 0xFA, argument 1: the collision's bug word).
-export type Spec = { ticks: number, arm_palette: number?, bugs: number? }
+export type Spec = { ticks: number, arm_palette: number?, bug: number?, bug_arg: number? }
 
 function exe5_drill.action(spec: Spec): Action
     local ticks, arm_palette = spec.ticks, spec.arm_palette or 0
@@ -54,7 +54,7 @@ function exe5_drill.action(spec: Spec): Action
             attachment.attach(me, ARM, "overlay", { anim = ARM_DRILLING, palette_add = arm_palette })
             -- The damage word (the hit parameter in its high half), plus the Atk+ bonus.
             local damage = damage_word.plus(me.attack_word, me.extra)
-            spawn(me, me.attack_element, HEIGHT, damage, { ticks = ticks, bugs = spec.bugs })
+            spawn(me, me.attack_element, HEIGHT, damage, { ticks = ticks, bug = spec.bug, bug_arg = spec.bug_arg })
             me:open_counter_window()
             s.timer = ticks + 0x0A
             battle.play_sound(SOUND)

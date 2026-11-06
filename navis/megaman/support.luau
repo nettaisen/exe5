@@ -26,12 +26,12 @@ local sword_sprite = asset.sprite("sword")
 
 -- His timer (0x020041E4: RNG2 bits 6–9 into 0x020CC2E8's offsets of 0x020CC2E0's ticks, weights 2/6/6/2).
 local TIMER: { number } = { 130, 130, 170, 170, 170, 170, 170, 170, 210, 210, 210, 210, 210, 210, 250, 250 }
--- His attacks' damage by the side's level (hit flags 0x9E): the buster's (0x020CC2F8), the sword's (0x020CC30C), the
--- bomb's (0x020CC320).
+-- His attacks' damage by the side's level (counter strength 30, and they can't counter: 0x9E): the buster's
+-- (0x020CC2F8), the sword's (0x020CC30C), the bomb's (0x020CC320).
 local BUSTER_DAMAGE: { number } = { 20, 40, 60, 60, 80, 80, 100, 110, 120, 120 }
 local SWORD_DAMAGE: { number } = { 25, 50, 70, 70, 90, 90, 110, 140, 150, 150 }
 local BOMB_DAMAGE: { number } = { 30, 60, 80, 80, 100, 100, 120, 170, 180, 180 }
-local FLAGS = 0x9E
+local COUNTER = 30
 -- Where he may stand, of his side (solid and his side's own, nothing on it or reserved): the buster before the
 -- farthest enemy, 5 to 1 columns in front of it (Colonel's, 0x020CC27C); the sword the panel before the nearest
 -- (0x020CC354); the bomb three panels before any (0x020CC370, one drawn).
@@ -114,10 +114,6 @@ local function fell_below(me: Object, ticks: number): boolean
     return t < 0
 end
 
-local function damage_word(me: Object): number
-    return me.damage_word
-end
-
 -- 0x021FEED1, 0x021FEF2D: the buster.
 local function buster(me: Object)
     if me.phase == 0 then
@@ -130,7 +126,7 @@ local function buster(me: Object)
         end
         if me.timer == 0xF then
             battle.play_sound(CANNON_SOUND)
-            projectile.spawn(me, me.panel_x + me.facing, me.panel_y, { variant = SHOT, damage = damage_word(me), z = 0x18_0000 })
+            projectile.spawn(me, me.panel_x + me.facing, me.panel_y, { variant = SHOT, damage = me.damage_word, z = 0x18_0000 })
         end
         me.timer += 1
         if me.timer == 0x1D then
@@ -196,7 +192,7 @@ local function bomb(me: Object)
         end
         if me.timer == 9 then
             local p = me.pos
-            THROWER.throw(me, Vec3.new(p.x + me.facing * 0x4_0000, p.y, p.z + 0x30_0000), damage_word(me))
+            THROWER.throw(me, Vec3.new(p.x + me.facing * 0x4_0000, p.y, p.z + 0x30_0000), me.damage_word)
             me.related1 = nil
         end
         me.timer += 1
@@ -317,7 +313,7 @@ function support.tick(side: number)
         reset(side)
         return
     end
-    local o = party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGES[attack], FLAGS), m)
+    local o = party_support.send(support.actor, navi, x, y, flip, supports.damage(side, DAMAGES[attack], COUNTER), m)
     if o then
         (o.state :: State).attack = attack
     end

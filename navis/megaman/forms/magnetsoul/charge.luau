@@ -24,7 +24,7 @@ local ANIM = 16
 local RAISE_TICKS, PULL_TICKS, RECOVER_TICKS = 6, 30, 10
 local HUM_EVERY = 16
 -- The pull's hit modifier: the push of bit 2 (its first row: toward the puller, over the panels).
-local PULL_MOD = 4
+local PULL_MOD: HitModifier = { forward_far = true }
 local SOUND_MAGNET, SOUND_HUM = asset.sound("magnet-pull"), asset.sound("erase-man-2")
 
 -- 0x080EEBBC: the magnet raised; seven ticks on, its field and the pull.

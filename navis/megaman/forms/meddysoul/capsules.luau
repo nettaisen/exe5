@@ -139,11 +139,11 @@ local window: SoulWindow = {
             -- 0x080237B4
             if not fading then
                 local chip = (if st.mix_capsule == 1 then st.capsule_1 else st.capsule_2) :: Chip
-                local mix = (chip :: any).capsule_mix :: number?
+                local mix = (chip :: any).capsule_mix :: string?
                 if mix == nil then
                     error(string.format("%s is no capsule (0x08023824 has five entries)", chip.id :: string))
                 end
-                custom.attach_to_last_pick(side, BUTTONS[st.mix_capsule], mix)
+                custom.attach_to_last_pick(side, BUTTONS[st.mix_capsule], { [mix] = true })
                 custom.update_availability(side)
                 custom.fade(side, "intro_from_white", FADE_SPEED)
                 custom.play(side, "program_advance")

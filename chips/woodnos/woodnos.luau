@@ -211,7 +211,7 @@ local WAVE = new.kind {
         local l = me.lifecycle
         if l == "init" then
             (me.state :: WaveState).damage = me.damage_word
-            me.damage = WAVE_DAMAGE
+            me.damage_word = damage_word.with_damage(me.damage_word, WAVE_DAMAGE)
             me:set_coordinates_from_panel()
             local sprite = me.sprite
             sprite:load(WAVE_SPRITE)

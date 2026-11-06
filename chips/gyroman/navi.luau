@@ -74,14 +74,10 @@ local ENEMY_NAVI = "enemy_body"
 local SPEED, BETWEEN = 0x3_0000, 0xF
 -- A GyroMan of `flight`.
 function gyroman.make(flight: Flight): Kind
-    local function damage_word(me: Object): number
-        return me.damage_word
-    end
-
     -- A bomb on his panel (a sound).
     local function drop(me: Object)
         battle.play_sound(SOUND_DROP)
-        bomb.drop(me, me.panel_x, me.panel_y, me.element, flight.while_dimmed, damage_word(me))
+        bomb.drop(me, me.panel_x, me.panel_y, me.element, flight.while_dimmed, me.damage_word)
     end
 
     -- The flight: forward one tick; whether he passed his panel's center (from off it) this tick.

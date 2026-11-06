@@ -18,7 +18,7 @@ local CROSS_SOUND = asset.sound("bite")
 local FLY, STRIKE, DONE = 0, 4, 8
 -- Its probe's spark (row 6, the heavy hit's) and bug (0x080DB2B6: 0xF9, argument 0).
 local CROSS_SPARK = sparks.heavy
-local CROSS_BUGS = 0x00F9
+local CROSS_BUG, CROSS_BUG_ARG = 0xF9, 0
 
 local function cross_gone(me: Object)
     me.collision:set_region(nil)
@@ -113,7 +113,7 @@ local function cross_init(me: Object)
     local c = me.collision
     c:set_hit_effect(CROSS_SPARK)
     c.self_damage = 0
-    c.bugs = CROSS_BUGS
+    c.bug, c.bug_arg = CROSS_BUG, CROSS_BUG_ARG
     c:present()
     me.lifecycle = "update"
     cross_tick(me)

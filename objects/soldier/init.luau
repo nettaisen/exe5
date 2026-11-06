@@ -325,7 +325,7 @@ function soldier.obstacle_reaction(_side: number, me: Object)
         (o.state :: State).ranged = gun
         o.panel_x, o.panel_y = x, y
         o.element = bit32.band(left, 0xFF)
-        o.damage, o.stamina = 0, 0
+        o.damage_word = 0
         o.related1 = me
         o.alliance = side
         o.flip = bit32.bxor(gun, 1)

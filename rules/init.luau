@@ -318,12 +318,12 @@ local rules: Rules = {
             -- crashes).
             -- A dark chip's cost to its user (./light_dark, 0x0802C934's entry: a routine of 0x0802C974's,
             -- lib/dark_costs), a capsule's mix into the chip it goes into (navis/megaman/forms/meddysoul/capsules,
-            -- 0x08023824: the hand's modifier bits), and a chip past the chip pack's list (./folder: its last chip
-            -- 0x13A; the BatCans).
+            -- 0x08023824: the mark it gives the chip's hand entry, one of ./chip_use's `mark_bits`), and a chip past
+            -- the chip pack's list (./folder: its last chip 0x13A; the BatCans).
             dark_cost = dark_costs.EXE5_DARK_COST,
             -- The Double Attack a chip of the DS's is (lib/double_attack; ./double_attacks fires it).
             double_attack = double_attack.EXE5_DOUBLE_ATTACK,
-            capsule_mix = schema.u8,
+            capsule_mix = { "white", "yellow", "black", "pink", "purple" },
             past_the_pack = schema.bool,
             -- A chip a save can collect though its record has no library flag (./folder: the Giga chips Team Colonel's
             -- library lists, and the Japanese game's gifts, LeadRaid and ChaosLrd).

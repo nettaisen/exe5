@@ -113,7 +113,7 @@ local function init(me: Object)
         me:free()
         return
     end
-    me:setup_collision(collision.thrown, collision.hits_navis, if s.wave.paralyzes then 0 else 3)
+    me:setup_collision(collision.thrown, collision.hits_navis, if s.wave.paralyzes then {} else { flinch = true, flash = true })
     if s.wave.paralyzes then
         me.collision.status_base = status.paralyze_90
     end

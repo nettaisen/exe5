@@ -39,10 +39,6 @@ local FADE = 0x10
 -- Where the fireballs start: over the phoenix's column at row 2, 50 pixels up.
 local DROP_ROW, DROP_Z = 2, 0x32_0000
 
-local function damage_word(me: Object): number
-    return me.damage_word
-end
-
 -- 0x080BFD3A: 12 targets of the middle columns, 6 beside them, each drawn (RNG % 6); then shuffled (18 rounds).
 local function pick_targets(me: Object)
     local list: { number } = {}
@@ -134,7 +130,7 @@ local function drop(me: Object)
     end
     local target = (me.state :: State).targets[me.timer2 + 1]
     local x, y = field.center(me.panel_x, DROP_ROW)
-    fireball.spawn(me, Vec3.new(x, y, DROP_Z), target, damage_word(me))
+    fireball.spawn(me, Vec3.new(x, y, DROP_Z), target, me.damage_word)
     me.timer2 += 1
     if me.timer2 >= TARGETS then
         me:set_action(0x14)

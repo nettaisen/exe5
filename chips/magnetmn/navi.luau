@@ -31,10 +31,6 @@ local magnetman = {}
 local ENEMY_NAVI = "enemy_body"
 local TAKEN = "any_body"
 
-local function damage_word(me: Object): number
-    return me.damage_word
-end
-
 -- `object_isValidPanel`: a battle panel (columns 1 to 6, rows 1 to 3), whatever the number.
 local function on_field(x: number, y: number): boolean
     return x >= 1 and x <= 6 and y >= 1 and y <= 3
@@ -72,7 +68,7 @@ local function send(me: Object, x: number, pole: number)
         target_x = s.target_x,
         variant = MAGNET,
         palette = s.palette,
-        damage = damage_word(me),
+        damage = me.damage_word,
     })
 end
 

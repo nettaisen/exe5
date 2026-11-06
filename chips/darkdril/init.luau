@@ -26,7 +26,7 @@ local chip: Chip = {
     lockout = 0,
     flags = { "has_damage", "dark" },
     slot_in_limit = 1,
-    action = drill.action { ticks = 60, arm_palette = 1, bugs = 0x1FA },
+    action = drill.action { ticks = 60, arm_palette = 1, bug = 0xFA, bug_arg = 0x01 },
     -- What its use costs its user (rules/light_dark).
     dark_cost = DARK_COST,
     auto_battle = { class = "into_reach", range = "two_in_row" },

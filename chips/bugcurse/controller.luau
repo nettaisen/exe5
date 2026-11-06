@@ -18,9 +18,15 @@ controller.hook = common.make {
     sprite = bug_curse_sprite,
     sound = asset.sound("trap-vanish"),
     untouched = { "invisible", "submerged", "flashing", "bubbled" },
-    bugs = { 0x0124, 0x1418, 0x1419, 0x04FF, 0x04FE },
+    bugs = {
+        { bug = 0x24, arg = 1 },
+        { bug = 0x18, arg = 20 },
+        { bug = 0x19, arg = 20 },
+        { bug = 0xFF, arg = 4 },
+        { bug = 0xFE, arg = 4 },
+    },
     operation_battle = operation_battle,
-    operation_bugs = { 0x1218, 0x04F9, 0x0814 },
+    operation_bugs = { { bug = 0x18, arg = 18 }, { bug = 0xF9, arg = 4 }, { bug = 0x14, arg = 8 } },
     is = collision.breaking,
     hits = collision.hits_navis,
 }

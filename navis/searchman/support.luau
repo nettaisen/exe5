@@ -16,9 +16,9 @@ local shot = require("../../chips/serchman/shot")
 local chip_destruction_spark_sprite = asset.sprite("chip-destruction-spark")
 local search_scope_sprite = asset.sprite("search-scope")
 
--- His damage a shot by the side's level (0x020CC378), its hit flags 0x8A.
+-- His damage a shot by the side's level (0x020CC378), its counter strength 10 (and it can't counter: 0x8A).
 local DAMAGE: { number } = { 5, 5, 5, 5, 5, 5, 10, 10, 15, 15 }
-local FLAGS = 0x8A
+local COUNTER = 10
 local SERCH_S = chips_serch_s["serch-s"]
 -- The panel flag of the other side's navi, by side (`sub_80E7486`'s): its player navi.
 local ENEMY_NAVI = "enemy_navi"
@@ -296,7 +296,7 @@ local function call(side: number, link: boolean): boolean
         return false
     end
     party.supports(side).searchman_used = true
-    local damage = bit32.bor(DAMAGE[(party.level(side) or party.LEVEL) + 1], bit32.lshift(FLAGS, 16))
+    local damage = damage_word.of { amount = DAMAGE[(party.level(side) or party.LEVEL) + 1], counter = COUNTER, cant_counter = true }
     -- (0x0222645C.)
     local o = support.controller.send(navi, damage, SERCH_S)
     if o then

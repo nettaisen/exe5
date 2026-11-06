@@ -27,14 +27,10 @@ local FLAME_EVERY, FLAMES = 4, 10
 -- The hits: at the burn's start on its panel for 25 ticks, 16 ticks in beside it for 31.
 local HIT_Z = 0x10_0000
 
-local function damage_word(me: Object): number
-    return me.damage_word
-end
-
 -- `sub_80C53A6` (EXE5's 0x080C4DC6): a hit on (x, y) lasting `ticks`, running while dimmed (region 1, hit effect 0,
 -- target 5, self 0xA, hit modifier 3, 16 pixels up).
 local function hit(me: Object, x: number, y: number, ticks: number)
-    local damage = damage_word(me)
+    local damage = me.damage_word
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,

@@ -106,7 +106,7 @@ slasher.action = new.action {
                 if chip == nil then
                     error("Slasher's slash names chip 0x38: its action runs without the chip")
                 end
-                battle.show_used_chip(me.alliance, chip, me.attack_damage, me.extra)
+                battle.show_used_chip(me.alliance, chip, damage_word.damage(me.attack_word), me.extra)
                 me.step_init = 4
             end
             if s.timer == 0x0C then

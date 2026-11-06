@@ -18,9 +18,10 @@ function supports.level(side: number): number
     return party.level(side) or party.LEVEL
 end
 
--- A support's damage word: its row's damage at the side's level, its hit flags in the high half.
-function supports.damage(side: number, row: { number }, flags: number): number
-    return bit32.bor(row[supports.level(side) + 1], bit32.lshift(flags, 16))
+-- A support's damage word: its row's damage at the side's level, and its counter strength; a support's hits can't
+-- counter.
+function supports.damage(side: number, row: { number }, counter: number): number
+    return damage_word.of { amount = row[supports.level(side) + 1], counter = counter, cant_counter = true }
 end
 
 -- 0x0200430C: the panels' distance (Manhattan).

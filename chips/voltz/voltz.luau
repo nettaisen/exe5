@@ -93,11 +93,6 @@ local function setup(me: Object, sprite_asset: SpriteAsset, shadow: Shadow): boo
     return true
 end
 
--- Its damage word (+0x2C: the damage and the stamina's halfword).
-local function damage_word(me: Object): number
-    return me.damage_word
-end
-
 -- The panel (x, y) is on the field and not `me`'s side's.
 local function other_sides(me: Object, x: number, y: number): boolean
     if not field.valid(x, y) then
@@ -154,7 +149,7 @@ local function shock_tick(me: Object)
         if x and y then
             -- (The spawner's r3: the panel lookup's row less 1.)
             local s = me.state :: ShockState
-            spawn_shock(me, x, y, me.element, y - 1, s.way, s.ticks, damage_word(me))
+            spawn_shock(me, x, y, me.element, y - 1, s.way, s.ticks, me.damage_word)
         end
     end
     local life = me.timer2 - 1
@@ -256,7 +251,7 @@ local function shock_around(me: Object)
         local x, y = me.panel_x + way[1] * me.facing, me.panel_y + way[2]
         if other_sides(me, x, y) then
             -- (The spawner's r3: the sensor's Param word, which the shock's init replaces.)
-            spawn_shock(me, x, y, me.element, 0, i, s.shock_ticks, damage_word(me))
+            spawn_shock(me, x, y, me.element, 0, i, s.shock_ticks, me.damage_word)
         end
     end
 end

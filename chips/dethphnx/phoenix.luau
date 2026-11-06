@@ -43,10 +43,6 @@ local ORDERS = { 1, 2, 3, 1, 3, 2, 2, 1, 3, 2, 3, 1, 3, 1, 2, 3, 2, 1 }
 local FADE = 0x10
 local FIRES, FIRE_EVERY = 0xC, 0xC
 
-local function damage_word(me: Object): number
-    return me.damage_word
-end
-
 -- 0x080C0162: the solid panels of `row` from the column ahead of it to the field's end, copied and shuffled (as
 -- many rounds as panels) until there are four; four zeros with none.
 local function list_row(me: Object, row: number)
@@ -86,7 +82,7 @@ local function set_fire(me: Object, x: number, y: number)
     if d > 2 then
         far = d >= 4 or bit32.band(battle.rng_positive(), 0x10) == 0
     end
-    fire.spawn(me, x, y, far, damage_word(me))
+    fire.spawn(me, x, y, far, me.damage_word)
 end
 
 -- Its controller moves on, and it goes.

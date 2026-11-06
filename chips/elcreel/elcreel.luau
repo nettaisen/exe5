@@ -33,7 +33,7 @@ local HOOKS: { Hook } = {
     { dx = 0, dy = 1, effect = VERTICAL },
     { dx = -1, dy = 0, effect = HORIZONTAL },
 }
-local CATCHES: { [number]: number } = { [0] = 0x0580_0000, [1] = 0x0A80_0000 }
+local CATCHES: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
 local HOOK_LIFETIME = 20
 -- Waiting before the hooks, and between the shocks.
 local WAIT = 5
@@ -49,7 +49,7 @@ end
 
 -- 0x080DAC38: rolling; a hit stops it, hidden (its collision off the field).
 local function roll(me: Object)
-    if me.collision.hit_flags ~= 0 then
+    if me.collision.hit then
         me.collision:set_region(nil)
         me.visible = false
         me.action, me.phase, me.phase_init = CAUGHT, 0, 0
@@ -67,14 +67,13 @@ end
 -- 0x080DACF4: a hook at each panel around (x, y) holding what the reel's side catches: a hit there and the hook's
 -- look, 20 ticks, around the reel's panel's center at its height; how many.
 local function hook(me: Object, x: number, y: number): number
-    local catches = CATCHES[me.alliance]
-    if not catches then
+    if me.alliance > 1 then
         error(string.format("ElcReel's reel of side %d reads past 0x080DAD84", me.alliance))
     end
     local n = 0
     for _, h in HOOKS do
         local px, py = x + h.dx, y + h.dy
-        if bit32.btest(field.flags(px, py), catches) then
+        if field.any(px, py, CATCHES, me.alliance) then
             battle.hitbox(me, {
                 panel_x = px,
                 panel_y = py,
@@ -117,7 +116,7 @@ end
 -- 0x080DACAC: every 5 ticks (the first at once) its panel's shock, as many times as it hooked; then it is gone.
 local function shock(me: Object)
     local c = me.collision
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local t = me.timer - 1

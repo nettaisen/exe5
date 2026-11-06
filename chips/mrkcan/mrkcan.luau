@@ -34,7 +34,8 @@ export type SightState = {
     angle: number,
     base: number,
     turn: number,
-    -- The enemy bodies it looks for (ExtraVars+8).
+    -- The enemy bodies it looks for (ExtraVars+8), as the original's word, which its init stores and nothing reads:
+    -- the sweep tests its side's `ENEMY_BODIES` by name.
     enemies: number,
 }
 
@@ -48,8 +49,10 @@ local ARC_TICKS, ARCS = 0x10, 3
 local RADIUS = 0x78
 local START_BEHIND, ADVANCE = 0x50_0000, 0x28_0000
 local START_ANGLE, TURN = 0x40_0000, -0x8_0000
--- The enemy bodies by side (0x080E5520).
-local ENEMY_BODIES = { [0] = 0x04000000, [1] = 0x08000000 }
+-- The enemy bodies (0x080E5520, by side: the other side's body), and the original's words of them, which the
+-- sight's state keeps.
+local ENEMY_BODIES = "enemy_body"
+local ENEMY_BODY_WORDS = { [0] = 0x04000000, [1] = 0x08000000 }
 -- The lock-on: no damage, element 5, paralysis for 120 ticks (status 0x11), on the panel alone.
 local LOCK_ELEMENT = 5
 
@@ -119,8 +122,8 @@ local function sweep(me: Object, s: SightState)
     local p = me.pos
     me.pos = Vec3.new(x, y, p.z)
     me:set_panel_from_coordinates()
-    local flags = field.flags(me.panel_x, me.panel_y)
-    if flags ~= 0 and bit32.btest(flags, s.enemies) then
+    -- (Its side's enemy bodies, which its state keeps as their word: it keeps its side.)
+    if field.any(me.panel_x, me.panel_y, ENEMY_BODIES, me.alliance) then
         report(me, 1, me.panel_x, me.panel_y)
         me.action = 4
         me.phase, me.phase_init = 0, 0
@@ -175,7 +178,7 @@ local function init(me: Object, s: SightState)
     s.turn = TURN
     s.angle, s.base = START_ANGLE, START_ANGLE
     me.timer2 = ARCS
-    s.enemies = ENEMY_BODIES[me.alliance]
+    s.enemies = ENEMY_BODY_WORDS[me.alliance]
     me:set_lifecycle("update")
 end
 

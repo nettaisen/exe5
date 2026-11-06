@@ -26,7 +26,6 @@ local SOUND_APPEAR = asset.sound("appear")
 
 -- Where his caller goes, by his side (0x080BDB24): the enemy area's middle panel.
 local CALLER_PANELS: { [number]: { number } } = { [0] = { 5, 2 }, { 2, 2 } }
-local SOLID = 0x10
 
 -- 0x080BD9D0: on his panel, on the ground, his chip's palette, flipped by his side alone.
 local function init(me: Object)
@@ -69,7 +68,7 @@ local function appear(me: Object)
         me.visible = true
     end
     if countdown(me, 0xA, true) then
-        me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 4 else 0x10)
+        me:set_action(if field.solid(me.panel_x, me.panel_y) then 4 else 0x10)
     end
 end
 

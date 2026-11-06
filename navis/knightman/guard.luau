@@ -24,6 +24,18 @@ local OFF_FIELD_SIDE = 0xE9
 -- The guard's ticks; the swallowed hit's sound on KnightMan.
 local GUARD_TICKS = 0x3C
 local FLASH_SOUND = asset.sound("own-hit")
+-- A hit at all (the hit flags' 0xFF800000): either side's attack, object, body or other body, or a neutral object's.
+local ANY_HIT: { HitName } = {
+    "own_attack",
+    "enemy_attack",
+    "own_object",
+    "enemy_object",
+    "own_body",
+    "enemy_body",
+    "own_other_body",
+    "enemy_other_body",
+    "neutral",
+}
 
 type ActorState = { member: number, flash: boolean, kept: boolean }
 type ActionState = { timer: number }
@@ -142,7 +154,7 @@ end
 guard.action = new.action { id = "knightman/guard/action", state = { timer = "u16" }, update = update }
 
 -- 0x02063B72 (the rules' `hit_guard`): a hit no trap caught is swallowed while the navi is guarded, or asks for the
--- guard; it then needs the navi ready for it (`ready`), a hit at all (the hit flags' 0xFF800000) and damage in it.
+-- guard; it then needs the navi ready for it (`ready`), a hit at all (`ANY_HIT`) and damage in it.
 function guard.hit_guard(side: number, navi: Object): boolean
     if own(navi).guarded then
         return true
@@ -157,7 +169,7 @@ function guard.hit_guard(side: number, navi: Object): boolean
         return false
     end
     local c = navi.collision
-    if bit32.band(c.hit_flags, 0xFF800000) == 0 then
+    if not c:hit_any(ANY_HIT) then
         return false
     end
     local any = 0

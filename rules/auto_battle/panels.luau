@@ -9,23 +9,39 @@ local shared = require("@exelib/auto_battle/panels")
 local panels = table.clone(shared)
 
 -- `GetRandomRelativePanelFiltered` (EXE5's 0x08012C26): `random_relative` over the panel offset list `name`
--- (data.offsets).
-function panels.random_offset(x: number, y: number, require: number, forbid: number, name: string, side: number): (number?, number?, number)
+-- (data.offsets), the conditions' names of side `of`.
+function panels.random_offset(
+    x: number,
+    y: number,
+    require: PanelFlags?,
+    forbid: PanelFlags?,
+    name: string,
+    side: number,
+    of: number?
+): (number?, number?, number)
     local list = data.offsets[name]
     if list == nil then
         error(string.format("no panel offset list %s in the AI's data", name))
     end
-    return shared.random_relative(x, y, require, forbid, list, side)
+    return shared.random_relative(x, y, require, forbid, list, side, of)
 end
 
 -- EXE5's 0x08012C38: the panels from which a chip of reach list `range` (data.ranges, by name) reaches (x, y): the list
--- turned the other side's way.
-function panels.reaching(x: number, y: number, require: number, forbid: number, range: string, side: number): (number?, number?, number)
+-- turned the other side's way; the conditions' names of side `of`.
+function panels.reaching(
+    x: number,
+    y: number,
+    require: PanelFlags?,
+    forbid: PanelFlags?,
+    range: string,
+    side: number,
+    of: number?
+): (number?, number?, number)
     local list = data.ranges[range]
     if list == nil then
         error(string.format("no reach list %s in the AI's data", range))
     end
-    return shared.reaching(x, y, require, forbid, list, side)
+    return shared.reaching(x, y, require, forbid, list, side, of)
 end
 
 return panels

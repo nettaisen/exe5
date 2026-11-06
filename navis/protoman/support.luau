@@ -16,10 +16,10 @@ local sword_sprite = asset.sprite("sword")
 -- His damage by the side's level (0x020CC1CC), its hit flags 0x94.
 local DAMAGE: { number } = { 20, 50, 70, 70, 90, 90, 110, 140, 150, 150 }
 local FLAGS = 0x94
--- Where he may stand (0x020CC1E0): in front of the enemy, else above or below that; solid (0x10), nothing on it or
--- reserved, of either side (0x0F880080).
+-- Where he may stand (0x020CC1E0): in front of the enemy, else above or below that; solid, nothing on it or reserved,
+-- of either side.
 local OFFSETS: { { { number } } } = { { { 1, 0, 0 } }, { { 1, -1, 0 }, { 1, 1, 0 } } }
-local REQUIRE, FORBID = 0x10, 0x0F880080
+local REQUIRE, FORBID = "solid", "occupied"
 
 -- His swing (animation 5, his sword: the attachment table's row 3 in its animation 1, the swing's sound), its hit on
 -- its 11th tick, 16 pixels up (the panel ahead and the two beside it, as a slash at navis), the slash shown there (the

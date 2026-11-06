@@ -50,7 +50,6 @@ local AROUND: { { number } } = {
     { 1, 1 },
     { -1, -1 },
 }
-local SOLID = 0x10
 -- Its flight (to -1), and its height of 8 pixels it was meant to come down to (the code divides its height alone).
 local FLIGHT = 0x0F
 local EIGHT = 0x8_0000
@@ -135,7 +134,7 @@ local function burst(me: Object)
     -- 0x081029A6: the solid panels around it break.
     for _, d in AROUND do
         local x, y = s.x + d[1] * me.facing, s.y + d[2]
-        if bit32.btest(field.flags(x, y), SOLID) then
+        if field.solid(x, y) then
             field.break_panel(x, y)
         end
     end

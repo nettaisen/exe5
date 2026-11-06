@@ -45,7 +45,7 @@ end
 local function noise_tick(me: Object)
     local c = me.collision
     c:remove()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         set_region(me, nil)
     end
     local s = me.state :: NoiseState

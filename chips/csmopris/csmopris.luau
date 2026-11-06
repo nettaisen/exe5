@@ -28,8 +28,10 @@ local navi_left = require("@exelib/navi_chips/left")
 local SPEED, OPERATION_BATTLE_SPEED, TURN_SPEED = 0x4_0000, 0x2_6666, 0x2_6666
 local HP = 10
 local HIT_MOD = 3
--- The enemy navis a comet turns toward (0x080D4B48).
-local TARGETS = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+-- The enemy navis a comet turns toward (0x080D4B48: the other side's body), and what among its hits stops it: any
+-- body (0x0F800000).
+local TARGETS = "enemy_body"
+local BODIES: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
 -- Its sound and its flying animation (by its row: row 1's).
 local SOUND, FLYING_ANIM = asset.sound("cosmo-comet"), 18
 
@@ -71,16 +73,15 @@ end
 
 -- 0x080D4AF6: at a panel's center, with no enemy navi straight ahead, toward one a row up, or (rather) down.
 local function turn(me: Object)
-    local mask = TARGETS[me.alliance]
     local speed = TURN_SPEED
     local x = me.panel_x + me.facing
-    if bit32.btest(field.flags(x, me.panel_y), mask) then
+    if field.any(x, me.panel_y, TARGETS, me.alliance) then
         return
     end
-    if bit32.btest(field.flags(x, me.panel_y - 1), mask) then
+    if field.any(x, me.panel_y - 1, TARGETS, me.alliance) then
         me.vel = Vec3.new(me.vel.x, -speed, me.vel.z)
     end
-    if bit32.btest(field.flags(x, me.panel_y + 1), mask) then
+    if field.any(x, me.panel_y + 1, TARGETS, me.alliance) then
         me.vel = Vec3.new(me.vel.x, speed, me.vel.z)
     end
 end
@@ -113,7 +114,7 @@ local function comet_tick(me: Object)
         return
     end
     local wait = false
-    if bit32.btest(c.hit_flags, 0x0F80_0000) then
+    if c:hit_any(BODIES) then
         c:set_region(nil)
         wait = true
     end
@@ -204,7 +205,6 @@ export type State = {
 
 local SOUND_APPEAR, SOUND_POSE = asset.sound("appear"), asset.sound("cosmo-pose")
 local COMETS, EVERY, AHEAD = 9, 20, 20
-local SOLID = 0x10
 
 -- Enter the phase with a timer, or count down; true once it has run out.
 local function countdown(me: Object, ticks: number): boolean
@@ -242,7 +242,7 @@ local function appear(me: Object)
     if left > 0 then
         return
     end
-    me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 4 else 0x14)
+    me:set_action(if field.solid(me.panel_x, me.panel_y) then 4 else 0x14)
 end
 
 -- Action 4 (0x080BF914): his pose (animation 8); 20 ticks.

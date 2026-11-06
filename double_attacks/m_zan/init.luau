@@ -39,10 +39,11 @@ local SWORD_ANIM = 1
 local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 local SWING_Z = 0x100000
 local HIT_MOD = 1
--- What ProtoMan looks for (0x02138FB8, by his side): an enemy body; and the panel before it: solid, with no object or
--- reservation on it (flag 0x10, none of 0x0F800000).
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
-local STANDABLE, TAKEN = 0x10, 0x0F800000
+-- What ProtoMan looks for (0x02138FB8, by his side): an enemy body; and the panel before it: solid, with no body on
+-- it.
+local ENEMY_BODY = "enemy_body"
+local TAKEN = "any_body"
+local STANDABLE = "solid"
 
 -- MagnetMan's magnet arm (the DS's new attachment row 0x3A: 10-3C), animating while dimmed; how long he holds it.
 local MAGNET_ARM = attachment.look { sprite = magnet_arm_sprite, palette = 0 }
@@ -86,7 +87,6 @@ local function search(me: Object)
         me:set_action(0xC)
         return
     end
-    local enemy = ENEMY_BODY[me.alliance]
     -- (The DS's labels: its column's top, a check, the next row.)
     local at = if s.from_top then "top" else "next"
     while true do
@@ -95,7 +95,7 @@ local function search(me: Object)
             at = "check"
         end
         if at == "check" then
-            if field.check(x, y, enemy, 0) then
+            if field.check(x, y, ENEMY_BODY, nil, me.alliance) then
                 local bx = x - front
                 if (bx == user.panel_x and y == user.panel_y) or field.check(bx, y, STANDABLE, TAKEN) then
                     me.future_panel_x, me.future_panel_y = x, y

@@ -38,7 +38,6 @@ local SPRITE = asset.sprite("phoenix")
 local SOUND_APPEAR = asset.sound("appear")
 -- Its animation (DethPhnx's; Phoenix's is 0).
 local ANIM = 1
-local SOLID = 0x10
 -- The rows' orders, a round's draw picking among the first three (0x080BFF50).
 local ORDERS = { 1, 2, 3, 1, 3, 2, 2, 1, 3, 2, 3, 1, 3, 1, 2, 3, 2, 1 }
 local FADE = 0x10
@@ -55,7 +54,7 @@ local function list_row(me: Object, row: number)
     local found: { number } = {}
     local x = me.panel_x + me.facing
     while field.valid(x, row) do
-        if field.check(x, row, SOLID, 0) then
+        if field.solid(x, row) then
             local p: number = panels.pack(x, row)
             table.insert(found, p)
         end

@@ -37,22 +37,19 @@ export type State = {
 slasher.STATE = { timer = "u16", target_x = "u8" }
 
 local START, WAIT, SLASH, RECOVER = 0x0, 0x4, 0x8, 0xC
--- What the column search looks for, by side (0x0800FF08): a panel's flags required and forbidden; and where it
--- starts (0x0800FF18).
-local SEARCH = {
-    [0] = { require = 0x00200000, forbid = 0x00000020, from = 1 },
-    [1] = { require = 0x00400020, forbid = 0x00000000, from = 6 },
-}
+-- What the column search looks for (0x0800FF08, by side): the other side's player navi on its own side's area; and
+-- where it starts, by side (0x0800FF18).
+local SEARCH: PanelCondition = { require = { "enemy_navi", "own_area" } }
+local FROM = { [0] = 1, [1] = 6 }
 local ROW = 2
 
 -- 0x0800FEC4: the column, or 0.
 local function find(me: Object): number
-    local s = SEARCH[me.alliance]
     local dir = if me.alliance == 0 then 1 else -1
-    local x = s.from
+    local x = FROM[me.alliance]
     while true do
         for y = 3, 1, -1 do
-            if field.check(x, y, s.require, s.forbid) then
+            if field.check(x, y, SEARCH.require, SEARCH.forbid, me.alliance) then
                 return x
             end
         end

@@ -41,9 +41,8 @@ local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, s
 local SLASH_Z = 0x10_0000
 -- What he looks for (0x080BE5BC, 0x080BE594: an enemy navi's body), and a panel he can stand on: solid, with no body
 -- on it but his side's navi's (0x080BE560, 0x080BE4E8).
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
-local SOLID = 0x10
-local NOT_FREE = { [0] = 0x0780_0000, 0x0B80_0000 }
+local ENEMY_NAVI = "enemy_body"
+local NOT_FREE: { PanelFlag } = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
 -- His place beside his user's panel (pixels ahead and down), his NameID's attach point 0 (sprite 08-01's: 0, 0), where
 -- his glow sits.
 local AHEAD, DOWN = 10, 6
@@ -55,7 +54,7 @@ local STRIKE = 0x0C
 
 -- 0x080BE59C: whether an enemy navi stands on (x, y).
 local function enemy_on(me: Object, x: number, y: number): boolean
-    return bit32.btest(field.flags(x, y), ENEMY_NAVI[me.alliance])
+    return field.any(x, y, ENEMY_NAVI, me.alliance)
 end
 
 -- 0x080BE568: whether an enemy navi stands anywhere in column `x`.
@@ -76,7 +75,7 @@ local function search(me: Object, column: boolean): (number?, number)
     local x = me.panel_x
     local tx = x
     while field.valid(x + me.facing, y) do
-        if field.check(x, y, SOLID, NOT_FREE[me.alliance]) then
+        if field.check(x, y, "solid", NOT_FREE, me.alliance) then
             tx = x
             local found = if column then enemy_in_column(me, x + me.facing) else enemy_on(me, x + me.facing, y)
             if found then
@@ -110,7 +109,7 @@ local function appear(me: Object)
         me.timer2 = 0
     end
     if countdown(me, 4) then
-        me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 4 else 0x10)
+        me:set_action(if field.solid(me.panel_x, me.panel_y) then 4 else 0x10)
     end
 end
 

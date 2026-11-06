@@ -49,10 +49,10 @@ local SOUND_FINISH = asset.sound("big-sword-swing")
 local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local MEGAMAN_SWORD_ANIM, COLONEL_SWORD_ANIM = 0, 7
 -- What Colonel looks for (0x020DDE30, by his side): an enemy body; and the panel before it (0x020DDE38): solid, with no
--- object, reservation or body of his side's on it.
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
-local STANDABLE = 0x10
-local TAKEN = { [0] = 0x07800000, [1] = 0x0B800000 }
+-- enemy body, other body or neutral object on it.
+local ENEMY_BODY = "enemy_body"
+local STANDABLE = "solid"
+local TAKEN: { PanelFlag } = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
 
 -- The cape: its sprite and animations (`sub_8011504`'s 0x0019101E: 10-1E, the pack's `colonel-cape`, animation 25,
 -- no shadow; caught, 26); 20 pixels up as it flies, 4 pixels a tick (its Param1, 0x40, by 0x1000), 10 ticks before
@@ -110,7 +110,7 @@ local function cape_flies(me: Object)
         cape_gone(me)
         return
     end
-    if me.collision.hit_flags ~= 0 then
+    if me.collision.hit then
         me.collision:set_region(nil)
         me:set_action(CAPE_CAUGHT)
         return
@@ -312,11 +312,10 @@ end
 local function search(me: Object): (number, number)
     local front = me.facing
     local y = me.panel_y
-    local enemy = ENEMY_BODY[me.alliance]
-    local taken = TAKEN[me.alliance]
     local x = me.panel_x + front
     while field.valid(x, y) do
-        if field.check(x, y, enemy, 0) and field.check(x - front, y, STANDABLE, taken) then
+        local stands = field.check(x - front, y, STANDABLE, TAKEN, me.alliance)
+        if field.check(x, y, ENEMY_BODY, nil, me.alliance) and stands then
             return x - front, y
         end
         x += front

@@ -33,16 +33,23 @@ local SOUND_APPEAR = asset.sound("appear")
 local SOUND_THROW = asset.sound("boomerang")
 -- The effect table's row 2: the puff he vanishes in, 32 pixels up.
 local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
--- Where the three appear (0x080BA158): the first panel of his user's side, by side, as { require, forbid }.
-local OWN_AREA = { [0] = { 0, 0x20 }, { 0x20, 0 } }
+-- Where the three appear (0x080BA158): the first panel of his user's side.
+local OWN_AREA = "own_area"
 local RISE = 0x20_0000
 local HIT_MOD = 3
 
--- `object_getFirstPanelInDirectionFiltered`: from (x, y) along `dir`, the first panel whose flags have every
--- `require` bit and no `forbid` bit (the first checked before the field's edge is); x 0 off the field.
-local function first_panel(x: number, y: number, require: number, forbid: number, dir: number): (number, number)
+-- `object_getFirstPanelInDirectionFiltered`: from (x, y) along `dir`, the first panel that meets (require, forbid)
+-- (of side `side`; the first checked before the field's edge is); x 0 off the field.
+local function first_panel(
+    x: number,
+    y: number,
+    require: PanelFlags?,
+    forbid: PanelFlags?,
+    dir: number,
+    side: number
+): (number, number)
     while true do
-        if field.check(x, y, require, forbid) then
+        if field.check(x, y, require, forbid, side) then
             return x, y
         end
         x += dir
@@ -99,14 +106,13 @@ end
 -- has none), 15 ticks apart.
 local function send(me: Object)
     local s = me.state :: State
-    local filter = OWN_AREA[me.alliance]
     local start = bit32.bxor(me.alliance, me.flip) * 5 + 1
     local delay = 0
     -- (+0x64: which of the enemies are targeted, by slot; the list holds the slots in use, in order.)
     local targeted: { [number]: boolean } = {}
     for i = 1, 3 do
         local row = 4 - i
-        local x, y = first_panel(start, row, filter[1], filter[2], me.facing)
+        local x, y = first_panel(start, row, OWN_AREA, nil, me.facing, me.alliance)
         if x ~= 0 then
             local target = pick_target(me, x, targeted)
             local user = me.related1 :: Object

@@ -15,7 +15,7 @@ local boxer = {}
 local ROWS = { [0] = 2, [1] = 1, [2] = 3 }
 local PUNCHES, ROUNDS, EVERY = 3, 3, 12
 -- What a punch looks for on a panel (0x080E7E08: the other side's bodies and the neutral objects).
-local TARGETS = { [0] = 0x0580_0000, [1] = 0x0A80_0000 }
+local TARGETS: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
 
 export type State = {
     -- The punch in the round (+0x60).
@@ -31,7 +31,7 @@ local function punch(me: Object, x: number, y: number)
     local tx: number?, ty: number? = nil, nil
     while field.valid(x, y) do
         table.insert(walked, bit32.bor(x, bit32.lshift(y, 4)))
-        if bit32.btest(field.flags(x, y), TARGETS[me.alliance]) then
+        if field.any(x, y, TARGETS, me.alliance) then
             tx, ty = x, y
             break
         end

@@ -35,7 +35,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 or battle.over() then
+    if c.hit or battle.over() then
         return finish(me)
     end
     local p = me.pos

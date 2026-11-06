@@ -48,10 +48,10 @@ capsule.plain = capsule.variant { palette = 0, hit_mod = 3, status = nil, explos
 -- Its lines: its column (0) and its row (1).
 capsule.column = line { region = regions.wide, panels = { { 0, 0 }, { 0, 1 }, { 0, -1 } }, style = 4, anim = 0 }
 capsule.row = line { region = regions.region_1d, panels = { { 0, 0 }, { -1, 0 }, { 1, 0 } }, style = 0x1D, anim = 1 }
--- The other side's navi's body among what hit it, by side (0x080C60A8), and a navi's body on a panel (0x080C61B0).
-local NAVI_HIT = { [0] = 0x0580_0000, 0x0A80_0000 }
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
-local SOLID = 0x10
+-- The other side's bodies (its navi's among them), other bodies or neutral objects among what hit it (0x080C60A8), and
+-- an enemy navi's body on a panel (0x080C61B0).
+local NAVI_HIT: { HitName } = { "enemy_body", "enemy_other_body", "neutral" }
+local ENEMY_NAVI = "enemy_body"
 local HP = 0x14
 local FLIGHT = 0x28
 local GRAVITY = -0xC000
@@ -106,9 +106,8 @@ local function fly(me: Object)
     local left = me.timer - 1
     me.timer = int.u16(left)
     if left < 0 then
-        local flags = field.flags(me.panel_x, me.panel_y)
-        if bit32.band(flags, SOLID) ~= 0 then
-            if bit32.band(flags, ENEMY_NAVI[me.alliance]) == 0 then
+        if field.solid(me.panel_x, me.panel_y) then
+            if not field.any(me.panel_x, me.panel_y, ENEMY_NAVI, me.alliance) then
                 me.anim = line_of(me).anim
                 local p = me.pos
                 me.pos = Vec3.new(p.x, p.y, 0)
@@ -202,7 +201,7 @@ local function tick(me: Object)
         me.lifecycle = "destroy"
         return
     end
-    if me:take_damage(0) < 0 or bit32.band(c.hit_flags, NAVI_HIT[me.alliance]) ~= 0 then
+    if me:take_damage(0) < 0 or c:hit_any(NAVI_HIT) then
         blow_up(me)
         c:set_region(nil)
         -- (0x080C608E, as at the battle's end: the state byte alone.)

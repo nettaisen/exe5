@@ -40,7 +40,7 @@ return common.make {
     hit_mod = 3,
     -- 0x08016C3C(0): hit effect 0.
     spark = sparks.plain,
-    breaking_hits = 0x0C80_0002,
+    breaking_hits = { "own_body", "enemy_body", "neutral", "break" },
     landing_panel = "poison",
     landing_sound = asset.sound("panel-poison"),
     puff = effects.puff,

@@ -56,10 +56,20 @@ local PROPELLER = new.identity {
         },
     },
 }
--- An enemy panel, by side (the panel flag 0x20, set or clear: 0x080BACEC, 0x080BAEE4).
-local ENEMY_AREA = { [0] = 0x20, 0 }
+-- An enemy panel (0x080BACEC, 0x080BAEE4: by side, the area bit set or clear), as 0x080BAC7A asks it: its flags
+-- word's area bit is the enemy side's (side 0's enemy's set, side 1's enemy's clear), so off the field, where the
+-- word is 0, a panel is side 1's enemy's.
+local function enemy_side_panel(x: number, y: number, side: number): boolean
+    if side > 1 then
+        return false
+    end
+    if not field.any(x, y, "on_field") then
+        return side == 1
+    end
+    return field.check(x, y, "enemy_area", nil, side)
+end
 -- A panel holding an enemy navi's body, by side (0x080BAD74).
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
+local ENEMY_NAVI = "enemy_body"
 -- His speed (16.16 a tick, forward), and the ticks between bombs on his run.
 local SPEED, BETWEEN = 0x3_0000, 0xF
 -- A GyroMan of `flight`.
@@ -104,10 +114,9 @@ function gyroman.make(flight: Flight): Kind
 
     -- 0x080BAEB2: the enemy panels of row `y` (columns 1 to 6).
     local function enemy_panels(me: Object, y: number): number
-        local set, clear = ENEMY_AREA[me.alliance], bit32.bxor(ENEMY_AREA[me.alliance], 0x20)
         local n = 0
         for x = 1, 6 do
-            if field.check(x, y, set, clear) then
+            if field.check(x, y, "enemy_area", nil, me.alliance) then
                 n += 1
             end
         end
@@ -184,7 +193,7 @@ function gyroman.make(flight: Flight): Kind
                 me:set_action(0x18)
                 return
             end
-            if bit32.band(field.flags(me.panel_x, me.panel_y), 0x20) == ENEMY_AREA[me.alliance] then
+            if enemy_side_panel(me.panel_x, me.panel_y, me.alliance) then
                 drop(me)
             end
         end
@@ -199,7 +208,7 @@ function gyroman.make(flight: Flight): Kind
                 me:set_action(0x18)
                 return
             end
-            if bit32.band(field.flags(me.panel_x, me.panel_y), ENEMY_NAVI[me.alliance]) ~= 0 then
+            if field.any(me.panel_x, me.panel_y, ENEMY_NAVI, me.alliance) then
                 me.phase, me.phase_init = 4, 0
                 return
             end

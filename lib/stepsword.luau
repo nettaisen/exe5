@@ -13,10 +13,8 @@ local stepsword = {}
 -- The phases this module moves to, on the attack's step.
 local SET_UP, STEP_BACK, RECOVER = 0x4, 0xC, 0x10
 
--- The panel a step goes to: on the field, with no body on it.
-local PANEL_EXISTS, BODIES = 0x10000, 0x0F800000
--- The enemy bodies the step behind looks for, by side (0x080125C0).
-local ENEMY_BODIES = { [0] = 0x04000000, [1] = 0x08000000 }
+-- The enemy bodies the step behind looks for, by side (0x080125C0: the other side's body).
+local ENEMY_BODIES = "enemy_body"
 -- The rows it looks in, from its own (0x080125C8).
 local ROW_ORDER = { { 1, 2, 3 }, { 2, 1, 3 }, { 3, 1, 2 } }
 local AFTERIMAGE_SHADER = 0xFFE0
@@ -48,10 +46,10 @@ end
 local function behind_enemy(me: Object): (number?, number?)
     local x = me.panel_x
     local dir = me.facing
-    local enemies = ENEMY_BODIES[me.alliance]
     while field.valid(x, me.panel_y) do
         for _, y in ROW_ORDER[me.panel_y] do
-            if bit32.btest(field.flags(x, y), enemies) and field.check(x + dir, y, PANEL_EXISTS, BODIES) then
+            -- (The panel a step goes to: on the field, with no body on it.)
+            if field.any(x, y, ENEMY_BODIES, me.alliance) and field.check(x + dir, y, "on_field", "any_body") then
                 return x + dir, y
             end
         end
@@ -81,7 +79,7 @@ end
 -- 0x080125D4: two panels ahead, if on the field and empty.
 local function two_ahead(me: Object): (number?, number?)
     local x, y = me.panel_x + 2 * me.facing, me.panel_y
-    if field.check(x, y, PANEL_EXISTS, BODIES) then
+    if field.check(x, y, "on_field", "any_body") then
         return x, y
     end
     return nil, nil

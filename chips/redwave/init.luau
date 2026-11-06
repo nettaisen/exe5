@@ -19,7 +19,7 @@ local chip: Chip = {
     flags = { "has_damage", "library", "variable_damage" },
     slot_in_limit = 3,
     -- Its pit (row 1 of 0x080DAFA0): a lava panel (flag 0x1000), which turns Normal; the wave in palette 1.
-    instant = wavepit.instant { require = 0x0000_1000, forbid = 0, mends = true, palette = 1 },
+    instant = wavepit.instant { require = "lava", mends = true, palette = 1 },
     auto_battle = { class = "when_any_lava" },
 }
 

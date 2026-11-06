@@ -22,13 +22,13 @@ export type State = {
 local SPRITE = asset.sprite("skull")
 local LIFETIME = 30
 local HEIGHT = 0x14_0000
--- The enemy bodies by side (0x080D73D4).
-local ENEMY_BODIES = { [0] = 0x04000000, [1] = 0x08000000 }
+-- The enemy bodies (0x080D73D4, by side: the other side's body).
+local ENEMY_BODIES = "enemy_body"
 -- No enemy in that line.
 local NONE = 0xFF
 
--- 0x080D73DC: the steps from (x, y) by (dx, dy) to the first enemy body, or NONE off the field.
-local function steps_to_enemy(x: number, y: number, dx: number, dy: number, enemies: number): number
+-- 0x080D73DC: the steps from (x, y) by (dx, dy) to the first enemy body of side `side`, or NONE off the field.
+local function steps_to_enemy(x: number, y: number, dx: number, dy: number, side: number): number
     local n = 0
     while true do
         n += 1
@@ -37,7 +37,7 @@ local function steps_to_enemy(x: number, y: number, dx: number, dy: number, enem
         if not field.valid(x, y) then
             return NONE
         end
-        if bit32.btest(field.flags(x, y), enemies) then
+        if field.any(x, y, ENEMY_BODIES, side) then
             return n
         end
     end
@@ -45,12 +45,11 @@ end
 
 -- 0x080D7356: the panel beside it toward the nearest enemy body in a line: ahead, up or down.
 local function next_panel(me: Object): (number, number)
-    local enemies = ENEMY_BODIES[me.alliance]
     local x, y = me.panel_x, me.panel_y
     local dx, dy = me.facing, 0
-    local best = steps_to_enemy(x, y, dx, dy, enemies)
+    local best = steps_to_enemy(x, y, dx, dy, me.alliance)
     for _, d in { -1, 1 } do
-        local n = steps_to_enemy(x, y, 0, d, enemies)
+        local n = steps_to_enemy(x, y, 0, d, me.alliance)
         if n < best then
             best, dx, dy = n, 0, d
         end
@@ -64,7 +63,7 @@ local spawn: (owner: Object, x: number, y: number, element: number, damage: numb
 local function tick(me: Object)
     local c = me.collision
     c:remove()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     me.timer2 -= 1

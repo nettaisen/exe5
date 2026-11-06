@@ -24,8 +24,8 @@ export type State = {
 }
 
 local HIT_PARAM = 0x8A
--- Panels holding the other side's navi, by side (0x08012F58).
-local ENEMY_NAVI = { [0] = 0x0020_0000, [1] = 0x0040_0000 }
+-- Panels holding the other side's navi, by side (0x08012F58): its player navi.
+local ENEMY_NAVI = "enemy_navi"
 -- The scope's mark (effect 0x68: sprite 10-23), 20 pixels up.
 local MARK = new.effect { sprite = search_scope_sprite, anim = 0, palette = 0, steps = 18 }
 local MARK_Z = 20 * 0x1_0000
@@ -39,7 +39,7 @@ local HIT_MOD, LAST_HIT_MOD = 1, 3
 -- distance; of those as near as the nearest so far, the later one in the list (rows 3 to 1, columns 6 to 1); nil
 -- for none.
 local function find(me: Object): (number?, number?)
-    local list = panels.filtered_except(me, ENEMY_NAVI[me.alliance], 0)
+    local list = panels.filtered_except(me, ENEMY_NAVI, nil, me.alliance)
     local right = bit32.bxor(me.alliance, me.flip) == 0
     local function pick(ahead: boolean): { number }
         local out: { number } = {}

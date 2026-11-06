@@ -29,12 +29,11 @@ export type State = {
 
 -- The steps, on the attack's step.
 local LEAVE, FLY, AWAY, RETURN = 0x0, 0x4, 0x8, 0xC
-local SOLID = 0x10
 local ANIM_LEAVE, ANIM_RETURN = 4, 3
 local LEAVE_TICKS, RETURN_TICKS = 4, 4
 
 local function solid(me: Object): boolean
-    return bit32.band(field.flags(me.panel_x, me.panel_y), SOLID) ~= 0
+    return field.solid(me.panel_x, me.panel_y)
 end
 
 local function count(s: State): boolean
@@ -61,7 +60,10 @@ local action = new.action {
                 local x, y = me.panel_x, me.panel_y
                 me.future_panel_x, me.future_panel_y = x, y
                 local reserved = me:reserve_panel(x, y)
-                me.panel_x, me.panel_y = 0, if reserved then bit32.band(field.flags(x, y), 0xFF) else 0
+                -- (Off to column 0 and, where he reserved his panel, a row that is the low byte of the panel's flags
+                -- word, which the original's register still holds from the reservation's test: the type's number and
+                -- its solid, side, cracked and reserved bits. Its coordinates are off the field until he returns.)
+                me.panel_x, me.panel_y = 0, if reserved then field.low_byte(x, y) else 0
                 me:set_coordinates_from_panel()
                 battle.set_hud("chip_icons", false)
                 me.step, me.step_init = FLY, 0

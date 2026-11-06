@@ -24,7 +24,7 @@ export type ControllerState = {
 
 local WAIT = 30
 -- Where the controller sets it: solid with nothing on it.
-local SOLID, OCCUPIED = 0x10, 0x0F880080
+local FREE: PanelCondition = { require = "solid", forbid = "occupied" }
 
 -- The bomb (attack object #0x3E, 0x080CCDF4): sprite 10-36; NameID 0xD4 (actor record 0xD4, 0x08014C94: version 1,
 -- AI index 0x21); its collision (Param1 1) a neutral body (row 0x0E) that everything reaches (row 0x0F), its blast an
@@ -49,7 +49,11 @@ local BOMB = common.make {
     broken = new.effect { sprite = impact_sprite, anim = 0, palette = 0, steps = 19 },
     break_sound = asset.sound("hit-bomb-1"),
     removed = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 },
-    stand_forbid = { [0] = 0x0B800000, [1] = 0x06800000 },
+    -- (Side 1's lacks its own other bodies: 0x0B800000 and 0x06800000.)
+    stand_forbid = {
+        [0] = { "own_body", "own_other_body", "enemy_other_body", "neutral" },
+        [1] = { "own_body", "enemy_other_body", "neutral" },
+    },
     push = "any_hit",
     actions = {
         [1] = obstacle.return_to_idle,
@@ -69,7 +73,7 @@ bomb.kind = BOMB.kind
 local function effect(me: Object)
     if me.phase_init == 0 then
         local x, y = me.panel_x + me.facing, me.panel_y
-        if field.check(x, y, SOLID, OCCUPIED) then
+        if field.check(x, y, FREE.require, FREE.forbid) then
             BOMB.spawn(me, x, y, me.element, dimming_chips.damage_plus(me, (me.state :: ControllerState).bonus))
         end
         me.timer = WAIT

@@ -27,7 +27,6 @@ local SOUND_APPEAR = asset.sound("appear")
 local SOUND_SWING = asset.sound("tomahawk-man")
 -- The earth his tomahawk splashes (the effect table's row 0x45).
 local EARTH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 15 }
-local SOLID = 0x10
 -- When his tomahawk lands (ticks left of his swing).
 local STRIKE = 0x32
 
@@ -54,7 +53,7 @@ local function appear(me: Object)
         me.visible = true
     end
     if countdown(me, 4, true) then
-        me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 4 else 0x10)
+        me:set_action(if field.solid(me.panel_x, me.panel_y) then 4 else 0x10)
     end
 end
 

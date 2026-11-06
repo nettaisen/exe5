@@ -20,9 +20,8 @@ local PALETTE = 1
 local SHOWN_TICKS = 40
 -- The upper half of its height once it is hidden.
 local HIDDEN = 0xFF
--- The panel flags' bit of a panel something can stand on, and the other side's bodies by its side (0x080DF2E0).
-local STANDS = 0x10
-local ENEMY: { [number]: number } = { [0] = 0x0500_0000, 0x0A00_0000 }
+-- The other side's bodies and other bodies, of its side (0x080DF2E0).
+local ENEMY: { PanelFlag } = { "enemy_body", "enemy_other_body" }
 -- Where the press's top left panel may be from the trap's (0x080DF378), in the order they are drawn from.
 local SQUARES = { { 0, 0 }, { 0, -1 }, { -1, 0 }, { -1, -1 } }
 -- Its actions.
@@ -65,9 +64,8 @@ end
 
 -- 0x080DF29C: gone with a panel nothing can stand on; sprung by a body of the other side's on it.
 local function armed(me: Object)
-    local flags = field.flags(me.panel_x, me.panel_y)
-    if bit32.band(flags, STANDS) ~= 0 then
-        if bit32.band(flags, ENEMY[me.alliance]) == 0 then
+    if field.solid(me.panel_x, me.panel_y) then
+        if not field.any(me.panel_x, me.panel_y, ENEMY, me.alliance) then
             return
         end
         battle.play_sound(SOUND)

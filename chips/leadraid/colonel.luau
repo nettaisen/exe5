@@ -39,8 +39,7 @@ local X: { { region: Region, effect: Effect } } = {
     { region = regions.single, effect = new.effect { sprite = screen_divide_sprite, anim = 2, palette = 0, steps = 13 } },
 }
 -- The panels his target holds (0x080BEDE0): an enemy navi's body, by side.
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
-local SOLID = 0x10
+local ENEMY_NAVI = "enemy_body"
 -- His place beside his user's panel (pixels behind and up), his NameID's attach point 0 (sprite 08-07's: 0, 16),
 -- where his glow sits.
 local BEHIND, UP = 10, 6
@@ -57,7 +56,7 @@ local function find_target(me: Object): (number, number)
     local tx, ty = x, y
     while field.valid(x, y) do
         tx, ty = x, y
-        if bit32.btest(field.flags(x, y), ENEMY_NAVI[me.alliance]) then
+        if field.any(x, y, ENEMY_NAVI, me.alliance) then
             break
         end
         x += me.facing
@@ -84,7 +83,7 @@ local function appear(me: Object)
         me.timer2 = 0
     end
     if countdown(me, 4) then
-        me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 4 else 0x10)
+        me:set_action(if field.solid(me.panel_x, me.panel_y) then 4 else 0x10)
     end
 end
 

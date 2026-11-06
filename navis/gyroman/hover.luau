@@ -27,7 +27,6 @@ export type State = {
     timer: number,
 }
 
-local SOLID = 0x10
 local ANIM_FLY, ANIM_TAKE_OFF, ANIM_LAND = 20, 18, 3
 local TAKE_OFF_TICKS, LAND_TICKS = 18, 3
 -- (0x14C: 0x080F0C50 loads it as 77 + 255.)
@@ -87,7 +86,7 @@ function hover.tick(during: Action): (navi: Object) -> ()
         if navi:navi_action() == during then
             return
         end
-        local solid = bit32.band(field.flags(navi.panel_x, navi.panel_y), SOLID) ~= 0
+        local solid = field.solid(navi.panel_x, navi.panel_y)
         local hovering = navi:navi_state("hovering")
         if not solid then
             if not hovering then

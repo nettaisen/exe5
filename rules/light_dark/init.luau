@@ -32,7 +32,7 @@
 --   +0x53 is written once, by the reload (0x08135968): 1 when the NaviCust's path finds no Hub Style (0x08137A58),
 --   else 0; so the name is BCMegaMn exactly in Hub Style. (Battle effect 0x40000 names every entry 0xE6, ChaosLrd:
 --   no stage of EXE5's content has that effect, and the enemy names have no entry but the navi's: not built.)
--- - **Its hit bugs** (0x0801103E, the navi's hit NaviCust bug): a hit with hit flag 0x400 brings no bug to a value of
+-- - **Its hit bugs** (0x0801103E, the navi's hit NaviCust bug): a dark hit (hit flag 0x400) brings no bug to a value of
 --   1000 or more (the weapons not reloaded either); code 0xFD is an HP drain of level 1 (code 0x18, argument 1) on a
 --   dark MegaMan (the value's tier, 0x0800DE5C, 2), code 0xFC the same on a value of 500 or more; else neither is
 --   anything (Django's hits bring both).
@@ -217,7 +217,7 @@ local function cost(side: number, chip: Chip)
 end
 
 -- The hit flag that a high value turns a bug away for (0x0801103E).
-local HIT_FLAG_SPARES_LIGHT = 0x400
+local HIT_FLAG_SPARES_LIGHT = "dark"
 -- An HP drain of level 1 (code 0x18, argument 1): what 0xFD and 0xFC become.
 local HP_DRAIN_1 = 0x0118
 local DARK_DRAIN, LIGHT_DRAIN = 0xFD, 0xFC
@@ -227,7 +227,7 @@ local DARK_DRAIN, LIGHT_DRAIN = 0xFD, 0xFC
 local function navi_bug(side: number, navi: Object): "spared"?
     local c = navi.collision
     local v = value(side)
-    if bit32.btest(c.hit_flags, HIT_FLAG_SPARES_LIGHT) and v >= 1000 then
+    if c:hit_any(HIT_FLAG_SPARES_LIGHT) and v >= 1000 then
         return "spared"
     end
     local code = bit32.band(c.inflicted_bugs, 0xFF)

@@ -24,9 +24,9 @@ local DICEBONS = chips_dicebons.dicebons
 -- The dice's faces by an RNG2 draw's low four bits (0x022272AC, 0x022272BC).
 local FACES_1: { number } = { 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6 }
 local FACES_2: { number } = { 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6 }
--- Where a die may land, by side (0x0222728C): solid, nothing on it or reserved; else (0x0222729C) any panel.
-local AIM_REQUIRE = { [0] = 0x10, [1] = 0x10 }
-local AIM_FORBID = { [0] = 0x1F80_0000, [1] = 0x2F80_0000 }
+-- Where a die may land, of his side (0x0222728C): solid, with no body or enemy object on it; else (0x0222729C) any
+-- panel on the field.
+local AIM: PanelCondition = { require = "solid", forbid = { "any_body", "enemy_object" } }
 -- A die: 20 HP, no status or hit modifier, running while dimmed, thrown from 24 pixels above him.
 local DIE_HP, DIE_Z = 0x14, 0x18_0000
 local THROW_SOUND = asset.sound("minibomb-throw")
@@ -61,14 +61,14 @@ local function aim(me: Object, ex: number, ey: number): (number?, number?, boole
     local side = me.alliance
     local front = if bit32.bxor(side, me.flip) == 0 then 1 else -1
     local start = bit32.bxor(bit32.bxor(side, me.flip), 1) * 5 + 1
-    local require, forbid = AIM_REQUIRE[side], AIM_FORBID[side]
+    local require, forbid = AIM.require, AIM.forbid
     local second = false
     while true do
         local found: { number } = {}
         local x = start
         while x ~= me.panel_x do
             for y = 1, 3 do
-                if not (x == ex and y == ey) and field.check(x, y, require, forbid) then
+                if not (x == ex and y == ey) and field.check(x, y, require, forbid, side) then
                     table.insert(found, x + y * 0x10)
                 end
             end
@@ -82,7 +82,7 @@ local function aim(me: Object, ex: number, ey: number): (number?, number?, boole
             return nil, nil, true
         end
         second = true
-        require, forbid = 0, 0
+        require, forbid = nil, nil
     end
 end
 

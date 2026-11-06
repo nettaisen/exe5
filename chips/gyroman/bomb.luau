@@ -16,13 +16,12 @@ local SPRITE = asset.sprite("gyro-bomb")
 local SOUND_BURST = asset.sound("hit-bomb-1")
 -- Its height, and how far it falls a tick (0x080C7D1C and 0x080C7D0C, by its variant: 1's and 2's).
 local HEIGHT, FALL = 0x28_0000, 0x6_0000
-local SOLID = 0x10
 -- How long it hits.
 local BURST = 4
 
 -- Its panel lit, if solid (`object_highlightPanel`). Drawn only.
 local function light(me: Object)
-    if field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    if field.solid(me.panel_x, me.panel_y) then
         field.highlight(me.panel_x, me.panel_y)
     end
 end
@@ -49,7 +48,7 @@ local function fall(me: Object)
     if p.z > 0 then
         me.pos = Vec3.new(p.x, p.y, int.i32(p.z - me.vel.z))
         light(me)
-    elseif field.check(me.panel_x, me.panel_y, SOLID, 0) then
+    elseif field.solid(me.panel_x, me.panel_y) then
         -- (Only the action byte: its phase stays 0.)
         me.action = 8
     else
@@ -71,7 +70,7 @@ local function burst(me: Object)
         battle.play_sound(SOUND_BURST)
         battle.effect(me.pos, effects.explosion)
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local left = me.timer - 1

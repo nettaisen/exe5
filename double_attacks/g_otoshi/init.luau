@@ -24,9 +24,9 @@ local CHARGE_TICKS = 0x3C
 local ANIM_SING = 0xC
 local SOUND_SONG = asset.sound("bblstar1")
 local FROGS, FROG_TICKS = 0xC, 0xA
--- The frogs' panels (0x02135B68, by side and draw): an enemy body's (flag 0x04000000 for side 0, 0x08000000 for side
--- 1) when the draw's low four bits are under 10, else a panel without one.
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
+-- The frogs' panels (0x02135B68, by side and draw): an enemy body's when the draw's low four bits are under 10, else a
+-- panel without one.
+local ENEMY_BODY = "enemy_body"
 local ON_ENEMY_UNDER = 0xA
 local AFTER_TICKS = 0x1E
 
@@ -36,11 +36,10 @@ end
 
 -- 0x020A1B20: a frog on a panel at random (two draws; the second only when there is a panel).
 local function drop_frog(me: Object)
-    local body = ENEMY_BODY[me.alliance]
     local on_enemy = bit32.band(battle.rng_positive(), 0xF) < ON_ENEMY_UNDER
     local list = if on_enemy
-        then panels.filtered(body, 0, me.alliance)
-        else panels.filtered(0, body, me.alliance)
+        then panels.filtered(ENEMY_BODY, nil, me.alliance, me.alliance)
+        else panels.filtered(nil, ENEMY_BODY, me.alliance, me.alliance)
     if #list == 0 then
         return
     end

@@ -51,7 +51,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    local gone = battle.over() or c.hit_flags ~= 0
+    local gone = battle.over() or c.hit
     if not gone and not battle.dimmed() then
         local left = me.timer - 1
         me.timer = int.u16(left)

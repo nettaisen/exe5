@@ -26,11 +26,8 @@ local CHARGE_TICKS = 0x3C
 -- Colonel's drop: his animation 0x14, 60 ticks.
 local ANIM_DROP, DROP_TICKS = 0x14, 0x3C
 local ANIM_IDLE = 0
--- The rocks: the panels the enemies' bodies stand on (flag 0x04000000 for side 0, 0x08000000 for side 1), a rock beside
--- each on a solid empty panel of the other side's (flag 0x10, none of 0x0F800000); each waits 30 ticks and 16 more for
--- each rock before it; eight flags at most.
-local ENEMY_BODY = { [0] = 0x04000000, [1] = 0x08000000 }
-local SOLID, OCCUPIED = 0x10, 0x0F800000
+-- The rocks: the panels the enemies' bodies stand on, a rock beside each on a solid panel of the other side's with no
+-- body on it; each waits 30 ticks and 16 more for each rock before it; eight flags at most.
 local FIRST_WAIT, NEXT_WAIT, MOST_ROCKS = 0x1E, 0x10, 8
 -- ShadowMan: 4 ticks of animation 4, then gone in a puff of dust 30 pixels up; back (animation 3) for 20 ticks with the
 -- appearing sound.
@@ -61,7 +58,7 @@ local function place(me: Object, x: number, y: number, behind: boolean)
     if panel == nil or panel.alliance == me.alliance then
         return
     end
-    if not field.check(x, y, SOLID, OCCUPIED) then
+    if not field.check(x, y, "solid", "any_body") then
         return
     end
     local s = me.state :: State
@@ -82,7 +79,7 @@ local function drop(me: Object)
     while field.valid(first, y) do
         local x = first
         repeat
-            if field.check(x, y, ENEMY_BODY[me.alliance], 0) then
+            if field.check(x, y, "enemy_body", nil, me.alliance) then
                 table.insert(found, { x, y })
             end
             x += d

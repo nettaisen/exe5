@@ -138,14 +138,13 @@ local WAVE_SPRITE = asset.sprite("wood-wave")
 local WAVE_SOUND = asset.sound("wood-wave")
 local WAVE_DAMAGE, WAVE_HIT_MOD = 10, 1
 local WAVE_SPEED, EDGE = 0x6_0000, 150
--- The other side's navis' bodies, by WoodNos's wave's side (0x080DB104).
-local TARGETS: { [number]: number } = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+-- The other side's navis' bodies, of WoodNos's wave's side (0x080DB104).
+local TARGETS = "enemy_body"
 
 -- 0x080DB096: a geyser in each row where the other side's navi stands, from the user's side's front edge (column 5
 -- for side 0, 2 for side 1) on; with none, in its own row.
 local function geysers(me: Object)
-    local targets = TARGETS[me.alliance]
-    if not targets then
+    if me.alliance > 1 then
         error(string.format("WoodNos's wave's side %d reads past 0x080DB104", me.alliance))
     end
     local facing = me.facing
@@ -155,7 +154,7 @@ local function geysers(me: Object)
     for y = 1, 3 do
         local x = first
         while field.valid(x, y) do
-            if bit32.btest(field.flags(x, y), targets) then
+            if field.any(x, y, TARGETS, me.alliance) then
                 geyser(me, y, me.element, damage)
                 n += 1
                 break
@@ -175,7 +174,7 @@ end
 
 -- 0x080DB048: rolling; a hit ends it; past the edge, the geysers.
 local function roll(me: Object)
-    if me.collision.hit_flags ~= 0 then
+    if me.collision.hit then
         wave_gone(me)
         return
     end

@@ -22,8 +22,8 @@ local THROW_AT, THROW_TICKS, RECOVER_TICKS = 10, 21, 10
 -- The bomb leaves 10 pixels ahead of him and 48 up, falling lighter (16.16 a tick: its variant's, 2).
 local AHEAD, UP = 10 * 0x1_0000, 48 * 0x1_0000
 local GRAVITY = -0x4000
--- An enemy's body, by side (0x080126D0).
-local ENEMY_BODY = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+-- An enemy's body, by side (0x080126D0: the other side's body).
+local ENEMY_BODY = "enemy_body"
 -- The rows a column is searched in, by his row (0x080126D8).
 local ROWS = { { 1, 2, 3 }, { 2, 1, 3 }, { 3, 1, 2 } }
 
@@ -35,13 +35,12 @@ local function target(me: Object): (number, number)
     local front = me.facing
     local x = me.panel_x + 2 * front
     local rows = ROWS[me.panel_y]
-    local mask = ENEMY_BODY[me.alliance]
     while true do
         for _, y in rows do
             if not field.valid(x, y) then
                 return me.panel_x + 4 * front, me.panel_y
             end
-            if bit32.btest(field.flags(x, y), mask) then
+            if field.any(x, y, ENEMY_BODY, me.alliance) then
                 return x, y
             end
         end

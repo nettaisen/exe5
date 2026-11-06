@@ -227,8 +227,8 @@ rainyday.cloud = new.kind {
 
 -- ---- The controller -------------------------------------------------------------------------------------------------
 
--- The enemy navis (0x080E9180).
-local TARGETS = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+-- The enemy navis (0x080E9180: the other side's body).
+local TARGETS = "enemy_body"
 
 export type ControllerState = {
     -- The Atk+ bonus (+0x32): it adds to the cloud's damage word.
@@ -240,10 +240,9 @@ export type ControllerState = {
 -- 0x080E9128: the first panel with an enemy navi, by columns from the panel ahead, rows 1 to 3.
 local function target(me: Object): (number?, number?)
     local x = me.panel_x + me.facing
-    local mask = TARGETS[me.alliance]
     while field.valid(x, 1) do
         for y = 1, 3 do
-            if bit32.btest(field.flags(x, y), mask) then
+            if field.any(x, y, TARGETS, me.alliance) then
                 return x, y
             end
         end

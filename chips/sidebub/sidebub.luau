@@ -37,7 +37,7 @@ local DRIFT_X, DRIFT_Y = 40, 24
 -- fourth parameter, 0, picks).
 local BURST = flying_shot.variant { hit_mod = 3, element = 2, sprite = SPRITE, anim = 2, highlight = true, speed = 0x4_0000 }
 -- What a hit on a navi or an object leaves in its hit flags (0x080D85B4).
-local POPS = 0x0F80_0000
+local POPS: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
 -- Its actions.
 local WAITING, DRIFTING, BURSTING = 0x0, 0x4, 0x8
 
@@ -114,7 +114,7 @@ local function tick(me: Object)
         me.action = BURSTING
         return
     end
-    if bit32.btest(c.hit_flags, POPS) then
+    if c:hit_any(POPS) then
         battle.play_sound(SOUND_POP)
         gone(me)
         return

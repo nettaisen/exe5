@@ -64,7 +64,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags == 0 then
+    if not c.hit then
         local a = me.action
         if a == 0 then
             fall(me)

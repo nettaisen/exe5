@@ -41,7 +41,7 @@ local FIRE = new.effect { sprite = napalm_fire_sprite, anim = 0, palette = 0, st
 -- Its flight's ticks.
 local FLIGHT = 0x2D
 -- A panel something stands on (as one word).
-local TAKEN = 0x0F80_0000
+local TAKEN = "any_body"
 -- How long it hits.
 local BURST = 4
 
@@ -58,7 +58,7 @@ end
 -- 0x080CC72E: the panels around its own (region 0x10, turned to its side) that exist, shuffled.
 local function spread(me: Object)
     local s = me.state :: State
-    local list = panels.region(me.panel_x, me.panel_y, regions.ring, panels.side_direction(me.alliance), 0, 0)
+    local list = panels.region(me.panel_x, me.panel_y, regions.ring, panels.side_direction(me.alliance))
     s.count = #list
     if #list == 0 then
         return
@@ -120,7 +120,7 @@ local function fly(me: Object)
     if not field.solid(me.panel_x, me.panel_y) then
         battle.effect(me.pos, effects.puff)
     else
-        if bit32.band(field.flags(me.panel_x, me.panel_y), TAKEN) == 0 then
+        if not field.any(me.panel_x, me.panel_y, TAKEN) then
             spread(me)
             local box = battle.hitbox(me, {
                 panel_x = me.panel_x,
@@ -182,7 +182,7 @@ local function tick(me: Object)
         me:set_lifecycle("destroy")
         return
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local action = ACTIONS[me.action]

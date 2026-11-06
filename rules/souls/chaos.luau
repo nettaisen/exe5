@@ -24,9 +24,9 @@ export type State = {
 
 local FADE = asset.sound("fade")
 
--- The panels Dark MegaMan may come onto, by the user's side (`sub_80129F4`'s table, 0x0801025C): the other side's
--- area, solid and with no body on it.
-local AREA: { { number } } = { { 0x30, 0x0F880080 }, { 0x10, 0x0F8800A0 } }
+-- The panels Dark MegaMan may come onto, of the user's side (`sub_80129F4`'s table, 0x0801025C): the other side's
+-- area, solid and with nothing on it.
+local AREA: PanelCondition = { require = { "solid", "enemy_area" }, forbid = "occupied" }
 
 -- The steps, on the attack's step.
 local CROUCH, VANISH, REVERT = 0x0, 0x4, 0x8
@@ -61,8 +61,7 @@ end
 
 -- `sub_80129F4`: a panel of the other side's area at random (nil: none).
 local function landing(me: Object): (number?, number?)
-    local area = AREA[bit32.band(me.alliance, 1) + 1]
-    return panels.pick(panels.filtered(area[1], area[2]))
+    return panels.pick(panels.filtered(AREA.require, AREA.forbid, nil, bit32.band(me.alliance, 1)))
 end
 
 -- 0x080EE69A: MegaMan fades for 25 ticks; on the seventeenth, Dark MegaMan comes.

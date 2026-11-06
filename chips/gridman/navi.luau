@@ -40,9 +40,6 @@ local HIT_MOD = 3
 
 -- His dash: 4 pixels a tick forward, 2.5 up or down.
 local DASH_X, DASH_Y = 0x4_0000, 0x2_8000
--- What a panel he crosses must be (solid) and be free of (as words).
-local SOLID = 0x10
-local OCCUPIED = 0x0F80_0000
 
 -- 0x080BDE80: on his panel, on the ground, his chip's palette; his dash's speeds (up from the top row, else
 -- down), the far column (6 facing right, else 1) and his grid on its middle row.
@@ -95,7 +92,7 @@ local function appear(me: Object)
         me.visible = true
     end
     if countdown(me, 0xA) then
-        me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 4 else 0x10)
+        me:set_action(if field.solid(me.panel_x, me.panel_y) then 4 else 0x10)
     end
 end
 
@@ -146,7 +143,8 @@ local function dash(me: Object)
     if center ~= old_x and navi_chips.between(me.pos.x, old_x, center) then
         -- (0x080BE01E adds 0 to his damage.)
         s.crossed = int.u8(s.crossed + 1)
-        if not field.check(me.panel_x, me.panel_y, SOLID, OCCUPIED) then
+        -- (A panel he crosses must be solid, with no body on it.)
+        if not field.check(me.panel_x, me.panel_y, "solid", "any_body") then
             me:set_action(0x10)
             return
         end

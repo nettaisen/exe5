@@ -22,7 +22,6 @@ local SOUND_APPEAR = asset.sound("appear")
 local SOUND_PLAY = asset.sound("toad-melody")
 -- His notes (0x080BC9D8): 10 ticks each, the next 6 ticks in, running while dimmed.
 local CHAIN: { life: number, delay: number, dimmed: boolean } = { life = 0xA, delay = 6, dimmed = true }
-local SOLID = 0x10
 
 -- 0x080BC9AA: (x2, y2) lies in his cone from (x, y): not behind, and no more rows off than columns ahead.
 local function in_cone(me: Object, x: number, y: number, x2: number, y2: number): boolean
@@ -84,7 +83,7 @@ local function stand(me: Object)
         me.anim = 0
     end
     if countdown(me, 0xA) then
-        me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 8 else 0xC)
+        me:set_action(if field.solid(me.panel_x, me.panel_y) then 8 else 0xC)
     end
 end
 

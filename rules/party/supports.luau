@@ -29,9 +29,16 @@ local function distance(x0: number, y0: number, x1: number, y1: number): number
 end
 
 -- 0x020038E4: a panel around `enemy` (dx by its facing) of the first group of `offsets` with any that passes
--- (`require`, `forbid`), one of those drawn with RNG2; and the flip the support takes there (the last entry's of the
--- group, its flip byte against the enemy's flip). Nil when the enemy isn't on the field or no group has one.
-function supports.around(enemy: Object, offsets: { { { number } } }, require: number, forbid: number): (number?, number?, number)
+-- (`require`, `forbid`, of side `of`), one of those drawn with RNG2; and the flip the support takes there (the last
+-- entry's of the group, its flip byte against the enemy's flip). Nil when the enemy isn't on the field or no group has
+-- one.
+function supports.around(
+    enemy: Object,
+    offsets: { { { number } } },
+    require: PanelFlags?,
+    forbid: PanelFlags?,
+    of: number?
+): (number?, number?, number)
     local ex, ey = enemy.panel_x, enemy.panel_y
     if not field.valid(ex, ey) then
         return nil, nil, 0
@@ -43,7 +50,7 @@ function supports.around(enemy: Object, offsets: { { { number } } }, require: nu
         for _, e in group do
             flip = bit32.bxor(e[3], enemy.flip)
             local x, y = ex + e[1] * dir, ey + e[2]
-            if field.check(x, y, require, forbid) then
+            if field.check(x, y, require, forbid, of) then
                 table.insert(found, x + y * 0x10)
             end
         end
@@ -57,15 +64,22 @@ end
 
 -- 0x02003864 (`farthest`: 0x02003D28): of the enemies on the other side's list of alive actors, in slot order, each
 -- with a panel around it (`supports.around`, a draw for each), the one nearest `navi` (the first of a tie; the farthest,
--- the first of a tie, over 0); its panel and flip.
-function supports.target(navi: Object, offsets: { { { number } } }, require: number, forbid: number, farthest: boolean?): (number?, number?, number)
+-- the first of a tie, over 0); its panel and flip. (`require` and `forbid` of side `of`.)
+function supports.target(
+    navi: Object,
+    offsets: { { { number } } },
+    require: PanelFlags?,
+    forbid: PanelFlags?,
+    farthest: boolean?,
+    of: number?
+): (number?, number?, number)
     local best = if farthest then 0 else 0xFF
     local bx: number?, by: number?, bflip = nil, nil, 0
     local other = 1 - navi.alliance
     for i = 1, 4 do
         local enemy = battle.alive_actor_slot(other, i)
         if enemy then
-            local x, y, flip = supports.around(enemy, offsets, require, forbid)
+            local x, y, flip = supports.around(enemy, offsets, require, forbid, of)
             if x and y then
                 local d = distance(navi.panel_x, navi.panel_y, enemy.panel_x, enemy.panel_y)
                 if (farthest and d > best) or (not farthest and d < best) then

@@ -29,39 +29,26 @@ local meddy = {}
 local SPRITE = asset.sprite("meddy")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_THROW = asset.sound("minibomb-throw")
-local SOLID = 0x10
 -- When she throws (ticks left of her windup).
 local THROW = 0x84
 
-type Filter = { require: number, forbid: number }
--- By side: an enemy navi in the enemy's area (0x080BBE74); a free solid panel of the enemy's area, then any free
+type Filter = PanelCondition
+-- Of her side: an enemy navi in the enemy's area (0x080BBE74); a free solid panel of the enemy's area, then any free
 -- one of it (0x080BBE88, 0x080BBEBC); a panel of the enemy's area (0x080BBE9C).
-local ENEMY_NAVI: { [number]: Filter } = {
-    [0] = { require = 0x0400_0020, forbid = 0 },
-    [1] = { require = 0x0800_0000, forbid = 0x20 },
-}
-local BESIDE: { [number]: Filter } = {
-    [0] = { require = 0x30, forbid = 0x0F88_0080 },
-    [1] = { require = 0x10, forbid = 0x0F88_00A0 },
-}
-local BESIDE_ANY: { [number]: Filter } = {
-    [0] = { require = 0x20, forbid = 0x0F88_0080 },
-    [1] = { require = 0, forbid = 0x0F88_00A0 },
-}
-local ENEMY_AREA: { [number]: Filter } = {
-    [0] = { require = 0x20, forbid = 0 },
-    [1] = { require = 0, forbid = 0x20 },
-}
+local ENEMY_NAVI: Filter = { require = { "enemy_body", "enemy_area" } }
+local BESIDE: Filter = { require = { "solid", "enemy_area" }, forbid = "occupied" }
+local BESIDE_ANY: Filter = { require = "enemy_area", forbid = "occupied" }
+local ENEMY_AREA: Filter = { require = "enemy_area" }
 -- The panels beside a navi, in order (0x080BBEB0): behind and ahead (a capsule there bursts along its row), above
 -- and below (along its column).
 local AROUND = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } }
 
--- The panels around (x, y) that meet `f`, in order.
-local function beside(x: number, y: number, f: Filter): { number }
+-- The panels around (x, y) that meet `f` (of side `side`), in order.
+local function beside(x: number, y: number, f: Filter, side: number): { number }
     local list: { number } = {}
     for _, o in AROUND do
         local px, py = x + o[1], y + o[2]
-        if field.check(int.u8(px), int.u8(py), f.require, f.forbid) then
+        if field.check(int.u8(px), int.u8(py), f.require, f.forbid, side) then
             list[#list + 1] = panels.pack(px, py)
         end
     end
@@ -77,7 +64,7 @@ local function pick(me: Object): (number, number, number)
     me:reserve_panel(s.pick_x, s.pick_y)
     local x, y, line = 0, 0, 0
     local found = false
-    local enemies = panels.filtered_except(me, ENEMY_NAVI[me.alliance].require, ENEMY_NAVI[me.alliance].forbid)
+    local enemies = panels.filtered_except(me, ENEMY_NAVI.require, ENEMY_NAVI.forbid, me.alliance)
     local ex: number?, ey: number? = nil, nil
     if #enemies == 1 then
         ex, ey = panels.x(enemies[1]), panels.y(enemies[1])
@@ -91,9 +78,9 @@ local function pick(me: Object): (number, number, number)
         end
     end
     if ex and ey then
-        local list = beside(ex, ey, BESIDE[me.alliance])
+        local list = beside(ex, ey, BESIDE, me.alliance)
         if #list == 0 then
-            list = beside(ex, ey, BESIDE_ANY[me.alliance])
+            list = beside(ex, ey, BESIDE_ANY, me.alliance)
         end
         if #list ~= 0 then
             battle.rng_positive()
@@ -115,8 +102,8 @@ local function pick(me: Object): (number, number, number)
     end
     if not found then
         -- (Shuffled from its side's order: docs/engine/side-symmetry.md.)
-        local cond = ENEMY_AREA[me.alliance]
-        local area = panels.filtered_except(me, cond.require, cond.forbid, me.alliance)
+        local cond = ENEMY_AREA
+        local area = panels.filtered_except(me, cond.require, cond.forbid, me.alliance, me.alliance)
         if #area == 0 then
             error("Meddy's pick (0x080BBCAA) finds no panel of the enemy's area and stores stale stack")
         end
@@ -163,7 +150,7 @@ local function appear(me: Object)
         me.visible = true
     end
     if navi_chips.wait_on_init(me, 4, true) then
-        me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 4 else 0xC)
+        me:set_action(if field.solid(me.panel_x, me.panel_y) then 4 else 0xC)
     end
 end
 

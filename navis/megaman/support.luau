@@ -32,11 +32,10 @@ local BUSTER_DAMAGE: { number } = { 20, 40, 60, 60, 80, 80, 100, 110, 120, 120 }
 local SWORD_DAMAGE: { number } = { 25, 50, 70, 70, 90, 90, 110, 140, 150, 150 }
 local BOMB_DAMAGE: { number } = { 30, 60, 80, 80, 100, 100, 120, 170, 180, 180 }
 local FLAGS = 0x9E
--- Where he may stand, by his side (solid and his side's own, nothing on it or reserved): the buster before the
+-- Where he may stand, of his side (solid and his side's own, nothing on it or reserved): the buster before the
 -- farthest enemy, 5 to 1 columns in front of it (Colonel's, 0x020CC27C); the sword the panel before the nearest
 -- (0x020CC354); the bomb three panels before any (0x020CC370, one drawn).
-local REQUIRE = { [0] = 0x10, [1] = 0x30 }
-local FORBID = { [0] = 0x0F8800A0, [1] = 0x0F880080 }
+local STAND: PanelCondition = { require = { "solid", "own_area" }, forbid = "occupied" }
 local BUSTER_AT: { { { number } } } = { { { 5, 0, 0 } }, { { 4, 0, 0 } }, { { 3, 0, 0 } }, { { 2, 0, 0 } }, { { 1, 0, 0 } } }
 local SWORD_AT: { { { number } } } = { { { 1, 0, 0 } }, { { 2, 0, 0 } } }
 local BOMB_AT: { { { number } } } = { { { 3, 0, 0 } } }
@@ -240,12 +239,12 @@ support.actor = party_support.make {
 local function choose(navi: Object): (number?, number?, number, number)
     local side = navi.alliance
     local found: { { number } } = {}
-    local bx, by, bflip = supports.target(navi, BUSTER_AT, REQUIRE[side], FORBID[side], true)
+    local bx, by, bflip = supports.target(navi, BUSTER_AT, STAND.require, STAND.forbid, true, side)
     if bx and by then
         local e: { number } = { BUSTER, bx :: number, by :: number, bflip :: number }
         table.insert(found, e)
     end
-    local sx, sy, sflip = supports.target(navi, SWORD_AT, REQUIRE[side], FORBID[side])
+    local sx, sy, sflip = supports.target(navi, SWORD_AT, STAND.require, STAND.forbid, false, side)
     if sx and sy then
         local e: { number } = { SWORD, sx :: number, sy :: number, sflip :: number }
         table.insert(found, e)
@@ -254,7 +253,7 @@ local function choose(navi: Object): (number?, number?, number, number)
     for i = 1, 4 do
         local enemy = battle.alive_actor_slot(1 - side, i)
         if enemy then
-            local x, y, flip = supports.around(enemy, BOMB_AT, REQUIRE[side], FORBID[side])
+            local x, y, flip = supports.around(enemy, BOMB_AT, STAND.require, STAND.forbid, side)
             if x and y then
                 local e: { number } = { x :: number, y :: number, flip :: number }
                 table.insert(spots, e)

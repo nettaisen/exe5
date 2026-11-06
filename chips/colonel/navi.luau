@@ -56,8 +56,7 @@ local SLASHES: { [number]: Effect } = {
     [2] = new.effect { sprite = screen_divide_sprite, anim = 2, palette = 0, steps = 13 },
 }
 -- The panels his target holds (0x080BA5B0): an enemy navi's body, by side.
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
-local SOLID = 0x10
+local ENEMY_NAVI = "enemy_body"
 -- When he strikes, and when his swing's sound plays (ticks left).
 local STRIKE, SWING = 0xC, 0x11
 
@@ -67,7 +66,7 @@ local function find_target(me: Object): (number, number)
     local y = me.panel_y
     local x = me.panel_x + me.facing
     while field.valid(x, y) do
-        if bit32.btest(field.flags(x, y), ENEMY_NAVI[me.alliance]) then
+        if field.any(x, y, ENEMY_NAVI, me.alliance) then
             return x, y
         end
         x += me.facing
@@ -130,7 +129,7 @@ local function stand(me: Object)
         me.anim = 0
     end
     if countdown(me, 0x14) then
-        local strike = field.check(me.panel_x, me.panel_y, SOLID, 0) and me.future_panel_x ~= 0
+        local strike = field.solid(me.panel_x, me.panel_y) and me.future_panel_x ~= 0
         me:set_action(if strike then 8 else 0xC)
     end
 end

@@ -24,8 +24,8 @@ local pulsar_burst_sprite = asset.sprite("pulsar-burst")
 local SOUND, BURST_SOUND = asset.sound("pulsar"), asset.sound("elec-pulse")
 local BURST = new.effect { sprite = pulsar_burst_sprite, anim = 0, palette = 0, steps = 32 }
 local HEIGHT, SPEED = 0x18_0000, 0x8_0000
--- What it may touch and go on bursting: bodies.
-local BODIES = 0x03800000
+-- What it may touch and go on bursting: other bodies (of either side) and neutral objects.
+local BODIES: { HitName } = { "own_other_body", "enemy_other_body", "neutral" }
 -- The burst: 8 ticks after the hit, over the ring around it; its hit lasts 26 ticks.
 local BURST_DELAY, BURST_TICKS = 8, 26
 -- The chips' parameters: the burst's hit modifier and status; the touch's hit modifier (Param4 set).
@@ -87,9 +87,8 @@ local function tick(me: Object)
     if battle.over() then
         return finish(me)
     end
-    local hit = c.hit_flags
-    if hit ~= 0 then
-        if not bit32.btest(hit, BODIES) then
+    if c.hit then
+        if not c:hit_any(BODIES) then
             return finish(me)
         end
         c:set_region(nil)

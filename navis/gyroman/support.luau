@@ -19,10 +19,15 @@ local EDGE_WAIT, BACK_WAIT = 6, 0xC
 -- The panel patterns where the areas interleave.
 local TWO_WAY = { [0x23] = true, [0x31] = true, [0x33] = true }
 -- Where a gust starts (0x0222B300 by the side): the other side's area.
-local AREA_REQUIRE = { [0] = 0x20, [1] = 0 }
-local AREA_FORBID = { [0] = 0, [1] = 0x20 }
--- A panel's flag that holds a gust back (0x00800000), and the flag of the other side's area (0x20).
-local BLOCKED, OTHER_AREA = 0x0080_0000, 0x20
+local AREA = "enemy_area"
+-- What on a panel holds a gust back (0x00800000): a neutral object.
+local BLOCKED = "neutral"
+
+-- Whether a panel is side 1's area, as the original reads its flags word's area bit (0x20): off the field, where the
+-- word is 0, it isn't.
+local function side_1_area(x: number, y: number): boolean
+    return field.check(x, y, "own_area", nil, 1)
+end
 local SOUND = asset.sound("dustbrk")
 local BLOW, WAIT = 0, 4
 
@@ -42,19 +47,18 @@ local support = {}
 -- gusts back or isn't the area's); 0 if the nearest holds them back.
 local function start_column(me: Object, y: number): number
     local side = me.alliance
-    local x = panels.closest_in_row(bit32.bxor(bit32.bxor(side, me.flip), 1), y, AREA_REQUIRE[side], AREA_FORBID[side])
-    if bit32.btest(field.flags(x, y), BLOCKED) then
+    local x = panels.closest_in_row(bit32.bxor(bit32.bxor(side, me.flip), 1), y, AREA, nil, side)
+    if field.any(x, y, BLOCKED) then
         return 0
     end
     local dir = if side == 0 then 1 else -1
-    local area = bit32.band(field.flags(x, y), OTHER_AREA)
+    local area = side_1_area(x, y)
     while true do
         x += dir
         if x < 1 or x > 6 then
             break
         end
-        local f = field.flags(x, y)
-        if bit32.btest(f, BLOCKED) or bit32.band(f, OTHER_AREA) ~= area then
+        if field.any(x, y, BLOCKED) or side_1_area(x, y) ~= area then
             break
         end
     end

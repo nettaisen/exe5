@@ -16,19 +16,18 @@ export type State = {
     timer: number,
 }
 
-local SOLID = 0x10
 local HIT_PARAM = 0x85
 local ANIM = 21
 local TICKS = 10
 local SOUND = asset.sound("col-army-2")
 -- The panels holding the other side's navi's body, by side (0x080F0D3C).
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
+local ENEMY_NAVI = "enemy_body"
 -- The strikes' hit modifier (their first parameter 1's).
 local STRIKE_HIT_MOD = 0
 
 -- 0x080F0CF6: a strike on each panel holding an enemy navi, the list's last first.
 local function strafe(me: Object)
-    local list = panels.filtered_except(me, ENEMY_NAVI[me.alliance], 0)
+    local list = panels.filtered_except(me, ENEMY_NAVI, nil, me.alliance)
     local damage = int.u32(me.attack_damage + me.hit_param * 0x10000)
     for i = #list, 1, -1 do
         strike.spawn(me, panels.x(list[i]), panels.y(list[i]), me.attack_element, STRIKE_HIT_MOD, damage)
@@ -63,7 +62,7 @@ buster.action = new.action {
 
 -- 0x0800FB92
 local function setup(navi: Object): Action
-    if bit32.band(field.flags(navi.panel_x, navi.panel_y), SOLID) ~= 0 then
+    if field.solid(navi.panel_x, navi.panel_y) then
         return megaman_buster.setup(navi)
     end
     navi.attack_element = 0

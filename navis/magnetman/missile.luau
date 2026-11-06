@@ -32,9 +32,8 @@ local HP, WAIT = 20, 15
 local SPEED, TURNED_SPEED = 0x4_0000, 0x2_6666
 local ANIM_UP, ANIM_DOWN = 1, 2
 -- A panel holding the other side's navi's body, by side (0x080D27D8), and a body among what it hit.
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
-local BODY_HIT = 0x0F80_0000
-local SOLID = 0x10
+local ENEMY_NAVI = "enemy_body"
+local BODY_HIT: { HitName } = { "own_body", "enemy_body", "own_other_body", "enemy_other_body", "neutral" }
 
 -- Its turn up or down its column toward row `y`, from the panel's center `cx`: none toward its own row.
 local function turn(me: Object, y: number, cx: number)
@@ -67,7 +66,7 @@ local function turn_to_column(me: Object, cx: number)
     end
     local rows = {}
     for y = 1, 3 do
-        if field.check(me.panel_x, y, ENEMY_NAVI[me.alliance], 0) then
+        if field.check(me.panel_x, y, ENEMY_NAVI, nil, me.alliance) then
             table.insert(rows, y)
         end
     end
@@ -138,7 +137,7 @@ local function fly(me: Object)
         me.lifecycle = "destroy"
         return
     end
-    if bit32.band(field.flags(me.panel_x, me.panel_y), SOLID) ~= 0 then
+    if field.solid(me.panel_x, me.panel_y) then
         field.highlight(me.panel_x, me.panel_y)
     end
 end
@@ -156,7 +155,7 @@ local function tick(me: Object)
         battle.effect(me.pos, effects.explosion)
         gone = true
     end
-    if gone or bit32.band(c.hit_flags, BODY_HIT) ~= 0 then
+    if gone or c:hit_any(BODY_HIT) then
         c:set_region(nil)
         -- (The state byte alone.)
         me.lifecycle = "destroy"

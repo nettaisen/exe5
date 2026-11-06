@@ -23,7 +23,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    local gone = c.hit_flags ~= 0
+    local gone = c.hit
     if not gone then
         local z = me.pos.z
         if z <= REACHES then

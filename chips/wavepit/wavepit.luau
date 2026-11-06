@@ -16,7 +16,7 @@ local wavepit = {}
 
 -- What starts a chip's wave (its row of 0x080DAFA0, by the chip's first parameter): the panel flags it needs and those
 -- it mustn't have, whether the panel turns Normal, and the wave's palette. Each chip states its own.
-export type Pit = { require: number, forbid: number, mends: boolean, palette: number }
+export type Pit = { require: PanelFlags?, forbid: PanelFlags?, mends: boolean, palette: number }
 
 export type State = {
     -- Its palette (its first parameter), and whether it may stand off solid ground (its second: MudWave's first
@@ -30,7 +30,6 @@ export type State = {
 local SPRITE = asset.sprite("pit-wave")
 local SOUND = asset.sound("pit-wave")
 local HIT_MOD = 3
-local SOLID = 0x10
 local WAIT = 20
 -- Each segment plays out over 27 of its sprite's steps (its animation's length).
 local FADE_STEPS = 27
@@ -39,7 +38,7 @@ local FADE_STEPS = 27
 local WAIT_ACTION, SPREAD, FADE = 0, 4, 8
 
 local function solid(me: Object): boolean
-    return field.check(me.panel_x, me.panel_y, SOLID, 0)
+    return field.solid(me.panel_x, me.panel_y)
 end
 
 -- 0x080DAE98: off solid ground (but where it may stand anywhere), gone; else 20 ticks.
@@ -80,7 +79,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local a = me.action

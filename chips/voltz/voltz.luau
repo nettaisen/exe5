@@ -144,7 +144,7 @@ end
 local function shock_tick(me: Object)
     local c = me.collision
     c:remove()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local left = me.timer - 1
@@ -293,7 +293,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         leave(me)
     elseif me.hp == 0 then
         battle.effect(me.pos, PUFF)

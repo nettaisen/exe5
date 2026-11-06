@@ -67,7 +67,7 @@ end
 local function tick(me: Object)
     local c = me.collision
     c:remove()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local a = me.action
@@ -127,9 +127,8 @@ hotbody.flame = new.kind {
 
 -- ---- The fire -------------------------------------------------------------------------------------------------------
 
--- What a flame spreads onto (0x080E6CC4): the other side's bodies and objects, and neutral objects; and solid.
-local SPREADS_ONTO = { [0] = 0x0580_0000, [1] = 0x0A80_0000 }
-local SOLID = 0x10
+-- What a flame spreads onto (0x080E6CC4): the other side's bodies and other bodies, and neutral objects; and solid.
+local SPREADS_ONTO: { PanelFlag } = { "enemy_body", "enemy_other_body", "neutral" }
 -- The eight panels around one (0x080E6CCC), clockwise from the one above.
 local AROUND = { { 0, -1 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, 1 }, { -1, 1 }, { -1, 0 }, { -1, -1 } }
 local EVERY = 30
@@ -175,11 +174,9 @@ end
 -- 0x080E6C5C: from (x, y), the panels around it the fire spreads onto.
 local function spread_from(me: Object, x: number, y: number)
     local s = me.state :: FireState
-    local onto = SPREADS_ONTO[me.alliance]
     for _, d in AROUND do
         local px, py = x + d[1], y + d[2]
-        local f = field.flags(px, py)
-        if f ~= 0 and bit32.btest(f, onto) and bit32.btest(f, SOLID) and not is_lit(s, px, py) then
+        if field.any(px, py, SPREADS_ONTO, me.alliance) and field.solid(px, py) and not is_lit(s, px, py) then
             light(me, px, py)
         end
     end

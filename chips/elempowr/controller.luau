@@ -18,27 +18,25 @@ export type State = {
 -- The side's bonuses (`battle.add_special_bonus`'s index): the Atk+ bonus (the side state's +0x36).
 local ATTACK_BONUS = 0
 local PER_PANEL, MAX_PANELS = 10, 9
--- The flag bit each type's panels have (EXE5's panel types' words, 0x0800BCF0), what any panel the change touches
--- mustn't have (0x8000), and the change by type.
-local NOT = 0x8000
-local function back_to_normal(bit: number): PanelChange
-    local side = { require = bit, forbid = NOT }
+-- The flag each type's panels have (EXE5's panel types' words, 0x0800BCF0), what any panel the change touches
+-- mustn't be (missing), and the change by type.
+local function back_to_normal(flag: PanelFlag): PanelChange
     return panel_changer.change {
         panel = "normal",
         panels = "all",
         flicker = true,
         ticks = 30,
-        sides = { [0] = side, [1] = side },
+        condition = { require = flag, forbid = "missing" },
         tick_sound = panel_changer.TICK_SOUND,
         change_sound = panel_changer.CHANGE_SOUND,
     }
 end
 local CHANGES: { [string]: PanelChange } = {
-    lava = back_to_normal(0x1000),
-    sea = back_to_normal(0x2_0000),
-    ice = back_to_normal(0x800),
-    magnet = back_to_normal(0x200),
-    grass = back_to_normal(0x400),
+    lava = back_to_normal("lava"),
+    sea = back_to_normal("sea"),
+    ice = back_to_normal("ice"),
+    magnet = back_to_normal("magnet"),
+    grass = back_to_normal("grass"),
 }
 
 -- `object_dead_getPanelsTypeCount`: the field's panels of `kind`.

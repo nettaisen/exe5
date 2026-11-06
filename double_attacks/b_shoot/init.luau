@@ -132,7 +132,7 @@ end
 local function ball_tick(me: Object)
     local c = me.collision
     c:remove()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local x, y = me.panel_x, me.panel_y

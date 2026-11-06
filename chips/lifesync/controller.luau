@@ -35,7 +35,7 @@ local SOUND_UP = asset.sound("hub")
 local SOUND_DOWN = asset.sound("lifesync")
 local SOUND_WARNING = asset.sound("err-select-91")
 -- The other side's player navi stands there (0x080E7394).
-local ENEMY_NAVI = { [0] = 0x00200000, [1] = 0x00400000 }
+local ENEMY_NAVI = "enemy_navi"
 -- The marker's attach point on its target's sprite.
 local MARK_POINT = 0x1B
 -- (The battle effects that make it only wait: 1, a boss rank; 8, a link battle.)
@@ -46,7 +46,7 @@ lifesync.marker = marker.make_kind { id = "lifesync/marker", sprite = hit_sparks
 -- 0x080E7356 (EXE6's `sub_80E7486`): if the panel shows the other side's player navi, the first combatant (both
 -- sides' slots) whose collision is on it.
 local function combatant_on(x: number, y: number, side: number): Object?
-    if not bit32.btest(field.flags(x, y), ENEMY_NAVI[side]) then
+    if not field.any(x, y, ENEMY_NAVI, side) then
         return nil
     end
     for s = 0, 1 do

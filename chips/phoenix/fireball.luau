@@ -71,7 +71,7 @@ local ACTIONS = { [0] = show, [4] = fall, [8] = burst }
 local function tick(me: Object)
     local c = me.collision
     c:remove()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     me:hit_spark()

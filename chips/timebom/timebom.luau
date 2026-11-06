@@ -41,23 +41,16 @@ timebom.kind = countdown.make_kind("timebom/countdown", {
     bursts = panel_bursts.kind,
 })
 
--- Where the search for each row's panel starts and what it looks for, by side (0x080E351C: the other side's
--- panels; 0x080E34B0: the user's), and what the panel the bomb goes on must be.
-local OTHER_SIDES: { [number]: PanelCondition } = {
-    [0] = { require = 0x20, forbid = 0 },
-    [1] = { require = 0, forbid = 0x20 },
-}
-local OWN_SIDES: { [number]: PanelCondition } = {
-    [0] = { require = 0, forbid = 0x20 },
-    [1] = { require = 0x20, forbid = 0 },
-}
-local SOLID, BODIES = 0x10, 0x0F80_0000
+-- What the search for each row's panel looks for, of the user's side (0x080E351C: the other side's panels;
+-- 0x080E34B0: the user's).
+local OTHER_SIDES: PanelCondition = { require = "enemy_area" }
+local OWN_SIDES: PanelCondition = { require = "own_area" }
 
--- `object_getFirstPanelInDirectionFiltered`: from (x, y) by `step` columns, the first panel meeting `cond`, while
--- the panels are on the field (nil: none).
-local function first(x: number, y: number, cond: PanelCondition, step: number): number?
+-- `object_getFirstPanelInDirectionFiltered`: from (x, y) by `step` columns, the first panel meeting `cond` (of side
+-- `side`), while the panels are on the field (nil: none).
+local function first(x: number, y: number, cond: PanelCondition, step: number, side: number): number?
     while true do
-        if field.check(x, y, cond.require, cond.forbid) then
+        if field.check(x, y, cond.require, cond.forbid, side) then
             return x
         end
         x += step
@@ -74,13 +67,14 @@ local function target(me: Object): (number?, number?)
     local back = -me.facing
     local rows: { { number } } = {}
     for y = 1, 3 do
-        local far = first(start, y, OTHER_SIDES[me.alliance], back)
+        local far = first(start, y, OTHER_SIDES, back, me.alliance)
         -- (The game tests the column for zero: column 0 is off the field.)
         if far and far ~= 0 then
-            local near = first(far, y, OWN_SIDES[me.alliance], back)
+            local near = first(far, y, OWN_SIDES, back, me.alliance)
             if near and near ~= 0 then
+                -- (The panel the bomb goes on: solid, no body on it.)
                 local x = near + me.facing
-                if field.check(x, y, SOLID, BODIES) then
+                if field.check(x, y, "solid", "any_body") then
                     table.insert(rows, { x, y })
                 end
             end

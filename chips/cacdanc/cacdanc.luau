@@ -33,9 +33,9 @@ local START_Z, FALL_GRAVITY = 0xA0_0000, int.i32(0xFFFFC000)
 local BOUNCE_TICKS, BOUNCE_GRAVITY = 10, int.i32(0xFFFF0000)
 -- The puff it goes in (effect row 0x14).
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
--- The other side's navis (0x080DC860, 0x080E7F54) and the panels beside one (0x080DC868, 0x080E7F5C).
-local TARGETS = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
-local SOLID = 0x10
+-- The other side's navis (0x080DC860, 0x080E7F54: the other side's body) and the panels beside one (0x080DC868,
+-- 0x080E7F5C).
+local TARGETS = "enemy_body"
 
 -- Its actions.
 local FALL, BOUNCE = 0, 4
@@ -49,19 +49,18 @@ end
 -- 0x080DC7B0: the panel it bounces to: a random one beside it (left, then right) with one of the other side's navis,
 -- else a random one beside it on the field.
 local function next_panel(me: Object): (number, number)
-    local targets = TARGETS[me.alliance]
     local list: { number } = {}
     for _, dx in { -1, 1 } do
         local x, y = me.panel_x + dx, me.panel_y
-        local f = field.flags(x, y)
-        if f ~= 0 and bit32.btest(f, targets) then
+        if field.any(x, y, TARGETS, me.alliance) then
             list[#list + 1] = panels.pack(x, y)
         end
     end
     if #list == 0 then
         for _, dx in { -1, 1 } do
             local x, y = me.panel_x + dx, me.panel_y
-            if field.flags(x, y) ~= 0 then
+            -- (On the field: its flags word isn't 0.)
+            if field.check(x, y) then
                 list[#list + 1] = panels.pack(x, y)
             end
         end
@@ -137,7 +136,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         finish(me)
     else
         local a = me.action
@@ -227,7 +226,7 @@ export type DancerState = {
 -- 0x080E7EAC: a cactus on a random panel with one of the other side's navis on it, or on a coin flip on a random
 -- solid one beside that.
 local function drop(me: Object)
-    local list = panels.filtered(TARGETS[me.alliance], 0)
+    local list = panels.filtered(TARGETS, nil, me.alliance)
     if #list == 0 then
         return
     end
@@ -236,7 +235,7 @@ local function drop(me: Object)
     if bit32.btest(battle.rng_positive(), 0x20) then
         local beside: { number } = {}
         for _, dx in { 1, -1 } do
-            if field.check(x + dx, y, SOLID, 0) then
+            if field.solid(x + dx, y) then
                 beside[#beside + 1] = panels.pack(x + dx, y)
             end
         end

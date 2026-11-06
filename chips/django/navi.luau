@@ -49,19 +49,17 @@ local SOUND_LAND = asset.sound("rockfall")
 local SOUND_BEAM = asset.sound("sun-beam")
 
 -- What he looks for ahead in his row (0x080BF594): an enemy navi's body.
-local ENEMY_NAVI = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+local ENEMY_NAVI = "enemy_body"
 -- Where the rubble falls (0x080BF608): beside the coffin's panel.
 local RUBBLE_AT = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } }
 -- The purifying hits: element 5 (the sun's), on the coffin's 3x3, no spark; the first bugs its chip's.
 local SUN_ELEMENT = 5
-local SOLID = 0x10
 
 -- 0x080BF542: the panel of the first enemy navi ahead in his row; x 0 when none is before the edge.
 local function find_target(me: Object): (number, number)
     local x, y = me.panel_x + me.facing, me.panel_y
-    local enemy = ENEMY_NAVI[me.alliance]
     while field.valid(x, y) do
-        if bit32.band(field.flags(x, y), enemy) ~= 0 then
+        if field.any(x, y, ENEMY_NAVI, me.alliance) then
             return x, y
         end
         x += me.facing

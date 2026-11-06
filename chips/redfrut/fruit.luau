@@ -50,12 +50,12 @@ local APPEAR_SOUND, BREAK_SOUND = asset.sound("appear"), asset.sound("hit-bomb-1
 local SHOWN_TICKS, PUFF_TICKS = 40, 4
 -- Where it neither drops nor hops (0x080D8280): the back columns, reserved while it looks.
 local BACK_COLUMNS = { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 6, 1 }, { 6, 2 }, { 6, 3 } }
--- A free panel to land on: solid, with nothing on it (no body, neutral object, blocker or reservation).
-local SOLID, OCCUPIED = 0x10, 0x0F880080
 -- Its sprite parts not drawn by the hops left (0x080D8314: 6 for more than 5).
 local HIDDEN_PARTS = { [0] = 0x1F000000, 0x2F000000, 0x37000000, 0x3B000000, 0x3D000000, 0x3E000000, 0x3F000000 }
--- What broke it, by side (0x080D828C): side 0's attacks, objects and bodies; side 1's.
-local SIDE_0, SIDE_1 = 0xAA000000, 0x55000000
+-- What broke it (0x080D828C, by side: side 0's attacks, objects, bodies and other bodies, 0xAA000000; side 1's,
+-- 0x55000000): its own side's, and the other side's.
+local OWN_SIDE: { HitName } = { "own_attack", "own_object", "own_body", "own_other_body" }
+local ENEMY_SIDE: { HitName } = { "enemy_attack", "enemy_object", "enemy_body", "enemy_other_body" }
 local NONE = 0xFF
 
 -- The actions (0x080D8008).
@@ -105,7 +105,7 @@ local function other_rows(y: number): { number }
     for row = 1, 3 do
         if row ~= y then
             for x = 1, 6 do
-                if field.check(x, row, SOLID, OCCUPIED) then
+                if field.check(x, row, "solid", "occupied") then
                     list[#list + 1] = panels.pack(x, row)
                 end
             end
@@ -118,7 +118,7 @@ end
 local function row_of(y: number): { number }
     local list = {}
     for x = 1, 6 do
-        if field.check(x, y, SOLID, OCCUPIED) then
+        if field.check(x, y, "solid", "occupied") then
             list[#list + 1] = panels.pack(x, y)
         end
     end
@@ -194,12 +194,12 @@ end
 
 -- 0x080D828C: the side whose attack, object or body broke it (alone).
 local function breaking_side(me: Object)
-    local flags = me.collision.hit_flags
-    local by = (if bit32.btest(flags, SIDE_0) then 1 else 0) + (if bit32.btest(flags, SIDE_1) then 2 else 0)
-    if by == 1 then
-        state(me).breaker = 0
-    elseif by == 2 then
-        state(me).breaker = 1
+    local c = me.collision
+    local own, enemy = c:hit_any(OWN_SIDE), c:hit_any(ENEMY_SIDE)
+    if own and not enemy then
+        state(me).breaker = me.alliance
+    elseif enemy and not own then
+        state(me).breaker = 1 - me.alliance
     end
 end
 
@@ -354,7 +354,7 @@ function fruit.instant(spec: Fruit): (user: Object, spec: InstantChipSpec) -> ()
         local ux, uy = user.panel_x, user.panel_y
         user:reserve_panel(ux, uy)
         local x, y = sparing_back_columns(user, function()
-            return panels.filtered(SOLID, OCCUPIED)
+            return panels.filtered("solid", "occupied")
         end)
         if x ~= 0 then
             spawn(user, x, y, spec)

@@ -41,7 +41,6 @@ local TARGETS: { [number]: { { number } } } = {
     [0] = { { 4, 1 }, { 5, 2 }, { 4, 2 }, { 5, 1 } },
     [1] = { { 2, 1 }, { 1, 2 }, { 2, 2 }, { 1, 1 } },
 }
-local SOLID = 0x10
 
 export type BallState = {
     -- Its kick, 1 to 4 (Param1, its variant: 4 to 7).
@@ -271,7 +270,7 @@ local function appear(me: Object)
     if left > 0 then
         return
     end
-    me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 4 else 0xC)
+    me:set_action(if field.solid(me.panel_x, me.panel_y) then 4 else 0xC)
 end
 
 -- Action 4 (0x080BF720): 40 ticks standing.

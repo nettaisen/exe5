@@ -34,7 +34,6 @@ local SOUND = asset.sound("wave")
 local ELEC = 3
 -- The sine: 24 pixels, one swing over 80 pixels (two panels) of travel; it starts at the middle of the turn.
 local AMPLITUDE, SWING, START = 24, 0x50_0000, 0x8000
-local BODIES = 0x0F800000
 
 local function finish(me: Object)
     me.collision:set_region(nil)
@@ -69,14 +68,14 @@ local function tick(me: Object)
             if here ~= s.hit_at then
                 c:set_region(regions.single)
             end
-        elseif not field.check(me.panel_x, me.panel_y, 0, BODIES) then
+        elseif not field.check(me.panel_x, me.panel_y, nil, "any_body") then
             me:set_lifecycle("destroy")
             return
         else
             c:set_region(regions.single)
         end
     end
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
         s.hit_at = here
     end

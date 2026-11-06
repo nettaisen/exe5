@@ -31,7 +31,7 @@ local HEIGHT = 16 * 0x1_0000
 local SPEED, CROSSING_SPEED = 0x4_0000, 0x2_8000
 local HIT_MOD = 3
 -- An enemy's body on a panel, by its side (0x080DCD74, 0x080DCE00).
-local ENEMY_BODY = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+local ENEMY_BODY = "enemy_body"
 
 -- 0x0800CB28: `center` lies between where it was and where it is, either end counting.
 local function crossed(now: number, was: number, center: number): boolean
@@ -48,7 +48,7 @@ local function turn_back(me: Object, s: State)
     if s.turns ~= 0 then
         return
     end
-    if me.panel_x ~= last_column(me) and not bit32.btest(field.flags(me.panel_x, me.panel_y), ENEMY_BODY[me.alliance]) then
+    if me.panel_x ~= last_column(me) and not field.any(me.panel_x, me.panel_y, ENEMY_BODY, me.alliance) then
         return
     end
     local v = me.vel
@@ -61,7 +61,7 @@ end
 local function turn_around(me: Object, s: State)
     local v = me.vel
     if s.turns == 0 then
-        if me.panel_x ~= last_column(me) and #panels.in_column(me.panel_x, ENEMY_BODY[me.alliance], 0) == 0 then
+        if me.panel_x ~= last_column(me) and #panels.in_column(me.panel_x, ENEMY_BODY, nil, me.alliance) == 0 then
             return
         end
         me.vel = Vec3.new(0, if me.panel_y == 1 then CROSSING_SPEED else -CROSSING_SPEED, v.z)
@@ -95,7 +95,7 @@ end
 -- 0x080DCC78: a tick of its flight.
 local function fly(me: Object, s: State)
     local c = me.collision
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local cx, cy = field.center(me.panel_x, me.panel_y)

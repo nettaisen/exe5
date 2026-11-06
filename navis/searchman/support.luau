@@ -20,8 +20,8 @@ local search_scope_sprite = asset.sprite("search-scope")
 local DAMAGE: { number } = { 5, 5, 5, 5, 5, 5, 10, 10, 15, 15 }
 local FLAGS = 0x8A
 local SERCH_S = chips_serch_s["serch-s"]
--- The panel flag of the other side's navi, by side (`sub_80E7486`'s).
-local ENEMY_NAVI = { [0] = 0x00200000, [1] = 0x00400000 }
+-- The panel flag of the other side's navi, by side (`sub_80E7486`'s): its player navi.
+local ENEMY_NAVI = "enemy_navi"
 
 -- His actor's actions: the lead-in (4 ticks), the appearance (animation 3, 4 ticks), a wait (16), the aim and the
 -- shots, a wait (20), the warp out (animation 4, 4 ticks), the lead-out (4 ticks).
@@ -59,7 +59,7 @@ end
 -- `sub_80E7486`: if the panel shows the other side's navi, the first combatant (both sides' lists) whose collision is
 -- on it.
 local function combatant_on(x: number, y: number, side: number): Object?
-    if not bit32.btest(field.flags(x, y), ENEMY_NAVI[side]) then
+    if not field.any(x, y, ENEMY_NAVI, side) then
         return nil
     end
     for s = 0, 1 do

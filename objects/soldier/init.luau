@@ -248,9 +248,11 @@ local function init(me: Object)
     tick(me)
 end
 
--- The panel flags the search reads: a solid panel, and a body of each side on it.
-local SOLID = 0x10
-local BODY = { [0] = 0x0800_0000, [1] = 0x0400_0000 }
+-- What the search looks for (0x080CABA8 and 0x080CABF0, by side): the body of the armed side's enemy. And the word it
+-- tests, which it leaves in r2 when the gun's soldier answers (the soldier's position and element byte come of it):
+-- the panel flag of side 1's body, 0x04000000, for side 0, of side 0's, 0x08000000, for side 1.
+local ENEMY_BODY = "enemy_body"
+local ENEMY_BODY_WORD = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
 -- What EXE5's `object_getPanelParameters` leaves in r2: the address it calls `_object_getPanelDataOffset` through
 -- (0x0800BD1C, Thumb), which the search leaves in turn when the sword's soldier answers; the soldier's element byte
 -- comes of it (0x1D).
@@ -269,32 +271,30 @@ end
 -- no bit 0x10: not solid.)
 local function call(x: number, y: number): (number?, number, number)
     local panel = field.panel(x, y)
-    if panel == nil or bit32.band(field.flags(x, y), SOLID) == 0 then
+    if panel == nil or not field.solid(x, y) then
         return nil, 0, 0
     end
     local side = bit32.bxor(panel.alliance, 1)
     if not exe5.army(side) then
         return nil, 0, 0
     end
-    -- The enemy's bodies (0x080CABA8 and 0x080CABF0 by side), and the way the side faces
-    -- (`object_getAllianceDirection`).
-    local enemy = BODY[bit32.bxor(side, 1)]
+    -- The way the side faces (`object_getAllianceDirection`).
     local dir = if side == 0 then 1 else -1
     local px = x
     for _ = 1, 2 do
         px -= dir
-        local f = field.flags(column(px), y)
-        if f == 0 then
+        -- (Off the field, where the flags word is 0, the walk stops.)
+        if not field.check(column(px), y) then
             break
         end
-        if bit32.band(f, enemy) ~= 0 then
+        if field.any(column(px), y, ENEMY_BODY, side) then
             return 0, side, PANEL_LOOKUP_REGISTER
         end
     end
     px = x + dir
     while true do
-        if field.check(column(px), y, enemy, 0) then
-            return 1, side, enemy
+        if field.check(column(px), y, ENEMY_BODY, nil, side) then
+            return 1, side, ENEMY_BODY_WORD[side]
         end
         px += dir
         if not field.valid(column(px), y) then

@@ -50,7 +50,7 @@ local DRAW_TICKS, SOUND_AT, SLASH_AT, RECOVER_TICKS = 21, 17, 12, 5
 local COUNTER_TICKS = 16
 local HIT_MOD = 3
 -- An enemy body, by side (0x080BA5B0).
-local ENEMY_BODY = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+local ENEMY_BODY = "enemy_body"
 -- The slash: AIAttackVars +3's row of 0x080F8AF4 (0x080F8A30 and 0x080F8B00 for the warning) and its effect (0x48
 -- on), row 0, the routine's: the target and the two panels diagonally behind it.
 local REGION = regions.vee
@@ -66,7 +66,7 @@ local function target(me: Object): (number, number)
     local y = me.panel_y
     local x = me.panel_x + me.facing
     while field.valid(x, y) do
-        if bit32.btest(field.flags(x, y), ENEMY_BODY[me.alliance]) then
+        if field.any(x, y, ENEMY_BODY, me.alliance) then
             return x, y
         end
         x += me.facing

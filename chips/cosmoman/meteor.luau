@@ -24,7 +24,7 @@ local SOUND_HIT = asset.sound("hit-bomb-1")
 -- The explosion where it lands (effect 0).
 local EXPLOSION = new.effect { sprite = explosion_sprite, anim = 0, palette = 0, steps = 22 }
 -- What a panel must hold to take it (solid, or something on it).
-local TAKES = 0x0F80_0010
+local TAKES: { PanelFlag } = { "any_body", "solid" }
 
 -- 0x080DE72C: its look; over its caller's column on its target's row, 72 pixels up, heading for the target.
 local function init(me: Object)
@@ -81,7 +81,7 @@ local function fall(me: Object)
         me.pos = Vec3.new(int.i32(p.x + v.x), p.y, int.i32(p.z - v.z))
         return
     end
-    if bit32.band(field.flags(me.future_panel_x, me.future_panel_y), TAKES) ~= 0 then
+    if field.any(me.future_panel_x, me.future_panel_y, TAKES) then
         me:set_action(4)
     else
         me:set_lifecycle("destroy")

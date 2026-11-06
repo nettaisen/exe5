@@ -55,7 +55,7 @@ export type State = {
 -- The shield sits at the navi's sprite attach point 6.
 local SHIELD_POINT = 6
 -- A hit that breaks guards (the collision's hit flag 2).
-local BREAKS_GUARD = 0x2
+local BREAKS_GUARD = "break"
 -- The Reflect program's shot's height.
 local SHOT_Z = 0x14_0000
 
@@ -89,7 +89,7 @@ function guard.action(spec: Spec): Action
         end
         local heedless = spec.heeds ~= nil and not spec.heeds()
         if not heedless and bit32.btest(me.collision.guard_dirs, bit32.lshift(1, me.flip)) then
-            if bit32.btest(me.collision.hit_flags, BREAKS_GUARD) then
+            if me.collision:hit_any(BREAKS_GUARD) then
                 drop_shield(me)
             elseif me.marker == 0 then
                 me.marker = 1

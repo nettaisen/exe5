@@ -38,8 +38,8 @@ local magnet = {}
 local SPRITE = asset.sprite("magnetman")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_CRASH = asset.sound("magnet-crash")
--- A navi's body among what it hit.
-local NAVI_HIT = 0x0C00_0000
+-- A navi's body among what it hit (either side's).
+local NAVI_HIT: { HitName } = { "own_body", "enemy_body" }
 local SPEED = 0x8_0000
 
 -- A magnet's variant.
@@ -90,9 +90,8 @@ local function slide(me: Object)
         stop(me)
         return
     end
-    local flags = c.hit_flags
-    if flags ~= 0 then
-        if bit32.band(flags, NAVI_HIT) ~= 0 then
+    if c.hit then
+        if c:hit_any(NAVI_HIT) then
             stop(me)
             return
         end
@@ -169,10 +168,9 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    local flags = c.hit_flags
-    if flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
-        if bit32.band(flags, NAVI_HIT) ~= 0 then
+        if c:hit_any(NAVI_HIT) then
             (me.state :: State).hit_navi = true
         end
     end

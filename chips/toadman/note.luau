@@ -53,7 +53,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 or not field.valid(me.panel_x, me.panel_y) or battle.over() then
+    if c.hit or not field.valid(me.panel_x, me.panel_y) or battle.over() then
         c:set_region(nil)
         me.visible = false
         me:set_lifecycle("destroy")

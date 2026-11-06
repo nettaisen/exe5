@@ -39,9 +39,9 @@ local ANIM_GATHER, ANIM_RETURN = 17, 3
 local GATHER_TICKS, RETURN_TICKS = 4, 4
 -- The magnets' variant (their fourth parameter, 1): hit modifier 3, no status; they go at once, and stop while dimmed.
 local VARIANT = magnet.variant { hit_mod = 3, waits_for_navi = false, runs_while_dimmed = false }
--- A panel holding the other side's navi's body, by side (0x080F137C), and one something stands on (as words).
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
-local TAKEN = 0x0F80_0000
+-- A panel holding the other side's navi's body, by side (0x080F137C), and one something stands on.
+local ENEMY_NAVI = "enemy_body"
+local TAKEN = "any_body"
 -- Where he is while away (off the field).
 local AWAY_X, AWAY_Y = 10, 10
 
@@ -53,9 +53,8 @@ end
 -- 0x080F135A (`object_getFirstPanelInDirectionFiltered`): from (x, y) on along the row, his way, the first column
 -- holding an enemy navi's body; 0 if none before the field's end.
 local function find_target(me: Object, x: number, y: number): number
-    local need = ENEMY_NAVI[me.alliance]
     while true do
-        if field.check(x, y, need, 0) then
+        if field.check(x, y, ENEMY_NAVI, nil, me.alliance) then
             return x
         end
         x += me.facing
@@ -98,7 +97,7 @@ local function send(me: Object, s: State)
     if target ~= 0 then
         -- 0x080F1384: the panel as far past the target as he is short of it, if it is on the field and free.
         local mirror = target + (target - x)
-        if not field.check(mirror, y, 0, TAKEN) then
+        if not field.check(mirror, y, nil, TAKEN) then
             mirror = 0
         end
         s.mirror_x = mirror

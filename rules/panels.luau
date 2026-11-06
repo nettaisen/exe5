@@ -36,14 +36,32 @@ local LAVA_BURN = panel_types.burn {
 local SPLASH = new.effect { sprite = splash_sprite, anim = 0, palette = 0, steps = 22 }
 
 return {
+    -- The flags the types set besides the engine's (solid, cracked), each its bit of the flags word: what each
+    -- type's `flags` and the panel conditions name.
+    type_flags = {
+        poison = 0x100,
+        magnet = 0x200,
+        grass = 0x400,
+        ice = 0x800,
+        lava = 0x1000,
+        holy = 0x2000,
+        broken = 0x4000,
+        missing = 0x8000,
+        on_field = 0x10000,
+        sea = 0x20000,
+    },
     types = {
-        missing = { flags = 0x00018000 },
-        broken = { flags = 0x00014000 },
-        normal = { flags = 0x00010010 },
-        cracked = { flags = 0x00010050 },
-        poison = { flags = 0x00010110, trail_sound = asset.sound("panel-poison"), stand = panel_types.poison },
+        missing = { flags = { "missing", "on_field" } },
+        broken = { flags = { "broken", "on_field" } },
+        normal = { flags = { "solid", "on_field" } },
+        cracked = { flags = { "solid", "cracked", "on_field" } },
+        poison = {
+            flags = { "solid", "poison", "on_field" },
+            trail_sound = asset.sound("panel-poison"),
+            stand = panel_types.poison,
+        },
         magnet = {
-            flags = 0x00010210,
+            flags = { "solid", "magnet", "on_field" },
             trail_sound = asset.sound("immobilizer"),
             cleared_by = "wood",
             -- By the direction of the move: none, up, down, back, forward, other.
@@ -53,32 +71,32 @@ return {
         },
         -- A fire hit counts once more on a body standing on grass, an elec one on the sea (0x08016AF6).
         grass = {
-            flags = 0x00010410,
+            flags = { "solid", "grass", "on_field" },
             trail_sound = asset.sound("grass"),
             cleared_by = "fire",
             doubles = "fire",
             stand = panel_types.grass(9),
         },
         ice = {
-            flags = 0x00010810,
+            flags = { "solid", "ice", "on_field" },
             trail_sound = asset.sound("freeze"),
             move_end = panel_types.ice_slides,
             slide = panel_types.ice,
         },
         lava = {
-            flags = 0x00011010,
+            flags = { "solid", "lava", "on_field" },
             trail_sound = asset.sound("panel-volcano"),
             expires = 960,
             burn = LAVA_BURN,
             cleared_by = "aqua",
         },
         holy = {
-            flags = 0x00012010,
+            flags = { "solid", "holy", "on_field" },
             trail_sound = asset.sound("panel-change"),
             damage_shift = 1,
         },
         sea = {
-            flags = 0x00030010,
+            flags = { "solid", "on_field", "sea" },
             trail_sound = asset.sound("sand-worm"),
             expires = 960,
             stand = panel_types.drains("fire"),
@@ -111,33 +129,24 @@ return {
     },
     step = {
         grounded = {
-            { require = 0x00000010, forbid = 0x0b8800a0 },
-            { require = 0x00000030, forbid = 0x07880080 },
+            require = { "solid", "own_area" },
+            forbid = { "reserved", "own_body", "own_other_body", "enemy_other_body", "neutral", "blocker" },
         },
         floor_free = {
-            { require = 0x00000000, forbid = 0x0b8800a0 },
-            { require = 0x00000020, forbid = 0x07880080 },
+            require = { "own_area" },
+            forbid = { "reserved", "own_body", "own_other_body", "enemy_other_body", "neutral", "blocker" },
         },
     },
     dash_step = {
-        grounded = {
-            { require = 0x00000010, forbid = 0x0f8800a0 },
-            { require = 0x00000030, forbid = 0x0f880080 },
-        },
-        floor_free = {
-            { require = 0x00000000, forbid = 0x0f8800a0 },
-            { require = 0x00000020, forbid = 0x0f880080 },
-        },
+        grounded = { require = { "solid", "own_area" }, forbid = { "occupied" } },
+        floor_free = { require = { "own_area" }, forbid = { "occupied" } },
     },
     any_side_step = {
         grounded = {
-            { require = 0x00000010, forbid = 0x07800000 },
-            { require = 0x00000010, forbid = 0x0B800000 },
+            require = { "solid" },
+            forbid = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" },
         },
-        floor_free = {
-            { require = 0x00000000, forbid = 0x07800000 },
-            { require = 0x00000000, forbid = 0x0B800000 },
-        },
+        floor_free = { forbid = { "enemy_body", "own_other_body", "enemy_other_body", "neutral" } },
     },
     mend = { normal = 600, battle_mode_1 = 600 },
     -- A reservation doesn't mark its holder (0x0801865C sets the panel's alone), and a destroyed holder's stay
@@ -145,7 +154,7 @@ return {
     reservations = "unmarked",
     -- The flags' bits a type owns, which a crack, a break or poison clears (0x0800AFF8 and its kin), the sea's
     -- 0x20000 among them.
-    type_mask = 0x00023F5F,
+    type_mask = { "solid", "cracked", "poison", "magnet", "grass", "ice", "lava", "holy", "sea" },
     -- What each panel is drawn as is in the panel (+6 its type, +7 its owner), which its refresh writes (0x0800AFE8):
     -- a change shows at once, and a dimmed tick, which runs no panel update, leaves a blink as it is.
     drawn = "in_panel",

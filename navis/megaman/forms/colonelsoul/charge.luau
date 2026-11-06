@@ -28,7 +28,7 @@ local SOUND = asset.sound("spin")
 local DRAW_TICKS, SLASH_AT, RECOVER_TICKS = 21, 9, 5
 local HIT_MOD = 3
 -- An enemy body, by side (0x080BA5B0).
-local ENEMY_BODY = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+local ENEMY_BODY = "enemy_body"
 -- The slash: AIAttackVars +3's row of 0x080EED64 and its effect (0x48 on: sprite 10-1F), row 0, the routine's (the
 -- only one that starts the action): the target and the two panels diagonally behind it.
 local REGION = regions.vee
@@ -40,7 +40,7 @@ local function target(me: Object): (number, number)
     local y = me.panel_y
     local x = me.panel_x + me.facing
     while field.valid(x, y) do
-        if bit32.btest(field.flags(x, y), ENEMY_BODY[me.alliance]) then
+        if field.any(x, y, ENEMY_BODY, me.alliance) then
             return x, y
         end
         x += me.facing

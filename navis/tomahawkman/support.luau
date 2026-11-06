@@ -17,12 +17,10 @@ local DAMAGE: { number } = { 40, 40, 40, 40, 50, 50, 70, 80, 90, 90 }
 local FLAGS = 0x9E
 -- His timer (0x02003E88: RNG2 bits 6–9 into 0x020CC2B0's offsets of 0x020CC2A8's ticks, weights 2/6/6/2).
 local TIMER: { number } = { 180, 180, 240, 240, 240, 240, 240, 240, 350, 350, 350, 350, 350, 350, 400, 400 }
--- By his side: the panels he searches from (0x020CC2C0: side 0 off the panels flagged 0x20, side 1 on them) and those
--- he may stand on (0x020CC2D0: solid and his side's own, nothing on it or reserved).
-local SEARCH_REQUIRE = { [0] = 0, [1] = 0x20 }
-local SEARCH_FORBID = { [0] = 0x20, [1] = 0 }
-local STAND_REQUIRE = { [0] = 0x10, [1] = 0x30 }
-local STAND_FORBID = { [0] = 0x0F8800A0, [1] = 0x0F880080 }
+-- Of his side: the panels he searches from (0x020CC2C0: his side's own) and those he may stand on (0x020CC2D0: solid
+-- and his side's own, nothing on it or reserved).
+local SEARCH: PanelCondition = { require = "own_area" }
+local STAND: PanelCondition = { require = { "solid", "own_area" }, forbid = "occupied" }
 -- The panel patterns where he may face back too (`GetBattlePanelColumnPattern`).
 local TWO_WAY = { [0x23] = true, [0x31] = true, [0x33] = true }
 
@@ -84,11 +82,11 @@ support.actor = party_support.make {
     end,
 }
 
--- `object_getFirstPanelInDirectionFiltered`: from column `x` stepping by `dir`, the first panel of row `y` that passes;
--- nil once off the field.
-local function first(x: number, y: number, require: number, forbid: number, dir: number): number?
+-- `object_getFirstPanelInDirectionFiltered`: from column `x` stepping by `dir`, the first panel of row `y` that passes
+-- (of side `side`); nil once off the field.
+local function first(x: number, y: number, cond: PanelCondition, dir: number, side: number): number?
     while true do
-        if field.check(x, y, require, forbid) then
+        if field.check(x, y, cond.require, cond.forbid, side) then
             return x
         end
         x += dir
@@ -130,22 +128,21 @@ local function search(side: number, flip: number): (number?, number?)
     local front = if bit32.bxor(side, flip) == 0 then 1 else -1
     local back = -front
     local start = bit32.bxor(bit32.bxor(side, flip), 1) * 5 + 1
-    local sreq, sforbid = SEARCH_REQUIRE[side], SEARCH_FORBID[side]
-    local req, forbid = STAND_REQUIRE[side], STAND_FORBID[side]
     local tried = false
     local step = if bit32.band(battle.rng_positive(), 0xF) <= 1 then "middle" else "edges"
     while true do
         if step == "edges" then
             local found: { { number } } = {}
             for _, y in { 1, 3 } do
-                local x = first(start, y, sreq, sforbid, back)
+                local x = first(start, y, SEARCH, back, side)
                 if x then
                     table.insert(found, { x, y })
                 end
             end
             local good: { { number } } = {}
             for _, p in found do
-                if reaches(side, p[1] + front, p[2], front) and field.check(p[1], p[2], req, forbid) then
+                local stands = field.check(p[1], p[2], STAND.require, STAND.forbid, side)
+                if reaches(side, p[1] + front, p[2], front) and stands then
                     table.insert(good, p)
                 end
             end
@@ -159,8 +156,8 @@ local function search(side: number, flip: number): (number?, number?)
                 step = "middle"
             end
         elseif step == "middle" then
-            local x = first(start, 2, sreq, sforbid, back)
-            if x and field.check(x, 2, req, forbid) and reaches(side, x + front, 2, front) then
+            local x = first(start, 2, SEARCH, back, side)
+            if x and field.check(x, 2, STAND.require, STAND.forbid, side) and reaches(side, x + front, 2, front) then
                 return x, 2
             end
             if tried then
@@ -172,7 +169,7 @@ local function search(side: number, flip: number): (number?, number?)
         else
             local found: { { number } } = {}
             for y = 1, 3 do
-                local x = first(start, y, req, forbid, back)
+                local x = first(start, y, STAND, back, side)
                 if x and reaches(side, x + front, y, front) then
                     table.insert(found, { x, y })
                 end

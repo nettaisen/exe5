@@ -13,7 +13,7 @@ local HOLY_TO_NORMAL = panel_changer.change {
     panels = "all",
     flicker = true,
     ticks = 0x1E,
-    sides = { [0] = { require = 0x2000, forbid = 0x8020 }, [1] = { require = 0x2020, forbid = 0x8000 } },
+    condition = { require = { "holy", "own_area" }, forbid = "missing" },
     change_sound = asset.sound("panel-change"),
 }
 

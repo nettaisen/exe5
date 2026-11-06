@@ -20,11 +20,10 @@ local DAMAGE: { number } = { 4, 4, 4, 4, 6, 7, 10, 15, 20, 20 }
 local FLAGS = 0x82
 -- His timer (0x02003BB0: RNG2 bits 6–9 into 0x020CC248's offsets of 0x020CC240's ticks, weights 2/6/6/2).
 local TIMER: { number } = { 130, 130, 170, 170, 170, 170, 170, 170, 210, 210, 210, 210, 210, 210, 250, 250 }
--- Where he may stand (0x020CC228): 5, else 4, 3, 2, 1 columns in front of the enemy, in its row; by his side
--- (0x020CC218): solid and his side's own (side 1's flag 0x20), nothing on it or reserved.
+-- Where he may stand (0x020CC228): 5, else 4, 3, 2, 1 columns in front of the enemy, in its row; of his side
+-- (0x020CC218): solid and his side's own, nothing on it or reserved.
 local OFFSETS: { { { number } } } = { { { 5, 0, 0 } }, { { 4, 0, 0 } }, { { 3, 0, 0 } }, { { 2, 0, 0 } }, { { 1, 0, 0 } } }
-local REQUIRE = { [0] = 0x10, [1] = 0x30 }
-local FORBID = { [0] = 0x0F8800A0, [1] = 0x0F880080 }
+local STAND: PanelCondition = { require = { "solid", "own_area" }, forbid = "occupied" }
 
 -- His shots (five), each: his firing animation 0xE, on its second tick the shot's sound, a bullet from the panel ahead
 -- at a height drawn from RNG2 (8, 16, 24 or 32 pixels: 0x02227114) and his muzzle flash (the attachment table's row
@@ -146,7 +145,7 @@ function support.tick(side: number)
     end
     local x, y, flip
     if not party.any_busy(side) then
-        x, y, flip = supports.target(navi, OFFSETS, REQUIRE[side], FORBID[side])
+        x, y, flip = supports.target(navi, OFFSETS, STAND.require, STAND.forbid, false, side)
     end
     if x == nil or y == nil then
         reset(side)

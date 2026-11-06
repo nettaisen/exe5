@@ -47,8 +47,7 @@ local AQUA = 2
 local HIT_MOD = 3
 -- The panel flags (0x080F1C98, 0x080F1C68): a body of the other side's, by his side; a panel that can be stood on;
 -- any body.
-local ENEMY_BODY: { [number]: number } = { [0] = 0x0400_0000, 0x0800_0000 }
-local STANDS, BODY = 0x10, 0x0F80_0000
+local ENEMY_BODY, STANDS, BODY = "enemy_body", "solid", "any_body"
 
 -- The steps, on the attack's step (the table's entry 4 is the step at 8, which nothing goes to).
 local DIVE, UNDER, SURFACE, STRIKE, HOLD, DOWN, HOME, STAND = 0x0, 0x8, 0xC, 0x10, 0x14, 0x18, 0x1C, 0x20
@@ -68,7 +67,7 @@ local function surfacing(me: Object): (number?, number?)
     local x = me.future_panel_x + front
     while field.valid(x, 1) do
         for y = 1, 3 do
-            if field.check(x, y, ENEMY_BODY[me.alliance], 0) and field.check(x - front, y, STANDS, BODY) then
+            if field.check(x, y, ENEMY_BODY, nil, me.alliance) and field.check(x - front, y, STANDS, BODY) then
                 return x - front, y
             end
         end

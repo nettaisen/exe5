@@ -42,7 +42,7 @@ local CAPE: FormOverlaySpec = { sprite = SPRITE, stepping = "while_dimmed", anim
 local SPAWNER_ADDRESS = 0x080C327F
 -- What keeps him away (0x080C2FFC: an enemy navi's body, by side), and where it is looked for (0x080162A4's list 17,
 -- the auto battle data's `two_columns`: his column and the one ahead, around the middle row).
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
+local ENEMY_NAVI = "enemy_body"
 local AROUND = "two_columns"
 -- The beast's parts (0x080C2F5C: animation, blinking ticks, holding ticks).
 local PARTS: { { number } } = {
@@ -229,7 +229,7 @@ local function init(me: Object)
     end
     local side = bit32.bxor(me.alliance, me.flip)
     local back = back_column(me)
-    local found = panels.random_offset(back, 2, ENEMY_NAVI[me.alliance], 0, AROUND, side)
+    local found = panels.random_offset(back, 2, ENEMY_NAVI, nil, AROUND, side, me.alliance)
     if found then
         me.lifecycle = "destroy"
         return

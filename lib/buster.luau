@@ -17,9 +17,9 @@ local buster = common.make {
     navi_arm = attachment.look { sprite = navi_arm_sprite, palette = 0 },
     recovery = require("../rules/buster").recovery,
     -- What stops a shot's panel count (0x0800D99A: one mask whichever side shoots, where EXE6's goes by the side):
-    -- bodies, neutral objects, blockers and reservations, and both sides' barrier bits, the shooter's own too (a
-    -- capsule of its own sitting in its row).
-    closed = { [0] = 0x0F880080, [1] = 0x0F880080 },
+    -- bodies, neutral objects, blockers and reservations, both sides' other bodies, the shooter's own too (a capsule
+    -- of its own sitting in its row).
+    closed = "occupied",
     attachment = attachment.kind,
 }
 

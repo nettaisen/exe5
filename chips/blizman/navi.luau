@@ -22,14 +22,24 @@ local blizman = {}
 local SPRITE = asset.sprite("blizzardman")
 local SOUND_APPEAR = asset.sound("appear")
 local SOUND_ROLL = asset.sound("blizzard-windup")
-local SOLID = 0x10
 -- When the ball goes and his arm comes down (ticks left of his windup).
 local THROW, DOWN = 0x40, 0x22
 -- His snowball's roller (EXE5's attack object #0xB7, 0x080DD234): rows 0x48 and 0x49.
 local ROLLER = rollers.make_kind {
     id = "blizman/roller",
     self_type = collision.hitbox,
-    target = new.collision { side0 = 0x3F800000, side1 = 0x3F800000, row_offset = 0x248 },
+    target = new.collision {
+        flags = {
+            "own_object",
+            "enemy_object",
+            "own_body",
+            "enemy_body",
+            "own_other_body",
+            "enemy_other_body",
+            "neutral",
+        },
+        row_offset = 0x248,
+    },
 }
 -- His snowball (EXE5's attack object #0xB2, 0x080DC880).
 local BALL = balls.make_kind {
@@ -68,7 +78,7 @@ local function appear(me: Object)
         me.visible = true
     end
     if countdown(me, 6, true) then
-        me:set_action(if field.check(me.panel_x, me.panel_y, SOLID, 0) then 4 else 0xC)
+        me:set_action(if field.solid(me.panel_x, me.panel_y) then 4 else 0xC)
     end
 end
 

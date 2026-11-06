@@ -22,8 +22,8 @@ export type State = {
 local SPRITE = asset.sprite("aqua-whirl")
 local SOUND = asset.sound("spout-beast-charge")
 local HIT_MOD = 3
--- 0x080D1A78: the panel flag of an enemy navi, by its side.
-local ENEMY_NAVI = { [0] = 0x0400_0000, 0x0800_0000 }
+-- 0x080D1A78: the panel flag of an enemy navi, by its side: the other side's body.
+local ENEMY_NAVI = "enemy_body"
 
 -- The actions: down (or up) its column, forward, up, back, home.
 local DOWN, FORWARD, UP, BACK, HOME = 0x0, 0x4, 0x8, 0xC, 0x10
@@ -88,9 +88,8 @@ end
 
 -- 0x080D1A4A: column `x` holds an enemy navi (rows 1 to 3).
 local function enemy_in_column(me: Object, x: number): boolean
-    local flag = ENEMY_NAVI[me.alliance]
     for y = 1, 3 do
-        if bit32.btest(field.flags(x, y), flag) then
+        if field.any(x, y, ENEMY_NAVI, me.alliance) then
             return true
         end
     end
@@ -159,7 +158,7 @@ local ACTIONS: { [number]: (Object) -> () } = {
 local function tick(me: Object)
     local c = me.collision
     c:remove()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
         if field.solid(me.panel_x, me.panel_y) then
             field.set_type(me.panel_x, me.panel_y, "sea")

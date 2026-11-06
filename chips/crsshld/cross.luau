@@ -29,7 +29,7 @@ end
 -- 0x080DB314: flying; on a navi, it snaps onto its panel and waits 8 ticks.
 local function cross_fly(me: Object)
     local c = me.collision
-    if c.hit_flags ~= 0 then
+    if c.hit then
         me:set_coordinates_from_panel()
         me.anim = 2
         me.timer = 8

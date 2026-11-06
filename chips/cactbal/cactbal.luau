@@ -76,7 +76,7 @@ end
 
 -- 0x080D1B58: the first hop; a hit ends it.
 local function first(me: Object)
-    if me.collision.hit_flags ~= 0 then
+    if me.collision.hit then
         finish(me)
         return
     end
@@ -93,7 +93,7 @@ end
 -- 0x080D1BFC: a hop ahead (counted); a hit sends it back a panel, or ends it from its fifth hop on.
 local function hop(me: Object)
     local s = me.state :: State
-    if me.collision.hit_flags ~= 0 then
+    if me.collision.hit then
         if s.hops >= HOPS_BEFORE_ENDING then
             finish(me)
         else
@@ -114,7 +114,7 @@ end
 
 -- 0x080D1CB0: a hop back a panel; a hit ends it.
 local function back(me: Object)
-    if me.collision.hit_flags ~= 0 then
+    if me.collision.hit then
         finish(me)
         return
     end
@@ -135,7 +135,7 @@ local function tick(me: Object)
     local c = me.collision
     c:remove()
     me:hit_spark()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         c:set_region(nil)
     end
     local was_x, was_y = me.panel_x, me.panel_y

@@ -4,8 +4,8 @@
 
 local aim = {}
 
--- An enemy's body, by side (0x08013090), and the rows looked at, by his row (0x08013098).
-local ENEMY_BODY: { [number]: number } = { [0] = 0x0400_0000, [1] = 0x0800_0000 }
+-- An enemy's body, by side (0x08013090: the other side's body), and the rows looked at, by his row (0x08013098).
+local ENEMY_BODY = "enemy_body"
 local ROWS: { [number]: { number } } = { [1] = { 1, 2, 3 }, [2] = { 2, 1, 3 }, [3] = { 3, 1, 2 } }
 
 -- The panel of the nearest enemy body ahead of `me`; none: nil.
@@ -14,11 +14,10 @@ function aim.nearest_enemy(me: Object): (number?, number?)
     if not rows then
         error(string.format("0x08013018 reads past 0x08013098 for row %d", me.panel_y))
     end
-    local body = ENEMY_BODY[me.alliance]
     local x = me.panel_x + me.facing
     while field.valid(x, 2) do
         for _, y in rows do
-            if bit32.btest(field.flags(x, y), body) then
+            if field.any(x, y, ENEMY_BODY, me.alliance) then
                 return x, y
             end
         end

@@ -149,7 +149,7 @@ local PHASES = { [0] = ready, [4] = fly, [8] = far_blast }
 local function tick(me: Object)
     local c = me.collision
     c:remove()
-    if c.hit_flags ~= 0 then
+    if c.hit then
         blow_up(me)
         c:set_region(nil)
         release(me)

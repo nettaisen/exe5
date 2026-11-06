@@ -45,7 +45,7 @@ local action = new.action {
             me.attack_damage = bit32.band(me.attack_damage + me.extra, 0xFFFF)
             s.target_x = math.clamp(me.panel_x + me.facing * 4, 0, 7)
             s.target_y = me.panel_y
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me.step, me.step_init = FIRE, 0
         elseif step == FIRE then
             -- 0x080F628A
@@ -80,7 +80,7 @@ local action = new.action {
             s.timer = bit32.band(t, 0xFFFF)
             if t < 0 then
                 me.anim = 0
-                me:set_status("using_action", false)
+                me.status.using_action = false
                 me:exit_attack()
             end
         else

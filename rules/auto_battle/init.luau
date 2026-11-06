@@ -85,7 +85,7 @@ local function idle(navi: Object)
         s.timed = true
     end
     if s.lifetime == 0 then
-        navi:set_attack(auto_battle.leave, 0)
+        navi:set_attack(auto_battle.leave, "plain")
         return
     end
     ai.run(navi, (navi.state :: { ai: any }).ai)
@@ -138,9 +138,9 @@ end
 
 -- The rules' `controller` is asked from a drive's start (a no-charge state's: DarkInvs's, a dark MegaMan's survival)
 -- or a Dark MegaMan's coming until an idle of the player's finds neither: then all it does is start the drive's state
--- over, which the state already is (rules.listen; the round's setup turns it off).
+-- over, which the state already is (rules.listening; the round's setup turns it off).
 function auto_battle.drive_started(side: number)
-    rules.listen(side, "controller", true)
+    rules.listening(side).controller = true
 end
 
 -- The navi type's idle (action 6) of a navi the rules drive: its AI index's. And the side's player's
@@ -150,7 +150,7 @@ end
 function auto_battle.controller(side: number, navi: Object): ("nothing" | "chip" | "buster" | "moved")?
     if navi.actor_type == "player" then
         local s = rules.state().drive
-        if navi:navi_state("no_charge") then
+        if navi.navi_flags.no_charge then
             -- A drive started since its last step (its timer above the one it stepped with): the state
             -- from the start, as the drive's start leaves it (0x0802C03A, then AIData +0xF0 set again).
             if navi.no_charge_timer > s.drive_ticks then
@@ -164,7 +164,7 @@ function auto_battle.controller(side: number, navi: Object): ("nothing" | "chip"
         ai.reset(navi, s)
         s.drive_ticks = 0
         if not dark_megaman_out() then
-            rules.listen(side, "controller", false)
+            rules.listening(side).controller = false
         end
         return nil
     end

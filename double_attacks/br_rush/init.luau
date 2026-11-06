@@ -536,7 +536,7 @@ local function megaman_finish(me: Object)
         battle.play_sound(SOUND_SWING)
         me.timer = FINISH_TICKS
         battle.shake_camera(3, 0xA)
-        battle.palette_flash(0, 0xA, true, false)
+        battle.palette_flash("one_layer", 0xA, true, false)
         me.phase_init = 4
     end
     if me.timer == FINISHER_AT then

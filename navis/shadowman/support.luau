@@ -145,10 +145,10 @@ local function status_free(x: number, y: number, side: number): boolean
     if o == nil then
         return false
     end
-    return o:status_timer("paralyze") == 0
-        and o:status_timer("confuse") == 0
-        and o:status_timer("immobilize") == 0
-        and o:status_timer("blind") == 0
+    return o.status_timers.paralyze == 0
+        and o.status_timers.confuse == 0
+        and o.status_timers.immobilize == 0
+        and o.status_timers.blind == 0
 end
 
 -- 0x021FF2C0: of the panels from the enemy area's far edge back across the field, column by column (rows 1 to 3), those

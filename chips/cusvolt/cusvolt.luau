@@ -128,7 +128,7 @@ local function fire(me: Object, s: State)
         me:set_animation(ANIM)
         me:open_counter_window()
         attachment.attach(me, GUN, "overlay")
-        me:set_status("using_action", true)
+        me.status.using_action = true
         if not battle.gauge_full() and battle.mode() ~= 6 and not battle.link() then
             battle.drain_custom_gauge(DRAIN)
         end

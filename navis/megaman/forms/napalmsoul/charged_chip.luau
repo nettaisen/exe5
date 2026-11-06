@@ -53,7 +53,7 @@ end
 local function throw(me: Object, s: State)
     if me.step_init == 0 then
         me:open_counter_window()
-        me:set_status("using_action", true)
+        me.status.using_action = true
         me:set_animation(THROW_ANIM)
         glow.spawn(me, FLASH)
         s.timer = 0

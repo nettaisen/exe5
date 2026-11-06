@@ -6,7 +6,7 @@
 --
 -- - 0 (0x080EFE48): the battle dims and the screen fades out; he shows white, no hit reaches him (untouchable), he
 --   stands on his future panel, a flash (effect 3) and a sound, his moves, his reactions and his attachments
---   dropped; his side marked (its statistic 1: the stand is spent). Once the fade is done the HUD's gauge, HP box
+--   dropped; his side marked (its statistic `last_stand`: the stand is spent). Once the fade is done the HUD's gauge, HP box
 --   and emotion window go.
 -- - 4 (0x080EFF10): his dark self leaves him and spirals back into him (actor object 0x2E: ../souls/shade's); 50
 --   ticks later another flash and a sound; 61 ticks.
@@ -37,8 +37,6 @@ export type State = {
 local FLASH = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 }
 local FLASH_SOUND = asset.sound("log-in")
 local CHANGE_SOUND = asset.sound("cross-change")
--- The side's statistic the stand marks (0x0800931C's byte 1, which 0x0802C16C reads).
-local STOOD = 1
 -- How long he is in auto battle (0x080EFF64).
 local DRIVE = 0x2D0
 -- The screen fades' speed.
@@ -55,7 +53,7 @@ local HUD_LAST_TURNS: { HudField } = { "hp_box", "emotion_window" }
 -- The parts shown or hidden, on every console.
 local function show_hud(parts: { HudField }, shown: boolean)
     for _, part in parts do
-        battle.set_hud(part, shown)
+        (battle.hud() :: any)[part] = shown
     end
 end
 
@@ -92,10 +90,10 @@ end
 local function fade_out(me: Object)
     if me.step_init == 0 then
         battle.set_dimmed(true)
-        me:set_request("volley", false)
-        me:set_navi_state("volley", true)
+        me.requests.volley = false
+        me.navi_flags.volley = true
         me.sprite.white = true
-        me:set_status("untouchable", true)
+        me.status.untouchable = true
         battle.screen_fade("transform_out", FADE_SPEED)
         me:snap_to_future_panel()
         flash(me)
@@ -103,8 +101,8 @@ local function fade_out(me: Object)
         -- Not moving, flinching, paralyzed, sliding or dragged, nor asked to slide or be dragged (flags 0x101C40,
         -- 0x110; +0x1F).
         stop_moving(me)
-        me:set_status("drag", false)
-        me:set_request("drag", false)
+        me.status.drag = false
+        me.requests.drag = false
         me:set_animation(0)
         me.related1 = nil
         me.overlay = nil
@@ -114,7 +112,7 @@ local function fade_out(me: Object)
             part.anim_loaded = 0xFF
         end
         overlays.keep_stepping(me)
-        battle.set_side_stat(me.alliance, STOOD, 1)
+        battle.set_side_stat(me.alliance, "last_stand", 1)
         me.step_init = 4
     end
     if not battle.screen_fading() then
@@ -149,7 +147,7 @@ local function take_over(me: Object)
     me.sprite.white = true
     me.no_charge_timer = DRIVE
     me.in_auto_battle = true
-    me:set_navi_state("no_charge", true)
+    me.navi_flags.no_charge = true
     auto_battle.drive_started(me.alliance)
     me:end_statuses()
     navi_status.end_anger(me, "unless_zero")
@@ -164,7 +162,7 @@ local function fade_in(me: Object)
         me.step_init = 4
     end
     if not battle.screen_fading() then
-        me:set_navi_state("volley", false)
+        me.navi_flags.volley = false
         battle.set_dimmed(false)
         me:exit_attack()
     end
@@ -199,12 +197,12 @@ function survival.hp_emptied(side: number, navi: Object): boolean
     if navi.actor_type ~= "player" then
         return navi.actor_type ~= "virus"
     end
-    if navi.ai_index ~= 0 or operation_battle() or battle.side_stat(side, STOOD) ~= 0 or battle.mode() == 1 then
+    if navi.ai_index ~= 0 or operation_battle() or battle.side_stat(side, "last_stand") ~= 0 or battle.mode() == 1 then
         return true
     end
     if battle.emotion(side) == "evil" then
         navi.hp = 1
-        navi:set_request("volley", true)
+        navi.requests.volley = true
         return true
     end
     return not battle.navi(side).form.base

@@ -152,7 +152,7 @@ local function comet_init(me: Object)
     me.collision:set_hit_effect(sparks.heavy)
     me.collision:set_region(nil)
     me.collision:present()
-    me:set_status("guard", true)
+    me.status.guard = true
     me.hp, me.max_hp = HP, HP
     me:set_lifecycle("update")
 end

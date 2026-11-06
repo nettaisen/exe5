@@ -71,7 +71,7 @@ hover.action = new.action {
                 s.timer = LAND_TICKS
             elseif count(s) then
                 me.anim = 0
-                me:set_navi_state("hovering", false)
+                me.navi_flags.hovering = false
                 own(me).land = false
                 me:end_attack()
             end
@@ -88,10 +88,10 @@ function hover.tick(during: Action): (navi: Object) -> ()
             return
         end
         local solid = bit32.band(field.flags(navi.panel_x, navi.panel_y), SOLID) ~= 0
-        local hovering = navi:navi_state("hovering")
+        local hovering = navi.navi_flags.hovering
         if not solid then
             if not hovering then
-                navi:set_navi_state("hovering", true)
+                navi.navi_flags.hovering = true
                 own(navi).take_off = true
             elseif navi.anim == 0 then
                 navi.anim = ANIM_FLY
@@ -107,11 +107,11 @@ function hover.idle(navi: Object)
     if own(navi).take_off then
         own(navi).take_off = false
         navi.attack_variant = 0
-        navi:set_attack(hover.action, 0)
+        navi:set_attack(hover.action, "plain")
     elseif own(navi).land then
         own(navi).land = false
         navi.attack_variant = 1
-        navi:set_attack(hover.action, 0)
+        navi:set_attack(hover.action, "plain")
     end
 end
 

@@ -107,7 +107,7 @@ function elemrage.action(count: number, ticks: number): Action
             me.anim = ANIM
             me:open_counter_window()
             attachment.attach(me, CLAW, "overlay", { anim = ARM_ANIM })
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = 0
             me.step_init = 4
         end

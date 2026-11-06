@@ -109,9 +109,9 @@ local function revert(me: Object, _s: State)
     me.related1 = nil
     me.overlay = nil
     for _, request in { "buster", "chip", "charged_chip", "back_special", "forced_charged_shot" } do
-        me:set_request(request :: Request, false)
+        (me.requests :: any)[request :: Request] = false
     end
-    me:set_navi_state("uninterruptible", false)
+    me.navi_flags.uninterruptible = false
     battle.set_dimmed(false)
     me:exit_attack()
 end

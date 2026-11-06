@@ -223,7 +223,7 @@ local function launching(me: Object, s: ActionState)
     if me.step_init == 0 then
         me:set_animation(THROW_ANIM)
         attachment.attach(me, LAUNCHER, "overlay", { anim = 1 })
-        me:set_status("using_action", true)
+        me.status.using_action = true
         battle.play_sound(SOUND)
         me.step_init = 4
         s.timer = 0
@@ -248,7 +248,7 @@ local function recover(me: Object, s: ActionState)
     local t = s.timer - 1
     s.timer = t
     if t < 0 then
-        me:set_status("using_action", false)
+        me.status.using_action = false
         me.related1 = nil
         me.overlay = nil
         me:exit_attack()

@@ -96,7 +96,7 @@ function gyroman.make(flight: Flight): Kind
             return
         end
         local user = me.related1 :: Object
-        if user:held("l") and user:held("r") then
+        if user.held.l and user.held.r then
             s.run = true
             battle.play_sound(SOUND_RUN)
         end

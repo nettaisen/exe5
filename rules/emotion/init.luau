@@ -99,7 +99,7 @@ local function swing(side: number, navi: Object)
     local swung = others[battle.rng_positive() % #others + 1]
     s.swung[i] = swung
     if swung == ANGRY then
-        navi:set_request("anger", true)
+        navi.requests.anger = true
     else
         battle.set_mood(side, SWING_MOODS[swung])
     end

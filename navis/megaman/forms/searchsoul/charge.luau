@@ -82,7 +82,7 @@ local function aim(me: Object, s: State)
         end
         return
     end
-    me:set_status("using_action", true)
+    me.status.using_action = true
     s.shots = SHOTS
     local x, y = find(me)
     if x == nil or y == nil then

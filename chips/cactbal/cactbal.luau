@@ -235,7 +235,7 @@ function cactbal.action(palette: number): Action
             me:set_animation(THROW_ANIM)
             arm.raise(me)
             me:open_counter_window()
-            me:set_status("using_action", true)
+            me.status.using_action = true
             s.timer = THROW_TICKS
             me.step_init = 4
         end

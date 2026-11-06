@@ -185,7 +185,7 @@ local function searchman_shots(me: Object)
         if s.scope and not scope.paused(s.scope) then
             -- sub_80103BC: the side's navi.
             local navi = battle.player(me.alliance)
-            if navi and not navi:dimmed_pressed("a") then
+            if navi and not navi.dimmed_pressed.a then
                 return
             end
         end

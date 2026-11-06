@@ -44,7 +44,7 @@ local START, WAIT, SWINGING = 0x0, 0x4, 0x8
 
 -- 0x080FC014: the action is his; the routine's variant goes straight on.
 local function start(me: Object)
-    me:set_status("using_action", true)
+    me.status.using_action = true
     me.step, me.step_init = WAIT, 0
 end
 
@@ -83,7 +83,7 @@ local function swing(me: Object, s: State)
     me:set_animation(0)
     chain.show(me)
     chain.let_go(me)
-    me:set_status("using_action", false)
+    me.status.using_action = false
     me:exit_attack()
 end
 

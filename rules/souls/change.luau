@@ -65,7 +65,7 @@ local function prepare(me: Object)
     flash(me)
     battle.play_sound(FLASH_SOUND)
     stop_moving(me)
-    me:set_navi_state("form_change_sprite_held", true)
+    me.navi_flags.form_change_sprite_held = true
     set_step(me, IMAGE)
 end
 
@@ -93,7 +93,7 @@ end
 local function emerge(me: Object, s: State, target: FormDef, chaos: boolean)
     me.sprite.white = true
     if me.step_init == 0 then
-        me:set_navi_state("form_change_sprite_held", false)
+        me.navi_flags.form_change_sprite_held = false
         -- (EXE5 DS's the guard's and the dive's states too, 0x02060356.)
         local navi = me.state :: NaviState
         navi.guarded, navi.diving = false, false
@@ -153,7 +153,7 @@ local function settle(me: Object, s: State)
     if int.i16(s.timer) >= 0 then
         return
     end
-    me:set_navi_state("form_change", false)
+    me.navi_flags.form_change = false
     battle.set_shake_through_pause(false)
     me:exit_attack()
 end
@@ -179,7 +179,7 @@ function change.update(me: Object, s: State)
     else
         error(string.format("the soul change's step %#x runs off its table (0x08011F94)", step))
     end
-    if not me:navi_state("form_change_sprite_held") then
+    if not me.navi_flags.form_change_sprite_held then
         me:step_sprite()
     end
 end

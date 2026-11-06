@@ -104,7 +104,7 @@ local function tick(me: Object)
         return
     end
     local s = me.state :: State
-    if me.action ~= BURSTING and me:take_damage(0) == -1 then
+    if me.action ~= BURSTING and me:take_damage("damage_sound") == "broken" then
         battle.play_sound(SOUND_POP)
         c:set_region(nil)
         me.anim = 1

@@ -40,7 +40,7 @@ end
 local function boom()
     battle.shake_camera(3, 0x2D)
     battle.play_sound(SOUND_BLAST)
-    battle.palette_flash(0, 0x14, true)
+    battle.palette_flash("one_layer", 0x14, true)
 end
 
 -- A one-tick hit (running while dimmed) at (x, y) over `region`, with the damage word `damage`.

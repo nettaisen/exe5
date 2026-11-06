@@ -84,12 +84,12 @@ slasher.action = new.action {
             end
         elseif step == WAIT then
             -- 0x080ED39E: while A is held, wait for it.
-            if me:held("a") then
+            if me.held.a then
                 local x = find(me)
                 if x ~= 0 then
                     s.target_x = x
-                    me:set_status_timer("invulnerable", 0xFFFF)
-                    me:set_status("invulnerable", true)
+                    me.status_timers.invulnerable = 0xFFFF
+                    me.status.invulnerable = true
                     me.step, me.step_init = SLASH, 0
                 end
             else
@@ -102,7 +102,7 @@ slasher.action = new.action {
                 me:open_counter_window()
                 battle.play_sound(swords.swing)
                 attachment.attach(me, swords.held_blade(me), "related", { anim = swords.blade_anim(me) })
-                me:set_status("using_action", true)
+                me.status.using_action = true
                 s.timer = 0x15
                 -- 0x080ED40E: Slasher's name to the other player, as it slashes (the idle shows none at its use).
                 local chip = me.attack_chip
@@ -153,16 +153,16 @@ slasher.action = new.action {
             error(string.format("Slasher phase %#x reads past its phase table", step))
         end
         -- (The DS's checks the party battle's guard too, 0x02046C3A.)
-        if me:request("anti_damage_triggered") or me:request("anti_sword_triggered") or me:request("guard") then
+        if me.requests.anti_damage_triggered or me.requests.anti_sword_triggered or me.requests.guard then
             me:check_reactive_abort(true)
             vulnerable(me)
         end
-        if me:request("stun_strike") then
+        if me.requests.stun_strike then
             local a = (roles.actions :: any).stun_strike
             if a == nil then
                 error("Slasher: request 0x80000 starts EXE5's action 0x49 (the roles' stun_strike), which no EXE5 role names yet")
             end
-            me:set_attack(a, 0)
+            me:set_attack(a, "plain")
             vulnerable(me)
         end
     end,

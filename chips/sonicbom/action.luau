@@ -55,7 +55,7 @@ function action.make(hit_mod: number, pierces: boolean): Action
                     me:open_counter_window()
                     battle.play_sound(swords.swing)
                     attachment.attach(me, swords.held_blade(me), "related", { anim = swords.blade_anim(me) })
-                    me:set_status("using_action", true)
+                    me.status.using_action = true
                     s.timer = SWING_TICKS
                     me.step_init = 4
                 end

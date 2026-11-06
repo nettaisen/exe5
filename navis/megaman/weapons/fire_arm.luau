@@ -44,7 +44,7 @@ local function fire(me: Object, s: State)
         me.anim = ANIM
         me:open_counter_window()
         attachment.attach(me, elemrage.claw, "overlay", { anim = ARM_ANIM })
-        me:set_status("using_action", true)
+        me.status.using_action = true
         s.timer = 0
         me.step_init = 4
     end

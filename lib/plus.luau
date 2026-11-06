@@ -31,13 +31,10 @@ local BONUS_SOUND = asset.sound("bonus")
 -- DarkPlus's tint.
 local TINT = 24
 
--- The side's special chip bonuses (`battle.add_special_bonus`'s index).
-local ATTACK_BONUS, NAVI_BONUS = 0, 1
-
 -- Attck+'s `instant` hook: from a special battle the damage into the side's attack bonus, else the sparkle.
 function plus.attack(user: Object, _spec: InstantChipSpec)
     if operation_battle() then
-        battle.add_special_bonus(user.alliance, ATTACK_BONUS, user.attack_damage)
+        battle.add_special_bonus(user.alliance, "attack", user.attack_damage)
         return
     end
     plus.sparkle(user)
@@ -46,7 +43,7 @@ end
 -- Navi+'s `instant` hook: from a special battle the damage into the side's Navi+ bonus, else the sparkle.
 function plus.navi(user: Object, _spec: InstantChipSpec)
     if operation_battle() then
-        battle.add_special_bonus(user.alliance, NAVI_BONUS, user.attack_damage)
+        battle.add_special_bonus(user.alliance, "navi", user.attack_damage)
         return
     end
     plus.sparkle(user)
@@ -55,7 +52,7 @@ end
 -- DarkPlus's `instant` hook (0x0800E198 with +0x11 1).
 function plus.dark(user: Object, _spec: InstantChipSpec)
     if operation_battle() then
-        battle.add_special_bonus(user.alliance, ATTACK_BONUS, user.attack_damage)
+        battle.add_special_bonus(user.alliance, "attack", user.attack_damage)
         user.plus_tint = TINT
         battle.play_sound(BONUS_SOUND)
         return
@@ -63,7 +60,7 @@ function plus.dark(user: Object, _spec: InstantChipSpec)
     local side = user.alliance
     local i = battle.hand_cursor(side)
     if chip_hand.damages(side, i) then
-        battle.set_hand_entry(side, i, "attack_bonus", user.attack_damage)
+        battle.hand_entry(side, i).attack_bonus = user.attack_damage
         user.plus_tint = TINT
         battle.play_sound(BONUS_SOUND)
         return

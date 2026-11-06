@@ -24,7 +24,7 @@ local toadman_sprite = asset.sprite("toadman")
 
 -- He dives (AIData +0x44's 0x20).
 local function dives(navi: Object)
-    navi:set_navi_state("dives", true)
+    navi.navi_flags.dives = true
 end
 
 local navi: NaviDef = {

@@ -29,9 +29,9 @@ local DRIVE = 0x258
 local function start_drive(user: Object)
     user.no_charge_timer = DRIVE
     user.in_auto_battle = true
-    user:set_navi_state("no_charge", true)
+    user.navi_flags.no_charge = true
     exe5.drive_started(user.alliance)
-    user:set_status("untouchable", true)
+    user.status.untouchable = true
     user:end_statuses()
     navi_status.end_anger(user, "unless_zero")
 end

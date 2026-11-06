@@ -152,7 +152,7 @@ local function tick(me: Object)
     c:remove()
     me:hit_spark()
     local gone = battle.over()
-    if not gone and me:take_damage(0) < 0 then
+    if not gone and me:take_damage("damage_sound") == "broken" then
         battle.effect(me.pos, effects.explosion)
         gone = true
     end

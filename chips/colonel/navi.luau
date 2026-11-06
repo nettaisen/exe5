@@ -86,7 +86,7 @@ local function command(me: Object)
         return
     end
     local user = me.related1 :: Object
-    if user:held("left") and user:held("b") then
+    if user.held.left and user.held.b then
         battle.play_sound(SOUND_COMMAND)
         s.slash = 1
     end
@@ -181,7 +181,7 @@ local function strike(me: Object)
     if t == STRIKE then
         s.strike.land(me)
         battle.shake_camera(3, 0x23)
-        battle.palette_flash(0, s.strike.flash, true, false)
+        battle.palette_flash("one_layer", s.strike.flash, true, false)
     end
     local left = t - 1
     me.timer = int.u16(left)

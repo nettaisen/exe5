@@ -54,11 +54,11 @@ local function command(me: Object, s: State)
         end
     end
     local user = me.related1 :: Object
-    if not user:held("b") then
+    if not user.held.b then
         return
     end
     local key = COMMAND[s.command_steps + 1]
-    if not (key and user:held(key)) then
+    if not (key and (user.held :: any)[key]) then
         return
     end
     s.command_steps += 1

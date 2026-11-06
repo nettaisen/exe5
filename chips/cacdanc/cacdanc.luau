@@ -324,7 +324,7 @@ function cacdanc.instant(palette: number): (user: Object, spec: InstantChipSpec)
         o.related1 = user
         o.run_while_dimmed = false
         ;(o.state :: DancerState).palette = palette
-        obstacle.register(o, user.alliance, 1)
+        obstacle.register(o, user.alliance, "one_a_side")
     end
 end
 

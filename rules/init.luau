@@ -420,15 +420,15 @@ local rules: Rules = {
             light_dark.round_setup(side)
             -- The party's partners join (./party).
             party.round_setup(side)
-            -- The hooks asked each fight tick are called only while something can come of them (rules.listen): the
+            -- The hooks asked each fight tick are called only while something can come of them (rules.listening): the
             -- party's supports and KnightMan's guard with partners; Chaos Unison's drop and the auto battle's drive
             -- from their starts (./souls/chaos_charge, ./auto_battle); and the holy panel's clearing on holy panels
             -- while the side's value clears them (./light_dark).
-            rules.listen(side, "fight_tick", party.has_partners(side) and (battle.link() or side == 0))
-            rules.listen(side, "hit_guard", knightman_guard.in_party(side))
+            rules.listening(side).fight_tick = party.has_partners(side) and (battle.link() or side == 0)
+            rules.listening(side).hit_guard = knightman_guard.in_party(side)
             light_dark.listen(side)
-            rules.listen(side, "weapons_loaded", false)
-            rules.listen(side, "controller", false)
+            rules.listening(side).weapons_loaded = false
+            rules.listening(side).controller = false
             -- The auto battle data both consoles send, shuffled alike, once for the round (./auto_battle/block.luau).
             if side == 0 then
                 auto_battle.block.send()
@@ -502,7 +502,7 @@ local rules: Rules = {
         -- side's HUD, which SearchSoul's reset puts back (0x08011C0C).
         status_reset = function(side: number, _navi: Object)
             exe5.disarm_army(side)
-            battle.set_hud("opponent_chip_icons", false, side)
+            battle.hud(side).opponent_chip_icons = false
         end,
         -- (Who fights brings a value and a swing bug of their own: ./light_dark, ./ticked.)
         switch_finished = function(side: number, _navi: Object)
@@ -585,6 +585,8 @@ local rules: Rules = {
     pools = require("@self/pools"),
     reactions = require("@self/reactions"),
     roles = require("@self/roles"),
+    -- The slots of a side's statistics its content names (each the original's counter's).
+    side_stats = { chaos_weapons = 0, last_stand = 1, dark_chip_used = 2, reactions = 3, recoveries = 5 },
     status = require("@self/status").rules,
 }
 

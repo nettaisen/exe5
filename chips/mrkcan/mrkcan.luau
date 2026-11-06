@@ -290,7 +290,7 @@ function mrkcan.action(spec: { id: string?, cannon: AttachmentLook }): Action
             me:open_counter_window()
             s.timer = 0
             attachment.attach(me, spec.cannon, "overlay", { anim = cannon_anim(me) })
-            me:set_status("using_action", true)
+            me.status.using_action = true
             me.step_init = 4
             return
         end

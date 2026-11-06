@@ -152,7 +152,7 @@ local function strike(me: Object)
     if me.timer == STRIKE then
         strike_x(me)
         battle.shake_camera(3, 0x23)
-        battle.palette_flash(0, 0x1E, true, false)
+        battle.palette_flash("one_layer", 0x1E, true, false)
     end
     local left = me.timer - 1
     me.timer = int.u16(left)

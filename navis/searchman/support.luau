@@ -92,7 +92,7 @@ local function fire(me: Object)
         end
     end
     -- (0x0220005C: its Param1 0x19, plain, and no hit modifier.)
-    shot.spawn(me, s.tx, s.ty, false, 0)
+    shot.spawn(me, s.tx, s.ty, false, {})
 end
 
 -- 0x021FFE6D: his aim (the scope; 20 ticks), his shots, his wait.

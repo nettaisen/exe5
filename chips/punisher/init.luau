@@ -18,7 +18,7 @@ local chip: Chip = {
     lockout = 0,
     flags = { "has_damage", "library" },
     slot_in_limit = 1,
-    action = sonicbom.make(0, false),
+    action = sonicbom.make({}, false),
 }
 
 return { punisher = chip }

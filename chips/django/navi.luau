@@ -53,7 +53,7 @@ local ENEMY_NAVI: PanelFlags = { enemy_body = true }
 -- Where the rubble falls (0x080BF608): beside the coffin's panel.
 local RUBBLE_AT = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } }
 -- The purifying hits: element 5 (the sun's), on the coffin's 3x3, no spark; the first bugs its chip's.
-local SUN_ELEMENT = 5
+local SUN_ELEMENT = Element.drain
 
 -- 0x080BF542: the panel of the first enemy navi ahead in his row; x 0 when none is before the edge.
 local function find_target(me: Object): (number, number)
@@ -344,7 +344,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "ground"
     me.anim, me.anim_loaded = 1, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = s.palette
     me:set_coordinates_from_panel()
     local p = me.pos

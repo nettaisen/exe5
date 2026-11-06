@@ -27,7 +27,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 13, 13
     sprite:set_animation(13)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_lifecycle("update")
 end
 
@@ -70,7 +70,7 @@ function grid.spawn(owner: Object, x: number, y: number): Object?
     if o then
         o.panel_x, o.panel_y = x, y
         o.related1 = owner
-        o.alliance, o.flip = owner.alliance, bit32.bxor(owner.flip, 1)
+        o.alliance, o.flip = owner.alliance, not owner.flip
         ;(o.state :: State).stays = true
     end
     return o

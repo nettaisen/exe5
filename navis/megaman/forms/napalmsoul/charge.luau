@@ -108,7 +108,7 @@ charge.action = new.action {
 
 -- 0x0800F848 (its shots count, AIAttackVars +0x12, the action sets again).
 local function setup(navi: Object): Action
-    navi.attack_element = 1
+    navi.attack_element = Element.fire
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0

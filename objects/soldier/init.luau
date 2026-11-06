@@ -100,7 +100,7 @@ local function slash(me: Object)
         battle.hitbox(me, {
             panel_x = x,
             panel_y = y,
-            element = 0,
+            element = Element.null,
             z = 0,
             region = regions.long,
             hit_effect = nil,
@@ -111,7 +111,7 @@ local function slash(me: Object)
             hit_mod = HIT_MOD,
         })
         local px, py = field.center(x, y)
-        battle.effect(Vec3.new(px, py, SLASH_Z), SLASH, bit32.bxor(me.alliance, me.flip))
+        battle.effect(Vec3.new(px, py, SLASH_Z), SLASH, me.facing_side)
     end
     if count(me) then
         me.collision:set_region(nil)
@@ -146,7 +146,7 @@ local function fire(me: Object)
     me.timer = SHOT_TICKS
     local _, _, word = exe5.army(me.alliance)
     local z = bit32.lshift(HEIGHTS[bit32.band(battle.rng_positive(), 3)], 16)
-    common_bullet.fire(bullet.kind, me, me.panel_x + me.facing, me.panel_y, z, SHOT, 0, word)
+    common_bullet.fire(bullet.kind, me, me.panel_x + me.facing, me.panel_y, z, SHOT, Element.null, word)
     battle.play_sound(SHOT_SOUND)
     local left = me.timer2 - 1
     me.timer2 = int.u16(left)
@@ -238,7 +238,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.own_body, collision.hit_by_other_side, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
@@ -274,7 +274,7 @@ local function call(x: number, y: number): (number?, number, number)
     if panel == nil or not field.solid(x, y) then
         return nil, 0, 0
     end
-    local side = bit32.bxor(panel.alliance, 1)
+    local side = battle.other_side(panel.alliance)
     if not exe5.army(side) then
         return nil, 0, 0
     end
@@ -325,11 +325,11 @@ function soldier.obstacle_reaction(_side: number, me: Object)
     if o ~= nil then
         (o.state :: State).ranged = gun
         o.panel_x, o.panel_y = x, y
-        o.element = bit32.band(left, 0xFF)
+        o.element = Element.from_byte(bit32.band(left, 0xFF))
         o.damage, o.stamina = 0, 0
         o.related1 = me
         o.alliance = side
-        o.flip = bit32.bxor(gun, 1)
+        o.flip = gun == 0
     end
     me.hp, me.max_hp = 0, 0
 end

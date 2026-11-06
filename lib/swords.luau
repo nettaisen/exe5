@@ -72,8 +72,8 @@ swords.sonic_boom = sonic_boom.make_kind("sonic-boom", {
     sprite = SLASH,
     z = 0,
     piercing_palette = 9,
-    palettes = { [0] = 0, 2, 5, 4, 8, 0, 0, 0 },
-    element_mask = 0xFF,
+    palettes = { null = 0, fire = 2, aqua = 5, elec = 4, wood = 8, drain = 0 },
+    whole_byte = true,
     is = collision.slash,
     hits = collision.hits_navis,
 })

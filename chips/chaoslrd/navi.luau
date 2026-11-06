@@ -84,7 +84,7 @@ end
 
 -- His side's back column (1 for a side facing right, 6 for one facing left).
 local function back_column(me: Object): number
-    return 5 * bit32.bxor(me.alliance, me.flip) + 1
+    return 5 * me.facing_side + 1
 end
 
 -- His color shader of his channels.
@@ -136,14 +136,14 @@ local function glow(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "ground"
     -- `sub_8002FBE(0)`: his sprite's first part hidden.
-    sprite.hidden_parts = bit32.bor(sprite.hidden_parts, 0x8000_0000)
+    sprite.hidden_parts[0] = true
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, whole_add(p.z, -8))
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.related1 = battle.form_overlay(me, CAPE)
     me.timer = SHAPING
     shade(me)
@@ -227,7 +227,7 @@ local function init(me: Object)
     for _, o in field.all_objects() do
         o.hp = 0
     end
-    local side = bit32.bxor(me.alliance, me.flip)
+    local side = me.facing_side
     local back = back_column(me)
     local found = panels.random_offset(back, 2, ENEMY_NAVI, AROUND, side, me.alliance)
     if found then

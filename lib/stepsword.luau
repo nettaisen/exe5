@@ -30,15 +30,10 @@ local function set_step(me: Object, step: number)
     me.step_init = 0
 end
 
--- The sprite's flip: the side's, turned round or not.
-function stepsword.flip(me: Object): number
-    return bit32.bxor(me.alliance, me.flip)
-end
-
 -- `sub_800F2C6` and 0x0801A51C: turn round (the sprite, and the HP number's place, which the engine doesn't draw).
 local function turn(me: Object)
-    me.flip = bit32.bxor(me.flip, 1)
-    me.sprite:set_flip(stepsword.flip(me))
+    me.flip = not me.flip
+    me.sprite:face(me)
 end
 
 local ON_FIELD_NOT_ANY_BODY: PanelCondition = { on_field = true, any_body = false }
@@ -122,7 +117,7 @@ function stepsword.start(me: Object, s: State, moving: boolean)
     end
     battle.afterimage(me, me.pos, {
         anim = 0,
-        flip = stepsword.flip(me),
+        facing = me.facing_side,
         color_shader = AFTERIMAGE_SHADER,
         lifetime = 0x14,
         shadow = "ground",
@@ -139,7 +134,7 @@ end
 function stepsword.afterimage(me: Object, anim: number)
     battle.afterimage(me, me.pos, {
         anim = anim,
-        flip = stepsword.flip(me),
+        facing = me.facing_side,
         color_shader = AFTERIMAGE_SHADER,
         lifetime = 0x1E,
         shadow = "ground",

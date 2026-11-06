@@ -116,7 +116,7 @@ function scope.spawn(navi: Object, x: number, y: number, which: number): Object?
     local s = o.state :: State
     s.origin_x, s.origin_y = x, y
     o.alliance = navi.alliance
-    o.flip = bit32.bxor(navi.flip, which)
+    o.flip = if which == 1 then not navi.flip else navi.flip
     o.run_while_dimmed = true
     return o
 end

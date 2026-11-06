@@ -61,7 +61,7 @@ end
 -- 0x080BA216: `x2` lies ahead of `x` for his facing.
 local function ahead(me: Object, x: number, x2: number): boolean
     local d = x2 - x
-    if bit32.bxor(me.alliance, me.flip) ~= 0 then
+    if me.facing_side ~= 0 then
         d = -d
     end
     return d > 0
@@ -72,7 +72,7 @@ end
 local function pick_target(me: Object, x: number, targeted: { [number]: boolean }): number
     local slots: { number } = {}
     local actors: { [number]: Object } = {}
-    local list = battle.alive_actors(bit32.bxor(me.alliance, 1))
+    local list = battle.alive_actors(battle.other_side(me.alliance))
     for i, o in list do
         if ahead(me, x, o.panel_x) then
             table.insert(slots, i)
@@ -105,7 +105,7 @@ end
 -- has none), 15 ticks apart.
 local function send(me: Object)
     local s = me.state :: State
-    local start = bit32.bxor(me.alliance, me.flip) * 5 + 1
+    local start = me.facing_side * 5 + 1
     local delay = 0
     -- (+0x64: which of the enemies are targeted, by slot; the list holds the slots in use, in order.)
     local targeted: { [number]: boolean } = {}
@@ -117,7 +117,7 @@ local function send(me: Object)
             local user = me.related1 :: Object
             -- (Its position is the spawner's registers: the row, the element, and the chip's level, Param0, which its
             -- init replaces before anything reads them.)
-            local o = battle.spawn(shadoman.kind, Vec3.new(y, me.element, 0))
+            local o = battle.spawn(shadoman.kind, Vec3.new(y, me.element.byte, 0))
             if o then
                 o.panel_x, o.panel_y = x, y
                 o.element = me.element
@@ -244,7 +244,7 @@ local function throw(me: Object)
         local t = (me.state :: State).target
         local x, y = bit32.band(t, 7), bit32.rshift(t, 4)
         if x ~= 0 then
-            local o = shuriken.spawn(me, x, y, 0, HIT_MOD, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
+            local o = shuriken.spawn(me, x, y, Element.null, HIT_MOD, bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
             if o then
                 o.run_while_dimmed = true
             end
@@ -311,7 +311,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
     sprite.palette = s.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)

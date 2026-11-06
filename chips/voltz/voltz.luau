@@ -89,7 +89,7 @@ local function setup(me: Object, sprite_asset: SpriteAsset, shadow: Shadow): boo
         return false
     end
     me:setup_collision(collision.thrown, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     return true
 end
 
@@ -113,9 +113,9 @@ local shock_kind: Kind
 
 -- 0x080D8B82: a shock on (x, y) of `owner`'s side, of `element`, going `way` every `ticks`, with the damage word
 -- `damage`. (It spawns at the registers' values, which its init replaces: the row, the element and `z`.)
-local function spawn_shock(owner: Object, x: number, y: number, element: number, z: number, way: number,
+local function spawn_shock(owner: Object, x: number, y: number, element: Element, z: number, way: number,
     ticks: number, damage: number): Object?
-    local o = battle.spawn(shock_kind, Vec3.new(y, element, z))
+    local o = battle.spawn(shock_kind, Vec3.new(y, element.byte, z))
     if o then
         local s = o.state :: ShockState
         s.way, s.ticks = way, ticks
@@ -375,7 +375,7 @@ voltz.kind = new.kind {
 -- element and the user's Z.)
 local function spawn(user: Object, x: number, y: number, spec: InstantChipSpec, palette: number,
     shock_ticks: number): Object?
-    local o = battle.spawn(voltz.kind, Vec3.new(y, spec.element, spec.z))
+    local o = battle.spawn(voltz.kind, Vec3.new(y, spec.element.byte, spec.z))
     if o then
         local s = o.state :: State
         s.palette, s.shock_ticks = palette, shock_ticks

@@ -78,7 +78,7 @@ local function hang(me: Object, s: State)
     sprite.shadow = "ground"
     me.anim, me.anim_loaded = 3, 0xFF
     sprite:set_animation(0xFF)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = s.palette
     -- (In the operation battle, which a netbattle never sets, 0x080E9FA4 spawns effect object 0x83 at the panel for 60
     -- ticks: not ported, exe5-map.md §15.6.)
@@ -169,7 +169,7 @@ quake.kind = new.kind {
             me.anim, me.anim_loaded = 1, 0xFF
             sprite:set_animation(0xFF)
             sprite.shadow = "ground"
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             if not me:create_collision() then
                 me:free()
                 return
@@ -197,7 +197,7 @@ function quake.thrower(palette: number, region: Region): Thrower
         throw = function(user: Object, pos: Vec3, damage: number): Object?
             local o = battle.spawn(quake.kind, pos)
             if o then
-                o.element = 0
+                o.element = Element.null
                 o.alliance, o.flip = user.alliance, user.flip
                 o:set_damage_word(damage)
                 o.related1 = user

@@ -142,7 +142,7 @@ function colonel.slash(me: Object, n: number)
     local box = battle.hitbox(me, {
         panel_x = x,
         panel_y = y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = SLASH_REGIONS[n],
         hit_effect = nil,
@@ -156,7 +156,7 @@ function colonel.slash(me: Object, n: number)
         box.run_while_dimmed = true
     end
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, 0), SLASHES[n], bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0), SLASHES[n], me.facing_side)
 end
 
 -- Action 8, phase 0 (0x080BA3D0): his sword out (animation 5); its sound at 17 left; at 12 his chip's strike lands,
@@ -231,7 +231,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
     sprite.palette = s.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)

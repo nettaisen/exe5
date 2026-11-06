@@ -194,7 +194,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         me:free()
         return
@@ -231,7 +231,7 @@ missile.kind = new.kind {
 
 -- 0x080D26D4: a missile of `owner`'s side and facing at (x, y), 16 pixels up, with the element and the damage
 -- word, following `target` if any; it is called while the battle is dimmed too.
-function missile.spawn(owner: Object, x: number, y: number, element: number, damage: number, target: Object?): Object?
+function missile.spawn(owner: Object, x: number, y: number, element: Element, damage: number, target: Object?): Object?
     local o = battle.spawn(missile.kind, Vec3.new(x, y, 0x10_0000))
     if o then
         local s = o.state :: State

@@ -98,7 +98,7 @@ local function image_init(me: Object)
     me.anim, me.anim_loaded = 0, 0xFF
     sprite.palette = dark_palette(me)
     me.vel = Vec3.new(me.facing * SLIDE * 0x10000, me.vel.y, me.vel.z)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     overlays.add_parts_of(me, navi, false, true)
     me.visible = true
     me:set_lifecycle("update")

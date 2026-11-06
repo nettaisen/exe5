@@ -47,7 +47,7 @@ local function shoot_at(me: Object, target: Object?)
     double_attack.hit(me, {
         panel_x = target.panel_x,
         panel_y = target.panel_y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.single,
         hit_effect = sparks.plain,

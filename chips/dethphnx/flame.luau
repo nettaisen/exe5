@@ -98,7 +98,7 @@ function flame.spawn(fire: Object, far: boolean): Object?
         o.alliance, o.flip = fire.alliance, fire.flip
         o.run_while_dimmed = true
         if far then
-            o.flip = bit32.bxor(o.flip, 1)
+            o.flip = not o.flip
         end
     end
     return o

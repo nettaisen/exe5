@@ -17,7 +17,7 @@ local sparks = require("../../lib/sparks")
 local CHARGER_SPRITE = asset.sprite("bug-charger")
 local CHARGER = attachment.look { sprite = CHARGER_SPRITE, palette = 0, attach_point = 0x18 }
 -- The heavy shot (the flying shot's row 1, 0x080C3BCC): in the charger's sprite.
-local SHOT = flying_shot.variant { hit_mod = 3, element = 0, spark = sparks.heavy, sprite = CHARGER_SPRITE, speed = 0xA_0000 }
+local SHOT = flying_shot.variant { hit_mod = 3, element = Element.null, spark = sparks.heavy, sprite = CHARGER_SPRITE, speed = 0xA_0000 }
 
 -- 0x080C3C6C: the bugs it takes in (each cleared), and so its shots: one, and in the operation battle three more
 -- for each of the panel trail, the buster's blanks and the HP drain; else one more for each of the step bug, the

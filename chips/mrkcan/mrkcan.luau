@@ -54,7 +54,7 @@ local START_ANGLE, TURN = 0x40_0000, -0x8_0000
 local ENEMY_BODIES: PanelFlags = { enemy_body = true }
 local ENEMY_BODY_WORDS = { [0] = 0x04000000, [1] = 0x08000000 }
 -- The lock-on: no damage, element 5, paralysis for 120 ticks (status 0x11), on the panel alone.
-local LOCK_ELEMENT = 5
+local LOCK_ELEMENT = Element.drain
 
 -- `sub_800E258`: the panel under a position, as `side` has it
 -- (field.panel_at: a line between columns is in the one toward the other side, for either side).
@@ -172,7 +172,7 @@ local function init(me: Object, s: SightState)
     sprite:load(SIGHT_SPRITE)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     s.advance = ADVANCE * dir
     s.turn = TURN
@@ -303,7 +303,7 @@ function mrkcan.action(spec: { id: string?, cannon: AttachmentLook }): Action
             battle.hitbox(me, {
                 panel_x = bit32.extract(me.marker, 8, 8),
                 panel_y = bit32.extract(me.marker, 16, 8),
-                element = 0,
+                element = Element.null,
                 z = 0x10_0000,
                 region = regions.single,
                 hit_effect = sparks.impact,

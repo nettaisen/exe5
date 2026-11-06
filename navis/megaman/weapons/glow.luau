@@ -24,7 +24,7 @@ glow.kind = new.kind {
             sprite:load(s.sprite)
             sprite.shadow = if s.shadow then "ground" else "with_sprite"
             me.anim, me.anim_loaded = s.anim, 0xFF
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me.visible = true
             me:set_lifecycle("update")
         end

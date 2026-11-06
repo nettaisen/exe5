@@ -100,7 +100,7 @@ local function init(me: Object)
     s.start = me.pos
     me.panel_x, me.panel_y = bit32.band(s.target, 7), bit32.rshift(s.target, 4)
     s.target_x, s.target_y = field.center(me.panel_x, me.panel_y)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     if not me:create_collision() then
         -- The game branches into its fall's code (0x080DF5B4) with the wrong stack.
         error("Phoenix's fireball got no collision data: the game goes on with a broken stack (0x080DF4FA)")
@@ -139,7 +139,7 @@ function fireball.spawn(owner: Object, pos: Vec3, target: number, damage: number
         (o.state :: State).target = target
         o.alliance, o.flip = owner.alliance, owner.flip
         o:set_damage_word(damage)
-        o.element = 1
+        o.element = Element.fire
         o.run_while_dimmed = true
     end
     return o

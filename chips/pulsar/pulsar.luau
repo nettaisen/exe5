@@ -56,7 +56,7 @@ local function burst(me: Object, s: State)
         return
     end
     local cx, cy = field.center(me.panel_x, me.panel_y)
-    battle.effect(Vec3.new(cx, cy, 0x8_0000), BURST, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0x8_0000), BURST, me.facing_side)
     local box = battle.hitbox(me, {
         panel_x = bit32.band(s.hit_at, 7),
         panel_y = bit32.rshift(s.hit_at, 4),
@@ -122,7 +122,7 @@ local function init(me: Object)
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.vel = Vec3.new(int.mul32(me.facing, SPEED), me.vel.y, me.vel.z)
     if not me:create_collision() then
         me:free()
@@ -159,8 +159,8 @@ pulsar.kind = new.kind {
 }
 
 -- 0x080D3464: a pulse on (x, y), 24 pixels up, with `element` and the damage word.
-local function spawn(owner: Object, x: number, y: number, element: number, damage: number): Object?
-    local o = battle.spawn(pulsar.kind, Vec3.new(y, element, HEIGHT))
+local function spawn(owner: Object, x: number, y: number, element: Element, damage: number): Object?
+    local o = battle.spawn(pulsar.kind, Vec3.new(y, element.byte, HEIGHT))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

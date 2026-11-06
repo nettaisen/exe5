@@ -116,7 +116,7 @@ end
 
 function emotion.countered(side: number, _victim: Object)
     if battle.navi(side).form.base then
-        battle.set_mood(side, 0xFF)
+        battle.set_mood(side, "full_synchro")
     else
         -- (The count: 0x8000, the mark, and what the tick's other hits counted.)
         navi_status.gain_mood(side, 0x8000)

@@ -75,7 +75,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 2, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me:set_coordinates_from_panel()
     local z = 0x18_0000

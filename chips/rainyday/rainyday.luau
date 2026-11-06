@@ -117,7 +117,7 @@ local function raining(me: Object)
         me.anim = 1
         me.timer = 10
         s.dir = -me.facing
-        s.scan_x = bit32.bxor(bit32.bxor(me.alliance, me.flip), 1) * 5 + 1
+        s.scan_x = battle.other_side(me.facing_side) * 5 + 1
         s.scan_y = 1
         hit(me)
         local p = me.pos
@@ -200,7 +200,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "ground"
     me.anim, me.anim_loaded = 0, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.visible = true
     me.lifecycle = "update"
     update(me)
@@ -262,7 +262,7 @@ local function effect(me: Object)
         end
         -- 0x080D9940: the cloud (its position the spawner's registers until its init places it), running while
         -- dimmed.
-        local o = battle.spawn(rainyday.cloud, Vec3.new(y :: number, me.element, 0))
+        local o = battle.spawn(rainyday.cloud, Vec3.new(y :: number, me.element.byte, 0))
         if o then
             o.panel_x, o.panel_y = x, y :: number
             o.element = me.element

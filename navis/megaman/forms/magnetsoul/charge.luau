@@ -66,7 +66,7 @@ local function pull(me: Object, s: State)
     battle.hitbox(me, {
         panel_x = me.panel_x + me.facing,
         panel_y = me.panel_y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.row,
         hit_effect = nil,
@@ -115,7 +115,7 @@ charge.action = new.action {
 local function setup(navi: Object): Action
     navi.attack_damage = 30 + 10 * (battle.navi(navi.alliance).attack + 1)
     navi.hit_param = HIT_PARAM
-    navi.attack_element = 3
+    navi.attack_element = Element.elec
     return charge.action
 end
 

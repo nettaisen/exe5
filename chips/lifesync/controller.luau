@@ -84,7 +84,7 @@ local function aim(me: Object)
             local h = battle.hitbox(me, {
                 panel_x = x,
                 panel_y = y,
-                element = 0,
+                element = Element.null,
                 z = 0,
                 region = regions.single,
                 hit_effect = sparks.plain,

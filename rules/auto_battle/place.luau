@@ -328,20 +328,20 @@ local function three_ahead_near_enemy(navi: Object, s: State)
     go(navi, s, 4, x, y :: number)
 end
 
--- 0x0802A208: the other side's first four alive actors (BattleState +0x80) of element `element` (any: 0xFF): the
+-- 0x0802A208: the other side's first four alive actors (BattleState +0x80) of element `element` (nil: any, the game's 0xFF): the
 -- panels three before each (toward the navi, as it faces) that meet the conditions (of side `of`), one at random.
 local function before_enemies(
     navi: Object,
-    element: number,
+    element: Element?,
     cond: PanelCondition?,
     of: number
 ): (number?, number?)
     local back = -panels.front_direction(navi) * 3
-    local other = bit32.bxor(navi.alliance, 1)
+    local other = battle.other_side(navi.alliance)
     local found = {}
     for i = 1, 4 do
         local e = battle.alive_actor_slot(other, i)
-        if e ~= nil and (element == 0xFF or e.element == element) then
+        if e ~= nil and (element == nil or e.element == element) then
             local x, y = e.panel_x + back, e.panel_y
             if field.check(x, y, cond, of) then
                 table.insert(found, packed(x, y))
@@ -366,11 +366,11 @@ local function lava_ahead(navi: Object, s: State)
     local x, y = pick(found)
     if x == nil then
         cond, of = panels.step_condition(navi)
-        x, y = before_enemies(navi, 1, cond, of)
+        x, y = before_enemies(navi, Element.fire, cond, of)
     end
     if x == nil then
         cond, of = panels.step_condition(navi)
-        x, y = before_enemies(navi, 0xFF, cond, of)
+        x, y = before_enemies(navi, nil, cond, of)
     end
     if x == nil then
         return settle(navi, s)
@@ -623,7 +623,7 @@ end
 -- 0x0802A8CA (`when_enemy_barrier`, class 21): the other side's first alive actor has a barrier. (The loop means the
 -- four, but it steps the record it read, not the list: it reads the first slot four times.)
 local function enemy_barrier(navi: Object): boolean
-    local e = battle.alive_actor_slot(bit32.bxor(navi.alliance, 1), 1)
+    local e = battle.alive_actor_slot(battle.other_side(navi.alliance), 1)
     return e ~= nil and e.collision.barrier ~= "none"
 end
 

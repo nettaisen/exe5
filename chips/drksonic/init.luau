@@ -14,11 +14,11 @@ local statuses = require("../rules/status")
 local dark_costs = require("../lib/dark_costs")
 
 -- The sixth element: the hit's damage is 0.
-local ELEMENT_NONE = 5
+local ELEMENT_NONE = Element.drain
 
 -- 0x080D5502: a hit on each of the other side's combatants' panels that paralyzes it.
 local function stun(me: Object)
-    for _, actor in battle.alive_actors(bit32.bxor(me.alliance, 1)) do
+    for _, actor in battle.alive_actors(battle.other_side(me.alliance)) do
         battle.hitbox(me, {
             panel_x = actor.panel_x,
             panel_y = actor.panel_y,

@@ -168,7 +168,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
     sprite.palette = s.palette
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:add_parts(CANNON, 1)
     me:set_coordinates_from_panel()
     local p = me.pos

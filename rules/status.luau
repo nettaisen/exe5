@@ -315,11 +315,11 @@ local status = {
             anger_end = "through_setter",
             -- In that order: the first case that holds is the side's emotion.
             order = {
-                { emotion = "full_synchro", when = { { battle_mode = 1, mood = 0xFF } } },
+                { emotion = "full_synchro", when = { { battle_mode = 1, mood = "full_synchro" } } },
                 { emotion = "normal", when = { { battle_mode = 1 }, { in_form = true } } },
                 { emotion = "angry", when = { { angry = true } } },
                 { emotion = "evil", when = { { mood = 0 } } },
-                { emotion = "full_synchro", when = { { mood = 0xFF } } },
+                { emotion = "full_synchro", when = { { mood = "full_synchro" } } },
                 { emotion = "worried", when = { { mood_below = 65 } } },
                 { emotion = "normal" },
             },

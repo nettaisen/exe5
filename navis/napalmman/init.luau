@@ -54,7 +54,7 @@ local navi: NaviDef = {
     },
     -- The chips A charges, and what a charged one gains (its damage again).
     charged_chips = { family = "fire", damaging = false, plain = true },
-    charged_bonus = { damage = 0xFF },
+    charged_bonus = { damage = "again" },
     -- His fresh stats (his stats row): what a side starts him with.
     fresh = { hp = 300, mega_level = 5, giga_level = 1 },
     -- What the story gives him (its table's row for him, 0x0804F960): his HP by its progress; his level is that

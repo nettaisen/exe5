@@ -224,7 +224,7 @@ support.actor = new.kind {
             sprite.shadow = "ground"
             me.anim, me.anim_loaded = 0, 0
             sprite:set_animation(0)
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me:set_lifecycle("update")
             update(me)
         elseif l == "update" then

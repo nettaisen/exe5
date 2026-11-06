@@ -58,7 +58,7 @@ local BUBBLE = spreader.action({
     fire_after = FIRE_AFTER,
 }, LOOK)
 
-local FIRE, AQUA = 1, 2
+local FIRE, AQUA = Element.fire, Element.aqua
 
 -- 0x0800FC5A: 40 damage, hit parameter 10, Fire (the attack's other bytes as they were).
 spreads.heat = new.weapon {

@@ -19,7 +19,7 @@ local STRIKE = common.make {
     hits = collision.hits_navis,
     spark = sparks.breaking,
     wave_is = collision.attack,
-    element = 0,
+    element = Element.null,
     waves_take_element = true,
     effects = { explosion = effects.explosion, burst = effects.burst, puff = effects.puff },
 }

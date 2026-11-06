@@ -55,7 +55,7 @@ windrack.action = new.action {
                 attachment.attach(me, RACK, "related", { anim = rack_anim(me) })
                 me.status.using_action = true
                 local cx, cy = field.center(me.panel_x, me.panel_y)
-                battle.effect(Vec3.new(cx, cy, HEIGHT), SWIRL, bit32.bxor(me.alliance, me.flip))
+                battle.effect(Vec3.new(cx, cy, HEIGHT), SWIRL, me.facing_side)
                 s.timer = SWING_TICKS
                 me.step_init = 4
             end
@@ -64,7 +64,7 @@ windrack.action = new.action {
                 local hit = battle.hitbox(me, {
                     panel_x = me.panel_x + me.facing,
                     panel_y = me.panel_y,
-                    element = 0,
+                    element = Element.null,
                     z = HEIGHT,
                     region = regions.wide,
                     hit_effect = nil,

@@ -88,7 +88,7 @@ function guard.action(spec: Spec): Action
             return
         end
         local heedless = spec.heeds ~= nil and not spec.heeds()
-        if not heedless and bit32.btest(me.collision.guard_dirs, bit32.lshift(1, me.flip)) then
+        if not heedless and me.collision:guarded_from(me.flip) then
             if me.collision:hit_any(BREAKS_GUARD) then
                 drop_shield(me)
             elseif me.marker == 0 then

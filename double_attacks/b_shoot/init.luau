@@ -163,7 +163,7 @@ local function ball_init(me: Object)
         error("B-SHOOT's ball without a collision slot (0x02033DB8 doesn't check)")
     end
     me:setup_collision(collision.breaking, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me.anim, me.anim_loaded = 0, 0xFF
     me.visible = true
     me:set_coordinates_from_panel()
@@ -203,7 +203,7 @@ local function drop_ball(me: Object, row: number)
         return
     end
     o.panel_x, o.panel_y = me.panel_x, me.panel_y
-    o.element = 0
+    o.element = Element.null
     o:set_damage_word(bit32.bor(me.damage, bit32.lshift(me.stamina, 16)))
     o.alliance, o.flip = me.alliance, me.flip
     o.related1 = me

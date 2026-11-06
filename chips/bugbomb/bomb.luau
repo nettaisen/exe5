@@ -32,7 +32,7 @@ local BUGS = {
 local function pick_bug(me: Object)
     local choice = 0
     if not operation_battle() then
-        local target = battle.navi(bit32.bxor(me.alliance, 1))
+        local target = battle.navi(battle.other_side(me.alliance))
         local choices = {}
         if target.hp_drain == 0 then
             table.insert(choices, 0)

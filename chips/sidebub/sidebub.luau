@@ -35,7 +35,7 @@ local WAIT, WAIT_ANIM_AT, BURST_WAIT = 15, 5, 20
 local DRIFT_X, DRIFT_Y = 40, 24
 -- The shot a SideBub's bubble bursts into (the flying shot's row 7: 0x080D86B4's first, which every SideBub's
 -- fourth parameter, 0, picks).
-local BURST = flying_shot.variant { hit_mod = 3, element = 2, sprite = SPRITE, anim = 2, highlight = true, speed = 0x4_0000 }
+local BURST = flying_shot.variant { hit_mod = 3, element = Element.aqua, sprite = SPRITE, anim = 2, highlight = true, speed = 0x4_0000 }
 -- What a hit on a navi or an object leaves in its hit flags (0x080D85B4).
 local POPS: HitNames = {
     own_body = true,
@@ -156,7 +156,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
     me.hp, me.max_hp = 1, 1
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     if not me:create_collision() then
         me:free()
@@ -220,8 +220,8 @@ sidebub.bubble = new.kind {
 -- 0x080D86BA: a bubble of `owner`'s on (x, y) with the element, the damage word and its parameters (its first way,
 -- its drift's ticks, the shot it bursts into); it runs while the battle is dimmed. (Its X and Y are the spawner's
 -- registers, the panel's Y and the element, until its init places it.)
-function sidebub.spawn(owner: Object, x: number, y: number, element: number, damage: number, way: number, travel: number, burst: FlyingShotVariant): Object?
-    local o = battle.spawn(sidebub.bubble, Vec3.new(y, element, 0))
+function sidebub.spawn(owner: Object, x: number, y: number, element: Element, damage: number, way: number, travel: number, burst: FlyingShotVariant): Object?
+    local o = battle.spawn(sidebub.bubble, Vec3.new(y, element.byte, 0))
     if o then
         o.panel_x, o.panel_y = x, y
         o.element = element

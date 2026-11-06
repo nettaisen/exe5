@@ -103,7 +103,7 @@ charge.action = new.action {
 local function setup(navi: Object): Action
     navi.attack_damage = navi_level.damage(navi, DAMAGE, PARTY)
     navi.hit_param = HIT_PARAM
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.attack_variant = 0
     local s = navi:action_state(charge.action) :: State
     s.wait = WAIT

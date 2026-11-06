@@ -55,7 +55,7 @@ end
 
 -- Its facing, as its flip reads it: its pole, its side and its flip together.
 local function turned(me: Object): number
-    return bit32.bxor((me.state :: State).pole, me.alliance, me.flip)
+    return bit32.bxor((me.state :: State).pole, me.facing_side)
 end
 
 local function stop(me: Object)
@@ -203,7 +203,7 @@ local function init(me: Object)
     sprite:set_animation(0x11)
     sprite.palette = s.palette + s.pole
     local turn = turned(me)
-    sprite:set_flip(turn)
+    sprite:face_side(turn)
     me.vel = Vec3.new(if turn ~= 0 then -SPEED else SPEED, me.vel.y, me.vel.z)
     if not me:create_collision() then
         me:free()
@@ -268,7 +268,7 @@ export type Spec = {
 
 -- 0x080D2FC0: a magnet of `navi`'s on (x, y) with `element`, called while the battle is dimmed too. (Its position
 -- is the spawner's registers, which its init overwrites.)
-function magnet.spawn(navi: Object, x: number, y: number, element: number, spec: Spec): Object?
+function magnet.spawn(navi: Object, x: number, y: number, element: Element, spec: Spec): Object?
     local o = battle.spawn(magnet.kind, Vec3.zero)
     if o then
         local s = o.state :: State

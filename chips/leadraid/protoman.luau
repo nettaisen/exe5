@@ -190,7 +190,7 @@ local function slash(me: Object)
         box.run_while_dimmed = true
     end
     local cx, cy = field.center(x, y)
-    battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, me.facing_side)
     battle.shake_camera(3, 0x0A)
     battle.palette_flash("one_layer", 0x0A, true, false)
 end
@@ -279,7 +279,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "ground"
     me.anim, me.anim_loaded = 3, 0xFF
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     sprite.palette = 0
     me:set_coordinates_from_panel()
     local p = me.pos

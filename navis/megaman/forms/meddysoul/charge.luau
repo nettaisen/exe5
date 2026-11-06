@@ -81,7 +81,7 @@ charge.action = new.action {
 local function setup(navi: Object): Action
     navi.attack_damage = 30 + 10 * (battle.navi(navi.alliance).attack + 1)
     navi.hit_param = HIT_PARAM
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     return charge.action
 end
 

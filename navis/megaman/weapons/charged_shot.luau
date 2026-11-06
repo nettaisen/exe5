@@ -32,7 +32,7 @@ exe5.action = common.action {
         if not operation_battle() then
             return false
         end
-        local front = if bit32.bxor(me.alliance, me.flip) == 0 then 1 else -1
+        local front = if me.facing_side == 0 then 1 else -1
         marker.spawn(me, me.panel_x + front, me.panel_y, 10, 8, true)
         return true
     end,
@@ -49,7 +49,7 @@ function exe5.setup(navi: Object): Action
     end
     local s = navi:action_state(charged_shot.action) :: { projectile: ProjectileVariant? }
     s.projectile = shot
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.hit_param = 0
@@ -62,7 +62,7 @@ end
 function exe5.program_setup(navi: Object): Action
     local stats = battle.navi(navi.alliance)
     navi.attack_damage = (stats.attack + 1) * 10
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.extra = 0
     navi.hit_param = 0

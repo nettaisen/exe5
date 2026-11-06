@@ -64,8 +64,8 @@ local SOLID_NOT_ANY_BODY: PanelCondition = { solid = true, any_body = false }
 
 -- 0x080E3420: the panel the bomb goes on (nil: none).
 local function target(me: Object): (number?, number?)
-    local flip = bit32.bxor(me.alliance, me.flip)
-    local start = bit32.bxor(flip, 1) * 5 + 1
+    local flip = me.facing_side
+    local start = battle.other_side(flip) * 5 + 1
     local back = -me.facing
     local rows: { { number } } = {}
     for y = 1, 3 do

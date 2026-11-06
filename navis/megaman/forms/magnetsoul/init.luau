@@ -42,7 +42,7 @@ local form: FormDef = {
         back_special = back.weapon,
     },
     charged_chips = { { family = "elec", damaging = false, plain = true } },
-    charged_bonus = { damage = 0xFF },
+    charged_bonus = { damage = "again" },
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 5-10, the version's souls'); in its
     -- Chaos Unison look while the chaos charge is armed (0x080125F6: the palette 11 on).

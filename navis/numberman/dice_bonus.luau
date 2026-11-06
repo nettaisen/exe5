@@ -59,8 +59,8 @@ end
 -- at, one drawn with RNG2; none, any panel; and whether it took the second try.
 local function aim(me: Object, ex: number, ey: number): (number?, number?, boolean)
     local side = me.alliance
-    local front = if bit32.bxor(side, me.flip) == 0 then 1 else -1
-    local start = bit32.bxor(bit32.bxor(side, me.flip), 1) * 5 + 1
+    local front = if me.facing_side == 0 then 1 else -1
+    local start = battle.other_side(me.facing_side) * 5 + 1
     local cond: PanelCondition? = AIM
     local second = false
     while true do
@@ -246,7 +246,7 @@ dice_bonus.actor = new.kind {
             sprite.shadow = "ground"
             me.anim, me.anim_loaded = 0, 0
             sprite:set_animation(0)
-            sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+            sprite:face(me)
             me:set_lifecycle("update")
             update(me)
         elseif l == "update" then

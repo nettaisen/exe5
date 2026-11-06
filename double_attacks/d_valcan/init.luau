@@ -65,7 +65,7 @@ local APPEAR, CHARGE, ATTACK, AFTER, LEAVE = 0x0, 0x4, 0x8, 0xC, 0x10
 local function fire(me: Object, variant: BulletVariant)
     local z = HEIGHTS[bit32.band(battle.rng_positive(), 3) + 1]
     local word = bit32.bor(me.damage, bit32.lshift(me.stamina, 16))
-    local o = bullets.fire(bullet.kind, me, me.panel_x + me.facing, me.panel_y, z, variant, 0, word)
+    local o = bullets.fire(bullet.kind, me, me.panel_x + me.facing, me.panel_y, z, variant, Element.null, word)
     if o then
         o.run_while_dimmed = true
     end

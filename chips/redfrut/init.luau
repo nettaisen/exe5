@@ -3,6 +3,7 @@
 -- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local fruit = require("@self/fruit")
+local navi_status = require("@exelib/navi_status")
 local operation_battle = require("../lib/operation_battle")
 
 -- The gifts: their amounts.
@@ -15,7 +16,8 @@ local HEAL_GIFT = fruit.gift(function(navi: Object)
     local stats = battle.navi(navi.alliance)
     local mood = stats.mood
     if mood ~= 0 then
-        stats.mood = math.min(mood + MOOD, 0xFE)
+        -- (Full Synchro too: from the gauge's top, to 0xFE.)
+        stats.mood = math.min(navi_status.mood_number(mood) + MOOD, 0xFE)
     end
 end)
 
@@ -41,7 +43,7 @@ local SYNCHRO_GIFT = fruit.gift(function(navi: Object)
         return
     end
     if stats.mood ~= 0 then
-        stats.mood = 0xFF
+        stats.mood = "full_synchro"
     end
 end)
 

@@ -52,7 +52,7 @@ local function flash(me: Object)
     local p = list[battle.rng_positive() % #list + 1]
     local cx, cy = field.center(panels.x(p), panels.y(p))
     local s = me.state :: State
-    battle.effect(Vec3.new(cx, cy, 0), FLASHES[s.role], bit32.bxor(me.alliance, me.flip))
+    battle.effect(Vec3.new(cx, cy, 0), FLASHES[s.role], me.facing_side)
 end
 
 local function flashes(me: Object)
@@ -66,7 +66,7 @@ local function hit(me: Object)
     double_attack.hit(me, {
         panel_x = me.panel_x,
         panel_y = me.panel_y,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.other_area[me.alliance],
         target = collision.hits_navis,

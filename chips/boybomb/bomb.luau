@@ -103,7 +103,7 @@ local HOOK_ADDRESS = 0x080E8087
 function bomb.hook(user: Object, spec: DimmingChipSpec): Object?
     local o = dimming_chips.spawn(bomb.controller, user, spec)
     if o then
-        o.pos = Vec3.new(user.panel_y, spec.element, HOOK_ADDRESS);
+        o.pos = Vec3.new(user.panel_y, spec.element.byte, HOOK_ADDRESS);
         (o.state :: ControllerState).bonus = spec.bonus
     end
     return o

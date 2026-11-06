@@ -78,7 +78,7 @@ local function field_hit(me: Object)
     local box = battle.hitbox(me, {
         panel_x = 1,
         panel_y = 1,
-        element = 0,
+        element = Element.null,
         z = 0,
         region = regions.field,
         hit_effect = nil,
@@ -232,8 +232,8 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite.shadow = "with_sprite"
     me.anim, me.anim_loaded = 0, 0xFF
-    local facing = bit32.bxor(me.alliance, me.flip)
-    sprite:set_flip(facing)
+    local facing = me.facing_side
+    sprite:face_side(facing)
     me.panel_x, me.panel_y = facing * 5 + 1, 3
     me:set_coordinates_from_panel()
     local p = me.pos

@@ -22,7 +22,7 @@ function supports.hook(support: Support): (user: Object, spec: DimmingChipSpec) 
     return function(user: Object, spec: DimmingChipSpec): Object?
         local o = dimming_chips.spawn(controller.kind, user, spec)
         if o then
-            o.pos = Vec3.new(user.panel_y, spec.element, HOOK_ADDRESS)
+            o.pos = Vec3.new(user.panel_y, spec.element.byte, HOOK_ADDRESS)
             local s = o.state :: State
             s.support = support
             s.telop_chip = spec.chip

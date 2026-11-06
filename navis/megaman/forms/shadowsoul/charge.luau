@@ -11,7 +11,7 @@ local HIT_PARAM = 0x94
 
 -- 0x0800F820
 local function setup(navi: Object): Action
-    navi.attack_element = 0
+    navi.attack_element = Element.null
     navi.charged = 0
     navi.attack_lockout = 0
     navi.extra = 0

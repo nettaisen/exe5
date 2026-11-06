@@ -258,7 +258,7 @@ local function init(me: Object)
         return
     end
     me:setup_collision(collision.collision_40, collision.hits_navis, HIT_MOD)
-    sprite:set_flip(bit32.bxor(me.alliance, me.flip))
+    sprite:face(me)
     me:set_coordinates_from_panel()
     local v = me.vel
     me.vel = Vec3.new(me.facing * SPEED, v.y, v.z)
@@ -327,8 +327,8 @@ end
 
 -- 0x080D0346: a yoyo for `owner` on (x, y) at height `z`, with `element` and the damage word, flying as `spec`
 -- says, held in `slot`. It runs while dimmed. (Its position is the spawner's registers until its init places it.)
-function yoyo.spawn(owner: Object, x: number, y: number, element: number, z: number, damage: number, spec: Spec, slot: Slot): Object?
-    local o = battle.spawn(yoyo.kind, Vec3.new(y, element, z))
+function yoyo.spawn(owner: Object, x: number, y: number, element: Element, z: number, damage: number, spec: Spec, slot: Slot): Object?
+    local o = battle.spawn(yoyo.kind, Vec3.new(y, element.byte, z))
     if o then
         local s = o.state :: State
         s.spec, s.slot = spec, slot
@@ -351,7 +351,7 @@ function yoyo.action(spec: Spec): Action
         arm = yoyo.arm,
         attachment = attachment.kind,
         throw = function(me: Object, x: number, y: number, z: number, damage: number): Object?
-            return yoyo.spawn(me, x, y, 0, z, damage, spec, "related")
+            return yoyo.spawn(me, x, y, Element.null, z, damage, spec, "related")
         end,
     }
 end

@@ -24,7 +24,7 @@ function support.custom_hold(side: number): number?
         return nil
     end
     navi.hp = math.min(navi.hp + navi.max_hp * 5 // 100, navi.max_hp)
-    if battle.emotion(side) == "worried" then
+    if battle.emotion(side) == Emotion.worried then
         battle.set_mood(side, 0x80)
     end
     local o = battle.effect(navi.pos, effects.heal)

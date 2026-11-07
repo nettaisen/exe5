@@ -8,8 +8,8 @@ local colorpt = require("@self/colorpt")
 -- the chip at the hand's cursor: EXE6's ColorPt with EXE5's points (chips/colorpt/colorpt).
 local colorpt_chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "plus",
+    element = Element.null,
+    family = Family.plus,
     class = ChipClass.standard,
     rarity = 1,
     mb = 25,
@@ -27,8 +27,8 @@ local colorpt_chip: Chip = {
 -- the chip at the hand's cursor: EXE6's DblPoint with EXE5's points (chips/colorpt/colorpt).
 local dblpoint: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "plus",
+    element = Element.null,
+    family = Family.plus,
     class = ChipClass.mega,
     rarity = 3,
     mb = 50,

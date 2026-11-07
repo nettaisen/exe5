@@ -20,8 +20,8 @@ local meddysoul_sprite = asset.sprite("meddysoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "protoman",
-    soul = { family = "recovery" },
+    version = Version.protoman,
+    soul = { family = Family.recovery },
     change = soul_change.action,
     revert = soul_revert.action,
     -- Meddy's image as MegaMan unites with her (rules/souls/image).
@@ -29,7 +29,7 @@ local form: FormDef = {
     -- What it adds to the custom screen (rules/souls gathers it, rules/souls/custom): its capsules (./capsules).
     custom = capsules.custom,
     sprite = meddysoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x36 (0x0800FA70): DrkRecov (chip 0xC2), the charge table's row 0x36; its charge cycles in the cycle's

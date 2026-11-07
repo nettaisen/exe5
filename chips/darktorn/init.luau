@@ -32,8 +32,8 @@ local BLOW = tornado.blow {
 
 local chip: Chip = {
     codes = { "T" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = ChipClass.standard,
     rarity = 4,
     mb = 99,

@@ -26,8 +26,8 @@ local STRIKE = common.make {
 
 local chip: Chip = {
     codes = { "J" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.mega,
     rarity = 4,
     mb = 90,

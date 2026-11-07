@@ -9,8 +9,8 @@ local sp_chips = require("../rules/sp_chips")
 -- TmhwkMan (EXE5 chip 0x0fb): TomahawkMan cuts in and brings his tomahawk down on the two columns ahead (./navi).
 local tmhwkman: Chip = {
     codes = { "T" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.mega,
     rarity = 2,
     mb = 43,
@@ -33,8 +33,8 @@ local tmhwkman: Chip = {
 -- row 10).
 local tmhwkmn_sp: Chip = {
     codes = { "T" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.mega,
     rarity = 3,
     mb = 81,
@@ -57,8 +57,8 @@ local tmhwkmn_sp: Chip = {
 -- (../tmhwkman/navi); its damage by its user's side's statistic 3 (formula 33, its table's row 10).
 local tmhwkmn_ds: Chip = {
     codes = { "T" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.mega,
     rarity = 3,
     mb = 81,

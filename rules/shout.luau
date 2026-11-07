@@ -55,7 +55,7 @@ local function gate(side: number, navi: Object): boolean
     if stats.mood == Mood.full_synchro then
         return false
     end
-    if stats.navi.forms ~= nil and battle.emotion(side) ~= "worried" then
+    if stats.navi.forms ~= nil and battle.emotion(side) ~= Emotion.worried then
         return false
     end
     if navi.hp > bit32.rshift(navi.max_hp, 2) then

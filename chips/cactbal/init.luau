@@ -8,8 +8,8 @@ local cactbal = require("@self/cactbal")
 -- EXE5's own (chips/cactbal/cactbal), the ball in palette 0.
 local cactbal1: Chip = {
     codes = { "H", "I", "J" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 0,
     mb = 10,
@@ -26,8 +26,8 @@ local cactbal1: Chip = {
 -- EXE5's own (chips/cactbal/cactbal), the ball in palette 2.
 local cactbal2: Chip = {
     codes = { "Q", "R", "S" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 1,
     mb = 30,
@@ -44,8 +44,8 @@ local cactbal2: Chip = {
 -- EXE5's own (chips/cactbal/cactbal), the ball in palette 4.
 local cactbal3: Chip = {
     codes = { "L", "M", "N" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 2,
     mb = 50,

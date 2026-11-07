@@ -8,8 +8,8 @@ local woodnos = require("@self/woodnos")
 -- other side's navis: EXE5's own (chips/woodnos/woodnos).
 local woodnos1: Chip = {
     codes = { "F", "R", "W" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 0,
     mb = 27,
@@ -26,8 +26,8 @@ local woodnos1: Chip = {
 -- other side's navis: EXE5's own (chips/woodnos/woodnos).
 local woodnos2: Chip = {
     codes = { "J", "T", "Z" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 1,
     mb = 40,
@@ -44,8 +44,8 @@ local woodnos2: Chip = {
 -- other side's navis: EXE5's own (chips/woodnos/woodnos).
 local woodnos3: Chip = {
     codes = { "I", "S", "V" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 2,
     mb = 53,

@@ -41,7 +41,7 @@ return common.make {
     -- 0x08016C3C(0): hit effect 0.
     spark = sparks.plain,
     breaking_hits = { own_body = true, enemy_body = true, neutral = true, ["break"] = true },
-    landing_panel = "poison",
+    landing_panel = PanelType.poison,
     landing_sound = asset.sound("panel-poison"),
     puff = effects.puff,
     trajectory = trajectory,

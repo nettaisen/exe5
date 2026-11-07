@@ -22,14 +22,14 @@ local sword_sprite = asset.sprite("sword")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "protoman",
-    soul = { family = "sword" },
+    version = Version.protoman,
+    soul = { family = Family.sword },
     change = soul_change.action,
     revert = soul_revert.action,
     -- ProtoMan's image as MegaMan unites with him (rules/souls/image).
     image = soul_image.look { sprite = protoman_sprite },
     sprite = protosoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires,
     -- and the blade its swords hold while the charge is armed (lib/swords, 0x080EC082: attachment row 10, the swords'
@@ -41,7 +41,7 @@ local form: FormDef = {
         back_special = back.weapon,
         a_charge = charged_chip.weapon,
     },
-    charged_chips = { { family = "sword", damaging = false, plain = true } },
+    charged_chips = { { family = Family.sword, damaging = false, plain = true } },
     charged_bonus = { damage = ChargedBonus.again },
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 5-10, the version's souls'); in its

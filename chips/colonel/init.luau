@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- (./navi).
 local colonel: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 2,
     mb = 39,
@@ -34,8 +34,8 @@ local colonel: Chip = {
 -- row 7).
 local colonel_sp: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 75,
@@ -58,8 +58,8 @@ local colonel_sp: Chip = {
 -- navi ahead (../colonel/navi); its damage by its user's side's statistic 3 (formula 30, its table's row 7).
 local colonel_ds: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 75,

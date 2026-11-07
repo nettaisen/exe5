@@ -13,8 +13,8 @@ local WAVE3 = spshake.wave { speed = 0x3_0000, paralyzes = false, palette = 0x0C
 -- chips/spshake/spshake: action 0x51).
 local spshake1: Chip = {
     codes = { "G", "H", "I" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 0,
     mb = 30,
@@ -31,8 +31,8 @@ local spshake1: Chip = {
 -- chips/spshake/spshake: action 0x51).
 local spshake2: Chip = {
     codes = { "B", "C", "D" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 1,
     mb = 40,
@@ -49,8 +49,8 @@ local spshake2: Chip = {
 -- chips/spshake/spshake: action 0x51).
 local spshake3: Chip = {
     codes = { "S", "T", "U" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 2,
     mb = 50,

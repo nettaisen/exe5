@@ -22,14 +22,14 @@ local tomahawksoul_sprite = asset.sprite("tomahawksoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "colonel",
-    soul = { family = "wood" },
+    version = Version.colonel,
+    soul = { family = Family.wood },
     change = soul_change.action,
     revert = soul_revert.action,
     -- TomahawkMan's image as MegaMan unites with him (rules/souls/image).
     image = soul_image.look { sprite = tomahawkman_sprite },
     sprite = tomahawksoul_sprite,
-    element = "wood",
+    element = Element.wood,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x33 (0x0800FA52): DrkLance (chip 0xBF), the charge table's row 0x33.
@@ -42,7 +42,7 @@ local form: FormDef = {
         charge_shot = charge.weapon,
         a_charge = charged_shot.weapon,
     },
-    panel_doubles = { panel = "grass", chips = { family = "wood" } },
+    panel_doubles = { panel = PanelType.grass, chips = { family = Family.wood } },
     reset = function(navi: Object)
         grass.spawn(navi)
     end,

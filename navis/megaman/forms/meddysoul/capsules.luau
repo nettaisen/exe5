@@ -32,7 +32,7 @@ type Screen = {
 
 -- The slots the capsules take: the hand's last two.
 local SLOTS = { 8, 9 }
-local BUTTONS = { "capsule_1", "capsule_2" }
+local BUTTONS = { Button.capsule_1, Button.capsule_2 }
 
 -- What a capsule mixes into a chip (0x08023824, the capsule's `capsule_mix`): the hand's modifier bits, which the
 -- chip's use turns into its damage word's confusion (0x2000), blindness (0x1000), paralysis (0x4000) or HP bug
@@ -88,7 +88,7 @@ local function button(index: number): SoulButton
             custom.play(side, ScreenSound.pick)
             local st = (s :: { screen: Screen }).screen
             st.mix_capsule, st.mix_step, st.mix_count = index, 0, 0
-            custom.open_window(side, "capsule")
+            custom.open_window(side, Window.capsule)
         end,
     }
 end

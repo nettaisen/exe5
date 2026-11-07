@@ -10,8 +10,8 @@ local side_special = require("@exelib/instant/side_special")
 -- counts the timer down), so the chip's use changes nothing observable.
 local cannmode: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 4,
     mb = 10,
@@ -30,8 +30,8 @@ local cannmode: Chip = {
 -- counts the timer down), so the chip's use changes nothing observable.
 local cannball_mode: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 4,
     mb = 30,
@@ -50,8 +50,8 @@ local cannball_mode: Chip = {
 -- counts the timer down), so the chip's use changes nothing observable.
 local swrdmode: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 4,
     mb = 40,
@@ -70,8 +70,8 @@ local swrdmode: Chip = {
 -- counts the timer down), so the chip's use changes nothing observable.
 local yoyomode: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 4,
     mb = 50,
@@ -90,8 +90,8 @@ local yoyomode: Chip = {
 -- counts the timer down), so the chip's use changes nothing observable.
 local drilmode: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 4,
     mb = 80,

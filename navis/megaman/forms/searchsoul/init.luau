@@ -23,8 +23,8 @@ local searchsoul_sprite = asset.sprite("searchsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "protoman",
-    soul = { family = "cursor" },
+    version = Version.protoman,
+    soul = { family = Family.cursor },
     change = soul_change.action,
     revert = soul_revert.action,
     -- SearchMan's image as MegaMan unites with him (rules/souls/image).
@@ -32,7 +32,7 @@ local form: FormDef = {
     -- What it adds to the custom screen (rules/souls gathers it, rules/souls/custom): Shuffle (./shuffle).
     custom = shuffle.custom,
     sprite = searchsoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x30 (0x0800FA34): DarkCirc (chip 0xBB), the charge table's row 0x30.

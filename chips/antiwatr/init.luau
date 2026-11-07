@@ -7,8 +7,8 @@ local anti_trap = require("../lib/traps/anti_trap")
 
 local chip: Chip = {
     codes = { "D", "G", "Q", "*" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.standard,
     rarity = 2,
     mb = 54,

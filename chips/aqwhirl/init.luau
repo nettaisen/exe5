@@ -9,8 +9,8 @@ local whirlpool = require("@self/whirlpool")
 -- (./whirlpool) set down ahead in palette 0 at speed 0x20, looping round the field.
 local aqwhirl1: Chip = {
     codes = { "B", "F", "N" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.standard,
     rarity = 0,
     mb = 30,
@@ -27,8 +27,8 @@ local aqwhirl1: Chip = {
 -- (./whirlpool) set down ahead in palette 1 at speed 0x30, looping round the field.
 local aqwhirl2: Chip = {
     codes = { "A", "H", "O" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.standard,
     rarity = 1,
     mb = 42,
@@ -45,8 +45,8 @@ local aqwhirl2: Chip = {
 -- (./whirlpool) set down ahead in palette 2 at speed 0x50, looping round the field.
 local aqwhirl3: Chip = {
     codes = { "D", "I", "R" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.standard,
     rarity = 2,
     mb = 54,

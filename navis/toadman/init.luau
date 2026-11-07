@@ -31,7 +31,7 @@ local navi: NaviDef = {
     sprite = toadman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) lasts.
     animation_steps = { warp_out = 4 },
-    element = "aqua",
+    element = Element.aqua,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("toadman-win"), lose = asset.banner("toadman-deleted") },
@@ -51,7 +51,7 @@ local navi: NaviDef = {
         a_charge = charged_chips.routine({ 60, 60, 60, 60, 60, 140 }, "toadman/a-charge"),
     },
     -- The chips A charges, and what a charged one gains (its damage again).
-    charged_chips = { family = "aqua", damaging = false, plain = true },
+    charged_chips = { family = Family.aqua, damaging = false, plain = true },
     charged_bonus = { damage = ChargedBonus.again },
     -- 0x080F199C
     post_init = dives,
@@ -73,7 +73,7 @@ local navi: NaviDef = {
     -- 0x0203BF2C adds the programs' bonus to).
     -- The team whose saves hold it: a ruleset of one version per build holds a party to one team's navis
     -- (rules/builds' groups; the DS's Navi Select lists either team's).
-    version = "colonel",
+    version = Version.colonel,
     party = {
         gauge = 8,
         hp = { 100, 100, 100, 100, 100, 100, 200, 300, 400, 500 },

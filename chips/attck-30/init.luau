@@ -7,8 +7,8 @@ local plus = require("../lib/plus")
 
 local chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "plus",
+    element = Element.null,
+    family = Family.plus,
     class = ChipClass.mega,
     rarity = 3,
     mb = 66,

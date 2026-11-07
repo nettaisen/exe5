@@ -18,8 +18,8 @@ local BOMB = crakbom.variant {
 
 local chip: Chip = {
     codes = { "D", "I", "O" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 50,

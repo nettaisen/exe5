@@ -34,8 +34,8 @@ local BURST = bullet.variant {
 
 local chip: Chip = {
     codes = { "C", "D", "E", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 10,

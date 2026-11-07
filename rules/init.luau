@@ -194,14 +194,14 @@ local rules: Rules = {
         -- switched off is none of the side's: it does nothing in battle). A card each team's ROMs give effects of
         -- their own (card 111, Bass-Cross MegaMan) has the variant chosen for it, a team's (its effects' `variant`s),
         -- as a NaviCust program's color is chosen; a card without variants, none (left out).
-        patch_cards = schema.list({ card = schema.entry("patch_cards"), variant = { "protoman", "colonel" } }, 32),
+        patch_cards = schema.list({ card = schema.entry(Collection.patch_cards), variant = { "protoman", "colonel" } }, 32),
         -- Their NaviCust (./navicust): how far its board has been expanded (none: no NaviCust, the stats as the
         -- setup gives them: a navi but MegaMan's, a recording's), and the programs placed on its 7x7 grid in its
         -- list's order, each in one of its colors (its definition's `colors`), its center at (x, y), turned
         -- `rotation` quarters clockwise, compressed or not.
         navicust_expansions = schema.optional(schema.u8),
         navicust_programs = schema.list({
-            program = schema.entry("navicust_programs"),
+            program = schema.entry(Collection.navicust_programs),
             color = { "white", "pink", "yellow", "red", "blue", "green" },
             x = schema.u8,
             y = schema.u8,
@@ -234,7 +234,7 @@ local rules: Rules = {
         -- The team navis MegaMan brings to a party battle (./party, EXE5 DS's: the save's team, or Navi Select's two in a
         -- link battle), in order, each with its PartyCust programs (./party/partycust: no more than its gauge holds,
         -- ten blocks at most). None: no party.
-        party = schema.list({ navi = schema.navi, programs = schema.list(schema.entry("partycust_programs"), 10) }, 2),
+        party = schema.list({ navi = schema.navi, programs = schema.list(schema.entry(Collection.partycust_programs), 10) }, 2),
     },
     -- A setup that says nothing: what every save brings at its highest, the base HP 1000, the Regular memory 50 and
     -- the sun, no level (MegaMan's); a fresh save's light/dark value (0x08010C00 writes 500: light for the chips, no
@@ -331,7 +331,7 @@ local rules: Rules = {
             -- The version whose saves hold the chip (a team's own Giga chips: each version's library lists its own
             -- six, and a Giga chip isn't traded), which a ruleset's groups go by (./builds' `groups`). None: either
             -- team's (ChaosLrd, which both Japanese games gave out).
-            version = { "protoman", "colonel" },
+            version = { Version.protoman, Version.colonel },
             auto_battle = {
                 class = {
                     "into_reach", "to_front", "spot_test", "landing_ahead", "behind_target", "three_ahead_near_enemy",
@@ -366,7 +366,7 @@ local rules: Rules = {
             -- The team whose saves hold a team navi (./builds' groups: a ruleset of one version per build holds a
             -- party to one team's), and what it is in a party (./party, EXE5 DS's party battle): its PartyCust gauge's
             -- blocks, its base HP and its own chip's damage by the side's level, 0 to 9.
-            version = { "protoman", "colonel" },
+            version = { Version.protoman, Version.colonel },
             party = { gauge = schema.u8, hp = schema.array(schema.u16, 10), chip_damage = schema.array(schema.u16, 10) },
             -- How many of its sprite's steps its warp out (animation 4) lasts, which a step sword with nowhere to step
             -- waits out (lib/swords, lib/stepsword).
@@ -377,8 +377,8 @@ local rules: Rules = {
             -- form's key; the original's number for it (NaviStats +0x2C) is compat's.
             soul = {
                 family = {
-                    "sword", "wind", "cursor", "fire", "elec", "recovery", "summon", "invisible", "plus", "aqua",
-                    "break", "wood",
+                    Family.sword, Family.wind, Family.cursor, Family.fire, Family.elec, Family.recovery, Family.summon, Family.invisible, Family.plus, Family.aqua,
+                    Family["break"], Family.wood,
                 },
             },
             image = soul_image.SOUL_IMAGE,

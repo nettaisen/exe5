@@ -30,8 +30,8 @@ local CAPE: BodyPart = { sprite = colonel_cape_sprite, anims = 41 }
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "colonel",
-    soul = { family = "summon" },
+    version = Version.colonel,
+    soul = { family = Family.summon },
     change = soul_change.action,
     revert = soul_revert.action,
     -- Colonel's image as MegaMan unites with him (rules/souls/image), in his cape (0x0800EDBC's routine for the soul).
@@ -39,7 +39,7 @@ local form: FormDef = {
     -- What it adds to the custom screen (rules/souls gathers it, rules/souls/custom): Arm Change (./arm_change).
     custom = arm_change.custom,
     sprite = colonelsoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x3A (0x0800FA98): DrkSonic (chip 0xC6), the charge table's row 0x3A; and the blade its swords hold while

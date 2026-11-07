@@ -14,8 +14,8 @@ end)
 
 local chip: Chip = {
     codes = { "H", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = ChipClass.standard,
     rarity = 4,
     mb = 99,

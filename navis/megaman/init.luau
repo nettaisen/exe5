@@ -31,7 +31,7 @@ local navi: NaviDef = {
     sprite = megaman_navi_sprite,
     -- How many steps of the sprite he is drawn with (his form's; every soul's alike) his warp out (animation 4) lasts.
     animation_steps = { warp_out = 4 },
-    element = "null",
+    element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("megaman-win"), lose = asset.banner("megaman-deleted") },
@@ -41,7 +41,7 @@ local navi: NaviDef = {
         portrait = megaman_portrait_sprite,
     },
     weapons = { buster = buster.weapon, charge_shot = charged_shot.weapon },
-    panel_bonus = { panel = "sea", family = "aqua", damage = 30 },
+    panel_bonus = { panel = PanelType.sea, family = Family.aqua, damage = 30 },
     -- His fresh stats, as a navi's stats start (0x080111BA from the table 0x0801D55F: his row, EXE6's):
     -- the stats a match's side starts him at.
     fresh = { hp = 100, mega_level = 5, giga_level = 1 },

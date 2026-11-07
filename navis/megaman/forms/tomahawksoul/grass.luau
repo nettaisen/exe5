@@ -9,7 +9,7 @@
 local grass = {}
 
 -- Its parameters (0x000A0006): Param1 the panel type, Param3 the ticks it shows.
-local KIND: PanelType, TICKS = "grass", 10
+local KIND: PanelType, TICKS = PanelType.grass, 10
 
 -- 0x080E1FE4: the count up; showing the field as the type two ticks of four; at the end the field turned, and gone.
 local function change(me: Object)
@@ -30,7 +30,7 @@ local function change(me: Object)
     for y = 3, 1, -1 do
         for x = 6, 1, -1 do
             local p = field.panel(x, y)
-            if p and p.kind ~= "missing" then
+            if p and p.kind ~= PanelType.missing then
                 field.blink(x, y, KIND, p.alliance)
             end
         end

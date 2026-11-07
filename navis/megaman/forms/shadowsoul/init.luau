@@ -23,14 +23,14 @@ local shadowsoul_sprite = asset.sprite("shadowsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "colonel",
-    soul = { family = "invisible" },
+    version = Version.colonel,
+    soul = { family = Family.invisible },
     change = soul_change.action,
     revert = soul_revert.action,
     -- ShadowMan's image as MegaMan unites with him (rules/souls/image).
     image = soul_image.look { sprite = shadowman_sprite },
     sprite = shadowsoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x31 (0x0800FA3E): DarkInvs (chip 0xBD), the charge table's row 0x31.
@@ -42,7 +42,7 @@ local form: FormDef = {
         a_charge = charged_chips.routine({ 30, 30, 30, 30, 30, 70 }),
         back_special = back.weapon,
     },
-    charged_chips = { { family = "sword", damaging = false, plain = true } },
+    charged_chips = { { family = Family.sword, damaging = false, plain = true } },
     status_reset = { float_shoes = true, floating_body = true },
     move_lag = 0,
     palette = 0,

@@ -10,8 +10,8 @@ local puck = require("@self/puck")
 
 local chip: Chip = {
     codes = { "Q", "R", "S" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 2,
     mb = 40,

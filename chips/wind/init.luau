@@ -10,8 +10,8 @@ local fan = require("@self/fan")
 -- front column (./fan, the record's first parameter 0).
 local wind: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = ChipClass.standard,
     rarity = 1,
     mb = 10,
@@ -42,8 +42,8 @@ local wind: Chip = {
 -- (./fan, the record's first parameter 1).
 local fan_chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = ChipClass.standard,
     rarity = 1,
     mb = 10,

@@ -27,8 +27,8 @@ end)
 
 local chip: Chip = {
     codes = { "W" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 4,
     mb = 99,

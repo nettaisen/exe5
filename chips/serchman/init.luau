@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- shots on the panel (./navi).
 local serchman: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = ChipClass.mega,
     rarity = 2,
     mb = 42,
@@ -34,8 +34,8 @@ local serchman: Chip = {
 -- formula 4, its table's row 3).
 local serchmn_sp: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = ChipClass.mega,
     rarity = 3,
     mb = 72,
@@ -59,8 +59,8 @@ local serchmn_sp: Chip = {
 -- row 3).
 local serchmn_ds: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = ChipClass.mega,
     rarity = 3,
     mb = 72,

@@ -7,8 +7,8 @@ local guardian = require("@self/guardian")
 
 local chip: Chip = {
     codes = { "O" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.mega,
     rarity = 3,
     mb = 64,

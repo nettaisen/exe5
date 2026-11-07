@@ -8,8 +8,8 @@ local elcreel = require("@self/elcreel")
 -- it, and shocks them: EXE5's own (chips/elcreel/elcreel).
 local elcreel1: Chip = {
     codes = { "C", "V", "Z" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 0,
     mb = 32,
@@ -26,8 +26,8 @@ local elcreel1: Chip = {
 -- it, and shocks them: EXE5's own (chips/elcreel/elcreel).
 local elcreel2: Chip = {
     codes = { "B", "Q", "Y" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 1,
     mb = 46,
@@ -44,8 +44,8 @@ local elcreel2: Chip = {
 -- it, and shocks them: EXE5's own (chips/elcreel/elcreel).
 local elcreel3: Chip = {
     codes = { "E", "L", "R" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 2,
     mb = 60,

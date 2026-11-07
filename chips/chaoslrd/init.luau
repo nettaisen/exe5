@@ -11,8 +11,8 @@ local navi_chips = require("../lib/navi_chips/chip")
 
 local chip: Chip = {
     codes = { "X" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.giga,
     -- A save can collect it (rules/folder), though no library lists it: a chip the Japanese game gave out.
     collectible = true,

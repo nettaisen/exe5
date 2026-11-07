@@ -11,8 +11,8 @@ local sword_slash_sprite = asset.sprite("sword-slash")
 
 local chip: Chip = {
     codes = { "M" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.mega,
     rarity = 4,
     mb = 81,

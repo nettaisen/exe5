@@ -37,8 +37,8 @@ local SHOWER = meteors.variant {
 
 local chip: Chip = {
     codes = { "F" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 4,
     mb = 99,

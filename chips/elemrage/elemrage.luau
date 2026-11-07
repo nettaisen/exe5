@@ -63,7 +63,7 @@ elemrage.claw = CLAW
 local ROAR, RAGE_ROAR = asset.sound("roar"), asset.sound("rage-roar")
 -- The user's panel back to normal (the panel changer's row 11: its own panel, 30 ticks, flickering).
 local RESTORE = panel_changer.change {
-    panel = "normal",
+    panel = PanelType.normal,
     panels = "own",
     flicker = true,
     ticks = 30,
@@ -80,7 +80,7 @@ function elemrage.action(count: number, ticks: number): Action
     local function fire(me: Object, s: State)
         if me.step_init == 0 then
             local p = field.panel(me.panel_x, me.panel_y)
-            local rage = (p and RAGES[p.kind]) or NONE
+            local rage = (p and RAGES[p.kind.name]) or NONE
             me.attack_element = rage.element
             s.palette = rage.palette
             s.raged = rage.element ~= Element.null

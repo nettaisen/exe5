@@ -12,15 +12,15 @@ local grab_shot_sprite = asset.sprite("grab-shot")
 local SEED = seed.variant {
     element = Element.null,
     palette = 3,
-    panel = "lava",
+    panel = PanelType.lava,
     effect = new.effect { sprite = grab_shot_sprite, anim = 1, palette = 0xC, steps = 16 },
     sound = asset.sound("panel-volcano"),
 }
 
 local chip: Chip = {
     codes = { "H", "K", "P" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 60,

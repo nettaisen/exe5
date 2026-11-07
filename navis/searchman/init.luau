@@ -19,7 +19,7 @@ local navi: NaviDef = {
     sprite = searchman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) lasts.
     animation_steps = { warp_out = 4 },
-    element = "null",
+    element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("searchman-win"), lose = asset.banner("searchman-deleted") },
@@ -44,7 +44,7 @@ local navi: NaviDef = {
     -- 0x0203BF2C adds the programs' bonus to).
     -- The team whose saves hold it: a ruleset of one version per build holds a party to one team's navis
     -- (rules/builds' groups; the DS's Navi Select lists either team's).
-    version = "protoman",
+    version = Version.protoman,
     party = {
         gauge = 6,
         hp = { 100, 100, 100, 100, 100, 200, 250, 350, 450, 550 },

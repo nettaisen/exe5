@@ -6,10 +6,10 @@ local controller = require("@self/controller")
 
 local chip: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).
-    version = "protoman",
+    version = Version.protoman,
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.giga,
     rarity = 4,
     mb = 73,

@@ -18,8 +18,8 @@ local EFFECT = effects.drum(statuses.immobilize_4, collision.guard_breaking, col
 
 local chip: Chip = {
     codes = { "A", "L", "V", "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.standard,
     rarity = 1,
     mb = 20,

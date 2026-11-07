@@ -11,8 +11,8 @@ local collision = require("../rules/collision")
 -- types.
 local energbom: Chip = {
     codes = { "E", "P", "W" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 11,
@@ -40,8 +40,8 @@ local energbom: Chip = {
 -- types.
 local megenbom: Chip = {
     codes = { "C", "K", "Z" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 30,

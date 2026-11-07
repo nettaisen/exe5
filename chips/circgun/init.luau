@@ -9,8 +9,8 @@ local collision = require("../rules/collision")
 
 local chip: Chip = {
     codes = { "A", "C", "F" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = ChipClass.standard,
     rarity = 2,
     mb = 50,

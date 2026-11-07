@@ -35,5 +35,5 @@ return {
         recovery = 13,
         invisible = 14,
     },
-    non_elemental = "null",
+    non_elemental = Family.null,
 }

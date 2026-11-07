@@ -8,8 +8,8 @@ local mrkcan = require("@self/mrkcan")
 -- and the cannon fires at it (EXE5's own MarkCannon, chips/mrkcan/mrkcan: action 0x4E).
 local mrkcan1: Chip = {
     codes = { "M", "K", "S" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = ChipClass.standard,
     rarity = 0,
     mb = 18,
@@ -26,8 +26,8 @@ local mrkcan1: Chip = {
 -- and the cannon fires at it (EXE5's own MarkCannon, chips/mrkcan/mrkcan: action 0x4E).
 local mrkcan2: Chip = {
     codes = { "D", "F", "Z" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = ChipClass.standard,
     rarity = 1,
     mb = 27,
@@ -44,8 +44,8 @@ local mrkcan2: Chip = {
 -- and the cannon fires at it (EXE5's own MarkCannon, chips/mrkcan/mrkcan: action 0x4E).
 local mrkcan3: Chip = {
     codes = { "E", "R", "Y" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = ChipClass.standard,
     rarity = 2,
     mb = 36,

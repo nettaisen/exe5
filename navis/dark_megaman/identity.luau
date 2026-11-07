@@ -23,7 +23,7 @@ return new.identity {
         palette_scale = 1,
         palette = 1,
         hp = 500,
-        element = "null",
+        element = Element.null,
         body_damage = 10,
         collision = { body = collision.own_body, target = collision.navi_target, hit_modifier = { flinch = true, flash = true } },
         flags = { super_armor = true, affected_by_ice = true, untouchable = true },

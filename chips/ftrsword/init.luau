@@ -13,8 +13,8 @@ local LINE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 3, palette =
 
 local chip: Chip = {
     codes = { "E", "L", "S", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.special,
     rarity = 0,
     mb = 8,

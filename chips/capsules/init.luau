@@ -16,8 +16,8 @@ local supports = require("../lib/supports/dimming")
 -- the cannon's (action 0x14, subtype 0).
 local yelcapsl: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.special,
     rarity = 0,
     mb = 5,
@@ -35,8 +35,8 @@ local yelcapsl: Chip = {
 -- Poltrgst's (the dimming handler's subtype 49, its first parameter 0).
 local blkcapsl: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.special,
     rarity = 0,
     mb = 5,
@@ -55,8 +55,8 @@ local blkcapsl: Chip = {
 -- RockCube's controller with the ice rock (the dimming handler's subtype 20, its first parameter 3).
 local whicapsl: Chip = {
     codes = {},
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.special,
     rarity = 0,
     mb = 6,
@@ -74,8 +74,8 @@ local whicapsl: Chip = {
 -- is the supports' controller bringing Rush (the dimming handler's subtype 50, its first parameter 0).
 local prpcapsl: Chip = {
     codes = {},
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.special,
     rarity = 0,
     mb = 6,
@@ -94,8 +94,8 @@ local prpcapsl: Chip = {
 -- first parameter 1).
 local pnkcapsl: Chip = {
     codes = {},
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.special,
     rarity = 0,
     mb = 6,

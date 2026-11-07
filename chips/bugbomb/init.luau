@@ -10,8 +10,8 @@ local common = require("@exelib/bugbomb/bomb")
 
 local chip: Chip = {
     codes = { "A", "R", "T", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 30,

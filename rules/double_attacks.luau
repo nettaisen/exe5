@@ -90,7 +90,7 @@ local function launch(side: number, navi: Object, partner: NaviDef, mood: NaviMo
         error(string.format("a Double Attack's damage row read at level %d", level))
     end
     local word = damage_word.of { amount = damage, counter = chip.counter :: number, cant_counter = chip.cant_counter }
-    local controller = attack.spawn(navi, Element.new(chip.element :: ElementName), word)
+    local controller = attack.spawn(navi, chip.element :: Element, word)
     dimming.start(side, true, controller, navi, { chip = chip })
     s.spent = true
 end

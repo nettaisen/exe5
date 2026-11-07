@@ -7,8 +7,8 @@ local grab = require("../lib/grab")
 
 local chip: Chip = {
     codes = { "A", "L", "S", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 8,

@@ -8,8 +8,8 @@ local drill = require("@self/drill")
 -- ticks plus 10: EXE6's DrilArm (action 0x4F, EXE6's 0x2E) as EXE5's (chips/drilarm/drill).
 local drilarm1: Chip = {
     codes = { "A", "J", "W" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 0,
     mb = 38,
@@ -26,8 +26,8 @@ local drilarm1: Chip = {
 -- ticks plus 10: EXE6's DrilArm (action 0x4F, EXE6's 0x2E) as EXE5's (chips/drilarm/drill).
 local drilarm2: Chip = {
     codes = { "D", "L", "S" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 1,
     mb = 51,
@@ -44,8 +44,8 @@ local drilarm2: Chip = {
 -- ticks plus 10: EXE6's DrilArm (action 0x4F, EXE6's 0x2E) as EXE5's (chips/drilarm/drill).
 local drilarm3: Chip = {
     codes = { "I", "P", "Z" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 2,
     mb = 64,

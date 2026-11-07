@@ -9,8 +9,8 @@ local regions = require("@exelib/regions")
 
 local chip: Chip = {
     codes = { "B", "G", "L", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 5,

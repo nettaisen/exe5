@@ -15,8 +15,8 @@ end)
 
 local chip: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.standard,
     rarity = 4,
     mb = 99,

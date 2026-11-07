@@ -8,8 +8,8 @@ local moonbld = require("@self/moonbld")
 -- chips/moonbld/moonbld: action 0x53, EXE6's swing with the shared moon blade; a charged one steps first).
 local moonbld1: Chip = {
     codes = { "E", "N", "Z" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.standard,
     rarity = 0,
     mb = 23,
@@ -26,8 +26,8 @@ local moonbld1: Chip = {
 -- chips/moonbld/moonbld: action 0x53, EXE6's swing with the shared moon blade; a charged one steps first).
 local moonbld2: Chip = {
     codes = { "G", "O", "V" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.standard,
     rarity = 1,
     mb = 36,
@@ -44,8 +44,8 @@ local moonbld2: Chip = {
 -- chips/moonbld/moonbld: action 0x53, EXE6's swing with the shared moon blade; a charged one steps first).
 local moonbld3: Chip = {
     codes = { "C", "L", "T" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.standard,
     rarity = 2,
     mb = 49,

@@ -21,8 +21,8 @@ local HOOK = controller.make {
 
 local chip: Chip = {
     codes = { "A", "D", "H", "*" },
-    element = "null",
-    family = "invisible",
+    element = Element.null,
+    family = Family.invisible,
     class = ChipClass.standard,
     rarity = 1,
     mb = 9,

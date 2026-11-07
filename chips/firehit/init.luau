@@ -8,8 +8,8 @@ local fist = require("@self/fist")
 -- the first column ahead with one of the other side's has one, at most three panels ahead).
 local firehit1: Chip = {
     codes = { "O", "P", "Q" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 0,
     mb = 12,
@@ -26,8 +26,8 @@ local firehit1: Chip = {
 -- the first column ahead with one of the other side's has one, at most three panels ahead).
 local firehit2: Chip = {
     codes = { "H", "I", "J" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 1,
     mb = 28,
@@ -44,8 +44,8 @@ local firehit2: Chip = {
 -- the first column ahead with one of the other side's has one, at most three panels ahead).
 local firehit3: Chip = {
     codes = { "E", "F", "G" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 2,
     mb = 44,

@@ -31,8 +31,8 @@ local SHOOTER = attachment.look { sprite = wide_shooter_sprite, palette = 3, att
 
 local chip: Chip = {
     codes = { "T" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = ChipClass.standard,
     rarity = 4,
     mb = 99,

@@ -23,7 +23,7 @@ local navi: NaviDef = {
     sprite = tomahawkman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) lasts.
     animation_steps = { warp_out = 3 },
-    element = "wood",
+    element = Element.wood,
     buster_bonus = 3,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("tomahawkman-win"), lose = asset.banner("tomahawkman-deleted") },
@@ -44,7 +44,7 @@ local navi: NaviDef = {
         a_charge = charged_chips.routine({ 60, 60, 60, 60, 60, 60 }, "tomahawkman/a-charge"),
     },
     -- The chips A charges, and what a charged one gains (its damage again).
-    charged_chips = { family = "wood", damaging = false, plain = true },
+    charged_chips = { family = Family.wood, damaging = false, plain = true },
     charged_bonus = { damage = ChargedBonus.again },
     -- His fresh stats (his stats row): what a side starts him with.
     fresh = { hp = 400, super_armor = true, undershirt = true, mega_level = 5, giga_level = 1 },
@@ -57,7 +57,7 @@ local navi: NaviDef = {
     -- 0x0203BF2C adds the programs' bonus to).
     -- The team whose saves hold it: a ruleset of one version per build holds a party to one team's navis
     -- (rules/builds' groups; the DS's Navi Select lists either team's).
-    version = "colonel",
+    version = Version.colonel,
     party = {
         gauge = 6,
         hp = { 100, 100, 100, 100, 200, 250, 300, 400, 500, 600 },

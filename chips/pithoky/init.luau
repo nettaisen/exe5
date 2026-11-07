@@ -11,8 +11,8 @@ local recipe_cannball = require("./cannball").cannball
 
 local chip: Chip = {
     codes = {},
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = ChipClass.program_advance,
     rarity = 0,
     mb = 5,

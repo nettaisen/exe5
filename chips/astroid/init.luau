@@ -24,8 +24,8 @@ local SHOWER = meteors.variant {
 -- beside it, each cracking its panel (chips/meteors: instant chip effect 17, its second parameter 6).
 local astroid1: Chip = {
     codes = { "A", "Q", "T" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 0,
     mb = 26,
@@ -43,8 +43,8 @@ local astroid1: Chip = {
 -- beside it, each cracking its panel (chips/meteors: instant chip effect 17, its second parameter 8).
 local astroid2: Chip = {
     codes = { "E", "M", "U" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 1,
     mb = 42,
@@ -62,8 +62,8 @@ local astroid2: Chip = {
 -- beside it, each cracking its panel (chips/meteors: instant chip effect 17, its second parameter 10).
 local astroid3: Chip = {
     codes = { "C", "P", "Y" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = ChipClass.standard,
     rarity = 2,
     mb = 56,

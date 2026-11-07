@@ -9,8 +9,8 @@ local sp_chips = require("../rules/sp_chips")
 -- GridMan (EXE5 chip 0x113): GridMan cuts in, dashes across the field and strikes the whole enemy area (./navi).
 local gridman: Chip = {
     codes = { "F" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 2,
     mb = 46,
@@ -32,8 +32,8 @@ local gridman: Chip = {
 -- its damage by how fast its user deleted GridMan SP (rules/sp_chips: formula 19, its table's row 18).
 local gridman_sp: Chip = {
     codes = { "F" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 72,
@@ -56,8 +56,8 @@ local gridman_sp: Chip = {
 -- (../gridman/navi); its damage by its user's side's statistic 3 (formula 41, its table's row 18).
 local gridman_ds: Chip = {
     codes = { "F" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 72,

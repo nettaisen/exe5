@@ -8,8 +8,8 @@ local batcan = require("@self/batcan")
 -- tick: EXE6's BatCan (chips/batcan/batcan).
 local batcan1: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 5,
@@ -28,8 +28,8 @@ local batcan1: Chip = {
 -- tick: EXE6's BatCan (chips/batcan/batcan).
 local batcan2: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 5,
@@ -48,8 +48,8 @@ local batcan2: Chip = {
 -- tick: EXE6's BatCan (chips/batcan/batcan).
 local batcan3: Chip = {
     codes = { "R" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 5,
@@ -68,8 +68,8 @@ local batcan3: Chip = {
 -- ticks apart, the last staggering harder: EXE6's BatCan4 (chips/batcan/batcan).
 local batcan4: Chip = {
     codes = { "Z" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 5,

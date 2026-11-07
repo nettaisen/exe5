@@ -9,8 +9,8 @@ local side_special = require("@exelib/instant/side_special")
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.giga,
     rarity = 4,
     mb = 80,

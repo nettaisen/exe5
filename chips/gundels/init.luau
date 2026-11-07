@@ -19,8 +19,8 @@ local WIDE_BEAM_IN_SUN: SunBeamLook = { sprite = sun_beam_ex_sprite, palette = 3
 -- ticks).
 local gundels1: Chip = {
     codes = { "A", "S", "U", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 15,
@@ -45,8 +45,8 @@ local gundels1: Chip = {
 -- ticks).
 local gundels2: Chip = {
     codes = { "G", "U", "Y" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 25,
@@ -71,8 +71,8 @@ local gundels2: Chip = {
 -- ticks).
 local gundels3: Chip = {
     codes = { "D", "M", "O" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 3,
     mb = 35,
@@ -97,8 +97,8 @@ local gundels3: Chip = {
 -- gun's attachment row 0x16, palette 9; the firing ticks' fourth, 120; the wide beams).
 local gundelex: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 4,
     mb = 80,

@@ -7,10 +7,10 @@ local navi_chips = require("../lib/navi_chips/chip")
 
 local chip: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).
-    version = "protoman",
+    version = Version.protoman,
     codes = { "F" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.giga,
     rarity = 4,
     mb = 95,

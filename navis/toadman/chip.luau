@@ -85,8 +85,8 @@ local action = new.action {
 
 local chip: Chip = {
     codes = { "T" },
-    element = "null",
-    family = "elec",
+    element = Element.null,
+    family = Family.elec,
     class = ChipClass.special,
     rarity = 0,
     mb = 99,

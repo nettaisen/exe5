@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- (./navi).
 local knightmn: Chip = {
     codes = { "K" },
-    element = "wood",
-    family = "break",
+    element = Element.wood,
+    family = Family["break"],
     class = ChipClass.mega,
     rarity = 2,
     mb = 50,
@@ -34,8 +34,8 @@ local knightmn: Chip = {
 -- 11).
 local knigtmn_sp: Chip = {
     codes = { "K" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.mega,
     rarity = 3,
     mb = 90,
@@ -58,8 +58,8 @@ local knigtmn_sp: Chip = {
 -- hits (../knightmn/navi); its damage by its user's side's statistic 3 (formula 34, its table's row 11).
 local knigtmn_ds: Chip = {
     codes = { "K" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = ChipClass.mega,
     rarity = 3,
     mb = 90,

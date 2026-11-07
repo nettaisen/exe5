@@ -11,8 +11,8 @@ local dark_costs = require("../lib/dark_costs")
 
 local chip: Chip = {
     codes = { "M" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = ChipClass.standard,
     rarity = 4,
     mb = 99,

@@ -195,7 +195,7 @@ function guard.hit_swallowed(side: number, navi: Object)
         sum += c:element_damage(e)
     end
     local here = field.panel(navi.panel_x, navi.panel_y)
-    if here and here.kind == "holy" then
+    if here and here.kind == PanelType.holy then
         sum = bit32.rshift(sum + 1, 1)
     end
     local s = party.supports(side)

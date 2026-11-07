@@ -8,8 +8,8 @@ local pulsar = require("@self/pulsar")
 -- Pulsar, chips/pulsar/pulsar: action 0x52).
 local pulsar1: Chip = {
     codes = { "F", "P", "T" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 14,
@@ -26,8 +26,8 @@ local pulsar1: Chip = {
 -- Pulsar, chips/pulsar/pulsar: action 0x52).
 local pulsar2: Chip = {
     codes = { "E", "G", "M" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 26,
@@ -44,8 +44,8 @@ local pulsar2: Chip = {
 -- Pulsar, chips/pulsar/pulsar: action 0x52).
 local pulsar3: Chip = {
     codes = { "C", "R", "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 38,

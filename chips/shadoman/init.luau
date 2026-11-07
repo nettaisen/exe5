@@ -9,8 +9,8 @@ local sp_chips = require("../rules/sp_chips")
 -- ShadoMan (EXE5 chip 0x0f8): ShadowMan cuts in and sends three of himself to throw shurikens at the enemies (./navi).
 local shadoman: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 2,
     mb = 50,
@@ -33,8 +33,8 @@ local shadoman: Chip = {
 -- 8).
 local shadomn_sp: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 80,
@@ -57,8 +57,8 @@ local shadomn_sp: Chip = {
 -- (../shadoman/navi); its damage by its user's side's statistic 3 (formula 31, its table's row 8).
 local shadomn_ds: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 80,

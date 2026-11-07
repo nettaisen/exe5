@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- bursts (./navi).
 local numbrman: Chip = {
     codes = { "N" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 2,
     mb = 33,
@@ -34,8 +34,8 @@ local numbrman: Chip = {
 -- table's row 9).
 local numbrmn_sp: Chip = {
     codes = { "N" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 66,
@@ -58,8 +58,8 @@ local numbrmn_sp: Chip = {
 -- when it bursts (../numbrman/navi); its damage by its user's side's statistic 3 (formula 32, its table's row 9).
 local numbrmn_ds: Chip = {
     codes = { "N" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.mega,
     rarity = 3,
     mb = 66,

@@ -20,8 +20,8 @@ local EFFECT = effects.confuse(statuses.confuse_4, collision.guard_breaking, col
 
 local chip: Chip = {
     codes = { "B", "J", "Q", "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = ChipClass.standard,
     rarity = 1,
     mb = 20,

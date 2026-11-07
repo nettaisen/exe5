@@ -141,7 +141,7 @@ export type SoulCustom = {
 export type Exe5FormFields = {
     -- A soul (rules/souls), named by its form's id: the family of the chips
     -- given up for it.
-    soul: { family: ChipFamily }?,
+    soul: { family: Family }?,
     image: SoulImage?,
     custom: SoulCustom?,
     blade_anim: number?,
@@ -212,3 +212,21 @@ export type NaviState = {
     guarded: boolean,
     diving: boolean,
 }
+
+-- The names the game defines, as value tables (docs/design/scripting.md §2.1): what its rules, builds and root
+-- say it has, which the engine holds a module's reads to (written by verify tools/api-names/api-game-names/declare.py).
+declare PanelType: {
+    missing: PanelType, broken: PanelType, normal: PanelType, cracked: PanelType, poison: PanelType, magnet: PanelType,
+    grass: PanelType, ice: PanelType, lava: PanelType, holy: PanelType, sea: PanelType,
+}
+declare Family: {
+    fire: Family, aqua: Family, elec: Family, wood: Family, plus: Family, sword: Family, cursor: Family, summon: Family,
+    wind: Family, ["break"]: Family, null: Family, program_advance: Family, special: Family, recovery: Family,
+    invisible: Family,
+}
+declare Emotion: { normal: Emotion, full_synchro: Emotion, angry: Emotion, evil: Emotion, worried: Emotion }
+declare Version: { protoman: Version, colonel: Version }
+declare Window: { arm_change: Window, capsule: Window, soul_unison: Window }
+declare Button: { arm_change: Button, capsule_1: Button, capsule_2: Button, redeal: Button, soul: Button }
+declare Collection: { navicust_programs: Collection, partycust_programs: Collection, patch_cards: Collection }
+-- (End of the names the game defines.)

@@ -8,8 +8,8 @@ local skully = require("@self/skully")
 -- chips/skully/skully: action 0x55).
 local skully1: Chip = {
     codes = { "C", "K", "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 0,
     mb = 34,
@@ -26,8 +26,8 @@ local skully1: Chip = {
 -- chips/skully/skully: action 0x55).
 local skully2: Chip = {
     codes = { "A", "H", "V" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 1,
     mb = 50,
@@ -44,8 +44,8 @@ local skully2: Chip = {
 -- chips/skully/skully: action 0x55).
 local skully3: Chip = {
     codes = { "G", "N", "U" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = ChipClass.standard,
     rarity = 2,
     mb = 76,

@@ -7,8 +7,8 @@ local sonicbom = require("./sonicbom/action")
 
 local chip: Chip = {
     codes = { "E", "L", "S", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.special,
     rarity = 0,
     mb = 8,

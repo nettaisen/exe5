@@ -161,7 +161,7 @@ local function tick(me: Object)
     if c.hit then
         c:set_region(nil)
         if field.solid(me.panel_x, me.panel_y) then
-            field.set_type(me.panel_x, me.panel_y, "sea")
+            field.set_type(me.panel_x, me.panel_y, PanelType.sea)
         end
     end
     local x, y = me.panel_x, me.panel_y

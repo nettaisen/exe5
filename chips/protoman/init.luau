@@ -28,8 +28,8 @@ local LOOK = common.look {
 
 local protoman: Chip = {
     codes = { "B" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.mega,
     rarity = 2,
     mb = 54,
@@ -62,8 +62,8 @@ local LOOK_PROTOMN_SP = common.look {
 
 local protomn_sp: Chip = {
     codes = { "B" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.mega,
     rarity = 3,
     mb = 79,
@@ -99,8 +99,8 @@ local LOOK_PROTOMN_DS = common.look {
 
 local protomn_ds: Chip = {
     codes = { "B" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = ChipClass.mega,
     rarity = 3,
     mb = 79,

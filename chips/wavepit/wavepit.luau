@@ -180,7 +180,7 @@ function wavepit.instant(pit: Pit): (user: Object, spec: InstantChipSpec) -> ()
                 if field.check(x, y, pit.panel) then
                     wavepit.spawn(user, x, y, spec.element, spec.damage, pit.palette, not pit.mends)
                     if pit.mends then
-                        field.set_type(x, y, "normal")
+                        field.set_type(x, y, PanelType.normal)
                     end
                     break
                 end

@@ -22,8 +22,8 @@ local VARIANT = boomerang.variant {
 
 local chip: Chip = {
     codes = { "A", "L", "V", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = ChipClass.standard,
     rarity = 2,
     mb = 16,

@@ -200,7 +200,7 @@ function survival.hp_emptied(side: number, navi: Object): boolean
     if navi.ai_index ~= 0 or operation_battle() or battle.side_stat(side, "last_stand") ~= 0 or battle.mode() == 1 then
         return true
     end
-    if battle.emotion(side) == "evil" then
+    if battle.emotion(side) == Emotion.evil then
         navi.hp = 1
         navi.requests.volley = true
         return true

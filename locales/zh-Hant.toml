@@ -439,8 +439,6 @@ language = "zh-Hant"
 "undernet" = { name = "裏網路" }
 "visionburst" = { name = "過去視訊" }
 "yais-hp" = { name = "雅伊朵的首頁" }
-"hong-kong" = { name = "光復香港，時代革命" }
-"taiwan" = { name = "今日香港，明日台灣" }
 
 [navicust_programs]
 "airshoes" = { name = "飛行鞋", description = "能夠移動至\n沒有地面的格子！" }
@@ -810,8 +808,6 @@ language = "zh-Hant"
 "virus-battle" = "病毒戰"
 "boss-battle" = "頭目戰"
 "final-battle" = "VS 星雲灰暗"
-"glory-to-hong-kong" = "願榮光歸香港"
-"national-anthem-of-the-roc" = "中華民國國歌"
 
 [stats]
 "soul_time" = "靈魂時間"

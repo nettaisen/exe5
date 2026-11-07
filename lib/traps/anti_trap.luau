@@ -73,7 +73,7 @@ trap.kind = common_trap.make_kind("anti-trap/trap", {
 })
 
 -- The `dimming` hook of the Anti chip of `element` (fire to wood: its first parameter plus one, by number).
-function trap.hook(element: ElementName)
+function trap.hook(element: PrimaryElement)
     return traps.hook(traps.trap {
         set = function(controller: Object, user: Object, chip: Chip?, bonus: number): Object?
             return common_trap.spawn(trap.kind, controller, user, chip, bonus, element)

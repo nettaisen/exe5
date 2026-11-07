@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 15,
     effects = {
         cards.hp(100),
-        cards.body("fire"),
+        cards.body(Element.fire),
         cards.rapid(1),
         cards.charge(1),
         cards.bug(cards.charge_shot_kind(variants.charged)),

@@ -6,7 +6,7 @@ local cards = require("../rules/patch_cards/cards")
 local card: PatchCard = {
     mb = 20,
     effects = {
-        cards.body("wood"),
+        cards.body(Element.wood),
         cards.chip_recovery(30),
         cards.bug(cards.panel_trail("grass", 1)),
     },

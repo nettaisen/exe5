@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 43,
     effects = {
         cards.hp(140),
-        cards.body("elec"),
+        cards.body(Element.elec),
         cards.charge_shot_kind(variants.charged_blinding),
         cards.bug(cards.gauge(GaugeSpeed.normal)),
     },

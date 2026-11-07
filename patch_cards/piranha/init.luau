@@ -7,7 +7,7 @@ local card: PatchCard = {
     mb = 10,
     effects = {
         cards.hp(100),
-        cards.body("aqua"),
+        cards.body(Element.aqua),
         cards.rapid(5),
         cards.bug(cards.tango(false)),
         cards.encounter_element("fish"),

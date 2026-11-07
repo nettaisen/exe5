@@ -7,7 +7,7 @@ local spreads = require("../navis/megaman/weapons/spreads")
 local card: PatchCard = {
     mb = 10,
     effects = {
-        cards.body("aqua"),
+        cards.body(Element.aqua),
         cards.bug(cards.attack(-1)),
         cards.charged_shot(spreads.bubble),
     },

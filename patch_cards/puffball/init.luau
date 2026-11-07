@@ -7,7 +7,7 @@ local guards = require("../navis/megaman/weapons/guards")
 local card: PatchCard = {
     mb = 16,
     effects = {
-        cards.body("wood"),
+        cards.body(Element.wood),
         cards.charged_shot(guards.card_shield),
         cards.bug(cards.hp_drain(4)),
     },

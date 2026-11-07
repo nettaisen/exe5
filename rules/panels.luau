@@ -99,7 +99,7 @@ return {
             flags = { solid = true, on_field = true, sea = true },
             trail_sound = asset.sound("sand-worm"),
             expires = 960,
-            stand = panel_types.drains("fire"),
+            stand = panel_types.drains(PrimaryElement.fire),
             move_end = panel_types.holds(20, SPLASH),
             slide = panel_types.stops_a_slide,
             submerges = true,

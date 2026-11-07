@@ -6,7 +6,7 @@ local cards = require("../rules/patch_cards/cards")
 local card: PatchCard = {
     mb = 9,
     effects = {
-        cards.body("fire"),
+        cards.body(Element.fire),
         cards.bug(cards.back_special(nil)),
         cards.auto_heal(true),
     },

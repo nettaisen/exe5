@@ -7,7 +7,7 @@ local zap_ring = require("../navis/megaman/weapons/zap_ring")
 local card: PatchCard = {
     mb = 8,
     effects = {
-        cards.body("elec"),
+        cards.body(Element.elec),
         cards.bug(cards.super_armor(false)),
         cards.bug(cards.status_guard(false)),
         cards.charged_shot(zap_ring),

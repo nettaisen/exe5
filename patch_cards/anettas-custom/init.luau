@@ -7,7 +7,7 @@ local card: PatchCard = {
     mb = 47,
     effects = {
         cards.hp_percent(30),
-        cards.body("wood"),
+        cards.body(Element.wood),
     },
 }
 

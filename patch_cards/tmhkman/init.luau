@@ -7,7 +7,7 @@ local card: PatchCard = {
     mb = 40,
     effects = {
         cards.hp(200),
-        cards.body("wood"),
+        cards.body(Element.wood),
         cards.attack(3),
         cards.bug(cards.mega_folder(-1)),
         cards.super_armor(true),

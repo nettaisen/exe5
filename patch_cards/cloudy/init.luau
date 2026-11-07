@@ -6,7 +6,7 @@ local cards = require("../rules/patch_cards/cards")
 local card: PatchCard = {
     mb = 10,
     effects = {
-        cards.body("aqua"),
+        cards.body(Element.aqua),
         cards.bug(cards.super_armor(false)),
         cards.custom_damage(0),
         cards.custom_hp_drain(0),

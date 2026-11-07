@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 46,
     effects = {
         cards.hp_percent(20),
-        cards.body("elec"),
+        cards.body(Element.elec),
         cards.charge_shot_kind(variants.charged_paralyzing),
         cards.bug(cards.back_special(nil)),
     },

@@ -7,7 +7,7 @@ local card: PatchCard = {
     mb = 35,
     effects = {
         cards.hp(200),
-        cards.body("elec"),
+        cards.body(Element.elec),
         cards.bug(cards.back_special(nil)),
         cards.auto_heal(true),
     },

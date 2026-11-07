@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 20,
     effects = {
         cards.hp(160),
-        cards.body("fire"),
+        cards.body(Element.fire),
         cards.b_button(chips.crakout),
         cards.bug(cards.panel_trail("hole", 4)),
     },

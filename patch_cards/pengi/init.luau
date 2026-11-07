@@ -7,7 +7,7 @@ local card: PatchCard = {
     mb = 18,
     effects = {
         cards.hp(150),
-        cards.body("aqua"),
+        cards.body(Element.aqua),
         cards.bug(cards.panel_trail("ice", 3)),
     },
 }

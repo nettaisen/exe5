@@ -14,7 +14,7 @@ local card: PatchCard = {
     effects = {
         cards.version("protoman", cards.hp(200)),
         cards.version("colonel", cards.hp_percent(20)),
-        cards.body("null"),
+        cards.body(Element.null),
         cards.bug(cards.mega_folder(-2)),
         cards.version("protoman", cards.super_armor(true)),
         cards.version("colonel", cards.float_shoes(true)),

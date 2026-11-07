@@ -16,7 +16,7 @@ local pink_flash_sprite = asset.sprite("pink-flash")
 
 -- By primary element (null, fire, aqua, elec, wood, and the drain): the spark the element routine (EXE6's `sub_801A146`, EXE5's
 -- the same code) gives an attack of that element (hit effects 0 to 5).
-local BY_ELEMENT: { [PrimaryElement]: Spark } = {
+local BY_ELEMENT: { [string]: Spark } = {
     null = new.spark { sprite = HIT_SPARKS, anim = 0, palette = 0, steps = 5 },
     fire = new.spark { sprite = HIT_SPARKS, anim = 2, palette = 0, steps = 18 },
     aqua = new.spark { sprite = HIT_SPARKS, anim = 3, palette = 0, steps = 14 },
@@ -50,7 +50,7 @@ sparks.bat = new.spark { sprite = hit_marker_sprite, anim = 1, palette = 0, step
 -- The element routine: the spark of an attack of `element` (its primary element, the low nibble).
 function sparks.of_element(element: Element): Spark
     local p = element.primary
-    local s = if p then BY_ELEMENT[p] else nil
+    local s = if p then BY_ELEMENT[p.name] else nil
     if not s then
         error(string.format("the element spark routine: element %s has no hit spark", tostring(element)))
     end

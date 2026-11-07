@@ -24,7 +24,7 @@ local OFF_FIELD_SIDE = 0xE9
 -- The guard's ticks; the swallowed hit's sound on KnightMan.
 local GUARD_TICKS = 0x3C
 -- The damage slots a hit counts in (null to wood: not the drain's).
-local ELEMENTS: { ElementName } = { "null", "fire", "aqua", "elec", "wood" }
+local ELEMENTS: { PrimaryElement } = { PrimaryElement.null, PrimaryElement.fire, PrimaryElement.aqua, PrimaryElement.elec, PrimaryElement.wood }
 local FLASH_SOUND = asset.sound("own-hit")
 -- A hit at all (the hit flags' 0xFF800000): either side's attack, object, body or other body, or a neutral object's.
 local ANY_HIT: HitNames = {

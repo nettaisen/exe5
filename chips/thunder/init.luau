@@ -8,8 +8,8 @@ local thunder = require("@self/ball")
 
 local chip: Chip = {
     codes = { "B", "L", "P", "*" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 2,
     mb = 7,

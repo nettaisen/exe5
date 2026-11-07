@@ -10,8 +10,8 @@ local cross_slash_sprite = asset.sprite("cross-slash")
 
 local chip: Chip = {
     codes = { "E", "L", "S", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "special",
     rarity = 0,
     mb = 8,

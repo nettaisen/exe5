@@ -9,8 +9,8 @@ local top = require("@self/top")
 -- (./top) set down ahead in palette 0, spinning 2 times.
 local airspin1: Chip = {
     codes = { "C", "E", "O" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 0,
     mb = 32,
@@ -27,8 +27,8 @@ local airspin1: Chip = {
 -- (./top) set down ahead in palette 1, spinning 3 times.
 local airspin2: Chip = {
     codes = { "B", "H", "W" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 1,
     mb = 44,
@@ -45,8 +45,8 @@ local airspin2: Chip = {
 -- (./top) set down ahead in palette 2, spinning 4 times.
 local airspin3: Chip = {
     codes = { "A", "G", "J" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 2,
     mb = 56,

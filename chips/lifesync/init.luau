@@ -8,8 +8,8 @@ local lifesync = require("@self/controller")
 
 local chip: Chip = {
     codes = { "B", "R", "S", "*" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = "standard",
     rarity = 1,
     mb = 12,

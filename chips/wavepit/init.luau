@@ -8,8 +8,8 @@ local wavepit = require("@self/wavepit")
 
 local chip: Chip = {
     codes = { "B", "E", "Z" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 1,
     mb = 42,

@@ -162,7 +162,7 @@ local DRKRECOV = "drkrecov"
 -- effect 1 with a setting of 0x101 that leaves 2 or 3 over by 6, never holds: 0x101 - 0x101 leaves 0.)
 local function offer_dark_chip(side: number)
     local emotion = custom.player(side).emotion
-    if emotion ~= "worried" and emotion ~= "evil" then
+    if emotion ~= Emotion.worried and emotion ~= Emotion.evil then
         return
     end
     local navi = battle.player(side)
@@ -267,8 +267,8 @@ function light_dark.navi_panel(side: number, navi: Object)
     end
     local x, y = navi.panel_x, navi.panel_y
     local p = field.panel(x, y)
-    if p and p.kind == "holy" then
-        field.set_type(x, y, "normal")
+    if p and p.kind == PanelType.holy then
+        field.set_type(x, y, PanelType.normal)
     end
 end
 

@@ -7,8 +7,8 @@ local blakwing = require("@self/blakwing")
 
 local chip: Chip = {
     codes = { "W" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 58,

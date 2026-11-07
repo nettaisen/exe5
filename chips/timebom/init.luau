@@ -45,8 +45,8 @@ local BIG_BOMB = countdown.variant {
 -- up the whole enemy area unless it is broken first (chips/timebom/timebom: EXE6's TimeBom with EXE5's placement).
 local timebom1: Chip = {
     codes = { "H", "N", "T" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 0,
     mb = 32,
@@ -64,8 +64,8 @@ local timebom1: Chip = {
 -- up the whole enemy area unless it is broken first (chips/timebom/timebom: EXE6's TimeBom with EXE5's placement).
 local timebom2: Chip = {
     codes = { "D", "H", "Z" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 1,
     mb = 54,
@@ -83,8 +83,8 @@ local timebom2: Chip = {
 -- up the whole enemy area unless it is broken first (chips/timebom/timebom: EXE6's TimeBom with EXE5's placement).
 local timebom3: Chip = {
     codes = { "F", "H", "S" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 2,
     mb = 76,
@@ -107,8 +107,8 @@ local recipe_timebom3 = timebom3
 
 local timebom_chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

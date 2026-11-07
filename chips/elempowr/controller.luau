@@ -20,7 +20,7 @@ local PER_PANEL, MAX_PANELS = 10, 9
 -- mustn't be (missing), and the change by type.
 local function back_to_normal(flag: PanelFlag): PanelChange
     return panel_changer.change {
-        panel = "normal",
+        panel = PanelType.normal,
         panels = "all",
         flicker = true,
         ticks = 30,
@@ -56,8 +56,8 @@ local function effect(me: Object)
     local s = me.state :: State
     if me.phase_init == 0 then
         local p = field.panel(me.panel_x, me.panel_y)
-        local kind = if p then p.kind else "missing"
-        local change = CHANGES[kind]
+        local kind = if p then p.kind else PanelType.missing
+        local change = CHANGES[kind.name]
         if not change then
             dimming_chips.done(me)
             return

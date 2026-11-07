@@ -26,8 +26,8 @@ local CROSS1, CROSS2, CROSS3 = counter(0), counter(2), counter(4)
 -- cross along the row that strikes the first navi it meets: EXE5's guard (lib/guard, action 0x1F with subtype 5).
 local crsshld1: Chip = {
     codes = { "B", "F", "V" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 0,
     mb = 28,
@@ -44,8 +44,8 @@ local crsshld1: Chip = {
 -- cross along the row that strikes the first navi it meets: EXE5's guard (lib/guard, action 0x1F with subtype 6).
 local crsshld2: Chip = {
     codes = { "C", "M", "R" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 30,
@@ -62,8 +62,8 @@ local crsshld2: Chip = {
 -- cross along the row that strikes the first navi it meets: EXE5's guard (lib/guard, action 0x1F with subtype 7).
 local crsshld3: Chip = {
     codes = { "D", "O", "Z" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 52,

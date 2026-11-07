@@ -17,8 +17,8 @@ local SHOOTER = attachment.look { sprite = air_shooter_sprite, palette = 0, atta
 
 local chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 1,
     mb = 6,

@@ -130,7 +130,7 @@ end
 -- is under the line. A party without him passes.
 function party.light(side: number): boolean
     if battle.navi(side).navi.forms ~= nil then
-        return battle.emotion(side) ~= "evil"
+        return battle.emotion(side) ~= Emotion.evil
     end
     local m = megaman_member(side)
     if m == nil then

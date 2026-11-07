@@ -9,8 +9,8 @@ local navi_chips = require("../lib/navi_chips/chip")
 -- under his sun (./navi): a hit a tick for the chip's damage in ticks.
 local django: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 2,
     mb = 40,
@@ -36,8 +36,8 @@ local django: Chip = {
 -- table's row 21, a step a turn from the first).
 local django_sp: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 68,
@@ -62,8 +62,8 @@ local django_sp: Chip = {
 -- (formula 44, its table's row 21).
 local django_ds: Chip = {
     codes = { "D" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 68,

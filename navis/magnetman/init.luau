@@ -21,7 +21,7 @@ local navi: NaviDef = {
     sprite = magnetman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) lasts.
     animation_steps = { warp_out = 3 },
-    element = "elec",
+    element = Element.elec,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
     banners = { win = asset.banner("magnetman-win"), lose = asset.banner("magnetman-deleted") },
@@ -42,7 +42,7 @@ local navi: NaviDef = {
         a_charge = charged_chips.routine({ 60, 60, 60, 60, 60, 60 }, "magnetman/a-charge"),
     },
     -- The chips A charges, and what a charged one gains (its damage again).
-    charged_chips = { family = "elec", damaging = false, plain = true },
+    charged_chips = { family = Family.elec, damaging = false, plain = true },
     charged_bonus = { damage = "again" },
     -- His fresh stats (his stats row): what a side starts him with.
     fresh = { hp = 400, super_armor = true, float_shoes = true, air_shoes = true, mega_level = 5, giga_level = 1 },
@@ -55,7 +55,7 @@ local navi: NaviDef = {
     -- 0x0203BF2C adds the programs' bonus to).
     -- The team whose saves hold it: a ruleset of one version per build holds a party to one team's navis
     -- (rules/builds' groups; the DS's Navi Select lists either team's).
-    version = "protoman",
+    version = Version.protoman,
     party = {
         gauge = 5,
         hp = { 100, 100, 300, 400, 450, 500, 550, 600, 700, 800 },

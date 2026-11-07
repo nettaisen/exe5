@@ -39,7 +39,7 @@ local FIRST, BETWEEN, AFTER = 3, 10, 60
 local function next_holy(s: State): boolean
     while field.valid(s.x, s.y) do
         local p = field.panel(s.x, s.y)
-        if p and p.kind == "holy" then
+        if p and p.kind == PanelType.holy then
             return true
         end
         s.y += 1
@@ -72,7 +72,7 @@ local function fire(me: Object, s: State)
     if s.shots ~= 0 and field.valid(s.x, s.y) then
         local cx, cy = field.center(s.x, s.y)
         battle.effect(Vec3.new(cx, cy, 0), FLASH)
-        field.set_type(s.x, s.y, "normal")
+        field.set_type(s.x, s.y, PanelType.normal)
     end
     -- sub_8018810 by the user's identity, with the stand-in's side and facing (the user's).
     local dx, dz = user:attach_point(MUZZLE)

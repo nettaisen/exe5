@@ -20,8 +20,8 @@ local WAVE3 = widesht.wide(0x7_0000, true)
 -- floor, of EXE5's wave kind 6 (chips/widesht: the record's parameters).
 local suprspr1: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "aqua",
-    family = "program_advance",
+    element = Element.aqua,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -47,8 +47,8 @@ local suprspr1: Chip = {
 -- floor, of EXE5's wave kind 7 (chips/widesht: the record's parameters).
 local suprspr2: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "aqua",
-    family = "program_advance",
+    element = Element.aqua,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -74,8 +74,8 @@ local suprspr2: Chip = {
 -- floor, of EXE5's wave kind 8 (chips/widesht: the record's parameters).
 local suprspr3: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "aqua",
-    family = "program_advance",
+    element = Element.aqua,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

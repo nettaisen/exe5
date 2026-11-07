@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- swallows (./navi).
 local blizman: Chip = {
     codes = { "B" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "mega",
     rarity = 2,
     mb = 27,
@@ -34,8 +34,8 @@ local blizman: Chip = {
 -- table's row 14).
 local blizman_sp: Chip = {
     codes = { "B" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "mega",
     rarity = 3,
     mb = 55,
@@ -58,8 +58,8 @@ local blizman_sp: Chip = {
 -- objects it swallows (../blizman/navi); its damage by its user's side's statistic 3 (formula 37, its table's row 14).
 local blizman_ds: Chip = {
     codes = { "B" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "mega",
     rarity = 3,
     mb = 55,

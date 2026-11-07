@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- enemy area (./navi).
 local cosmoman: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 2,
     mb = 50,
@@ -34,8 +34,8 @@ local cosmoman: Chip = {
 -- its table's row 16).
 local cosmomn_sp: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 80,
@@ -58,8 +58,8 @@ local cosmomn_sp: Chip = {
 -- the enemy area (../cosmoman/navi); its damage by its user's side's statistic 3 (formula 39, its table's row 16).
 local cosmomn_ds: Chip = {
     codes = { "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 80,

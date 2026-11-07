@@ -54,8 +54,8 @@ local action = new.action {
 
 satelity = {
     codes = { "S" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = "special",
     rarity = 0,
     mb = 99,

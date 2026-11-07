@@ -29,8 +29,8 @@ local mark = common_mark.make {
 
 local chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "cursor",
+    element = Element.null,
+    family = Family.cursor,
     class = "standard",
     rarity = 1,
     mb = 12,

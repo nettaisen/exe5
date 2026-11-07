@@ -9,8 +9,8 @@ local cannball = require("@self/cannball")
 
 local chip: Chip = {
     codes = { "C", "T", "Z", "*" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 2,
     mb = 30,

@@ -7,8 +7,8 @@ local windrack = require("@self/action")
 
 local chip: Chip = {
     codes = { "B", "F", "J", "*" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 2,
     mb = 23,

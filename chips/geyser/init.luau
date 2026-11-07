@@ -9,8 +9,8 @@ local geyser = require("@self/geyser")
 
 local chip: Chip = {
     codes = { "G", "M", "S" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 3,
     mb = 38,

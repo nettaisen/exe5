@@ -23,8 +23,8 @@ local GIGACAN3_ARM = attachment.look { sprite = cannon_sprite, palette = 2, atta
 -- afterimages as it charges (a third, Hub Style's shade, in Hub Style: lib/cannon).
 local gigacan1: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -54,8 +54,8 @@ local gigacan1: Chip = {
 -- afterimages as it charges (a third, Hub Style's shade, in Hub Style: lib/cannon).
 local gigacan2: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -85,8 +85,8 @@ local gigacan2: Chip = {
 -- afterimages as it charges (a third, Hub Style's shade, in Hub Style: lib/cannon).
 local gigacan3: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

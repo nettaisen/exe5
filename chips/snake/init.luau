@@ -7,8 +7,8 @@ local snake = require("@self/snake")
 
 local chip: Chip = {
     codes = { "C", "M", "Z" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 3,
     mb = 60,

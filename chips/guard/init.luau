@@ -23,8 +23,8 @@ local SHIELD3 = guard.look { sprite = REFLECTOR, anim = 8, fade_anim = 9, fade_t
 -- shock wave back along the row with the chip's damage: EXE5's guard (lib/guard, action 0x1F with subtype 0).
 local guard1: Chip = {
     codes = { "A", "D", "K", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 0,
     mb = 4,
@@ -42,8 +42,8 @@ local guard1: Chip = {
 -- shock wave back along the row with the chip's damage: EXE5's guard (lib/guard, action 0x1F with subtype 1).
 local guard2: Chip = {
     codes = { "B", "L", "Q", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 10,
@@ -61,8 +61,8 @@ local guard2: Chip = {
 -- shock wave back along the row with the chip's damage: EXE5's guard (lib/guard, action 0x1F with subtype 2).
 local guard3: Chip = {
     codes = { "C", "M", "S", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 16,

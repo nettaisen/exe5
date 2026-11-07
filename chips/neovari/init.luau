@@ -12,8 +12,8 @@ local sword = require("./sword").sword
 
 local chip: Chip = {
     codes = { "V" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "mega",
     rarity = 4,
     mb = 74,

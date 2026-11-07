@@ -21,8 +21,8 @@ local SWOOP = swoop.variant {
 -- LarkMan (EXE5 chip 0x110): LarkMan cuts in and sends his swoop round the field (./navi).
 local larkman: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 2,
     mb = 45,
@@ -44,8 +44,8 @@ local larkman: Chip = {
 -- fast its user deleted LarkMan SP (rules/sp_chips: formula 18, its table's row 17).
 local larkman_sp: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 77,
@@ -68,8 +68,8 @@ local larkman_sp: Chip = {
 -- by its user's side's statistic 3 (formula 40, its table's row 17).
 local larkman_ds: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 77,

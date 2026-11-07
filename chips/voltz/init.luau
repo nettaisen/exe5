@@ -9,8 +9,8 @@ local voltz = require("@self/voltz")
 -- shocks every 20 ticks).
 local voltz1: Chip = {
     codes = { "K", "O", "Y" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 0,
     mb = 30,
@@ -28,8 +28,8 @@ local voltz1: Chip = {
 -- shocks every 20 ticks).
 local voltz2: Chip = {
     codes = { "J", "U", "Z" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 1,
     mb = 48,
@@ -47,8 +47,8 @@ local voltz2: Chip = {
 -- shocks every 20 ticks).
 local voltz3: Chip = {
     codes = { "A", "H", "V" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 2,
     mb = 66,

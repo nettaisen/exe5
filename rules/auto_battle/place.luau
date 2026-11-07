@@ -256,7 +256,7 @@ end
 
 -- A panel the navi's chip lands right on: one a body stands on (0x10) that isn't lava.
 local function landing(x: number, y: number): boolean
-    return field.any(x, y, STANDABLE) and kind_at(x, y) ~= "lava"
+    return field.any(x, y, STANDABLE) and kind_at(x, y) ~= PanelType.lava
 end
 
 -- 0x08029EE4 (`landing_ahead`, class 3): the panel toward its enemies is a landing: in place; else a step to a panel it
@@ -359,7 +359,7 @@ local function lava_ahead(navi: Object, s: State)
     local found = {}
     for _, p in panels.filtered(cond, nil, of) do
         local x, y = bit32.band(p, 7), bit32.rshift(p, 4)
-        if field.valid(x + ahead, y) and kind_at(x + ahead, y) == "lava" then
+        if field.valid(x + ahead, y) and kind_at(x + ahead, y) == PanelType.lava then
             table.insert(found, packed(x, y))
         end
     end
@@ -564,7 +564,7 @@ local function changed_panel(side: number): boolean
     for y = 1, 3 do
         for x = 1, 6 do
             local p = field.panel(x, y)
-            if p and p.alliance == side and p.kind ~= "holy" and p.kind ~= "normal" and p.kind ~= "missing" then
+            if p and p.alliance == side and p.kind ~= PanelType.holy and p.kind ~= PanelType.normal and p.kind ~= PanelType.missing then
                 return true
             end
         end
@@ -634,7 +634,7 @@ local function own_ahead(navi: Object, cond: PanelCondition?, of: number): (numb
     for _, p in panels.filtered(cond, nil, of) do
         local x, y = bit32.band(p, 7), bit32.rshift(p, 4)
         local ahead = field.panel(x + dir, y)
-        if field.valid(x + dir, y) and ahead ~= nil and ahead.alliance == navi.alliance and ahead.kind ~= "holy" then
+        if field.valid(x + dir, y) and ahead ~= nil and ahead.alliance == navi.alliance and ahead.kind ~= PanelType.holy then
             table.insert(found, packed(x, y))
         end
     end
@@ -666,14 +666,14 @@ end
 -- 0x0802A9F4, 0x0802AA34, 0x0802AA74 (`when_any_sea`, `when_any_lava`, `when_any_hole`; classes 24 to 26): either side
 -- holds a sea panel; a lava panel; a broken or a missing one.
 local function any_sea(_navi: Object): boolean
-    return count_type("sea", 0) ~= 0 or count_type("sea", 1) ~= 0
+    return count_type(PanelType.sea, 0) ~= 0 or count_type(PanelType.sea, 1) ~= 0
 end
 local function any_lava(_navi: Object): boolean
-    return count_type("lava", 0) ~= 0 or count_type("lava", 1) ~= 0
+    return count_type(PanelType.lava, 0) ~= 0 or count_type(PanelType.lava, 1) ~= 0
 end
 local function any_hole(_navi: Object): boolean
-    return count_type("broken", 0) ~= 0 or count_type("broken", 1) ~= 0 or count_type("missing", 0) ~= 0
-        or count_type("missing", 1) ~= 0
+    return count_type(PanelType.broken, 0) ~= 0 or count_type(PanelType.broken, 1) ~= 0 or count_type(PanelType.missing, 0) ~= 0
+        or count_type(PanelType.missing, 1) ~= 0
 end
 
 -- The panels that stop `to_back`'s walk (0x0802ABE0, by side: 0x0D800000 for side 0, 0x0E800000 for 1): both sides'

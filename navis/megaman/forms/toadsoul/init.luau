@@ -20,14 +20,14 @@ local toadsoul_sprite = asset.sprite("toadsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "colonel",
-    soul = { family = "aqua" },
+    version = Version.colonel,
+    soul = { family = Family.aqua },
     change = soul_change.action,
     revert = soul_revert.action,
     -- ToadMan's image as MegaMan unites with him (rules/souls/image).
     image = soul_image.look { sprite = toadman_sprite },
     sprite = toadsoul_sprite,
-    element = "aqua",
+    element = Element.aqua,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x34 (0x0800FA5C): DarkWide (chip 0xC0), the charge table's row 0x34.
@@ -38,7 +38,7 @@ local form: FormDef = {
         -- Routine 0x1B (0x0800F520, empty: the charged chip is the chip with the bonus), the charge table's row 0x1B.
         a_charge = charged_chips.routine({ 20, 20, 20, 20, 20, 20 }),
     },
-    charged_chips = { { family = "aqua", damaging = false, plain = true } },
+    charged_chips = { { family = Family.aqua, damaging = false, plain = true } },
     charged_bonus = { damage = "again" },
     reset = function(navi: Object)
         navi.navi_flags.dives = true

@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- empty panel (./navi).
 local napalmmn: Chip = {
     codes = { "N" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "mega",
     rarity = 2,
     mb = 38,
@@ -34,8 +34,8 @@ local napalmmn: Chip = {
 -- table's row 4).
 local naplmmn_sp: Chip = {
     codes = { "N" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "mega",
     rarity = 3,
     mb = 72,
@@ -59,8 +59,8 @@ local naplmmn_sp: Chip = {
 -- 4).
 local naplmmn_ds: Chip = {
     codes = { "N" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "mega",
     rarity = 3,
     mb = 72,

@@ -15,8 +15,8 @@ local WAVE3 = widesht.wide(0x7_0000, false)
 -- the same place), its wave at the floor (EXE6's at 16 pixels) and EXE5's wide wave (chips/widesht).
 local widesht1: Chip = {
     codes = { "L", "M", "N" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 0,
     mb = 10,
@@ -35,8 +35,8 @@ local widesht1: Chip = {
 -- the same place), its wave at the floor (EXE6's at 16 pixels) and EXE5's wide wave of kind 4 (chips/widesht).
 local widesht2: Chip = {
     codes = { "E", "F", "G" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 1,
     mb = 30,
@@ -55,8 +55,8 @@ local widesht2: Chip = {
 -- the same place), its wave at the floor (EXE6's at 16 pixels) and EXE5's wide wave of kind 5 (chips/widesht).
 local widesht3: Chip = {
     codes = { "S", "T", "U" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 2,
     mb = 50,

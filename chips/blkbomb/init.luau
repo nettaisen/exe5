@@ -85,8 +85,8 @@ local HELD = attachment.look { sprite = bomb_sprite, palette = 4 }
 
 local chip: Chip = {
     codes = { "L", "R", "Z" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "standard",
     rarity = 3,
     mb = 55,

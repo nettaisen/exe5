@@ -19,8 +19,8 @@ local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0,
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

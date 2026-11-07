@@ -63,7 +63,7 @@ return {
         magnet = {
             flags = { solid = true, magnet = true, on_field = true },
             trail_sound = asset.sound("immobilizer"),
-            cleared_by = "wood",
+            cleared_by = Element.wood,
             -- By the direction of the move: none, up, down, back, forward, other.
             carries_by_move = { {}, { F, U, B, D }, { B, D, F, U }, { U, B, D, F }, { D, F, U, B }, { D, F, U, B } },
             move_end = panel_types.magnet,
@@ -73,8 +73,8 @@ return {
         grass = {
             flags = { solid = true, grass = true, on_field = true },
             trail_sound = asset.sound("grass"),
-            cleared_by = "fire",
-            doubles = "fire",
+            cleared_by = Element.fire,
+            doubles = Element.fire,
             stand = panel_types.grass(9),
         },
         ice = {
@@ -88,7 +88,7 @@ return {
             trail_sound = asset.sound("panel-volcano"),
             expires = 960,
             burn = LAVA_BURN,
-            cleared_by = "aqua",
+            cleared_by = Element.aqua,
         },
         holy = {
             flags = { solid = true, holy = true, on_field = true },
@@ -103,7 +103,7 @@ return {
             move_end = panel_types.holds(20, SPLASH),
             slide = panel_types.stops_a_slide,
             submerges = true,
-            doubles = "elec",
+            doubles = Element.elec,
         },
     },
     -- EXE5's panel types by its own numbers (a panel trail's byte, NaviStats +0x12, names one: the cards' water a sea,
@@ -112,7 +112,7 @@ return {
     -- The types the engine's own code needs: the missing panel, which no type change reaches; what a break and a
     -- crack make (1 and 3); the normal panel, what a mend, an expiry and a clearing leave (0x0800A998, 0x08016D14:
     -- 2).
-    roles = { missing = "missing", broken = "broken", cracked = "cracked", normal = "normal" },
+    roles = { missing = PanelType.missing, broken = PanelType.broken, cracked = PanelType.cracked, normal = PanelType.normal },
     start_visible = {
         { false, false, false, false, false, false, false, false },
         { false, true, true, true, true, true, true, false },

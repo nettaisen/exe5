@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- paralyzing bolt (./navi).
 local cloudman: Chip = {
     codes = { "C" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 2,
     mb = 60,
@@ -34,8 +34,8 @@ local cloudman: Chip = {
 -- its table's row 15).
 local cloudmn_sp: Chip = {
     codes = { "C" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 3,
     mb = 74,
@@ -58,8 +58,8 @@ local cloudmn_sp: Chip = {
 -- paralyzing bolt (../cloudman/navi); its damage by its user's side's statistic 3 (formula 38, its table's row 15).
 local cloudmn_ds: Chip = {
     codes = { "C" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 3,
     mb = 74,

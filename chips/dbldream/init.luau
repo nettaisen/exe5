@@ -13,8 +13,8 @@ local BIG_SLASH = new.effect { sprite = big_slash_sprite, anim = 0, palette = 0,
 
 local chip: Chip = {
     codes = { "E", "L", "S", "*" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "special",
     rarity = 0,
     mb = 8,

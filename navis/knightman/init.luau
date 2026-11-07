@@ -35,7 +35,7 @@ local navi: NaviDef = {
     sprite = knightman_sprite,
     -- How many of its sprite's steps its warp out (animation 4) lasts.
     animation_steps = { warp_out = 6 },
-    element = "null",
+    element = Element.null,
     buster_bonus = 1,
     move_lag = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 },
     banners = { win = asset.banner("knightman-win"), lose = asset.banner("knightman-deleted") },
@@ -60,7 +60,7 @@ local navi: NaviDef = {
     -- 0x0203BF2C adds the programs' bonus to).
     -- The team whose saves hold it: a ruleset of one version per build holds a party to one team's navis
     -- (rules/builds' groups; the DS's Navi Select lists either team's).
-    version = "colonel",
+    version = Version.colonel,
     party = {
         gauge = 5,
         hp = { 100, 100, 300, 400, 450, 500, 550, 600, 700, 800 },

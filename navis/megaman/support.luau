@@ -48,7 +48,7 @@ local WEIGHTS = { [BUSTER] = 6, [SWORD] = 6, [BOMB] = 4 }
 -- animation 7, 4 ticks.
 local CANNON = attachment.look { sprite = cannon_sprite, palette = 0, attach_point = 7 }
 local CANNON_SOUND = asset.sound("cannon")
-local SHOT = projectile.variant { id = "shot/megaman-support", collision = { is = collision.attack, hits = collision.hits_navis }, hit_mod = {}, element = "null", spark = sparks.impact }
+local SHOT = projectile.variant { id = "shot/megaman-support", collision = { is = collision.attack, hits = collision.hits_navis }, hit_mod = {}, element = Element.null, spark = sparks.impact }
 -- His sword: animation 5, the sword (row 3), its sound; on its 10th tick a hit over the panel ahead and the one past it
 -- (region 2, a slash at navis, on the ground) and the long slash 16 pixels up (effect 0x17); 22 ticks; then 6.
 local SWORD_LOOK = attachment.look { sprite = sword_sprite, palette = 0 }

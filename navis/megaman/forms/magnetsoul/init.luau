@@ -20,14 +20,14 @@ local magnetsoul_sprite = asset.sprite("magnetsoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "protoman",
-    soul = { family = "elec" },
+    version = Version.protoman,
+    soul = { family = Family.elec },
     change = soul_change.action,
     revert = soul_revert.action,
     -- MagnetMan's image as MegaMan unites with him (rules/souls/image).
     image = soul_image.look { sprite = magnetman_sprite },
     sprite = magnetsoul_sprite,
-    element = "elec",
+    element = Element.elec,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x35 (0x0800FA66): DarkThnd (chip 0xC1), the charge table's row 0x35.
@@ -41,7 +41,7 @@ local form: FormDef = {
         a_charge = charged_chips.routine({ 80, 80, 80, 80, 80, 70 }),
         back_special = back.weapon,
     },
-    charged_chips = { { family = "elec", damaging = false, plain = true } },
+    charged_chips = { { family = Family.elec, damaging = false, plain = true } },
     charged_bonus = { damage = "again" },
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 5-10, the version's souls'); in its

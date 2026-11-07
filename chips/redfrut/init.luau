@@ -39,7 +39,7 @@ local SYNCHRO_GIFT = fruit.gift(function(navi: Object)
     if battle.mode() ~= 1 and not stats.form.base then
         return
     end
-    if battle.emotion(navi.alliance) == "evil" then
+    if battle.emotion(navi.alliance) == Emotion.evil then
         return
     end
     if stats.mood ~= 0 then
@@ -51,8 +51,8 @@ end)
 -- instant effect 15; the record's params: gift 0, five hops).
 local redfrut1: Chip = {
     codes = { "E", "K", "Z" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 0,
     mb = 24,
@@ -70,8 +70,8 @@ local redfrut1: Chip = {
 -- instant effect 15; the record's params: gift 1, five hops).
 local redfrut2: Chip = {
     codes = { "F", "T", "W" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 1,
     mb = 48,
@@ -89,8 +89,8 @@ local redfrut2: Chip = {
 -- instant effect 15; the record's params: gift 2, five hops).
 local redfrut3: Chip = {
     codes = { "H", "O", "U" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 2,
     mb = 62,

@@ -12,8 +12,8 @@ local WIDE_BLADE_SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, pal
 
 local chip: Chip = {
     codes = { "A", "L", "V" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "standard",
     rarity = 3,
     mb = 38,

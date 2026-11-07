@@ -30,8 +30,8 @@ local SHOT = bullet.variant {
 -- 4, the Vulcans' action with the InfVulcs' gun firing 20 of their bullets (chips/vulcan/vulcan).
 local infvulc1: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -55,8 +55,8 @@ local infvulc1: Chip = {
 -- 5, the Vulcans' action with the InfVulcs' gun firing 24 of their bullets (chips/vulcan/vulcan).
 local infvulc2: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -80,8 +80,8 @@ local infvulc2: Chip = {
 -- 6, the Vulcans' action with the InfVulcs' gun firing 28 of their bullets (chips/vulcan/vulcan).
 local infvulc3: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

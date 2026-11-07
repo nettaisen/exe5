@@ -8,8 +8,8 @@ local rock = require("../objects/rock")
 
 local chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 0,
     mb = 6,

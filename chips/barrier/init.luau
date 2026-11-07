@@ -8,8 +8,8 @@ local barriers = require("../lib/barriers")
 -- with EXE5's barriers (lib/barriers).
 local barrier: Chip = {
     codes = { "B", "L", "S", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 7,
@@ -28,8 +28,8 @@ local barrier: Chip = {
 -- with EXE5's barriers (lib/barriers).
 local barr100: Chip = {
     codes = { "P" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 27,
@@ -47,8 +47,8 @@ local barr100: Chip = {
 -- with EXE5's barriers (lib/barriers).
 local barr200: Chip = {
     codes = { "W" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 3,
     mb = 47,

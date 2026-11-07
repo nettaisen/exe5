@@ -32,15 +32,15 @@ local CANNON: BodyPart = {
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "protoman",
-    soul = { family = "fire" },
+    version = Version.protoman,
+    soul = { family = Family.fire },
     change = soul_change.action,
     revert = soul_revert.action,
     -- NapalmMan's image as MegaMan unites with him (rules/souls/image), with his cannon (0x0800EDBC's routine for the
     -- soul).
     image = soul_image.wearing(napalmman_sprite, CANNON),
     sprite = napalmsoul_sprite,
-    element = "fire",
+    element = Element.fire,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x37 (0x0800FA7A): DarkMetr (chip 0xC3), the charge table's row 0x37.
@@ -51,7 +51,7 @@ local form: FormDef = {
         -- Routine 0x27 (0x0800F520, empty: the charged chip is the chip with the bonus), the charge table's row 0x27.
         a_charge = charged_chips.routine({ 120, 120, 120, 120, 120, 80 }),
     },
-    chip_bonus = { family = "fire", damage = 40, dimming_chips = true, uncharged = true },
+    chip_bonus = { family = Family.fire, damage = 40, dimming_chips = true, uncharged = true },
     -- 0x08012602, at the start of MegaMan's tick (0x0800E53A, right after this per-form tick: 0x080EAD88), not while
     -- paused or dimmed: standing on lava (the panel's type 8) with a chip whose record says it deals damage (+0x09's
     -- 0x02) at the hand's cursor, that chip's Atk+ bonus grows by 10 and his panel turns normal. (The game reads the
@@ -62,7 +62,7 @@ local form: FormDef = {
         end
         local x, y = navi.panel_x, navi.panel_y
         local p = field.panel(x, y)
-        if p == nil or p.kind ~= "lava" then
+        if p == nil or p.kind ~= PanelType.lava then
             return
         end
         local side = navi.alliance
@@ -71,9 +71,9 @@ local form: FormDef = {
             return
         end
         chip_hand.add_bonus(side, i, "attack_bonus", 10)
-        field.set_type(x, y, "normal")
+        field.set_type(x, y, PanelType.normal)
     end,
-    charged_chips = { { family = "fire", damaging = false, plain = true } },
+    charged_chips = { { family = Family.fire, damaging = false, plain = true } },
     charged_bonus = { damage = "again" },
     charged_action = charged_chip.action,
     palette = 0,

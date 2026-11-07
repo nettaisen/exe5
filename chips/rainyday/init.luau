@@ -7,8 +7,8 @@ local rainyday = require("@self/rainyday")
 
 local chip: Chip = {
     codes = { "B", "G", "L" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 3,
     mb = 47,

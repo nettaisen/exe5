@@ -15,8 +15,8 @@ local recipe_woodnos3 = require("./woodnos").woodnos3
 -- palette the record's first parameter, 0, times 2).
 local cacdanc1: Chip = {
     codes = {},
-    element = "wood",
-    family = "program_advance",
+    element = Element.wood,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -41,8 +41,8 @@ local cacdanc1: Chip = {
 -- palette the record's first parameter, 1, times 2).
 local cacdanc2: Chip = {
     codes = {},
-    element = "wood",
-    family = "program_advance",
+    element = Element.wood,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -67,8 +67,8 @@ local cacdanc2: Chip = {
 -- palette the record's first parameter, 2, times 2).
 local cacdanc3: Chip = {
     codes = {},
-    element = "wood",
-    family = "program_advance",
+    element = Element.wood,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

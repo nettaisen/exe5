@@ -16,8 +16,8 @@ local M_CANNON_ARM = attachment.look { sprite = cannon_sprite, palette = 2, atta
 -- EXE5's cannon shot.
 local cannon: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 0,
     mb = 8,
@@ -34,8 +34,8 @@ local cannon: Chip = {
 -- firing EXE5's cannon shot.
 local hicannon: Chip = {
     codes = { "D", "E", "F" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 24,
@@ -52,8 +52,8 @@ local hicannon: Chip = {
 -- firing EXE5's cannon shot.
 local m_cannon: Chip = {
     codes = { "F", "G", "H" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 40,

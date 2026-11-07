@@ -6,10 +6,10 @@ local controller = require("@self/controller")
 
 local chip: Chip = {
     -- The version whose saves hold it (rules/folder; rules/builds' groups).
-    version = "colonel",
+    version = Version.colonel,
     codes = { "M" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "giga",
     -- A save can collect it (rules/folder): Team Colonel's library lists it, where this record's flags are Team
     -- ProtoMan's ROM's, which doesn't.

@@ -12,8 +12,8 @@ local recipe_cosmomn_sp = require("./cosmoman")["cosmomn-sp"]
 
 local chip: Chip = {
     codes = {},
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

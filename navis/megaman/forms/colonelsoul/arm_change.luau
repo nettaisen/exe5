@@ -49,7 +49,7 @@ local button: SoulButton = {
             return "unavailable"
         end
         local chip = last.chip
-        if chip.class == "standard" and chip.family == "null" and has(chip, "has_damage") and not has(chip, "dimming")
+        if chip.class == "standard" and chip.family == Family.null and has(chip, "has_damage") and not has(chip, "dimming")
             and not has(chip, "dark")
         then
             return "selectable"
@@ -65,7 +65,7 @@ local button: SoulButton = {
         custom.play(side, "pick")
         local st = (s :: State).screen
         st.arm_step, st.arm_timer = 0, 0
-        custom.open_window(side, "arm_change")
+        custom.open_window(side, Window.arm_change)
     end,
 }
 
@@ -76,12 +76,12 @@ local window: SoulWindow = {
     update = function(side: number, s: any): boolean
         local st = (s :: State).screen
         if st.arm_step == 0 then
-            custom.hold_last_pick(side, "arm_change")
+            custom.hold_last_pick(side, Button.arm_change)
             st.arm_step, st.arm_timer = 4, BLINK
         else
             local t = st.arm_timer
             local shown = bit32.btest(t, if t > 20 then 1 else 2)
-            custom.set_held_icon(side, "arm_change", shown)
+            custom.set_held_icon(side, Button.arm_change, shown)
             -- From 20 down, the ticks the column hides it draw it over the button (0x08023700).
             if t <= 20 and not shown then
                 custom.draw_held(side)
@@ -111,7 +111,7 @@ local custom_screen: SoulCustom = {
     windows = { arm_change = window },
     -- OK (0x08024EC0): the chip the button holds is the turn's arm chip (0x08025042).
     confirmed = function(side: number, s: any)
-        (s :: State).arm_chip = custom.held_pick(side, "arm_change")
+        (s :: State).arm_chip = custom.held_pick(side, Button.arm_change)
     end,
     -- The turn's start, before either side's change of form (0x08011DDC, 0x080124AE): the turn's arm chip (AIData
     -- +0x32) and the charged shot's weapon: the chip's (routine 0x13), or without one the soul's own (0x14).

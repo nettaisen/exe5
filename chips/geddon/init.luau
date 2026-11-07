@@ -26,8 +26,8 @@ local POISON = quake.change { apply = quake.poison, show = quake.bubbles }
 -- EXE6's Geddon (its quake's first row) without holding the user's panel (chips/geddon/controller).
 local geddon1: Chip = {
     codes = { "M", "P", "Z", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 34,
@@ -44,8 +44,8 @@ local geddon1: Chip = {
 -- every 8 ticks in a random order: EXE6's Geddon without holding the user's panel (chips/geddon/controller).
 local geddon2: Chip = {
     codes = { "H", "T", "W" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 47,
@@ -63,8 +63,8 @@ local geddon2: Chip = {
 -- (chips/geddon/controller).
 local geddon3: Chip = {
     codes = { "A", "O", "V" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 3,
     mb = 62,

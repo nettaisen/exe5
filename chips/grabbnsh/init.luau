@@ -9,8 +9,8 @@ local controller = require("@self/controller")
 -- for the hand's effect number (0x29, EXE6's 0x3B), which is the same effect (the grab shot's animation 1).
 local grabrvng: Chip = {
     codes = { "F", "N", "P" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 3,
     mb = 48,
@@ -28,8 +28,8 @@ local grabrvng: Chip = {
 -- enemy navi for each: EXE6's controller (@exelib/grabbnsh; EXE5's the same code).
 local grabbnsh: Chip = {
     codes = { "D", "L", "R" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 24,

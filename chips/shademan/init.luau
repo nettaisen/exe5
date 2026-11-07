@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- paralyzes or confuses.
 local shademan: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 2,
     mb = 44,
@@ -33,8 +33,8 @@ local shademan: Chip = {
 -- its damage by how fast its user deleted ShadeMan SP (rules/sp_chips: formula 14, its table's row 13).
 local shademn_sp: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 74,
@@ -57,8 +57,8 @@ local shademn_sp: Chip = {
 -- (../shademan/navi); its damage by its user's side's statistic 3 (formula 36, its table's row 13).
 local shademn_ds: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 74,

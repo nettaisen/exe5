@@ -13,8 +13,8 @@ local HIT = lance.hit { is = collision.attack, hits = collision.attack, spark = 
 
 local chip: Chip = {
     codes = { "C", "L", "R", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 3,
     mb = 42,

@@ -8,8 +8,8 @@ local tankcan = require("@self/tankcan")
 -- and cracks the last column and sets off three explosions there (chips/tankcan/tankcan: EXE6's with EXE5's look).
 local tankcan1: Chip = {
     codes = { "A", "E", "P" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 0,
     mb = 20,
@@ -26,8 +26,8 @@ local tankcan1: Chip = {
 -- and cracks the last column and sets off three explosions there (chips/tankcan/tankcan: EXE6's with EXE5's look).
 local tankcan2: Chip = {
     codes = { "B", "T", "Y" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 30,
@@ -44,8 +44,8 @@ local tankcan2: Chip = {
 -- and cracks the last column and sets off three explosions there (chips/tankcan/tankcan: EXE6's with EXE5's look).
 local tankcan3: Chip = {
     codes = { "F", "M", "R" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 40,

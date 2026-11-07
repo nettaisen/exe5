@@ -27,8 +27,8 @@ local SUPER_SHOT = bullet.variant {
 -- Vulcan1 (EXE5 chip 0x00f): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 3 bullets.
 local vulcan1: Chip = {
     codes = { "C", "D", "E", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 0,
     mb = 6,
@@ -44,8 +44,8 @@ local vulcan1: Chip = {
 -- Vulcan2 (EXE5 chip 0x010): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 5 bullets.
 local vulcan2: Chip = {
     codes = { "A", "B", "C" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 1,
     mb = 18,
@@ -61,8 +61,8 @@ local vulcan2: Chip = {
 -- Vulcan3 (EXE5 chip 0x011): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 7 bullets.
 local vulcan3: Chip = {
     codes = { "L", "M", "N" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 30,
@@ -79,8 +79,8 @@ local vulcan3: Chip = {
 -- row 0x10 (EXE6's SuprVulc's).
 local suprvulc: Chip = {
     codes = { "S" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 75,

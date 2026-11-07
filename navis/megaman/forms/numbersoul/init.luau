@@ -28,8 +28,8 @@ local numbersoul_sprite = asset.sprite("numbersoul")
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "colonel",
-    soul = { family = "plus" },
+    version = Version.colonel,
+    soul = { family = Family.plus },
     change = soul_change.action,
     revert = soul_revert.action,
     -- NumberMan's image as MegaMan unites with him (rules/souls/image): he wears his face, a layer (./layer, row 0)
@@ -47,7 +47,7 @@ local form: FormDef = {
     -- What it adds to the custom screen (rules/souls gathers it, rules/souls/custom): the hand of ten (./hand).
     custom = hand.custom,
     sprite = numbersoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x32 (0x0800FA48): DarkPlus (chip 0xBE), the charge table's row 0x32.
@@ -57,7 +57,7 @@ local form: FormDef = {
         charge_shot = charge.weapon,
         a_charge = charged_shot.weapon,
     },
-    chip_bonus = { family = "null", damage = 10, dimming_chips = true },
+    chip_bonus = { family = Family.null, damage = 10, dimming_chips = true },
     -- His put-on and take-off routines (0x0800F038's and 0x0800F09C's row 9): his layer, in his second related slot
     -- (0x0800F07C); taken off (0x0800F0DE).
     put_on = function(navi: Object)

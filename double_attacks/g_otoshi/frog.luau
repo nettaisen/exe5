@@ -49,7 +49,7 @@ end
 local function landed(me: Object)
     if me.phase_init == 0 then
         me.timer = LANDED_TICKS
-        field.set_type(me.panel_x, me.panel_y, "sea")
+        field.set_type(me.panel_x, me.panel_y, PanelType.sea)
         me.phase_init = 4
     end
     local t = me.timer - 1
@@ -76,7 +76,7 @@ local function tick(me: Object)
     else
         me.visible = false
         c:set_region(nil)
-        field.set_type(me.panel_x, me.panel_y, "sea")
+        field.set_type(me.panel_x, me.panel_y, PanelType.sea)
         me:set_lifecycle("destroy")
     end
     c:present()

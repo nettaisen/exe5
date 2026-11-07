@@ -42,15 +42,15 @@ local PRIMED_ANIM = 17
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "protoman",
-    soul = { family = "wind" },
+    version = Version.protoman,
+    soul = { family = Family.wind },
     change = soul_change.action,
     revert = soul_revert.action,
     -- GyroMan's image as MegaMan unites with him (rules/souls/image), in his propeller (0x0800EDBC's routine for the
     -- soul).
     image = soul_image.wearing(gyroman_sprite, PROPELLER),
     sprite = gyrosoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x39 (0x0800FA8E): DarkTorn (chip 0xC5), the charge table's row 0x39.
@@ -69,9 +69,9 @@ local form: FormDef = {
         end
     end,
     priming = {
-        by = { family = "wind" },
+        by = { family = Family.wind },
         sound = asset.sound("soul-primed"),
-        doubles = { { family = "wind" }, { family = "null" } },
+        doubles = { { family = Family.wind }, { family = Family.null } },
     },
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 5-10, the version's souls'); in its

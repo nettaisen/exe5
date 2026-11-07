@@ -9,7 +9,7 @@ local panel_changer = require("../objects/panel_changer")
 -- RollSP's change as Roll appears: its side's holy panels Normal (EXE5's `byte_80E272C` row 14, 0x080E2A04: all
 -- panels, flickering, 30 ticks, no tick sound).
 local HOLY_TO_NORMAL = panel_changer.change {
-    panel = "normal",
+    panel = PanelType.normal,
     panels = "all",
     flicker = true,
     ticks = 0x1E,
@@ -20,8 +20,8 @@ local HOLY_TO_NORMAL = panel_changer.change {
 -- Roll (EXE5 chip 0x0dd): Roll whips the enemy navi ahead and heals her user with a heart (./navi).
 local roll: Chip = {
     codes = { "R" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "mega",
     rarity = 2,
     mb = 20,
@@ -46,12 +46,12 @@ local roll: Chip = {
 -- the holy panels of its user's side (formula 1, 0x0800E8B4).
 local roll_sp: Chip = {
     codes = { "R" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "mega",
     rarity = 3,
     mb = 60,
-    damage = { formula = "count", of = { own_panels = "holy" }, by_count = { 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80 }, operation_battle = 50 },
+    damage = { formula = "count", of = { own_panels = PanelType.holy }, by_count = { 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80 }, operation_battle = 50 },
     counter = 10,
     cant_counter = true,
     lockout = 0,
@@ -72,8 +72,8 @@ local roll_sp: Chip = {
 -- (formula 23, its table's row 0).
 local roll_ds: Chip = {
     codes = { "R" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "mega",
     rarity = 3,
     mb = 60,

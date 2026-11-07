@@ -31,7 +31,7 @@ local SOUND = asset.sound("drip-shower")
 -- Its hit (`sub_80C53A6`'s word 0x04050201: its panel, the aqua spark, an attack that hits navis; hit modifier 3),
 -- 16 pixels up.
 local HIT_MOD, HIT_Z = { flinch = true, flash = true }, 0x10_0000
-local SEA = "sea"
+local SEA = PanelType.sea
 -- Its actions.
 local WAIT, RAINING, DONE, FADE = 0, 4, 8, 0xC
 
@@ -144,7 +144,7 @@ local function raining(me: Object)
         return
     end
     hit(me)
-    field.set_type(x, y :: number, "normal")
+    field.set_type(x, y :: number, PanelType.normal)
     local cx, cy = field.center(x, y :: number)
     battle.effect(Vec3.new(cx, cy, 0), SPLASH)
 end

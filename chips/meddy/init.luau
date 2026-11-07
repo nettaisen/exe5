@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- (./navi).
 local meddy: Chip = {
     codes = { "M" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 2,
     mb = 36,
@@ -33,8 +33,8 @@ local meddy: Chip = {
 -- (../meddy/navi); its damage by how fast its user deleted Meddy SP (rules/sp_chips: formula 7, its table's row 6).
 local meddy_sp: Chip = {
     codes = { "M" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 63,
@@ -57,8 +57,8 @@ local meddy_sp: Chip = {
 -- lines (../meddy/navi); its damage by its user's side's statistic 3 (formula 29, its table's row 6).
 local meddy_ds: Chip = {
     codes = { "M" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 63,

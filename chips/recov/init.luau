@@ -9,8 +9,8 @@ local heal = require("@exelib/recov/heal")
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (30).
 local recov10: Chip = {
     codes = { "A", "C", "L", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 0,
     mb = 8,
@@ -28,8 +28,8 @@ local recov10: Chip = {
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (30).
 local recov30: Chip = {
     codes = { "C", "H", "L", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 0,
     mb = 16,
@@ -47,8 +47,8 @@ local recov30: Chip = {
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (40).
 local recov50: Chip = {
     codes = { "B", "H", "O", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 0,
     mb = 24,
@@ -66,8 +66,8 @@ local recov50: Chip = {
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (40).
 local recov80: Chip = {
     codes = { "B", "K", "O", "*" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 1,
     mb = 32,
@@ -85,8 +85,8 @@ local recov80: Chip = {
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (50).
 local recov120: Chip = {
     codes = { "K" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 1,
     mb = 40,
@@ -104,8 +104,8 @@ local recov120: Chip = {
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (50).
 local recov150: Chip = {
     codes = { "Q" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 2,
     mb = 48,
@@ -123,8 +123,8 @@ local recov150: Chip = {
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (50).
 local recov200: Chip = {
     codes = { "I" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 2,
     mb = 56,
@@ -142,8 +142,8 @@ local recov200: Chip = {
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (50).
 local recov300: Chip = {
     codes = { "Y" },
-    element = "null",
-    family = "recovery",
+    element = Element.null,
+    family = Family.recovery,
     class = "standard",
     rarity = 3,
     mb = 64,

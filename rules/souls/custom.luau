@@ -74,7 +74,7 @@ local function souls_of(side: number, screen: boolean?): { FormDef }
 end
 
 -- The soul a chip of `family` gives up for (the first of the screen's navi's souls for that family).
-local function soul_for(side: number, family: string): FormDef?
+local function soul_for(side: number, family: Family): FormDef?
     for _, form in souls_of(side, true) do
         local soul = form.soul
         if soul ~= nil and soul.family == family then
@@ -177,7 +177,7 @@ custom_souls.button = {
         local in_soul = stats.form.soul ~= nil
         local mood = stats.mood
         local hidden = not in_soul
-            and custom.player(side).emotion ~= "angry"
+            and custom.player(side).emotion ~= Emotion.angry
             and (mood == 0 or (mood ~= "full_synchro" and (mood :: number) < 65))
         return #souls_of(side, true) > 0 and has_souls() and not operation_battle()
             and not hidden
@@ -198,7 +198,7 @@ custom_souls.button = {
         custom.play(side, "pick")
         local s = rules.state() :: State
         s.unite_step, s.unite_count = 0, 0
-        custom.open_window(side, "soul_unison")
+        custom.open_window(side, Window.soul_unison)
     end,
 } :: ButtonSpec
 
@@ -252,8 +252,8 @@ custom_souls.window = {
         elseif step == 20 then
             -- 0x080233E0
             if not fading then
-                custom.trade_last_pick(side, "soul")
-                custom.set_button_state(side, "soul", "selected")
+                custom.trade_last_pick(side, Button.soul)
+                custom.set_button_state(side, Button.soul, "selected")
                 custom.update_availability(side)
                 custom.fade(side, "intro_from_white", FADE_SPEED)
                 custom.play(side, "program_advance")
@@ -350,11 +350,11 @@ function custom_souls.confirmed(side: number)
     if part ~= nil and part.confirmed ~= nil then
         part.confirmed(side, s)
     end
-    if not custom.button_picked(side, "soul") then
+    if not custom.button_picked(side, Button.soul) then
         return
     end
     local soul = s.offer :: FormDef
-    custom.set_form(side, "soul", soul, custom_souls.turns(side, s.offer_chaos), s.offer_chaos)
+    custom.set_form(side, Button.soul, soul, custom_souls.turns(side, s.offer_chaos), s.offer_chaos)
     s.souls_used = bit32.bor(s.souls_used, used_bit(side, soul, s.offer_chaos))
 end
 

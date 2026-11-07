@@ -7,8 +7,8 @@ local anti_trap = require("../lib/traps/anti_trap")
 
 local chip: Chip = {
     codes = { "M", "S", "Z", "*" },
-    element = "wood",
-    family = "wood",
+    element = Element.wood,
+    family = Family.wood,
     class = "standard",
     rarity = 2,
     mb = 55,

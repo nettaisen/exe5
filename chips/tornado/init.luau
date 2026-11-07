@@ -50,8 +50,8 @@ local STATIC_BLOW = tornado.blow {
 -- two panels ahead.
 local tornado_chip: Chip = {
     codes = { "D", "L", "R" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 2,
     mb = 22,
@@ -68,8 +68,8 @@ local tornado_chip: Chip = {
 -- panels ahead and around, more the more kinds of NaviCust bug the navi has, paralyzing by that level.
 local static: Chip = {
     codes = { "N", "S", "V" },
-    element = "null",
-    family = "wind",
+    element = Element.null,
+    family = Family.wind,
     class = "standard",
     rarity = 2,
     mb = 55,

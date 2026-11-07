@@ -8,8 +8,8 @@ local hotbody = require("@self/hotbody")
 -- apart (chips/hotbody/hotbody, action 0x58; the record's second parameter, 2).
 local hotbody1: Chip = {
     codes = { "A", "F", "P" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "standard",
     rarity = 0,
     mb = 28,
@@ -26,8 +26,8 @@ local hotbody1: Chip = {
 -- apart (chips/hotbody/hotbody, action 0x58; the record's second parameter, 2).
 local hotbody2: Chip = {
     codes = { "C", "R", "W" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "standard",
     rarity = 1,
     mb = 40,
@@ -44,8 +44,8 @@ local hotbody2: Chip = {
 -- apart (chips/hotbody/hotbody, action 0x58; the record's second parameter, 2).
 local hotbody3: Chip = {
     codes = { "J", "M", "S" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "standard",
     rarity = 2,
     mb = 52,

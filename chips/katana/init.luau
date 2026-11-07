@@ -8,8 +8,8 @@ local katana = require("@self/katana")
 -- its own action on the swords' slash; a charged one steps first).
 local katana1: Chip = {
     codes = { "D", "H", "S" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "standard",
     rarity = 0,
     mb = 25,
@@ -26,8 +26,8 @@ local katana1: Chip = {
 -- its own action on the swords' slash; a charged one steps first).
 local katana2: Chip = {
     codes = { "B", "R", "W" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "standard",
     rarity = 1,
     mb = 37,
@@ -44,8 +44,8 @@ local katana2: Chip = {
 -- its own action on the swords' slash; a charged one steps first).
 local katana3: Chip = {
     codes = { "A", "J", "Z" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "standard",
     rarity = 2,
     mb = 49,

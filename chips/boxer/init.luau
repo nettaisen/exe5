@@ -15,8 +15,8 @@ local recipe_hotbody3 = require("./hotbody").hotbody3
 -- modifier 1, the record's +0x11).
 local boxer1: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "fire",
-    family = "program_advance",
+    element = Element.fire,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -41,8 +41,8 @@ local boxer1: Chip = {
 -- modifier 1, the record's +0x11).
 local boxer2: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "fire",
-    family = "program_advance",
+    element = Element.fire,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -67,8 +67,8 @@ local boxer2: Chip = {
 -- modifier 1, the record's +0x11).
 local boxer3: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "fire",
-    family = "program_advance",
+    element = Element.fire,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

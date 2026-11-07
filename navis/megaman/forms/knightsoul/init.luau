@@ -25,15 +25,15 @@ local BALL: BodyPart = { sprite = knightman_ball_sprite, anims = 20 }
 
 local form: FormDef = {
     -- The version whose saves own it (rules/builds' groups).
-    version = "colonel",
-    soul = { family = "break" },
+    version = Version.colonel,
+    soul = { family = Family["break"] },
     change = soul_change.action,
     revert = soul_revert.action,
     -- KnightMan's image as MegaMan unites with him (rules/souls/image), with his ball and chain (0x0800EDBC's routine
     -- for the soul).
     image = soul_image.wearing(knightman_sprite, BALL),
     sprite = knightsoul_sprite,
-    element = "null",
+    element = Element.null,
     buster_bonus = 0,
     -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
     -- routine 0x38 (0x0800FA84): DarkDril (chip 0xC4), the charge table's row 0x38.
@@ -44,7 +44,7 @@ local form: FormDef = {
         -- Routine 0x12 (the charged chip is the chip with the bonus), the charge table's row 0x12.
         a_charge = charged_chips.routine({ 80, 80, 80, 80, 80, 120 }),
     },
-    charged_chips = { { family = "break", damaging = false, plain = true } },
+    charged_chips = { { family = Family["break"], damaging = false, plain = true } },
     charged_bonus = { damage = "again" },
     front_guard = 50,
     palette = 0,

@@ -9,8 +9,8 @@ local sidebub = require("@self/sidebub")
 -- own (chips/sidebub/sidebub).
 local sidebub1: Chip = {
     codes = { "D", "Q", "S" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 0,
     mb = 25,
@@ -28,8 +28,8 @@ local sidebub1: Chip = {
 -- own (chips/sidebub/sidebub).
 local sidebub2: Chip = {
     codes = { "H", "L", "W" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 1,
     mb = 35,
@@ -47,8 +47,8 @@ local sidebub2: Chip = {
 -- own (chips/sidebub/sidebub).
 local sidebub3: Chip = {
     codes = { "E", "N", "P" },
-    element = "aqua",
-    family = "aqua",
+    element = Element.aqua,
+    family = Family.aqua,
     class = "standard",
     rarity = 2,
     mb = 45,

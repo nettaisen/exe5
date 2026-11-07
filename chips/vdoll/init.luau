@@ -9,8 +9,8 @@ local doll = require("@self/doll")
 
 local chip: Chip = {
     codes = { "O", "T", "Z" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 3,
     mb = 58,

@@ -21,8 +21,8 @@ local WAVE3 = spshake.wave { speed = 0x3_0000, paralyzes = true, palette = 12 }
 -- parameters: speed row 2, hits that paralyze, palette 0).
 local shakpar1: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "elec",
-    family = "program_advance",
+    element = Element.elec,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -47,8 +47,8 @@ local shakpar1: Chip = {
 -- parameters: speed row 2, hits that paralyze, palette 6).
 local shakpar2: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "elec",
-    family = "program_advance",
+    element = Element.elec,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,
@@ -73,8 +73,8 @@ local shakpar2: Chip = {
 -- parameters: speed row 2, hits that paralyze, palette 12).
 local shakpar3: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "elec",
-    family = "program_advance",
+    element = Element.elec,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

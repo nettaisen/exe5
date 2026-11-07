@@ -7,8 +7,8 @@ local invisible = require("@self/controller")
 
 local chip: Chip = {
     codes = { "*" },
-    element = "null",
-    family = "invisible",
+    element = Element.null,
+    family = Family.invisible,
     class = "standard",
     rarity = 2,
     mb = 12,

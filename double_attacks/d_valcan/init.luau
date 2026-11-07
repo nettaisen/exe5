@@ -229,8 +229,8 @@ end
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },
-    element = "null",
-    family = "special",
+    element = Element.null,
+    family = Family.special,
     class = "special",
     rarity = 0,
     mb = 5,

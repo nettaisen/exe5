@@ -20,8 +20,8 @@ local CAPSULE = capsule.variant {
 
 local chip: Chip = {
     codes = { "M" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "special",
     rarity = 0,
     mb = 99,

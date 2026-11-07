@@ -15,8 +15,8 @@ local STATUE = anubis.variant { anim = 1, period = 1, hp = 300, version = 3 }
 
 local chip: Chip = {
     codes = {},
-    element = "null",
-    family = "program_advance",
+    element = Element.null,
+    family = Family.program_advance,
     class = "program_advance",
     rarity = 0,
     mb = 5,

@@ -9,8 +9,8 @@ local cusvolt = require("@self/cusvolt")
 -- (EXE5's formula 73: none for a full one).
 local cusvolt1: Chip = {
     codes = { "A", "V", "Y", "*" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 1,
     mb = 40,
@@ -30,8 +30,8 @@ local cusvolt1: Chip = {
 -- (EXE5's formula 74: none for a full one).
 local cusvolt2: Chip = {
     codes = { "C", "E", "G" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 2,
     mb = 55,
@@ -51,8 +51,8 @@ local cusvolt2: Chip = {
 -- (EXE5's formula 75: none for a full one).
 local cusvolt3: Chip = {
     codes = { "G", "M", "P" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "standard",
     rarity = 3,
     mb = 70,

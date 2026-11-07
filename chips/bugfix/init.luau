@@ -7,8 +7,8 @@ local bugfix = require("../objects/bugfix")
 
 local chip: Chip = {
     codes = { "H", "*" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 62,

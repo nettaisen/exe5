@@ -11,8 +11,8 @@ local regions = require("@exelib/regions")
 -- (chips/quake/quake, attack object #0x51).
 local quake1: Chip = {
     codes = { "A", "K", "P" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 0,
     mb = 10,
@@ -30,8 +30,8 @@ local quake1: Chip = {
 -- (chips/quake/quake, attack object #0x51).
 local quake2: Chip = {
     codes = { "B", "L", "Y" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 1,
     mb = 25,
@@ -49,8 +49,8 @@ local quake2: Chip = {
 -- (chips/quake/quake, attack object #0x51).
 local quake3: Chip = {
     codes = { "F", "H", "N" },
-    element = "null",
-    family = "break",
+    element = Element.null,
+    family = Family["break"],
     class = "standard",
     rarity = 2,
     mb = 40,

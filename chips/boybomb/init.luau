@@ -8,8 +8,8 @@ local bomb = require("@self/bomb")
 -- (chips/boybomb/bomb, the dimming handler's subtype 58).
 local boybomb1: Chip = {
     codes = { "C", "F", "S" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 0,
     mb = 30,
@@ -27,8 +27,8 @@ local boybomb1: Chip = {
 -- (chips/boybomb/bomb, the dimming handler's subtype 58).
 local boybomb2: Chip = {
     codes = { "H", "P", "W" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 1,
     mb = 40,
@@ -46,8 +46,8 @@ local boybomb2: Chip = {
 -- (chips/boybomb/bomb, the dimming handler's subtype 58).
 local boybomb3: Chip = {
     codes = { "B", "Q", "Y" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 2,
     mb = 50,

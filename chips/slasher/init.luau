@@ -7,8 +7,8 @@ local slasher = require("@self/action")
 
 local chip: Chip = {
     codes = { "B", "I", "R" },
-    element = "null",
-    family = "sword",
+    element = Element.null,
+    family = Family.sword,
     class = "standard",
     rarity = 2,
     mb = 18,

@@ -38,8 +38,8 @@ end
 
 local chip: Chip = {
     codes = { "E", "*" },
-    element = "null",
-    family = "summon",
+    element = Element.null,
+    family = Family.summon,
     class = "standard",
     rarity = 4,
     mb = 99,

@@ -7,8 +7,8 @@ local elemrage = require("@self/elemrage")
 
 local chip: Chip = {
     codes = { "E", "K", "W" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "standard",
     rarity = 2,
     mb = 39,

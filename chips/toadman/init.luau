@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- (./navi).
 local toadman: Chip = {
     codes = { "T" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 2,
     mb = 53,
@@ -34,8 +34,8 @@ local toadman: Chip = {
 -- 12).
 local toadman_sp: Chip = {
     codes = { "T" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 3,
     mb = 69,
@@ -58,8 +58,8 @@ local toadman_sp: Chip = {
 -- ahead (../toadman/navi); its damage by its user's side's statistic 3 (formula 35, its table's row 12).
 local toadman_ds: Chip = {
     codes = { "T" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 3,
     mb = 69,

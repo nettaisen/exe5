@@ -16,8 +16,8 @@ local METEORS = controller.make {
 
 local chip: Chip = {
     codes = { "R" },
-    element = "fire",
-    family = "fire",
+    element = Element.fire,
+    family = Family.fire,
     class = "mega",
     rarity = 4,
     mb = 73,

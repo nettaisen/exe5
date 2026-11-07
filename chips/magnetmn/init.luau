@@ -10,8 +10,8 @@ local sp_chips = require("../rules/sp_chips")
 -- navi, immobilizing (./navi).
 local magnetmn: Chip = {
     codes = { "M" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 2,
     mb = 25,
@@ -34,8 +34,8 @@ local magnetmn: Chip = {
 -- 6, its table's row 5).
 local magntmn_sp: Chip = {
     codes = { "M" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 3,
     mb = 75,
@@ -59,8 +59,8 @@ local magntmn_sp: Chip = {
 -- 5).
 local magntmn_ds: Chip = {
     codes = { "M" },
-    element = "elec",
-    family = "elec",
+    element = Element.elec,
+    family = Family.elec,
     class = "mega",
     rarity = 3,
     mb = 75,

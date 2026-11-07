@@ -9,8 +9,8 @@ local sp_chips = require("../rules/sp_chips")
 -- GyroMan (EXE5 chip 0x0e0): GyroMan cuts in and flies along his row, dropping bombs on the enemy panels (./navi).
 local gyroman: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 2,
     mb = 32,
@@ -32,8 +32,8 @@ local gyroman: Chip = {
 -- (../gyroman/navi); its damage by how fast its user deleted GyroMan SP (rules/sp_chips: formula 3, its table's row 2).
 local gyroman_sp: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 66,
@@ -56,8 +56,8 @@ local gyroman_sp: Chip = {
 -- (../gyroman/navi); its damage by its user's side's statistic 3 (formula 25, its table's row 2).
 local gyroman_ds: Chip = {
     codes = { "G" },
-    element = "null",
-    family = "null",
+    element = Element.null,
+    family = Family.null,
     class = "mega",
     rarity = 3,
     mb = 66,

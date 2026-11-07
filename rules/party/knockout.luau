@@ -62,7 +62,7 @@ local function land(me: Object, s: State)
         stop_moving(me)
         me.status.guard = false
         me:set_animation(2)
-        overlays.set_stepping(me, "while_dimmed")
+        overlays.set_stepping(me, FormOverlayStepping.while_dimmed)
         -- (The second flash is spawned straight after the first, its X and Y what the first's spawn left.)
         battle.effect(me.pos, effects.deletion)
         battle.effect_after_spawn(me.pos.z, effects.deletion)

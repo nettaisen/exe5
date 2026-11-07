@@ -422,7 +422,7 @@ function party.validate(side: number, problem: (p: SetupProblem) -> ())
         return
     end
     if own.forms == nil then
-        problem({ kind = "not_taken", field = "party", text = string.format("party: %s brings no party (MegaMan does)", battle.name(own)) })
+        problem({ kind = SetupProblemKind.not_taken, field = "party", text = string.format("party: %s brings no party (MegaMan does)", battle.name(own)) })
         return
     end
     local seen: { [NaviDef]: number } = {}
@@ -431,10 +431,10 @@ function party.validate(side: number, problem: (p: SetupProblem) -> ())
         local data = if navi then (navi :: any).party else nil
         if navi == nil or data == nil or navi == own then
             local name = if navi then battle.name(navi) else "nothing"
-            problem({ kind = "invalid", field = "party", entry = i, text = string.format("party %d: %s is no team navi", i, name) })
+            problem({ kind = SetupProblemKind.invalid, field = "party", entry = i, text = string.format("party %d: %s is no team navi", i, name) })
         elseif seen[navi] then
             problem({
-                kind = "twice",
+                kind = SetupProblemKind.twice,
                 field = "party",
                 entry = i,
                 other = seen[navi],
@@ -451,7 +451,7 @@ function party.validate(side: number, problem: (p: SetupProblem) -> ())
             local used = partycust.cost(programs)
             if used > data.gauge then
                 problem({
-                    kind = "budget",
+                    kind = SetupProblemKind.budget,
                     field = "party",
                     entry = i,
                     used = used,
@@ -464,7 +464,7 @@ function party.validate(side: number, problem: (p: SetupProblem) -> ())
     local level = setup.level
     if level ~= nil and level > party.LEVEL then
         problem({
-            kind = "range",
+            kind = SetupProblemKind.range,
             field = "level",
             value = level,
             least = 0,

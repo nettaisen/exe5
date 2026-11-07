@@ -79,7 +79,7 @@ local function ball_flies(me: Object)
     local x = me.pos.x // 0x10000 + FLY_RANGE
     if x < 0 or x > 2 * FLY_RANGE then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local p = me.pos
@@ -158,7 +158,7 @@ end
 local function ball_init(me: Object)
     local sprite = me.sprite
     sprite:load(BALL_SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     if not me:create_collision() then
         error("B-SHOOT's ball without a collision slot (0x02033DB8 doesn't check)")
     end
@@ -173,20 +173,20 @@ local function ball_init(me: Object)
     c:set_hit_effect(sparks.breaking)
     c:set_region(nil)
     me.vel = Vec3.new(me.vel.x, me.vel.y, 0)
-    me:set_lifecycle("update")
+    me:enter_update()
     ball_tick(me)
 end
 
 local ball = new.kind {
     id = "b-shoot/ball",
-    pool = "attack",
+    pool = Pool.attack,
     state = { row = schema.u8, from = schema.vec3, to = schema.vec3 },
     -- 0x02033DA4: by state, then the sprite.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             ball_init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             ball_tick(me)
         else
             me:destroy()
@@ -350,7 +350,7 @@ local chip: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "null",
     family = "special",
-    class = "special",
+    class = ChipClass.special,
     rarity = 0,
     mb = 5,
     damage = 40,

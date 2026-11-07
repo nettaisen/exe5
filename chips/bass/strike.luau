@@ -31,7 +31,7 @@ local function init(me: Object)
     c:set_hit_effect(sparks.plain)
     c:set_region(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Action 0 (0x080D42DC): the warning; then, on a solid panel, the burst and its hit.
@@ -45,12 +45,12 @@ local function wait(me: Object)
     local c = me.collision
     if not field.solid(me.panel_x, me.panel_y) then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0x20, 0x20
     sprite:set_animation(0x20)
@@ -68,7 +68,7 @@ local function burst(me: Object)
     end
     if me.sprite.steps >= BURST_STEPS then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -89,13 +89,13 @@ end
 
 strike.kind = new.kind {
     id = "bass/strike",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080D4214.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

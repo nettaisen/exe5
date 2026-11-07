@@ -78,7 +78,7 @@ end
 
 controller.kind = new.kind {
     id = "searchman/satelity/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { bonus = schema.u16, powered = schema.bool },
     -- 0x080E4C54.
     update = dimming_chips.phases { name = "Satelity", effect = effect },

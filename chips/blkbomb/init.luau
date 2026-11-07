@@ -31,7 +31,7 @@ local function destroyed(me: Object)
     if me.phase_init == 0 then
         me.phase_init = 4
         me.collision:set_region(nil)
-        if obstacle.removal(me) ~= "broken" then
+        if obstacle.removal(me) ~= ObstacleRemoval.broken then
             local p = me.pos
             battle.effect(Vec3.new(p.x, p.y, p.z + 0xC_0000), effects.puff)
         end
@@ -55,7 +55,7 @@ end
 local KIND = black_bomb.make_kind("blkbomb/bomb", {
     destroyed = destroyed,
     identity = new.identity {
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 2,
         ai_index = 1,
         look = { sprite = black_bomb_sprite, anim = 0, palette = 0, shadow = true },
@@ -63,7 +63,7 @@ local KIND = black_bomb.make_kind("blkbomb/bomb", {
     tracked = true,
     set_off_empties_hp = true,
     bursts_as_freed = true,
-    crush = "breaks",
+    crush = ObstacleCrush.breaks,
     sprite = black_bomb_sprite,
     spark = sparks.breaking,
     is = collision.neutral_object,
@@ -71,7 +71,7 @@ local KIND = black_bomb.make_kind("blkbomb/bomb", {
     burst_is = collision.attack,
     burst_target = collision.hits_navis,
     -- 0x08017984: any hit from the other side pushes it.
-    push = "any_hit",
+    push = ObstaclePush.any_hit,
     land_sound = asset.sound("land"),
     burst_sound = asset.sound("burst"),
     burst_effect = effects.explosion,
@@ -87,7 +87,7 @@ local chip: Chip = {
     codes = { "L", "R", "Z" },
     element = "fire",
     family = "fire",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 3,
     mb = 55,
     damage = 210,

@@ -13,7 +13,7 @@ local chip: Chip = {
     codes = { "X" },
     element = "null",
     family = "null",
-    class = "giga",
+    class = ChipClass.giga,
     -- A save can collect it (rules/folder), though no library lists it: a chip the Japanese game gave out.
     collectible = true,
     rarity = 4,

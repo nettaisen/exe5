@@ -22,7 +22,7 @@ local custom_screen: SoulCustom = {
             right = 11,
             left = 7,
             pressed = function(side: number, _s: any)
-                if custom.cursor_state(side) == "selectable" then
+                if custom.cursor_state(side) == ButtonState.selectable then
                     custom.redeal(side)
                 else
                     custom.refuse(side)

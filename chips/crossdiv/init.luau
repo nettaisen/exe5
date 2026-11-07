@@ -21,7 +21,7 @@ local chip: Chip = {
     codes = { "C" },
     element = "null",
     family = "null",
-    class = "giga",
+    class = ChipClass.giga,
     -- A save can collect it (rules/folder): Team Colonel's library lists it, where this record's flags are Team
     -- ProtoMan's ROM's, which doesn't.
     collectible = true,

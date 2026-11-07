@@ -80,16 +80,16 @@ local AI: StateSchema = {
 local state: StateSchema = {
     -- Soul Unison (./souls): AIData +0x0F, the soul's turns left (0xFF: none to count), and Chaos Unison; the turn's
     -- arm chip (the transform record's +6; none: its 0xFFFF).
-    turns = schema.role("form_offer.turns", schema.u8),
+    turns = schema.role(SchemaRole.form_offer_turns, schema.u8),
     chaos = schema.bool,
     arm_chip = schema.chip,
     -- The custom screen's (./souls/custom.luau): the round's souls given, the soul button's offer, the soul's
     -- choice's step.
     souls_used = schema.u32,
-    offer = schema.role("form_offer.form", schema.form),
-    offer_chaos = schema.role("form_offer.alternate", schema.bool),
-    unite_step = schema.role("offer_flight.step", schema.u8),
-    unite_count = schema.role("offer_flight.count", schema.u8),
+    offer = schema.role(SchemaRole.form_offer_form, schema.form),
+    offer_chaos = schema.role(SchemaRole.form_offer_alternate, schema.bool),
+    unite_step = schema.role(SchemaRole.offer_flight_step, schema.u8),
+    unite_count = schema.role(SchemaRole.offer_flight_count, schema.u8),
     -- The NaviCust's emotion-swing bug (./emotion): AIData +0x3A (ticks toward the next swing) and +0x0B (the
     -- emotion last swung to) of each navi of the player's kind, by its slot on its side's list of alive actors, and the
     -- navi each slot's are of (which keeps them after it leaves the list: its deletion).
@@ -439,7 +439,7 @@ local rules: Rules = {
         -- cost.
         starting_mood = light_dark.starting_mood,
         navi_palette = light_dark.navi_palette,
-        navi_bug = function(side: number, navi: Object): ("edited" | "spared")?
+        navi_bug = function(side: number, navi: Object): BugOutcome?
             local done = light_dark.navi_bug(side, navi) or navicust_bugs.navi_bug(side, navi)
             -- (A curse's swing bug starts the navi's tick: ./ticked.)
             ticked.update(side)

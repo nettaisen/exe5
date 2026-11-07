@@ -71,7 +71,7 @@ local function turn(me: Object)
         s.turns = int.u8(left)
         if int.i8(left) <= 0 then
             me.collision:set_region(nil)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
     end
@@ -105,7 +105,7 @@ local function init(me: Object)
     local l = look_of(me)
     local sprite = me.sprite
     sprite:load(l.sprite)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0x14, 0xFF
     me.visible = true
     sprite:face(me)
@@ -124,20 +124,20 @@ local function init(me: Object)
     c:present()
     c.status_base = s.status
     s.radius = l.radius
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 ball.kind = new.kind {
     id = "knightmn/ball",
-    pool = "attack",
+    pool = Pool.attack,
     state = { speed = schema.u8, turns = schema.u8, status = schema.status, look = KNIGHTMAN_BALL_LOOK, radius = schema.u32 },
     -- 0x080C7568.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

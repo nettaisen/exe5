@@ -70,7 +70,7 @@ local function blow(me: Object)
     me.timer = BETWEEN
     s.hits += 1
     if s.hits > 3 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     hit(me, s.hits)
@@ -82,7 +82,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me:set_coordinates_from_panel()
     me.anim, me.anim_loaded = 0, 0
@@ -92,22 +92,22 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(int.i32(p.x + me.facing * AHEAD), p.y, if s.grounded then 0 else -BELOW)
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 tornado.kind = new.kind {
     id = "gyrosoul/tornado",
-    pool = "attack",
+    pool = Pool.attack,
     state = { grounded = schema.bool, hits = schema.u16 },
     -- 0x080C8194: its state; then its sprite steps unless the battle is dimmed.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             -- 0x080C8222: gone when the battle is over (the state byte alone: its phase stays).
             if battle.over() then
-                me.lifecycle = "destroy"
+                me.lifecycle = Lifecycle.destroy
             elseif me.action == 0 then
                 blow(me)
             else

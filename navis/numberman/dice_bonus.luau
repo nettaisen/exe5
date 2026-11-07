@@ -222,7 +222,7 @@ local function update(me: Object)
         end
     elseif a == LEAD_OUT then
         if countdown(me, 4) then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("DiceBons' NumberMan: action %#x reads past its table (0x0222726C)", a))
@@ -232,24 +232,24 @@ end
 
 dice_bonus.actor = new.kind {
     id = "numberman/dice-bonus",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, dice = schema.array(schema.bool, 2), total = schema.u16, navi = schema.object },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x021FF948: on the navi's panel, 10 pixels behind it and 10 up, NumberMan's sprite, his shadow.
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(p.x - me.facing * 0xA_0000, p.y - 0xA_0000, 0)
             local sprite = me.sprite
             sprite:load(numberman.sprite)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             me.anim, me.anim_loaded = 0, 0
             sprite:set_animation(0)
             sprite:face(me)
-            me:set_lifecycle("update")
+            me:enter_update()
             update(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             -- 0x021FFBF4: his controller's word for him cleared.

@@ -39,21 +39,21 @@ local function update(me: Object)
     spshake.spawn(me, x, ROWS[s.sent], me.element, me.damage_word, s.wave)
     s.sent += 1
     if s.sent >= WAVES then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 shakpar.kind = new.kind {
     id = "shakpar/shaker",
-    pool = "effect",
+    pool = Pool.effect,
     state = { sent = schema.u8, wave = spshake.SHAKE_WAVE },
     -- 0x080E7F60.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
-            me:set_lifecycle("update")
+        if l == Lifecycle.init then
+            me:enter_update()
             update(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             me:free()

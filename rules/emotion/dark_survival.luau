@@ -64,7 +64,7 @@ local dark_self = shade.make {
     name = "the dark survival's shade",
     phases = 0x080C0F14,
     lift = 0x1_0000,
-    shadow = "ground",
+    shadow = Shadow.ground,
     wears = true,
 }
 
@@ -94,7 +94,7 @@ local function fade_out(me: Object)
         me.navi_flags.volley = true
         me.sprite.white = true
         me.status.untouchable = true
-        battle.screen_fade("transform_out", FADE_SPEED)
+        battle.screen_fade(ScreenFade.transform_out, FADE_SPEED)
         me:snap_to_future_panel()
         flash(me)
         battle.play_sound(FLASH_SOUND)
@@ -117,7 +117,7 @@ local function fade_out(me: Object)
     end
     if not battle.screen_fading() then
         show_hud(HUD, false)
-        overlays.set_stepping(me, "normal")
+        overlays.set_stepping(me, FormOverlayStepping.normal)
         set_step(me, SHADE)
     end
 end
@@ -158,7 +158,7 @@ end
 local function fade_in(me: Object)
     if me.step_init == 0 then
         show_hud(if last_turns() then HUD_LAST_TURNS else HUD, true)
-        battle.screen_fade("transform_in", FADE_SPEED)
+        battle.screen_fade(ScreenFade.transform_in, FADE_SPEED)
         me.step_init = 4
     end
     if not battle.screen_fading() then
@@ -194,8 +194,8 @@ survival.action = new.action { id = "dark-survival", state = { timer = schema.u1
 -- leaves in r1 is non-zero, by which applyDamageToPlayer (0x080185A2) shows the hit: the actor type, the AI index,
 -- the NaviStats pointer, 1 (held), else the soul (NaviStats +0x2C: none in the base form).
 function survival.hp_emptied(side: number, navi: Object): boolean
-    if navi.actor_type ~= "player" then
-        return navi.actor_type ~= "virus"
+    if navi.actor_type ~= ActorType.player then
+        return navi.actor_type ~= ActorType.virus
     end
     if navi.ai_index ~= 0 or operation_battle() or battle.side_stat(side, "last_stand") ~= 0 or battle.mode() == 1 then
         return true

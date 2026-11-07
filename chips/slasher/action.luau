@@ -158,7 +158,7 @@ slasher.action = new.action {
             if a == nil then
                 error("Slasher: request 0x80000 starts EXE5's action 0x49 (the roles' stun_strike), which no EXE5 role names yet")
             end
-            me:set_attack(a, "plain")
+            me:set_attack(a, AttackKind.plain)
             vulnerable(me)
         end
     end,

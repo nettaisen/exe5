@@ -72,7 +72,7 @@ local function start(me: Object)
         own.guarded = false
         me.collision:set_region(nil)
         party.spend_rescue(me.alliance)
-        battle.screen_fade("dim", FADE_SPEED)
+        battle.screen_fade(ScreenFade.dim, FADE_SPEED)
         me:snap_to_future_panel()
         stop_moving(me)
         me.status.guard = false
@@ -84,7 +84,7 @@ local function start(me: Object)
         if part then
             part.anim_loaded = 0xFF
         end
-        overlays.set_stepping(me, "while_dimmed")
+        overlays.set_stepping(me, FormOverlayStepping.while_dimmed)
         me.step_init = 4
     end
     if battle.screen_fading() then
@@ -126,7 +126,7 @@ local function heal(me: Object, s: State)
     if t == ENDS_AT then
         me:end_statuses()
         navi_status.end_anger(me, "unless_zero")
-        me.collision.barrier = "none"
+        me.collision.barrier = BarrierState.none
         me.barrier_visual = nil
         me:set_animation(0)
         set_step(me, END)
@@ -136,8 +136,8 @@ end
 -- 0x02004B24
 local function finish(me: Object)
     if me.step_init == 0 then
-        overlays.set_stepping(me, "normal")
-        battle.screen_fade("undim", FADE_SPEED)
+        overlays.set_stepping(me, FormOverlayStepping.normal)
+        battle.screen_fade(ScreenFade.undim, FADE_SPEED)
         me.step_init = 4
     end
     if battle.screen_fading() then

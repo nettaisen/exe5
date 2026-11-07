@@ -42,7 +42,7 @@ local form: FormDef = {
         a_charge = charged_chip.weapon,
     },
     charged_chips = { { family = "sword", damaging = false, plain = true } },
-    charged_bonus = { damage = "again" },
+    charged_bonus = { damage = ChargedBonus.again },
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 5-10, the version's souls'); in its
     -- Chaos Unison look while the chaos charge is armed (0x080125F6: the palette 11 on, the pack's picture 0x10).
@@ -59,10 +59,10 @@ local form: FormDef = {
     -- MegaMan's actor record, with his sprite in the soul's attach points (row 1 of category 0: what a chip's icon
     -- over him and his attachments sit by).
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         changes_form = true,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 0,
         aura_anim = 0,
         attach_points = attach_points,

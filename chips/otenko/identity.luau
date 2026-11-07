@@ -5,7 +5,7 @@
 local otenko_sprite = asset.sprite("otenko")
 
 return new.identity {
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 2,
     ai_index = 0x21,
     look = { sprite = otenko_sprite, anim = 1, palette = 0, shadow = true },

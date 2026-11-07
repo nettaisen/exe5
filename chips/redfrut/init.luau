@@ -30,7 +30,7 @@ end)
 -- 0x080D813C: RedFrut3's: a player's navi, out of the operation battle, whose emotion (0x0801270C) is one of the
 -- first four, to Full Synchro (0x080127D6: a mood of 0 left as it is).
 local SYNCHRO_GIFT = fruit.gift(function(navi: Object)
-    if navi.actor_type ~= "player" or operation_battle() then
+    if navi.actor_type ~= ActorType.player or operation_battle() then
         return
     end
     local stats = battle.navi(navi.alliance)
@@ -43,7 +43,7 @@ local SYNCHRO_GIFT = fruit.gift(function(navi: Object)
         return
     end
     if stats.mood ~= 0 then
-        stats.mood = "full_synchro"
+        stats.mood = Mood.full_synchro
     end
 end)
 
@@ -53,7 +53,7 @@ local redfrut1: Chip = {
     codes = { "E", "K", "Z" },
     element = "null",
     family = "recovery",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 0,
     mb = 24,
     damage = 0,
@@ -72,7 +72,7 @@ local redfrut2: Chip = {
     codes = { "F", "T", "W" },
     element = "null",
     family = "recovery",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 1,
     mb = 48,
     damage = 0,
@@ -91,7 +91,7 @@ local redfrut3: Chip = {
     codes = { "H", "O", "U" },
     element = "null",
     family = "recovery",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 62,
     damage = 0,

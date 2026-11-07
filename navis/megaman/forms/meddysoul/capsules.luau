@@ -62,12 +62,12 @@ local function deal(side: number, s: any)
 end
 
 -- 0x08024C74: a capsule goes into the last pick: a chip that deals damage, with no capsule yet.
-local function state(side: number, _s: any): "selectable" | "unavailable"
+local function state(side: number, _s: any): ButtonState
     local last = custom.last_pick(side)
     if last == nil or last.attached or not (last.chip.flags and last.chip.flags.has_damage) then
-        return "unavailable"
+        return ButtonState.unavailable
     end
-    return "selectable"
+    return ButtonState.selectable
 end
 
 local function button(index: number): SoulButton
@@ -81,11 +81,11 @@ local function button(index: number): SoulButton
         state = state,
         -- 0x08024A02: the capsule's sequence.
         pressed = function(side: number, s: any)
-            if custom.cursor_state(side) ~= "selectable" then
+            if custom.cursor_state(side) ~= ButtonState.selectable then
                 custom.refuse(side)
                 return
             end
-            custom.play(side, "pick")
+            custom.play(side, ScreenSound.pick)
             local st = (s :: { screen: Screen }).screen
             st.mix_capsule, st.mix_step, st.mix_count = index, 0, 0
             custom.open_window(side, "capsule")
@@ -101,7 +101,7 @@ local FADE_SPEED = 32
 -- (0x080237B4), and the screen clears; then the picking goes on. Each step after the flash waits for the fade before
 -- it.
 local window: SoulWindow = {
-    view = "chip_flight",
+    view = WindowView.chip_flight,
     update = function(side: number, s: any): boolean
         local st = (s :: { screen: Screen }).screen
         local fading = custom.fading(side)
@@ -119,20 +119,20 @@ local window: SoulWindow = {
             -- 0x0802337A
             count += 1
             if count >= 8 then
-                custom.fade(side, "flash", FADE_SPEED)
-                custom.play(side, "program_advance_part")
+                custom.fade(side, CustomFade.flash, FADE_SPEED)
+                custom.play(side, ScreenSound.program_advance_part)
                 step, count = 12, 0
             end
         elseif step == 12 then
             -- 0x080233A8
             if not fading then
-                custom.fade(side, "flash_back", FADE_SPEED)
+                custom.fade(side, CustomFade.flash_back, FADE_SPEED)
                 step, count = 16, 0
             end
         elseif step == 16 then
             -- 0x080233C4
             if not fading then
-                custom.fade(side, "end_to_white", FADE_SPEED)
+                custom.fade(side, CustomFade.end_to_white, FADE_SPEED)
                 step, count = 20, 0
             end
         elseif step == 20 then
@@ -145,8 +145,8 @@ local window: SoulWindow = {
                 end
                 custom.attach_to_last_pick(side, BUTTONS[st.mix_capsule], { [mix] = true })
                 custom.update_availability(side)
-                custom.fade(side, "intro_from_white", FADE_SPEED)
-                custom.play(side, "program_advance")
+                custom.fade(side, CustomFade.intro_from_white, FADE_SPEED)
+                custom.play(side, ScreenSound.program_advance)
                 step, count = 24, 0
             end
         elseif step == 24 then
@@ -173,9 +173,9 @@ local custom_screen: SoulCustom = {
     state = {
         capsule_1 = schema.chip,
         capsule_2 = schema.chip,
-        mix_capsule = schema.role("chip_flight.button", schema.u8),
-        mix_step = schema.role("chip_flight.step", schema.u8),
-        mix_count = schema.role("chip_flight.count", schema.u8),
+        mix_capsule = schema.role(SchemaRole.chip_flight_button, schema.u8),
+        mix_step = schema.role(SchemaRole.chip_flight_step, schema.u8),
+        mix_count = schema.role(SchemaRole.chip_flight_count, schema.u8),
     },
     buttons = { capsule_1 = button(1), capsule_2 = button(2) },
     windows = { capsule = window },

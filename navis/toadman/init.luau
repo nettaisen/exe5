@@ -52,7 +52,7 @@ local navi: NaviDef = {
     },
     -- The chips A charges, and what a charged one gains (its damage again).
     charged_chips = { family = "aqua", damaging = false, plain = true },
-    charged_bonus = { damage = "again" },
+    charged_bonus = { damage = ChargedBonus.again },
     -- 0x080F199C
     post_init = dives,
     -- His entry in a navi switch's tail (0x080119A0 in the table 0x08011964 that 0x08011902 calls after it clears the
@@ -80,9 +80,9 @@ local navi: NaviDef = {
         chip_damage = { 60, 60, 60, 60, 60, 60, 60, 60, 60, 60 },
     },
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 12,
         -- The Full Synchro aura's animation: its owner's AI index (the aura's start, 0x080C4608).
         aura_anim = 12,

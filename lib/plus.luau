@@ -34,7 +34,7 @@ local TINT = 24
 -- Attck+'s `instant` hook: from a special battle the damage into the side's attack bonus, else the sparkle.
 function plus.attack(user: Object, _spec: InstantChipSpec)
     if operation_battle() then
-        battle.add_special_bonus(user.alliance, "attack", damage_word.damage(user.attack_word))
+        battle.add_special_bonus(user.alliance, SpecialBonus.attack, damage_word.damage(user.attack_word))
         return
     end
     plus.sparkle(user)
@@ -43,7 +43,7 @@ end
 -- Navi+'s `instant` hook: from a special battle the damage into the side's Navi+ bonus, else the sparkle.
 function plus.navi(user: Object, _spec: InstantChipSpec)
     if operation_battle() then
-        battle.add_special_bonus(user.alliance, "navi", damage_word.damage(user.attack_word))
+        battle.add_special_bonus(user.alliance, SpecialBonus.navi, damage_word.damage(user.attack_word))
         return
     end
     plus.sparkle(user)
@@ -52,7 +52,7 @@ end
 -- DarkPlus's `instant` hook (0x0800E198 with +0x11 1).
 function plus.dark(user: Object, _spec: InstantChipSpec)
     if operation_battle() then
-        battle.add_special_bonus(user.alliance, "attack", damage_word.damage(user.attack_word))
+        battle.add_special_bonus(user.alliance, SpecialBonus.attack, damage_word.damage(user.attack_word))
         user.plus_tint = TINT
         battle.play_sound(BONUS_SOUND)
         return

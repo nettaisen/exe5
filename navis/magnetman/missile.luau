@@ -140,7 +140,7 @@ local function fly(me: Object)
     if not field.valid(me.panel_x, me.panel_y) then
         me.collision:set_region(nil)
         -- (The state byte alone.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     if field.solid(me.panel_x, me.panel_y) then
@@ -157,14 +157,14 @@ local function tick(me: Object)
     c:remove()
     me:hit_spark()
     local gone = battle.over()
-    if not gone and me:take_damage("damage_sound") == "broken" then
+    if not gone and me:take_damage(TakeDamageMode.damage_sound) == DamageTaken.broken then
         battle.effect(me.pos, effects.explosion)
         gone = true
     end
     if gone or c:hit_any(BODY_HIT) then
         c:set_region(nil)
         -- (The state byte alone.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     if not battle.dimmed() then
@@ -173,7 +173,7 @@ local function tick(me: Object)
             error(string.format("a magnet missile's action %#x reads past its table (0x080D25E0)", me.action))
         end
         action(me)
-        if me.lifecycle ~= "update" then
+        if me.lifecycle ~= Lifecycle.update then
             return
         end
     end
@@ -189,7 +189,7 @@ local function init(me: Object)
     s.turned = false
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -203,22 +203,22 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.elec)
     me.collision:present()
     me.hp, me.max_hp = HP, HP
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 missile.kind = new.kind {
     id = "magnetman/missile",
-    pool = "attack",
+    pool = Pool.attack,
     state = { turned = schema.bool, target = schema.object },
     -- 0x080D24F0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080D26CC.

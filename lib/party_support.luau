@@ -138,7 +138,7 @@ local function lead_out(me: Object, spec: Spec)
         if spec.gone then
             spec.gone(me)
         end
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -155,7 +155,7 @@ function party_support.make(spec: Spec): Support
     local function init(me: Object)
         local sprite = me.sprite
         sprite:load(spec.sprite or navi.sprite)
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         me.anim, me.anim_loaded = ANIM_IDLE, 0
         sprite:set_animation(0)
         me:set_coordinates_from_panel()
@@ -166,10 +166,10 @@ function party_support.make(spec: Spec): Support
         me.identity = navi.identity
         if spec.wears then
             spec.wears(me)
-        elseif navi.identity.actor_type == "player" then
+        elseif navi.identity.actor_type == ActorType.player then
             me:add_parts(navi.identity, 0)
         end
-        me:set_lifecycle("update")
+        me:enter_update()
     end
 
     -- 0x021FE58D: shown (to a viewer not blind to it); outside the dimming, its action and its sprite.
@@ -211,13 +211,13 @@ function party_support.make(spec: Spec): Support
 
     local kind = new.kind {
         id = spec.id,
-        pool = "actor",
+        pool = Pool.actor,
         state = state,
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 update(me)
             else
                 finish(me)
@@ -286,13 +286,13 @@ function party_support.controller(spec: { id: string, state: StateSchema?, bring
 
     local kind = new.kind {
         id = spec.id,
-        pool = "effect",
+        pool = Pool.effect,
         state = state,
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 dimming.begin(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 local a = me.action
                 if a == 0 then
                     dimming.dim_screen(me)

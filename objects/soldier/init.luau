@@ -173,7 +173,7 @@ local function leave(me: Object)
     local left = me.timer - 1
     me.timer = int.u16(left)
     if left < 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -210,7 +210,7 @@ local function tick(me: Object)
     c:remove()
     me.visible = true
     visibility.hide_from_blind(me)
-    if not s.hit and me:take_damage("damage_sound") == "broken" then
+    if not s.hit and me:take_damage(TakeDamageMode.damage_sound) == DamageTaken.broken then
         s.hit = true
         next_action(me, LEAVE)
         c:set_region(nil)
@@ -227,7 +227,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite:set_animation(0)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = if s.ranged == 0 then 0 else 3
     me.anim_loaded = 0xFF
     if not me:create_collision() then
@@ -242,7 +242,7 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
     me.hp, me.max_hp = HP, HP
-    me:set_lifecycle("update")
+    me:enter_update()
     me.action = if s.ranged == 0 then SWORD else GUN
     tick(me)
 end
@@ -335,17 +335,17 @@ end
 
 soldier.kind = new.kind {
     id = "colonel-soldier",
-    pool = "attack",
+    pool = Pool.attack,
     state = { ranged = schema.u8, hit = schema.bool },
     -- 0x080CA834.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080138F2.

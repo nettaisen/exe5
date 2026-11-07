@@ -183,7 +183,7 @@ local function go(me: Object)
     local t = me.timer - 1
     me.timer = int.u16(t)
     if t < 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -199,7 +199,7 @@ local function tick(me: Object)
         if battle.over() then
             me.hp = 0
         end
-        if me:take_damage("damage_sound") == "broken" then
+        if me:take_damage(TakeDamageMode.damage_sound) == DamageTaken.broken then
             s.gone = true
             next_action(me, GO)
             c:set_region(nil)
@@ -230,7 +230,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
@@ -246,23 +246,23 @@ local function init(me: Object)
     me:setup_collision(collision.collision_3e, collision.hit_by_other_side, HIT_MOD)
     me.collision:set_region(nil)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 shadow.kind = new.kind {
     id = "shadowman/shadow",
-    pool = "actor",
+    pool = Pool.actor,
     state = { held = schema.object, orders = schema.u8, gone = schema.bool, wait = schema.u8, slash_damage = schema.u32 },
     -- 0x080B9384: its sprite steps unless the battle is dimmed (or paused).
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080B986E: its sword goes with it.

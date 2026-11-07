@@ -89,13 +89,13 @@ local function bursting(me: Object, s: State)
         me.collision:set_region(nil)
         flying_shot.launch(me, me.pos, s.burst, me.damage_word)
         battle.play_sound(SOUND_BURST)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 local function gone(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D858E: the hits against it resolve and spark; when the battle is over, gone; an attack that empties its HP
@@ -110,7 +110,7 @@ local function tick(me: Object)
         return
     end
     local s = me.state :: State
-    if me.action ~= BURSTING and me:take_damage("damage_sound") == "broken" then
+    if me.action ~= BURSTING and me:take_damage(TakeDamageMode.damage_sound) == DamageTaken.broken then
         battle.play_sound(SOUND_POP)
         c:set_region(nil)
         me.anim = 1
@@ -151,7 +151,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
@@ -191,23 +191,23 @@ local function init(me: Object)
     me.timer2 = bit32.rshift(travel, 1)
     me.timer = WAIT
     battle.play_sound(SOUND_RISE)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 sidebub.bubble = new.kind {
     id = "sidebub/bubble",
-    pool = "attack",
+    pool = Pool.attack,
     state = { way = schema.u8, travel = schema.u8, burst = flying_shot.FLYING_SHOT_VARIANT },
     -- 0x080D8484.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

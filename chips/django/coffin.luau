@@ -15,35 +15,35 @@ local SPRITE = asset.sprite("django-coffin")
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     sprite:face(me)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
     me.visible = true
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080DE096: gone once he lets it go.
 local function tick(me: Object)
     if (me.state :: State).done then
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 coffin.kind = new.kind {
     id = "django/coffin",
-    pool = "attack",
+    pool = Pool.attack,
     state = { done = schema.bool },
     -- 0x080DE050.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
             -- 0x080DE096 pushes its return address but returns with `mov pc, lr`, leaving that word (0x080DE05C) on
             -- the stack: 0x080DE050's closing `pop {pc}` takes it back to its sprite update, which then runs twice

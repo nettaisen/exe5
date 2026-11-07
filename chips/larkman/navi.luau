@@ -34,12 +34,12 @@ local COMMAND: { Key } = { "up", "right", "down" }
 
 -- 0x080BDC20: on his panel, on the ground, in his chip's palette.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
     local s = me.state :: State
     me.sprite.palette = s.palette
     s.commanded = false
     s.command_steps, s.command_ticks = 0, 0
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080BDDF4: the command, read from his user's held buttons (none for a swoop that takes none: WildBird's).
@@ -141,7 +141,7 @@ local function attack(me: Object)
         if controller then
             navi_left(controller)
         end
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -149,7 +149,7 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = rise, [0xC] = attack }
 
 larkman.kind = new.kind {
     id = "larkman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         controller = schema.object,
         palette = schema.u8,
@@ -161,9 +161,9 @@ larkman.kind = new.kind {
     -- 0x080BDBFC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("LarkMan action %#x reads past his table (0x080BDC98)", me.action))

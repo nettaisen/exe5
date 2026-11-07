@@ -32,7 +32,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, int.i32(p.y - 0x1_0000), int.i32(0x5F_0000 + bit32.band(p.z, 0xFFFF)))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 19, 19
     sprite:set_animation(19)
@@ -40,7 +40,7 @@ local function init(me: Object)
     local s = me.state :: State
     s.count = int.u8(s.count + 3)
     s.called = 0
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080EA334: the enemies on its panel and the four beside it (in their side's order).
@@ -135,7 +135,7 @@ local function finish(me: Object)
     local left = me.timer - 1
     me.timer = left
     if left < 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -143,7 +143,7 @@ local ACTIONS = { [0] = start, [4] = call, [8] = finish }
 
 caller.kind = new.kind {
     id = "cosmoman/caller",
-    pool = "effect",
+    pool = Pool.effect,
     state = {
         count = schema.u8,
         called = schema.u8,
@@ -154,12 +154,12 @@ caller.kind = new.kind {
     -- 0x080EA1BC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             -- 0x080EA232.
             if battle.over() then
-                me:set_lifecycle("destroy")
+                me:enter_destroy()
             else
                 local action = ACTIONS[me.action]
                 if not action then

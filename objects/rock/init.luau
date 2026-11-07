@@ -33,13 +33,13 @@ rock.debris = common_debris.make_kind("rock/debris", rock_debris_sprite, SPLASH)
 
 -- What a rock is taken for: a rock cube (actor record 0xD0), an ice block (0xD1).
 local ROCK = new.identity {
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 3,
     ai_index = 0x21,
     look = { sprite = SPRITE, anim = 1, palette = 0, shadow = true },
 }
 local ICE = new.identity {
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 4,
     ai_index = 0x21,
     look = { sprite = SPRITE, anim = 2, palette = 0, shadow = true },

@@ -50,7 +50,7 @@ local function tick(me: Object)
     local navi = (me.state :: BeamState).navi
     if navi == nil or navi.related1 == nil then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     else
         local was_x, was_y = me.panel_x, me.panel_y
         follow(me)
@@ -68,7 +68,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     if not me:create_collision() then
         me:free()
@@ -79,23 +79,23 @@ local function init(me: Object)
     me.collision:set_region(regions.fan)
     me.visible = true
     follow(me)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 cusvolt.beam = new.kind {
     id = "cusvolt/beam",
-    pool = "attack",
+    pool = Pool.attack,
     state = { navi = schema.object },
     -- 0x080DD3D0: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

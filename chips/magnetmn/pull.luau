@@ -24,7 +24,7 @@ local NAVI_ACTION, NAVI_DONE = 0x0B, 0x18
 
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D2C3A: the hits against it resolve; at the battle's end it goes; outside dimming (or running while dimmed)
@@ -43,7 +43,7 @@ local function tick(me: Object)
         if s.follows_navi then
             -- 0x080D2C60: a navi's: gone once its attack's step reads 0x18 or its action isn't 0xB. (A player's
             -- action byte is its own action's number, 8 for MagnetMan's NSTackle: never 0xB.)
-            if magnet.step == NAVI_DONE or magnet.actor_type == "player" or magnet.action ~= NAVI_ACTION then
+            if magnet.step == NAVI_DONE or magnet.actor_type == ActorType.player or magnet.action ~= NAVI_ACTION then
                 finish(me)
                 return
             end
@@ -73,22 +73,22 @@ local function init(me: Object)
     me:setup_collision(collision.collision_36, collision.nothing, {})
     me.collision:set_hit_effect(nil)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 pull.kind = new.kind {
     id = "magnetmn/pull",
-    pool = "attack",
+    pool = Pool.attack,
     state = { dir = schema.i8, ahead = schema.u8, follows_navi = schema.bool },
     -- 0x080D2BE8.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

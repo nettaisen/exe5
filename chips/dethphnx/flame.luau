@@ -30,10 +30,10 @@ local function init(me: Object)
     sprite:load(SPRITE)
     me.anim = ANIM
     sprite:set_animation(ANIM)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     sprite.palette = 0
     me.visible = true
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Action 0 (0x080E8B62): the leap: 2.5 pixels ahead a tick (its facing's way), the arc's angle 0x600 a tick for 8
@@ -62,20 +62,20 @@ local function leap(me: Object)
     local left = me.timer - 1
     me.timer = int.u16(left)
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 flame.kind = new.kind {
     id = "dethphnx/flame",
-    pool = "effect",
+    pool = Pool.effect,
     state = { angle = schema.u16, step = schema.u16 },
     -- 0x080E8ACC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local a = me.action
             if a == 0 then
                 leap(me)

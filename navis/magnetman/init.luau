@@ -43,7 +43,7 @@ local navi: NaviDef = {
     },
     -- The chips A charges, and what a charged one gains (its damage again).
     charged_chips = { family = "elec", damaging = false, plain = true },
-    charged_bonus = { damage = "again" },
+    charged_bonus = { damage = ChargedBonus.again },
     -- His fresh stats (his stats row): what a side starts him with.
     fresh = { hp = 400, super_armor = true, float_shoes = true, air_shoes = true, mega_level = 5, giga_level = 1 },
     -- What the story gives him (its table's row for him, 0x0804F960): his HP by its progress; his level is that
@@ -62,9 +62,9 @@ local navi: NaviDef = {
         chip_damage = { 60, 60, 60, 60, 80, 80, 100, 100, 100, 100 },
     },
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 5,
         -- The Full Synchro aura's animation: its owner's AI index (the aura's start, 0x080C4608).
         aura_anim = 5,

@@ -44,7 +44,7 @@ local ROLL, CAUGHT, SHOCK = 0, 4, 8
 -- Done: off its panels, and freed at the next update.
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080DAC38: rolling; a hit stops it, hidden (its collision off the field).
@@ -156,7 +156,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     -- (The setup's shadow byte is 0: `sprite_noShadow`, 0x0800F1C4, the first part drawn with the sprite.)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = ANIM, 0xFF
     if not me:create_collision() then
         error("ElcReel's reel has no collision: 0x080DABE0 goes on through a null pointer")
@@ -166,19 +166,19 @@ local function init(me: Object)
     me.visible = true
     me.collision:set_hit_effect(sparks.of_element(me.element))
     me.vel = Vec3.new(me.facing * SPEED, me.vel.y, me.vel.z)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 elcreel.reel = new.kind {
     id = "elcreel/reel",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080DABBC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

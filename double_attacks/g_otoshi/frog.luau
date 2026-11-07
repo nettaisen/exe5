@@ -22,7 +22,7 @@ local function puff(me: Object)
     local p = me.pos
     battle.effect(Vec3.new(p.x, p.y, int.i32(p.z + PUFF_Z)), effects.puff)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x020A2088: its region on from 20 pixels up; it falls; below the ground, on a hole gone, else landed.
@@ -77,7 +77,7 @@ local function tick(me: Object)
         me.visible = false
         c:set_region(nil)
         field.set_type(me.panel_x, me.panel_y, "sea")
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
     c:present()
 end
@@ -92,7 +92,7 @@ local function init(me: Object)
     me.vel = Vec3.new(v.x, v.y, 0)
     local sprite = me.sprite
     sprite:load(FROG)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     if not me:create_collision() then
         -- (The DS goes on through the missing record.)
@@ -104,18 +104,18 @@ local function init(me: Object)
     me.collision:set_region(nil)
     me.collision:present()
     battle.play_sound(SOUND_DROP)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 frog.kind = new.kind {
     id = "g-otoshi/frog",
-    pool = "attack",
+    pool = Pool.attack,
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

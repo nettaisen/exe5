@@ -22,13 +22,13 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, int.i32(p.y - 0x20_0000), int.i32(-0x20_0000))
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 13, 13
     sprite:set_animation(13)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080E6DB0: gone with the battle (or, without its parameter, unless its owner is in action 0xB).
@@ -48,14 +48,14 @@ end
 
 grid.kind = new.kind {
     id = "gridman/grid",
-    pool = "effect",
+    pool = Pool.effect,
     state = { stays = schema.bool },
     -- 0x080E6D3C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()
@@ -78,7 +78,7 @@ end
 
 -- 0x080E6DF4: it goes (at its next update).
 function grid.remove(me: Object)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 return grid

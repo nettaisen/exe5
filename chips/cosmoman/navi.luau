@@ -29,11 +29,11 @@ local CALLER_PANELS: { [number]: { number } } = { [0] = { 5, 2 }, { 2, 2 } }
 
 -- 0x080BD9D0: on his panel, on the ground, his chip's palette, flipped by his side alone.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
     local s = me.state :: State
     me.sprite.palette = s.palette
     me.sprite:face_side(me.alliance)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Enter the phase with a timer (a word store clears Timer2 too), or count down; true once it has run out.
@@ -57,7 +57,7 @@ local function done(me: Object)
     if controller then
         navi_left(controller)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Action 0 (0x080BDA64): he appears; 10 ticks; then he stays, or goes off a panel that isn't solid.
@@ -135,14 +135,14 @@ local ACTIONS = { [0] = appear, [4] = gather, [8] = launch, [0xC] = wait, [0x10]
 
 cosmoman.kind = new.kind {
     id = "cosmoman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, taken = schema.array(schema.identity, 8), count = schema.u8 },
     -- 0x080BD9AC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             -- 0x080BDA28: the battle's end ends him (the controller moves on).
             if battle.over() then
                 done(me)

@@ -24,7 +24,7 @@ return common.make {
     id = "airspin/top",
     sprite = SPRITE,
     identity = new.identity {
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 0,
         ai_index = 1,
         look = { sprite = SPRITE, anim = 1, palette = 0, shadow = false },

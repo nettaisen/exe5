@@ -34,9 +34,9 @@ local HIT_MOD, HIT_TICKS = { flinch = true, back_far = true, drag = true }, 0x0A
 -- 0x080ED17A: the rack's animation.
 local function rack_anim(me: Object): number
     local t, ai = me.actor_type, me.ai_index
-    if t == "virus" then
+    if t == ActorType.virus then
         return 0
-    elseif t == "navi" then
+    elseif t == ActorType.navi then
         return if ai == 0x16 then 0 else ai
     end
     return if ai == 0x17 then 0 else ai

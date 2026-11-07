@@ -28,7 +28,7 @@ local SOUND_SWING = asset.sound("knight-swing")
 -- What he wears (0x0800EE7A: EXE5's body overlay row 1, its sprite 10-47, in front at every animation), stepping
 -- even while paused.
 local CHAIN = new.identity {
-    class = "navi",
+    class = IdentityClass.navi,
     parts = { body = { sprite = knightman_ball_sprite, anims = 20 } },
 }
 -- Where he drops from and flies off to, how fast he falls faster, and how fast he rises.
@@ -46,7 +46,7 @@ local function leave(me: Object)
     end
     me:remove_parts(CHAIN)
     -- (0x080B9E60: the state byte alone; his action and phase stay.)
-    me.lifecycle = "destroy"
+    me.lifecycle = Lifecycle.destroy
 end
 
 -- Action 0 (0x080B9CD4): shown, he falls; landed off a solid panel he goes in smoke (32 pixels up); else he lands,
@@ -194,7 +194,7 @@ local ACTIONS = { [0] = drop, [4] = stand, [8] = attack, [0xC] = go }
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 4, 4
     sprite:set_animation(4)
     for _ = 1, 5 do
@@ -206,19 +206,19 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, HEIGHT)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 knightman.kind = new.kind {
     id = "knightmn/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8 },
     -- 0x080B9C28.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("KnightMan action %#x reads past his table (0x080B9CC4)", me.action))

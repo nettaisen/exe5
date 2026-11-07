@@ -41,7 +41,7 @@ export type State = {
 -- Done: off its panels, and freed at the next update.
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- A hop's start: `panels` panels ahead (or back), in `ticks` ticks, toward the panel's center on the ground.
@@ -153,7 +153,7 @@ local function tick(me: Object)
         finish(me)
     elseif int.u32(int.asr(me.pos.x, 16) + 160) > 320 then
         finish(me)
-    elseif me.lifecycle ~= "destroy" and (me.panel_x ~= was_x or me.panel_y ~= was_y) then
+    elseif me.lifecycle ~= Lifecycle.destroy and (me.panel_x ~= was_x or me.panel_y ~= was_y) then
         c:set_region(regions.single)
     end
     c:present()
@@ -166,7 +166,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     -- (The setup's shadow byte is 0: `sprite_noShadow`, 0x0800F1C4, the first part drawn with the sprite.)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = ANIM, 0xFF
     if not me:create_collision() then
         me:free()
@@ -179,23 +179,23 @@ local function init(me: Object)
     ;(me.state :: State).hops = 0
     sprite.palette = (me.state :: State).palette
     battle.play_sound(THROW_SOUND)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 cactbal.ball = new.kind {
     id = "cactbal/ball",
-    pool = "attack",
+    pool = Pool.attack,
     state = { hops = schema.u32, palette = schema.u8 },
     -- 0x080D1A88.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

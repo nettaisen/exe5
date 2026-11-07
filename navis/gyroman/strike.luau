@@ -28,7 +28,7 @@ local function init(me: Object)
     me.pos = Vec3.new(int.i32(p.x + dx * 0x1_0000), int.i32(p.y + dy * 0x1_0000), 0)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -42,7 +42,7 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.plain)
     me.collision:present()
     me.timer = TICKS
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080C7F54: its hits resolved; gone at the battle's end, on a hit, and (unless the battle is dimmed) while its
@@ -60,7 +60,7 @@ local function tick(me: Object)
     if gone then
         c:set_region(nil)
         -- (The state byte alone.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     c:present()
@@ -68,17 +68,17 @@ end
 
 strike.kind = new.kind {
     id = "gyroman/strike",
-    pool = "attack",
+    pool = Pool.attack,
     state = { hit_mod = schema.u8 },
     -- 0x080C7EA0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080C7F8C.

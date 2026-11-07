@@ -47,19 +47,19 @@ local function show(me: Object)
         navi.status.invisible = false
         navi.status.flashing = false
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 reveal.kind = new.kind {
     id = "searchsoul/reveal",
-    pool = "effect",
+    pool = Pool.effect,
     state = { marked = schema.array(schema.object, 4) },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080EABEC
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             if me.action == 0 then
                 if me.phase_init == 0 then
                     mark(me)

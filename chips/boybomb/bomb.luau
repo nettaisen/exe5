@@ -35,7 +35,7 @@ local FREE: PanelCondition = { solid = true, occupied = false }
 local BOMB = common.make {
     id = "boybomb/bomb",
     sprite = boy_bomb_sprite,
-    identity = new.identity { class = "field_object", version = 1, ai_index = 0x21 },
+    identity = new.identity { class = IdentityClass.field_object, version = 1, ai_index = 0x21 },
     body = { is = collision.neutral_body, hits = collision.everything },
     blast = {
         is = collision.attack,
@@ -55,7 +55,7 @@ local BOMB = common.make {
         [0] = { solid = true, own_body = false, own_other_body = false, enemy_other_body = false, neutral = false },
         [1] = { solid = true, own_body = false, enemy_other_body = false, neutral = false },
     },
-    push = "any_hit",
+    push = ObstaclePush.any_hit,
     actions = {
         [1] = obstacle.return_to_idle,
         [3] = obstacle.flinch,
@@ -89,7 +89,7 @@ end
 
 bomb.controller = new.kind {
     id = "boybomb/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { bonus = schema.u16 },
     -- 0x080E8008.
     update = dimming_chips.phases { name = "BoyBomb", effect = effect },

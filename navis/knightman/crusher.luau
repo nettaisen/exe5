@@ -30,7 +30,7 @@ local function fly(me: Object)
     local x = int.asr(p.x, 16)
     if x + REACH < 0 or x + REACH > 2 * REACH then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     me.pos = Vec3.new(int.i32(p.x + me.vel.x), p.y, p.z)
@@ -62,7 +62,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     -- (`sprite_noShadow`: the first part is drawn with the sprite.)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = ANIM, 0xFF
     me.visible = true
     sprite:face(me)
@@ -77,20 +77,20 @@ local function init(me: Object)
     local c = me.collision
     c:set_hit_effect(sparks.breaking)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 crusher.kind = new.kind {
     id = "knightman/crusher",
-    pool = "attack",
+    pool = Pool.attack,
     state = { speed = schema.u8 },
     -- 0x080C724C
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

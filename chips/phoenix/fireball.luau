@@ -62,7 +62,7 @@ local function burst(me: Object)
     battle.play_sound(SOUND_BURST)
     battle.shake_camera(2, 0xA)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local ACTIONS = { [0] = show, [4] = fall, [8] = burst }
@@ -77,7 +77,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     local action = ACTIONS[me.action]
@@ -95,7 +95,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     s.start = me.pos
     me.panel_x, me.panel_y = bit32.band(s.target, 7), bit32.rshift(s.target, 4)
@@ -109,21 +109,21 @@ local function init(me: Object)
     local c = me.collision
     c:set_region(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     battle.play_sound(SOUND_THROW)
     tick(me)
 end
 
 fireball.kind = new.kind {
     id = "phoenix/fireball",
-    pool = "attack",
+    pool = Pool.attack,
     state = { target = schema.u8, start = schema.vec3, target_x = schema.i32, target_y = schema.i32 },
     -- 0x080DF490.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

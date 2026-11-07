@@ -617,14 +617,14 @@ end
 
 -- 0x0802A86C (`when_unbarriered`, class 20): the navi has no barrier (its collision record's +0x06).
 local function unbarriered(navi: Object): boolean
-    return navi.collision.barrier == "none"
+    return navi.collision.barrier == BarrierState.none
 end
 
 -- 0x0802A8CA (`when_enemy_barrier`, class 21): the other side's first alive actor has a barrier. (The loop means the
 -- four, but it steps the record it read, not the list: it reads the first slot four times.)
 local function enemy_barrier(navi: Object): boolean
     local e = battle.alive_actor_slot(battle.other_side(navi.alliance), 1)
-    return e ~= nil and e.collision.barrier ~= "none"
+    return e ~= nil and e.collision.barrier ~= BarrierState.none
 end
 
 -- 0x0802A93A: a panel it may step onto whose panel ahead (as it faces) is on the field, of its side and not holy.

@@ -26,7 +26,7 @@ export type Spec = {
     name: string,
     phases: number,
     lift: number,
-    shadow: "ground" | "hidden",
+    shadow: Shadow,
     wears: boolean,
 }
 
@@ -102,7 +102,7 @@ function shade.make(spec: Spec): { kind: Kind, spawn: (owner: Object) -> Object?
             if spec.wears then
                 overlays.remove_parts_of(me, me.related1 :: Object)
             end
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         local t = me.timer
@@ -140,20 +140,20 @@ function shade.make(spec: Spec): { kind: Kind, spawn: (owner: Object) -> Object?
         if spec.wears then
             overlays.add_parts_of(me, owner, false, true)
         end
-        me:set_lifecycle("update")
+        me:enter_update()
         tick(me)
     end
 
     local kind = new.kind {
         id = spec.id,
-        pool = "actor",
+        pool = Pool.actor,
         state = { speed = schema.i32 },
         -- 0x080C0544: the state, then its sprite steps.
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 tick(me)
             else
                 me:destroy()
@@ -183,7 +183,7 @@ local chaos = shade.make {
     name = "the chaos shade",
     phases = 0x080C05B8,
     lift = 0x2_0000,
-    shadow = "hidden",
+    shadow = Shadow.hidden,
     wears = false,
 }
 shade.kind = chaos.kind

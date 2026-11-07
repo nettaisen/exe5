@@ -68,14 +68,14 @@ local function fly(me: Object)
         return
     end
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080CFF9A: the weight in its chip's colors.
 local function hang(me: Object, s: State)
     local sprite = me.sprite
     sprite:load(WEIGHT)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 3, 0xFF
     sprite:set_animation(0xFF)
     sprite:face(me)
@@ -129,7 +129,7 @@ end
 local function leave(me: Object)
     me.collision:set_region(nil)
     battle.effect(me.pos, PUFF)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080CFEA4: this tick's step, between its collision's turns.
@@ -156,19 +156,19 @@ end
 
 quake.kind = new.kind {
     id = "quake/bomb",
-    pool = "attack",
+    pool = Pool.attack,
     state = { palette = schema.u8, region = schema.region },
     -- 0x080CFE0C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080CFE2C: the bomb, its collision (no region yet) on the panel three ahead.
             me.visible = true
             local sprite = me.sprite
             sprite:load(BOMB)
             me.anim, me.anim_loaded = 1, 0xFF
             sprite:set_animation(0xFF)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             sprite:face(me)
             if not me:create_collision() then
                 me:free()
@@ -181,9 +181,9 @@ quake.kind = new.kind {
             local x, y = me.panel_x + 3 * me.facing, me.panel_y
             me.panel_x, me.panel_y = x, y
             me.collision.panel_x, me.collision.panel_y = x, y
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

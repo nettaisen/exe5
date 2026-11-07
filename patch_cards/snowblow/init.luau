@@ -9,7 +9,7 @@ local card: PatchCard = {
     effects = {
         cards.hp(120),
         cards.charged_shot(instants.vacuum),
-        cards.bug(cards.gauge("slow")),
+        cards.bug(cards.gauge(GaugeSpeed.slow)),
     },
 }
 

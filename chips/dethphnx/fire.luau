@@ -99,7 +99,7 @@ local function burn(me: Object)
     me.phase_init += 1
     if me.phase_init >= FLAMES then
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -118,7 +118,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0xFF
     sprite:face(me)
     sprite.under_objects = true
@@ -127,20 +127,20 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
     battle.play_sound(SOUND_RISE)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 fire.kind = new.kind {
     id = "dethphnx/fire",
-    pool = "effect",
+    pool = Pool.effect,
     state = { far = schema.bool },
     -- 0x080EA5E4.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

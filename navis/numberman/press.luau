@@ -96,7 +96,7 @@ local function land(me: Object)
     local left = me.timer - 1
     me.timer = int.u16(left)
     if left < 0 then
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -108,19 +108,19 @@ local function init(me: Object)
     me.pos = Vec3.new(int.i32(p.x + RIGHT * 0x1_0000), int.i32(p.y + DOWN * 0x1_0000), UP * 0x1_0000)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080D7D5A.
 local function tick(me: Object)
     if battle.over() then
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     if battle.dimmed() then
@@ -140,13 +140,13 @@ end
 
 press.kind = new.kind {
     id = "numberman/press",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080D7CE4
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

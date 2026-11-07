@@ -43,13 +43,13 @@ end
 function arm.raise_for(navi: Object, which: Slot, while_dimmed: boolean, holder: Object?)
     local look, anim, palette = arm.looks.buster, 0, 0
     local kind = navi.actor_type
-    if kind == "navi" then
+    if kind == ActorType.navi then
         if navi.ai_index == 0x16 then
             palette = 14
         else
             look, anim, palette = arm.looks.navi, navi.ai_index - 1, 13
         end
-    elseif kind == "player" then
+    elseif kind == ActorType.player then
         local ai = navi.ai_index
         if ai ~= 0 then
             if ai == 0x17 then

@@ -36,7 +36,7 @@ local function init(me: Object)
         -- CosmoMan's meteor (category 8 0x10, animation 10, palette 0), drawn with its sprite.
         sprite:load(SPRITE)
         me.visible = true
-        sprite.shadow = "with_sprite"
+        sprite.shadow = Shadow.with_sprite
         me.anim, me.anim_loaded = 10, 10
         sprite:set_animation(10)
         sprite.palette = 0
@@ -64,7 +64,7 @@ local function init(me: Object)
         -- (A look that shows nothing: CosmoMan's meteor, flipped by its side.)
         sprite:face_side(me.alliance)
     end
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Action 0 (0x080DE840): 10 ticks falling; then onto its target, or into the hole there.
@@ -84,7 +84,7 @@ local function fall(me: Object)
     if field.any(me.future_panel_x, me.future_panel_y, TAKES) then
         me:set_action(4)
     else
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -110,24 +110,24 @@ local function land(me: Object)
     battle.effect(Vec3.new(cx, cy, 0), EXPLOSION, 0, 0, 0)
     me.visible = false
     battle.play_sound(SOUND_HIT)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local ACTIONS = { [0] = fall, [4] = land }
 
 meteor.kind = new.kind {
     id = "cosmoman/meteor",
-    pool = "attack",
+    pool = Pool.attack,
     state = { look = schema.identity },
     -- 0x080DE708.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             -- 0x080DE816.
             if battle.over() then
-                me:set_lifecycle("destroy")
+                me:enter_destroy()
             else
                 local action = ACTIONS[me.action]
                 if not action then

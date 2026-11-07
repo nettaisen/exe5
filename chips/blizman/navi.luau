@@ -128,21 +128,21 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = roll, [0xC] = leave }
 -- 0x080BC124: on his panel, on the ground; his sprite (animation 0, his shadow), his chip's palette, facing
 -- his side's way.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
     me.sprite.palette = (me.state :: State).palette
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 blizman.kind = new.kind {
     id = "blizman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8 },
     -- 0x080BC100.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("BlizzardMan action %#x reads past his table (0x080BC194)", me.action))

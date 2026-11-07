@@ -72,7 +72,7 @@ local function armed(me: Object)
         local x, y = square(me)
         press.spawn(me, x, y, me.element, me.damage_word)
     end
-    me.lifecycle = "destroy"
+    me.lifecycle = Lifecycle.destroy
 end
 
 -- 0x080DF204: on its panel, on the ground; the mine's sprite (its first part drawn with it) in its palette, shown.
@@ -83,18 +83,18 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     -- (`sprite_noShadow`: the first part is drawn with the sprite.)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = PALETTE
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080DF23E: while it shows it runs dimmed or not; armed, it stands still while dimmed.
 local function tick(me: Object)
     if battle.over() then
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     local a = me.action
@@ -111,13 +111,13 @@ end
 
 trap.kind = new.kind {
     id = "numberman/trap",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080DF1E0
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

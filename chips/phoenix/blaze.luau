@@ -29,7 +29,7 @@ local function tick(me: Object)
         return
     end
     if me.phase == 8 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     else
         me.phase, me.phase_init = me.phase + 4, 0
     end
@@ -40,26 +40,26 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     sprite:face(me)
     me.visible = true
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 blaze.kind = new.kind {
     id = "phoenix/blaze",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080EA4FC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

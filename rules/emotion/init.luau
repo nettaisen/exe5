@@ -34,7 +34,7 @@ type State = {
 -- 0x0801147C: the emotions the swing draws from (0 normal, 1 worried, 2 angry, 3 Full Synchro).
 local SWINGS = { 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 3 }
 -- 0x0801148C: the mood each sets (angry's unused).
-local SWING_MOODS: { [number]: Mood } = { [0] = 0x99, [1] = 0x3F, [2] = 0x00, [3] = "full_synchro" }
+local SWING_MOODS: { [number]: NaviMood } = { [0] = 0x99, [1] = 0x3F, [2] = 0x00, [3] = Mood.full_synchro }
 local ANGRY = 2
 
 -- Note the navi's slot on its side's list (1 to 4), where it is on it, as the slot of its swing state.
@@ -68,7 +68,7 @@ end
 -- 0x080113F8 (the framework skips it while paused). An auto-battling navi's tick reaches the side's rules too: it has no
 -- swing.
 local function swing(side: number, navi: Object)
-    if navi.actor_type ~= "player" then
+    if navi.actor_type ~= ActorType.player then
         return
     end
     -- (Its slot noted each tick, the bug on or not: a curse may set it as the navi is deleted.)
@@ -116,7 +116,7 @@ end
 
 function emotion.countered(side: number, _victim: Object)
     if battle.navi(side).form.base then
-        battle.set_mood(side, "full_synchro")
+        battle.set_mood(side, Mood.full_synchro)
     else
         -- (The count: 0x8000, the mark, and what the tick's other hits counted.)
         navi_status.gain_mood(side, 0x8000)

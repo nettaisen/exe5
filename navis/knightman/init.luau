@@ -67,9 +67,9 @@ local navi: NaviDef = {
         chip_damage = { 60, 60, 60, 60, 80, 80, 100, 100, 100, 100 },
     },
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 11,
         -- The Full Synchro aura's animation: its owner's AI index (the aura's start, 0x080C4608).
         aura_anim = 11,

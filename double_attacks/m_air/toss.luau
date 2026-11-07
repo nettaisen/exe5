@@ -26,7 +26,7 @@ local function tick(me: Object)
     local t = me.timer + 1
     me.timer = t
     if t >= STEPS then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     -- (Its ends, the DS's +0x60 to +0x74, from its panel's center and its facing, which stay.)
@@ -44,22 +44,22 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     me.visible = true
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 toss.kind = new.kind {
     id = "m-air/toss",
-    pool = "effect",
+    pool = Pool.effect,
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

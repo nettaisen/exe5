@@ -78,7 +78,7 @@ local function circle(me: Object)
     place(me)
     s.left = int.u8(n - 1)
     if s.left == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -93,7 +93,7 @@ local function init(me: Object)
     me.anim = ANIM
     sprite:set_animation(ANIM)
     -- sprite_noShadow: the first part is drawn with the sprite.
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     sprite.palette = s.palette
     local p = me.pos
     s.cx = p.x
@@ -110,12 +110,12 @@ local function init(me: Object)
     end
     me.pos = Vec3.new(int.i32(p.x + xo), p.y, z)
     me.visible = true
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 gather.kind = new.kind {
     id = "chaoslrd/gather",
-    pool = "effect",
+    pool = Pool.effect,
     state = {
         cx = schema.i32,
         radius = schema.i32,
@@ -130,9 +130,9 @@ gather.kind = new.kind {
     -- 0x080E5E6C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             if me.action ~= 0 then
                 error(string.format("ChaosLrd's gathering: action %#x reads past its table (0x080E5F2C)", me.action))
             end

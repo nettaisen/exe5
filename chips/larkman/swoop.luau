@@ -93,7 +93,7 @@ local function init(me: Object)
     s.dir = (if s.left then 2 else 0) + (if me.panel_y ~= 0 then 1 else 0)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     local anim = ANIMS[s.dir]
     me.anim, me.anim_loaded = anim, anim
@@ -114,7 +114,7 @@ local function init(me: Object)
     end
     me.collision:present()
     battle.play_sound(SOUND_SWOOP)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080DDD06: the follower goes where the body is.
@@ -268,7 +268,7 @@ local function leave(me: Object)
     moved(me, x, y)
     if not field.valid(me.panel_x, me.panel_y) then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -298,7 +298,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     local s = me.state :: State
@@ -318,7 +318,7 @@ end
 
 swoop.kind = new.kind {
     id = "larkman/swoop",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         palette = schema.u8,
         variant = LARKMAN_SWOOP_VARIANT,
@@ -337,9 +337,9 @@ swoop.kind = new.kind {
     -- 0x080DD738.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

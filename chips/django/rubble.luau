@@ -32,7 +32,7 @@ local function lie(me: Object)
     me.timer = int.u16(left)
     if left <= 0 then
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -51,24 +51,24 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0xFF
     sprite:face(me)
     me.visible = true
     battle.effect(me.pos, PUFF, 0, 0, 0)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 rubble.kind = new.kind {
     id = "django/rubble",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080EA000.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

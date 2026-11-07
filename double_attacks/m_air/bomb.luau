@@ -38,7 +38,7 @@ local function tick(me: Object)
         me.visible = false
         c:set_region(nil)
         -- (The word store: the destroy state from its first action.)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
     c:present()
 end
@@ -51,7 +51,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, HEIGHT)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     -- (The DS doesn't check the collision it asks for; without one it would write through a null pointer.)
     if not me:create_collision() then
@@ -65,21 +65,21 @@ local function init(me: Object)
     c.status_base = status.paralyze_120
     c:set_region(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 bomb.kind = new.kind {
     id = "m-air/bomb",
-    pool = "attack",
+    pool = Pool.attack,
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- object_genericDestroy

@@ -55,7 +55,7 @@ local function noise_tick(me: Object)
     end
     if me.timer >= TICKS then
         set_region(me, nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     else
         me.timer += 1
         local r = s.region
@@ -72,7 +72,7 @@ end
 local function noise_init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 12, 0xFF
     if not me:create_collision() then
         me:free()
@@ -90,23 +90,23 @@ local function noise_init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(int.i32(p.x + int.shl(me.facing * AHEAD, 16)), p.y, p.z)
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
     noise_tick(me)
 end
 
 bignoise.noise = new.kind {
     id = "bignoise/noise",
-    pool = "attack",
+    pool = Pool.attack,
     state = { region = schema.region },
     -- 0x080C4DE0: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             noise_init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             noise_tick(me)
         else
             me:destroy()
@@ -215,7 +215,7 @@ local function update(me: Object)
                 navi_left(controller)
             end
             -- (0x080BD6FE: the state byte alone; his action and phase stay.)
-            me.lifecycle = "destroy"
+            me.lifecycle = Lifecycle.destroy
         end
     else
         error(string.format("BigNoise's ShadeMan: action %#x reads past 0x080BD58C", a))
@@ -224,24 +224,24 @@ end
 
 bignoise.kind = new.kind {
     id = "bignoise/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- 0x080BD510.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080BD534: 08-0d's animation 3 with a ground shadow, facing his way, on his panel on the ground.
             local sprite = me.sprite
             sprite:load(SPRITE)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             me.anim, me.anim_loaded = 3, 3
             sprite:set_animation(3)
             sprite:face(me)
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(p.x, p.y, 0)
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             update(me)
         else
             me:free()

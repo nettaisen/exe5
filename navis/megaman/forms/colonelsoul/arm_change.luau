@@ -43,26 +43,26 @@ local button: SoulButton = {
     left = 7,
     -- 0x08024C00: on offer for a last pick that is a standard chip of no family, dealing damage, not dimming, not
     -- dark.
-    state = function(side: number, _s: any): "selectable" | "unavailable"
+    state = function(side: number, _s: any): ButtonState
         local last = custom.last_pick(side)
         if last == nil then
-            return "unavailable"
+            return ButtonState.unavailable
         end
         local chip = last.chip
-        if chip.class == "standard" and chip.family == "null" and has(chip, "has_damage") and not has(chip, "dimming")
+        if chip.class == ChipClass.standard and chip.family == "null" and has(chip, "has_damage") and not has(chip, "dimming")
             and not has(chip, "dark")
         then
-            return "selectable"
+            return ButtonState.selectable
         end
-        return "unavailable"
+        return ButtonState.unavailable
     end,
     -- 0x080249D6: the chip's sequence.
     pressed = function(side: number, s: any)
-        if custom.cursor_state(side) ~= "selectable" then
+        if custom.cursor_state(side) ~= ButtonState.selectable then
             custom.refuse(side)
             return
         end
-        custom.play(side, "pick")
+        custom.play(side, ScreenSound.pick)
         local st = (s :: State).screen
         st.arm_step, st.arm_timer = 0, 0
         custom.open_window(side, "arm_change")

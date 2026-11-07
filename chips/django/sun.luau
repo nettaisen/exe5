@@ -30,7 +30,7 @@ local function tick(me: Object)
         -- 0x080E988A.
         if s.done then
             me.visible = false
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("Django's sun phase %#x reads past its table (0x080E9870)", me.phase))
@@ -44,25 +44,25 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     sprite:face(me)
     me.visible = true
     sprite.palette = if (me.state :: State).blessed then 3 else 0
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 sun.kind = new.kind {
     id = "django/sun",
-    pool = "effect",
+    pool = Pool.effect,
     state = { blessed = schema.bool, done = schema.bool },
     -- 0x080E97F8.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

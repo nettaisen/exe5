@@ -12,9 +12,9 @@ local collision = require("../../rules/collision")
 local megaman_sprite = asset.sprite("megaman")
 
 return new.identity {
-    class = "navi",
+    class = IdentityClass.navi,
     version = 0,
-    actor_type = "navi",
+    actor_type = ActorType.navi,
     ai_index = 0x16,
     attach_points = attach_points,
     body = {

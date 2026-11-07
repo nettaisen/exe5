@@ -90,14 +90,14 @@ end
 -- 0x080E155C / 0x080E1572 (EXE6's `sub_80E14EC`, `sub_80E1502`): the prisoner vanishes into the coffin, and is
 -- let out.
 local function shut_in(o: Object)
-    if o.actor_type == "player" then
+    if o.actor_type == ActorType.player then
         dimming.hide_user(o)
     else
         dimming.hide_actor(o)
     end
 end
 local function let_out(o: Object)
-    if o.actor_type == "player" then
+    if o.actor_type == ActorType.player then
         dimming.show_user(o)
     else
         dimming.show_actor(o)
@@ -320,7 +320,7 @@ local function leave(me: Object)
         if controller then
             navi_left(controller)
         end
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -341,7 +341,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 1, 0xFF
     sprite:face(me)
     sprite.palette = s.palette
@@ -356,13 +356,13 @@ local function init(me: Object)
         s.blessed = true
         me.damage_word = damage_word.with_damage(me.damage_word, damage_word.flag_word(me.damage_word) + damage_word.amount(me.damage_word) * 2)
     end
-    me:set_lifecycle("update")
+    me:enter_update()
     act(me)
 end
 
 django.kind = new.kind {
     id = "django/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         controller = schema.object,
         palette = schema.u8,
@@ -378,9 +378,9 @@ django.kind = new.kind {
     -- 0x080BF214.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             act(me)
         else
             me:free()

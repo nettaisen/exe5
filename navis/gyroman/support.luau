@@ -103,7 +103,7 @@ local function update(me: Object)
     if me.timer ~= 0 then
         me.timer -= 1
         if me.timer == 0 then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
     end
@@ -121,17 +121,17 @@ end
 
 support.kind = new.kind {
     id = "gyroman/support",
-    pool = "effect",
+    pool = Pool.effect,
     state = { wait = schema.u16, row = schema.u8, edge = schema.u8, gusts = schema.array(schema.u8, 2) },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x02225DB8.
             (me.state :: State).row = 3
             battle.play_sound(SOUND)
-            me:set_lifecycle("update")
+            me:enter_update()
             update(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             -- 0x02225EA0: its gusts let go, the party block's word for it cleared (and the panel's button dark).
@@ -145,7 +145,7 @@ support.kind = new.kind {
 
 -- 0x02225FA4: it ends (its gusts let go).
 local function remove(o: Object)
-    o:set_lifecycle("destroy")
+    o:enter_destroy()
     local s = o.state :: State
     s.gusts[1], s.gusts[2] = 0, 0
 end

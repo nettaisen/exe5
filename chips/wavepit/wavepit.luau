@@ -45,7 +45,7 @@ end
 -- 0x080DAE98: off solid ground (but where it may stand anywhere), gone; else 20 ticks.
 local function wait(me: Object)
     if not (me.state :: State).anywhere and not solid(me) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local t = me.timer - 1
@@ -70,7 +70,7 @@ end
 local function fade(me: Object)
     if me.sprite.steps >= FADE_STEPS then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -113,7 +113,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     -- (The setup's shadow byte is 0: `sprite_noShadow`, 0x0800F1C4, the first part drawn with the sprite.)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     if not me:create_collision() then
         error("the wave has no collision: 0x080DADE0 goes on through a null pointer")
@@ -126,23 +126,23 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.of_element(me.element))
     me.collision:present()
     battle.play_sound(SOUND)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 wavepit.kind = new.kind {
     id = "wavepit/wave",
-    pool = "attack",
+    pool = Pool.attack,
     state = { palette = schema.u8, anywhere = schema.bool },
     -- 0x080DADBC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

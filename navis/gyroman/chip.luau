@@ -77,7 +77,7 @@ local action = new.action {
         elseif step == AWAY then
             -- 0x080F0B0C: until the flight is going (a flight that never came keeps him away).
             local f = s.flight
-            if f and f.lifecycle == "destroy" then
+            if f and f.lifecycle == Lifecycle.destroy then
                 me.step, me.step_init = RETURN, 0
             end
         elseif step == RETURN then
@@ -107,7 +107,7 @@ local chip: Chip = {
     codes = { "G" },
     element = "null",
     family = "null",
-    class = "special",
+    class = ChipClass.special,
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 50, 50, 50, 50, 70, 70, 70 }),

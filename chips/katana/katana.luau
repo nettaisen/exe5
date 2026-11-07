@@ -69,7 +69,7 @@ katana.action = new.action {
                 -- sub_80B8E58: the overlay's attachment ends; a fresh blade.
                 local old = me.overlay
                 if old then
-                    old:set_lifecycle("destroy")
+                    old:enter_destroy()
                 end
                 attachment.attach(me, swords.held_blade(me), "overlay", { anim = swords.blade_anim(me) })
                 me.status.using_action = true
@@ -84,7 +84,7 @@ katana.action = new.action {
                     facing = me.facing_side,
                     color_shader = 0xFFE0,
                     lifetime = 0x1E,
-                    shadow = "with_sprite",
+                    shadow = Shadow.with_sprite,
                 })
             end
             if s.timer == 0x0C then

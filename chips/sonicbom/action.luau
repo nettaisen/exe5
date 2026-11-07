@@ -75,7 +75,7 @@ function action.make(hit_mod: HitModifier, pierces: boolean): Action
                             facing = me.facing_side,
                             color_shader = 0xFFE0,
                             lifetime = 0x1E,
-                            shadow = "with_sprite",
+                            shadow = Shadow.with_sprite,
                         })
                     end
                 end

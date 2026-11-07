@@ -89,7 +89,7 @@ local function copy(me: Object)
     if me.phase_init == 0 then
         local sprite = me.sprite
         sprite:load(SHADOWMAN)
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         sprite:face(me)
         me.anim, me.anim_loaded = ANIM_APPEAR, 0xFF
         local p = me.pos
@@ -139,7 +139,7 @@ local function slash(me: Object)
     me.timer = t
     if t > SLASH_TICKS then
         s.held = nil
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -153,7 +153,7 @@ local function leave(me: Object)
         me.phase_init = 4
     end
     if ran_out(me) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -177,25 +177,25 @@ end
 -- A rock's own: its wait (Param1).
 rock.kind = new.kind {
     id = "e-sappou/rock",
-    pool = "actor",
+    pool = Pool.actor,
     state = { colonel = schema.object, slot = schema.u8, held = schema.object, wait = schema.u8 },
     update = function(me: Object)
         local s = me.state :: State & { wait: number }
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x02096670: the rock (10-02, animation 1), shown, on its panel 192 pixels up.
             local sprite = me.sprite
             sprite:load(ROCK)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             me.anim, me.anim_loaded = ANIM_ROCK, 0xFF
             me.visible = true
             sprite:face(me)
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(p.x, p.y, FALL_FROM)
-            me:set_lifecycle("update")
+            me:enter_update()
             run(me, s.wait)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             run(me, s.wait)
         else
             -- 0x02096810: its Colonel's flag cleared.

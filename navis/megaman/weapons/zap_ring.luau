@@ -26,7 +26,7 @@ local SPEED, STATUS, SOUND = 10, statuses.paralyze_90, asset.sound("aqua-needle-
 local function finish(me: Object)
     me.collision:set_region(nil)
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080DF42C (EXE6's `sub_80C524C`): its hits; on a hit or the battle's end it goes; else it flies on, leaving the
@@ -58,7 +58,7 @@ local function init(me: Object)
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite:step()
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me:set_coordinates_from_panel()
     me.vel = Vec3.new(int.shl(me.facing * SPEED, 16), me.vel.y, me.vel.z)
     if not me:create_collision() then
@@ -70,18 +70,18 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.of_element(me.element))
     me.collision:present()
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 local RING = new.kind {
     id = "megaman/zap-ring/ring",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080DF38C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080138F2: its collision, then itself, freed.

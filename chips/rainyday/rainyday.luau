@@ -176,7 +176,7 @@ local function fade(me: Object)
         if c then
             (c.state :: ControllerState).cloud = nil
         end
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -197,24 +197,24 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, Z)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0xFF
     sprite:face(me)
     me.visible = true
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     update(me)
 end
 
 rainyday.cloud = new.kind {
     id = "rainyday/cloud",
-    pool = "attack",
+    pool = Pool.attack,
     state = { scan_x = schema.i32, scan_y = schema.i32, dir = schema.i32, rain = schema.object, controller = schema.object },
     -- 0x080D97A8: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             me:free()
@@ -281,7 +281,7 @@ end
 
 rainyday.controller = new.kind {
     id = "rainyday/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { bonus = schema.u16, cloud = schema.object },
     -- 0x080E908C.
     update = dimming_chips.phases { name = "RainyDay", effect = effect },

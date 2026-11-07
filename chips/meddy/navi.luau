@@ -205,17 +205,17 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, int.i32(p.y + 0x1_0000), -0x1_0000)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = (me.state :: State).palette
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 meddy.kind = new.kind {
     id = "meddy/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         controller = schema.object,
         palette = schema.u8,
@@ -227,9 +227,9 @@ meddy.kind = new.kind {
     -- 0x080BBAA0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("Meddy action %#x reads past her table (0x080BBB2C)", me.action))

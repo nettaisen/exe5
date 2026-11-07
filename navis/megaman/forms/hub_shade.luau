@@ -12,4 +12,4 @@ local HUB_SHADE: BodyPart = {
     behind = { { 52, 52 } },
 }
 
-return new.identity { class = "navi", parts = { body = HUB_SHADE } }
+return new.identity { class = IdentityClass.navi, parts = { body = HUB_SHADE } }

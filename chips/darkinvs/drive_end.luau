@@ -69,7 +69,7 @@ local function fade(me: Object)
     end
     if count(me, 4) <= 0 then
         overlays.remove_parts_of(me, me.related1 :: Object)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -88,35 +88,35 @@ end
 -- the dark palette, its parts stepping while paused), facing its way, its X velocity 10 pixels ahead; else gone.
 local function image_init(me: Object)
     local navi = me.related1 :: Object
-    if navi.actor_type ~= "player" then
+    if navi.actor_type ~= ActorType.player then
         me:free()
         return
     end
     local sprite = me.sprite
     looks.load_like(sprite, navi)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0xFF
     sprite.palette = dark_palette(me)
     me.vel = Vec3.new(me.facing * SLIDE * 0x10000, me.vel.y, me.vel.z)
     sprite:face(me)
     overlays.add_parts_of(me, navi, false, true)
     me.visible = true
-    me:set_lifecycle("update")
+    me:enter_update()
     image_tick(me)
 end
 
 drive_end.image = new.kind {
     id = "darkinvs/image",
-    pool = "actor",
+    pool = Pool.actor,
     -- 0x080BA71C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             image_init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             image_tick(me)
         else
             me:free()

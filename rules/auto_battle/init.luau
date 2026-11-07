@@ -54,7 +54,7 @@ local function leave(me: Object, s: LeaveState)
         me.related1 = nil
         local visual = me.barrier_visual
         if visual then
-            visual:set_lifecycle("destroy")
+            visual:enter_destroy()
         end
         me.collision.confusion_visual = nil
         me.collision.blindness_visual = nil
@@ -85,7 +85,7 @@ local function idle(navi: Object)
         s.timed = true
     end
     if s.lifetime == 0 then
-        navi:set_attack(auto_battle.leave, "plain")
+        navi:set_attack(auto_battle.leave, AttackKind.plain)
         return
     end
     ai.run(navi, (navi.state :: { ai: any }).ai)
@@ -113,7 +113,7 @@ function auto_battle.dismiss(side: number)
     local other = battle.other_side(side)
     for i = 1, 4 do
         local navi = battle.alive_actor_slot(other, i)
-        if navi ~= nil and navi.actor_type == "navi" and navi.ai_index == DARK_MEGAMAN then
+        if navi ~= nil and navi.actor_type == ActorType.navi and navi.ai_index == DARK_MEGAMAN then
             state(navi).lifetime = 0
         end
     end
@@ -128,7 +128,7 @@ local function dark_megaman_out(): boolean
     for side = 0, 1 do
         for i = 1, 4 do
             local navi = battle.alive_actor_slot(side, i)
-            if navi ~= nil and navi.actor_type == "navi" and navi.ai_index == DARK_MEGAMAN then
+            if navi ~= nil and navi.actor_type == ActorType.navi and navi.ai_index == DARK_MEGAMAN then
                 return true
             end
         end
@@ -147,8 +147,8 @@ end
 -- idle where it would step (EXE5's no-charge drive, 0x080F03E4): with the no-charge state the AI decides
 -- for it (0x0802B4AC: DarkInvs's drive, on its own side's auto battle data, its state the rules' of the side);
 -- without, that state starts over (0x0802C03A) and its idle goes on.
-function auto_battle.controller(side: number, navi: Object): ("nothing" | "chip" | "buster" | "moved")?
-    if navi.actor_type == "player" then
+function auto_battle.controller(side: number, navi: Object): ControlOutcome?
+    if navi.actor_type == ActorType.player then
         local s = rules.state().drive
         if navi.navi_flags.no_charge then
             -- A drive started since its last step (its timer above the one it stepped with): the state
@@ -161,7 +161,7 @@ function auto_battle.controller(side: number, navi: Object): ("nothing" | "chip"
             end
             s.drive_ticks = left
             ai.run_own(navi, s)
-            return "nothing"
+            return ControlOutcome.nothing
         end
         ai.reset(navi, s)
         s.drive_ticks = 0
@@ -172,13 +172,13 @@ function auto_battle.controller(side: number, navi: Object): ("nothing" | "chip"
     end
     check(navi)
     idle(navi)
-    return "nothing"
+    return ControlOutcome.nothing
 end
 
 -- The navi type's tick of its AI index (0x080F23FC's entry), for a navi of the navi type (a player's navi
 -- has its own tick).
 function auto_battle.navi_tick(_side: number, navi: Object)
-    if navi.actor_type ~= "navi" then
+    if navi.actor_type ~= ActorType.navi then
         return
     end
     check(navi)

@@ -7,5 +7,5 @@ return function(navi: Object)
     navi.status.flinching = false
     navi.status.moving = false
     navi.requests.slide = false
-    navi.slide_step = "start"
+    navi.slide_step = SlideStep.start
 end

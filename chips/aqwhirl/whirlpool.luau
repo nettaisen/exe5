@@ -83,7 +83,7 @@ end
 
 local function gone(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D1A4A: column `x` holds an enemy navi (rows 1 to 3).
@@ -171,7 +171,7 @@ local function tick(me: Object)
     end
     act(me)
     if field.solid(me.panel_x, me.panel_y) then
-        if me.lifecycle ~= "destroy" and (me.panel_x ~= x or me.panel_y ~= y) then
+        if me.lifecycle ~= Lifecycle.destroy and (me.panel_x ~= x or me.panel_y ~= y) then
             c:set_region(regions.single)
         end
     else
@@ -186,7 +186,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite:set_animation(0)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim = 0
     me.anim_loaded = 0xFF
     if not me:create_collision() then
@@ -205,20 +205,20 @@ local function init(me: Object)
     me.vel = Vec3.new(me.facing * speed, speed, me.vel.z)
     sprite.palette = s.palette
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 whirlpool.kind = new.kind {
     id = "aqwhirl/whirlpool",
-    pool = "attack",
+    pool = Pool.attack,
     state = { palette = schema.u8, speed = schema.u8, tx = schema.i32, ty = schema.i32 },
     -- 0x080D16E0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

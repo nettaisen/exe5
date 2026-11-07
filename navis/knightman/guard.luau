@@ -113,7 +113,7 @@ local function bring(side: number, navi: Object)
     local s = party.supports(side)
     local old = s.knightman_guard
     if old then
-        old:set_lifecycle("destroy");
+        old:enter_destroy();
         (old.state :: ActorState).kept = false
     end
     s.knightman_guard = o;

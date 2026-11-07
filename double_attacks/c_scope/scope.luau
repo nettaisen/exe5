@@ -80,23 +80,23 @@ end
 
 scope.kind = new.kind {
     id = "c-scope/scope",
-    pool = "effect",
+    pool = Pool.effect,
     state = { origin_x = schema.u8, origin_y = schema.u8, step = schema.u8, stopped = schema.bool, rounds = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x020A1CB0: its sprite, no shadow, shown; its future panel two ahead and two down (nothing reads it); no
             -- rounds yet.
             local sprite = me.sprite
             sprite:load(SPRITE)
-            sprite.shadow = "with_sprite"
+            sprite.shadow = Shadow.with_sprite
             me.anim, me.anim_loaded = 0, 0xFF
             me.visible = true
             me.future_panel_x, me.future_panel_y = me.panel_x + 2 * me.facing, me.panel_y + 2
             ;(me.state :: State).rounds = 0
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()
@@ -136,7 +136,7 @@ end
 -- 0x020A1E20: it ends.
 function scope.finish(o: Object?)
     if o then
-        o:set_lifecycle("destroy")
+        o:enter_destroy()
     end
 end
 

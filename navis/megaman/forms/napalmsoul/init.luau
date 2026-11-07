@@ -74,7 +74,7 @@ local form: FormDef = {
         field.set_type(x, y, "normal")
     end,
     charged_chips = { { family = "fire", damaging = false, plain = true } },
-    charged_bonus = { damage = "again" },
+    charged_bonus = { damage = ChargedBonus.again },
     charged_action = charged_chip.action,
     palette = 0,
     -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 5-10, the version's souls'); in its
@@ -87,10 +87,10 @@ local form: FormDef = {
     buster_arm = { anim = 4 },
     -- MegaMan's actor record, with his sprite in the soul's attach points (row 4 of category 0).
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         changes_form = true,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 0,
         aura_anim = 0,
         attach_points = attach_points,

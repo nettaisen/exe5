@@ -14,7 +14,7 @@ local SPRITE = asset.sprite("bass")
 return common.make {
     id = "bassanly/navi",
     sprite = SPRITE,
-    cloak = { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x10 },
+    cloak = { sprite = SPRITE, stepping = FormOverlayStepping.while_dimmed, anim_offset = 0x10 },
     sounds = { appear = asset.sound("appear"), raise = asset.sound("bass-anly") },
     anims = { raise = 9, stance = 0xA, fire = 0xB, fire_loop = 0xC, rest = 0xD },
     steps = { raise = 5, fire = 3 },

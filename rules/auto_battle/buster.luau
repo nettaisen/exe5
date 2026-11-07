@@ -46,7 +46,7 @@ local function shoot(me: Object, s: State)
         me:refresh_form_overlay()
         local held = me.overlay
         if held then
-            held:set_lifecycle("destroy")
+            held:enter_destroy()
         end
         arm.raise(me)
         attachment.attach(me, buster_parts.flash, "related")

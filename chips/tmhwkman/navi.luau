@@ -132,21 +132,21 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = raise, [0xC] = swing, [0x10] 
 
 -- 0x080BBEF4: on his panel, on the ground, his chip's palette.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
     me.sprite.palette = (me.state :: State).palette
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 tmhwkman.kind = new.kind {
     id = "tmhwkman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8 },
     -- 0x080BBED0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("TomahawkMan action %#x reads past his table (0x080BBF4C)", me.action))

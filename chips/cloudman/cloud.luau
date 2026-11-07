@@ -88,7 +88,7 @@ local function linger(me: Object)
     local left = me.timer - 1
     me.timer = int.u16(left)
     if left < 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -97,7 +97,7 @@ local ACTIONS = { [0] = wait, [4] = hover, [8] = charge, [0xC] = linger }
 -- 0x080DCA72: gone at the battle's end; else its action.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local action = ACTIONS[me.action]
@@ -115,24 +115,24 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, 0)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 6, 6
     sprite:set_animation(6)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 cloud.kind = new.kind {
     id = "cloudman/cloud",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080DCA10.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

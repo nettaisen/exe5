@@ -148,7 +148,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
     sprite.palette = s.palette
@@ -156,19 +156,19 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 toadman.kind = new.kind {
     id = "toadman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8 },
     -- 0x080BC748.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("ToadMan action %#x reads past his table (0x080BC7C4)", me.action))

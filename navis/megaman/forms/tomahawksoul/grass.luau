@@ -39,7 +39,7 @@ end
 
 grass.kind = new.kind {
     id = "tomahawksoul/grass",
-    pool = "effect",
+    pool = Pool.effect,
     -- 0x080E1FC0 (by Param2: 0, the whole field).
     update = change,
 }

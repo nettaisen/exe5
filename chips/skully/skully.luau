@@ -69,7 +69,7 @@ local function tick(me: Object)
     me.timer2 -= 1
     if me.timer2 == 0 then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local s = me.state :: State
@@ -91,7 +91,7 @@ local function init(me: Object)
     -- sub_8011504: its sprite (with a shadow), its collision.
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0xFF
     if not me:create_collision() then
         -- (The game goes on without collision data, writing through a null pointer.)
@@ -107,7 +107,7 @@ local function init(me: Object)
     s.left = int.u8(s.left - 1)
     me.timer = s.skulls.every
     me.timer2 = LIFETIME
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
@@ -115,17 +115,17 @@ local SKULLS = schema.record_type("skulls")
 
 skully.kind = new.kind {
     id = "skully/skull",
-    pool = "attack",
+    pool = Pool.attack,
     state = { skulls = SKULLS, left = schema.u8 },
     -- 0x080D7290: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

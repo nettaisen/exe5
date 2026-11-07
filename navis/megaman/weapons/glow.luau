@@ -13,22 +13,22 @@ export type State = {
 
 glow.kind = new.kind {
     id = "megaman/glow",
-    pool = "effect",
+    pool = Pool.effect,
     state = { sprite = schema.sprite, anim = schema.u8, shadow = schema.bool },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080E3330: its sprite (`sub_801BE2A`), shown.
             local s = me.state :: State
             local sprite = me.sprite
             sprite:load(s.sprite)
-            sprite.shadow = if s.shadow then "ground" else "with_sprite"
+            sprite.shadow = if s.shadow then Shadow.ground else Shadow.with_sprite
             me.anim, me.anim_loaded = s.anim, 0xFF
             sprite:face(me)
             me.visible = true
-            me:set_lifecycle("update")
+            me:enter_update()
         end
-        if me.lifecycle == "update" then
+        if me.lifecycle == Lifecycle.update then
             -- 0x080E334A: 20 ticks; it keeps to its owner.
             if me.phase_init == 0 then
                 me.timer = 20
@@ -38,10 +38,10 @@ glow.kind = new.kind {
             me.timer = bit32.band(t, 0xFFFF)
             if t <= 0 then
                 me.visible = false
-                me:set_lifecycle("destroy")
+                me:enter_destroy()
             end
             me.pos = (me.related1 :: Object).pos
-        elseif me.lifecycle == "destroy" then
+        elseif me.lifecycle == Lifecycle.destroy then
             me:free()
             return
         end

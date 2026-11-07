@@ -91,7 +91,7 @@ local function leave(me: Object)
     if c then
         controllers.done(c)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Action 0 (0x080BFE4C): a hit of no damage over the whole field from panel (1, 1), running while dimmed (region
@@ -305,7 +305,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = ANIM, 0xFF
     local facing = me.facing_side
     sprite:face_side(facing)
@@ -316,12 +316,12 @@ local function init(me: Object)
     for row = 1, 3 do
         list_row(me, row)
     end
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 phoenix.kind = new.kind {
     id = "dethphnx/phoenix",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         controller = schema.object,
         rows = schema.array(schema.u8, 12),
@@ -333,9 +333,9 @@ phoenix.kind = new.kind {
     -- 0x080BFD98.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

@@ -26,7 +26,7 @@ local SOUND_FIRE = asset.sound("cannon")
 -- What he wears (0x0800EE8A: EXE5's body overlay row 4, its sprite 10-18, behind him in his animations 20 to 22),
 -- stepping even while paused.
 local CANNON = new.identity {
-    class = "navi",
+    class = IdentityClass.navi,
     parts = {
         body = { sprite = napalm_cannon_sprite, anims = 23, behind = { { 20, 22 } } },
     },
@@ -43,7 +43,7 @@ local function leave(me: Object)
     end
     me:remove_parts(CANNON)
     -- (0x080BB320: the state byte alone; his action and phase stay.)
-    me.lifecycle = "destroy"
+    me.lifecycle = Lifecycle.destroy
 end
 
 -- Action 0 (0x080BB1A8): shown; on a solid panel 31 ticks, then his attack; else he sinks (animation 4, 3 ticks
@@ -163,7 +163,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
@@ -174,19 +174,19 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
     battle.play_sound(SOUND_APPEAR)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 napalmman.kind = new.kind {
     id = "napalmmn/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8 },
     -- 0x080BB10C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("NapalmMan action %#x reads past his table (0x080BB19C)", me.action))

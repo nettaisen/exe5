@@ -28,9 +28,9 @@ local swords = {}
 -- ShadowSoul's arms; 0 in another, and in none).
 function swords.blade_anim(me: Object): number
     local kind, ai = me.actor_type, me.ai_index
-    if kind == "navi" then
+    if kind == ActorType.navi then
         return if ai < 0x0D then ai else 0
-    elseif kind == "player" then
+    elseif kind == ActorType.player then
         if ai ~= 0 then
             return if ai == 0x17 then 0 else ai
         end
@@ -51,7 +51,7 @@ swords.blade = attachment.look { sprite = sword_sprite, palette = 0 }
 -- AI index 0) while a Chaos Unison charge is armed (AIData+0x12, the rules' own B charge: rules/souls/chaos_charge)
 -- takes his soul's Chaos Unison blade where it states one (`chaos.blade`: ProtoSoul's row 10, ColonelSoul's 0x32).
 function swords.held_blade(me: Object): AttachmentLook
-    if me.actor_type == "player" and me.ai_index == 0 and me.b_charge_time ~= nil then
+    if me.actor_type == ActorType.player and me.ai_index == 0 and me.b_charge_time ~= nil then
         local chaos = (battle.navi(me.alliance).form :: any).chaos
         if chaos ~= nil and chaos.blade ~= nil then
             return chaos.blade :: AttachmentLook

@@ -167,7 +167,7 @@ end
 -- The soul button (0x08023C54), in the special slot: it offers a form (the state's `offer` and `offer_chaos`).
 custom_souls.button = {
     slot = 11,
-    view = "form_offer",
+    view = ButtonView.form_offer,
     -- MegaMan with souls, outside the operation battle, with the save's souls (its Soul Unison), unless his emotion is
     -- worried or dark (0x08012740: in a soul or angry he may; at mood 0 he is dark, below 65 worried, at 0xFF Full
     -- Synchro). MegaMan is the navi the screen is for (EXE5 DS's 0x0200AAA0: the screen's +0x10), which a switch on
@@ -178,24 +178,24 @@ custom_souls.button = {
         local mood = stats.mood
         local hidden = not in_soul
             and custom.player(side).emotion ~= "angry"
-            and (mood == 0 or (mood ~= "full_synchro" and (mood :: number) < 65))
+            and (mood == 0 or (mood ~= Mood.full_synchro and (mood :: number) < 65))
         return #souls_of(side, true) > 0 and has_souls() and not operation_battle()
             and not hidden
     end,
     -- 0x08024B28: unavailable until the last pick offers a soul, which the button keeps.
-    state = function(side: number): "selectable" | "unavailable"
+    state = function(side: number): ButtonState
         local s = rules.state() :: State
         local form, chaos = offer(side)
         s.offer, s.offer_chaos = form, chaos
-        return if form == nil then "unavailable" else "selectable"
+        return if form == nil then ButtonState.unavailable else ButtonState.selectable
     end,
     -- 0x08024972: a soul on offer starts its sequence.
     pressed = function(side: number)
-        if custom.cursor_state(side) ~= "selectable" then
+        if custom.cursor_state(side) ~= ButtonState.selectable then
             custom.refuse(side)
             return
         end
-        custom.play(side, "pick")
+        custom.play(side, ScreenSound.pick)
         local s = rules.state() :: State
         s.unite_step, s.unite_count = 0, 0
         custom.open_window(side, "soul_unison")
@@ -215,7 +215,7 @@ local function drawn(side: number)
 end
 
 custom_souls.window = {
-    view = "offer_flight",
+    view = WindowView.offer_flight,
     update = function(side: number): boolean
         local s = rules.state() :: State
         local fading = custom.fading(side)
@@ -233,30 +233,30 @@ custom_souls.window = {
             -- 0x0802337A
             count += 1
             if count >= 8 then
-                custom.fade(side, "flash", FADE_SPEED)
-                custom.play(side, "program_advance_part")
+                custom.fade(side, CustomFade.flash, FADE_SPEED)
+                custom.play(side, ScreenSound.program_advance_part)
                 step, count = 12, 0
             end
         elseif step == 12 then
             -- 0x080233A8
             if not fading then
-                custom.fade(side, "flash_back", FADE_SPEED)
+                custom.fade(side, CustomFade.flash_back, FADE_SPEED)
                 step, count = 16, 0
             end
         elseif step == 16 then
             -- 0x080233C4
             if not fading then
-                custom.fade(side, "end_to_white", FADE_SPEED)
+                custom.fade(side, CustomFade.end_to_white, FADE_SPEED)
                 step, count = 20, 0
             end
         elseif step == 20 then
             -- 0x080233E0
             if not fading then
                 custom.trade_last_pick(side, "soul")
-                custom.set_button_state(side, "soul", "selected")
+                custom.set_button_state(side, "soul", ButtonState.selected)
                 custom.update_availability(side)
-                custom.fade(side, "intro_from_white", FADE_SPEED)
-                custom.play(side, "program_advance")
+                custom.fade(side, CustomFade.intro_from_white, FADE_SPEED)
+                custom.play(side, ScreenSound.program_advance)
                 step, count = 24, 0
             end
         elseif step == 24 then
@@ -381,7 +381,7 @@ local function button_of(part: SoulCustom, button: SoulButton): ButtonSpec
             return slots_of(side) == part
         end,
         state = if state ~= nil
-            then function(side: number): "selectable" | "unavailable"
+            then function(side: number): ButtonState
                 return state(side, rules.state())
             end
             else nil,

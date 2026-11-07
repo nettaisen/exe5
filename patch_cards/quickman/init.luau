@@ -9,7 +9,7 @@ local card: PatchCard = {
         cards.bug(cards.hp_percent(-10)),
         cards.rapid(5),
         cards.charge(5),
-        cards.gauge("fast"),
+        cards.gauge(GaugeSpeed.fast),
     },
 }
 

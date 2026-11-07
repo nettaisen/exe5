@@ -91,7 +91,7 @@ export type SoulButton = {
     uses: number?,
     right: number?,
     left: number?,
-    state: ((side: number, s: any) -> ("selectable" | "unavailable"))?,
+    state: ((side: number, s: any) -> (ButtonState))?,
     pressed: (side: number, s: any) -> (),
     chip: ((side: number, s: any) -> Chip?)?,
 }

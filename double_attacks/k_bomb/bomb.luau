@@ -51,7 +51,7 @@ local function fly(me: Object)
     me.pos = Vec3.new(int.i32(p.x + v.x), int.i32(p.y + v.y), int.i32(p.z + vz))
     if me.timer == TURNS_AT then
         me.sprite:load(PRESS)
-        me.sprite.shadow = "ground"
+        me.sprite.shadow = Shadow.ground
         me.anim, me.anim_loaded = 0, 0xFF
     end
     local t = me.timer - 1
@@ -105,7 +105,7 @@ local function burst(me: Object)
     end
     local q = me.pos
     battle.effect(Vec3.new(q.x, q.y, int.i32(q.z + PUFF_Z)), effects.puff)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local function tick(me: Object)
@@ -121,17 +121,17 @@ end
 
 bomb.kind = new.kind {
     id = "k-bomb/bomb",
-    pool = "attack",
+    pool = Pool.attack,
     state = { quarter = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x02015F60: its sprite and shadow, animation 1, shown, facing its way, on the panel under it; its target
             -- (kept as its future panel) three columns ahead, and its flight to the target's corner.
             local s = me.state :: State
             local sprite = me.sprite
             sprite:load(SPRITE)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             me.anim, me.anim_loaded = 1, 0xFF
             me.visible = true
             sprite:face(me)
@@ -144,9 +144,9 @@ bomb.kind = new.kind {
             y = int.i32(y + corner[2] * 0x10000)
             -- (The DS's arc, 0x0208DB5C: lib/ds_arc.)
             me.vel = ds_arc.in_ticks(me.pos, x, y, 0, FLIGHT, GRAVITY, me.alliance)
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

@@ -35,7 +35,7 @@ local HIT_MOD: HitModifier = {}
 -- NameID 0xE7: actor record 0xE7 (0x08014C94: version 2, AI index 0x21); EXE5's swallowing and Poltergeist leave it
 -- (0x0800D372, 0x080E8CA0).
 local IDENTITY = new.identity {
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 2,
     ai_index = 0x21,
     scrap = false,
@@ -189,7 +189,7 @@ local function go(me: Object)
         me.collision:set_region(nil)
         obstacle.release_tracking(me)
         obstacle.unregister(me)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local x, y = hop_target(me)
@@ -218,7 +218,7 @@ local function tick(me: Object)
     local s = state(me)
     local c = me.collision
     c:remove()
-    if me:take_damage("damage_sound") == "broken" then
+    if me:take_damage(TakeDamageMode.damage_sound) == DamageTaken.broken then
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, p.z + 0x10_0000), BROKEN)
         battle.play_sound(BREAK_SOUND)
@@ -227,7 +227,7 @@ local function tick(me: Object)
         breaking_side(me)
         obstacle.release_tracking(me)
         obstacle.unregister(me)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if not battle.dimmed() then
@@ -298,7 +298,7 @@ local function init(me: Object)
     sprite:load(SPRITE)
     sprite:set_animation(0)
     -- (sprite_noShadow.)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     if not me:create_collision() then
         me:free()
@@ -314,23 +314,23 @@ local function init(me: Object)
     -- (sub_8002EAC: a drawing flag of the sprite's.)
     me.collision:present()
     s.breaker = NONE
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 fruit.kind = new.kind {
     id = "redfrut/fruit",
-    pool = "attack",
+    pool = Pool.attack,
     state = { gift = REDFRUT_GIFT, palette = schema.u8, hops = schema.u8, breaker = schema.u8 },
     -- 0x080D7F2C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             leave(me)
@@ -352,7 +352,7 @@ local function spawn(user: Object, x: number, y: number, spec: Fruit)
         o.panel_x, o.panel_y = x, y
         o.alliance, o.flip = user.alliance, user.flip
         o.run_while_dimmed = true
-        obstacle.register(o, o.alliance, "one_a_side")
+        obstacle.register(o, o.alliance, ObstacleClass.one_a_side)
     end
 end
 

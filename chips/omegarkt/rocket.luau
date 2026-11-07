@@ -40,7 +40,7 @@ end
 local function boom()
     battle.shake_camera(3, 0x2D)
     battle.play_sound(SOUND_BLAST)
-    battle.palette_flash("one_layer", 0x14, true)
+    battle.palette_flash(PaletteFlashVariant.one_layer, 0x14, true)
 end
 
 -- A one-tick hit (running while dimmed) at (x, y) over `region`, with the damage word `damage`.
@@ -137,7 +137,7 @@ local function far_blast(me: Object)
     me.timer = int.u16(left)
     if left <= 0 then
         release(me)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -152,7 +152,7 @@ local function tick(me: Object)
         blow_up(me)
         c:set_region(nil)
         release(me)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local phase = PHASES[me.phase]
@@ -172,7 +172,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, 0)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0xFF
     if not me:create_collision() then
         error("OmegaRkt's rocket without a collision slot (0x080DD4FA doesn't check)")
@@ -181,20 +181,20 @@ local function init(me: Object)
     sprite:face(me)
     me.visible = true
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 rocket.kind = new.kind {
     id = "omegarkt/rocket",
-    pool = "attack",
+    pool = Pool.attack,
     state = { controller = schema.object },
     -- 0x080DD4CC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

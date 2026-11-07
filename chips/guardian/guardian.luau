@@ -29,7 +29,7 @@ guardian.statue = statue.make {
     id = "guardian/statue",
     sprite = SPRITE,
     identity = new.identity {
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 4,
         ai_index = 0x21,
         look = { sprite = SPRITE, anim = 0, palette = 0, shadow = true },

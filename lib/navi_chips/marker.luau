@@ -15,7 +15,7 @@ export type State = {
 
 -- 0x080E9F58: its entry (always one: nothing else in a battle takes them).
 local function init(me: Object)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080E9F88: its ticks run out; its entry is let go (0x0802E950, 0x0802E944), and it goes.
@@ -23,20 +23,20 @@ local function tick(me: Object)
     local left = me.timer - 1
     me.timer = int.u16(left)
     if left < 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 marker.kind = new.kind {
     id = "dice-marker",
-    pool = "effect",
+    pool = Pool.effect,
     state = { style = schema.u8 },
     -- 0x080E9F38.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

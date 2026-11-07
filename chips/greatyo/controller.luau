@@ -39,22 +39,22 @@ local function update(me: Object)
             thrower.related1 = nil
         end
         -- (0x080E8A3E: a word store, its action and phase cleared with it.)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 controller.kind = new.kind {
     id = "greatyo/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { middle = schema.object, below = schema.object, above = schema.object, spec = yoyo.EXE5_YOYO },
     -- 0x080E89C4.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- (0x080E89E8: a word store.)
-            me:set_lifecycle("update")
+            me:enter_update()
             update(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             me:free()

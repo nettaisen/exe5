@@ -85,7 +85,7 @@ local function aim(me: Object, s: BallState)
         me.phase = 4
         local x, y = navi_target(me, s)
         if x == nil then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         end
         me.panel_x, me.panel_y = x, y :: number
@@ -110,7 +110,7 @@ local function fall(me: Object)
     if me.phase == 0 then
         me.phase = 4
         me.anim = 15
-        me.sprite.shadow = "ground"
+        me.sprite.shadow = Shadow.ground
         return
     end
     local p, v = me.pos, me.vel
@@ -158,13 +158,13 @@ local function land(me: Object)
         return
     end
     battle.effect(me.pos, PUFF)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D92D6: at the battle's end, gone.
 local function ball_tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local s = me.state :: BallState
@@ -184,31 +184,31 @@ end
 
 football.ball = new.kind {
     id = "football/ball",
-    pool = "attack",
+    pool = Pool.attack,
     state = { kick = schema.u8 },
     -- 0x080D9258: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080D927C: its panel from where it is; 08-12's animation 14, shown; kicked up, or (the kicks after
             -- the first) hidden to come down.
             me:set_panel_from_coordinates()
             local sprite = me.sprite
             sprite:load(SPRITE)
-            sprite.shadow = "with_sprite"
+            sprite.shadow = Shadow.with_sprite
             me.visible = true
             me.anim, me.anim_loaded = 14, 14
             sprite:set_animation(14)
             sprite.palette = 0
             sprite:face(me)
-            me:set_lifecycle("update")
+            me:enter_update()
             if (me.state :: BallState).kick > 1 then
                 me.visible = false
                 me:set_action(4)
             else
                 me:set_action(0)
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             ball_tick(me)
         else
             me:destroy()
@@ -251,7 +251,7 @@ local function done(me: Object)
     if controller then
         navi_left(controller)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Action 0 (0x080BF6D0): he appears; 10 ticks; then he stays, or goes off a panel that isn't solid.
@@ -331,18 +331,18 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = kicks, [0xC] = leave }
 
 football.kind = new.kind {
     id = "football/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, kicked = schema.u8 },
     -- 0x080BF628.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080BF64C: on his panel, on the ground, 08-12 with a ground shadow, palette 0 (0x0800DA8A's for level
             -- 0), facing his way.
-            navi_chips.stand(me, SPRITE, "ground", true)
+            navi_chips.stand(me, SPRITE, Shadow.ground, true)
             me.sprite:face(me)
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             -- 0x080BF69A: at the battle's end the controller moves on and he goes.
             if battle.over() then
                 done(me)

@@ -144,7 +144,7 @@ local action = new.action {
             -- magnet from his panel is going (one that never came keeps him away).
             marker.spawn(me, if me.facing > 0 then 1 else 6, me.future_panel_y, 1, 8, true)
             local m = s.magnet
-            if m and m.lifecycle == "destroy" then
+            if m and m.lifecycle == Lifecycle.destroy then
                 me.step, me.step_init = RETURN, 0
             end
         elseif step == RETURN then
@@ -173,7 +173,7 @@ local chip: Chip = {
     codes = { "M" },
     element = "elec",
     family = "elec",
-    class = "special",
+    class = ChipClass.special,
     rarity = 0,
     mb = 99,
     damage = navi_level.row({ 80, 80, 80, 100, 100, 120, 120 }),

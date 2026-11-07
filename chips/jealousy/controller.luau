@@ -14,7 +14,7 @@ local controller = {}
 
 -- 0x080E4596: the chips `o` holds: a player its side's hand from the cursor, another actor its own count (+0x1A).
 local function held(o: Object): number
-    if o.actor_type == "player" then
+    if o.actor_type == ActorType.player then
         return chip_hand.left(o.alliance)
     end
     return o.chips_held

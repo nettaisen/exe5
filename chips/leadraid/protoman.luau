@@ -191,7 +191,7 @@ local function slash(me: Object)
     local cx, cy = field.center(x, y)
     battle.effect(Vec3.new(cx, cy, SLASH_Z), SLASH, me.facing_side)
     battle.shake_camera(3, 0x0A)
-    battle.palette_flash("one_layer", 0x0A, true, false)
+    battle.palette_flash(PaletteFlashVariant.one_layer, 0x0A, true, false)
 end
 
 -- Action 8, phase 8 (0x080BE364): his sword out (animation 5) with its sound; at 12 left the slash; 21 ticks; then
@@ -245,7 +245,7 @@ local function leave(me: Object)
         if controller then
             navi_left(controller)
         end
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -276,7 +276,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 3, 0xFF
     sprite:face(me)
     sprite.palette = 0
@@ -285,20 +285,20 @@ local function init(me: Object)
     me.pos = Vec3.new(int.i32(p.x + me.facing * AHEAD * 0x10000), int.i32(p.y + DOWN * 0x10000), 0)
     local s = me.state :: State
     s.colonel = colonel.spawn(me)
-    me:set_lifecycle("update")
+    me:enter_update()
     act(me)
 end
 
 protoman.kind = new.kind {
     id = "leadraid/protoman",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, colonel = schema.object, glow = schema.object },
     -- 0x080BE1C8.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             act(me)
         else
             me:free()

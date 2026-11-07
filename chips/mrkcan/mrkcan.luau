@@ -75,7 +75,7 @@ end
 -- Nothing found: report it and go.
 local function give_up(me: Object)
     report(me, 2)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- `sub_80E58F4`: the arc's far point (the center 120 pixels ahead) is on the field.
@@ -134,7 +134,7 @@ end
 local function locked(me: Object, s: SightState)
     local owner = me.related1
     if not owner or not slot.occupied(owner, s.slot) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if me.phase_init ~= 0 then
@@ -170,7 +170,7 @@ local function init(me: Object, s: SightState)
     me.pos = Vec3.new(p.x, p.y, -0x10_0000)
     local sprite = me.sprite
     sprite:load(SIGHT_SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     sprite:face(me)
     me.visible = true
@@ -179,12 +179,12 @@ local function init(me: Object, s: SightState)
     s.angle, s.base = START_ANGLE, START_ANGLE
     me.timer2 = ARCS
     s.enemies = ENEMY_BODY_WORDS[me.alliance]
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 mrkcan.sight = new.kind {
     id = "mrkcan/sight",
-    pool = "effect",
+    pool = Pool.effect,
     state = {
         slot = slot.TYPE,
         center_x = schema.i32,
@@ -199,10 +199,10 @@ mrkcan.sight = new.kind {
     update = function(me: Object)
         local s = me.state :: SightState
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me, s)
         end
-        if me.lifecycle == "update" then
+        if me.lifecycle == Lifecycle.update then
             local a = me.action
             if a == 0 then
                 sweep(me, s)
@@ -211,7 +211,7 @@ mrkcan.sight = new.kind {
             else
                 error(string.format("MrkCan sight action %#x reads past its table", a))
             end
-        elseif l ~= "init" then
+        elseif l ~= Lifecycle.init then
             me:free()
             return
         end
@@ -258,7 +258,7 @@ end
 
 -- 0x080EF460: the cannon's animation.
 local function cannon_anim(me: Object): number
-    if me.actor_type ~= "player" then
+    if me.actor_type ~= ActorType.player then
         return 0
     end
     if me.ai_index >= ANIM_ROWS then

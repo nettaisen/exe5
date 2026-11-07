@@ -81,7 +81,7 @@ local function fire(me: Object)
         local o = combatant_on(s.tx, s.ty, me.alliance)
         if o then
             local c = o.collision
-            local open = c.barrier == "none" or (c.bubble and c.barrier_timer == 0)
+            local open = c.barrier == BarrierState.none or (c.bubble and c.barrier_timer == 0)
             if open and o.status_timers.freeze == 0 then
                 battle.advance_hand(o.alliance)
                 o.chip = nil
@@ -200,7 +200,7 @@ local function update(me: Object)
         end
     elseif a == LEAD_OUT then
         if countdown(me, 4) then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("SearchMan's support: action %#x reads past its table (0x022272D8)", a))
@@ -210,24 +210,24 @@ end
 
 support.actor = new.kind {
     id = "searchman/support",
-    pool = "actor",
+    pool = Pool.actor,
     state = { tx = schema.u8, ty = schema.u8, shots = schema.u8, fired = schema.bool, controller = schema.object },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x021FFD6C: on the navi's panel, 10 pixels behind it and 10 up, SearchMan's sprite, his shadow.
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(p.x - me.facing * 0xA_0000, p.y - 0xA_0000, 0)
             local sprite = me.sprite
             sprite:load(searchman.sprite)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             me.anim, me.anim_loaded = 0, 0
             sprite:set_animation(0)
             sprite:face(me)
-            me:set_lifecycle("update")
+            me:enter_update()
             update(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             -- 0x0220001C: his controller's word for him cleared.

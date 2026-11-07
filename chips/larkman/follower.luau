@@ -22,7 +22,7 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.plain)
     me.collision:set_region(nil)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080DFBF0: resolve the hits; its hit on the panel it is over; gone with its swoop (or the battle).
@@ -32,7 +32,7 @@ local function tick(me: Object)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -49,9 +49,9 @@ local function tick(me: Object)
     end
     -- 0x080DFC84.
     local swoop = me.related1
-    if swoop and swoop.lifecycle == "destroy" then
+    if swoop and swoop.lifecycle == Lifecycle.destroy then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     c:present()
@@ -59,13 +59,13 @@ end
 
 follower.kind = new.kind {
     id = "larkman/follower",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080DFB94.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

@@ -106,11 +106,11 @@ function hover.idle(navi: Object)
     if own(navi).take_off then
         own(navi).take_off = false
         navi.attack_variant = 0
-        navi:set_attack(hover.action, "plain")
+        navi:set_attack(hover.action, AttackKind.plain)
     elseif own(navi).land then
         own(navi).land = false
         navi.attack_variant = 1
-        navi:set_attack(hover.action, "plain")
+        navi:set_attack(hover.action, AttackKind.plain)
     end
 end
 

@@ -71,21 +71,21 @@ local function update(me: Object)
     local left = me.timer2 - 1
     me.timer2 = int.u16(left)
     if left <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
 boxer.kind = new.kind {
     id = "boxer/boxer",
-    pool = "effect",
+    pool = Pool.effect,
     state = { punch = schema.u8, hit_mod = schema.u8 },
     -- 0x080E7CE0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
-            me:set_lifecycle("update")
+        if l == Lifecycle.init then
+            me:enter_update()
             update(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             me:free()

@@ -98,7 +98,7 @@ end
 -- `sub_80B8E58`: an attachment ends (its lifecycle word goes to destroy; the slot keeps the handle).
 function double_attack.detach(a: Object?)
     if a then
-        a:set_lifecycle("destroy")
+        a:enter_destroy()
     end
 end
 
@@ -230,7 +230,7 @@ function double_attack.appear(me: Object, charge: number, leave: number?, wears:
         elseif wears then
             -- (sub_8011420 puts on a player's identity's parts alone: its actor record's type 2.)
             local identity = me.identity :: Identity
-            if identity.actor_type == "player" then
+            if identity.actor_type == ActorType.player then
                 me:add_parts(identity, 1)
             end
         end
@@ -291,7 +291,7 @@ function double_attack.leave(me: Object, takes_off: boolean)
     if takes_off then
         me:remove_parts(me.identity :: Identity)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- The other side's area, of a side (flag 0x20 for side 0, none of it for side 1).
@@ -348,27 +348,27 @@ function double_attack.make(spec: Spec): DoubleAttack
         else
             sprite:load(role.navi.sprite)
         end
-        sprite.shadow = "ground"
+        sprite.shadow = Shadow.ground
         me.anim, me.anim_loaded = 0, 0
         sprite:set_animation(0)
         me.visible = true
         sprite:face(me)
         -- (Its NameID the DS sets as it appears, this same tick.)
         me.identity = role.navi.identity
-        me:set_lifecycle("update")
+        me:enter_update()
         run(me)
         me:update_sprite()
     end
 
     local navi_kind = new.kind {
         id = spec.id .. "/navi",
-        pool = "actor",
+        pool = Pool.actor,
         state = state,
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 run(me)
                 me:update_sprite()
             else
@@ -455,13 +455,13 @@ function double_attack.make(spec: Spec): DoubleAttack
 
     local controller_kind = new.kind {
         id = spec.id .. "/controller",
-        pool = "effect",
+        pool = Pool.effect,
         state = { out = schema.array(schema.bool, 2) },
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 dimming.begin(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 local a = me.action
                 if a == DIM then
                     dimming.dim_screen(me)

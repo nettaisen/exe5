@@ -72,7 +72,7 @@ local function lie(me: Object)
         c:set_region(nil)
         local p = me.pos
         battle.effect(Vec3.new(p.x, p.y, int.i32(p.z + PUFF_Z)), effects.puff)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -114,7 +114,7 @@ local function burst(me: Object)
         (meddy.state :: Holder).capsule = nil
     end
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local function tick(me: Object)
@@ -135,17 +135,17 @@ end
 
 capsule.kind = new.kind {
     id = "c-bomb/capsule",
-    pool = "attack",
+    pool = Pool.attack,
     state = { meddy = schema.object },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x02016158 (`sub_8011504` with 0x01001015, 0x000F0000): its sprite with its shadow, animation 0; its
             -- collision (nothing reaches it, it reaches everything, hit modifier 0); shown, facing its way, on its panel
             -- on the ground.
             local sprite = me.sprite
             sprite:load(SPRITE)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             me.anim, me.anim_loaded = 0, 0xFF
             if not me:create_collision() then
                 error("C-BOMB's capsule: no collision slot (sub_8011504; the game reads through a null pointer)")
@@ -156,9 +156,9 @@ capsule.kind = new.kind {
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(p.x, p.y, 0)
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

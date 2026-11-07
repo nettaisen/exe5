@@ -47,7 +47,7 @@ local SOUND_RUN = asset.sound("ok-8b")
 -- What he wears (0x0800EE4E: EXE5's body overlay row 0, its sprite 10-0A, behind him in his animations 0 to 5, 7,
 -- 16 and 17), stepping even while paused.
 local PROPELLER = new.identity {
-    class = "navi",
+    class = IdentityClass.navi,
     parts = {
         body = {
             sprite = gyro_propeller_sprite,
@@ -298,12 +298,12 @@ function gyroman.make(flight: Flight): Kind
     -- his side's way; his propeller on (its sprite stepping even while paused, but Airforce's). Airforce's flight
     -- starts at the take-off.
     local function init(me: Object)
-        navi_chips.stand(me, SPRITE, "ground", true)
+        navi_chips.stand(me, SPRITE, Shadow.ground, true)
         local s = me.state :: State
         me.sprite.palette = s.palette
         me:add_parts(PROPELLER, if flight.while_dimmed then 1 else 0)
         s.run, s.bombs = false, 0
-        me:set_lifecycle("update")
+        me:enter_update()
         if not flight.appears then
             me.action = 0xC
         end
@@ -311,14 +311,14 @@ function gyroman.make(flight: Flight): Kind
 
     return new.kind {
         id = flight.id,
-        pool = "actor",
+        pool = Pool.actor,
         state = { controller = schema.object, palette = schema.u8, run = schema.bool, bombs = schema.u8 },
         -- 0x080BAA80.
         update = function(me: Object)
             local l = me.lifecycle
-            if l == "init" then
+            if l == Lifecycle.init then
                 init(me)
-            elseif l == "update" then
+            elseif l == Lifecycle.update then
                 -- 0x080BAB16: Airforce's flight stands still while the battle is dimmed.
                 if flight.while_dimmed or not battle.dimmed() then
                     local action = ACTIONS[me.action]

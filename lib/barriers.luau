@@ -29,7 +29,7 @@ end
 -- Type 1: 10 HP (the Barrier chip's and FstBarr's).
 barriers.barrier_10 = barrier {
     id = "barrier/10",
-    behavior = "plain",
+    behavior = BarrierBehavior.plain,
     hp = 10,
     threshold = 0,
     look = { sprite = SPRITE, anim = 0, palette = 0, attach_point = 2, hidden_parts = {}, up_steps = 16, down_steps = 21 },
@@ -39,7 +39,7 @@ barriers.barrier_10 = barrier {
 -- Type 5: 100 HP.
 barriers.barrier_100 = barrier {
     id = "barrier/100",
-    behavior = "plain",
+    behavior = BarrierBehavior.plain,
     hp = 100,
     threshold = 0,
     look = { sprite = SPRITE, anim = 0, palette = 3, attach_point = 2, hidden_parts = {}, up_steps = 16, down_steps = 21 },
@@ -49,7 +49,7 @@ barriers.barrier_100 = barrier {
 -- Type 7: 200 HP.
 barriers.barrier_200 = barrier {
     id = "barrier/200",
-    behavior = "plain",
+    behavior = BarrierBehavior.plain,
     hp = 200,
     threshold = 0,
     look = { sprite = SPRITE, anim = 0, palette = 6, attach_point = 2, hidden_parts = {}, up_steps = 16, down_steps = 21 },
@@ -59,7 +59,7 @@ barriers.barrier_200 = barrier {
 -- Type 8: a bubble that takes one hit, grows back 240 ticks later, and breaks on elec.
 barriers.bubble = barrier {
     id = "barrier/bubble",
-    behavior = "bubble",
+    behavior = BarrierBehavior.bubble,
     hp = 1,
     threshold = 0,
     look = { sprite = BUBBLE, anim = 0, palette = 0, attach_point = 0x15, hidden_parts = {}, up_steps = 46, down_steps = 5 },
@@ -70,7 +70,7 @@ barriers.bubble = barrier {
 -- Type 9: an aura that stops every hit of less than 200 for 3000 ticks.
 barriers.life_aura = barrier {
     id = "barrier/life-aura",
-    behavior = "plain",
+    behavior = BarrierBehavior.plain,
     hp = 1,
     threshold = 200,
     timer = 3000,

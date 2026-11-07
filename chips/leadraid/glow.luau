@@ -52,24 +52,24 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     -- sprite_noShadow: the first part is drawn with the sprite.
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     sprite:face(me)
     me.visible = true
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 glow.kind = new.kind {
     id = "leadraid/glow",
-    pool = "effect",
+    pool = Pool.effect,
     state = { dx = schema.i32, dz = schema.i32 },
     -- 0x080EA0EC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()
@@ -94,7 +94,7 @@ end
 -- 0x080EA1B0: its leader ends it.
 function glow.stop(o: Object?)
     if o then
-        o:set_lifecycle("destroy")
+        o:enter_destroy()
     end
 end
 

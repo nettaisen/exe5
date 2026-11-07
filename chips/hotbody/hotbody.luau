@@ -59,7 +59,7 @@ local function die(me: Object)
     me.timer = int.u16(t)
     if t <= 0 then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -90,7 +90,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, 0)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     if not me:create_collision() then
         me:free()
@@ -100,22 +100,22 @@ local function init(me: Object)
     sprite:face(me)
     me.visible = true
     battle.play_sound(SOUND)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
 hotbody.flame = new.kind {
     id = "hotbody/flame",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080DA390: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
@@ -204,7 +204,7 @@ local function finish(me: Object)
     if navi then
         navi.related1 = nil
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080E6BCE: its panel from its position; every 30 ticks a round (the first at once); done after its rounds or a
@@ -242,20 +242,20 @@ local function init_fire(me: Object)
     s.count = 0
     me.timer2 = s.rounds
     light(me, me.panel_x, me.panel_y)
-    me:set_lifecycle("update")
+    me:enter_update()
     update(me)
 end
 
 hotbody.fire = new.kind {
     id = "hotbody/fire",
-    pool = "effect",
+    pool = Pool.effect,
     state = { lit = schema.array(schema.u32, 5), last = schema.array(schema.u8, 8), count = schema.u32, navi = schema.object, rounds = schema.u8 },
     -- 0x080E6B88.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init_fire(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             me:free()

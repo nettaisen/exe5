@@ -176,7 +176,7 @@ local function spin(me: Object, s: State)
 end
 
 local function home(me: Object)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
     me.collision:set_region(nil)
 end
 
@@ -251,7 +251,7 @@ local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
     sprite:set_animation(0)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 0, 0xFF
     if not me:create_collision() then
         me:free()
@@ -267,7 +267,7 @@ local function init(me: Object)
     end
     me.collision:present()
     battle.play_sound(SOUND)
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
 end
 
 -- 0x080D032C: clear the slot that holds it (if it still does), then free it and its collision.
@@ -299,7 +299,7 @@ yoyo.EXE5_YOYO = EXE5_YOYO
 
 yoyo.kind = new.kind {
     id = "yoyo/yoyo",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         spec = EXE5_YOYO,
         slot = { "related", "middle", "below", "above" },
@@ -311,9 +311,9 @@ yoyo.kind = new.kind {
     -- 0x080D00A8.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             gone(me)

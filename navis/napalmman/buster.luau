@@ -93,7 +93,7 @@ local function recover(me: Object, s: State)
     s.timer = bit32.band(t, 0xFFFF)
     if t < 0 then
         me.related1 = nil
-        if me.actor_type == "player" and me.held.b then
+        if me.actor_type == ActorType.player and me.held.b then
             me.marker = 4
             me.step, me.step_init = SHOOT, 0
         else

@@ -44,7 +44,7 @@ local DASH_X, DASH_Y = 0x4_0000, 0x2_8000
 -- 0x080BDE80: on his panel, on the ground, his chip's palette; his dash's speeds (up from the top row, else
 -- down), the far column (6 facing right, else 1) and his grid on its middle row.
 local function init(me: Object)
-    navi_chips.stand(me, SPRITE, "ground", true)
+    navi_chips.stand(me, SPRITE, Shadow.ground, true)
     local s = me.state :: State
     me.sprite.palette = s.palette
     me.vel = Vec3.new(me.facing * DASH_X, if me.panel_y == 1 then DASH_Y else -DASH_Y, me.vel.z)
@@ -54,7 +54,7 @@ local function init(me: Object)
         s.grid = g
     end
     s.crossed = 0
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- Enter the phase with a timer (a word store clears Timer2 too), or count down; true once it has run out.
@@ -81,7 +81,7 @@ local function done(me: Object)
     if g then
         grid.remove(g)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Action 0 (0x080BDF50): he appears; 10 ticks; then he stands, or goes off a panel that isn't solid.
@@ -222,21 +222,21 @@ local ACTIONS = { [0] = appear, [4] = stand, [8] = dash, [0xC] = strike, [0x10] 
 
 gridman.kind = new.kind {
     id = "gridman/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, end_x = schema.u8, crossed = schema.u8, grid = schema.object },
     -- 0x080BDE5C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             -- 0x080BDF14: the battle's end ends him (the controller moves on).
             if battle.over() then
                 local controller = (me.state :: State).controller
                 if controller then
                     navi_left(controller)
                 end
-                me:set_lifecycle("destroy")
+                me:enter_destroy()
             else
                 local action = ACTIONS[me.action]
                 if not action then

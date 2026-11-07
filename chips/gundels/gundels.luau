@@ -82,7 +82,7 @@ local function let_go(me: Object): boolean
     if operation_battle() then
         return false
     end
-    if me.actor_type ~= "player" or me.ai_index == HOLDLESS_AI then
+    if me.actor_type ~= ActorType.player or me.ai_index == HOLDLESS_AI then
         return false
     end
     if me.navi_flags.no_charge then

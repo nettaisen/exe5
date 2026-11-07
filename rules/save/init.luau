@@ -85,10 +85,10 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
     local in_party = #((setup :: any).party or {}) > 0
     if level ~= nil and not in_party then
         if story == nil then
-            problem({ kind = "not_taken", field = "level", text = string.format("level %d: %s takes no level", level, name) })
+            problem({ kind = SetupProblemKind.not_taken, field = "level", text = string.format("level %d: %s takes no level", level, name) })
         elseif level > story.max_level then
             problem({
-                kind = "range",
+                kind = SetupProblemKind.range,
                 field = "level",
                 value = level,
                 least = 0,
@@ -97,11 +97,11 @@ local function validate(side: number, problem: (p: SetupProblem) -> ())
             })
         end
     elseif story ~= nil then
-        problem({ kind = "missing", field = "level", text = string.format("%s has no level (0 to %d)", name, story.max_level) })
+        problem({ kind = SetupProblemKind.missing, field = "level", text = string.format("%s has no level (0 to %d)", name, story.max_level) })
     end
     if navi.forms == nil and setup.hp ~= MAX_HP then
         problem({
-            kind = "not_taken",
+            kind = SetupProblemKind.not_taken,
             field = "hp",
             text = string.format("hp: %s's HP is its level's; a side states the base HP of the navi that compiles a NaviCust", name),
         })

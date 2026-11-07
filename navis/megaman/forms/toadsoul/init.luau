@@ -39,7 +39,7 @@ local form: FormDef = {
         a_charge = charged_chips.routine({ 20, 20, 20, 20, 20, 20 }),
     },
     charged_chips = { { family = "aqua", damaging = false, plain = true } },
-    charged_bonus = { damage = "again" },
+    charged_bonus = { damage = ChargedBonus.again },
     reset = function(navi: Object)
         navi.navi_flags.dives = true
     end,
@@ -54,10 +54,10 @@ local form: FormDef = {
     buster_arm = { anim = 12 },
     -- MegaMan's actor record, with his sprite in the soul's attach points (row 12 of category 0).
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         changes_form = true,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 0,
         aura_anim = 0,
         attach_points = attach_points,

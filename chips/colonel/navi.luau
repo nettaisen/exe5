@@ -43,7 +43,7 @@ local SOUND_SWING = asset.sound("spin")
 -- What he wears (0x0800EE5E: EXE5's body overlay row 3, its sprite 10-1E, in front at every animation), stepping
 -- even while paused.
 local CAPE = new.identity {
-    class = "navi",
+    class = IdentityClass.navi,
     parts = { body = { sprite = colonel_cape_sprite, anims = 41 } },
 }
 -- His sword (the attachment row 3), its animation 7, animating while dimmed, in his chip's sword palette.
@@ -179,7 +179,7 @@ local function strike(me: Object)
     if t == STRIKE then
         s.strike.land(me)
         battle.shake_camera(3, 0x23)
-        battle.palette_flash("one_layer", s.strike.flash, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, s.strike.flash, true, false)
     end
     local left = t - 1
     me.timer = int.u16(left)
@@ -226,7 +226,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 3, 3
     sprite:set_animation(3)
     sprite.palette = s.palette
@@ -237,14 +237,14 @@ local function init(me: Object)
     me.future_panel_x, me.future_panel_y = find_target(me)
     s.slash = 2
     me:add_parts(CAPE, 1)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 local COLONEL_STRIKE = schema.record_type("colonel-strike")
 
 colonel.kind = new.kind {
     id = "colonel/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = {
         controller = schema.object,
         palette = schema.u8,
@@ -255,9 +255,9 @@ colonel.kind = new.kind {
     -- 0x080BA280.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("Colonel action %#x reads past his table (0x080BA310)", me.action))

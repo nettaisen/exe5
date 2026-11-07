@@ -122,7 +122,7 @@ local function fly(me: Object, s: State)
     mark(me)
     if not field.valid(me.panel_x, me.panel_y) then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -133,7 +133,7 @@ local function tick(me: Object, s: State)
     me:hit_spark()
     if battle.over() then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if not battle.dimmed() then
@@ -158,7 +158,7 @@ local function init(me: Object, s: State)
     local sprite = me.sprite
     sprite:load(SPRITE)
     -- (`sprite_noShadow`: its frames have no shadow part, and the first part is drawn as the rest are.)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -172,20 +172,20 @@ local function init(me: Object, s: State)
     me.collision:set_hit_effect(nil)
     me.collision:present()
     battle.play_sound(SOUND)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 tomahawk.kind = new.kind {
     id = "tomahawkman/tomahawk",
-    pool = "attack",
+    pool = Pool.attack,
     state = { row = schema.u8, turns = schema.u8, across = schema.bool },
     -- 0x080DCB98
     update = function(me: Object)
         local s = me.state :: State
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me, s)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me, s)
         else
             me:destroy()

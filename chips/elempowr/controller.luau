@@ -65,7 +65,7 @@ local function effect(me: Object)
         panel_changer.spawn(me, me.panel_x, me.panel_y, change, me)
         s.busy = true
         local bonus = PER_PANEL * math.min(count(kind), MAX_PANELS)
-        battle.add_special_bonus(me.alliance, "attack", bonus)
+        battle.add_special_bonus(me.alliance, SpecialBonus.attack, bonus)
         me.phase_init = 4
     end
     if not s.busy then
@@ -75,7 +75,7 @@ end
 
 controller.kind = new.kind {
     id = "elempowr/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { busy = schema.bool },
     -- 0x080E9B68.
     update = dimming_chips.phases { name = "ElemPowr", effect = effect },

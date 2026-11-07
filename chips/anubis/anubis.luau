@@ -44,7 +44,7 @@ function anubis.variant(v: { anim: number, period: number, hp: number, version: 
         hp = v.hp,
         lifetime = LIFETIME,
         identity = new.identity {
-            class = "field_object",
+            class = IdentityClass.field_object,
             version = v.version,
             ai_index = 0x21,
             look = { sprite = SPRITE, anim = v.anim, palette = 0, shadow = true },

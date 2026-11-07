@@ -52,7 +52,7 @@ local WAIT = 0x1E
 -- 0x02226278
 local function gate(side: number, navi: Object): boolean
     local stats = battle.navi(side)
-    if stats.mood == "full_synchro" then
+    if stats.mood == Mood.full_synchro then
         return false
     end
     if stats.navi.forms ~= nil and battle.emotion(side) ~= "worried" then
@@ -115,12 +115,12 @@ end
 
 local function update(me: Object)
     local l = me.lifecycle
-    if l == "init" then
+    if l == Lifecycle.init then
         -- 0x02225FC0: its sound (and the DS's voice for MegaMan, a sound the GBA hasn't: left out).
         battle.play_sound(OK_SOUND)
-        me:set_lifecycle("update")
+        me:enter_update()
         set_phase(me, FADE)
-    elseif l ~= "update" then
+    elseif l ~= Lifecycle.update then
         -- 0x0222617C
         battle.set_dimmed(false)
         me:free()
@@ -130,7 +130,7 @@ local function update(me: Object)
     local phase = me.phase
     if phase == FADE then
         if me.phase_init == 0 then
-            battle.screen_fade("dim", FADE_SPEED)
+            battle.screen_fade(ScreenFade.dim, FADE_SPEED)
             me.phase_init = 4
         end
         if not battle.screen_fading() then
@@ -143,7 +143,7 @@ local function update(me: Object)
                 set_phase(me, ACT)
                 return
             end
-            battle.set_mood(me.alliance, "full_synchro")
+            battle.set_mood(me.alliance, Mood.full_synchro)
             me.timer = WAIT
             me.phase_init = 4
         end
@@ -153,11 +153,11 @@ local function update(me: Object)
     elseif phase == UNDIM then
         -- 0x02226158
         if me.phase_init == 0 then
-            battle.screen_fade("undim", FADE_SPEED)
+            battle.screen_fade(ScreenFade.undim, FADE_SPEED)
             me.phase_init = 4
         end
         if not battle.screen_fading() then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("the shout's step %#x reads past its table (0x0222B33C)", phase))
@@ -167,7 +167,7 @@ end
 -- T4 0x93 (0x02225FB0).
 shout.kind = new.kind {
     id = "shout",
-    pool = "effect",
+    pool = Pool.effect,
     state = { strength = schema.u8, kind = schema.u8 },
     update = update,
 }
@@ -190,7 +190,7 @@ function shout.mic_heard(side: number)
     state.shouted = true
     local stats = battle.navi(side)
     local row = 1
-    if navi.collision.barrier ~= "none" then
+    if navi.collision.barrier ~= BarrierState.none then
         row += 1
     end
     if stats.attack + stats.charge + stats.rapid >= 7 then

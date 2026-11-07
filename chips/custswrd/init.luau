@@ -16,7 +16,7 @@ local chip: Chip = {
     codes = { "E", "L", "R" },
     element = "null",
     family = "sword",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 20,
     counter = 30,
@@ -25,7 +25,7 @@ local chip: Chip = {
     -- (The custom screen shows its damage as "???" only on an A, which it never comes as.)
     traits = { hides_damage_as_a = true },
     slot_in_limit = 3,
-    damage = { formula = "gauge" },
+    damage = { formula = Formula.gauge },
     action = swords.slash {
         blade = swords.blade,
         blade_anim = swords.blade_anim,

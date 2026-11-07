@@ -8,7 +8,7 @@ local card: PatchCard = {
     effects = {
         cards.hp(150),
         cards.custom(2),
-        cards.bug(cards.gauge("normal")),
+        cards.bug(cards.gauge(GaugeSpeed.normal)),
     },
 }
 

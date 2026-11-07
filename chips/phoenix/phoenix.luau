@@ -195,7 +195,7 @@ local function leave(me: Object)
         if c then
             controllers.done(c)
         end
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end)
 end
 
@@ -225,7 +225,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     local facing = me.facing_side
     sprite:face_side(facing)
@@ -234,19 +234,19 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y + 0x3_0000, 0x3_0000)
     pick_targets(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 phoenix.kind = new.kind {
     id = "phoenix/phoenix",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, targets = schema.array(schema.u8, 18) },
     -- 0x080BFA70.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

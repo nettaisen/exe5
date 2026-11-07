@@ -60,7 +60,7 @@ local function tick(me: Object)
                 end
             end
         end
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
     if s.light then
         orbit(me)
@@ -73,7 +73,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 2, 0xFF
     sprite:face(me)
     me.visible = true
@@ -94,20 +94,20 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, z)
     sprite.palette = if s.blessed then 3 else 0
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 lights.kind = new.kind {
     id = "django/lights",
-    pool = "effect",
+    pool = Pool.effect,
     state = { light = schema.bool, blessed = schema.bool, done = schema.bool, children = schema.array(schema.object, 8) },
     -- 0x080E9968.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

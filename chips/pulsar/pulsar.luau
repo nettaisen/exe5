@@ -34,7 +34,7 @@ local FLY, BURST_ACTION = 0x0, 0x4
 
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D33E8: fly on.
@@ -74,7 +74,7 @@ local function burst(me: Object, s: State)
         box.timer = BURST_TICKS
         battle.play_sound(BURST_SOUND)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D337A: resolve its hits: a body slows it to burst, anything else ends it; by its action; it goes off the
@@ -117,7 +117,7 @@ local function init(me: Object)
     me:set_coordinates_from_panel()
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -130,24 +130,24 @@ local function init(me: Object)
     me:setup_collision(collision.attack, collision.hits_navis, TOUCH_HIT_MOD)
     me.collision:set_hit_effect(nil)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
     battle.play_sound(SOUND)
 end
 
 pulsar.kind = new.kind {
     id = "pulsar/pulse",
-    pool = "attack",
+    pool = Pool.attack,
     state = { hit_at = schema.u32 },
     -- 0x080D32D0: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

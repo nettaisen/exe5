@@ -158,7 +158,7 @@ local function linger(me: Object)
     me.timer = int.u16(left)
     if left <= 0 then
         -- (0x080D2FB2: the state byte alone.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -195,7 +195,7 @@ local function init(me: Object)
     me.future_panel_x = me.panel_x
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     local p = me.pos
     me.pos = Vec3.new(p.x, int.i32(p.y + 0x1_0000), -0x1_0000)
@@ -217,12 +217,12 @@ local function init(me: Object)
     c:present()
     battle.play_sound(SOUND_APPEAR)
     s.hit_navi = false
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 magnet.kind = new.kind {
     id = "magnetmn/magnet",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         pole = schema.u8,
         paired = schema.u8,
@@ -236,12 +236,12 @@ magnet.kind = new.kind {
     -- 0x080D2CEC.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

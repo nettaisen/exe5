@@ -87,9 +87,9 @@ local tier = exe5.light_dark_tier
 
 -- 0x0800DD94 (EXE6's `sub_801002C`): the palette of a navi of the player's kind.
 local function palette(side: number, navi: Object): number?
-    if navi.actor_type ~= "player" then
+    if navi.actor_type ~= ActorType.player then
         -- A navi in auto battle: Dark MegaMan's (and navi 23's) 1, any other 0.
-        if navi.actor_type == "navi" and (navi.ai_index == DARK_MEGAMAN or navi.ai_index == NAVI_23) then
+        if navi.actor_type == ActorType.navi and (navi.ai_index == DARK_MEGAMAN or navi.ai_index == NAVI_23) then
             return 1
         end
         return 0
@@ -109,7 +109,7 @@ local function palette(side: number, navi: Object): number?
     elseif in_soul then
         -- A soul's: 2 while its Chaos Unison charge is armed (the rules' own B charge: ../souls/chaos_charge).
         return if navi.b_charge_time ~= nil then 2 else 0
-    elseif stats.mood == "full_synchro" then
+    elseif stats.mood == Mood.full_synchro then
         p = 4
     elseif stats.mood == 0 then
         p = if value(side) < LIGHT_CHIPS then 2 else 3
@@ -212,13 +212,13 @@ local HIT_FLAG_SPARES_LIGHT: HitNames = { dark = true }
 local HP_DRAIN, HP_DRAIN_LEVEL = 0x18, 1
 local DARK_DRAIN, LIGHT_DRAIN = 0xFD, 0xFC
 
--- 0x0801103E's light and dark part: "spared" (nothing follows, not even the weapons' reload), or nil (the NaviCust's
+-- 0x0801103E's light and dark part: BugOutcome (nothing follows, not even the weapons' reload), or nil (the NaviCust's
 -- bugs follow: rules/navicust/bugs).
-local function navi_bug(side: number, navi: Object): "spared"?
+local function navi_bug(side: number, navi: Object): BugOutcome?
     local c = navi.collision
     local v = value(side)
     if c:hit_any(HIT_FLAG_SPARES_LIGHT) and v >= 1000 then
-        return "spared"
+        return BugOutcome.spared
     end
     local code = c.inflicted_bug
     if code == DARK_DRAIN or code == LIGHT_DRAIN then

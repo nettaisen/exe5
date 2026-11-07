@@ -81,21 +81,21 @@ local function strike_update(me: Object)
         status = kind.status,
     })
     battle.play_sound(BURST_SOUND)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 support.strike = new.kind {
     id = "shadowman/ambush-strike",
-    pool = "effect",
+    pool = Pool.effect,
     state = { kind = schema.u8 },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x02226514: on its panel.
             me:set_coordinates_from_panel()
-            me:set_lifecycle("update")
+            me:enter_update()
             strike_update(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             strike_update(me)
         else
             me:free()

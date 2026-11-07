@@ -11,7 +11,7 @@ local cusvolt1: Chip = {
     codes = { "A", "V", "Y", "*" },
     element = "elec",
     family = "elec",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 1,
     mb = 40,
     counter = 30,
@@ -20,7 +20,7 @@ local cusvolt1: Chip = {
     -- (The custom screen shows its damage as "???" on an A, and the damage on another code.)
     traits = { hides_damage_as_a = true },
     slot_in_limit = 3,
-    damage = { formula = "gauge_level", base = 10 },
+    damage = { formula = Formula.gauge_level, base = 10 },
     action = cusvolt.action(),
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
@@ -32,7 +32,7 @@ local cusvolt2: Chip = {
     codes = { "C", "E", "G" },
     element = "elec",
     family = "elec",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 2,
     mb = 55,
     counter = 30,
@@ -41,7 +41,7 @@ local cusvolt2: Chip = {
     -- (The custom screen shows its damage as "???" only on an A, which it never comes as.)
     traits = { hides_damage_as_a = true },
     slot_in_limit = 3,
-    damage = { formula = "gauge_level", base = 30 },
+    damage = { formula = Formula.gauge_level, base = 30 },
     action = cusvolt.action(),
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
@@ -53,7 +53,7 @@ local cusvolt3: Chip = {
     codes = { "G", "M", "P" },
     element = "elec",
     family = "elec",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 3,
     mb = 70,
     counter = 30,
@@ -62,7 +62,7 @@ local cusvolt3: Chip = {
     -- (The custom screen shows its damage as "???" only on an A, which it never comes as.)
     traits = { hides_damage_as_a = true },
     slot_in_limit = 3,
-    damage = { formula = "gauge_level", base = 50 },
+    damage = { formula = Formula.gauge_level, base = 50 },
     action = cusvolt.action(),
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }

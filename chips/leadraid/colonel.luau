@@ -150,7 +150,7 @@ local function strike(me: Object)
     if me.timer == STRIKE then
         strike_x(me)
         battle.shake_camera(3, 0x23)
-        battle.palette_flash("one_layer", 0x1E, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0x1E, true, false)
     end
     local left = me.timer - 1
     me.timer = int.u16(left)
@@ -190,7 +190,7 @@ local function leave(me: Object)
     if countdown(me, 4) then
         me:remove_parts(navi.cape)
         -- (The lifecycle byte alone, as the game stores it.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -222,7 +222,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 3, 0xFF
     sprite:face(me)
     sprite.palette = 0
@@ -231,20 +231,20 @@ local function init(me: Object)
     me.pos = Vec3.new(int.i32(p.x - me.facing * BEHIND * 0x10000), int.i32(p.y - UP * 0x10000), 0)
     me.future_panel_x, me.future_panel_y = find_target(me)
     me:add_parts(navi.cape, 1)
-    me:set_lifecycle("update")
+    me:enter_update()
     act(me)
 end
 
 colonel.kind = new.kind {
     id = "leadraid/colonel",
-    pool = "actor",
+    pool = Pool.actor,
     state = { protoman = schema.object, go = schema.bool, glow = schema.object },
     -- 0x080BEAF0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             act(me)
         else
             me:free()

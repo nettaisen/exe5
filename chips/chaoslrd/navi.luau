@@ -35,7 +35,7 @@ local SOUND_SHAPE = asset.sound("point-rise")
 local SOUND_RAISE = asset.sound("chaos-lord")
 local PUFF = new.effect { sprite = puff_sprite, anim = 0, palette = 0, steps = 4 }
 -- His cape (0x080C38B6's word 0x10011308: a form overlay of his sprite, animations + 0x10, stepping while dimmed).
-local CAPE: FormOverlaySpec = { sprite = SPRITE, stepping = "while_dimmed", anim_offset = 0x10 }
+local CAPE: FormOverlaySpec = { sprite = SPRITE, stepping = FormOverlayStepping.while_dimmed, anim_offset = 0x10 }
 -- The navi chip controller calls his spawner (0x080C327E) through r3, which his position's Z takes; his init keeps
 -- its fraction, and his strike's is his.
 -- (The address is Team ProtoMan US's ROM's; compat/games.toml has the other ROMs'.)
@@ -123,7 +123,7 @@ local function glow(me: Object)
     if me.timer == GLOW_AT then
         sprite:load(GLOW)
         -- sprite_noShadow: the first part is drawn with the sprite.
-        sprite.shadow = "with_sprite"
+        sprite.shadow = Shadow.with_sprite
         me.anim, me.anim_loaded = 1, 1
         sprite:set_animation(1)
         local p = me.pos
@@ -134,7 +134,7 @@ local function glow(me: Object)
         return
     end
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     -- `sub_8002FBE(0)`: his sprite's first part hidden.
     sprite.hidden_parts[0] = true
     me.visible = true
@@ -203,7 +203,7 @@ end
 -- Action 0x10 (0x080C326E): 41 ticks; then he goes (the lifecycle byte alone, as the game stores it).
 local function last(me: Object)
     if count_down(me) then
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -231,7 +231,7 @@ local function init(me: Object)
     local back = back_column(me)
     local found = panels.random_offset(back, 2, ENEMY_NAVI, AROUND, side, me.alliance)
     if found then
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     local x, y = field.center(back, 2)
@@ -249,7 +249,7 @@ local function init(me: Object)
     local p = me.pos
     local z = bit32.bor(bit32.band(p.z, 0xFFFF), 0x12_0000)
     me.pos = Vec3.new(int.i32(p.x + me.facing * 0x8_0000), whole_add(p.y, 0x1C), int.i32(z))
-    me:set_lifecycle("update")
+    me:enter_update()
     act(me)
 end
 
@@ -259,7 +259,7 @@ local function leave(me: Object)
     battle.effect(Vec3.new(p.x, p.y, int.i32(p.z + 0x10_0000)), PUFF)
     local cape = me.related1
     if cape then
-        cape:set_lifecycle("destroy")
+        cape:enter_destroy()
     end
     local controller = (me.state :: State).controller
     if controller then
@@ -270,14 +270,14 @@ end
 
 chaoslrd.kind = new.kind {
     id = "chaoslrd/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, red = schema.u8, green = schema.u8, blue = schema.u8 },
     -- 0x080C2EB8.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             act(me)
         else
             leave(me)

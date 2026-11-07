@@ -78,7 +78,7 @@ end
 local function gone(me: Object)
     me.phase_init = 0
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
     me.action = 0
     me.phase = 0
     me.timer2 = 0
@@ -184,7 +184,7 @@ local function burst(me: Object)
         end
     end
     -- (0x080C627C: the lifecycle and action halfword, then the phase; its phase's init byte stays.)
-    me.lifecycle = "destroy"
+    me.lifecycle = Lifecycle.destroy
     me.action = 0
     me.phase = 0
 end
@@ -201,14 +201,14 @@ local function tick(me: Object)
     if battle.over() then
         c:set_region(nil)
         -- (0x080C608E: the state byte alone.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
-    if me:take_damage("damage_sound") == "broken" or c:hit_any(NAVI_HIT) then
+    if me:take_damage(TakeDamageMode.damage_sound) == DamageTaken.broken or c:hit_any(NAVI_HIT) then
         blow_up(me)
         c:set_region(nil)
         -- (0x080C608E, as at the battle's end: the state byte alone.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     if while_dimmed(me) or not battle.dimmed() then
@@ -223,7 +223,7 @@ local function tick(me: Object)
             marker.spawn(me, me.future_panel_x, me.future_panel_y, 1, 1, false)
         end
     end
-    if me.lifecycle == "destroy" then
+    if me.lifecycle == Lifecycle.destroy then
         c:set_region(nil)
         return
     end
@@ -240,7 +240,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, 0x20_0000)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 2, 2
     sprite:set_animation(2)
@@ -257,22 +257,22 @@ local function init(me: Object)
     c.status_base = v.status
     c:set_region(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 capsule.kind = new.kind {
     id = "meddy/capsule",
-    pool = "attack",
+    pool = Pool.attack,
     state = { variant = CAPSULE_VARIANT, line = CAPSULE_LINE, while_dimmed = schema.bool },
     -- 0x080C5F18.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             -- 0x080C62CC.

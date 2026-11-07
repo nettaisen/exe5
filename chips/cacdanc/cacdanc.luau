@@ -43,7 +43,7 @@ local FALL, BOUNCE = 0, 4
 -- Off its panels, freed next update.
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080DC7B0: the panel it bounces to: a random one beside it (left, then right) with one of the other side's navis,
@@ -147,7 +147,7 @@ local function tick(me: Object)
         else
             error(string.format("CacDanc's cactus: action %#x reads past 0x080DC6A4", a))
         end
-        if me.lifecycle ~= "destroy" and not field.valid(me.panel_x, me.panel_y) then
+        if me.lifecycle ~= Lifecycle.destroy and not field.valid(me.panel_x, me.panel_y) then
             finish(me)
         end
     end
@@ -162,7 +162,7 @@ local function init(me: Object)
     me.pos = Vec3.new(p.x, p.y, START_Z)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = ANIM, 0xFF
     if not me:create_collision() then
         me:free()
@@ -174,7 +174,7 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.of_element(me.element))
     me.collision:set_region(nil)
     sprite.palette = (me.state :: CactusState).palette
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     tick(me)
 end
 
@@ -185,17 +185,17 @@ export type CactusState = {
 
 cacdanc.cactus = new.kind {
     id = "cacdanc/cactus",
-    pool = "attack",
+    pool = Pool.attack,
     state = { palette = schema.u8 },
     -- 0x080DC60C: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
@@ -209,7 +209,7 @@ cacdanc.cactus = new.kind {
 
 -- Its identity: a field object nothing swallows, leaves as junk or throws (NameID 0xD2), with no look.
 local DANCER = new.identity {
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 0,
     ai_index = 1,
     scrap = false,
@@ -259,7 +259,7 @@ end
 -- Gone: out of the field-object registry, freed next update.
 local function leave(me: Object)
     obstacle.unregister(me)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080E7E46: replaced (no HP), gone; else every 15 ticks a cactus (the first at once), twelve.
@@ -288,18 +288,18 @@ end
 
 cacdanc.dancer = new.kind {
     id = "cacdanc/dancer",
-    pool = "effect",
+    pool = Pool.effect,
     state = { palette = schema.u8 },
     -- 0x080E7E10.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080E7E30
             me.identity = DANCER
             me.hp, me.max_hp = 1, 1
-            me:set_lifecycle("update")
+            me:enter_update()
             update(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             me:free()
@@ -323,7 +323,7 @@ function cacdanc.instant(palette: number): (user: Object, spec: InstantChipSpec)
         o.related1 = user
         o.run_while_dimmed = false
         ;(o.state :: DancerState).palette = palette
-        obstacle.register(o, user.alliance, "one_a_side")
+        obstacle.register(o, user.alliance, ObstacleClass.one_a_side)
     end
 end
 

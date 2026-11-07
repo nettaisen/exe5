@@ -122,13 +122,13 @@ local function satellite_init(me: Object)
     hang(me)
     local sprite = me.sprite
     sprite:load(SATELLITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
     sprite.palette = 0
     sprite:face(me)
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080E773C to 0x080E77B4: its four actions.
@@ -181,7 +181,7 @@ local function satellite_act(me: Object, s: State)
             me.timer2 = 0
         end
         if count(me) then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("Satelity's satellite's action %#x reads past its table (0x080E772C)", action))
@@ -202,15 +202,15 @@ end
 
 satellite.kind = new.kind {
     id = "searchman/satelity/satellite",
-    pool = "effect",
+    pool = Pool.effect,
     state = { while_dimmed = schema.bool, ticks = schema.u8 },
     -- 0x080E767C.
     update = function(me: Object)
         local s = me.state :: State
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             satellite_init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             satellite_tick(me, s)
             if not me.active then
                 return
@@ -228,7 +228,7 @@ local function beam_init(me: Object, s: State)
     hang(me)
     local sprite = me.sprite
     sprite:load(BEAM)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -258,7 +258,7 @@ local function beam_init(me: Object, s: State)
     for way = 0, 3 do
         spawn_flare(me, tx, ty, way, s)
     end
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080E7964: its ticks; gone with the battle.
@@ -277,15 +277,15 @@ end
 
 beam_kind = new.kind {
     id = "searchman/satelity/beam",
-    pool = "effect",
+    pool = Pool.effect,
     state = { while_dimmed = schema.bool, ticks = schema.u8 },
     -- 0x080E7888.
     update = function(me: Object)
         local s = me.state :: State
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             beam_init(me, s)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             beam_tick(me, s)
             if not me.active then
                 return
@@ -306,7 +306,7 @@ local function flare_init(me: Object, f: FlareState)
     me.pos = Vec3.new(p.x, p.y, 0)
     local sprite = me.sprite
     sprite:load(FLARE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     local anim = FLARE_ANIMS[f.way]
     local step = FLARE_STEPS[f.way]
@@ -327,7 +327,7 @@ local function flare_init(me: Object, f: FlareState)
     me:setup_collision(collision.attack, collision.hits_navis, { flinch = true, flash = true })
     me.collision:set_region(nil)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 -- 0x080DC12C and 0x080DC16E: a panel out in 10 ticks, then its hit there for the rest of the beam's ticks.
@@ -355,7 +355,7 @@ local function flare_act(me: Object, f: FlareState)
         end
         if count(me) then
             me.collision:set_region(nil)
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("Satelity's flare's action %#x reads past its table (0x080DC124)", action))
@@ -370,7 +370,7 @@ local function flare_tick(me: Object, f: FlareState)
     me:hit_spark()
     if battle.over() or c.hit then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if f.while_dimmed or not battle.dimmed() then
@@ -381,18 +381,18 @@ end
 
 flare_kind = new.kind {
     id = "searchman/satelity/flare",
-    pool = "attack",
+    pool = Pool.attack,
     state = { while_dimmed = schema.bool, ticks = schema.u8, way = schema.u8 },
     -- 0x080DC010.
     update = function(me: Object)
         local f = me.state :: FlareState
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             flare_init(me, f)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             flare_tick(me, f)
         else
             -- 0x080138F2.

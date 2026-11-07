@@ -64,8 +64,8 @@ local function dark_megaman(side: number): boolean
 end
 
 -- 0x02042DC0: the launcher, for `navi`, which came in for `partner`, whose mood as it left was `mood`.
-local function launch(side: number, navi: Object, partner: NaviDef, mood: Mood)
-    if mood ~= "full_synchro" then
+local function launch(side: number, navi: Object, partner: NaviDef, mood: NaviMood)
+    if mood ~= Mood.full_synchro then
         return
     end
     local s = state(side)
@@ -96,8 +96,8 @@ local function launch(side: number, navi: Object, partner: NaviDef, mood: Mood)
 end
 
 -- 0x02042E74: the trigger, on the paused path.
-local function triggers(side: number, partner: NaviDef, mood: Mood): boolean
-    if mood ~= "full_synchro" then
+local function triggers(side: number, partner: NaviDef, mood: NaviMood): boolean
+    if mood ~= Mood.full_synchro then
         return false
     end
     if state(side).spent then
@@ -118,7 +118,7 @@ local function triggers(side: number, partner: NaviDef, mood: Mood): boolean
 end
 
 -- The rules' `navi_switched`: a party's switch settled, `navi` in for `member`, whose mood as it left was `mood`.
-function double_attacks.navi_switched(side: number, navi: Object, member: number, mood: Mood)
+function double_attacks.navi_switched(side: number, navi: Object, member: number, mood: NaviMood)
     local out = battle.member(side, member)
     if out == nil then
         error(string.format("side %d switched out of member %d, which its party hasn't", side, member))
@@ -196,7 +196,7 @@ local function wait_and_launch(me: Object, s: FollowUp)
     if partner == nil then
         error(string.format("side %d's Double Attack follow-up names member %d, which its party hasn't", side, state(side).partner))
     end
-    launch(side, me, partner.navi, "full_synchro")
+    launch(side, me, partner.navi, Mood.full_synchro)
     me:exit_attack()
 end
 

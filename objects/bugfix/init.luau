@@ -25,7 +25,7 @@ bugfix.glow = common_glow.make {
     offset = -1,
     -- A player navi's overlay (0x0800F0EC: its soul's put-on, NumberSoul's layer).
     wear = function(me: Object, navi: Object)
-        if navi.actor_type == "player" then
+        if navi.actor_type == ActorType.player then
             overlays.add_overlay_of(me, navi)
         end
     end,
@@ -89,7 +89,7 @@ end
 
 local LIBERATION = new.kind {
     id = "liberation/controller",
-    pool = "effect",
+    pool = Pool.effect,
     state = { busy = schema.bool },
     -- 0x080EA740.
     update = dimming_chips.phases { name = "Liberation", effect = liberation },

@@ -64,7 +64,7 @@ local function off_field(me: Object)
     if not field.valid(me.panel_x, me.panel_y) then
         me.collision:set_region(nil)
         -- (The state byte alone, as every destroy of the comet's: 0x080D4A5C, 0x080D4AB8.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
     end
 end
 
@@ -116,7 +116,7 @@ local function comet_tick(me: Object)
     if battle.over() then
         c:set_region(nil)
         -- (0x080D49A6: the state byte alone.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     local wait = false
@@ -143,7 +143,7 @@ local function comet_init(me: Object)
     me:set_panel_from_coordinates()
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 16, 16
     sprite:set_animation(16)
@@ -161,21 +161,21 @@ local function comet_init(me: Object)
     me.collision:present()
     me.status.guard = true
     me.hp, me.max_hp = HP, HP
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 csmopris.comet = new.kind {
     id = "csmopris/comet",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080D482C: by its lifecycle; its sprite steps, while dimmed too (the navi chip's variant).
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             comet_init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             comet_tick(me)
         else
             me:destroy()
@@ -230,7 +230,7 @@ local function done(me: Object)
     if controller then
         navi_left(controller)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- Action 0 (0x080BF8C4): he appears; 10 ticks; then he stays, or goes off a panel that isn't solid.
@@ -336,18 +336,18 @@ local ACTIONS = { [0] = appear, [4] = pose, [8] = rise, [0xC] = comets, [0x10] =
 
 csmopris.kind = new.kind {
     id = "csmopris/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, sent = schema.u8 },
     -- 0x080BF814.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080BF838: on his panel, on the ground, 08-10 with a ground shadow, palette 0 (0x0800DA8A's for
             -- level 0), facing his way.
-            navi_chips.stand(me, SPRITE, "ground", true)
+            navi_chips.stand(me, SPRITE, Shadow.ground, true)
             me.sprite:face(me)
-            me:set_lifecycle("update")
-        elseif l == "update" then
+            me:enter_update()
+        elseif l == Lifecycle.update then
             -- 0x080BF886: at the battle's end the controller moves on and he goes.
             if battle.over() then
                 done(me)

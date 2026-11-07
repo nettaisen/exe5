@@ -16,7 +16,7 @@ bodygrd.striker = striker.make_kind {
     id = "bodygrd/striker",
     -- NameID 0xD3: a field object nothing swallows, leaves as junk or throws (Poltrgst's list).
     identity = new.identity {
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 0,
         ai_index = 1,
         scrap = false,

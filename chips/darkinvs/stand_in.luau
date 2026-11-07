@@ -57,35 +57,35 @@ local function tick(me: Object)
     dimming.show_user(user)
     battle.play_sound(SOUND)
     release(me)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080BA5E4: drawn as a player user (0x0800D1C0's actor type 2), the user hidden; else gone at once.
 local function init(me: Object)
     local user = me.related1 :: Object
-    if user.actor_type ~= "player" then
+    if user.actor_type ~= ActorType.player then
         release(me)
         me:free()
         return
     end
     stand_in.init(me, stand_in.overlay)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 standin.kind = new.kind {
     id = "darkinvs/stand-in",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object },
     -- 0x080BA5C0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

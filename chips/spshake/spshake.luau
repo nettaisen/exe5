@@ -37,7 +37,7 @@ local AMPLITUDE, SWING, START = 24, 0x50_0000, 0x8000
 
 local function finish(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D315C: on along the row, swinging up and down.
@@ -71,7 +71,7 @@ local function tick(me: Object)
                 c:set_region(regions.single)
             end
         elseif not field.check(me.panel_x, me.panel_y, NOT_ANY_BODY) then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
             return
         else
             c:set_region(regions.single)
@@ -98,7 +98,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.visible = true
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -121,7 +121,7 @@ local function init(me: Object)
     end
     me.collision:set_hit_effect(sparks.elec)
     me.collision:present()
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
     battle.play_sound(SOUND)
 end
@@ -131,17 +131,17 @@ spshake.SHAKE_WAVE = SHAKE_WAVE
 
 spshake.kind = new.kind {
     id = "spshake/wave",
-    pool = "attack",
+    pool = Pool.attack,
     state = { wave = SHAKE_WAVE, step = schema.i32, center_y = schema.i32, hit_at = schema.u32 },
     -- 0x080D2FF8: by its lifecycle, then a sprite step.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

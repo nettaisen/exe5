@@ -65,7 +65,7 @@ local function look(me: Object, l: Look)
     local sprite = me.sprite
     sprite:load(l.sprite)
     -- sprite_noShadow: the first part is drawn with the sprite.
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = l.anim, l.anim
     sprite:set_animation(l.anim)
     sprite.palette = l.palette
@@ -139,8 +139,8 @@ local function burst(me: Object)
     end
     battle.shake_camera(3, 0x14)
     battle.play_sound(SOUND_BLAST)
-    battle.palette_flash("two_layers", 4, true, false)
-    me:set_lifecycle("destroy")
+    battle.palette_flash(PaletteFlashVariant.two_layers, 4, true, false)
+    me:enter_destroy()
 end
 
 -- Action 4 (0x080D6948): it flies, its height coming down, for 16 ticks; then it bursts.
@@ -159,7 +159,7 @@ local ACTIONS = { [0] = grow, [4] = fly }
 -- 0x080D6844: at the battle's end it goes.
 local function tick(me: Object)
     if battle.over() then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local action = ACTIONS[me.action]
@@ -178,20 +178,20 @@ local function init(me: Object)
     me.timer = 0x69
     local p = me.pos
     me.pos = Vec3.new(whole_add(p.x, me.facing * 0x2E), whole_add(p.y, 8), whole_add(p.z, 0x32))
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 strike.kind = new.kind {
     id = "chaoslrd/strike",
-    pool = "attack",
+    pool = Pool.attack,
     state = { x = schema.u8, y = schema.u8 },
     -- 0x080D67D8.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

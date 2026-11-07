@@ -62,10 +62,10 @@ local form: FormDef = {
     var_sword_waits = true,
     -- MegaMan's actor record, with his sprite in the soul's attach points (row 8 of category 0).
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         changes_form = true,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 0,
         aura_anim = 0,
         attach_points = attach_points,

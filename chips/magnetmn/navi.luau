@@ -127,7 +127,7 @@ local function init(me: Object)
     local s = me.state :: State
     s.paired = false
     if not on_field(me.panel_x, me.panel_y) then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local target = find_target(me)
@@ -147,19 +147,19 @@ local function init(me: Object)
         damage = damage_word.of { amount = 1, counter = 0 },
         hit_mod = {},
     })
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 magnetman.kind = new.kind {
     id = "magnetmn/navi",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, palette = schema.u8, target_x = schema.u8, mirror_x = schema.u8, paired = schema.bool },
     -- 0x080BAF2C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             local action = ACTIONS[me.action]
             if not action then
                 error(string.format("MagnetMan action %#x reads past his table (0x080BAFD4)", me.action))

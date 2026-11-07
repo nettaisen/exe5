@@ -108,7 +108,7 @@ local function blink_out(me: Object)
     me.visible = bit32.btest(s.blink, 2)
     s.blink = int.u8(s.blink - 1)
     if s.blink == 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -134,24 +134,24 @@ local function init(me: Object)
     sprite:set_animation(anim)
     sprite:step()
     -- sprite_noShadow: the first part is drawn with the sprite.
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     sprite:face(me)
     local p = me.pos
     me.pos = Vec3.new(p.x, whole_add(p.y, DOWN), whole_add(p.z, UP))
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 aura.kind = new.kind {
     id = "chaoslrd/aura",
-    pool = "effect",
+    pool = Pool.effect,
     state = { anim = schema.u8, hold = schema.u16, blink = schema.u8 },
     -- 0x080E5A40.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:free()

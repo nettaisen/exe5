@@ -54,7 +54,7 @@ local function fall(me: Object)
     else
         me.collision:set_region(nil)
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -77,7 +77,7 @@ local function burst(me: Object)
     me.timer = int.u16(left)
     if left <= 0 then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -92,7 +92,7 @@ local function tick(me: Object)
     if battle.over() then
         c:set_region(nil)
         -- (The state byte alone: its action and phase stay.)
-        me.lifecycle = "destroy"
+        me.lifecycle = Lifecycle.destroy
         return
     end
     if me.run_while_dimmed or not battle.dimmed() then
@@ -110,7 +110,7 @@ end
 local function init(me: Object)
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = false
     me.anim, me.anim_loaded = 0, 0
     sprite:set_animation(0)
@@ -130,21 +130,21 @@ local function init(me: Object)
     c:set_hit_effect(nil)
     c:set_region(nil)
     c:present()
-    me:set_lifecycle("update")
+    me:enter_update()
 end
 
 bomb.kind = new.kind {
     id = "gyroman/bomb",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080C7C6C.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

@@ -83,7 +83,7 @@ end
 local function cape_gone(me: Object)
     me.collision:set_region(nil)
     let_go_of(me)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x02203268: 10 ticks; then it flies (the DS's: to the slide with its Param2 1, but its test reads the action it is
@@ -143,7 +143,7 @@ local function cape_caught(me: Object)
         return
     end
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x0220332C: let go, it waits for its thrower's hold to end, then goes.
@@ -153,7 +153,7 @@ local function cape_let_go(me: Object)
         return
     end
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x02203358 (the slide its wait's test means for its Param2 1, which the test never takes): forward 10 ticks, then
@@ -181,7 +181,7 @@ local function cape_tick(me: Object)
     if battle.over() then
         c:set_region(nil)
         let_go_of(me)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     else
         local a = me.action
         if a == CAPE_WAITS then
@@ -207,7 +207,7 @@ end
 local function cape_init(me: Object)
     local sprite = me.sprite
     sprite:load(CAPE_SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = CAPE_ANIM_FLYING, 0xFF
     if not me:create_collision() then
         me:free()
@@ -222,23 +222,23 @@ local function cape_init(me: Object)
     me.vel = Vec3.new(me.facing * CAPE_SPEED, me.vel.y, me.vel.z)
     me.visible = true
     (me.state :: CapeState).released = false
-    me:set_lifecycle("update")
+    me:enter_update()
     cape_tick(me)
 end
 
 local cape = new.kind {
     id = "br-rush/cape",
-    pool = "attack",
+    pool = Pool.attack,
     state = { owner = schema.object, released = schema.bool },
     -- 0x02203190: by state; then its sprite steps, paused or not (its Param2 2).
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             cape_init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             cape_tick(me)
         else
             me:destroy()
@@ -539,7 +539,7 @@ local function megaman_finish(me: Object)
         battle.play_sound(SOUND_SWING)
         me.timer = FINISH_TICKS
         battle.shake_camera(3, 0xA)
-        battle.palette_flash("one_layer", 0xA, true, false)
+        battle.palette_flash(PaletteFlashVariant.one_layer, 0xA, true, false)
         me.phase_init = 4
     end
     if me.timer == FINISHER_AT then
@@ -651,7 +651,7 @@ local chip: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "null",
     family = "special",
-    class = "special",
+    class = ChipClass.special,
     rarity = 0,
     mb = 5,
     damage = 40,

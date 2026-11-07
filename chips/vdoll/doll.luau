@@ -30,7 +30,7 @@ return common.make {
     id = "vdoll/doll",
     sprite = SPRITE,
     identity = new.identity {
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 3,
         ai_index = 0x21,
         look = { sprite = SPRITE, anim = 1, palette = 0, shadow = true },

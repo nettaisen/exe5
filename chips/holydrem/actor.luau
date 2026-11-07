@@ -99,7 +99,7 @@ local function finish(me: Object, s: State)
     end
     s.held = nil
     overlays.remove_parts_of(me, me.related1 :: Object)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080BD826, by phase (its one action, 0x080BD83C).
@@ -130,7 +130,7 @@ local function init(me: Object)
     s.dx = -me.facing
     s.y = 1
     s.x = 6 - 5 * me.alliance
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
@@ -148,14 +148,14 @@ end
 
 local kind = new.kind {
     id = "holydrem/actor",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, held = schema.object, x = schema.i32, y = schema.i32, dx = schema.i32, shots = schema.u16 },
     -- 0x080BD728.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             leave(me)

@@ -21,7 +21,7 @@ boulder.kind = common.make {
     id = "boulder",
     sprite = SPRITE,
     identity = new.identity {
-        class = "field_object",
+        class = IdentityClass.field_object,
         version = 1,
         ai_index = 0x21,
         look = { sprite = SPRITE, anim = 0, palette = 0, shadow = false },

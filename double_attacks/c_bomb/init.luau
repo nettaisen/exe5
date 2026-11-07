@@ -83,7 +83,7 @@ end
 -- 0x0220A338, as it goes to its destroy state; here read off the bomb).
 local function bomb_lies(s: State): boolean
     local b = s.bomb
-    return b ~= nil and b.kind == napalm_bomb.kind and b.lifecycle ~= "destroy"
+    return b ~= nil and b.kind == napalm_bomb.kind and b.lifecycle ~= Lifecycle.destroy
 end
 
 -- NapalmMan's attack (0x02015BF8's phases).
@@ -197,7 +197,7 @@ local chip: Chip = {
     codes = { "A", "B", "C", "*" },
     element = "null",
     family = "special",
-    class = "special",
+    class = ChipClass.special,
     rarity = 0,
     mb = 5,
     damage = 40,

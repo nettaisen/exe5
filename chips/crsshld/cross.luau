@@ -23,7 +23,7 @@ local CROSS_BUG, CROSS_BUG_ARG = 0xF9, 0
 local function cross_gone(me: Object)
     me.collision:set_region(nil)
     me.visible = false
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080DB314: flying; on a navi, it snaps onto its panel and waits 8 ticks.
@@ -63,7 +63,7 @@ local function cross_done(me: Object)
     me.timer = int.u16(t)
     if t <= 0 then
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -100,7 +100,7 @@ local function cross_init(me: Object)
     me.pos = Vec3.new(me.pos.x, me.pos.y, 0)
     local sprite = me.sprite
     sprite:load(CROSS_SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.anim, me.anim_loaded = 1, 0xFF
     if not me:create_collision() then
         error("CrsShld's cross has no collision: 0x080DB27C goes on through a null pointer")
@@ -115,20 +115,20 @@ local function cross_init(me: Object)
     c.self_damage = 0
     c.bug, c.bug_arg = CROSS_BUG, CROSS_BUG_ARG
     c:present()
-    me.lifecycle = "update"
+    me.lifecycle = Lifecycle.update
     cross_tick(me)
 end
 
 local CROSS = new.kind {
     id = "crsshld/cross",
-    pool = "attack",
+    pool = Pool.attack,
     state = { palette = schema.u8 },
     -- 0x080DB258.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             cross_init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             cross_tick(me)
         else
             me:destroy()

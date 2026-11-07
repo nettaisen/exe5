@@ -113,7 +113,7 @@ local function fly(me: Object)
     me.pos = Vec3.new(p.x, p.y, 0)
     if not field.solid(me.panel_x, me.panel_y) then
         battle.effect(me.pos, effects.puff)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     me.collision:set_region(regions.single)
@@ -164,7 +164,7 @@ local function burst(me: Object)
     if s.count - half ~= 0 then
         burn(me, half + 1, s.count)
     end
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 local ACTIONS = { [0] = fly, [4] = burst }
@@ -178,7 +178,7 @@ local function tick(me: Object)
     if not battle.dimmed() and battle.over() then
         battle.effect(me.pos, effects.puff)
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     if c.hit then
@@ -198,7 +198,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "ground"
+    sprite.shadow = Shadow.ground
     me.visible = true
     me.anim, me.anim_loaded = 1, 1
     sprite:set_animation(1)
@@ -216,13 +216,13 @@ local function init(me: Object)
     c:present()
     marker.spawn(me, s.target_x, s.target_y, FLIGHT, 1, false)
     battle.play_sound(SOUND_LOB)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 bomb.kind = new.kind {
     id = "napalmmn/bomb",
-    pool = "attack",
+    pool = Pool.attack,
     state = {
         gravity = schema.i32,
         lights = schema.bool,
@@ -235,12 +235,12 @@ bomb.kind = new.kind {
     -- 0x080CC490.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

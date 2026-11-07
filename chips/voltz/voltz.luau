@@ -41,7 +41,7 @@ local puff_sprite = asset.sprite("puff")
 -- NameID 0xE4: actor record 0xE4 (0x08014C94: version 5, AI index 0x21); its look (0x0801D6B0's row 0x17: the
 -- sensor, a ground shadow); EXE5's swallowing and Poltergeist leave it (0x0800D372, 0x080E8CA0).
 local IDENTITY = new.identity {
-    class = "field_object",
+    class = IdentityClass.field_object,
     version = 5,
     ai_index = 0x21,
     scrap = false,
@@ -156,7 +156,7 @@ local function shock_tick(me: Object)
     me.timer2 = int.u16(life)
     if life == 0 then
         c:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
     c:present()
 end
@@ -167,7 +167,7 @@ local function shock_init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, 0)
     -- (With no collision slot free the original goes on with none; the engine frees it.)
-    if not setup(me, SHOCK_SPRITE, "with_sprite") then
+    if not setup(me, SHOCK_SPRITE, Shadow.with_sprite) then
         me:free()
         return
     end
@@ -175,23 +175,23 @@ local function shock_init(me: Object)
     local ticks = (me.state :: ShockState).ticks
     me.timer = ticks
     me.timer2 = ticks + SHOCK_EXTRA
-    me:set_lifecycle("update")
+    me:enter_update()
     shock_tick(me)
 end
 
 shock_kind = new.kind {
     id = "voltz/shock",
-    pool = "attack",
+    pool = Pool.attack,
     state = { way = schema.u8, ticks = schema.u8 },
     -- 0x080D8AF0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             shock_init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             shock_tick(me)
         else
             me:destroy()
@@ -211,7 +211,7 @@ local function leave(me: Object)
     me:unreserve_panel(me.panel_x, me.panel_y)
     obstacle.release_tracking(me)
     obstacle.unregister(me)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080D87D4: it drops 4 pixels a tick, its collision on its panel (and the panel reserved) from 16 pixels up;
@@ -323,7 +323,7 @@ local function init(me: Object)
     local p = me.pos
     me.pos = Vec3.new(p.x, p.y, DROP_HEIGHT)
     -- (With no collision slot free the original goes on with none; the engine frees it.)
-    if not setup(me, SPRITE, "ground") then
+    if not setup(me, SPRITE, Shadow.ground) then
         obstacle.unregister(me)
         me:free()
         return
@@ -337,23 +337,23 @@ local function init(me: Object)
     me.collision:set_hit_effect(sparks.of_element(me.element))
     battle.play_sound(DROP_SOUND)
     marker.spawn(me, me.panel_x, me.panel_y, MARK_TICKS, 1, false)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 voltz.kind = new.kind {
     id = "voltz/sensor",
-    pool = "attack",
+    pool = Pool.attack,
     state = { palette = schema.u8, shock_ticks = schema.u8 },
     -- 0x080D86E8.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
             if not me.active then
                 return
             end
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()
@@ -378,7 +378,7 @@ local function spawn(user: Object, x: number, y: number, spec: InstantChipSpec, 
         o.element = spec.element
         o.damage_word = spec.damage
         o.alliance, o.flip = user.alliance, user.flip
-        obstacle.register(o, o.alliance, "one_a_side")
+        obstacle.register(o, o.alliance, ObstacleClass.one_a_side)
     end
     return o
 end

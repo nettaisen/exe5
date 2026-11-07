@@ -79,7 +79,7 @@ local function after(me: Object)
     if party_support.countdown(me, AFTER_TICKS) then
         local cannon = (me.state :: State).held
         if cannon then
-            cannon:set_lifecycle("destroy")
+            cannon:enter_destroy()
         end
         me.anim = 0
         party_support.go(me, party_support.WARP)

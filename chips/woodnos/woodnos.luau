@@ -63,7 +63,7 @@ local function geyser_fade(me: Object)
     local t = me.timer - 1
     me.timer = int.u16(t)
     if t <= 0 then
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -82,11 +82,11 @@ end
 -- back; its look (sheet 10-21, no shadow); the sound.
 local GEYSER = new.kind {
     id = "woodnos/geyser",
-    pool = "attack",
+    pool = Pool.attack,
     -- 0x080DB124.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             local facing = me.facing
             me.panel_x = if facing > 0 then 6 else 1
             me:set_coordinates_from_panel()
@@ -96,14 +96,14 @@ local GEYSER = new.kind {
             local sprite = me.sprite
             sprite:load(GEYSER_SPRITE)
             -- (0x0801892E with a shadow byte of 0: `sprite_noShadow`, the first part drawn with the sprite.)
-            sprite.shadow = "with_sprite"
+            sprite.shadow = Shadow.with_sprite
             me.anim, me.anim_loaded = 0, 0xFF
             sprite:face(me)
             me.visible = true
             battle.play_sound(GEYSER_SOUND)
-            me.lifecycle = "update"
+            me.lifecycle = Lifecycle.update
             geyser_tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             geyser_tick(me)
         else
             me:destroy()
@@ -168,7 +168,7 @@ end
 
 local function wave_gone(me: Object)
     me.collision:set_region(nil)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080DB048: rolling; a hit ends it; past the edge, the geysers.
@@ -204,18 +204,18 @@ end
 -- sound.
 local WAVE = new.kind {
     id = "woodnos/wave",
-    pool = "attack",
+    pool = Pool.attack,
     state = { damage = schema.u32 },
     -- 0x080DAFC4.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             (me.state :: WaveState).damage = me.damage_word
             me.damage_word = damage_word.with_damage(me.damage_word, WAVE_DAMAGE)
             me:set_coordinates_from_panel()
             local sprite = me.sprite
             sprite:load(WAVE_SPRITE)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             me.anim, me.anim_loaded = 0, 0xFF
             if not me:create_collision() then
                 error("WoodNos's wave has no collision: 0x080DAFE8 goes on through a null pointer")
@@ -226,9 +226,9 @@ local WAVE = new.kind {
             me.collision:set_hit_effect(sparks.of_element(me.element))
             me.vel = Vec3.new(me.facing * WAVE_SPEED, me.vel.y, me.vel.z)
             battle.play_sound(WAVE_SOUND)
-            me.lifecycle = "update"
+            me.lifecycle = Lifecycle.update
             wave_tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             wave_tick(me)
         else
             me:destroy()

@@ -120,7 +120,7 @@ function stepsword.start(me: Object, s: State, moving: boolean)
         facing = me.facing_side,
         color_shader = AFTERIMAGE_SHADER,
         lifetime = 0x14,
-        shadow = "ground",
+        shadow = Shadow.ground,
     })
     me.panel_x, me.panel_y = x :: number, y :: number
     me:set_coordinates_from_panel()
@@ -137,7 +137,7 @@ function stepsword.afterimage(me: Object, anim: number)
         facing = me.facing_side,
         color_shader = AFTERIMAGE_SHADER,
         lifetime = 0x1E,
-        shadow = "ground",
+        shadow = Shadow.ground,
     })
 end
 

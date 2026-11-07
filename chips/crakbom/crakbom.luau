@@ -44,7 +44,7 @@ end
 -- A puff where it is, and gone.
 local function puff(me: Object)
     battle.effect(me.pos, PUFF)
-    me:set_lifecycle("destroy")
+    me:enter_destroy()
 end
 
 -- 0x080C9354: the landing: a burst on each panel of the column, the column's hit; CrakBom's cracks the column
@@ -120,7 +120,7 @@ local function tick(me: Object)
         fly(me, me.state :: State)
     elseif a == 4 then
         -- 0x080C9330.
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     else
         error(string.format("CrakBom's bomb action %#x reads past its table", a))
     end
@@ -128,25 +128,25 @@ end
 
 crakbom.kind = new.kind {
     id = "crakbom/bomb",
-    pool = "attack",
+    pool = Pool.attack,
     state = { variant = CRAKBOM_VARIANT, ticks = schema.u8, target_x = schema.u8, target_y = schema.u8 },
     -- 0x080C91A4.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x080C91C8.
             local sprite = me.sprite
             sprite:load(SPRITE)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             me.visible = true
             me.anim, me.anim_loaded = ANIM, ANIM
             sprite:set_animation(ANIM)
             sprite.palette = 0
             sprite:face(me)
             me:set_panel_from_coordinates()
-            me:set_lifecycle("update")
+            me:enter_update()
             tick(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

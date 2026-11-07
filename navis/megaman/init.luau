@@ -75,10 +75,10 @@ local navi: NaviDef = {
         end
     end,
     identity = new.identity {
-        class = "player",
+        class = IdentityClass.player,
         changes_form = true,
         version = 0,
-        actor_type = "player",
+        actor_type = ActorType.player,
         ai_index = 0,
         -- The Full Synchro aura's animation: its owner's AI index (the aura's start, 0x080C4608).
         aura_anim = 0,

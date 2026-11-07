@@ -12,7 +12,7 @@ local sight_sprite = asset.sprite("sight")
 
 return common.make {
     id = "magnum/gunner",
-    pool = "actor",
+    pool = Pool.actor,
     wear = stand_in.overlay,
     step_sound = asset.sound("erase-man"),
     shot = asset.sound("hockey-puck"),

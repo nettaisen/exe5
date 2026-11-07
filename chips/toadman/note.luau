@@ -44,7 +44,7 @@ local function live(me: Object)
     me.timer = t
     if t == 0 then
         me.collision:set_region(nil)
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
     end
 end
 
@@ -56,7 +56,7 @@ local function tick(me: Object)
     if c.hit or not field.valid(me.panel_x, me.panel_y) or battle.over() then
         c:set_region(nil)
         me.visible = false
-        me:set_lifecycle("destroy")
+        me:enter_destroy()
         return
     end
     local a = me.action
@@ -77,7 +77,7 @@ local function init(me: Object)
     local s = me.state :: State
     local sprite = me.sprite
     sprite:load(SPRITE)
-    sprite.shadow = "with_sprite"
+    sprite.shadow = Shadow.with_sprite
     me.anim, me.anim_loaded = 0, 0xFF
     if not me:create_collision() then
         error("ToadMan's note: no collision slot (0x080D66C4 writes through a null pointer)")
@@ -100,20 +100,20 @@ local function init(me: Object)
     c:present()
     -- (0x08002DBE: its sprite unflipped after all.)
     sprite:face_side(0)
-    me:set_lifecycle("update")
+    me:enter_update()
     tick(me)
 end
 
 note.kind = new.kind {
     id = "toadman/note",
-    pool = "attack",
+    pool = Pool.attack,
     state = { target = schema.object, next_y = schema.u8, life = schema.u8, delay = schema.u8, dimmed = schema.bool },
     -- 0x080D66A0.
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             init(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             tick(me)
         else
             me:destroy()

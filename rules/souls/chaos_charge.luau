@@ -97,7 +97,7 @@ function chaos_charge.navi_tick(side: number, navi: Object)
         return
     end
     local s = rules.state() :: State
-    if navi.charge_source ~= "b" or navi.charge_level ~= "full" then
+    if navi.charge_source ~= ChargeSource.b or navi.charge_level ~= ChargeLevel.full then
         s.chaos_counter = 0
         return
     end
@@ -125,7 +125,7 @@ function chaos_charge.release_taken(side: number, navi: Object)
     local s = rules.state() :: State
     if not s.chaos_success then
         navi.navi_flags.uninterruptible = true
-        navi:set_attack(chaos.failure, "misfire")
+        navi:set_attack(chaos.failure, AttackKind.misfire)
         return
     end
     s.chaos_level = math.min(s.chaos_level + 1, 4)
@@ -136,7 +136,7 @@ function chaos_charge.release_taken(side: number, navi: Object)
     if soul == nil then
         error("the soul has no chaos weapon: its routine 0xFF reads past the weapon routines' table")
     end
-    navi:start_weapon(soul.weapon, "unspent_chip")
+    navi:start_weapon(soul.weapon, AttackKind.unspent_chip)
 end
 
 return chaos_charge

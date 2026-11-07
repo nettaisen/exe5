@@ -20,7 +20,7 @@ local chip: Chip = {
     codes = { "A", "L", "V", "*" },
     element = "null",
     family = "summon",
-    class = "standard",
+    class = ChipClass.standard,
     rarity = 1,
     mb = 20,
     damage = 0,
@@ -31,7 +31,7 @@ local chip: Chip = {
     -- EXE5's row 2; its identity the actor record 0xDF (0x08014C94: version 0, AI index 0x21).
     dimming = exe5_instrument.hook(instrument.instrument {
         identity = new.identity {
-            class = "field_object",
+            class = IdentityClass.field_object,
             version = 0,
             ai_index = 0x21,
             look = { sprite = SPRITE, anim = 0, palette = 4, shadow = true },

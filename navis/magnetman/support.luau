@@ -109,7 +109,7 @@ local function update(me: Object)
             -- (0x021FF878: the arm put away.)
             local held = (me.state :: ActorState).held
             if held then
-                held:set_lifecycle("destroy")
+                held:enter_destroy()
             end
         end
         if countdown(me, 0x14) then
@@ -128,7 +128,7 @@ local function update(me: Object)
         end
     elseif a == LEAD_OUT then
         if countdown(me, 4) then
-            me:set_lifecycle("destroy")
+            me:enter_destroy()
         end
     else
         error(string.format("Mag-Barr's MagnetMan: action %#x reads past its table (0x02227244)", a))
@@ -138,24 +138,24 @@ end
 
 support.actor = new.kind {
     id = "magnetman/support",
-    pool = "actor",
+    pool = Pool.actor,
     state = { controller = schema.object, held = schema.object },
     update = function(me: Object)
         local l = me.lifecycle
-        if l == "init" then
+        if l == Lifecycle.init then
             -- 0x021FF6F0: on the navi's panel, 10 pixels behind it and 10 up, MagnetMan's sprite, his shadow.
             me:set_coordinates_from_panel()
             local p = me.pos
             me.pos = Vec3.new(p.x - me.facing * 0xA_0000, p.y - 0xA_0000, 0)
             local sprite = me.sprite
             sprite:load(magnetman.sprite)
-            sprite.shadow = "ground"
+            sprite.shadow = Shadow.ground
             me.anim, me.anim_loaded = 0, 0
             sprite:set_animation(0)
             sprite:face(me)
-            me:set_lifecycle("update")
+            me:enter_update()
             update(me)
-        elseif l == "update" then
+        elseif l == Lifecycle.update then
             update(me)
         else
             -- 0x021FF8F8: his controller's word for him cleared.
@@ -189,7 +189,7 @@ function support.low_hp(side: number, navi: Object): boolean
         return false
     end
     local stats = battle.navi(side)
-    if stats.navi == magnetman or navi.collision.barrier ~= "none" or navi.hp >= stats.hp then
+    if stats.navi == magnetman or navi.collision.barrier ~= BarrierState.none or navi.hp >= stats.hp then
         return false
     end
     if party.mag_barr_spent(side) then

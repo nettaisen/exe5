@@ -14,6 +14,7 @@
 local collision = require("../../rules/collision")
 local navi_chips = require("@exelib/navi_chips/navi")
 local panels = require("@exelib/panels")
+local regions = require("@exelib/regions")
 local statuses = require("../../rules/status")
 
 local bignoise = {}
@@ -23,10 +24,8 @@ local navi_left = require("@exelib/navi_chips/left")
 
 -- ---- The noise ------------------------------------------------------------------------------------------------------
 
--- Region 0x1B (the region table's row: the deep fan and a column more).
-local THREE_COLUMNS = new.region {
-    panels = { { 0, 0 }, { 1, -1 }, { 1, 0 }, { 1, 1 }, { 2, -1 }, { 2, 0 }, { 2, 1 }, { 3, -1 }, { 3, 0 }, { 3, 1 } },
-}
+-- Region 0x1B (the deep fan and a column more).
+local THREE_COLUMNS = regions.fan_4
 local SOUND = asset.sound("elec-pulse")
 local TICKS, AHEAD = 60, 40
 

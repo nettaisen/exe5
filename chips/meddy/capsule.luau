@@ -51,7 +51,7 @@ end
 capsule.plain = capsule.variant { palette = 0, hit_mod = { flinch = true, flash = true }, status = nil, explosion = BLOW_UP }
 -- Its lines: its column (0) and its row (1).
 capsule.column = line { region = regions.wide, panels = { { 0, 0 }, { 0, 1 }, { 0, -1 } }, style = 4, anim = 0 }
-capsule.row = line { region = regions.region_1d, panels = { { 0, 0 }, { -1, 0 }, { 1, 0 } }, style = 0x1D, anim = 1 }
+capsule.row = line { region = regions.across, panels = { { 0, 0 }, { -1, 0 }, { 1, 0 } }, style = 0x1D, anim = 1 }
 -- The other side's bodies (its navi's among them), other bodies or neutral objects among what hit it (0x080C60A8), and
 -- an enemy navi's body on a panel (0x080C61B0).
 local NAVI_HIT: HitNames = { enemy_body = true, enemy_other_body = true, neutral = true }

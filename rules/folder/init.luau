@@ -1,8 +1,8 @@
 --!strict
 -- EXE5's folder rules, as its folder editor enforces them and a link battle checks them again before it starts: a
--- tool's questions (`folder_check`, `folder_view`, `validate`: a match's checks, netplay's offer, the build screens),
--- never the simulation's. The rules every game of the series shares are @exelib/folder_rules; these are EXE5's own.
--- Team ProtoMan US's addresses; Team Colonel's routines are the same code, and so is its table of copies.
+-- tool's questions (`folder_check`, `folder_view`, `validate`, `build_check`: a match's checks, netplay's offer, the
+-- build screens), never the simulation's. The rules every game of the series shares are @exelib/folder_rules; these are
+-- EXE5's own. Team ProtoMan US's addresses; Team Colonel's routines are the same code, and so is its table of copies.
 --
 -- - A folder is 30 chips (the editor's list of a folder is its 30 entries, 0x081293A4).
 -- - The chips a folder can hold are those a save can collect, which is what its chip pack can list (0x0812956C, which
@@ -60,5 +60,8 @@ return {
     end,
     validate = function(side: number, problem: (p: SetupProblem) -> ())
         folder_rules.validate(RULES, side, rules.setup_of(side), problem)
+    end,
+    build_check = function(side: number, problem: (p: SetupProblem) -> ())
+        folder_rules.build_check(RULES, side, rules.setup_of(side), problem)
     end,
 }

@@ -1,0 +1,113 @@
+--!strict
+-- CannMode, CannBall, SwrdMode, YoYoMode and DrilMode: the cannmode series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local side_special = require("@exelib/instant/side_special")
+
+-- CannMode (EXE5 chip 0x119): one of the Liberation Missions' mode chips: instant chip effect 11 (0x0802D62A, EXE6's
+-- `sub_802E1BE`, @exelib/instant/side_special; the same code) writes its mode (the record's first parameter) and a
+-- 480-tick timer (360 in the operation battle) to the user's side state, which nothing in a battle reads (0x0800E576
+-- counts the timer down), so the chip's use changes nothing observable.
+local cannon_mode: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 4,
+    mb = 10,
+    damage = 40,
+    counter = 20,
+    lockout = 20,
+    flags = {},
+    slot_in_limit = 1,
+    instant = side_special.instant,
+    auto_battle = { class = "at_once" },
+}
+
+-- CannBall (EXE5 chip 0x11a): one of the Liberation Missions' mode chips: instant chip effect 11 (0x0802D62A, EXE6's
+-- `sub_802E1BE`, @exelib/instant/side_special; the same code) writes its mode (the record's first parameter) and a
+-- 480-tick timer (360 in the operation battle) to the user's side state, which nothing in a battle reads (0x0800E576
+-- counts the timer down), so the chip's use changes nothing observable.
+local cannon_ball_mode: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 4,
+    mb = 30,
+    damage = 130,
+    counter = 30,
+    lockout = 20,
+    flags = {},
+    slot_in_limit = 1,
+    instant = side_special.instant,
+    auto_battle = { class = "at_once" },
+}
+
+-- SwrdMode (EXE5 chip 0x11b): one of the Liberation Missions' mode chips: instant chip effect 11 (0x0802D62A, EXE6's
+-- `sub_802E1BE`, @exelib/instant/side_special; the same code) writes its mode (the record's first parameter) and a
+-- 480-tick timer (360 in the operation battle) to the user's side state, which nothing in a battle reads (0x0800E576
+-- counts the timer down), so the chip's use changes nothing observable.
+local sword_mode: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 4,
+    mb = 40,
+    damage = 80,
+    counter = 30,
+    lockout = 20,
+    flags = {},
+    slot_in_limit = 1,
+    instant = side_special.instant,
+    auto_battle = { class = "at_once" },
+}
+
+-- YoYoMode (EXE5 chip 0x11c): one of the Liberation Missions' mode chips: instant chip effect 11 (0x0802D62A, EXE6's
+-- `sub_802E1BE`, @exelib/instant/side_special; the same code) writes its mode (the record's first parameter) and a
+-- 480-tick timer (360 in the operation battle) to the user's side state, which nothing in a battle reads (0x0800E576
+-- counts the timer down), so the chip's use changes nothing observable.
+local yo_yo_mode: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 4,
+    mb = 50,
+    damage = 50,
+    counter = 10,
+    lockout = 20,
+    flags = {},
+    slot_in_limit = 1,
+    instant = side_special.instant,
+    auto_battle = { class = "at_once" },
+}
+
+-- DrilMode (EXE5 chip 0x11d): one of the Liberation Missions' mode chips: instant chip effect 11 (0x0802D62A, EXE6's
+-- `sub_802E1BE`, @exelib/instant/side_special; the same code) writes its mode (the record's first parameter) and a
+-- 480-tick timer (360 in the operation battle) to the user's side state, which nothing in a battle reads (0x0800E576
+-- counts the timer down), so the chip's use changes nothing observable.
+local drill_mode: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 4,
+    mb = 80,
+    damage = 60,
+    counter = 10,
+    lockout = 20,
+    flags = {},
+    slot_in_limit = 1,
+    instant = side_special.instant,
+    auto_battle = { class = "at_once" },
+}
+
+return {
+    cannon_mode = cannon_mode,
+    cannon_ball_mode = cannon_ball_mode,
+    sword_mode = sword_mode,
+    yo_yo_mode = yo_yo_mode,
+    drill_mode = drill_mode,
+}

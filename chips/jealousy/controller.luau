@@ -44,7 +44,7 @@ controller.hook = common.make {
     hits = collision.hits_navis,
     spark = sparks.heavy,
     operation_battle = operation_battle,
-    warning = asset.sound("err-select-91"),
+    warning = asset.sound("err_select_91"),
 }
 
 return controller

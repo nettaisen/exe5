@@ -1,0 +1,52 @@
+--!strict
+-- DarkTorn (EXE5 chip 0x0c5): a dark chip: action 0x22's third form, HP-bug tornadoes spreading back by the side's
+-- statistic 3 (chips/tornado/tornado). Its use costs custom-screen damage (rules/light_dark).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local attachment = require("../objects/attachment")
+local tornado = require("./tornado/tornado")
+local dark_costs = require("../lib/dark_costs")
+local hand_fan_sprite = asset.sprite("hand_fan")
+
+-- Its blow (subtype 3, EXE6's action's third form): HP-bug tornadoes (row 3: bug 0x54, argument 5) spreading back
+-- toward the navi by its side's statistic `reactions` (0x080CAE7E, EXE6's `sub_80CA19E`: the same tables,
+-- `off_80CA1F8`), the charged fan (the attachment table's row 0x17) one palette on.
+local HP_BUG = tornado.variant { palette = 3, rearm = 4, bug = 0x54, bug_arg = 5 }
+local BACK_SPREAD = {
+    [0] = { { 0, 0 } },
+    { { 0, 0 }, { -1, 0 } },
+    { { 0, 0 }, { -1, 0 }, { 0, -1 }, { 0, 1 } },
+    { { 0, 0 }, { -1, 0 }, { 0, -1 }, { 0, 1 }, { 1, 0 } },
+}
+local BLOW = tornado.blow {
+    fan = attachment.look { sprite = hand_fan_sprite, palette = 1, attach_point = 9 },
+    fan_palette = 1,
+    spread = {
+        level = function(me: Object): number
+            return battle.side_stat(me.alliance, "reactions")
+        end,
+        panels = BACK_SPREAD,
+        tornado = { variant = HP_BUG, status = nil, ticks = 0x20 },
+    },
+}
+
+local chip: Chip = {
+    codes = { "T" },
+    element = Element.null,
+    family = Family.wind,
+    class = ChipClass.standard,
+    rarity = 4,
+    mb = 99,
+    damage = 50,
+    counter = 4,
+    cant_counter = true,
+    lockout = 0,
+    flags = { has_damage = true, dark = true },
+    slot_in_limit = 1,
+    action = BLOW,
+    -- What its use costs its user (rules/light_dark).
+    dark_cost = dark_costs.custom_damage,
+    auto_battle = { class = "into_reach", range = "two_ahead" },
+}
+
+return { dark_tornado = chip }

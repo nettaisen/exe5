@@ -2,7 +2,7 @@
 -- EXE5's tornado (attack object 0x31, 0x080CAC60) and its blow (action 0x22, 0x080ECD46): the shared code
 -- (@exelib/tornado: EXE6's) with EXE5's panel variants, collision types and sparks, and EXE5's attachment; its sprite
 -- and sound EXE6's numbers. Each chip states its own blow (`tornado.blow`: its fan, its tornadoes' variant, its spread):
--- Tornado's and Static's (./init), DarkTorn's (chips/darktorn).
+-- Tornado's and Static's (./init), DarkTorn's (chips/dark_tornado).
 --
 -- - The variants (0x080CAD44: palette, re-arm ticks) are EXE6's rows with re-arms of 2 for rows 0, 4, 5 and 6 (EXE6's
 --   4).
@@ -33,7 +33,7 @@ local SEA = variant { palette = 5, rearm = 2 }
 
 tornado.kind = common.make_kind("tornado", {
     sprite = tornado_sprite,
-    sound = asset.sound("aqua-surge"),
+    sound = asset.sound("aqua_surge"),
     panel_variants = {
         lava = LAVA,
         sea = SEA,

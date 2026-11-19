@@ -179,7 +179,7 @@ end
 
 -- Chaos Unison's: two pixels up and on, its shadow dropped (0x08002CBE), wearing nothing.
 local chaos = shade.make {
-    id = "chaos-shade",
+    id = "chaos_shade",
     name = "the chaos shade",
     phases = 0x080C05B8,
     lift = 0x2_0000,

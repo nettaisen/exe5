@@ -30,13 +30,13 @@ export type FlyingShotVariant = {
     speed: number,
 }
 
--- KnightMan's wrecking ball's look (chips/knightmn/ball: its variant, the
+-- KnightMan's wrecking ball's look (chips/knightman/ball: its variant, the
 -- original's fourth parameter): its sprite, its height and its radius; and a
 -- swing of it: how far it turns a tick, its turns, its status and its look.
 export type KnightBallLook = { sprite: SpriteAsset, z: number, radius: number }
 export type KnightBallSwing = { speed: number, turns: number, status: Status?, look: KnightBallLook }
 
--- A bomb of CrakBom's kind (chips/crakbom/crakbom: the original's Param1, its
+-- A bomb of CrakBom's kind (chips/crack_bomb/crack_bomb: the original's Param1, its
 -- kind): its burst on each panel of the column (effects 0x50 to 0x53 by the
 -- kind's low bits) and its landing's sound (0x080C932C), its hit (0x080C93C8:
 -- hit modifier, status, bug), and whether it cracks the column (CrakBom's).
@@ -64,7 +64,7 @@ export type LarkSwoopVariant = {
     commanded: boolean,
 }
 
--- A magnet's variant (chips/magnetmn/magnet: the original's fourth
+-- A magnet's variant (chips/magnetman/magnet: the original's fourth
 -- parameter, 0x080D2DE0 and 0x080D2DEC): its hit modifier and status; whether
 -- it waits for MagnetMan to be done sending (else it goes at once), and
 -- whether it acts and animates while the battle is dimmed.
@@ -136,7 +136,7 @@ export type SoulCustom = {
 -- screen (above); its sword's arm, the blade's animation (lib/swords,
 -- 0x080EC038); its charged sword warping behind the enemy whatever the
 -- charge (lib/stepsword, 0x08012538); VarSwrd's wait for its sequence
--- while A is up (chips/varswrd, 0x080ED570); the cameras' shake as MegaMan
+-- while A is up (chips/variable_sword, 0x080ED570); the cameras' shake as MegaMan
 -- emerges in it (rules/souls/change, 0x0801212C).
 export type Exe5FormFields = {
     -- A soul (rules/souls), named by its form's id: the family of the chips
@@ -202,7 +202,7 @@ export type PartyCustEffect = {
 }
 
 -- A navi's state (the rules' `navi_state`, rules/init: its object's own), which its own code reads and writes:
--- ColonelSoul's arm chip (navis/megaman/forms/colonelsoul), GyroMan's requests to take off and to land
+-- ColonelSoul's arm chip (navis/megaman/forms/colonel_soul), GyroMan's requests to take off and to land
 -- (navis/gyroman/hover), EXE5 DS's KnightMan's guard and ToadMan's dive (navis/knightman/guard, navis/toadman). (A
 -- navi the rules drive keeps its AI's state in it too: rules/auto_battle.)
 export type NaviState = {

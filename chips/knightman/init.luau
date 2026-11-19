@@ -1,0 +1,80 @@
+--!strict
+-- KnightMn, KnigtMnSP and KnigtMnDS: the knightmn series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local navi = require("@self/navi")
+local navi_chips = require("../lib/navi_chips/chip")
+local sp_chips = require("../rules/sp_chips")
+
+-- KnightMn (EXE5 chip 0x0fe): KnightMan cuts in and swings his wrecking ball around himself, confusing what it hits
+-- (./navi).
+local knightman: Chip = {
+    codes = { "K" },
+    element = Element.wood,
+    family = Family["break"],
+    class = ChipClass.mega,
+    rarity = 2,
+    mb = 50,
+    damage = 170,
+    counter = 50,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
+    slot_in_limit = 1,
+    megaman = "light",
+    navi = navi_chips.make {
+        id = "knightman/controller",
+        summon = navi.summon(0),
+    },
+    auto_battle = { class = "into_reach", range = "around" },
+}
+
+-- KnigtMnSP (EXE5 chip 0x0ff): KnightMan cuts in and swings his wrecking ball around himself, confusing what it hits
+-- (../knightman/navi); its damage by how fast its user deleted KnightMan SP (rules/sp_chips: formula 12, its table's row
+-- 11).
+local knightman_sp: Chip = {
+    codes = { "K" },
+    element = Element.null,
+    family = Family["break"],
+    class = ChipClass.mega,
+    rarity = 3,
+    mb = 90,
+    sp = { by_time = { 320, 310, 300, 290, 280, 270, 260, 250, 240, 230, 220 }, operation_battle = 300 },
+    damage = sp_chips.damage,
+    counter = 50,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
+    slot_in_limit = 1,
+    megaman = "light",
+    navi = navi_chips.make {
+        id = "knightman_sp/controller",
+        summon = navi.summon(0),
+    },
+    auto_battle = { class = "into_reach", range = "around" },
+}
+
+-- KnigtMnDS (EXE5 chip 0x100): KnightMan, dark, cuts in and swings his wrecking ball around himself, confusing what it
+-- hits (../knightman/navi); its damage by its user's side's statistic 3 (formula 34, its table's row 11).
+local knightman_ds: Chip = {
+    codes = { "K" },
+    element = Element.null,
+    family = Family["break"],
+    class = ChipClass.mega,
+    rarity = 3,
+    mb = 90,
+    damage = { formula = Formula.count, of = { side_stat = "reactions" }, by_count = { 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320 }, operation_battle = 250 },
+    counter = 50,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, damage_shown_variable = true, library = true, variable_damage = true },
+    slot_in_limit = 1,
+    megaman = "dark",
+    navi = navi_chips.make {
+        id = "knightman_ds/controller",
+        summon = navi.summon(3),
+    },
+    auto_battle = { class = "into_reach", range = "around" },
+}
+
+return { knightman = knightman, knightman_sp = knightman_sp, knightman_ds = knightman_ds }

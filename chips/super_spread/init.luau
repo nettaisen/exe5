@@ -1,0 +1,98 @@
+--!strict
+-- SuprSpr1, SuprSpr2 and SuprSpr3: the suprspr series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local recipe_wideblde = require("./wide_blade").wide_blade
+local recipe_widesht1 = require("./wide_shot").wide_shot_1
+local recipe_widesht2 = require("./wide_shot").wide_shot_2
+local recipe_widesht3 = require("./wide_shot").wide_shot_3
+local recipe_wideswrd = require("./wide_sword").wide_sword
+local wide_shot = require("./wide_shot/wave")
+
+-- Their waves, which go through: SuprSpr1's (kind 6), SuprSpr2's (kind 7) and SuprSpr3's (kind 8), each faster.
+local WAVE1 = wide_shot.wide(0x6_0000, true)
+local WAVE2 = wide_shot.wide(0x6_8000, true)
+local WAVE3 = wide_shot.wide(0x7_0000, true)
+
+-- SuprSpr1 (EXE5 chip 0x149): the Program Advance of WideSht1, WideSht1 and WideSht1 with one code: the navi raises its
+-- wide shooter and sends three waves over a column of three, 14 ticks apart, that go through what they hit, the last
+-- staggering harder: the shared WideSht's (@exelib/wide_shot, EXE5's action 0x25 with subtype 1) three waves, at the
+-- floor, of EXE5's wave kind 6 (chips/wide_shot: the record's parameters).
+local super_spread_1: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.aqua,
+    family = Family.program_advance,
+    class = ChipClass.program_advance,
+    rarity = 0,
+    mb = 5,
+    damage = 100,
+    counter = 10,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 1,
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
+    -- gauge tries.
+    program_advances = {
+        { order = 3, sequence = { recipe_wideswrd, recipe_wideblde, recipe_widesht1 }, operation_battle_only = true },
+        { order = 39, code_run = { chip = recipe_widesht1, count = 3 } },
+    },
+    action = wide_shot.action { wave = WAVE1, waves = 3, z = 0 },
+    auto_battle = { class = "at_once" },
+}
+
+-- SuprSpr2 (EXE5 chip 0x14a): the Program Advance of WideSht2, WideSht2 and WideSht2 with one code: the navi raises its
+-- wide shooter and sends three waves over a column of three, 14 ticks apart, that go through what they hit, the last
+-- staggering harder: the shared WideSht's (@exelib/wide_shot, EXE5's action 0x25 with subtype 1) three waves, at the
+-- floor, of EXE5's wave kind 7 (chips/wide_shot: the record's parameters).
+local super_spread_2: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.aqua,
+    family = Family.program_advance,
+    class = ChipClass.program_advance,
+    rarity = 0,
+    mb = 5,
+    damage = 120,
+    counter = 10,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 1,
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
+    -- gauge tries.
+    program_advances = {
+        { order = 4, sequence = { recipe_wideswrd, recipe_wideblde, recipe_widesht2 }, operation_battle_only = true },
+        { order = 40, code_run = { chip = recipe_widesht2, count = 3 } },
+    },
+    action = wide_shot.action { wave = WAVE2, waves = 3, z = 0 },
+    auto_battle = { class = "at_once" },
+}
+
+-- SuprSpr3 (EXE5 chip 0x14b): the Program Advance of WideSht3, WideSht3 and WideSht3 with one code: the navi raises its
+-- wide shooter and sends three waves over a column of three, 14 ticks apart, that go through what they hit, the last
+-- staggering harder: the shared WideSht's (@exelib/wide_shot, EXE5's action 0x25 with subtype 1) three waves, at the
+-- floor, of EXE5's wave kind 8 (chips/wide_shot: the record's parameters).
+local super_spread_3: Chip = {
+    codes = { "A", "B", "C", "*" },
+    element = Element.aqua,
+    family = Family.program_advance,
+    class = ChipClass.program_advance,
+    rarity = 0,
+    mb = 5,
+    damage = 140,
+    counter = 10,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 1,
+    -- EXE5's recipes (written by tools/exe5/recipes.py): in the order of its full table (0x08027FC8); the netbattles'
+    -- table (0x0802801C) is that table but for its first 21, which only a battle with each side keeping its own
+    -- gauge tries.
+    program_advances = {
+        { order = 5, sequence = { recipe_wideswrd, recipe_wideblde, recipe_widesht3 }, operation_battle_only = true },
+        { order = 41, code_run = { chip = recipe_widesht3, count = 3 } },
+    },
+    action = wide_shot.action { wave = WAVE3, waves = 3, z = 0 },
+    auto_battle = { class = "at_once" },
+}
+
+return { super_spread_1 = super_spread_1, super_spread_2 = super_spread_2, super_spread_3 = super_spread_3 }

@@ -26,7 +26,7 @@ local SHOTS = 3
 local SHOT_Z = 0x18_0000
 -- The rest after each shot, in ticks.
 local REST = 2
-local SOUND = asset.sound("buster-shot")
+local SOUND = asset.sound("buster_shot")
 
 -- The phases, on the attack's step.
 local START, SHOOT, RECOVER = 0x0, 0x4, 0x8
@@ -100,7 +100,7 @@ local function update(me: Object, s: State)
     end
 end
 
-buster.action = new.action { id = "auto-battle/buster", state = { timer = schema.u16 }, update = update }
+buster.action = new.action { id = "auto_battle/buster", state = { timer = schema.u16 }, update = update }
 
 -- 0x0800FB06: Attack plus one, no counter byte.
 function buster.setup(navi: Object): Action

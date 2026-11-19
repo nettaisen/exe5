@@ -1,0 +1,51 @@
+--!strict
+-- CopyDmg (EXE5 chip 0x094): EXE5's action 0x24 (0x080ECEFE), EXE6's CopyDmg (@exelib/copy_damage/action, its mark
+-- @exelib/copy_damage/mark in EXE5's look): the navi raises its buster and fires its mark along its row; the first navi it
+-- hits takes, for 180 ticks, the damage its side took the tick before on top of its own (in the operation battle
+-- mode the mark also hits its panel for 50 each tick). Its subtype 0 (0x080ECF78's table: subtype 1 a sword wave,
+-- attack 0x96, which no chip sends).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local action = require("@exelib/copy_damage/action")
+local arm = require("../lib/arm")
+local collision = require("../rules/collision")
+local common_mark = require("@exelib/copy_damage/mark")
+local sparks = require("../lib/sparks")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
+
+-- The mark (EXE5's attack object #0x28, 0x080C9A6C).
+local mark = common_mark.make {
+    id = "copy_damage/mark",
+    sprite = hit_sparks_sprite,
+    anim = 0x0B,
+    sound = asset.sound("mark"),
+    is = collision.attack,
+    hits = collision.hits_navis,
+    ticks = 180,
+    over_navi = "attach_point",
+    reload_anim = true,
+    own_gauges_hit = { spark = sparks.plain, is = collision.attack, hits = collision.hits_navis },
+}
+
+local chip: Chip = {
+    codes = { "*" },
+    element = Element.null,
+    family = Family.cursor,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 12,
+    damage = 0,
+    counter = 0,
+    lockout = 0,
+    flags = { standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
+    slot_in_limit = 3,
+    action = action.make {
+        sound = asset.sound("buster_shot"),
+        raise_arm = arm.raise,
+        shot = mark.spawn,
+    },
+    auto_battle = { class = "into_reach", range = "ahead_in_row" },
+}
+
+return { copy_damage = chip }

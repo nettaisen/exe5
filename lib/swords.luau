@@ -12,7 +12,7 @@
 -- 9 going through (EXE6's 0xB), else by its whole element byte (EXE6's its primary element) from 0x080D0EF4, an EXE5
 -- slash.
 
-local antiswrd = require("@exelib/antiswrd/counter")
+local anti_sword = require("@exelib/anti_sword/counter")
 local attachment = require("../objects/attachment")
 local collision = require("../rules/collision")
 local parts = require("@exelib/swords/parts")
@@ -40,7 +40,7 @@ function swords.blade_anim(me: Object): number
     return 0
 end
 
-local SLASH = asset.sprite("sword-slash")
+local SLASH = asset.sprite("sword_slash")
 local sword_sprite = asset.sprite("sword")
 
 -- The blade the swords hold (the attachment table's row 3) and the swings' sounds, which they share. (Each sword
@@ -66,9 +66,9 @@ local function hold_in_related(me: Object, _blade: AttachmentLook, anim: number)
     parts.hold(attachment.kind, me, swords.held_blade(me), parts.blade_palette(me), anim)
 end
 swords.slashes_navis = { is = collision.slash, hits = collision.hits_navis }
-swords.swing = asset.sound("sword-swing")
-swords.big_swing = asset.sound("big-sword-swing")
-swords.sonic_boom = sonic_boom.make_kind("sonic-boom", {
+swords.swing = asset.sound("sword_swing")
+swords.big_swing = asset.sound("big_sword_swing")
+swords.sonic_boom = sonic_boom.make_kind("sonic_boom", {
     sprite = SLASH,
     z = 0,
     piercing_palette = 9,
@@ -98,18 +98,18 @@ function swords.slash(spec: SlashSpec): Action
     return slash.action(spec, attachment.kind, { steps = STEPS, hold = hold_in_related, warp_out_steps = swords.warp_out_steps })
 end
 
--- AntiSwrd's counter (the original's navi action 0x48: @exelib/antiswrd/counter) with EXE5's blade and booms; its
+-- AntiSwrd's counter (the original's navi action 0x48: @exelib/anti_sword/counter) with EXE5's blade and booms; its
 -- sounds EXE6's. The rules start it by role (`actions.anti_sword_counter`, rules/roles.luau). It holds the held blade
 -- in EXE5's blade animation (EXE5's action 0x2D, 0x080EDB26 and 0x080EDB2C: 0x080EC082 and 0x080EC038).
-swords.anti_sword_counter = antiswrd.action_with {
-    id = "antiswrd/counter",
+swords.anti_sword_counter = anti_sword.action_with {
+    id = "anti_sword/counter",
     blade = swords.blade,
     hold = function(me: Object, _blade: AttachmentLook)
         parts.hold(attachment.kind, me, swords.held_blade(me), 0, swords.blade_anim(me))
     end,
     boom = swords.sonic_boom,
-    start_sound = asset.sound("log-in"),
-    swing_sound = asset.sound("sword-swing"),
+    start_sound = asset.sound("log_in"),
+    swing_sound = asset.sound("sword_swing"),
     attachment = attachment.kind,
     -- (EXE5's: no invulnerability, nothing restarted at its swings.)
     plain = true,

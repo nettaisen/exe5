@@ -10,7 +10,7 @@ local card: PatchCard = {
         cards.bug(cards.attack(-1)),
         cards.bug(cards.rapid(-1)),
         cards.bug(cards.charge(-1)),
-        cards.charged_shot(chips.longswrd),
+        cards.charged_shot(chips.long_sword),
     },
 }
 

@@ -12,8 +12,8 @@ local regions = require("@exelib/regions")
 
 local bomb = {}
 
-local SPRITE = asset.sprite("gyro-bomb")
-local SOUND_BURST = asset.sound("hit-bomb-1")
+local SPRITE = asset.sprite("gyro_bomb")
+local SOUND_BURST = asset.sound("hit_bomb_1")
 -- Its height, and how far it falls a tick (0x080C7D1C and 0x080C7D0C, by its variant: 1's and 2's).
 local HEIGHT, FALL = 0x28_0000, 0x6_0000
 -- How long it hits.

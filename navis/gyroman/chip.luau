@@ -18,7 +18,7 @@ local regions = require("@exelib/regions")
 
 -- His flight (the chips' GyroMan's object with its fourth parameter 1): from the take-off, no bombing run, standing
 -- still while the battle is dimmed.
-local FLIGHT = flight.make { id = "gyroman/airforce", appears = false, runs = false, while_dimmed = false }
+local FLIGHT = flight.make { id = "gyroman/gyro_air_force", appears = false, runs = false, while_dimmed = false }
 
 export type State = {
     -- AIAttackVars +0x10: the step's ticks left.
@@ -119,4 +119,4 @@ local chip: Chip = {
     action = action,
 }
 
-return { airforce = chip }
+return { gyro_air_force = chip }

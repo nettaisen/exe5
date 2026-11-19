@@ -4,4 +4,4 @@
 # (141, the navis') and the two against NebulaGray (../compat/assets.toml). Their names are the locales'
 # (`battle_themes`, by asset name). Presentation, read with the locales: no tick reads them, so the content hash
 # leaves them out.
-themes = ["virus-battle", "boss-battle", "final-battle"]
+themes = ["virus_battle", "boss_battle", "final_battle"]

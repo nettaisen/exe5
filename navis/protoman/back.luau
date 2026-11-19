@@ -3,10 +3,10 @@
 -- 0x1F, lib/guard) as the NaviCust Reflect program's (subtype 4: a hit it guards from the front is fired back as the
 -- charged shot's projectile, 20 pixels up), for 20 ticks in the Reflect program's look (its params word, 0x114: the
 -- ticks, then the look's row), with the damage his stats give (NaviStats +0x48: his fresh stats' 50); his chips wait 40
--- ticks after it. ProtoSoul's (navis/megaman/forms/protosoul/back) is the same guard with a damage of its own.
+-- ticks after it. ProtoSoul's (navis/megaman/forms/proto_soul/back) is the same guard with a damage of its own.
 
 local guard = require("../../lib/guard")
-local reflector_shield_sprite = asset.sprite("reflector-shield")
+local reflector_shield_sprite = asset.sprite("reflector_shield")
 
 local back = {}
 

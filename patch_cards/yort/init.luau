@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 17,
     effects = {
         cards.hp(30),
-        cards.charged_shot(chips.yoyo),
+        cards.charged_shot(chips.yo_yo),
         cards.bug(cards.back_special(nil)),
     },
 }

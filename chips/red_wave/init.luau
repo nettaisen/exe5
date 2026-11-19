@@ -1,0 +1,26 @@
+--!strict
+-- RedWave (EXE5 chip 0x0ad): in each row, the first lava panel from the user's back column starts a wave toward the
+-- other side, and turns Normal; past the field, the waves raise geysers under the other side's navis: EXE5's own
+-- (chips/wave_pit/wave_pit).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local wave_pit = require("./wave_pit/wave_pit")
+
+local chip: Chip = {
+    codes = { "A", "F", "H" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 48,
+    damage = 190,
+    counter = 30,
+    lockout = 20,
+    flags = { has_damage = true, library = true, variable_damage = true },
+    slot_in_limit = 3,
+    -- Its pit (row 1 of 0x080DAFA0): a lava panel (flag 0x1000), which turns Normal; the wave in palette 1.
+    instant = wave_pit.instant { panel = { lava = true }, mends = true, palette = 1 },
+    auto_battle = { class = "when_any_lava" },
+}
+
+return { red_wave = chip }

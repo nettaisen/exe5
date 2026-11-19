@@ -1,0 +1,81 @@
+--!strict
+-- SerchMan, SerchMnSP and SerchMnDS: the serchman series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local navi = require("@self/navi")
+local navi_chips = require("../lib/navi_chips/chip")
+local sp_chips = require("../rules/sp_chips")
+
+-- SerchMan (EXE5 chip 0x0e6): SearchMan cuts in, his scope sweeps the enemy area until it locks on, and he fires five
+-- shots on the panel (./navi).
+local searchman: Chip = {
+    codes = { "S" },
+    element = Element.null,
+    family = Family.cursor,
+    class = ChipClass.mega,
+    rarity = 2,
+    mb = 42,
+    damage = 20,
+    counter = 5,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
+    slot_in_limit = 1,
+    megaman = "light",
+    navi = navi_chips.make {
+        id = "searchman/controller",
+        summon = navi.summon { palette = 0, sweep = 6 },
+    },
+    auto_battle = { class = "at_once" },
+}
+
+-- SerchMnSP (EXE5 chip 0x0e7): SearchMan cuts in, his scope sweeps the enemy area until it locks on, and he fires five
+-- shots on the panel (../searchman/navi); its damage by how fast its user deleted SearchMan SP (rules/sp_chips:
+-- formula 4, its table's row 3).
+local searchman_sp: Chip = {
+    codes = { "S" },
+    element = Element.null,
+    family = Family.cursor,
+    class = ChipClass.mega,
+    rarity = 3,
+    mb = 72,
+    sp = { by_time = { 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25 }, operation_battle = 45 },
+    damage = sp_chips.damage,
+    counter = 5,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
+    slot_in_limit = 1,
+    megaman = "light",
+    navi = navi_chips.make {
+        id = "searchman_sp/controller",
+        summon = navi.summon { palette = 2, sweep = 4 },
+    },
+    auto_battle = { class = "at_once" },
+}
+
+-- SerchMnDS (EXE5 chip 0x0e8): SearchMan, dark, cuts in, his scope sweeps the enemy area until it locks on, and he fires
+-- five shots on the panel (../searchman/navi); its damage by its user's side's statistic 3 (formula 26, its table's
+-- row 3).
+local searchman_ds: Chip = {
+    codes = { "S" },
+    element = Element.null,
+    family = Family.cursor,
+    class = ChipClass.mega,
+    rarity = 3,
+    mb = 72,
+    damage = { formula = Formula.count, of = { side_stat = "reactions" }, by_count = { 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75 }, operation_battle = 35 },
+    counter = 5,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, damage_shown_variable = true, library = true, variable_damage = true },
+    slot_in_limit = 1,
+    megaman = "dark",
+    navi = navi_chips.make {
+        id = "searchman_ds/controller",
+        summon = navi.summon { palette = 3, sweep = 4 },
+    },
+    auto_battle = { class = "at_once" },
+}
+
+return { searchman = searchman, searchman_sp = searchman_sp, searchman_ds = searchman_ds }

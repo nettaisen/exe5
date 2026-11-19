@@ -71,7 +71,7 @@ local function leave(me: Object, s: LeaveState)
 end
 
 auto_battle.leave = new.action {
-    id = "auto-battle/leave",
+    id = "auto_battle/leave",
     state = { timer = schema.u16 },
     update = leave,
 }

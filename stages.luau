@@ -12,40 +12,40 @@ local rock = require("./objects/rock")
 local P = PanelType
 
 local stages: { [string]: StageDef } = {
-    ["netbattle-1"] = {
+    netbattle_1 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-2"] = {
+    netbattle_2 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-3"] = {
+    netbattle_3 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -56,14 +56,14 @@ local stages: { [string]: StageDef } = {
             { place = rock.kind, variant = rock.variants.cube, x = 5, y = 2 },
         },
     },
-    ["netbattle-4"] = {
+    netbattle_4 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -74,144 +74,144 @@ local stages: { [string]: StageDef } = {
             { place = rock.kind, variant = rock.variants.cube, x = 2, y = 2 },
         },
     },
-    ["netbattle-5"] = {
+    netbattle_5 = {
         layout = {
             { P.normal, P.cracked, P.cracked, P.cracked, P.cracked, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-6"] = {
+    netbattle_6 = {
         layout = {
             { P.normal, P.cracked, P.cracked, P.cracked, P.cracked, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-7"] = {
+    netbattle_7 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 1 }, { place = Place.navi, side = 1, x = 5, y = 1 } },
     },
-    ["netbattle-8"] = {
+    netbattle_8 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 1 }, { place = Place.navi, side = 0, x = 2, y = 1 } },
     },
-    ["netbattle-9"] = {
+    netbattle_9 = {
         layout = {
             { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-10"] = {
+    netbattle_10 = {
         layout = {
             { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.cracked, P.cracked, P.normal, P.normal, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-11"] = {
+    netbattle_11 = {
         layout = {
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-12"] = {
+    netbattle_12 = {
         layout = {
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-13"] = {
+    netbattle_13 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
-    ["netbattle-14"] = {
+    netbattle_14 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.missing, P.normal, P.normal, P.missing, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
-    ["netbattle-15"] = {
+    netbattle_15 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -222,14 +222,14 @@ local stages: { [string]: StageDef } = {
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 3 },
         },
     },
-    ["netbattle-16"] = {
+    netbattle_16 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -240,14 +240,14 @@ local stages: { [string]: StageDef } = {
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 1 },
         },
     },
-    ["netbattle-17"] = {
+    netbattle_17 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -258,14 +258,14 @@ local stages: { [string]: StageDef } = {
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 1 },
         },
     },
-    ["netbattle-18"] = {
+    netbattle_18 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -276,40 +276,40 @@ local stages: { [string]: StageDef } = {
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 3 },
         },
     },
-    ["netbattle-19"] = {
+    netbattle_19 = {
         layout = {
             { P.normal, P.normal, P.missing, P.missing, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-20"] = {
+    netbattle_20 = {
         layout = {
             { P.normal, P.normal, P.missing, P.missing, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-21"] = {
+    netbattle_21 = {
         layout = {
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -320,14 +320,14 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 5, y = 2 },
         },
     },
-    ["netbattle-22"] = {
+    netbattle_22 = {
         layout = {
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -338,40 +338,40 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 2, y = 2 },
         },
     },
-    ["netbattle-23"] = {
+    netbattle_23 = {
         layout = {
             { P.normal, P.normal, P.grass, P.grass, P.normal, P.normal },
             { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
             { P.normal, P.normal, P.grass, P.grass, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-24"] = {
+    netbattle_24 = {
         layout = {
             { P.normal, P.normal, P.grass, P.grass, P.normal, P.normal },
             { P.normal, P.grass, P.grass, P.grass, P.grass, P.normal },
             { P.normal, P.normal, P.grass, P.grass, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-25"] = {
+    netbattle_25 = {
         layout = {
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -382,14 +382,14 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 5, y = 3 },
         },
     },
-    ["netbattle-26"] = {
+    netbattle_26 = {
         layout = {
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -400,14 +400,14 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 2, y = 1 },
         },
     },
-    ["netbattle-27"] = {
+    netbattle_27 = {
         layout = {
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -418,14 +418,14 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 5, y = 1 },
         },
     },
-    ["netbattle-28"] = {
+    netbattle_28 = {
         layout = {
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -436,14 +436,14 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 2, y = 3 },
         },
     },
-    ["netbattle-29"] = {
+    netbattle_29 = {
         layout = {
             { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
             { P.grass, P.normal, P.grass, P.grass, P.normal, P.grass },
             { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -454,14 +454,14 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 4, y = 3 },
         },
     },
-    ["netbattle-30"] = {
+    netbattle_30 = {
         layout = {
             { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
             { P.grass, P.normal, P.grass, P.grass, P.normal, P.grass },
             { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -472,14 +472,14 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 3, y = 1 },
         },
     },
-    ["netbattle-31"] = {
+    netbattle_31 = {
         layout = {
             { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
             { P.grass, P.normal, P.grass, P.grass, P.normal, P.grass },
             { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -490,14 +490,14 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 4, y = 1 },
         },
     },
-    ["netbattle-32"] = {
+    netbattle_32 = {
         layout = {
             { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
             { P.grass, P.normal, P.grass, P.grass, P.normal, P.grass },
             { P.normal, P.grass, P.normal, P.normal, P.grass, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -508,638 +508,638 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 3, y = 3 },
         },
     },
-    ["netbattle-33"] = {
+    netbattle_33 = {
         layout = {
             { P.normal, P.magnet, P.normal, P.normal, P.magnet, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.magnet, P.normal, P.normal, P.magnet, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-34"] = {
+    netbattle_34 = {
         layout = {
             { P.normal, P.magnet, P.normal, P.normal, P.magnet, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.magnet, P.normal, P.normal, P.magnet, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-35"] = {
+    netbattle_35 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.magnet, P.magnet, P.magnet, P.magnet, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
-    ["netbattle-36"] = {
+    netbattle_36 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.magnet, P.magnet, P.magnet, P.magnet, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
-    ["netbattle-37"] = {
+    netbattle_37 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.magnet, P.magnet, P.normal, P.normal, P.magnet, P.magnet },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 1 }, { place = Place.navi, side = 1, x = 5, y = 1 } },
     },
-    ["netbattle-38"] = {
+    netbattle_38 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.magnet, P.magnet, P.normal, P.normal, P.magnet, P.magnet },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 1 }, { place = Place.navi, side = 0, x = 2, y = 1 } },
     },
-    ["netbattle-39"] = {
+    netbattle_39 = {
         layout = {
             { P.grass, P.grass, P.sea, P.sea, P.grass, P.grass },
             { P.grass, P.sea, P.sea, P.sea, P.sea, P.grass },
             { P.grass, P.grass, P.sea, P.sea, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
-    ["netbattle-40"] = {
+    netbattle_40 = {
         layout = {
             { P.grass, P.grass, P.sea, P.sea, P.grass, P.grass },
             { P.grass, P.sea, P.sea, P.sea, P.sea, P.grass },
             { P.grass, P.grass, P.sea, P.sea, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
-    ["netbattle-41"] = {
+    netbattle_41 = {
         layout = {
             { P.sea, P.grass, P.sea, P.sea, P.grass, P.sea },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.sea, P.grass, P.sea, P.sea, P.grass, P.sea },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-42"] = {
+    netbattle_42 = {
         layout = {
             { P.sea, P.grass, P.sea, P.sea, P.grass, P.sea },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.sea, P.grass, P.sea, P.sea, P.grass, P.sea },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-43"] = {
+    netbattle_43 = {
         layout = {
             { P.sea, P.sea, P.grass, P.grass, P.sea, P.sea },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.sea, P.sea, P.grass, P.grass, P.sea, P.sea },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-44"] = {
+    netbattle_44 = {
         layout = {
             { P.sea, P.sea, P.grass, P.grass, P.sea, P.sea },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.sea, P.sea, P.grass, P.grass, P.sea, P.sea },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-45"] = {
+    netbattle_45 = {
         layout = {
             { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
             { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
             { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-46"] = {
+    netbattle_46 = {
         layout = {
             { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
             { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
             { P.normal, P.ice, P.ice, P.ice, P.ice, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-47"] = {
+    netbattle_47 = {
         layout = {
             { P.missing, P.ice, P.ice, P.ice, P.ice, P.ice },
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.missing },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-48"] = {
+    netbattle_48 = {
         layout = {
             { P.missing, P.ice, P.ice, P.ice, P.ice, P.ice },
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.missing },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-49"] = {
+    netbattle_49 = {
         layout = {
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.missing },
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
             { P.missing, P.ice, P.ice, P.ice, P.ice, P.ice },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-50"] = {
+    netbattle_50 = {
         layout = {
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.missing },
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
             { P.missing, P.ice, P.ice, P.ice, P.ice, P.ice },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-51"] = {
+    netbattle_51 = {
         layout = {
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-52"] = {
+    netbattle_52 = {
         layout = {
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-53"] = {
+    netbattle_53 = {
         layout = {
             { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
             { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
             { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-54"] = {
+    netbattle_54 = {
         layout = {
             { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
             { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
             { P.normal, P.normal, P.poison, P.poison, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-55"] = {
+    netbattle_55 = {
         layout = {
             { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
             { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
             { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
-    ["netbattle-56"] = {
+    netbattle_56 = {
         layout = {
             { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
             { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
             { P.normal, P.poison, P.poison, P.poison, P.poison, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
-    ["netbattle-57"] = {
+    netbattle_57 = {
         layout = {
             { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
             { P.grass, P.lava, P.lava, P.lava, P.lava, P.grass },
             { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
-    ["netbattle-58"] = {
+    netbattle_58 = {
         layout = {
             { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
             { P.grass, P.lava, P.lava, P.lava, P.lava, P.grass },
             { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
-    ["netbattle-59"] = {
+    netbattle_59 = {
         layout = {
             { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
             { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
             { P.lava, P.grass, P.grass, P.grass, P.grass, P.lava },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-60"] = {
+    netbattle_60 = {
         layout = {
             { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
             { P.grass, P.grass, P.lava, P.lava, P.grass, P.grass },
             { P.lava, P.grass, P.grass, P.grass, P.grass, P.lava },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-61"] = {
+    netbattle_61 = {
         layout = {
             { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
             { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
             { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-62"] = {
+    netbattle_62 = {
         layout = {
             { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
             { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
             { P.normal, P.normal, P.holy, P.holy, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-63"] = {
+    netbattle_63 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.holy, P.holy, P.holy, P.holy, P.holy, P.holy },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-64"] = {
+    netbattle_64 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.holy, P.holy, P.holy, P.holy, P.holy, P.holy },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-65"] = {
+    netbattle_65 = {
         layout = {
             { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
             { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
             { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-66"] = {
+    netbattle_66 = {
         layout = {
             { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
             { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
             { P.normal, P.holy, P.normal, P.normal, P.holy, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-67"] = {
+    netbattle_67 = {
         layout = {
             { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
             { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
             { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-68"] = {
+    netbattle_68 = {
         layout = {
             { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
             { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
             { P.cracked, P.cracked, P.cracked, P.cracked, P.cracked, P.cracked },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-69"] = {
+    netbattle_69 = {
         layout = {
             { P.sea, P.sea, P.sea, P.sea, P.sea, P.sea },
             { P.sea, P.grass, P.sea, P.sea, P.grass, P.sea },
             { P.sea, P.sea, P.sea, P.sea, P.sea, P.sea },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-70"] = {
+    netbattle_70 = {
         layout = {
             { P.sea, P.sea, P.sea, P.sea, P.sea, P.sea },
             { P.sea, P.grass, P.sea, P.sea, P.grass, P.sea },
             { P.sea, P.sea, P.sea, P.sea, P.sea, P.sea },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-71"] = {
+    netbattle_71 = {
         layout = {
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
             { P.ice, P.missing, P.ice, P.ice, P.missing, P.ice },
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
-    ["netbattle-72"] = {
+    netbattle_72 = {
         layout = {
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
             { P.ice, P.missing, P.ice, P.ice, P.missing, P.ice },
             { P.ice, P.ice, P.ice, P.ice, P.ice, P.ice },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
-    ["netbattle-73"] = {
+    netbattle_73 = {
         layout = {
             { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
             { P.poison, P.normal, P.poison, P.poison, P.normal, P.poison },
             { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-74"] = {
+    netbattle_74 = {
         layout = {
             { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
             { P.poison, P.normal, P.poison, P.poison, P.normal, P.poison },
             { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-75"] = {
+    netbattle_75 = {
         layout = {
             { P.normal, P.sea, P.sea, P.sea, P.sea, P.normal },
             { P.normal, P.sea, P.sea, P.sea, P.sea, P.normal },
             { P.normal, P.sea, P.sea, P.sea, P.sea, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
-    ["netbattle-76"] = {
+    netbattle_76 = {
         layout = {
             { P.normal, P.sea, P.sea, P.sea, P.sea, P.normal },
             { P.normal, P.sea, P.sea, P.sea, P.sea, P.normal },
             { P.normal, P.sea, P.sea, P.sea, P.sea, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
-    ["netbattle-77"] = {
+    netbattle_77 = {
         layout = {
             { P.normal, P.magnet, P.normal, P.normal, P.magnet, P.normal },
             { P.magnet, P.normal, P.magnet, P.magnet, P.normal, P.magnet },
             { P.normal, P.magnet, P.normal, P.normal, P.magnet, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-78"] = {
+    netbattle_78 = {
         layout = {
             { P.normal, P.magnet, P.normal, P.normal, P.magnet, P.normal },
             { P.magnet, P.normal, P.magnet, P.magnet, P.normal, P.magnet },
             { P.normal, P.magnet, P.normal, P.normal, P.magnet, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-79"] = {
+    netbattle_79 = {
         layout = {
             { P.normal, P.normal, P.magnet, P.magnet, P.normal, P.normal },
             { P.normal, P.magnet, P.normal, P.normal, P.magnet, P.normal },
             { P.magnet, P.normal, P.normal, P.normal, P.normal, P.magnet },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 1, y = 2 }, { place = Place.navi, side = 1, x = 6, y = 2 } },
     },
-    ["netbattle-80"] = {
+    netbattle_80 = {
         layout = {
             { P.normal, P.normal, P.magnet, P.magnet, P.normal, P.normal },
             { P.normal, P.magnet, P.normal, P.normal, P.magnet, P.normal },
             { P.magnet, P.normal, P.normal, P.normal, P.normal, P.magnet },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 6, y = 2 }, { place = Place.navi, side = 0, x = 1, y = 2 } },
     },
-    ["netbattle-81"] = {
+    netbattle_81 = {
         layout = {
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -1150,14 +1150,14 @@ local stages: { [string]: StageDef } = {
             { place = rock.kind, variant = rock.variants.ice, x = 5, y = 2 },
         },
     },
-    ["netbattle-82"] = {
+    netbattle_82 = {
         layout = {
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
             { P.ice, P.ice, P.normal, P.normal, P.ice, P.ice },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -1168,14 +1168,14 @@ local stages: { [string]: StageDef } = {
             { place = rock.kind, variant = rock.variants.ice, x = 2, y = 2 },
         },
     },
-    ["netbattle-83"] = {
+    netbattle_83 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -1186,14 +1186,14 @@ local stages: { [string]: StageDef } = {
             { place = guardian.statue.kind, x = 5, y = 2 },
         },
     },
-    ["netbattle-84"] = {
+    netbattle_84 = {
         layout = {
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -1204,66 +1204,66 @@ local stages: { [string]: StageDef } = {
             { place = guardian.statue.kind, x = 2, y = 2 },
         },
     },
-    ["netbattle-85"] = {
+    netbattle_85 = {
         layout = {
             { P.missing, P.missing, P.missing, P.missing, P.missing, P.missing },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-86"] = {
+    netbattle_86 = {
         layout = {
             { P.missing, P.missing, P.missing, P.missing, P.missing, P.missing },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-87"] = {
+    netbattle_87 = {
         layout = {
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 0, x = 2, y = 2 }, { place = Place.navi, side = 1, x = 5, y = 2 } },
     },
-    ["netbattle-88"] = {
+    netbattle_88 = {
         layout = {
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
         actors = { { place = Place.navi, side = 1, x = 5, y = 2 }, { place = Place.navi, side = 0, x = 2, y = 2 } },
     },
-    ["netbattle-89"] = {
+    netbattle_89 = {
         layout = {
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -1274,14 +1274,14 @@ local stages: { [string]: StageDef } = {
             { place = rock.kind, variant = rock.variants.cube, x = 4, y = 2 },
         },
     },
-    ["netbattle-90"] = {
+    netbattle_90 = {
         layout = {
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
             { P.normal, P.normal, P.normal, P.normal, P.normal, P.normal },
             { P.missing, P.normal, P.normal, P.normal, P.normal, P.missing },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -1292,14 +1292,14 @@ local stages: { [string]: StageDef } = {
             { place = rock.kind, variant = rock.variants.cube, x = 3, y = 2 },
         },
     },
-    ["netbattle-91"] = {
+    netbattle_91 = {
         layout = {
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -1310,14 +1310,14 @@ local stages: { [string]: StageDef } = {
             { place = guardian.statue.kind, x = 6, y = 1 },
         },
     },
-    ["netbattle-92"] = {
+    netbattle_92 = {
         layout = {
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -1328,14 +1328,14 @@ local stages: { [string]: StageDef } = {
             { place = guardian.statue.kind, x = 1, y = 1 },
         },
     },
-    ["netbattle-93"] = {
+    netbattle_93 = {
         layout = {
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true, karma_changes = true },
@@ -1346,14 +1346,14 @@ local stages: { [string]: StageDef } = {
             { place = boulder.kind, x = 5, y = 1 },
         },
     },
-    ["netbattle-94"] = {
+    netbattle_94 = {
         layout = {
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
             { P.poison, P.poison, P.poison, P.poison, P.poison, P.poison },
             { P.grass, P.grass, P.grass, P.grass, P.grass, P.grass },
         },
         panel_pattern = 0x38,
-        music = asset.sound("virus-battle"),
+        music = asset.sound("virus_battle"),
         mode = 0,
         battle_number = 0,
         effects = { full_hp = true, link = true, shuffled_folder = true },

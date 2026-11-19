@@ -17,9 +17,9 @@
 
 local buster = require("@self/buster")
 local charged_chips = require("./megaman/weapons/charged_chip")
-local napalm = require("@self/chip").napalm
-local napalm_cannon_sprite = asset.sprite("napalm-cannon")
-local napalmman_portrait_sprite = asset.sprite("napalmman-portrait")
+local napalm_bomb = require("@self/chip").napalm_bomb
+local napalm_cannon_sprite = asset.sprite("napalm_cannon")
+local napalmman_portrait_sprite = asset.sprite("napalmman_portrait")
 local napalmman_sprite = asset.sprite("napalmman")
 
 -- NapalmMan's cannon (the body overlays' row 4, 0x0800EE8A): behind him in his animations 20 to 22.
@@ -36,7 +36,7 @@ local navi: NaviDef = {
     element = Element.fire,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("napalmman-win"), lose = asset.banner("napalmman-deleted") },
+    banners = { win = asset.banner("napalmman_win"), lose = asset.banner("napalmman_deleted") },
     mugshot = asset.mugshot("napalmman"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x1a, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
@@ -45,12 +45,12 @@ local navi: NaviDef = {
         portrait = napalmman_portrait_sprite,
     },
     palette_step = 3,
-    own_chip = { chip = napalm, code = "N" },
+    own_chip = { chip = napalm_bomb, code = "N" },
     own_chip_draws = true,
     weapons = {
         buster = buster.weapon,
         -- The charge table's row 0x29 (0x0801CC06); Charge 5 reads on into row 0x2A's first entry.
-        a_charge = charged_chips.routine({ 120, 120, 120, 120, 120, 60 }, "napalmman/a-charge"),
+        a_charge = charged_chips.routine({ 120, 120, 120, 120, 120, 60 }, "napalmman/a_charge"),
     },
     -- The chips A charges, and what a charged one gains (its damage again).
     charged_chips = { family = Family.fire, damaging = false, plain = true },

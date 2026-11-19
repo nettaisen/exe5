@@ -20,8 +20,8 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("pulsar")
-local pulsar_burst_sprite = asset.sprite("pulsar-burst")
-local SOUND, BURST_SOUND = asset.sound("pulsar"), asset.sound("elec-pulse")
+local pulsar_burst_sprite = asset.sprite("pulsar_burst")
+local SOUND, BURST_SOUND = asset.sound("pulsar"), asset.sound("elec_pulse")
 local BURST = new.effect { sprite = pulsar_burst_sprite, anim = 0, palette = 0, steps = 32 }
 local HEIGHT, SPEED = 0x18_0000, 0x8_0000
 -- What it may touch and go on bursting: other bodies (of either side) and neutral objects.

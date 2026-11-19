@@ -20,7 +20,7 @@ export type State = {
 local CALL, LEAVE = 0x0, 0x4
 local LEAVE_TICKS = 10
 
-local numtrap: Chip
+local number_trap: Chip
 
 local action = new.action {
     state = { timer = schema.u16 },
@@ -32,7 +32,7 @@ local action = new.action {
             -- names the chip.
             local damage = me.attack_word
             local c = controller.spawn(me, me.attack_element, damage, me.extra)
-            dimming.start(me.alliance, true, c, me, { chip = numtrap, bonus = me.extra })
+            dimming.start(me.alliance, true, c, me, { chip = number_trap, bonus = me.extra })
             me.step, me.step_init = LEAVE, 0
         elseif step == LEAVE then
             -- 0x080F16E8
@@ -52,7 +52,7 @@ local action = new.action {
     end,
 }
 
-numtrap = {
+number_trap = {
     codes = { "N" },
     element = Element.null,
     family = Family.null,
@@ -68,4 +68,4 @@ numtrap = {
     action = action,
 } :: Chip
 
-return { numtrap = numtrap }
+return { number_trap = number_trap }

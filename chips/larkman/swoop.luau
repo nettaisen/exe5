@@ -47,7 +47,7 @@ local HIT_MOD: HitModifier = { flinch = true, flash = true }
 
 -- By look (0x080DD850: 0 and 2, from above the field, are the virus's).
 local ANIMS: { [number]: number } = { [0] = 8, 6, 9, 0xB }
-local LARKMAN_SWOOP_VARIANT = schema.record_type("larkman-swoop-variant")
+local LARKMAN_SWOOP_VARIANT = schema.record_type("larkman_swoop_variant")
 swoop.LARKMAN_SWOOP_VARIANT = LARKMAN_SWOOP_VARIANT
 
 -- A swoop's variant.

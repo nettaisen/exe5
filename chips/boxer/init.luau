@@ -3,17 +3,17 @@
 -- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local boxer = require("@self/boxer")
-local recipe_firehit1 = require("./firehit").firehit1
-local recipe_firehit2 = require("./firehit").firehit2
-local recipe_firehit3 = require("./firehit").firehit3
-local recipe_hotbody1 = require("./hotbody").hotbody1
-local recipe_hotbody2 = require("./hotbody").hotbody2
-local recipe_hotbody3 = require("./hotbody").hotbody3
+local recipe_firehit1 = require("./fire_hit").fire_hit_1
+local recipe_firehit2 = require("./fire_hit").fire_hit_2
+local recipe_firehit3 = require("./fire_hit").fire_hit_3
+local recipe_hotbody1 = require("./hot_body").hot_body_1
+local recipe_hotbody2 = require("./hot_body").hot_body_2
+local recipe_hotbody3 = require("./hot_body").hot_body_3
 
 -- Boxer1 (EXE5 chip 0x146): the Program Advance of two HotBody1s and a FireHit1 (or three FireHit1s of one code): an
 -- unseen boxer punches FireHit's fists down the rows, nine in all (chips/boxer/boxer, instant effect 21; the fists' hit
 -- modifier 1, the record's +0x11).
-local boxer1: Chip = {
+local boxer_1: Chip = {
     codes = { "A", "B", "C", "*" },
     element = Element.fire,
     family = Family.program_advance,
@@ -39,7 +39,7 @@ local boxer1: Chip = {
 -- Boxer2 (EXE5 chip 0x147): the Program Advance of two HotBody2s and a FireHit2 (or three FireHit2s of one code): an
 -- unseen boxer punches FireHit's fists down the rows, nine in all (chips/boxer/boxer, instant effect 21; the fists' hit
 -- modifier 1, the record's +0x11).
-local boxer2: Chip = {
+local boxer_2: Chip = {
     codes = { "A", "B", "C", "*" },
     element = Element.fire,
     family = Family.program_advance,
@@ -65,7 +65,7 @@ local boxer2: Chip = {
 -- Boxer3 (EXE5 chip 0x148): the Program Advance of two HotBody3s and a FireHit3 (or three FireHit3s of one code): an
 -- unseen boxer punches FireHit's fists down the rows, nine in all (chips/boxer/boxer, instant effect 21; the fists' hit
 -- modifier 1, the record's +0x11).
-local boxer3: Chip = {
+local boxer_3: Chip = {
     codes = { "A", "B", "C", "*" },
     element = Element.fire,
     family = Family.program_advance,
@@ -88,4 +88,4 @@ local boxer3: Chip = {
     auto_battle = { class = "at_once" },
 }
 
-return { boxer1 = boxer1, boxer2 = boxer2, boxer3 = boxer3 }
+return { boxer_1 = boxer_1, boxer_2 = boxer_2, boxer_3 = boxer_3 }

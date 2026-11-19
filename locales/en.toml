@@ -8,380 +8,380 @@ language = "en"
 "name" = "BN5"
 
 [chips]
-"airforce" = { name = "Airforce", long_name = "Gyro Air Force", description = "Helicoptr\nstrafes\na row" }
-"airhoc" = { name = "AirHoc", long_name = "Air Hockey", description = "Ricochet\nattack to\nright" }
-"airshot" = { name = "AirShot", long_name = "Air Shot", description = "Knock\nenmy back\n1 square" }
-"airspin1" = { name = "AirSpin1", long_name = "Air Spin 1", description = "Spits out\nhurricane\nattack" }
-"airspin2" = { name = "AirSpin2", long_name = "Air Spin 2", description = "Spits out\nhurricane\nattack" }
-"airspin3" = { name = "AirSpin3", long_name = "Air Spin 3", description = "Spits out\nhurricane\nattack" }
-"antidmg" = { name = "AntiDmg", long_name = "Anti Damage", description = "Sets trap\nand throw\nstars" }
-"antielec" = { name = "AntiElec", long_name = "Anti Elec", description = "Elec atk\ndamages\nyou" }
-"antifire" = { name = "AntiFire", long_name = "Anti Fire", description = "Fire atk\ndamages\nyou" }
-"antinavi" = { name = "AntiNavi", long_name = "Anti Navi", description = "Takes the\nenemy's\nNavi away" }
-"antirecv" = { name = "AntiRecv", long_name = "Anti Recovery", description = "Damages\nenemy in\nrecovery" }
-"antiswrd" = { name = "AntiSwrd", long_name = "Anti Sword", description = "Retaliate\nfor sword\ndamage" }
-"antiwatr" = { name = "AntiWatr", long_name = "Anti Water", description = "Water atk\ndamages\nyou" }
-"antiwood" = { name = "AntiWood", long_name = "Anti Wood", description = "Wood atk\ndamages\nyou" }
+"air_hockey" = { name = "AirHoc", long_name = "Air Hockey", description = "Ricochet\nattack to\nright" }
+"air_shot" = { name = "AirShot", long_name = "Air Shot", description = "Knock\nenmy back\n1 square" }
+"air_spin_1" = { name = "AirSpin1", long_name = "Air Spin 1", description = "Spits out\nhurricane\nattack" }
+"air_spin_2" = { name = "AirSpin2", long_name = "Air Spin 2", description = "Spits out\nhurricane\nattack" }
+"air_spin_3" = { name = "AirSpin3", long_name = "Air Spin 3", description = "Spits out\nhurricane\nattack" }
+"anti_damage" = { name = "AntiDmg", long_name = "Anti Damage", description = "Sets trap\nand throw\nstars" }
+"anti_elec" = { name = "AntiElec", long_name = "Anti Elec", description = "Elec atk\ndamages\nyou" }
+"anti_fire" = { name = "AntiFire", long_name = "Anti Fire", description = "Fire atk\ndamages\nyou" }
+"anti_navi" = { name = "AntiNavi", long_name = "Anti Navi", description = "Takes the\nenemy's\nNavi away" }
+"anti_recovery" = { name = "AntiRecv", long_name = "Anti Recovery", description = "Damages\nenemy in\nrecovery" }
+"anti_sword" = { name = "AntiSwrd", long_name = "Anti Sword", description = "Retaliate\nfor sword\ndamage" }
+"anti_water" = { name = "AntiWatr", long_name = "Anti Water", description = "Water atk\ndamages\nyou" }
+"anti_wood" = { name = "AntiWood", long_name = "Anti Wood", description = "Wood atk\ndamages\nyou" }
 "anubis" = { name = "Anubis", long_name = "Anubis", description = "Anubis\npoisons\nenemies" }
-"aqwhirl1" = { name = "AqWhirl1", long_name = "Aqua Whirl 1", description = "Whirlwind\nmakes\nwater sq" }
-"aqwhirl2" = { name = "AqWhirl2", long_name = "Aqua Whirl 2", description = "Whirlwind\nmakes\nwater sq" }
-"aqwhirl3" = { name = "AqWhirl3", long_name = "Aqua Whirl 3", description = "Whirlwind\nmakes\nwater sq" }
-"areagrab" = { name = "AreaGrab", long_name = "Area Grab", description = "Steals\nleft edge\nfrom enmy" }
-"astroid1" = { name = "Astroid1", long_name = "Asteroid 1", description = "Meteors\ncrack\npanels!" }
-"astroid2" = { name = "Astroid2", long_name = "Asteroid 2", description = "Meteors\ncrack\npanels!" }
-"astroid3" = { name = "Astroid3", long_name = "Asteroid 3", description = "Meteors\ncrack\npanels!" }
-"attck-10" = { name = "Attck+10", long_name = "Attack +10", description = "+10 for\nselected\natk chip" }
-"attck-30" = { name = "Attck+30", long_name = "Attack +30", description = "+30 for\nselected\natk chip" }
-"b-shoot" = { name = "B-SHOOT", long_name = "Broken Shoot", description = "" }
-"barr100" = { name = "Barr100", long_name = "Barrier 100", description = "Nullifies\n100 HP of\ndamage" }
-"barr200" = { name = "Barr200", long_name = "Barrier 200", description = "Nullifies\n200 HP of\ndamage" }
+"aqua_whirl_1" = { name = "AqWhirl1", long_name = "Aqua Whirl 1", description = "Whirlwind\nmakes\nwater sq" }
+"aqua_whirl_2" = { name = "AqWhirl2", long_name = "Aqua Whirl 2", description = "Whirlwind\nmakes\nwater sq" }
+"aqua_whirl_3" = { name = "AqWhirl3", long_name = "Aqua Whirl 3", description = "Whirlwind\nmakes\nwater sq" }
+"area_grab" = { name = "AreaGrab", long_name = "Area Grab", description = "Steals\nleft edge\nfrom enmy" }
+"asteroid_1" = { name = "Astroid1", long_name = "Asteroid 1", description = "Meteors\ncrack\npanels!" }
+"asteroid_2" = { name = "Astroid2", long_name = "Asteroid 2", description = "Meteors\ncrack\npanels!" }
+"asteroid_3" = { name = "Astroid3", long_name = "Asteroid 3", description = "Meteors\ncrack\npanels!" }
+"attack_10" = { name = "Attck+10", long_name = "Attack +10", description = "+10 for\nselected\natk chip" }
+"attack_30" = { name = "Attck+30", long_name = "Attack +30", description = "+30 for\nselected\natk chip" }
 "barrier" = { name = "Barrier", long_name = "Barrier", description = "Nullifies\n10 HP of\ndamage" }
+"barrier_100" = { name = "Barr100", long_name = "Barrier 100", description = "Nullifies\n100 HP of\ndamage" }
+"barrier_200" = { name = "Barr200", long_name = "Barrier 200", description = "Nullifies\n200 HP of\ndamage" }
 "bass" = { name = "Bass", long_name = "Bass", description = "Buster\nrake wide\nenmy area" }
-"bassanly" = { name = "BassAnly", long_name = "Bass Anomaly", description = "A ring\nthat hits\n4 times" }
-"batcan1" = { name = "BatCan1", long_name = "Bat Cannon 1", description = "Dstb Atk!\nAbnormal\nstatus" }
-"batcan2" = { name = "BatCan2", long_name = "Bat Cannon 2", description = "Dstb Atk!\nCrows\nflock" }
-"batcan3" = { name = "BatCan3", long_name = "Bat Cannon 3", description = "Recover\nShadeMan\nHP" }
-"batcan4" = { name = "BatCan4", long_name = "Bat Cannon 4", description = "Dstb Atk!\n3 Disturb\nAttacks!" }
-"bblwrap" = { name = "BblWrap", long_name = "Bubble Wrap", description = "Weak\nagainst\nelec atk" }
+"bass_anomaly" = { name = "BassAnly", long_name = "Bass Anomaly", description = "A ring\nthat hits\n4 times" }
+"bat_cannon_1" = { name = "BatCan1", long_name = "Bat Cannon 1", description = "Dstb Atk!\nAbnormal\nstatus" }
+"bat_cannon_2" = { name = "BatCan2", long_name = "Bat Cannon 2", description = "Dstb Atk!\nCrows\nflock" }
+"bat_cannon_3" = { name = "BatCan3", long_name = "Bat Cannon 3", description = "Recover\nShadeMan\nHP" }
+"bat_cannon_4" = { name = "BatCan4", long_name = "Bat Cannon 4", description = "Dstb Atk!\n3 Disturb\nAttacks!" }
 "beat" = { name = "Beat", long_name = "Beat", description = "" }
-"bighook" = { name = "BigHook", long_name = "Big Hook", description = "Hook\natk 2 sq\nwide" }
-"bignoise" = { name = "BigNoise", long_name = "Big Noise", description = "Generates\nultrasonc\nwaves!" }
-"blakwing" = { name = "BlakWing", long_name = "Black Wing", description = "Wing atk\nfrom a\ncave" }
+"big_hook" = { name = "BigHook", long_name = "Big Hook", description = "Hook\natk 2 sq\nwide" }
+"big_noise" = { name = "BigNoise", long_name = "Big Noise", description = "Generates\nultrasonc\nwaves!" }
+"black_bomb" = { name = "BlkBomb", long_name = "Black Bomb", description = "Firebomb\nhits 3rd\nsq ahead!" }
+"black_capsule" = { name = "BlkCapsl", long_name = "Black Capsule", description = "Add an\neffect:\nBlind" }
+"black_wing" = { name = "BlakWing", long_name = "Black Wing", description = "Wing atk\nfrom a\ncave" }
+"blind_rain_rush" = { name = "BR-RUSH", long_name = "Blind Rain Rush", description = "" }
 "blinder" = { name = "Blinder", long_name = "Blinder", description = "Blinds\nenemy w/\nlight" }
-"blizman" = { name = "BlizMan", long_name = "BlizzardMan", description = "Snowball\nexpands\nwhen hit" }
-"blizman-ds" = { name = "BlizMan\uE008", long_name = "BlizzardMan DS", description = "Snowball\nexpands\nwhen hit" }
-"blizman-sp" = { name = "BlizMan\uE003", long_name = "BlizzardMan SP", description = "Snowball\nexpands\nwhen hit" }
-"blkbomb" = { name = "BlkBomb", long_name = "Black Bomb", description = "Firebomb\nhits 3rd\nsq ahead!" }
-"blkcapsl" = { name = "BlkCapsl", long_name = "Black Capsule", description = "Add an\neffect:\nBlind" }
-"bodygrd" = { name = "BodyGrd", long_name = "Body Guard", description = "Bodyguard\nthrows\nninjastar" }
-"boomer" = { name = "Boomer", long_name = "Boomerang", description = "Boomerang\nencircles\nfield" }
-"boxer1" = { name = "Boxer1", long_name = "Boxer 1", description = "Rapid\npunch\nall enemy" }
-"boxer2" = { name = "Boxer2", long_name = "Boxer 2", description = "Rapid\npunch\nall enemy" }
-"boxer3" = { name = "Boxer3", long_name = "Boxer 3", description = "Rapid\npunch\nall enemy" }
-"boybomb1" = { name = "BoyBomb1", long_name = "Boy Bomb 1", description = "BoyBomb\n1sq ahead\nPush it!" }
-"boybomb2" = { name = "BoyBomb2", long_name = "Boy Bomb 2", description = "BoyBomb\n1sq ahead\nPush it!" }
-"boybomb3" = { name = "BoyBomb3", long_name = "Boy Bomb 3", description = "BoyBomb\n1sq ahead\nPush it!" }
-"br-rush" = { name = "BR-RUSH", long_name = "Blind Rain Rush", description = "" }
-"bugbomb" = { name = "BugBomb", long_name = "Bug Bomb", description = "Throws a\nbug-bomb\n3sq ahead" }
-"bugcharg" = { name = "BugCharg", long_name = "Bug Charge", description = "All your\nbugs will\nattack!" }
-"bugcurse" = { name = "BugCurse", long_name = "Bug Curse", description = "Make\nenemy\nbuggy!" }
-"bugfix" = { name = "BugFix", long_name = "Bug Fix", description = "Repairs &\nremoves\nbugs" }
-"busterup" = { name = "BusterUp", long_name = "Buster Up", description = "Power\ngoes up\nby 1" }
-"c-bomb" = { name = "C-BOMB", long_name = "Chemical Bomb", description = "" }
-"c-cannon" = { name = "C-Cannon", long_name = "Colonel Cannon", description = "3sq blast\nif hits\nend row" }
-"c-scope" = { name = "C-SCOPE", long_name = "Cross Scope", description = "" }
-"cacdanc1" = { name = "CacDanc1", long_name = "Cactus Dance 1", description = "Balls of\ncacti atk\nthe enmy" }
-"cacdanc2" = { name = "CacDanc2", long_name = "Cactus Dance 2", description = "Balls of\ncacti atk\nthe enmy" }
-"cacdanc3" = { name = "CacDanc3", long_name = "Cactus Dance 3", description = "Balls of\ncacti atk\nthe enmy" }
-"cactbal1" = { name = "CactBal1", long_name = "Cactus Ball 1", description = "Jumps\nforward\n4 times" }
-"cactbal2" = { name = "CactBal2", long_name = "Cactus Ball 2", description = "Jumps\nforward\n4 times" }
-"cactbal3" = { name = "CactBal3", long_name = "Cactus Ball 3", description = "Jumps\nforward\n4 times" }
-"cannball" = { name = "CannBall", long_name = "Cannon Ball", description = "Breaks\n3rd panel\nahead" }
-"cannball-mode" = { name = "CannBall", long_name = "Cannon Ball Mode", description = "ミテイ" }
-"cannmode" = { name = "CannMode", long_name = "Cannon Mode", description = "ミテイ" }
+"blizzardman" = { name = "BlizMan", long_name = "BlizzardMan", description = "Snowball\nexpands\nwhen hit" }
+"blizzardman_ds" = { name = "BlizMan\uE008", long_name = "BlizzardMan DS", description = "Snowball\nexpands\nwhen hit" }
+"blizzardman_sp" = { name = "BlizMan\uE003", long_name = "BlizzardMan SP", description = "Snowball\nexpands\nwhen hit" }
+"body_guard" = { name = "BodyGrd", long_name = "Body Guard", description = "Bodyguard\nthrows\nninjastar" }
+"boomerang" = { name = "Boomer", long_name = "Boomerang", description = "Boomerang\nencircles\nfield" }
+"boxer_1" = { name = "Boxer1", long_name = "Boxer 1", description = "Rapid\npunch\nall enemy" }
+"boxer_2" = { name = "Boxer2", long_name = "Boxer 2", description = "Rapid\npunch\nall enemy" }
+"boxer_3" = { name = "Boxer3", long_name = "Boxer 3", description = "Rapid\npunch\nall enemy" }
+"boy_bomb_1" = { name = "BoyBomb1", long_name = "Boy Bomb 1", description = "BoyBomb\n1sq ahead\nPush it!" }
+"boy_bomb_2" = { name = "BoyBomb2", long_name = "Boy Bomb 2", description = "BoyBomb\n1sq ahead\nPush it!" }
+"boy_bomb_3" = { name = "BoyBomb3", long_name = "Boy Bomb 3", description = "BoyBomb\n1sq ahead\nPush it!" }
+"broken_shoot" = { name = "B-SHOOT", long_name = "Broken Shoot", description = "" }
+"bubble_wrap" = { name = "BblWrap", long_name = "Bubble Wrap", description = "Weak\nagainst\nelec atk" }
+"bug_bomb" = { name = "BugBomb", long_name = "Bug Bomb", description = "Throws a\nbug-bomb\n3sq ahead" }
+"bug_charge" = { name = "BugCharg", long_name = "Bug Charge", description = "All your\nbugs will\nattack!" }
+"bug_curse" = { name = "BugCurse", long_name = "Bug Curse", description = "Make\nenemy\nbuggy!" }
+"bug_fix" = { name = "BugFix", long_name = "Bug Fix", description = "Repairs &\nremoves\nbugs" }
+"buster_up" = { name = "BusterUp", long_name = "Buster Up", description = "Power\ngoes up\nby 1" }
+"cactus_ball_1" = { name = "CactBal1", long_name = "Cactus Ball 1", description = "Jumps\nforward\n4 times" }
+"cactus_ball_2" = { name = "CactBal2", long_name = "Cactus Ball 2", description = "Jumps\nforward\n4 times" }
+"cactus_ball_3" = { name = "CactBal3", long_name = "Cactus Ball 3", description = "Jumps\nforward\n4 times" }
+"cactus_dance_1" = { name = "CacDanc1", long_name = "Cactus Dance 1", description = "Balls of\ncacti atk\nthe enmy" }
+"cactus_dance_2" = { name = "CacDanc2", long_name = "Cactus Dance 2", description = "Balls of\ncacti atk\nthe enmy" }
+"cactus_dance_3" = { name = "CacDanc3", long_name = "Cactus Dance 3", description = "Balls of\ncacti atk\nthe enmy" }
 "cannon" = { name = "Cannon", long_name = "Cannon", description = "Cannon to\nattack\n1 enemy" }
-"chaoslrd" = { name = "ChaosLrd", long_name = "Chaos Lord", description = "Hatred\nformed\ninto Bass" }
-"circgun" = { name = "CircGun", long_name = "Circle Gun", description = "Stop site\nw/ Button\nand attck" }
+"cannon_ball" = { name = "CannBall", long_name = "Cannon Ball", description = "Breaks\n3rd panel\nahead" }
+"cannon_ball_mode" = { name = "CannBall", long_name = "Cannon Ball Mode", description = "ミテイ" }
+"cannon_mode" = { name = "CannMode", long_name = "Cannon Mode", description = "ミテイ" }
+"chaos_lord" = { name = "ChaosLrd", long_name = "Chaos Lord", description = "Hatred\nformed\ninto Bass" }
+"chemical_bomb" = { name = "C-BOMB", long_name = "Chemical Bomb", description = "" }
+"circle_gun" = { name = "CircGun", long_name = "Circle Gun", description = "Stop site\nw/ Button\nand attck" }
 "cloudman" = { name = "CloudMan", long_name = "CloudMan", description = "Thndr atk\nbehind\nthe enmy" }
-"cloudmn-ds" = { name = "CloudMn\uE008", long_name = "CloudMan DS", description = "Thndr atk\nbehind\nthe enmy" }
-"cloudmn-sp" = { name = "CloudMn\uE003", long_name = "CloudMan SP", description = "Thndr atk\nbehind\nthe enmy" }
+"cloudman_ds" = { name = "CloudMn\uE008", long_name = "CloudMan DS", description = "Thndr atk\nbehind\nthe enmy" }
+"cloudman_sp" = { name = "CloudMn\uE003", long_name = "CloudMan SP", description = "Thndr atk\nbehind\nthe enmy" }
 "colonel" = { name = "Colonel", long_name = "Colonel", description = "Slice\nenemy in\nsame row" }
-"colonel-ds" = { name = "Colonel\uE008", long_name = "Colonel DS", description = "Slice\nenemy in\nsame row" }
-"colonel-sp" = { name = "Colonel\uE003", long_name = "Colonel SP", description = "Slice\nenemy in\nsame row" }
-"colorpt" = { name = "ColorPt", long_name = "Color Point", description = "+10 for\nnext chip\nattack" }
-"copydmg" = { name = "CopyDmg", long_name = "Copy Damage", description = "Duplicate\ndamage to\n2nd enemy" }
+"colonel_cannon" = { name = "C-Cannon", long_name = "Colonel Cannon", description = "3sq blast\nif hits\nend row" }
+"colonel_ds" = { name = "Colonel\uE008", long_name = "Colonel DS", description = "Slice\nenemy in\nsame row" }
+"colonel_sp" = { name = "Colonel\uE003", long_name = "Colonel SP", description = "Slice\nenemy in\nsame row" }
+"color_point" = { name = "ColorPt", long_name = "Color Point", description = "+10 for\nnext chip\nattack" }
+"copy_damage" = { name = "CopyDmg", long_name = "Copy Damage", description = "Duplicate\ndamage to\n2nd enemy" }
+"cosmo_prison" = { name = "CsmoPris", long_name = "Cosmo Prison", description = "Planet\nfrom Csmo\nholes" }
 "cosmoman" = { name = "CosmoMan", long_name = "CosmoMan", description = "Meteors\nhit enemy" }
-"cosmomn-ds" = { name = "CosmoMn\uE008", long_name = "CosmoMan DS", description = "Meteors\nhit enemy" }
-"cosmomn-sp" = { name = "CosmoMn\uE003", long_name = "CosmoMan SP", description = "Meteors\nhit enemy" }
-"crakbom" = { name = "CrakBom", long_name = "Crack Bomb", description = "Bomb\ncracks\n3sq ahead" }
-"crakout" = { name = "CrakOut", long_name = "Crack Out", description = "Destroys\n1 panel\nin front" }
-"crossdiv" = { name = "CrossDiv", long_name = "Cross Divide", description = "Cross-\nslice!" }
-"crosswrd" = { name = "CrosSwrd", long_name = "Cross Sword", description = "" }
-"crsshld1" = { name = "CrsShld1", long_name = "Curse Shield 1", description = "Attacks\neven when\nguarding!" }
-"crsshld2" = { name = "CrsShld2", long_name = "Curse Shield 2", description = "Attacks\neven when\nguarding!" }
-"crsshld3" = { name = "CrsShld3", long_name = "Curse Shield 3", description = "Attacks\neven when\nguarding!" }
-"csmopris" = { name = "CsmoPris", long_name = "Cosmo Prison", description = "Planet\nfrom Csmo\nholes" }
+"cosmoman_ds" = { name = "CosmoMn\uE008", long_name = "CosmoMan DS", description = "Meteors\nhit enemy" }
+"cosmoman_sp" = { name = "CosmoMn\uE003", long_name = "CosmoMan SP", description = "Meteors\nhit enemy" }
+"crack_bomb" = { name = "CrakBom", long_name = "Crack Bomb", description = "Bomb\ncracks\n3sq ahead" }
+"crack_out" = { name = "CrakOut", long_name = "Crack Out", description = "Destroys\n1 panel\nin front" }
+"cross_divide" = { name = "CrossDiv", long_name = "Cross Divide", description = "Cross-\nslice!" }
+"cross_scope" = { name = "C-SCOPE", long_name = "Cross Scope", description = "" }
+"cross_sword" = { name = "CrosSwrd", long_name = "Cross Sword", description = "" }
 "curse" = { name = "Curse", long_name = "Curse", description = "" }
-"custswrd" = { name = "CustSwrd", long_name = "Custom Sword", description = "Cust\nGauge=\nAtk Str" }
-"cusvolt1" = { name = "CusVolt1", long_name = "Custom Volt 1", description = "Consumes\nCustom\nGauge" }
-"cusvolt2" = { name = "CusVolt2", long_name = "Custom Volt 2", description = "Consumes\nCustom\nGauge" }
-"cusvolt3" = { name = "CusVolt3", long_name = "Custom Volt 3", description = "Consumes\nCustom\nGauge" }
-"d-hero" = { name = "D-HERO", long_name = "Double Hero", description = "" }
-"d-valcan" = { name = "D-VALCAN", long_name = "Double Vulcan", description = "" }
-"darkcirc" = { name = "DarkCirc", long_name = "Dark Circle", description = "STOP\nCURSR AND\nATTACK" }
-"darkdril" = { name = "DarkDril", long_name = "Dark Drill", description = "LETHAL\nDRILL OF\nDARKNESS" }
-"darkinvs" = { name = "DarkInvs", long_name = "Dark Invisible", description = "RELEASE\nYOUR\nDARKNESS" }
-"darkmetr" = { name = "DarkMetr", long_name = "Dark Meteor", description = "METEOR\nSHOWER\nON ENMY" }
-"darkplus" = { name = "DarkPlus", long_name = "Dark Plus", description = "NEXT CHIP\nATK\n+50" }
-"darkthnd" = { name = "DarkThnd", long_name = "Dark Thunder", description = "CORNER\nENMY BY\nTHUNDER" }
-"darktorn" = { name = "DarkTorn", long_name = "Dark Tornado", description = "TORNADO\nEXPANDS\nWHEN HIT" }
-"darkwide" = { name = "DarkWide", long_name = "Dark Wide", description = "WIDE SHOT\nPIERCES\nTHE ENMY" }
-"dbldream" = { name = "DblDream", long_name = "Double Dream", description = "" }
-"dblpoint" = { name = "DblPoint", long_name = "Double Point", description = "+20 for\nnext chip\nattack" }
-"deltaray" = { name = "DeltaRay", long_name = "Delta Ray Edge", description = "A power up\nby 3 swrd\n" }
-"dethphnx" = { name = "DethPhnx", long_name = "Death Phoenix", description = "Fire Atk!\nRecycle\nNavi too" }
-"dicebons" = { name = "DiceBons", long_name = "Dice Bonus", description = "" }
+"curse_shield_1" = { name = "CrsShld1", long_name = "Curse Shield 1", description = "Attacks\neven when\nguarding!" }
+"curse_shield_2" = { name = "CrsShld2", long_name = "Curse Shield 2", description = "Attacks\neven when\nguarding!" }
+"curse_shield_3" = { name = "CrsShld3", long_name = "Curse Shield 3", description = "Attacks\neven when\nguarding!" }
+"custom_sword" = { name = "CustSwrd", long_name = "Custom Sword", description = "Cust\nGauge=\nAtk Str" }
+"custom_volt_1" = { name = "CusVolt1", long_name = "Custom Volt 1", description = "Consumes\nCustom\nGauge" }
+"custom_volt_2" = { name = "CusVolt2", long_name = "Custom Volt 2", description = "Consumes\nCustom\nGauge" }
+"custom_volt_3" = { name = "CusVolt3", long_name = "Custom Volt 3", description = "Consumes\nCustom\nGauge" }
+"dark_circle" = { name = "DarkCirc", long_name = "Dark Circle", description = "STOP\nCURSR AND\nATTACK" }
+"dark_drill" = { name = "DarkDril", long_name = "Dark Drill", description = "LETHAL\nDRILL OF\nDARKNESS" }
+"dark_invisible" = { name = "DarkInvs", long_name = "Dark Invisible", description = "RELEASE\nYOUR\nDARKNESS" }
+"dark_lance" = { name = "DrkLance", long_name = "Dark Lance", description = "ATK ENMY\nFROM\nBEHIND" }
+"dark_meteor" = { name = "DarkMetr", long_name = "Dark Meteor", description = "METEOR\nSHOWER\nON ENMY" }
+"dark_plus" = { name = "DarkPlus", long_name = "Dark Plus", description = "NEXT CHIP\nATK\n+50" }
+"dark_recovery" = { name = "DrkRecov", long_name = "Dark Recovery", description = "BECOME\nALMOST\nINVINCBLE" }
+"dark_sonic" = { name = "DrkSonic", long_name = "Dark Sonic", description = "PARALYZE\nTHE\nENEMY" }
+"dark_sword" = { name = "DrkSword", long_name = "Dark Sword", description = "USE LARGE\nSWORD AND\nSLICE" }
+"dark_thunder" = { name = "DarkThnd", long_name = "Dark Thunder", description = "CORNER\nENMY BY\nTHUNDER" }
+"dark_tornado" = { name = "DarkTorn", long_name = "Dark Tornado", description = "TORNADO\nEXPANDS\nWHEN HIT" }
+"dark_wide" = { name = "DarkWide", long_name = "Dark Wide", description = "WIDE SHOT\nPIERCES\nTHE ENMY" }
+"death_phoenix" = { name = "DethPhnx", long_name = "Death Phoenix", description = "Fire Atk!\nRecycle\nNavi too" }
+"delta_ray_edge" = { name = "DeltaRay", long_name = "Delta Ray Edge", description = "A power up\nby 3 swrd\n" }
+"dice_bonus" = { name = "DiceBons", long_name = "Dice Bonus", description = "" }
 "discord" = { name = "Discord", long_name = "Discord", description = "Confuses\nenemies\nw/ music" }
 "django" = { name = "Django", long_name = "Django", description = "Burns\nwith\nsunlight" }
-"django-ds" = { name = "Django\uE008", long_name = "Django DS", description = "Burns\nwith\nsunlight" }
-"django-sp" = { name = "Django\uE003", long_name = "Django SP", description = "Burns\nwith\nsunlight" }
-"drilarm1" = { name = "DrilArm1", long_name = "Drill Arm 1", description = "Knocks\nenmy 2sq\naway" }
-"drilarm2" = { name = "DrilArm2", long_name = "Drill Arm 2", description = "Knocks\nenmy 2sq\naway" }
-"drilarm3" = { name = "DrilArm3", long_name = "Drill Arm 3", description = "Knocks\nenmy 2sq\naway" }
-"drilmode" = { name = "DrilMode", long_name = "Drill Mode", description = "ミテイ" }
-"drklance" = { name = "DrkLance", long_name = "Dark Lance", description = "ATK ENMY\nFROM\nBEHIND" }
-"drkrecov" = { name = "DrkRecov", long_name = "Dark Recovery", description = "BECOME\nALMOST\nINVINCBLE" }
-"drksonic" = { name = "DrkSonic", long_name = "Dark Sonic", description = "PARALYZE\nTHE\nENEMY" }
-"drksword" = { name = "DrkSword", long_name = "Dark Sword", description = "USE LARGE\nSWORD AND\nSLICE" }
-"dublcrak" = { name = "DublCrak", long_name = "Double Crack", description = "Destroys\n2 panels\nin front" }
-"e-sappou" = { name = "E-SAPPOU", long_name = "Engetsu Sappou", description = "" }
-"elcreel1" = { name = "ElcReel1", long_name = "Elec Reel 1", description = "Elec wire\nshocks\nenemies" }
-"elcreel2" = { name = "ElcReel2", long_name = "Elec Reel 2", description = "Elec wire\nshocks\nenemies" }
-"elcreel3" = { name = "ElcReel3", long_name = "Elec Reel 3", description = "Elec wire\nshocks\nenemies" }
-"elempowr" = { name = "ElemPowr", long_name = "Element Power", description = "ミテイ" }
-"elemrage" = { name = "ElemRage", long_name = "Element Rage", description = "Powers up\nwhen over\nelem sq" }
-"energbom" = { name = "EnergBom", long_name = "Energy Bomb", description = "Throws a\nbomb 3sq\nahead" }
+"django_ds" = { name = "Django\uE008", long_name = "Django DS", description = "Burns\nwith\nsunlight" }
+"django_sp" = { name = "Django\uE003", long_name = "Django SP", description = "Burns\nwith\nsunlight" }
+"double_crack" = { name = "DublCrak", long_name = "Double Crack", description = "Destroys\n2 panels\nin front" }
+"double_dream" = { name = "DblDream", long_name = "Double Dream", description = "" }
+"double_hero" = { name = "D-HERO", long_name = "Double Hero", description = "" }
+"double_point" = { name = "DblPoint", long_name = "Double Point", description = "+20 for\nnext chip\nattack" }
+"double_vulcan" = { name = "D-VALCAN", long_name = "Double Vulcan", description = "" }
+"drill_arm_1" = { name = "DrilArm1", long_name = "Drill Arm 1", description = "Knocks\nenmy 2sq\naway" }
+"drill_arm_2" = { name = "DrilArm2", long_name = "Drill Arm 2", description = "Knocks\nenmy 2sq\naway" }
+"drill_arm_3" = { name = "DrilArm3", long_name = "Drill Arm 3", description = "Knocks\nenmy 2sq\naway" }
+"drill_mode" = { name = "DrilMode", long_name = "Drill Mode", description = "ミテイ" }
+"elec_reel_1" = { name = "ElcReel1", long_name = "Elec Reel 1", description = "Elec wire\nshocks\nenemies" }
+"elec_reel_2" = { name = "ElcReel2", long_name = "Elec Reel 2", description = "Elec wire\nshocks\nenemies" }
+"elec_reel_3" = { name = "ElcReel3", long_name = "Elec Reel 3", description = "Elec wire\nshocks\nenemies" }
+"element_power" = { name = "ElemPowr", long_name = "Element Power", description = "ミテイ" }
+"element_rage" = { name = "ElemRage", long_name = "Element Rage", description = "Powers up\nwhen over\nelem sq" }
+"energy_bomb" = { name = "EnergBom", long_name = "Energy Bomb", description = "Throws a\nbomb 3sq\nahead" }
+"engetsu_sappou" = { name = "E-SAPPOU", long_name = "Engetsu Sappou", description = "" }
 "fan" = { name = "Fan", long_name = "Fan", description = "Vacuum\nfan pulls\nenemy in" }
 "fanfare" = { name = "Fanfare", long_name = "Fanfare", description = "Take no\ndmg for a\nwhile" }
-"finalgun" = { name = "FinalGun", long_name = "Final Gun", description = "ミテイ" }
-"firehit1" = { name = "FireHit1", long_name = "Fire Hit 1", description = "Slams\nclosest\nenemy" }
-"firehit2" = { name = "FireHit2", long_name = "Fire Hit 2", description = "Slams\nclosest\nenemy" }
-"firehit3" = { name = "FireHit3", long_name = "Fire Hit 3", description = "Slams\nclosest\nenemy" }
+"fast_gauge" = { name = "FstGauge", long_name = "Fast Gauge", description = "CustGauge\nTemporary\nspeed-up" }
+"fighter_sword" = { name = "FtrSword", long_name = "Fighter Sword", description = "" }
+"final_gun" = { name = "FinalGun", long_name = "Final Gun", description = "ミテイ" }
+"fire_hit_1" = { name = "FireHit1", long_name = "Fire Hit 1", description = "Slams\nclosest\nenemy" }
+"fire_hit_2" = { name = "FireHit2", long_name = "Fire Hit 2", description = "Slams\nclosest\nenemy" }
+"fire_hit_3" = { name = "FireHit3", long_name = "Fire Hit 3", description = "Slams\nclosest\nenemy" }
 "football" = { name = "Football", long_name = "Football", description = "Kick a\nball to\nenmy area" }
-"fstgauge" = { name = "FstGauge", long_name = "Fast Gauge", description = "CustGauge\nTemporary\nspeed-up" }
-"ftrsword" = { name = "FtrSword", long_name = "Fighter Sword", description = "" }
-"fullcust" = { name = "FullCust", long_name = "Full Custom", description = "CustGauge\ninstantly\nrefills" }
-"g-otoshi" = { name = "G-OTOSHI", long_name = "Gama Otoshi", description = "" }
-"geddon1" = { name = "Geddon1", long_name = "Geddon 1", description = "Cracks\nall panel\non screen" }
-"geddon2" = { name = "Geddon2", long_name = "Geddon 2", description = "Breaks\nall empty\npanels" }
-"geddon3" = { name = "Geddon3", long_name = "Geddon 3", description = "Turns all\npanels to\nswamp" }
+"full_custom" = { name = "FullCust", long_name = "Full Custom", description = "CustGauge\ninstantly\nrefills" }
+"gama_otoshi" = { name = "G-OTOSHI", long_name = "Gama Otoshi", description = "" }
+"geddon_1" = { name = "Geddon1", long_name = "Geddon 1", description = "Cracks\nall panel\non screen" }
+"geddon_2" = { name = "Geddon2", long_name = "Geddon 2", description = "Breaks\nall empty\npanels" }
+"geddon_3" = { name = "Geddon3", long_name = "Geddon 3", description = "Turns all\npanels to\nswamp" }
 "geyser" = { name = "Geyser", long_name = "Geyser", description = "Geyser 3\nsquares\nforward" }
-"gigacan1" = { name = "GigaCan1", long_name = "Giga Cannon 1", description = "Giga lvl\ncannon\nattack!" }
-"gigacan2" = { name = "GigaCan2", long_name = "Giga Cannon 2", description = "Giga lvl\ncannon\nattack!" }
-"gigacan3" = { name = "GigaCan3", long_name = "Giga Cannon 3", description = "Giga lvl\ncannon\nattack!" }
-"grabbnsh" = { name = "GrabBnsh", long_name = "Grab Banish", description = "20 damage\nfor every\nstolen sq" }
-"grabrvng" = { name = "GrabRvng", long_name = "Grab Revenge", description = "40 damage\nfor every\nstolen sq" }
-"grasseed" = { name = "GrasSeed", long_name = "Grass Seed", description = "Makes 9sq\nmeadow\n3sq ahead" }
-"greatyo" = { name = "GreatYo", long_name = "Great Yo-Yo", description = "Moves 3sq\nvertical" }
+"giga_cannon_1" = { name = "GigaCan1", long_name = "Giga Cannon 1", description = "Giga lvl\ncannon\nattack!" }
+"giga_cannon_2" = { name = "GigaCan2", long_name = "Giga Cannon 2", description = "Giga lvl\ncannon\nattack!" }
+"giga_cannon_3" = { name = "GigaCan3", long_name = "Giga Cannon 3", description = "Giga lvl\ncannon\nattack!" }
+"grab_banish" = { name = "GrabBnsh", long_name = "Grab Banish", description = "20 damage\nfor every\nstolen sq" }
+"grab_revenge" = { name = "GrabRvng", long_name = "Grab Revenge", description = "40 damage\nfor every\nstolen sq" }
+"grass_seed" = { name = "GrasSeed", long_name = "Grass Seed", description = "Makes 9sq\nmeadow\n3sq ahead" }
+"great_yo_yo" = { name = "GreatYo", long_name = "Great Yo-Yo", description = "Moves 3sq\nvertical" }
 "gridman" = { name = "GridMan", long_name = "GridMan", description = "Explodes\nwhen\ntouchdown" }
-"gridman-ds" = { name = "GridMan\uE008", long_name = "GridMan DS", description = "Explodes\nwhen\ntouchdown" }
-"gridman-sp" = { name = "GridMan\uE003", long_name = "GridMan SP", description = "Explodes\nwhen\ntouchdown" }
-"guard1" = { name = "Guard1", long_name = "Guard 1", description = "Repels a\nenemy's\nattack" }
-"guard2" = { name = "Guard2", long_name = "Guard 2", description = "Repels a\nenemy's\nattack" }
-"guard3" = { name = "Guard3", long_name = "Guard 3", description = "Repels a\nenemy's\nattack" }
+"gridman_ds" = { name = "GridMan\uE008", long_name = "GridMan DS", description = "Explodes\nwhen\ntouchdown" }
+"gridman_sp" = { name = "GridMan\uE003", long_name = "GridMan SP", description = "Explodes\nwhen\ntouchdown" }
+"guard_1" = { name = "Guard1", long_name = "Guard 1", description = "Repels a\nenemy's\nattack" }
+"guard_2" = { name = "Guard2", long_name = "Guard 2", description = "Repels a\nenemy's\nattack" }
+"guard_3" = { name = "Guard3", long_name = "Guard 3", description = "Repels a\nenemy's\nattack" }
 "guardian" = { name = "Guardian", long_name = "Guardian", description = "Statue\npunishes\nwhen hit" }
-"gundelex" = { name = "GunDelEX", long_name = "Gun del Sol EX", description = "Fires a\nspread\nsunbeam" }
-"gundels1" = { name = "GunDelS1", long_name = "Gun del Sol 1", description = "Sunshine\nappear w/\nButton" }
-"gundels2" = { name = "GunDelS2", long_name = "Gun del Sol 2", description = "Sunshine\nappear w/\nButton" }
-"gundels3" = { name = "GunDelS3", long_name = "Gun del Sol 3", description = "Sunshine\nappear w/\nButton" }
+"gun_del_sol_1" = { name = "GunDelS1", long_name = "Gun del Sol 1", description = "Sunshine\nappear w/\nButton" }
+"gun_del_sol_2" = { name = "GunDelS2", long_name = "Gun del Sol 2", description = "Sunshine\nappear w/\nButton" }
+"gun_del_sol_3" = { name = "GunDelS3", long_name = "Gun del Sol 3", description = "Sunshine\nappear w/\nButton" }
+"gun_del_sol_ex" = { name = "GunDelEX", long_name = "Gun del Sol EX", description = "Fires a\nspread\nsunbeam" }
+"gyro_air_force" = { name = "Airforce", long_name = "Gyro Air Force", description = "Helicoptr\nstrafes\na row" }
 "gyroman" = { name = "GyroMan", long_name = "GyroMan", description = "Bombs the\nfront of\nsame row" }
-"gyroman-ds" = { name = "GyroMan\uE008", long_name = "GyroMan DS", description = "Bombs the\nfront of\nsame row" }
-"gyroman-sp" = { name = "GyroMan\uE003", long_name = "GyroMan SP", description = "Bombs the\nfront of\nsame row" }
-"h-burst" = { name = "H-Burst", long_name = "Hyper Burst", description = "Secondary\nexplosion\nafter hit" }
-"hicannon" = { name = "HiCannon", long_name = "High Cannon", description = "Cannon to\nattack\n1 enemy" }
-"holydrem" = { name = "HolyDrem", long_name = "Holy Dream", description = "Holy shot\nsucks in\nHolyPanl!" }
-"holypanl" = { name = "HolyPanl", long_name = "Holy Panel", description = "Creates a\nHolyPanl\nin front" }
-"hotbody1" = { name = "HotBody1", long_name = "Hot Body 1", description = "Burns all\nenemies\naround" }
-"hotbody2" = { name = "HotBody2", long_name = "Hot Body 2", description = "Burns all\nenemies\naround" }
-"hotbody3" = { name = "HotBody3", long_name = "Hot Body 3", description = "Burns all\nenemies\naround" }
-"hprecov" = { name = "HPRecov", long_name = "HP Recovery", description = "" }
-"iceseed" = { name = "IceSeed", long_name = "Ice Seed", description = "Makes 9sq\nice\n3sq ahead" }
-"infvulc1" = { name = "InfVulc1", long_name = "Infinite Vulcan 1", description = "20-shot\ndeadly\nmachine!" }
-"infvulc2" = { name = "InfVulc2", long_name = "Infinite Vulcan 2", description = "24-shot\ndeadly\nmachine!" }
-"infvulc3" = { name = "InfVulc3", long_name = "Infinite Vulcan 3", description = "28-shot\ndeadly\nmachine!" }
+"gyroman_ds" = { name = "GyroMan\uE008", long_name = "GyroMan DS", description = "Bombs the\nfront of\nsame row" }
+"gyroman_sp" = { name = "GyroMan\uE003", long_name = "GyroMan SP", description = "Bombs the\nfront of\nsame row" }
+"high_cannon" = { name = "HiCannon", long_name = "High Cannon", description = "Cannon to\nattack\n1 enemy" }
+"holy_dream" = { name = "HolyDrem", long_name = "Holy Dream", description = "Holy shot\nsucks in\nHolyPanl!" }
+"holy_panel" = { name = "HolyPanl", long_name = "Holy Panel", description = "Creates a\nHolyPanl\nin front" }
+"hot_body_1" = { name = "HotBody1", long_name = "Hot Body 1", description = "Burns all\nenemies\naround" }
+"hot_body_2" = { name = "HotBody2", long_name = "Hot Body 2", description = "Burns all\nenemies\naround" }
+"hot_body_3" = { name = "HotBody3", long_name = "Hot Body 3", description = "Burns all\nenemies\naround" }
+"hp_recovery" = { name = "HPRecov", long_name = "HP Recovery", description = "" }
+"hyper_burst" = { name = "H-Burst", long_name = "Hyper Burst", description = "Secondary\nexplosion\nafter hit" }
+"ice_seed" = { name = "IceSeed", long_name = "Ice Seed", description = "Makes 9sq\nice\n3sq ahead" }
+"infinite_vulcan_1" = { name = "InfVulc1", long_name = "Infinite Vulcan 1", description = "20-shot\ndeadly\nmachine!" }
+"infinite_vulcan_2" = { name = "InfVulc2", long_name = "Infinite Vulcan 2", description = "24-shot\ndeadly\nmachine!" }
+"infinite_vulcan_3" = { name = "InfVulc3", long_name = "Infinite Vulcan 3", description = "28-shot\ndeadly\nmachine!" }
 "invalid" = { name = "", long_name = "", description = "" }
-"invisibl" = { name = "Invisibl", long_name = "Invisible", description = "Invisibl\nfor a\nwhile" }
+"invisible" = { name = "Invisibl", long_name = "Invisible", description = "Invisibl\nfor a\nwhile" }
 "jealousy" = { name = "Jealousy", long_name = "Jealousy", description = "More dmg\nif enemy\nhas chip" }
-"justcone" = { name = "JustcOne", long_name = "Justice One", description = "Fist Atk\non center\npanel" }
-"k-bomb" = { name = "K-BOMB", long_name = "Kokubankeshi Bomb", description = "" }
-"k-throw" = { name = "K-THROW", long_name = "Knight Throw", description = "" }
-"katana1" = { name = "Katana1", long_name = "Katana 1", description = "Cut twice\nonce wide\nonce long" }
-"katana2" = { name = "Katana2", long_name = "Katana 2", description = "Cut twice\nonce wide\nonce long" }
-"katana3" = { name = "Katana3", long_name = "Katana 3", description = "Cut twice\nonce wide\nonce long" }
-"kcrusher" = { name = "KCrusher", long_name = "Kingdom Crusher", description = "Throw an\niron ball\nahead" }
-"knightmn" = { name = "KnightMn", long_name = "KnightMan", description = "Circle\naround\nand atk" }
-"knigtmn-ds" = { name = "KnigtMn\uE008", long_name = "KnightMan DS", description = "Circle\naround\nand atk" }
-"knigtmn-sp" = { name = "KnigtMn\uE003", long_name = "KnightMan SP", description = "Circle\naround\nand atk" }
+"justice_one" = { name = "JustcOne", long_name = "Justice One", description = "Fist Atk\non center\npanel" }
+"katana_1" = { name = "Katana1", long_name = "Katana 1", description = "Cut twice\nonce wide\nonce long" }
+"katana_2" = { name = "Katana2", long_name = "Katana 2", description = "Cut twice\nonce wide\nonce long" }
+"katana_3" = { name = "Katana3", long_name = "Katana 3", description = "Cut twice\nonce wide\nonce long" }
+"kingdom_crusher" = { name = "KCrusher", long_name = "Kingdom Crusher", description = "Throw an\niron ball\nahead" }
+"knight_throw" = { name = "K-THROW", long_name = "Knight Throw", description = "" }
+"knightman" = { name = "KnightMn", long_name = "KnightMan", description = "Circle\naround\nand atk" }
+"knightman_ds" = { name = "KnigtMn\uE008", long_name = "KnightMan DS", description = "Circle\naround\nand atk" }
+"knightman_sp" = { name = "KnigtMn\uE003", long_name = "KnightMan SP", description = "Circle\naround\nand atk" }
+"kokubankeshi_bomb" = { name = "K-BOMB", long_name = "Kokubankeshi Bomb", description = "" }
+"l_counter" = { name = "LCounter", long_name = "L Counter", description = "ミテイ" }
+"l_curse_shield" = { name = "LCrsShld", long_name = "L Curse Shield", description = "ミテイ" }
+"l_step_sword" = { name = "LStepSwd", long_name = "L Step Sword", description = "ミテイ" }
 "lance" = { name = "Lance", long_name = "Lance", description = "Lance\nthrough\nback line" }
 "larkman" = { name = "LarkMan", long_name = "LarkMan", description = "Whirl\nforward\nand atk" }
-"larkman-ds" = { name = "LarkMan\uE008", long_name = "LarkMan DS", description = "Whirl\nforward\nand atk" }
-"larkman-sp" = { name = "LarkMan\uE003", long_name = "LarkMan SP", description = "Whirl\nforward\nand atk" }
-"lavaseed" = { name = "LavaSeed", long_name = "Lava Seed", description = "Makes 9sq\nlava zone\n3sq ahead" }
-"lcounter" = { name = "LCounter", long_name = "L Counter", description = "ミテイ" }
-"lcrsshld" = { name = "LCrsShld", long_name = "L Curse Shield", description = "ミテイ" }
-"leadraid" = { name = "LeadRaid", long_name = "Leader Raid", description = "ProtoMan\n& Colonel\ntogether!" }
-"lifeaur" = { name = "LifeAur", long_name = "Life Aura", description = "Repel all\nattacks\nunder200" }
-"lifesrd" = { name = "LifeSrd", long_name = "Life Sword", description = "Slices\n2sq wide\n3sq vrtcl" }
-"lifesync" = { name = "LifeSync", long_name = "Life Synchro", description = "Makes HP\nsame as\nenemy" }
-"longblde" = { name = "LongBlde", long_name = "Long Blade", description = "Cuts enmy\nin front!\nRange: 2" }
-"longswrd" = { name = "LongSwrd", long_name = "Long Sword", description = "Cuts enmy\nin front!\nRange: 2" }
-"lstepswd" = { name = "LStepSwd", long_name = "L Step Sword", description = "ミテイ" }
-"m-air" = { name = "M-AIR", long_name = "Magnet Air Raid", description = "" }
-"m-cannon" = { name = "M-Cannon", long_name = "Mega Cannon", description = "Cannon to\nattack\n1 enemy" }
-"m-zan" = { name = "M-ZAN", long_name = "Magnet Zan", description = "" }
-"mag-barr" = { name = "Mag-Barr", long_name = "Magnet Barrier", description = "" }
-"magnetmn" = { name = "MagnetMn", long_name = "MagnetMan", description = "NS tackle\nand chrge" }
-"magntmn-ds" = { name = "MagntMn\uE008", long_name = "MagnetMan DS", description = "NS tackle\nand chrge" }
-"magntmn-sp" = { name = "MagntMn\uE003", long_name = "MagnetMan SP", description = "NS tackle\nand chrge" }
+"larkman_ds" = { name = "LarkMan\uE008", long_name = "LarkMan DS", description = "Whirl\nforward\nand atk" }
+"larkman_sp" = { name = "LarkMan\uE003", long_name = "LarkMan SP", description = "Whirl\nforward\nand atk" }
+"lava_seed" = { name = "LavaSeed", long_name = "Lava Seed", description = "Makes 9sq\nlava zone\n3sq ahead" }
+"leader_raid" = { name = "LeadRaid", long_name = "Leader Raid", description = "ProtoMan\n& Colonel\ntogether!" }
+"life_aura" = { name = "LifeAur", long_name = "Life Aura", description = "Repel all\nattacks\nunder200" }
+"life_sword" = { name = "LifeSrd", long_name = "Life Sword", description = "Slices\n2sq wide\n3sq vrtcl" }
+"life_synchro" = { name = "LifeSync", long_name = "Life Synchro", description = "Makes HP\nsame as\nenemy" }
+"long_blade" = { name = "LongBlde", long_name = "Long Blade", description = "Cuts enmy\nin front!\nRange: 2" }
+"long_sword" = { name = "LongSwrd", long_name = "Long Sword", description = "Cuts enmy\nin front!\nRange: 2" }
+"magnet_air_raid" = { name = "M-AIR", long_name = "Magnet Air Raid", description = "" }
+"magnet_barrier" = { name = "Mag-Barr", long_name = "Magnet Barrier", description = "" }
+"magnet_zan" = { name = "M-ZAN", long_name = "Magnet Zan", description = "" }
+"magnetman" = { name = "MagnetMn", long_name = "MagnetMan", description = "NS tackle\nand chrge" }
+"magnetman_ds" = { name = "MagntMn\uE008", long_name = "MagnetMan DS", description = "NS tackle\nand chrge" }
+"magnetman_sp" = { name = "MagntMn\uE003", long_name = "MagnetMan SP", description = "NS tackle\nand chrge" }
 "magnum" = { name = "Magnum", long_name = "Magnum", description = "Cursor\ndestroys\npanels!" }
+"mark_cannon_1" = { name = "MrkCan1", long_name = "Mark Cannon 1", description = "DoomerEX\nlocks on\n3 rows" }
+"mark_cannon_2" = { name = "MrkCan2", long_name = "Mark Cannon 2", description = "DoomerEX\nlocks on\n3 rows" }
+"mark_cannon_3" = { name = "MrkCan3", long_name = "Mark Cannon 3", description = "DoomerEX\nlocks on\n3 rows" }
 "meddy" = { name = "Meddy", long_name = "Meddy", description = "Throw 2\nbombs to\nenmy area" }
-"meddy-ds" = { name = "Meddy\uE008", long_name = "Meddy DS", description = "Throw 2\nbombs to\nenmy area" }
-"meddy-sp" = { name = "Meddy\uE003", long_name = "Meddy SP", description = "Throw 2\nbombs to\nenmy area" }
-"meddycap" = { name = "MeddyCap", long_name = "Meddy Capsule", description = "Throw a\nparalyzer\ncapsule" }
-"megenbom" = { name = "MegEnBom", long_name = "Mega Energy Bomb", description = "Throws a\nbomb 3sq\nahead" }
-"metagel" = { name = "MetaGel", long_name = "Metal Gel", description = "Gel atk\nsteals a\npanel!" }
+"meddy_capsule" = { name = "MeddyCap", long_name = "Meddy Capsule", description = "Throw a\nparalyzer\ncapsule" }
+"meddy_ds" = { name = "Meddy\uE008", long_name = "Meddy DS", description = "Throw 2\nbombs to\nenmy area" }
+"meddy_sp" = { name = "Meddy\uE003", long_name = "Meddy SP", description = "Throw 2\nbombs to\nenmy area" }
+"mega_cannon" = { name = "M-Cannon", long_name = "Mega Cannon", description = "Cannon to\nattack\n1 enemy" }
+"mega_energy_bomb" = { name = "MegEnBom", long_name = "Mega Energy Bomb", description = "Throws a\nbomb 3sq\nahead" }
+"metal_gel" = { name = "MetaGel", long_name = "Metal Gel", description = "Gel atk\nsteals a\npanel!" }
+"meteor_knuckle" = { name = "MetrKnuk", long_name = "Meteor Knuckle", description = "Meteors\nbombard\nfrom sky" }
 "meteors" = { name = "Meteors", long_name = "Meteors", description = "Drop many\nmeteor on\nenmy area" }
-"metrknuk" = { name = "MetrKnuk", long_name = "Meteor Knuckle", description = "Meteors\nbombard\nfrom sky" }
 "mine" = { name = "Mine", long_name = "Mine", description = "Place a\nmine in\nenmy area" }
-"minibomb" = { name = "MiniBomb", long_name = "Mini Bomb", description = "Throws a\nminibomb\n3sq ahead" }
-"moonbld1" = { name = "MoonBld1", long_name = "Moon Blade 1", description = "Slices\nenemies\naround" }
-"moonbld2" = { name = "MoonBld2", long_name = "Moon Blade 2", description = "Slices\nenemies\naround" }
-"moonbld3" = { name = "MoonBld3", long_name = "Moon Blade 3", description = "Slices\nenemies\naround" }
-"mrkcan1" = { name = "MrkCan1", long_name = "Mark Cannon 1", description = "DoomerEX\nlocks on\n3 rows" }
-"mrkcan2" = { name = "MrkCan2", long_name = "Mark Cannon 2", description = "DoomerEX\nlocks on\n3 rows" }
-"mrkcan3" = { name = "MrkCan3", long_name = "Mark Cannon 3", description = "DoomerEX\nlocks on\n3 rows" }
-"mudwave" = { name = "MudWave", long_name = "Mud Wave", description = "MudWave\nout of\nhole" }
-"muramasa" = { name = "Muramasa", long_name = "Muramasa Blade", description = "Atk power\nequal amt\nof lostHP" }
-"napalm" = { name = "Napalm", long_name = "Napalm Bomb", description = "9-panel\ncross\nexplosion" }
-"napalmmn" = { name = "NapalmMn", long_name = "NapalmMan", description = "Explosion\nspreads\n9 panels" }
-"naplmmn-ds" = { name = "NaplmMn\uE008", long_name = "NapalmMan DS", description = "Explosion\nspreads\n9 panels" }
-"naplmmn-sp" = { name = "NaplmMn\uE003", long_name = "NapalmMan SP", description = "Explosion\nspreads\n9 panels" }
-"navi-20" = { name = "Navi+20", long_name = "Navi +20", description = "+20 for\nselected\nNavi chip" }
-"neovari" = { name = "NeoVari", long_name = "Neo Variable Sword", description = "A magical\nshifting\nsword" }
-"nrthwind" = { name = "NrthWind", long_name = "North Wind", description = "Wind blws\noff aura,\nbarriers" }
-"nstackle" = { name = "NSTackle", long_name = "North-South Tackle", description = "NS tackle\nand chrge" }
-"numbrbl" = { name = "NumbrBl", long_name = "Number Ball", description = "Last 2\nHP digits\n= atk pwr" }
-"numbrman" = { name = "NumbrMan", long_name = "NumberMan", description = "Bomb 3\nahead!\nHits 9sq" }
-"numbrmn-ds" = { name = "NumbrMn\uE008", long_name = "NumberMan DS", description = "Bomb 3\nahead!\nHits 9sq" }
-"numbrmn-sp" = { name = "NumbrMn\uE003", long_name = "NumberMan SP", description = "Bomb 3\nahead!\nHits 9sq" }
-"numtrap" = { name = "NumTrap", long_name = "Number Trap", description = "Set a\ntrap 2 sq\nahead" }
-"omegarkt" = { name = "OmegaRkt", long_name = "Omega Rocket", description = "A rocket\nmoves\nstraight" }
+"mini_bomb" = { name = "MiniBomb", long_name = "Mini Bomb", description = "Throws a\nminibomb\n3sq ahead" }
+"moon_blade_1" = { name = "MoonBld1", long_name = "Moon Blade 1", description = "Slices\nenemies\naround" }
+"moon_blade_2" = { name = "MoonBld2", long_name = "Moon Blade 2", description = "Slices\nenemies\naround" }
+"moon_blade_3" = { name = "MoonBld3", long_name = "Moon Blade 3", description = "Slices\nenemies\naround" }
+"mud_wave" = { name = "MudWave", long_name = "Mud Wave", description = "MudWave\nout of\nhole" }
+"muramasa_blade" = { name = "Muramasa", long_name = "Muramasa Blade", description = "Atk power\nequal amt\nof lostHP" }
+"napalm_bomb" = { name = "Napalm", long_name = "Napalm Bomb", description = "9-panel\ncross\nexplosion" }
+"napalmman" = { name = "NapalmMn", long_name = "NapalmMan", description = "Explosion\nspreads\n9 panels" }
+"napalmman_ds" = { name = "NaplmMn\uE008", long_name = "NapalmMan DS", description = "Explosion\nspreads\n9 panels" }
+"napalmman_sp" = { name = "NaplmMn\uE003", long_name = "NapalmMan SP", description = "Explosion\nspreads\n9 panels" }
+"navi_20" = { name = "Navi+20", long_name = "Navi +20", description = "+20 for\nselected\nNavi chip" }
+"neo_variable_sword" = { name = "NeoVari", long_name = "Neo Variable Sword", description = "A magical\nshifting\nsword" }
+"north_south_tackle" = { name = "NSTackle", long_name = "North-South Tackle", description = "NS tackle\nand chrge" }
+"north_wind" = { name = "NrthWind", long_name = "North Wind", description = "Wind blws\noff aura,\nbarriers" }
+"number_ball" = { name = "NumbrBl", long_name = "Number Ball", description = "Last 2\nHP digits\n= atk pwr" }
+"number_trap" = { name = "NumTrap", long_name = "Number Trap", description = "Set a\ntrap 2 sq\nahead" }
+"numberman" = { name = "NumbrMan", long_name = "NumberMan", description = "Bomb 3\nahead!\nHits 9sq" }
+"numberman_ds" = { name = "NumbrMn\uE008", long_name = "NumberMan DS", description = "Bomb 3\nahead!\nHits 9sq" }
+"numberman_sp" = { name = "NumbrMn\uE003", long_name = "NumberMan SP", description = "Bomb 3\nahead!\nHits 9sq" }
+"omega_rocket" = { name = "OmegaRkt", long_name = "Omega Rocket", description = "A rocket\nmoves\nstraight" }
 "otenko" = { name = "Otenko", long_name = "Otenko", description = "Put Otnko\nto raise\natk pwr" }
-"panlgrab" = { name = "PanlGrab", long_name = "Panel Grab", description = "Steals 1\nenemy\nsquare!" }
-"parabom" = { name = "ParaBom", long_name = "Paralyze Bomb", description = "Bomb\nparalyzes\n3sq ahead" }
+"panel_grab" = { name = "PanlGrab", long_name = "Panel Grab", description = "Steals 1\nenemy\nsquare!" }
+"panel_return" = { name = "PnlRetrn", long_name = "Panel Return", description = "Fix your\narea's\npanels" }
+"paralyze_bomb" = { name = "ParaBom", long_name = "Paralyze Bomb", description = "Bomb\nparalyzes\n3sq ahead" }
 "phoenix" = { name = "Phoenix", long_name = "Phoenix", description = "Fire Atk!\nRecover\nHP, too!" }
-"piledrvr" = { name = "PileDrvr", long_name = "Pile Driver", description = "Places a\nPileDrvr\nto attack" }
-"pithoky" = { name = "PitHoky", long_name = "Pit Hockey", description = "Reflect\nhockey\nattack" }
-"pnkcapsl" = { name = "PnkCapsl", long_name = "Pink Capsule", description = "Add an\neffect:\nRecovery" }
-"pnlretrn" = { name = "PnlRetrn", long_name = "Panel Return", description = "Fix your\narea's\npanels" }
-"poisphar" = { name = "PoisPhar", long_name = "Poison Pharaoh", description = "Places a\npoisoned\nPharaoh" }
-"poltrgst" = { name = "Poltrgst", long_name = "Poltergeist", description = "Objects\nthrown at\nenemies!" }
+"pile_driver" = { name = "PileDrvr", long_name = "Pile Driver", description = "Places a\nPileDrvr\nto attack" }
+"pink_capsule" = { name = "PnkCapsl", long_name = "Pink Capsule", description = "Add an\neffect:\nRecovery" }
+"pit_hockey" = { name = "PitHoky", long_name = "Pit Hockey", description = "Reflect\nhockey\nattack" }
+"poison_pharaoh" = { name = "PoisPhar", long_name = "Poison Pharaoh", description = "Places a\npoisoned\nPharaoh" }
+"poltergeist" = { name = "Poltrgst", long_name = "Poltergeist", description = "Objects\nthrown at\nenemies!" }
 "protoman" = { name = "ProtoMan", long_name = "ProtoMan", description = "Move in\nand slice\nthe enemy" }
-"protomn-ds" = { name = "ProtoMn\uE008", long_name = "ProtoMan DS", description = "Move in\nand slice\nthe enemy" }
-"protomn-sp" = { name = "ProtoMn\uE003", long_name = "ProtoMan SP", description = "Move in\nand slice\nthe enemy" }
-"prpcapsl" = { name = "PrpCapsl", long_name = "Purple Capsule", description = "Add an\neffect:\nHP Bug" }
-"pulsar1" = { name = "Pulsar1", long_name = "Pulsar 1", description = "Sonic atk\nspreads\nwhen hits" }
-"pulsar2" = { name = "Pulsar2", long_name = "Pulsar 2", description = "Sonic atk\nspreads\nwhen hits" }
-"pulsar3" = { name = "Pulsar3", long_name = "Pulsar 3", description = "Sonic atk\nspreads\nwhen hits" }
+"protoman_ds" = { name = "ProtoMn\uE008", long_name = "ProtoMan DS", description = "Move in\nand slice\nthe enemy" }
+"protoman_sp" = { name = "ProtoMn\uE003", long_name = "ProtoMan SP", description = "Move in\nand slice\nthe enemy" }
+"pulsar_1" = { name = "Pulsar1", long_name = "Pulsar 1", description = "Sonic atk\nspreads\nwhen hits" }
+"pulsar_2" = { name = "Pulsar2", long_name = "Pulsar 2", description = "Sonic atk\nspreads\nwhen hits" }
+"pulsar_3" = { name = "Pulsar3", long_name = "Pulsar 3", description = "Sonic atk\nspreads\nwhen hits" }
 "punisher" = { name = "Punisher", long_name = "Punisher", description = "" }
-"quake1" = { name = "Quake1", long_name = "Quake 1", description = "Quake\ncracks\n3sq ahead" }
-"quake2" = { name = "Quake2", long_name = "Quake 2", description = "Quake\ncracks\n3sq ahead" }
-"quake3" = { name = "Quake3", long_name = "Quake 3", description = "Quake\ncracks\n3sq ahead" }
-"rainyday" = { name = "RainyDay", long_name = "Rainy Day", description = "Rains\ndown on\nenmy area" }
-"recov10" = { name = "Recov10", long_name = "Recovery 10", description = "Recovers\n10HP" }
-"recov120" = { name = "Recov120", long_name = "Recovery 120", description = "Recovers\n120HP" }
-"recov150" = { name = "Recov150", long_name = "Recovery 150", description = "Recovers\n150HP" }
-"recov200" = { name = "Recov200", long_name = "Recovery 200", description = "Recovers\n200HP" }
-"recov30" = { name = "Recov30", long_name = "Recovery 30", description = "Recovers\n30HP" }
-"recov300" = { name = "Recov300", long_name = "Recovery 300", description = "Recovers\n300HP" }
-"recov50" = { name = "Recov50", long_name = "Recovery 50", description = "Recovers\n50HP" }
-"recov80" = { name = "Recov80", long_name = "Recovery 80", description = "Recovers\n80HP" }
-"redfrut1" = { name = "RedFrut1", long_name = "Red Fruit 1", description = "Hit apple\nfor\n+300HP" }
-"redfrut2" = { name = "RedFrut2", long_name = "Red Fruit 2", description = "Hit apple\nfor temp\nno damage" }
-"redfrut3" = { name = "RedFrut3", long_name = "Red Fruit 3", description = "Hit apple\nfor Full\nSynchro" }
-"redwave" = { name = "RedWave", long_name = "Red Wave", description = "RedWave\nout of\nLava sq" }
-"resetbom" = { name = "ResetBom", long_name = "Reset Bomb", description = "Reduces\npower\n3sq ahead" }
-"rockcube" = { name = "RockCube", long_name = "Rock Cube", description = "Place a\nrock cube\nin front" }
+"purple_capsule" = { name = "PrpCapsl", long_name = "Purple Capsule", description = "Add an\neffect:\nHP Bug" }
+"quake_1" = { name = "Quake1", long_name = "Quake 1", description = "Quake\ncracks\n3sq ahead" }
+"quake_2" = { name = "Quake2", long_name = "Quake 2", description = "Quake\ncracks\n3sq ahead" }
+"quake_3" = { name = "Quake3", long_name = "Quake 3", description = "Quake\ncracks\n3sq ahead" }
+"rainy_day" = { name = "RainyDay", long_name = "Rainy Day", description = "Rains\ndown on\nenmy area" }
+"recovery_10" = { name = "Recov10", long_name = "Recovery 10", description = "Recovers\n10HP" }
+"recovery_120" = { name = "Recov120", long_name = "Recovery 120", description = "Recovers\n120HP" }
+"recovery_150" = { name = "Recov150", long_name = "Recovery 150", description = "Recovers\n150HP" }
+"recovery_200" = { name = "Recov200", long_name = "Recovery 200", description = "Recovers\n200HP" }
+"recovery_30" = { name = "Recov30", long_name = "Recovery 30", description = "Recovers\n30HP" }
+"recovery_300" = { name = "Recov300", long_name = "Recovery 300", description = "Recovers\n300HP" }
+"recovery_50" = { name = "Recov50", long_name = "Recovery 50", description = "Recovers\n50HP" }
+"recovery_80" = { name = "Recov80", long_name = "Recovery 80", description = "Recovers\n80HP" }
+"red_fruit_1" = { name = "RedFrut1", long_name = "Red Fruit 1", description = "Hit apple\nfor\n+300HP" }
+"red_fruit_2" = { name = "RedFrut2", long_name = "Red Fruit 2", description = "Hit apple\nfor temp\nno damage" }
+"red_fruit_3" = { name = "RedFrut3", long_name = "Red Fruit 3", description = "Hit apple\nfor Full\nSynchro" }
+"red_wave" = { name = "RedWave", long_name = "Red Wave", description = "RedWave\nout of\nLava sq" }
+"reset_bomb" = { name = "ResetBom", long_name = "Reset Bomb", description = "Reduces\npower\n3sq ahead" }
+"rock_cube" = { name = "RockCube", long_name = "Rock Cube", description = "Place a\nrock cube\nin front" }
 "roll" = { name = "Roll", long_name = "Roll", description = "Attack an\nenmy, then\nheals you" }
-"roll-ds" = { name = "Roll\uE008", long_name = "Roll DS", description = "Attack an\nenmy, then\nheals you" }
-"roll-sp" = { name = "Roll\uE003", long_name = "Roll SP", description = "Attack an\nenmy, then\nheals you" }
+"roll_ds" = { name = "Roll\uE008", long_name = "Roll DS", description = "Attack an\nenmy, then\nheals you" }
+"roll_sp" = { name = "Roll\uE003", long_name = "Roll SP", description = "Attack an\nenmy, then\nheals you" }
 "rush" = { name = "Rush", long_name = "Rush", description = "" }
-"s-melody" = { name = "S-Melody", long_name = "Shocking Melody", description = "Sing and\nparalyze\nthe enemy" }
-"satelity" = { name = "Satelity", long_name = "Satellite Ray", description = "Stp cursr\nfor laser\nattack" }
-"seaseed" = { name = "SeaSeed", long_name = "Sea Seed", description = "Makes 9sq\nwtr zone\n3sq ahead" }
-"serch-s" = { name = "Serch-S", long_name = "Search Snipe", description = "" }
-"serchman" = { name = "SerchMan", long_name = "SearchMan", description = "Aim\nand fire\n5 shots" }
-"serchmn-ds" = { name = "SerchMn\uE008", long_name = "SearchMan DS", description = "Aim\nand fire\n5 shots" }
-"serchmn-sp" = { name = "SerchMn\uE003", long_name = "SearchMan SP", description = "Aim\nand fire\n5 shots" }
+"sanctuary" = { name = "Snctuary", long_name = "Sanctuary", description = "Chng all\nown panel\nto holy" }
+"satellite_ray" = { name = "Satelity", long_name = "Satellite Ray", description = "Stp cursr\nfor laser\nattack" }
+"sea_seed" = { name = "SeaSeed", long_name = "Sea Seed", description = "Makes 9sq\nwtr zone\n3sq ahead" }
+"search_snipe" = { name = "Serch-S", long_name = "Search Snipe", description = "" }
+"searchman" = { name = "SerchMan", long_name = "SearchMan", description = "Aim\nand fire\n5 shots" }
+"searchman_ds" = { name = "SerchMn\uE008", long_name = "SearchMan DS", description = "Aim\nand fire\n5 shots" }
+"searchman_sp" = { name = "SerchMn\uE003", long_name = "SearchMan SP", description = "Aim\nand fire\n5 shots" }
 "shademan" = { name = "ShadeMan", long_name = "ShadeMan", description = "CrshNoise\nattck all\ndirection" }
-"shademn-ds" = { name = "ShadeMn\uE008", long_name = "ShadeMan DS", description = "CrshNoise\nattck all\ndirection" }
-"shademn-sp" = { name = "ShadeMn\uE003", long_name = "ShadeMan SP", description = "CrshNoise\nattck all\ndirection" }
-"shadoman" = { name = "ShadoMan", long_name = "ShadowMan", description = "Throw 3\nninja\nstars" }
-"shadomn-ds" = { name = "ShadoMn\uE008", long_name = "ShadowMan DS", description = "Throw 3\nninja\nstars" }
-"shadomn-sp" = { name = "ShadoMn\uE003", long_name = "ShadowMan SP", description = "Throw 3\nninja\nstars" }
-"shakpar1" = { name = "ShakPar1", long_name = "Shake Parade 1", description = "Shakeys\nParalyze\nthe enmy" }
-"shakpar2" = { name = "ShakPar2", long_name = "Shake Parade 2", description = "Shakeys\nParalyze\nthe enmy" }
-"shakpar3" = { name = "ShakPar3", long_name = "Shake Parade 3", description = "Shakeys\nParalyze\nthe enmy" }
-"sidebub1" = { name = "SideBub1", long_name = "Side Bubble 1", description = "Bubbles\nspread in\na big V" }
-"sidebub2" = { name = "SideBub2", long_name = "Side Bubble 2", description = "Bubbles\nspread in\na big V" }
-"sidebub3" = { name = "SideBub3", long_name = "Side Bubble 3", description = "Bubbles\nspread in\na big V" }
+"shademan_ds" = { name = "ShadeMn\uE008", long_name = "ShadeMan DS", description = "CrshNoise\nattck all\ndirection" }
+"shademan_sp" = { name = "ShadeMn\uE003", long_name = "ShadeMan SP", description = "CrshNoise\nattck all\ndirection" }
+"shadowman" = { name = "ShadoMan", long_name = "ShadowMan", description = "Throw 3\nninja\nstars" }
+"shadowman_ds" = { name = "ShadoMn\uE008", long_name = "ShadowMan DS", description = "Throw 3\nninja\nstars" }
+"shadowman_sp" = { name = "ShadoMn\uE003", long_name = "ShadowMan SP", description = "Throw 3\nninja\nstars" }
+"shake_parade_1" = { name = "ShakPar1", long_name = "Shake Parade 1", description = "Shakeys\nParalyze\nthe enmy" }
+"shake_parade_2" = { name = "ShakPar2", long_name = "Shake Parade 2", description = "Shakeys\nParalyze\nthe enmy" }
+"shake_parade_3" = { name = "ShakPar3", long_name = "Shake Parade 3", description = "Shakeys\nParalyze\nthe enmy" }
+"shocking_melody" = { name = "S-Melody", long_name = "Shocking Melody", description = "Sing and\nparalyze\nthe enemy" }
+"side_bubble_1" = { name = "SideBub1", long_name = "Side Bubble 1", description = "Bubbles\nspread in\na big V" }
+"side_bubble_2" = { name = "SideBub2", long_name = "Side Bubble 2", description = "Bubbles\nspread in\na big V" }
+"side_bubble_3" = { name = "SideBub3", long_name = "Side Bubble 3", description = "Bubbles\nspread in\na big V" }
 "silence" = { name = "Silence", long_name = "Silence", description = "MuteAnt\nblinds\nenemy" }
-"skully1" = { name = "Skully1", long_name = "Skully 1", description = "Confuses\nenemy if\nit hits" }
-"skully2" = { name = "Skully2", long_name = "Skully 2", description = "Confuses\nenemy if\nit hits" }
-"skully3" = { name = "Skully3", long_name = "Skully 3", description = "Confuses\nenemy if\nit hits" }
+"skully_1" = { name = "Skully1", long_name = "Skully 1", description = "Confuses\nenemy if\nit hits" }
+"skully_2" = { name = "Skully2", long_name = "Skully 2", description = "Confuses\nenemy if\nit hits" }
+"skully_3" = { name = "Skully3", long_name = "Skully 3", description = "Confuses\nenemy if\nit hits" }
 "slasher" = { name = "Slasher", long_name = "Slasher", description = "Cut while\nA is held!\n" }
-"slogauge" = { name = "SloGauge", long_name = "Slow Gauge", description = "CustGauge\nTemporary\nslow-down" }
+"slow_gauge" = { name = "SloGauge", long_name = "Slow Gauge", description = "CustGauge\nTemporary\nslow-down" }
 "snake" = { name = "Snake", long_name = "Snake", description = "Call snak\nfrom hole\nin area" }
-"snctuary" = { name = "Snctuary", long_name = "Sanctuary", description = "Chng all\nown panel\nto holy" }
-"sonicbom" = { name = "SonicBom", long_name = "Sonic Boom", description = "" }
-"splitup" = { name = "SplitUp", long_name = "Split Up", description = "Your\nshadow\nattacks" }
+"sonic_boom" = { name = "SonicBom", long_name = "Sonic Boom", description = "" }
+"space_shake_1" = { name = "SpShake1", long_name = "Space Shake 1", description = "Shakey\nshivers\n3sq ahead" }
+"space_shake_2" = { name = "SpShake2", long_name = "Space Shake 2", description = "Shakey\nshivers\n3sq ahead" }
+"space_shake_3" = { name = "SpShake3", long_name = "Space Shake 3", description = "Shakey\nshivers\n3sq ahead" }
+"split_up" = { name = "SplitUp", long_name = "Split Up", description = "Your\nshadow\nattacks" }
 "spreader" = { name = "Spreader", long_name = "Spreader", description = "Creates a\nlarge\nexplosion" }
-"sprsonic" = { name = "SprSonic", long_name = "Super Sonic", description = "" }
-"spshake1" = { name = "SpShake1", long_name = "Space Shake 1", description = "Shakey\nshivers\n3sq ahead" }
-"spshake2" = { name = "SpShake2", long_name = "Space Shake 2", description = "Shakey\nshivers\n3sq ahead" }
-"spshake3" = { name = "SpShake3", long_name = "Space Shake 3", description = "Shakey\nshivers\n3sq ahead" }
 "static" = { name = "Static", long_name = "Static", description = "A static\nblast 2sq\nahead" }
-"stepswrd" = { name = "StepSwrd", long_name = "Step Sword", description = "Use\nWideSword\n2sq ahead" }
-"suprspr1" = { name = "SuprSpr1", long_name = "Super Spread 1", description = "3-shot\npiercing\nWideSht" }
-"suprspr2" = { name = "SuprSpr2", long_name = "Super Spread 2", description = "3-shot\npiercing\nWideSht" }
-"suprspr3" = { name = "SuprSpr3", long_name = "Super Spread 3", description = "3-shot\npiercing\nWideSht" }
-"suprvulc" = { name = "SuprVulc", long_name = "Super Vulcan", description = "12-shot\nvulcan\ncannon" }
+"step_sword" = { name = "StepSwrd", long_name = "Step Sword", description = "Use\nWideSword\n2sq ahead" }
+"super_sonic" = { name = "SprSonic", long_name = "Super Sonic", description = "" }
+"super_spread_1" = { name = "SuprSpr1", long_name = "Super Spread 1", description = "3-shot\npiercing\nWideSht" }
+"super_spread_2" = { name = "SuprSpr2", long_name = "Super Spread 2", description = "3-shot\npiercing\nWideSht" }
+"super_spread_3" = { name = "SuprSpr3", long_name = "Super Spread 3", description = "3-shot\npiercing\nWideSht" }
+"super_vulcan" = { name = "SuprVulc", long_name = "Super Vulcan", description = "12-shot\nvulcan\ncannon" }
 "sword" = { name = "Sword", long_name = "Sword", description = "Cuts enmy\nin front!\nRange: 1" }
-"swrdmode" = { name = "SwrdMode", long_name = "Sword Mode", description = "ミテイ" }
-"t-swing" = { name = "T-Swing", long_name = "Tomahawk Swing", description = "Slices 2\nsq side 3\nsq vrticl" }
+"sword_mode" = { name = "SwrdMode", long_name = "Sword Mode", description = "ミテイ" }
 "tango" = { name = "Tango", long_name = "Tango", description = "" }
-"tankcan1" = { name = "TankCan1", long_name = "Tank Cannon 1", description = "3sq blast\nif hits\nend row" }
-"tankcan2" = { name = "TankCan2", long_name = "Tank Cannon 2", description = "3sq blast\nif hits\nend row" }
-"tankcan3" = { name = "TankCan3", long_name = "Tank Cannon 3", description = "3sq blast\nif hits\nend row" }
+"tank_cannon_1" = { name = "TankCan1", long_name = "Tank Cannon 1", description = "3sq blast\nif hits\nend row" }
+"tank_cannon_2" = { name = "TankCan2", long_name = "Tank Cannon 2", description = "3sq blast\nif hits\nend row" }
+"tank_cannon_3" = { name = "TankCan3", long_name = "Tank Cannon 3", description = "3sq blast\nif hits\nend row" }
 "thunder" = { name = "Thunder", long_name = "Thunder", description = "Pralyzing\nelectric\nattack!" }
-"timebom" = { name = "TimeBom+", long_name = "Time Bomb +", description = "Set Giga\nTimeBomb\nsomewhere" }
-"timebom1" = { name = "TimeBom1", long_name = "Time Bomb 1", description = "Explodes\n3 seconds\nlater" }
-"timebom2" = { name = "TimeBom2", long_name = "Time Bomb 2", description = "Explodes\n3 seconds\nlater" }
-"timebom3" = { name = "TimeBom3", long_name = "Time Bomb 3", description = "Explodes\n3 seconds\nlater" }
+"time_bomb_1" = { name = "TimeBom1", long_name = "Time Bomb 1", description = "Explodes\n3 seconds\nlater" }
+"time_bomb_2" = { name = "TimeBom2", long_name = "Time Bomb 2", description = "Explodes\n3 seconds\nlater" }
+"time_bomb_3" = { name = "TimeBom3", long_name = "Time Bomb 3", description = "Explodes\n3 seconds\nlater" }
+"time_bomb_plus" = { name = "TimeBom+", long_name = "Time Bomb +", description = "Set Giga\nTimeBomb\nsomewhere" }
 "timpani" = { name = "Timpani", long_name = "Timpani", description = "Paralyzes\nenemies\nw/ music" }
-"tmhwkman" = { name = "TmhwkMan", long_name = "TomahawkMan", description = "Slice 2sq\nside, 3sq\nvertical" }
-"tmhwkmn-ds" = { name = "TmhwkMn\uE008", long_name = "TomahawkMan DS", description = "Slice 2sq\nside, 3sq\nvertical" }
-"tmhwkmn-sp" = { name = "TmhwkMn\uE003", long_name = "TomahawkMan SP", description = "Slice 2sq\nside, 3sq\nvertical" }
 "toadman" = { name = "ToadMan", long_name = "ToadMan", description = "Sing and\nparalyze\nthe enemy" }
-"toadman-ds" = { name = "ToadMan\uE008", long_name = "ToadMan DS", description = "Sing and\nparalyze\nthe enemy" }
-"toadman-sp" = { name = "ToadMan\uE003", long_name = "ToadMan SP", description = "Sing and\nparalyze\nthe enemy" }
+"toadman_ds" = { name = "ToadMan\uE008", long_name = "ToadMan DS", description = "Sing and\nparalyze\nthe enemy" }
+"toadman_sp" = { name = "ToadMan\uE003", long_name = "ToadMan SP", description = "Sing and\nparalyze\nthe enemy" }
+"tomahawk_swing" = { name = "T-Swing", long_name = "Tomahawk Swing", description = "Slices 2\nsq side 3\nsq vrticl" }
+"tomahawkman" = { name = "TmhwkMan", long_name = "TomahawkMan", description = "Slice 2sq\nside, 3sq\nvertical" }
+"tomahawkman_ds" = { name = "TmhwkMn\uE008", long_name = "TomahawkMan DS", description = "Slice 2sq\nside, 3sq\nvertical" }
+"tomahawkman_sp" = { name = "TmhwkMn\uE003", long_name = "TomahawkMan SP", description = "Slice 2sq\nside, 3sq\nvertical" }
 "tornado" = { name = "Tornado", long_name = "Tornado", description = "8hit strm\n2 squares\nahead" }
-"tripcrak" = { name = "TripCrak", long_name = "Triple Crack", description = "Destroys\n3 panels\nin front" }
-"varswrd" = { name = "VarSwrd", long_name = "Variable Sword", description = "A magical\nshifting\nsword" }
-"vdoll" = { name = "VDoll", long_name = "Voodoo Doll", description = "Throws\nVdoll\nahead" }
-"voltz1" = { name = "Voltz1", long_name = "Voltz 1", description = "Sensor2\nElecShock\n3sq ahead" }
-"voltz2" = { name = "Voltz2", long_name = "Voltz 2", description = "Sensor2\nElecShock\n3sq ahead" }
-"voltz3" = { name = "Voltz3", long_name = "Voltz 3", description = "Sensor2\nElecShock\n3sq ahead" }
-"vulcan1" = { name = "Vulcan1", long_name = "Vulcan 1", description = "3-shot to\npierce 1\npanel!" }
-"vulcan2" = { name = "Vulcan2", long_name = "Vulcan 2", description = "5-shot to\npierce 1\npanel!" }
-"vulcan3" = { name = "Vulcan3", long_name = "Vulcan 3", description = "7-shot to\npierce 1\npanel!" }
-"wavepit" = { name = "WavePit", long_name = "Wave Pit", description = "Wave from\nWater sq" }
-"whicapsl" = { name = "WhiCapsl", long_name = "White Capsule", description = "Add an\neffect:\nParalyze" }
-"wideblde" = { name = "WideBlde", long_name = "Wide Blade", description = "Cuts enmy\nin front!\nRange: 3" }
-"widesht1" = { name = "WideSht1", long_name = "Wide Shot 1", description = "Fires 3sq\nshotgun\nblast!" }
-"widesht2" = { name = "WideSht2", long_name = "Wide Shot 2", description = "Fires 3sq\nshotgun\nblast!" }
-"widesht3" = { name = "WideSht3", long_name = "Wide Shot 3", description = "Fires 3sq\nshotgun\nblast!" }
-"wideswrd" = { name = "WideSwrd", long_name = "Wide Sword", description = "Cuts enmy\nin front!\nRange: 3" }
-"wildbird" = { name = "WildBird", long_name = "Wild Bird", description = "Ahead 2\nspin 3\nand atk" }
+"triple_crack" = { name = "TripCrak", long_name = "Triple Crack", description = "Destroys\n3 panels\nin front" }
+"variable_sword" = { name = "VarSwrd", long_name = "Variable Sword", description = "A magical\nshifting\nsword" }
+"voltz_1" = { name = "Voltz1", long_name = "Voltz 1", description = "Sensor2\nElecShock\n3sq ahead" }
+"voltz_2" = { name = "Voltz2", long_name = "Voltz 2", description = "Sensor2\nElecShock\n3sq ahead" }
+"voltz_3" = { name = "Voltz3", long_name = "Voltz 3", description = "Sensor2\nElecShock\n3sq ahead" }
+"voodoo_doll" = { name = "VDoll", long_name = "Voodoo Doll", description = "Throws\nVdoll\nahead" }
+"vulcan_1" = { name = "Vulcan1", long_name = "Vulcan 1", description = "3-shot to\npierce 1\npanel!" }
+"vulcan_2" = { name = "Vulcan2", long_name = "Vulcan 2", description = "5-shot to\npierce 1\npanel!" }
+"vulcan_3" = { name = "Vulcan3", long_name = "Vulcan 3", description = "7-shot to\npierce 1\npanel!" }
+"wave_pit" = { name = "WavePit", long_name = "Wave Pit", description = "Wave from\nWater sq" }
+"white_capsule" = { name = "WhiCapsl", long_name = "White Capsule", description = "Add an\neffect:\nParalyze" }
+"wide_blade" = { name = "WideBlde", long_name = "Wide Blade", description = "Cuts enmy\nin front!\nRange: 3" }
+"wide_shot_1" = { name = "WideSht1", long_name = "Wide Shot 1", description = "Fires 3sq\nshotgun\nblast!" }
+"wide_shot_2" = { name = "WideSht2", long_name = "Wide Shot 2", description = "Fires 3sq\nshotgun\nblast!" }
+"wide_shot_3" = { name = "WideSht3", long_name = "Wide Shot 3", description = "Fires 3sq\nshotgun\nblast!" }
+"wide_sword" = { name = "WideSwrd", long_name = "Wide Sword", description = "Cuts enmy\nin front!\nRange: 3" }
+"wild_bird" = { name = "WildBird", long_name = "Wild Bird", description = "Ahead 2\nspin 3\nand atk" }
 "wind" = { name = "Wind", long_name = "Wind", description = "WindBox\nblows at\nenmy area" }
-"windrack" = { name = "WindRack", long_name = "Wind Racket", description = "Blow enmy\nin front!\nRange: 3" }
-"woodnos1" = { name = "WoodNos1", long_name = "Wood Nose 1", description = "Branch\ngrows out\nfrom side" }
-"woodnos2" = { name = "WoodNos2", long_name = "Wood Nose 2", description = "Branch\ngrows out\nfrom side" }
-"woodnos3" = { name = "WoodNos3", long_name = "Wood Nose 3", description = "Branch\ngrows out\nfrom side" }
-"yelcapsl" = { name = "YelCapsl", long_name = "Yellow Capsule", description = "Add an\neffect:\nConfuse" }
-"yoyo" = { name = "YoYo", long_name = "Yo-Yo", description = "Yoyo atk\nreaches\n3sq ahead" }
-"yoyomode" = { name = "YoYoMode", long_name = "Yo-Yo Mode", description = "ミテイ" }
-"z-saver" = { name = "Z Saber", long_name = "Z Saber", description = "Repliroid\nswrd cuts\n3 times" }
+"wind_racket" = { name = "WindRack", long_name = "Wind Racket", description = "Blow enmy\nin front!\nRange: 3" }
+"wood_nose_1" = { name = "WoodNos1", long_name = "Wood Nose 1", description = "Branch\ngrows out\nfrom side" }
+"wood_nose_2" = { name = "WoodNos2", long_name = "Wood Nose 2", description = "Branch\ngrows out\nfrom side" }
+"wood_nose_3" = { name = "WoodNos3", long_name = "Wood Nose 3", description = "Branch\ngrows out\nfrom side" }
+"yellow_capsule" = { name = "YelCapsl", long_name = "Yellow Capsule", description = "Add an\neffect:\nConfuse" }
+"yo_yo" = { name = "YoYo", long_name = "Yo-Yo", description = "Yoyo atk\nreaches\n3sq ahead" }
+"yo_yo_mode" = { name = "YoYoMode", long_name = "Yo-Yo Mode", description = "ミテイ" }
+"z_saber" = { name = "Z Saber", long_name = "Z Saber", description = "Repliroid\nswrd cuts\n3 times" }
 
 [navis]
 "colonel" = { name = "Colonel", long_name = "Colonel", run_message = "This is not the time\nto run away!" }
@@ -399,118 +399,118 @@ language = "en"
 "tomahawkman" = { name = "TmhkMan", long_name = "TomahawkMan", run_message = "This isn't the time\nto run away!" }
 
 [forms]
-"colonelsoul" = { name = "ColSoul", long_name = "Colonel Soul" }
-"gyrosoul" = { name = "GyroSoul", long_name = "Gyro Soul" }
-"knightsoul" = { name = "KngtSoul", long_name = "Knight Soul" }
-"magnetsoul" = { name = "MagnSoul", long_name = "Magnet Soul" }
-"meddysoul" = { name = "MedySoul", long_name = "Meddy Soul" }
-"napalmsoul" = { name = "NplmSoul", long_name = "Napalm Soul" }
-"numbersoul" = { name = "NumSoul", long_name = "Number Soul" }
-"protosoul" = { name = "ProtSoul", long_name = "Proto Soul" }
-"searchsoul" = { name = "SrchSoul", long_name = "Search Soul" }
-"shadowsoul" = { name = "ShdoSoul", long_name = "Shadow Soul" }
-"toadsoul" = { name = "ToadSoul", long_name = "Toad Soul" }
-"tomahawksoul" = { name = "TmhkSoul", long_name = "Tomahawk Soul" }
+"colonel_soul" = { name = "ColSoul", long_name = "Colonel Soul" }
+"gyro_soul" = { name = "GyroSoul", long_name = "Gyro Soul" }
+"knight_soul" = { name = "KngtSoul", long_name = "Knight Soul" }
+"magnet_soul" = { name = "MagnSoul", long_name = "Magnet Soul" }
+"meddy_soul" = { name = "MedySoul", long_name = "Meddy Soul" }
+"napalm_soul" = { name = "NplmSoul", long_name = "Napalm Soul" }
+"number_soul" = { name = "NumSoul", long_name = "Number Soul" }
+"proto_soul" = { name = "ProtSoul", long_name = "Proto Soul" }
+"search_soul" = { name = "SrchSoul", long_name = "Search Soul" }
+"shadow_soul" = { name = "ShdoSoul", long_name = "Shadow Soul" }
+"toad_soul" = { name = "ToadSoul", long_name = "Toad Soul" }
+"tomahawk_soul" = { name = "TmhkSoul", long_name = "Tomahawk Soul" }
 
 [backgrounds]
-"acdc-area" = { name = "ACDC Area", long_name = "ACDC Area" }
+"acdc_area" = { name = "ACDC Area", long_name = "ACDC Area" }
 "comp" = { name = "Comp", long_name = "Comp" }
-"comp-alt" = { name = "Comp (Alt)", long_name = "Comp (Alternate)" }
-"dexs-hp" = { name = "Dex's HP", long_name = "Dex's HP" }
-"drill-comp" = { name = "DrillComp", long_name = "Drill Comp" }
-"end-area" = { name = "End Area", long_name = "End Area" }
-"factory-comp" = { name = "FactoryComp", long_name = "Factory Comp" }
-"gargcastle-hp" = { name = "GargCastleHP", long_name = "Gargoyle Castle HP" }
-"gargoyle-comp" = { name = "GargoylComp", long_name = "Gargoyle Comp" }
-"lans-hp" = { name = "Lan's HP", long_name = "Lan's HP" }
-"main-comp" = { name = "MainComp", long_name = "Main Comp" }
-"mayls-hp" = { name = "Mayl's HP", long_name = "Mayl's HP" }
-"nebula-area" = { name = "NebulaArea", long_name = "Nebula Area" }
-"nebulagray" = { name = "NebulaGray", long_name = "Nebula Gray" }
-"oran-area" = { name = "Oran Area", long_name = "Oran Area" }
-"scilab-area" = { name = "SciLab", long_name = "SciLab Area" }
-"scilab-hp" = { name = "SciLab HP", long_name = "SciLab HP" }
-"ship-comp" = { name = "ShipComp", long_name = "Ship Comp" }
-"soulserv-comp" = { name = "SoulServComp", long_name = "Soul Server Comp" }
+"comp_alternate" = { name = "Comp (Alt)", long_name = "Comp (Alternate)" }
+"dexs_hp" = { name = "Dex's HP", long_name = "Dex's HP" }
+"drill_comp" = { name = "DrillComp", long_name = "Drill Comp" }
+"end_area" = { name = "End Area", long_name = "End Area" }
+"factory_comp" = { name = "FactoryComp", long_name = "Factory Comp" }
+"gargoyle_castle_hp" = { name = "GargCastleHP", long_name = "Gargoyle Castle HP" }
+"gargoyle_comp" = { name = "GargoylComp", long_name = "Gargoyle Comp" }
+"lans_hp" = { name = "Lan's HP", long_name = "Lan's HP" }
+"main_comp" = { name = "MainComp", long_name = "Main Comp" }
+"mayls_hp" = { name = "Mayl's HP", long_name = "Mayl's HP" }
+"nebula_area" = { name = "NebulaArea", long_name = "Nebula Area" }
+"nebula_gray" = { name = "NebulaGray", long_name = "Nebula Gray" }
+"oran_area" = { name = "Oran Area", long_name = "Oran Area" }
+"scilab_area" = { name = "SciLab", long_name = "SciLab Area" }
+"scilab_hp" = { name = "SciLab HP", long_name = "SciLab HP" }
+"ship_comp" = { name = "ShipComp", long_name = "Ship Comp" }
+"soul_server_comp" = { name = "SoulServComp", long_name = "Soul Server Comp" }
 "undernet" = { name = "Undernet", long_name = "Undernet" }
-"visionburst" = { name = "VisionBurst", long_name = "Vision Burst" }
-"yais-hp" = { name = "Yai's HP", long_name = "Yai's HP" }
+"vision_burst" = { name = "VisionBurst", long_name = "Vision Burst" }
+"yais_hp" = { name = "Yai's HP", long_name = "Yai's HP" }
 
 [navicust_programs]
-"airshoes" = { name = "AirShoes", long_name = "Air Shoes", description = "Move\novr hole" }
-"antidmg" = { name = "AntiDmg", long_name = "Anti Damage", description = "Ⓑ+Left=\nThrow a\nstar!" }
-"attck-1" = { name = "Attck+1", long_name = "Attack +1", description = "MegaBstr\nAttck +1" }
-"attckmax" = { name = "AttckMAX", long_name = "Attack MAX", description = "MegaBstr\nAttckMAX" }
-"autoheal" = { name = "AutoHeal", long_name = "Auto Heal", description = "HP recv\nafter\nbattle" }
-"autorun" = { name = "AutoRun", long_name = "Auto Run", description = "Run\nwithout\nusing Ⓑ" }
+"air_shoes" = { name = "AirShoes", long_name = "Air Shoes", description = "Move\novr hole" }
+"anti_damage" = { name = "AntiDmg", long_name = "Anti Damage", description = "Ⓑ+Left=\nThrow a\nstar!" }
+"attack_1" = { name = "Attck+1", long_name = "Attack +1", description = "MegaBstr\nAttck +1" }
+"attack_max" = { name = "AttckMAX", long_name = "Attack MAX", description = "MegaBstr\nAttckMAX" }
+"auto_heal" = { name = "AutoHeal", long_name = "Auto Heal", description = "HP recv\nafter\nbattle" }
+"auto_run" = { name = "AutoRun", long_name = "Auto Run", description = "Run\nwithout\nusing Ⓑ" }
 "battery" = { name = "Battery", long_name = "Battery", description = "Attracts\nElec\nViruses!" }
 "beat" = { name = "Beat", long_name = "Beat", description = "VS only!\nSnatches\nMegachps!" }
-"bodypack" = { name = "BodyPack", long_name = "Body Pack", description = "Armr, Sht\nFlot, Air\n4-pc set" }
-"bugstop" = { name = "BugStop", long_name = "Bug Stop", description = "Prevents\nbugs" }
-"bustpack" = { name = "BustPack", long_name = "Buster Pack", description = "Atk/speed\n/charge\n+3 each!" }
-"charge-1" = { name = "Charge+1", long_name = "Charge +1", description = "MegaBstr\nCharge\n+1" }
-"chargmax" = { name = "ChargMAX", long_name = "Charge MAX", description = "MegaBstr\nCharge\nMAX!" }
+"body_pack" = { name = "BodyPack", long_name = "Body Pack", description = "Armr, Sht\nFlot, Air\n4-pc set" }
+"bug_stop" = { name = "BugStop", long_name = "Bug Stop", description = "Prevents\nbugs" }
+"buster_pack" = { name = "BustPack", long_name = "Buster Pack", description = "Atk/speed\n/charge\n+3 each!" }
+"charge_1" = { name = "Charge+1", long_name = "Charge +1", description = "MegaBstr\nCharge\n+1" }
+"charge_max" = { name = "ChargMAX", long_name = "Charge MAX", description = "MegaBstr\nCharge\nMAX!" }
 "chivalry" = { name = "Chivalry", long_name = "Chivalry", description = "Become\nmacho!\nPress Ⓛ" }
 "collect" = { name = "Collect", long_name = "Collect", description = "Get more\nchips\nfrm enmy" }
-"custom1" = { name = "Custom1", long_name = "Custom 1", description = "Custom\nScreen\n+1 chip" }
-"custom2" = { name = "Custom2", long_name = "Custom 2", description = "Custom\nScreen\n+2 chips" }
+"custom_1" = { name = "Custom1", long_name = "Custom 1", description = "Custom\nScreen\n+1 chip" }
+"custom_2" = { name = "Custom2", long_name = "Custom 2", description = "Custom\nScreen\n+2 chips" }
+"first_barrier" = { name = "FstBarr", long_name = "First Barrier", description = "Start\nwith\nBarrier" }
 "fish" = { name = "Fish", long_name = "Fish", description = "Attracts\nAqua\nViruses!" }
-"flotshoe" = { name = "FlotShoe", long_name = "Float Shoes", description = "No effct\nfrom\npnl type" }
-"fstbarr" = { name = "FstBarr", long_name = "First Barrier", description = "Start\nwith\nBarrier" }
-"gigfldr1" = { name = "GigFldr1", long_name = "Giga Folder 1", description = "GigaChip\n+1" }
-"hp-100" = { name = "HP+100", long_name = "HP +100", description = "Max HP\n+100!" }
-"hp-200" = { name = "HP+200", long_name = "HP +200", description = "Max HP\n+200!" }
-"hp-300" = { name = "HP+300", long_name = "HP +300", description = "Max HP\n+300!" }
-"hp-400" = { name = "HP+400", long_name = "HP +400", description = "Max HP\n+400!" }
-"hp-50" = { name = "HP+50", long_name = "HP +50", description = "Max HP\n+50!" }
-"hp-500" = { name = "HP+500", long_name = "HP +500", description = "Max HP\n+500!" }
-"hubbatc" = { name = "HubBatc", long_name = "Hub Batch", description = "Maximize\nyour\nability" }
+"float_shoes" = { name = "FlotShoe", long_name = "Float Shoes", description = "No effct\nfrom\npnl type" }
+"giga_folder_1" = { name = "GigFldr1", long_name = "Giga Folder 1", description = "GigaChip\n+1" }
+"hp_100" = { name = "HP+100", long_name = "HP +100", description = "Max HP\n+100!" }
+"hp_200" = { name = "HP+200", long_name = "HP +200", description = "Max HP\n+200!" }
+"hp_300" = { name = "HP+300", long_name = "HP +300", description = "Max HP\n+300!" }
+"hp_400" = { name = "HP+400", long_name = "HP +400", description = "Max HP\n+400!" }
+"hp_50" = { name = "HP+50", long_name = "HP +50", description = "Max HP\n+50!" }
+"hp_500" = { name = "HP+500", long_name = "HP +500", description = "Max HP\n+500!" }
+"hub_batch" = { name = "HubBatc", long_name = "Hub Batch", description = "Maximize\nyour\nability" }
 "humor" = { name = "Humor", long_name = "Humor", description = "Install\nand try\nⓁ" }
 "jungle" = { name = "Jungle", long_name = "Jungle", description = "Attracts\nWood\nViruses!" }
-"megfldr1" = { name = "MegFldr1", long_name = "Mega Folder 1", description = "MegaChip\n+1" }
-"megfldr2" = { name = "MegFldr2", long_name = "Mega Folder 2", description = "MegaChip\n+2" }
+"mega_folder_1" = { name = "MegFldr1", long_name = "Mega Folder 1", description = "MegaChip\n+1" }
+"mega_folder_2" = { name = "MegFldr2", long_name = "Mega Folder 2", description = "MegaChip\n+2" }
 "millions" = { name = "Millions", long_name = "Millions", description = "Gn mstry\ndata =\nZennys" }
-"navchg-1" = { name = "NavChg+1", long_name = "Navi Change +1", description = "1 extra\nNaviChng\nchance!" }
-"navchg-2" = { name = "NavChg+2", long_name = "Navi Change +2", description = "2 extra\nNaviChng\nchances!" }
-"oilbody" = { name = "OilBody", long_name = "Oil Body", description = "Attracts\nFire\nViruses!" }
+"navi_change_1" = { name = "NavChg+1", long_name = "Navi Change +1", description = "1 extra\nNaviChng\nchance!" }
+"navi_change_2" = { name = "NavChg+2", long_name = "Navi Change +2", description = "2 extra\nNaviChng\nchances!" }
+"oil_body" = { name = "OilBody", long_name = "Oil Body", description = "Attracts\nFire\nViruses!" }
 "reflect" = { name = "Reflect", long_name = "Reflect", description = "Ⓑ+Left=\nReflect\nattacks!" }
 "rush" = { name = "Rush", long_name = "Rush", description = "VS only!\nTracks\nenemys" }
 "shield" = { name = "Shield", long_name = "Shield", description = "Ⓑ+Left=\nStrong\nshield!" }
-"sneakrun" = { name = "SneakRun", long_name = "Sneak Run", description = "No weak\nenemies" }
-"soulclen" = { name = "SoulClen", long_name = "Soul Cleaner", description = "Prog to\npurify\nyr soul" }
-"soult-1" = { name = "SoulT+1", long_name = "Soul Time +1", description = "DublSoul\neffect\n+1 turn" }
-"speed-1" = { name = "Speed+1", long_name = "Speed +1", description = "MegaBstr\nSpeed +1" }
-"speedmax" = { name = "SpeedMAX", long_name = "Speed MAX", description = "MegaBstr\nSpeedMAX" }
-"spport" = { name = "Spport", long_name = "Support", description = "MegaMan\nsupports\nteam" }
-"sprarmr" = { name = "SprArmr", long_name = "Super Armor", description = "Won't be\npushed!" }
+"sneak_run" = { name = "SneakRun", long_name = "Sneak Run", description = "No weak\nenemies" }
+"soul_cleaner" = { name = "SoulClen", long_name = "Soul Cleaner", description = "Prog to\npurify\nyr soul" }
+"soul_time_1" = { name = "SoulT+1", long_name = "Soul Time +1", description = "DublSoul\neffect\n+1 turn" }
+"speed_1" = { name = "Speed+1", long_name = "Speed +1", description = "MegaBstr\nSpeed +1" }
+"speed_max" = { name = "SpeedMAX", long_name = "Speed MAX", description = "MegaBstr\nSpeedMAX" }
+"super_armor" = { name = "SprArmr", long_name = "Super Armor", description = "Won't be\npushed!" }
+"support" = { name = "Spport", long_name = "Support", description = "MegaMan\nsupports\nteam" }
 "tango" = { name = "Tango", long_name = "Tango", description = "VS only!\nHeals\nlow HP" }
-"undersht" = { name = "UnderSht", long_name = "Undershirt", description = "Keep 1HP\neven on\nhard hit" }
+"undershirt" = { name = "UnderSht", long_name = "Undershirt", description = "Keep 1HP\neven on\nhard hit" }
 
 [partycust_programs]
-"p-hp-50" = { name = "P.HP+50", long_name = "Party HP +50", description = "Party\nHP Max\n+50" }
-"p-hp-100" = { name = "P.HP+100", long_name = "Party HP +100", description = "Party\nHP Max\n+100" }
-"p-hp-200" = { name = "P.HP+200", long_name = "Party HP +200", description = "Party\nHP Max\n+200" }
-"p-hp-300" = { name = "P.HP+300", long_name = "Party HP +300", description = "Party\nHP Max\n+300" }
-"p-atk-1" = { name = "P.Atk+1", long_name = "Party Attack +1", description = "Party\nNavi atk\n+1" }
-"p-atk-2" = { name = "P.Atk+2", long_name = "Party Attack +2", description = "Party\nNavi atk\n+2" }
-"p-atk-3" = { name = "P.Atk+3", long_name = "Party Attack +3", description = "Party\nNavi atk\n+3" }
-"p-chp-30" = { name = "P.Chp+30", long_name = "Party Chip +30", description = "Special\nChip atk\n+30" }
-"p-chp-40" = { name = "P.Chp+40", long_name = "Party Chip +40", description = "Special\nChip atk\n+40" }
-"p-chp-50" = { name = "P.Chp+50", long_name = "Party Chip +50", description = "Special\nChip atk\n+50" }
-"p-btlpk1" = { name = "P.Btlpk1", long_name = "Party Battle Pack 1", description = "Slightly\nincreases\nNavi pow" }
-"p-btlpk2" = { name = "P.Btlpk2", long_name = "Party Battle Pack 2", description = "Majorly\nincreases\nNavi pow" }
-"p-spport" = { name = "P.Spport", long_name = "Party Support", description = "Party Navi\nsupport\nprogram" }
+"party_hp_50" = { name = "P.HP+50", long_name = "Party HP +50", description = "Party\nHP Max\n+50" }
+"party_hp_100" = { name = "P.HP+100", long_name = "Party HP +100", description = "Party\nHP Max\n+100" }
+"party_hp_200" = { name = "P.HP+200", long_name = "Party HP +200", description = "Party\nHP Max\n+200" }
+"party_hp_300" = { name = "P.HP+300", long_name = "Party HP +300", description = "Party\nHP Max\n+300" }
+"party_attack_1" = { name = "P.Atk+1", long_name = "Party Attack +1", description = "Party\nNavi atk\n+1" }
+"party_attack_2" = { name = "P.Atk+2", long_name = "Party Attack +2", description = "Party\nNavi atk\n+2" }
+"party_attack_3" = { name = "P.Atk+3", long_name = "Party Attack +3", description = "Party\nNavi atk\n+3" }
+"party_chip_30" = { name = "P.Chp+30", long_name = "Party Chip +30", description = "Special\nChip atk\n+30" }
+"party_chip_40" = { name = "P.Chp+40", long_name = "Party Chip +40", description = "Special\nChip atk\n+40" }
+"party_chip_50" = { name = "P.Chp+50", long_name = "Party Chip +50", description = "Special\nChip atk\n+50" }
+"party_battle_pack_1" = { name = "P.Btlpk1", long_name = "Party Battle Pack 1", description = "Slightly\nincreases\nNavi pow" }
+"party_battle_pack_2" = { name = "P.Btlpk2", long_name = "Party Battle Pack 2", description = "Majorly\nincreases\nNavi pow" }
+"party_support" = { name = "P.Spport", long_name = "Party Support", description = "Party Navi\nsupport\nprogram" }
 
 [patch_cards]
 "alpha" = { name = "Alpha", long_name = "Alpha" }
 "alphabug" = { name = "AlphaBug", long_name = "AlphaBug" }
 "anaconda" = { name = "Anaconda", long_name = "Anaconda" }
-"anettas-custom" = { name = "Anetta's\nCustom", long_name = "Anetta's Custom" }
+"anettas_custom" = { name = "Anetta's\nCustom", long_name = "Anetta's Custom" }
 "appley" = { name = "Appley", long_name = "Appley" }
 "aquaman" = { name = "AquaMan", long_name = "AquaMan" }
 "basher" = { name = "Basher", long_name = "Basher" }
 "bass" = { name = "Bass", long_name = "Bass" }
-"bass-cross-megaman" = { name = "Bass-\nCross\nMegaMan", long_name = "Bass Cross MegaMan" }
+"bass_cross_megaman" = { name = "Bass-\nCross\nMegaMan", long_name = "Bass Cross MegaMan" }
 "bassgs" = { name = "BassGS", long_name = "BassGS" }
 "bassxx" = { name = "BassXX", long_name = "BassXX" }
 "batty" = { name = "Batty", long_name = "Batty" }
@@ -518,22 +518,22 @@ language = "en"
 "bombman" = { name = "BombMan", long_name = "BombMan" }
 "boomer" = { name = "Boomer", long_name = "Boomer" }
 "brushman" = { name = "BrushMan", long_name = "BrushMan" }
-"bubblman" = { name = "BubblMan", long_name = "BubbleMan" }
+"bubbleman" = { name = "BubblMan", long_name = "BubbleMan" }
 "bugtank" = { name = "Bugtank", long_name = "Bugtank" }
 "bunny" = { name = "Bunny", long_name = "Bunny" }
 "cactikil" = { name = "Cactikil", long_name = "Cactikil" }
 "candela" = { name = "Candela", long_name = "Candela" }
 "catack" = { name = "Catack", long_name = "Catack" }
 "champy" = { name = "Champy", long_name = "Champy" }
-"chauds-custom" = { name = "Chaud's\nCustom", long_name = "Chaud's Custom" }
-"chill-skis-custom" = { name = "Chill-\nski's\nCustom", long_name = "Chillski's Custom" }
+"chauds_custom" = { name = "Chaud's\nCustom", long_name = "Chaud's Custom" }
+"chillskis_custom" = { name = "Chill-\nski's\nCustom", long_name = "Chillski's Custom" }
 "cirkill" = { name = "CirKill", long_name = "CirKill" }
 "cloudy" = { name = "Cloudy", long_name = "Cloudy" }
 "colonel" = { name = "Colonel", long_name = "Colonel" }
 "cosmoman" = { name = "CosmoMan", long_name = "CosmoMan" }
-"count-zaps-custom" = { name = "Count-\nZap's\nCustom", long_name = "Count Zap's Custom" }
-"dads-repair-program" = { name = "Dad's\nRepair\nProgram", long_name = "Dad's Repair Program" }
-"dexs-custom" = { name = "Dex's\nCustom", long_name = "Dex's Custom" }
+"count_zaps_custom" = { name = "Count-\nZap's\nCustom", long_name = "Count Zap's Custom" }
+"dads_repair_program" = { name = "Dad's\nRepair\nProgram", long_name = "Dad's Repair Program" }
+"dexs_custom" = { name = "Dex's\nCustom", long_name = "Dex's Custom" }
 "dharma" = { name = "Dharma", long_name = "Dharma" }
 "dominerd" = { name = "Dominerd", long_name = "Dominerd" }
 "drain" = { name = "Drain", long_name = "Drain" }
@@ -553,32 +553,31 @@ language = "en"
 "froshell" = { name = "Froshell", long_name = "Froshell" }
 "gaia" = { name = "Gaia", long_name = "Gaia" }
 "gateman" = { name = "GateMan", long_name = "GateMan" }
-"ghost" = { name = "Spooky", long_name = "Spooky" }
 "gospel" = { name = "Gospel", long_name = "Gospel" }
 "gutsman" = { name = "GutsMan", long_name = "GutsMan" }
 "gyroman" = { name = "GyroMan", long_name = "GyroMan" }
 "hardhead" = { name = "HardHead", long_name = "HardHead" }
 "heatman" = { name = "HeatMan", long_name = "HeatMan" }
-"hub-hikari" = { name = "Hub\nHikari", long_name = "Hub Hikari" }
+"hub_hikari" = { name = "Hub\nHikari", long_name = "Hub Hikari" }
 "junkman" = { name = "JunkMan", long_name = "JunkMan" }
-"killreye" = { name = "KillrEye", long_name = "KillerEye" }
+"killereye" = { name = "KillrEye", long_name = "KillerEye" }
 "kingman" = { name = "KingMan", long_name = "KingMan" }
-"lans-custom" = { name = "Lan's\nCustom", long_name = "Lan's Custom" }
+"lans_custom" = { name = "Lan's\nCustom", long_name = "Lan's Custom" }
 "lark" = { name = "Lark", long_name = "Lark" }
 "laserman" = { name = "LaserMan", long_name = "LaserMan" }
 "lavagon" = { name = "Lavagon", long_name = "Lavagon" }
-"life-virus" = { name = "Life-\nVirus", long_name = "LifeVirus" }
-"maddys-custom" = { name = "Maddy's\nCustom", long_name = "Maddy's Custom" }
+"lifevirus" = { name = "Life-\nVirus", long_name = "LifeVirus" }
+"maddys_custom" = { name = "Maddy's\nCustom", long_name = "Maddy's Custom" }
 "magicman" = { name = "MagicMan", long_name = "MagicMan" }
 "meddy" = { name = "Meddy", long_name = "Meddy" }
 "melody" = { name = "Melody", long_name = "Melody" }
 "metalman" = { name = "MetalMan", long_name = "MetalMan" }
 "mettaur" = { name = "Mettaur", long_name = "Mettaur" }
 "moloko" = { name = "Moloko", long_name = "Moloko" }
-"mr-matchs-custom" = { name = "Mr.-\nMatch's\nCustom", long_name = "Mr. Match's Custom" }
+"mr_matchs_custom" = { name = "Mr.-\nMatch's\nCustom", long_name = "Mr. Match's Custom" }
 "mushy" = { name = "Mushy", long_name = "Mushy" }
-"n-o" = { name = "N.O", long_name = "N.O" }
-"nebula-gray" = { name = "Nebula-\nGray", long_name = "Nebula Gray" }
+"n_o" = { name = "N.O", long_name = "N.O" }
+"nebula_gray" = { name = "Nebula-\nGray", long_name = "Nebula Gray" }
 "ninjoy" = { name = "NinJoy", long_name = "NinJoy" }
 "null" = { name = "Null", long_name = "Null" }
 "pengi" = { name = "Pengi", long_name = "Pengi" }
@@ -594,7 +593,7 @@ language = "en"
 "redufo" = { name = "RedUFO", long_name = "RedUFO" }
 "roll" = { name = "Roll", long_name = "Roll" }
 "rush" = { name = "Rush", long_name = "Rush" }
-"scuttlst" = { name = "Scuttlst", long_name = "Scuttlest" }
+"scuttlest" = { name = "Scuttlst", long_name = "Scuttlest" }
 "serenade" = { name = "Serenade", long_name = "Serenade" }
 "shademan" = { name = "ShadeMan", long_name = "ShadeMan" }
 "shrimpy" = { name = "Shrimpy", long_name = "Shrimpy" }
@@ -602,15 +601,16 @@ language = "en"
 "snowblow" = { name = "SnowBlow", long_name = "SnowBlow" }
 "sparkman" = { name = "SparkMan", long_name = "SparkMan" }
 "spikey" = { name = "Spikey", long_name = "Spikey" }
+"spooky" = { name = "Spooky", long_name = "Spooky" }
 "swordy" = { name = "Swordy", long_name = "Swordy" }
-"tmhkman" = { name = "TmhkMan", long_name = "TomahawkMan" }
-"toras-tactics" = { name = "Tora's\nTech", long_name = "Tora's Tech" }
+"tomahawkman" = { name = "TmhkMan", long_name = "TomahawkMan" }
+"toras_tech" = { name = "Tora's\nTech", long_name = "Tora's Tech" }
 "volgear" = { name = "VolGear", long_name = "VolGear" }
 "weather" = { name = "Weather", long_name = "Weather" }
 "whirly" = { name = "Whirly", long_name = "Whirly" }
 "windman" = { name = "WindMan", long_name = "WindMan" }
 "woodman" = { name = "WoodMan", long_name = "WoodMan" }
-"yahoots-bug-repair" = { name = "Yahoot's\nBug\nRepair", long_name = "Yahoot's Bug Repair" }
+"yahoots_bug_repair" = { name = "Yahoot's\nBug\nRepair", long_name = "Yahoot's Bug Repair" }
 "yort" = { name = "Yort", long_name = "Yort" }
 "zomon" = { name = "Zomon", long_name = "Zomon" }
 
@@ -637,13 +637,13 @@ language = "en"
 "attack_times" = { text = "Attack×{amount}", long_text = "Attack ×{amount}" }
 "auto_heal" = { text = "AutoHeal", long_text = "Auto Heal" }
 "b_button.megaman/buster" = { text = "Ⓑ-Buster", long_text = "Ⓑ-Buster" }
-"b_button.megaman/crakout" = { text = "Ⓑ-Crack", long_text = "Ⓑ-Crack Out" }
-"b_button.megaman/minibomb" = { text = "Ⓑ-Bomb", long_text = "Ⓑ-Mini Bomb" }
+"b_button.megaman/crack_out" = { text = "Ⓑ-Crack", long_text = "Ⓑ-Crack Out" }
+"b_button.megaman/mini_bomb" = { text = "Ⓑ-Bomb", long_text = "Ⓑ-Mini Bomb" }
 "b_button.megaman/sword" = { text = "Ⓑ-Sword", long_text = "Ⓑ-Sword" }
-"b_button.megaman/tri-buster" = { text = "TriBustr", long_text = "Triple Buster" }
+"b_button.megaman/tri_buster" = { text = "TriBustr", long_text = "Triple Buster" }
 "back_special" = { text = "Ⓑ+←", long_text = "Ⓑ+←" }
-"back_special.megaman/crsshld1" = { text = "Ⓑ+←CurS", long_text = "Ⓑ+←: Curse Shield" }
-"back_special.megaman/guard1" = { text = "Ⓑ+←Guard", long_text = "Ⓑ+←: Guard" }
+"back_special.megaman/curse_shield_1" = { text = "Ⓑ+←CurS", long_text = "Ⓑ+←: Curse Shield" }
+"back_special.megaman/guard_1" = { text = "Ⓑ+←Guard", long_text = "Ⓑ+←: Guard" }
 "back_special.megaman/shield" = { text = "Ⓑ+←Shld", long_text = "Ⓑ+←: Shield" }
 "beat" = { text = "Beat", long_text = "Beat" }
 "body.aqua" = { text = "AquaBody", long_text = "Aqua Body" }
@@ -661,49 +661,49 @@ language = "en"
 "charge_add" = { text = "Charge+{amount}", long_text = "Charge +{amount}" }
 "charge_shot_kind.shot/breaking" = { text = "CSbreak", long_text = "Charged shot: Break" }
 "charge_shot_kind.shot/charged" = { text = "CSeffect", long_text = "Charged shot: Effect" }
-"charge_shot_kind.shot/charged-attack-a0" = { text = "CSbrrdlt", long_text = "Charged shot: Barrier Delete" }
-"charge_shot_kind.shot/charged-blinding" = { text = "CSblind", long_text = "Charged shot: Blind" }
-"charge_shot_kind.shot/charged-confusing" = { text = "CSconfus", long_text = "Charged shot: Confuse" }
-"charge_shot_kind.shot/charged-hp-bug" = { text = "CSHPbug", long_text = "Charged shot: HP Bug" }
-"charge_shot_kind.shot/charged-lava" = { text = "CSlava", long_text = "Charged shot: Lava" }
-"charge_shot_kind.shot/charged-panel-breaking" = { text = "CShole", long_text = "Charged shot: Hole" }
-"charge_shot_kind.shot/charged-paralyzing" = { text = "CSstun", long_text = "Charged shot: Stun" }
-"charge_shot_kind.shot/charged-poisoning" = { text = "CSswamp", long_text = "Charged shot: Swamp" }
-"charge_shot_kind.shot/charged-uninstalling" = { text = "CSreset", long_text = "Charged shot: Reset" }
-"charge_shot_kind.shot/chip-destruction" = { text = "CSchpdst", long_text = "Charged shot: Chip Destruction" }
+"charge_shot_kind.shot/charged_attack_a0" = { text = "CSbrrdlt", long_text = "Charged shot: Barrier Delete" }
+"charge_shot_kind.shot/charged_blinding" = { text = "CSblind", long_text = "Charged shot: Blind" }
+"charge_shot_kind.shot/charged_confusing" = { text = "CSconfus", long_text = "Charged shot: Confuse" }
+"charge_shot_kind.shot/charged_hp_bug" = { text = "CSHPbug", long_text = "Charged shot: HP Bug" }
+"charge_shot_kind.shot/charged_lava" = { text = "CSlava", long_text = "Charged shot: Lava" }
+"charge_shot_kind.shot/charged_panel_breaking" = { text = "CShole", long_text = "Charged shot: Hole" }
+"charge_shot_kind.shot/charged_paralyzing" = { text = "CSstun", long_text = "Charged shot: Stun" }
+"charge_shot_kind.shot/charged_poisoning" = { text = "CSswamp", long_text = "Charged shot: Swamp" }
+"charge_shot_kind.shot/charged_uninstalling" = { text = "CSreset", long_text = "Charged shot: Reset" }
+"charge_shot_kind.shot/chip_destruction" = { text = "CSchpdst", long_text = "Charged shot: Chip Destruction" }
 "charge_sub" = { text = "Charge-{amount}", long_text = "Charge -{amount}" }
-"charged_shot.megaman/airhoc" = { text = "Ⓑ↓AirHoc", long_text = "Ⓑ↓: Air Hockey" }
-"charged_shot.megaman/blkbomb" = { text = "Ⓑ↓BlkBom", long_text = "Ⓑ↓: Black Bomb" }
-"charged_shot.megaman/boomer" = { text = "Ⓑ↓Boomer", long_text = "Ⓑ↓: Boomerang" }
-"charged_shot.megaman/bubble-shot" = { text = "Ⓑ↓BubSht", long_text = "Ⓑ↓: Bubble Shot" }
-"charged_shot.megaman/cannball" = { text = "Ⓑ↓CanBal", long_text = "Ⓑ↓: Cannon Ball" }
-"charged_shot.megaman/card-shield" = { text = "Ⓑ↓Shield", long_text = "Ⓑ↓: Shield" }
-"charged_shot.megaman/circgun" = { text = "Ⓑ↓CircG", long_text = "Ⓑ↓: Circle Gun" }
-"charged_shot.megaman/drilarm1" = { text = "Ⓑ↓DrlArm", long_text = "Ⓑ↓: Drill Arm" }
-"charged_shot.megaman/drksword" = { text = "Ⓑ↓DarkS", long_text = "Ⓑ↓: Dark Sword" }
-"charged_shot.megaman/fire-arm" = { text = "Ⓑ↓FireAm", long_text = "Ⓑ↓: Fire Arm" }
-"charged_shot.megaman/heat-shot" = { text = "Ⓑ↓HeatS", long_text = "Ⓑ↓: Heat Shot" }
-"charged_shot.megaman/hells-rolling" = { text = "Ⓑ↓HelzR", long_text = "Ⓑ↓: Hell's Rolling" }
+"charged_shot.megaman/air_hockey" = { text = "Ⓑ↓AirHoc", long_text = "Ⓑ↓: Air Hockey" }
+"charged_shot.megaman/black_bomb" = { text = "Ⓑ↓BlkBom", long_text = "Ⓑ↓: Black Bomb" }
+"charged_shot.megaman/boomerang" = { text = "Ⓑ↓Boomer", long_text = "Ⓑ↓: Boomerang" }
+"charged_shot.megaman/bubble_shot" = { text = "Ⓑ↓BubSht", long_text = "Ⓑ↓: Bubble Shot" }
+"charged_shot.megaman/cannon_ball" = { text = "Ⓑ↓CanBal", long_text = "Ⓑ↓: Cannon Ball" }
+"charged_shot.megaman/card_shield" = { text = "Ⓑ↓Shield", long_text = "Ⓑ↓: Shield" }
+"charged_shot.megaman/circle_gun" = { text = "Ⓑ↓CircG", long_text = "Ⓑ↓: Circle Gun" }
+"charged_shot.megaman/drill_arm_1" = { text = "Ⓑ↓DrlArm", long_text = "Ⓑ↓: Drill Arm" }
+"charged_shot.megaman/dark_sword" = { text = "Ⓑ↓DarkS", long_text = "Ⓑ↓: Dark Sword" }
+"charged_shot.megaman/fire_arm" = { text = "Ⓑ↓FireAm", long_text = "Ⓑ↓: Fire Arm" }
+"charged_shot.megaman/heat_shot" = { text = "Ⓑ↓HeatS", long_text = "Ⓑ↓: Heat Shot" }
+"charged_shot.megaman/hells_rolling" = { text = "Ⓑ↓HelzR", long_text = "Ⓑ↓: Hell's Rolling" }
 "charged_shot.megaman/invisible" = { text = "Ⓑ↓Invis", long_text = "Ⓑ↓: Invisible" }
-"charged_shot.megaman/katana1" = { text = "Ⓑ↓Katana", long_text = "Ⓑ↓: Katana" }
-"charged_shot.megaman/longswrd" = { text = "Ⓑ↓LongS", long_text = "Ⓑ↓: Long Sword" }
-"charged_shot.megaman/minibomb" = { text = "Ⓑ↓MiniBm", long_text = "Ⓑ↓: Mini Bomb" }
-"charged_shot.megaman/moonbld1" = { text = "Ⓑ↓MonBld", long_text = "Ⓑ↓: Moon Blade" }
-"charged_shot.megaman/poltrgst" = { text = "Ⓑ↓Poltr", long_text = "Ⓑ↓: Poltergeist" }
-"charged_shot.megaman/program-charged-shot" = { text = "Ⓑ↓ChrgS", long_text = "Ⓑ↓: Charged Shot" }
-"charged_shot.megaman/pulsar1" = { text = "Ⓑ↓Pulsar", long_text = "Ⓑ↓: Pulsar" }
-"charged_shot.megaman/rapid-buster" = { text = "Ⓑ↓Sbustr", long_text = "Ⓑ↓: Shooting Buster" }
+"charged_shot.megaman/katana_1" = { text = "Ⓑ↓Katana", long_text = "Ⓑ↓: Katana" }
+"charged_shot.megaman/long_sword" = { text = "Ⓑ↓LongS", long_text = "Ⓑ↓: Long Sword" }
+"charged_shot.megaman/mini_bomb" = { text = "Ⓑ↓MiniBm", long_text = "Ⓑ↓: Mini Bomb" }
+"charged_shot.megaman/moon_blade_1" = { text = "Ⓑ↓MonBld", long_text = "Ⓑ↓: Moon Blade" }
+"charged_shot.megaman/poltergeist" = { text = "Ⓑ↓Poltr", long_text = "Ⓑ↓: Poltergeist" }
+"charged_shot.megaman/program_charged_shot" = { text = "Ⓑ↓ChrgS", long_text = "Ⓑ↓: Charged Shot" }
+"charged_shot.megaman/pulsar_1" = { text = "Ⓑ↓Pulsar", long_text = "Ⓑ↓: Pulsar" }
+"charged_shot.megaman/rapid_buster" = { text = "Ⓑ↓Sbustr", long_text = "Ⓑ↓: Shooting Buster" }
 "charged_shot.megaman/reflect" = { text = "Ⓑ↓Rflect", long_text = "Ⓑ↓: Reflect" }
-"charged_shot.megaman/seaseed" = { text = "Ⓑ↓SeaSed", long_text = "Ⓑ↓: Sea Seed" }
-"charged_shot.megaman/tankcan1" = { text = "Ⓑ↓Ccann", long_text = "Ⓑ↓: Colonel Cannon" }
+"charged_shot.megaman/sea_seed" = { text = "Ⓑ↓SeaSed", long_text = "Ⓑ↓: Sea Seed" }
+"charged_shot.megaman/tank_cannon_1" = { text = "Ⓑ↓Ccann", long_text = "Ⓑ↓: Colonel Cannon" }
 "charged_shot.megaman/thunder" = { text = "Ⓑ↓Thundr", long_text = "Ⓑ↓: Thunder" }
 "charged_shot.megaman/tornado" = { text = "Ⓑ↓Trnado", long_text = "Ⓑ↓: Tornado" }
 "charged_shot.megaman/vacuum" = { text = "Ⓑ↓Vacuum", long_text = "Ⓑ↓: Vacuum" }
-"charged_shot.megaman/wideblde" = { text = "B↓WideB", long_text = "B↓: Wide Blade" }
-"charged_shot.megaman/widesht1" = { text = "Ⓑ↓Wshot", long_text = "Ⓑ↓: Wide Shot" }
-"charged_shot.megaman/wideswrd" = { text = "Ⓑ↓WideS", long_text = "Ⓑ↓: Wide Sword" }
-"charged_shot.megaman/yoyo" = { text = "Ⓑ↓YoYo", long_text = "Ⓑ↓: Yo-Yo" }
-"charged_shot.megaman/zap-ring" = { text = "Ⓑ↓ZapRng", long_text = "Ⓑ↓: Zap Ring" }
+"charged_shot.megaman/wide_blade" = { text = "B↓WideB", long_text = "B↓: Wide Blade" }
+"charged_shot.megaman/wide_shot_1" = { text = "Ⓑ↓Wshot", long_text = "Ⓑ↓: Wide Shot" }
+"charged_shot.megaman/wide_sword" = { text = "Ⓑ↓WideS", long_text = "Ⓑ↓: Wide Sword" }
+"charged_shot.megaman/yo_yo" = { text = "Ⓑ↓YoYo", long_text = "Ⓑ↓: Yo-Yo" }
+"charged_shot.megaman/zap_ring" = { text = "Ⓑ↓ZapRng", long_text = "Ⓑ↓: Zap Ring" }
 "chip_recovery" = { text = "ChpRecov", long_text = "Chip Recovery" }
 "custom_add" = { text = "Custom+{amount}", long_text = "Custom +{amount}" }
 "custom_damage" = { text = "CustDmg", long_text = "Custom Damage" }
@@ -717,7 +717,7 @@ language = "en"
 "first_barrier.barrier/100" = { text = "Fbarr100", long_text = "First Barrier 100" }
 "first_barrier.barrier/200" = { text = "Fbarr200", long_text = "First Barrier 200" }
 "first_barrier.barrier/bubble" = { text = "Fbblwrap", long_text = "First Bubble Wrap" }
-"first_barrier.barrier/life-aura" = { text = "FlifeAur", long_text = "First Life Aura" }
+"first_barrier.barrier/life_aura" = { text = "FlifeAur", long_text = "First Life Aura" }
 "float_shoes" = { text = "FlotShoe", long_text = "Float Shoes" }
 "gauge.fast" = { text = "FstGauge", long_text = "Fast Gauge" }
 "gauge.normal" = { text = "NrmGauge", long_text = "Normal Gauge" }
@@ -861,9 +861,9 @@ language = "en"
 # The battle themes' names (rules/battle_themes), by their songs' asset names: a player picks one as a
 # battle's music, and the app shows it after the game's name ("BN5 Virus Battle"). Ours.
 [battle_themes]
-"virus-battle" = "Virus Battle"
-"boss-battle" = "Boss Battle"
-"final-battle" = "vs Nebula Gray"
+"virus_battle" = "Virus Battle"
+"boss_battle" = "Boss Battle"
+"final_battle" = "vs Nebula Gray"
 
 # The stats the rules' overview gives beyond the eight every game's have, by name (rules/souls/custom's `overview`),
 # each a row after Regular memory. `soul_time`: the turns a Soul Unison lasts, the NaviCust's SoulT+1 and the patch
@@ -891,67 +891,67 @@ language = "en"
 "evil" = "Evil"
 
 [lettering]
-"banner.battle-start" = "BATTLE START!"
-"banner.battle-number" = "BATTLE {n}"
-"banner.battle-number-start" = "BATTLE {n} START!"
-"banner.turn-start" = "TURN {n} START!"
-"banner.final-turn" = "FINAL TURN!"
-"banner.enemy-deleted" = "ENEMY DELETED"
-"banner.you-win" = "YOU WIN!"
-"banner.you-lose" = "YOU LOSE"
+"banner.battle_start" = "BATTLE START!"
+"banner.battle_number" = "BATTLE {n}"
+"banner.battle_number_start" = "BATTLE {n} START!"
+"banner.turn_start" = "TURN {n} START!"
+"banner.final_turn" = "FINAL TURN!"
+"banner.enemy_deleted" = "ENEMY DELETED"
+"banner.you_win" = "YOU WIN!"
+"banner.you_lose" = "YOU LOSE"
 "banner.draw" = "DRAW!"
-"banner.hit-damage-judge" = "HIT DAMAGE JUDGE"
-"banner.flag-deleted" = "FLAG DELETED"
+"banner.hit_damage_judge" = "HIT DAMAGE JUDGE"
+"banner.flag_deleted" = "FLAG DELETED"
 "banner.finish" = "FINISH!"
-"banner.time-up" = "TIME UP!"
-"banner.round-fight" = "ROUND {n} FIGHT!"
-"banner.max-mode" = "MAX MODE!"
+"banner.time_up" = "TIME UP!"
+"banner.round_fight" = "ROUND {n} FIGHT!"
+"banner.max_mode" = "MAX MODE!"
 "banner.penalty" = "PENALTY!!"
-"banner.liberate-success" = "LIBERATE SUCCESS!"
-"banner.liberate-failed" = "LIBERATE FAILED!"
-"banner.banner-90" = "{n} TURN LIBERATE!"
-"banner.colonel-win" = "COLONEL WIN!"
-"banner.colonel-deleted" = "COLONEL DELETED"
-"banner.gyroman-win" = "GYROMAN WIN!"
-"banner.gyroman-deleted" = "GYROMAN DELETED"
-"banner.knightman-win" = "KNIGHTMAN WIN!"
-"banner.knightman-deleted" = "KNIGHTMAN DELETED"
-"banner.magnetman-win" = "MAGNETMAN WIN!"
-"banner.magnetman-deleted" = "MAGNETMAN DELETED"
-"banner.meddy-win" = "MEDDY WIN!"
-"banner.meddy-deleted" = "MEDDY DELETED"
-"banner.megaman-win" = "MEGAMAN WIN!"
-"banner.megaman-deleted" = "MEGAMAN DELETED"
-"banner.napalmman-win" = "NAPALMMAN WIN!"
-"banner.napalmman-deleted" = "NAPALMMAN DELETED"
-"banner.numberman-win" = "NUMBERMAN WIN!"
-"banner.numberman-deleted" = "NUMBERMAN DELETED"
-"banner.protoman-win" = "PROTOMAN WIN!"
-"banner.protoman-deleted" = "PROTOMAN DELETED"
-"banner.searchman-win" = "SEARCHMAN WIN!"
-"banner.searchman-deleted" = "SEARCHMAN DELETED"
-"banner.shadowman-win" = "SHADOWMAN WIN!"
-"banner.shadowman-deleted" = "SHADOWMAN DELETED"
-"banner.toadman-win" = "TOADMAN WIN!"
-"banner.toadman-deleted" = "TOADMAN DELETED"
-"banner.tomahawkman-win" = "TOMAHAWKMAN WIN!"
-"banner.tomahawkman-deleted" = "TOMAHAWKMAN DELETED"
+"banner.liberate_success" = "LIBERATE SUCCESS!"
+"banner.liberate_failed" = "LIBERATE FAILED!"
+"banner.banner_90" = "{n} TURN LIBERATE!"
+"banner.colonel_win" = "COLONEL WIN!"
+"banner.colonel_deleted" = "COLONEL DELETED"
+"banner.gyroman_win" = "GYROMAN WIN!"
+"banner.gyroman_deleted" = "GYROMAN DELETED"
+"banner.knightman_win" = "KNIGHTMAN WIN!"
+"banner.knightman_deleted" = "KNIGHTMAN DELETED"
+"banner.magnetman_win" = "MAGNETMAN WIN!"
+"banner.magnetman_deleted" = "MAGNETMAN DELETED"
+"banner.meddy_win" = "MEDDY WIN!"
+"banner.meddy_deleted" = "MEDDY DELETED"
+"banner.megaman_win" = "MEGAMAN WIN!"
+"banner.megaman_deleted" = "MEGAMAN DELETED"
+"banner.napalmman_win" = "NAPALMMAN WIN!"
+"banner.napalmman_deleted" = "NAPALMMAN DELETED"
+"banner.numberman_win" = "NUMBERMAN WIN!"
+"banner.numberman_deleted" = "NUMBERMAN DELETED"
+"banner.protoman_win" = "PROTOMAN WIN!"
+"banner.protoman_deleted" = "PROTOMAN DELETED"
+"banner.searchman_win" = "SEARCHMAN WIN!"
+"banner.searchman_deleted" = "SEARCHMAN DELETED"
+"banner.shadowman_win" = "SHADOWMAN WIN!"
+"banner.shadowman_deleted" = "SHADOWMAN DELETED"
+"banner.toadman_win" = "TOADMAN WIN!"
+"banner.toadman_deleted" = "TOADMAN DELETED"
+"banner.tomahawkman_win" = "TOMAHAWKMAN WIN!"
+"banner.tomahawkman_deleted" = "TOMAHAWKMAN DELETED"
 "pause" = "PAUSE"
 "waiting" = "Cstmzing..."
 "gauge.custom" = "CUSTOM"
-"gauge.l-or-r" = "L or R"
-"turn-limit" = "FINAL TURN"
+"gauge.l_or_r" = "L or R"
+"turn_limit" = "FINAL TURN"
 "pictures.ok.title" = "NO DATA\nSELECTED"
 "pictures.ok.words" = "Choose\na chip!"
-"pictures.ok-picked.title" = "CHIP DATA\nTRANSMISSION"
-"pictures.ok-picked.words" = "Sending\nchip data..."
+"pictures.ok_picked.title" = "CHIP DATA\nTRANSMISSION"
+"pictures.ok_picked.words" = "Sending\nchip data..."
 "pictures.other.title" = "BLOCKING!"
 "pictures.other.words" = "Reject\nDisturb\nIcon"
 "pictures.redeal.title" = "SHUFFLE!"
 "pictures.redeal.words" = "Shuffle\nFolder"
-"window.battle-chip" = "BATTLE CHIP"
-"window.chip-select" = "CHIP SELECT"
-"logo.program-advance" = "PrgAdvance"
+"window.battle_chip" = "BATTLE CHIP"
+"window.chip_select" = "CHIP SELECT"
+"logo.program_advance" = "PrgAdvance"
 "window.ok" = "OK"
 "window.shuffle" = "SHUFFLE"
 "window.unite" = "UNITE"

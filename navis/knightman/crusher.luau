@@ -18,7 +18,7 @@ export type State = {
     speed: number,
 }
 
-local SPRITE = asset.sprite("knightman-ball")
+local SPRITE = asset.sprite("knightman_ball")
 local ANIM = 20
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- How far from the field's middle it flies, in pixels.

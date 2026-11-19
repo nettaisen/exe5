@@ -10,7 +10,7 @@ local party_support = require("../../lib/party_support")
 local protoman = require("../protoman").protoman
 local regions = require("@exelib/regions")
 local supports = require("../../rules/party/supports")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
 local sword_sprite = asset.sprite("sword")
 
 -- His damage by the side's level (0x020CC1CC), its counter strength 20 (and it can't counter: 0x94).
@@ -27,7 +27,7 @@ local STAND_ON: PanelCondition = { solid = true, occupied = false }
 local ANIM_SWING = 5
 local SWORD = attachment.look { sprite = sword_sprite, palette = 0 }
 local SWORD_ANIM = 1
-local SWING_SOUND = asset.sound("sword-swing")
+local SWING_SOUND = asset.sound("sword_swing")
 local SLASH = new.effect { sprite = sword_slash_sprite, anim = 0, palette = 0, steps = 15 }
 local HIT_AT, SWING_ENDS, SWING_Z = 0xA, 0x32, 0x10_0000
 

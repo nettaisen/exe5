@@ -1,0 +1,72 @@
+--!strict
+-- WideSht1, WideSht2 and WideSht3: the widesht series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local wide_shot = require("@self/wave")
+
+-- Their waves: WideSht1's (kind 3), WideSht2's (kind 4) and WideSht3's (kind 5), each faster.
+local WAVE1 = wide_shot.wide(0x6_0000, false)
+local WAVE2 = wide_shot.wide(0x6_8000, false)
+local WAVE3 = wide_shot.wide(0x7_0000, false)
+
+-- WideSht1 (EXE5 chip 0x009): the navi raises its wide shooter and sends a wave from the panel ahead over a column
+-- of three: the shared WideSht (@exelib/wide_shot, the original's action 0x30, EXE5's 0x25; the same code but for the
+-- shooter's attachment row, EXE5's 0x11 for EXE6's 0x23, and the wave's height and sprite) with EXE5's shooter (0c-2a,
+-- the same place), its wave at the floor (EXE6's at 16 pixels) and EXE5's wide wave (chips/wide_shot).
+local wide_shot_1: Chip = {
+    codes = { "L", "M", "N" },
+    element = Element.aqua,
+    family = Family.aqua,
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 10,
+    damage = 70,
+    counter = 20,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    action = wide_shot.action { wave = WAVE1, waves = 1, z = 0 },
+    auto_battle = { class = "into_reach", range = "all_ahead" },
+}
+
+-- WideSht2 (EXE5 chip 0x00a): the navi raises its wide shooter and sends a wave from the panel ahead over a column
+-- of three: the shared WideSht (@exelib/wide_shot, the original's action 0x30, EXE5's 0x25; the same code but for the
+-- shooter's attachment row, EXE5's 0x11 for EXE6's 0x23, and the wave's height and sprite) with EXE5's shooter (0c-2a,
+-- the same place), its wave at the floor (EXE6's at 16 pixels) and EXE5's wide wave of kind 4 (chips/wide_shot).
+local wide_shot_2: Chip = {
+    codes = { "E", "F", "G" },
+    element = Element.aqua,
+    family = Family.aqua,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 30,
+    damage = 90,
+    counter = 20,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    action = wide_shot.action { wave = WAVE2, waves = 1, z = 0 },
+    auto_battle = { class = "into_reach", range = "all_ahead" },
+}
+
+-- WideSht3 (EXE5 chip 0x00b): the navi raises its wide shooter and sends a wave from the panel ahead over a column
+-- of three: the shared WideSht (@exelib/wide_shot, the original's action 0x30, EXE5's 0x25; the same code but for the
+-- shooter's attachment row, EXE5's 0x11 for EXE6's 0x23, and the wave's height and sprite) with EXE5's shooter (0c-2a,
+-- the same place), its wave at the floor (EXE6's at 16 pixels) and EXE5's wide wave of kind 5 (chips/wide_shot).
+local wide_shot_3: Chip = {
+    codes = { "S", "T", "U" },
+    element = Element.aqua,
+    family = Family.aqua,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 50,
+    damage = 110,
+    counter = 20,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    action = wide_shot.action { wave = WAVE3, waves = 1, z = 0 },
+    auto_battle = { class = "into_reach", range = "all_ahead" },
+}
+
+return { wide_shot_1 = wide_shot_1, wide_shot_2 = wide_shot_2, wide_shot_3 = wide_shot_3 }

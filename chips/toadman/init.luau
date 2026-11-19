@@ -48,7 +48,7 @@ local toadman_sp: Chip = {
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
-        id = "toadman-sp/controller",
+        id = "toadman_sp/controller",
         summon = navi.summon(0),
     },
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
@@ -71,10 +71,10 @@ local toadman_ds: Chip = {
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {
-        id = "toadman-ds/controller",
+        id = "toadman_ds/controller",
         summon = navi.summon(3),
     },
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-return { toadman = toadman, ["toadman-sp"] = toadman_sp, ["toadman-ds"] = toadman_ds }
+return { toadman = toadman, toadman_sp = toadman_sp, toadman_ds = toadman_ds }

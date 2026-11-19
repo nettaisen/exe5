@@ -22,7 +22,7 @@ bombs.variant = bomb.variant
 local made = bomb.make {
     id = "bomb",
     sprite = SPRITE,
-    hit_sound = asset.sound("hit-bomb-1"),
+    hit_sound = asset.sound("hit_bomb_1"),
     splash = effects.splash,
     explosion = effects.explosion,
     puff = effects.puff,
@@ -31,7 +31,7 @@ local made = bomb.make {
 -- A thrower that throws a bomb of `variant`, null-element.
 bombs.thrower = made.thrower
 
-local THROW: ThrowLook = { sound = asset.sound("minibomb-throw"), attachment = attachment.kind }
+local THROW: ThrowLook = { sound = asset.sound("mini_bomb_throw"), attachment = attachment.kind }
 
 -- A chip's throw.
 function bombs.throw(spec: ThrowSpec): Action

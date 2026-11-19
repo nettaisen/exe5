@@ -1,0 +1,40 @@
+--!strict
+-- Boomer (EXE5 chip 0x006): a boomerang flies from the user's back column along row 3, up the far column and back
+-- along row 1: the shared boomerang (@exelib/boomerang/boomerang, instant chip effect 1; EXE5's the same code but that
+-- it turns no panel to grass and has no tomahawk), with EXE5's variant (0x080CAF50 row 5, its record's parameter:
+-- EXE6's Boomer's speeds), sprite (10-14), collision type and spark.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local boomerang = require("@exelib/boomerang/boomerang")
+local kind = require("@self/boomerang")
+local collision = require("../rules/collision")
+local sparks = require("../lib/sparks")
+local boomerang_sprite = asset.sprite("boomerang")
+
+local VARIANT = boomerang.variant {
+    speed = 0x8_0000,
+    turn_speed = 314573,
+    grass = false,
+    sprite = boomerang_sprite,
+    is = collision.attack,
+    spark = sparks.wood,
+}
+
+local chip: Chip = {
+    codes = { "A", "L", "V", "*" },
+    element = Element.wood,
+    family = Family.wood,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 16,
+    damage = 60,
+    counter = 10,
+    lockout = 30,
+    flags = { has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    -- (Strong: EXE5's instant chip dispatch leaves 0x01000005 in the boomerang's parameters, its Param4 1.)
+    instant = boomerang.instant(kind, VARIANT, true),
+    auto_battle = { class = "spot_test", range = "target_at_back_or_edge" },
+}
+
+return { boomerang = chip }

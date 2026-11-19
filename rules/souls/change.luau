@@ -36,8 +36,8 @@ export type State = {
 -- the rules' state (./init).
 type Souls = { turns: number, chaos: boolean, arm_chip: Chip? }
 
-local FLASH_SOUND = asset.sound("log-in")
-local UNISON_SOUND = asset.sound("cross-change")
+local FLASH_SOUND = asset.sound("log_in")
+local UNISON_SOUND = asset.sound("cross_change")
 local CHAOS_SOUND = asset.sound("bug")
 
 -- The steps, in the attack's step.

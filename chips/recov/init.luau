@@ -7,7 +7,7 @@ local heal = require("@exelib/recov/heal")
 -- Recov10 (EXE5 chip 0x06b): the navi heals 10 HP in the tick after it uses it: EXE6's heal (@exelib/recov/heal,
 -- the original's action 0x17, EXE6's 0x20; EXE5's 0x080EC484 the same heal and table, 0x080EC4B8) and, unless an
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (30).
-local recov10: Chip = {
+local recovery_10: Chip = {
     codes = { "A", "C", "L", "*" },
     element = Element.null,
     family = Family.recovery,
@@ -26,7 +26,7 @@ local recov10: Chip = {
 -- Recov30 (EXE5 chip 0x06c): the navi heals 30 HP in the tick after it uses it: EXE6's heal (@exelib/recov/heal,
 -- the original's action 0x17, EXE6's 0x20; EXE5's 0x080EC484 the same heal and table, 0x080EC4B8) and, unless an
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (30).
-local recov30: Chip = {
+local recovery_30: Chip = {
     codes = { "C", "H", "L", "*" },
     element = Element.null,
     family = Family.recovery,
@@ -45,7 +45,7 @@ local recov30: Chip = {
 -- Recov50 (EXE5 chip 0x06d): the navi heals 50 HP in the tick after it uses it: EXE6's heal (@exelib/recov/heal,
 -- the original's action 0x17, EXE6's 0x20; EXE5's 0x080EC484 the same heal and table, 0x080EC4B8) and, unless an
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (40).
-local recov50: Chip = {
+local recovery_50: Chip = {
     codes = { "B", "H", "O", "*" },
     element = Element.null,
     family = Family.recovery,
@@ -64,7 +64,7 @@ local recov50: Chip = {
 -- Recov80 (EXE5 chip 0x06e): the navi heals 80 HP in the tick after it uses it: EXE6's heal (@exelib/recov/heal,
 -- the original's action 0x17, EXE6's 0x20; EXE5's 0x080EC484 the same heal and table, 0x080EC4B8) and, unless an
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (40).
-local recov80: Chip = {
+local recovery_80: Chip = {
     codes = { "B", "K", "O", "*" },
     element = Element.null,
     family = Family.recovery,
@@ -83,7 +83,7 @@ local recov80: Chip = {
 -- Recov120 (EXE5 chip 0x06f): the navi heals 120 HP in the tick after it uses it: EXE6's heal (@exelib/recov/heal,
 -- the original's action 0x17, EXE6's 0x20; EXE5's 0x080EC484 the same heal and table, 0x080EC4B8) and, unless an
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (50).
-local recov120: Chip = {
+local recovery_120: Chip = {
     codes = { "K" },
     element = Element.null,
     family = Family.recovery,
@@ -102,7 +102,7 @@ local recov120: Chip = {
 -- Recov150 (EXE5 chip 0x070): the navi heals 150 HP in the tick after it uses it: EXE6's heal (@exelib/recov/heal,
 -- the original's action 0x17, EXE6's 0x20; EXE5's 0x080EC484 the same heal and table, 0x080EC4B8) and, unless an
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (50).
-local recov150: Chip = {
+local recovery_150: Chip = {
     codes = { "Q" },
     element = Element.null,
     family = Family.recovery,
@@ -121,7 +121,7 @@ local recov150: Chip = {
 -- Recov200 (EXE5 chip 0x071): the navi heals 200 HP in the tick after it uses it: EXE6's heal (@exelib/recov/heal,
 -- the original's action 0x17, EXE6's 0x20; EXE5's 0x080EC484 the same heal and table, 0x080EC4B8) and, unless an
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (50).
-local recov200: Chip = {
+local recovery_200: Chip = {
     codes = { "I" },
     element = Element.null,
     family = Family.recovery,
@@ -140,7 +140,7 @@ local recov200: Chip = {
 -- Recov300 (EXE5 chip 0x072): the navi heals 300 HP in the tick after it uses it: EXE6's heal (@exelib/recov/heal,
 -- the original's action 0x17, EXE6's 0x20; EXE5's 0x080EC484 the same heal and table, 0x080EC4B8) and, unless an
 -- AntiRecv turned it, the side's mood gains the use's +0x0A, the record's parameter (50).
-local recov300: Chip = {
+local recovery_300: Chip = {
     codes = { "Y" },
     element = Element.null,
     family = Family.recovery,
@@ -157,12 +157,12 @@ local recov300: Chip = {
 }
 
 return {
-    recov10 = recov10,
-    recov30 = recov30,
-    recov50 = recov50,
-    recov80 = recov80,
-    recov120 = recov120,
-    recov150 = recov150,
-    recov200 = recov200,
-    recov300 = recov300,
+    recovery_10 = recovery_10,
+    recovery_30 = recovery_30,
+    recovery_50 = recovery_50,
+    recovery_80 = recovery_80,
+    recovery_120 = recovery_120,
+    recovery_150 = recovery_150,
+    recovery_200 = recovery_200,
+    recovery_300 = recovery_300,
 }

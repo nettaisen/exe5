@@ -3,14 +3,14 @@
 -- level gives (the damage rows' row 20, lib/navi_level), his counter byte, the attack's variant 1, the ball he wears,
 -- no wait and the ball's swing (12 a tick, one turn, no status, his own ball), and starts his action 9 (0x080FBFF4).
 -- Two ticks in he swings (the counter window open, his swing's sound): his wrecking ball circles him once (attack
--- object #0x17, chips/knightmn/ball: KnightMan the navi chip's, here not running while dimmed), the one he wears
+-- object #0x17, chips/knightman/ball: KnightMan the navi chip's, here not running while dimmed), the one he wears
 -- hidden meanwhile; 58 ticks, then he stands with it back.
 --
 -- The action is also his in an auto battle (the attack's variant 0): he glows for 20 ticks first, his guard down,
 -- and waits what the attack says; its end puts his guard back up. A player's KnightMan has no guard to drop. (His
 -- wait's start also calls 0x080E9FD2, the operation battle's mark on his panel.)
 
-local ball = require("../../chips/knightmn/ball")
+local ball = require("../../chips/knightman/ball")
 local chain = require("./chain")
 local marker = require("../../lib/navi_chips/marker")
 local navi_level = require("../../lib/navi_level")
@@ -34,7 +34,7 @@ local PARTY: { { number } } = {
     { 80, 10 }, { 100, 10 }, { 100, 10 }, { 100, 10 }, { 100, 10 },
 }
 local SWING_ANIM = 18
-local SOUND = asset.sound("knight-swing")
+local SOUND = asset.sound("knight_swing")
 local SWING_TICKS = 58
 -- The routine's ball (AIAttackVars +0x0C to +0x0F): 12 a tick, one turn, no status, his own ball.
 local SWING: KnightBallSwing = { speed = 12, turns = 1, status = nil, look = ball.knightman }

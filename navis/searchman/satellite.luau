@@ -31,10 +31,10 @@ export type FlareState = {
 }
 
 local SATELLITE = asset.sprite("satellite")
-local BEAM = asset.sprite("satellite-beam")
-local FLARE = asset.sprite("satellite-flare")
+local BEAM = asset.sprite("satellite_beam")
+local FLARE = asset.sprite("satellite_flare")
 -- (0x111: 0x080E77C4 loads it as 18 + 255.)
-local SOUND_FIRE = asset.sound("moon-beam")
+local SOUND_FIRE = asset.sound("moon_beam")
 
 -- The panels from the satellite to its target, and how far behind its panel it hangs (16.16).
 local REACH = 3
@@ -201,7 +201,7 @@ local function satellite_tick(me: Object, s: State)
 end
 
 satellite.kind = new.kind {
-    id = "searchman/satelity/satellite",
+    id = "searchman/satellite_ray/satellite",
     pool = Pool.effect,
     state = { while_dimmed = schema.bool, ticks = schema.u8 },
     -- 0x080E767C.
@@ -276,7 +276,7 @@ local function beam_tick(me: Object, s: State)
 end
 
 beam_kind = new.kind {
-    id = "searchman/satelity/beam",
+    id = "searchman/satellite_ray/beam",
     pool = Pool.effect,
     state = { while_dimmed = schema.bool, ticks = schema.u8 },
     -- 0x080E7888.
@@ -380,7 +380,7 @@ local function flare_tick(me: Object, f: FlareState)
 end
 
 flare_kind = new.kind {
-    id = "searchman/satelity/flare",
+    id = "searchman/satellite_ray/flare",
     pool = Pool.attack,
     state = { while_dimmed = schema.bool, ticks = schema.u8, way = schema.u8 },
     -- 0x080DC010.

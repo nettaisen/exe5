@@ -35,7 +35,7 @@ local CYCLE: { { number } } = {
 }
 
 -- The armed charge's glow (0x080E0EA4).
-local GLOW = asset.sprite("chaos-charge-glow")
+local GLOW = asset.sprite("chaos_charge_glow")
 
 -- The navi's soul's Chaos Unison: its weapon, and its own cycle (none: the level's row).
 local function soul_chaos(side: number): { weapon: Weapon, cycle: { number }? }?

@@ -19,7 +19,7 @@ local toadman = {}
 
 local SPRITE = asset.sprite("toadman")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_PLAY = asset.sound("toad-melody")
+local SOUND_PLAY = asset.sound("toad_melody")
 -- His notes (0x080BC9D8): 10 ticks each, the next 6 ticks in, running while dimmed.
 local CHAIN: { life: number, delay: number, dimmed: boolean } = { life = 0xA, delay = 6, dimmed = true }
 

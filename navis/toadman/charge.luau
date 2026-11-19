@@ -16,7 +16,7 @@ local collision = require("../../rules/collision")
 local navi_level = require("../../lib/navi_level")
 local regions = require("@exelib/regions")
 local sparks = require("../../lib/sparks")
-local dive_splash_sprite = asset.sprite("dive-splash")
+local dive_splash_sprite = asset.sprite("dive_splash")
 
 local charge = {}
 
@@ -35,8 +35,8 @@ local PARTY: { { number } } = {
     { 80, 10 }, { 80, 10 }, { 80, 10 }, { 80, 10 }, { 80, 10 },
 }
 local SPLASH = new.effect { sprite = dive_splash_sprite, anim = 0, palette = 0, steps = 25 }
-local SOUND_DIVE = asset.sound("toad-dive")
-local SOUND_SURFACE = asset.sound("sand-worm")
+local SOUND_DIVE = asset.sound("toad_dive")
+local SOUND_SURFACE = asset.sound("sand_worm")
 -- His animations: going down, coming up at home, surfacing, striking.
 local ANIM_DOWN, ANIM_UP, ANIM_SURFACE, ANIM_STRIKE = 4, 3, 18, 19
 local DOWN_TICKS, UNDER_TICKS, SURFACE_TICKS, STRIKE_AT, STRIKE_TICKS, HOLD_TICKS, UP_TICKS, STAND_TICKS = 4, 30, 2, 8, 12, 5, 4, 20

@@ -12,8 +12,8 @@ local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
 local regions = require("@exelib/regions")
 local supports = require("../../rules/party/supports")
-local muzzle_flash_sprite = asset.sprite("muzzle-flash")
-local vulcan_hit_sprite = asset.sprite("vulcan-hit")
+local muzzle_flash_sprite = asset.sprite("muzzle_flash")
+local vulcan_hit_sprite = asset.sprite("vulcan_hit")
 
 -- His damage a shot by the side's level (0x020CC204), its counter strength 2 (and it can't counter: 0x82).
 local DAMAGE: { number } = { 4, 4, 4, 4, 6, 7, 10, 15, 20, 20 }
@@ -30,7 +30,7 @@ local STAND: PanelCondition = { solid = true, own_area = true, occupied = false 
 -- 0xD); three ticks after, a wait of three, his flash let go.
 local SHOTS = 5
 local ANIM_FIRE = 0xE
-local SHOT_SOUND = asset.sound("col-army-2")
+local SHOT_SOUND = asset.sound("col_army_2")
 local HEIGHTS = { 0x08_0000, 0x10_0000, 0x18_0000, 0x20_0000 }
 local FLASH = attachment.look { sprite = muzzle_flash_sprite, palette = 0, attach_point = 0x10 }
 -- The DS's bullet row 0x13 (0x02135BAC): the panel found and the one behind, no hit modifier, the vulcan hit in its

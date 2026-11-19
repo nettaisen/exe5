@@ -9,7 +9,7 @@ local card: PatchCard = {
     effects = {
         cards.hp(200),
         cards.air_shoes(true),
-        cards.charged_shot(chips.drilarm),
+        cards.charged_shot(chips.drill_arm),
         cards.bug(cards.panel_trail("hole", 2)),
     },
 }

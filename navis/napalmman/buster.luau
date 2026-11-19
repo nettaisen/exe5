@@ -17,7 +17,7 @@ local bullets = require("@exelib/bullet")
 local lib = require("../../lib/buster")
 local navi_level = require("../../lib/navi_level")
 local regions = require("@exelib/regions")
-local vulcan_hit_sprite = asset.sprite("vulcan-hit")
+local vulcan_hit_sprite = asset.sprite("vulcan_hit")
 
 local buster = {}
 
@@ -40,7 +40,7 @@ local ANIM = 14
 local SHOT_TICK, SHOT_TICKS, RECOVERY = 1, 4, 3
 -- The bullet's heights, by a draw's low two bits (pixels: 0x080F1094).
 local HEIGHTS = { [0] = 8, 16, 24, 32 }
-local SOUND = asset.sound("col-army-2")
+local SOUND = asset.sound("col_army_2")
 -- The bullet (row 0x13): the panel found and the one behind it, with no flinch, its hit shown once at the bullet
 -- (effect 0x58: EXE5's own vulcan hit, its animation 1).
 local SHOT = bullet.variant {

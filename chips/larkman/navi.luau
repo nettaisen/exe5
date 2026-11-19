@@ -27,7 +27,7 @@ local larkman = {}
 local SPRITE = asset.sprite("larkman")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_COMMAND = asset.sound("ok-8b")
+local SOUND_COMMAND = asset.sound("ok_8b")
 
 -- The command's directions in turn, held with B (0x080BDE54).
 local COMMAND: { Key } = { "up", "right", "down" }

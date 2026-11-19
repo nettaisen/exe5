@@ -46,7 +46,7 @@ local gyroman_sp: Chip = {
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
-        id = "gyroman-sp/controller",
+        id = "gyroman_sp/controller",
         summon = navi.summon(2),
     },
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
@@ -69,10 +69,10 @@ local gyroman_ds: Chip = {
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {
-        id = "gyroman-ds/controller",
+        id = "gyroman_ds/controller",
         summon = navi.summon(3),
     },
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-return { gyroman = gyroman, ["gyroman-sp"] = gyroman_sp, ["gyroman-ds"] = gyroman_ds }
+return { gyroman = gyroman, gyroman_sp = gyroman_sp, gyroman_ds = gyroman_ds }

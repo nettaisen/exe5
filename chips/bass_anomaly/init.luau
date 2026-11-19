@@ -1,0 +1,35 @@
+--!strict
+-- BassAnly (EXE5 chip 0x132): Bass cuts in as BassAnly and fires four dark balls up and down the slant, seeking enemy navis (./navi).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local navi = require("@self/navi")
+local navi_chips = require("../lib/navi_chips/chip")
+
+local chip: Chip = {
+    -- The version whose saves hold it (rules/folder; rules/builds' groups).
+    version = Version.colonel,
+    codes = { "F" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.giga,
+    -- A save can collect it (rules/folder): Team Colonel's library lists it, where this record's flags are Team
+    -- ProtoMan's ROM's, which doesn't.
+    collectible = true,
+    rarity = 4,
+    mb = 95,
+    damage = 160,
+    counter = 10,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true },
+    slot_in_limit = 1,
+    -- (Past the navi chips' block: AntiNavi lets it through, and it isn't kept as the last navi chip.)
+    navi = navi_chips.make {
+        id = "bass_anomaly/controller",
+        summon = navi.summon,
+        navi_block = false,
+    },
+    auto_battle = { class = "at_once" },
+}
+
+return { bass_anomaly = chip }

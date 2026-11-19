@@ -24,12 +24,12 @@ local meteor_sprite = asset.sprite("meteor")
 
 local meteors = {}
 
--- The Meteors chip's row (row 1). (The showers' are their chips': chips/astroid, chips/darkmetr.)
+-- The Meteors chip's row (row 1). (The showers' are their chips': chips/asteroid, chips/darkmetr.)
 meteors.row = falling_meteor.row { is = collision.thrown, hits = collision.hits_navis, hit_mod = { flinch = true, flash = true }, shake = 1, panel = "none" }
 
 meteors.kind = falling_meteor.make_kind("meteor", {
     sprite = meteor_sprite,
-    sounds = { fall = asset.sound("justice-one"), land = asset.sound("hit-bomb-1") },
+    sounds = { fall = asset.sound("justice_one"), land = asset.sound("hit_bomb_1") },
     spark = sparks.of_element,
     -- (Its landing's burst EXE6's.)
     burst = effects.burst,
@@ -47,7 +47,7 @@ export type ShowerVariant = {
     more: ((me: Object) -> number)?,
 }
 
-local EXE5_METEOR_SHOWER = schema.record_type("exe5-meteor-shower")
+local EXE5_METEOR_SHOWER = schema.record_type("exe5_meteor_shower")
 
 function meteors.variant(v: ShowerVariant): ShowerVariant
     return new.record(EXE5_METEOR_SHOWER, v)

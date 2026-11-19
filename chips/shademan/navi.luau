@@ -17,8 +17,8 @@ local SHADEMAN = common.make {
     appear_anim = 3,
     call_anim = 5,
     appear = asset.sound("appear"),
-    call = asset.sound("shademan-call"),
-    command_sound = asset.sound("ok-8b"),
+    call = asset.sound("shademan_call"),
+    command_sound = asset.sound("ok_8b"),
     crush = crush,
     commands = {
         {

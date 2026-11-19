@@ -48,7 +48,7 @@ local ENEMY_NAVI: PanelFlags = { enemy_navi = true }
 -- A strike: its panel marked every other four ticks, its burst after 15 (the effect table's row 0 in the kind's
 -- palette, 0x90's sound) with a hit on the panel: no damage, the kind's status.
 local MARKED_TICKS = 0xE
-local BURST_SOUND = asset.sound("panel-poison")
+local BURST_SOUND = asset.sound("panel_poison")
 
 type ActorState = { member: number, kind: number, on_enemy: boolean }
 type StrikeState = { kind: number }
@@ -85,7 +85,7 @@ local function strike_update(me: Object)
 end
 
 support.strike = new.kind {
-    id = "shadowman/ambush-strike",
+    id = "shadowman/ambush_strike",
     pool = Pool.effect,
     state = { kind = schema.u8 },
     update = function(me: Object)

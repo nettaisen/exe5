@@ -36,7 +36,7 @@ export type ShockState = {
 local SPRITE = asset.sprite("voltz")
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- 0x080D8B22: the shock's sprite 10-11 without a shadow (0x00001011), animation 0; the same collision.
-local SHOCK_SPRITE = asset.sprite("thunder-ball")
+local SHOCK_SPRITE = asset.sprite("thunder_ball")
 local puff_sprite = asset.sprite("puff")
 -- NameID 0xE4: actor record 0xE4 (0x08014C94: version 5, AI index 0x21); its look (0x0801D6B0's row 0x17: the
 -- sensor, a ground shadow); EXE5's swallowing and Poltergeist leave it (0x0800D372, 0x080E8CA0).
@@ -51,7 +51,7 @@ local IDENTITY = new.identity {
 local HP = 1
 -- It drops from 160 pixels, 4 a tick; its collision is on from 16 pixels up.
 local DROP_HEIGHT, DROP_SPEED, LOW = 0xA0_0000, 0x4_0000, 16
-local DROP_SOUND, SHOCK_SOUND = asset.sound("voltz-drop"), asset.sound("erase-man-2")
+local DROP_SOUND, SHOCK_SOUND = asset.sound("voltz_drop"), asset.sound("erase_man_2")
 -- The effects (EXE5's table, 0x080DFC94): row 0x14 (14-0D, animation 2) when evicted.
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
 -- Landed, shocking, blinking out.

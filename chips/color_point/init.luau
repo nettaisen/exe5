@@ -1,0 +1,45 @@
+--!strict
+-- ColorPt and DblPoint: the colorpt series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local color_point = require("@self/color_point")
+
+-- ColorPt (EXE5 chip 0x07f): the user's front column goes to the other side, panel by panel, for Atk+10 a panel on
+-- the chip at the hand's cursor: EXE6's ColorPt with EXE5's points (chips/color_point/color_point).
+local colorpt_chip: Chip = {
+    codes = { "*" },
+    element = Element.null,
+    family = Family.plus,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 25,
+    damage = 0,
+    counter = 0,
+    lockout = 0,
+    flags = { dimming = true, standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
+    slot_in_limit = 1,
+    dimming = color_point.hook { palette = 0, bonus = 10 },
+    auto_battle = { class = "when_area_whole" },
+}
+
+-- DblPoint (EXE5 chip 0x0cf): the user's front column goes to the other side, panel by panel, for Atk+20 a panel on
+-- the chip at the hand's cursor: EXE6's DblPoint with EXE5's points (chips/color_point/color_point).
+local double_point: Chip = {
+    codes = { "*" },
+    element = Element.null,
+    family = Family.plus,
+    class = ChipClass.mega,
+    rarity = 3,
+    mb = 50,
+    damage = 0,
+    counter = 0,
+    lockout = 0,
+    flags = { dimming = true, library = true },
+    extra_flags = { free_slot_in = true },
+    slot_in_limit = 1,
+    dimming = color_point.hook { palette = 4, bonus = 20 },
+    auto_battle = { class = "when_area_whole" },
+}
+
+return { color_point = colorpt_chip, double_point = double_point }

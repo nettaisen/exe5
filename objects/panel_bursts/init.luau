@@ -5,7 +5,7 @@ local common = require("@exelib/panel_bursts")
 
 local panel_bursts = {}
 
-panel_bursts.kind = common.make_kind("panel-bursts")
+panel_bursts.kind = common.make_kind("panel_bursts")
 
 -- Bursts of `effect` (with `sound`, if any) over the panels of `region`, one every `interval` ticks at height `z`.
 function panel_bursts.spawn(

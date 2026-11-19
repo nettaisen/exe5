@@ -6,7 +6,7 @@
 
 local dark_costs = {}
 
-local EXE5_DARK_COST = schema.record_type("exe5-dark-cost")
+local EXE5_DARK_COST = schema.record_type("exe5_dark_cost")
 dark_costs.EXE5_DARK_COST = EXE5_DARK_COST
 
 function dark_costs.cost(apply: (stats: Navi) -> ()): DarkCost

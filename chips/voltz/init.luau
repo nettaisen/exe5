@@ -7,7 +7,7 @@ local voltz = require("@self/voltz")
 -- Voltz1 (EXE5 chip 0x04e): a sensor dropped three panels ahead that shocks the panels beside it, the shocks
 -- going on over the other side's panels (./voltz, instant effect 16; the record's params: level 0, the
 -- shocks every 20 ticks).
-local voltz1: Chip = {
+local voltz_1: Chip = {
     codes = { "K", "O", "Y" },
     element = Element.elec,
     family = Family.elec,
@@ -26,7 +26,7 @@ local voltz1: Chip = {
 -- Voltz2 (EXE5 chip 0x04f): a sensor dropped three panels ahead that shocks the panels beside it, the shocks
 -- going on over the other side's panels (./voltz, instant effect 16; the record's params: level 1, the
 -- shocks every 20 ticks).
-local voltz2: Chip = {
+local voltz_2: Chip = {
     codes = { "J", "U", "Z" },
     element = Element.elec,
     family = Family.elec,
@@ -45,7 +45,7 @@ local voltz2: Chip = {
 -- Voltz3 (EXE5 chip 0x050): a sensor dropped three panels ahead that shocks the panels beside it, the shocks
 -- going on over the other side's panels (./voltz, instant effect 16; the record's params: level 2, the
 -- shocks every 20 ticks).
-local voltz3: Chip = {
+local voltz_3: Chip = {
     codes = { "A", "H", "V" },
     element = Element.elec,
     family = Family.elec,
@@ -61,4 +61,4 @@ local voltz3: Chip = {
     auto_battle = { class = "into_reach", range = "three_ahead" },
 }
 
-return { voltz1 = voltz1, voltz2 = voltz2, voltz3 = voltz3 }
+return { voltz_1 = voltz_1, voltz_2 = voltz_2, voltz_3 = voltz_3 }

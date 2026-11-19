@@ -5,7 +5,7 @@
 -- navi, else three columns ahead, else none), stands 20 ticks and (on a solid panel, with a target) draws his sword
 -- and strikes his chip's strike there (`colonel.strike`): the Colonel chips' divides the screen, one diagonal slash
 -- rising toward his front, or, if his user held B and Left while he came, the one falling (with a sound)
--- (`colonel.screen_divide`); CrossDiv's both, an X (chips/crossdiv). A flash and a camera shake. 20 ticks on he
+-- (`colonel.screen_divide`); CrossDiv's both, an X (chips/cross_divide). A flash and a camera shake. 20 ticks on he
 -- sheathes it; he leaves, and the controller moves on.
 --
 -- Not reached: the slash of his Param1 0 (region 0x1F, effect 0x48): his init sets 2, and only 1 replaces it.
@@ -34,11 +34,11 @@ local colonel = {}
 export type Strike = { command: ((me: Object) -> ())?, land: (me: Object) -> (), flash: number }
 
 local SPRITE = asset.sprite("colonel")
-local colonel_cape_sprite = asset.sprite("colonel-cape")
-local screen_divide_sprite = asset.sprite("screen-divide")
+local colonel_cape_sprite = asset.sprite("colonel_cape")
+local screen_divide_sprite = asset.sprite("screen_divide")
 local sword_sprite = asset.sprite("sword")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_COMMAND = asset.sound("ok-8b")
+local SOUND_COMMAND = asset.sound("ok_8b")
 local SOUND_SWING = asset.sound("spin")
 -- What he wears (0x0800EE5E: EXE5's body overlay row 3, its sprite 10-1E, in front at every animation), stepping
 -- even while paused.
@@ -240,7 +240,7 @@ local function init(me: Object)
     me:enter_update()
 end
 
-local COLONEL_STRIKE = schema.record_type("colonel-strike")
+local COLONEL_STRIKE = schema.record_type("colonel_strike")
 
 colonel.kind = new.kind {
     id = "colonel/navi",
@@ -301,7 +301,7 @@ function colonel.summon(summon: Summon): (user: Object, controller: Object, spec
     end
 end
 
--- What he wears (navi 7's parts), which LeadRaid's Colonel wears too (chips/leadraid/colonel).
+-- What he wears (navi 7's parts), which LeadRaid's Colonel wears too (chips/leader_raid/colonel).
 colonel.cape = CAPE
 
 

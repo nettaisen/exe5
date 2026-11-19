@@ -6,7 +6,7 @@ local pulsar = require("@self/pulsar")
 
 -- Pulsar1 (EXE5 chip 0x015): a pulse along the row that bursts around the first body it hits, paralyzing (EXE5's
 -- Pulsar, chips/pulsar/pulsar: action 0x52).
-local pulsar1: Chip = {
+local pulsar_1: Chip = {
     codes = { "F", "P", "T" },
     element = Element.null,
     family = Family.null,
@@ -24,7 +24,7 @@ local pulsar1: Chip = {
 
 -- Pulsar2 (EXE5 chip 0x016): a pulse along the row that bursts around the first body it hits, paralyzing (EXE5's
 -- Pulsar, chips/pulsar/pulsar: action 0x52).
-local pulsar2: Chip = {
+local pulsar_2: Chip = {
     codes = { "E", "G", "M" },
     element = Element.null,
     family = Family.null,
@@ -42,7 +42,7 @@ local pulsar2: Chip = {
 
 -- Pulsar3 (EXE5 chip 0x017): a pulse along the row that bursts around the first body it hits, paralyzing (EXE5's
 -- Pulsar, chips/pulsar/pulsar: action 0x52).
-local pulsar3: Chip = {
+local pulsar_3: Chip = {
     codes = { "C", "R", "S" },
     element = Element.null,
     family = Family.null,
@@ -58,4 +58,4 @@ local pulsar3: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-return { pulsar1 = pulsar1, pulsar2 = pulsar2, pulsar3 = pulsar3 }
+return { pulsar_1 = pulsar_1, pulsar_2 = pulsar_2, pulsar_3 = pulsar_3 }

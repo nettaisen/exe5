@@ -18,8 +18,8 @@
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local charged_chips = require("./megaman/weapons/charged_chip")
-local s_melody = require("@self/chip")["s-melody"]
-local toadman_portrait_sprite = asset.sprite("toadman-portrait")
+local shocking_melody = require("@self/chip").shocking_melody
+local toadman_portrait_sprite = asset.sprite("toadman_portrait")
 local toadman_sprite = asset.sprite("toadman")
 
 -- He dives (AIData +0x44's 0x20).
@@ -34,7 +34,7 @@ local navi: NaviDef = {
     element = Element.aqua,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("toadman-win"), lose = asset.banner("toadman-deleted") },
+    banners = { win = asset.banner("toadman_win"), lose = asset.banner("toadman_deleted") },
     mugshot = asset.mugshot("toadman"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x22, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
@@ -42,13 +42,13 @@ local navi: NaviDef = {
     run_message = {
         portrait = toadman_portrait_sprite,
     },
-    own_chip = { chip = s_melody, code = "T" },
+    own_chip = { chip = shocking_melody, code = "T" },
     own_chip_draws = true,
     weapons = {
         buster = buster.weapon,
         charge_shot = charge.weapon,
         -- The charge table's row 0x2C (0x0801CC24); Charge 5 reads on into row 0x2D's first entry.
-        a_charge = charged_chips.routine({ 60, 60, 60, 60, 60, 140 }, "toadman/a-charge"),
+        a_charge = charged_chips.routine({ 60, 60, 60, 60, 60, 140 }, "toadman/a_charge"),
     },
     -- The chips A charges, and what a charged one gains (its damage again).
     charged_chips = { family = Family.aqua, damaging = false, plain = true },

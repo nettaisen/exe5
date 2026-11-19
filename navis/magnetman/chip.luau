@@ -2,7 +2,7 @@
 -- MagnetMan's own chip, NSTackle (EXE5 chip 0x198), which his custom screen offers until it is picked (the navi's
 -- `own_chip`): his own action 8 (0x080F11EE). He hits his own panel lightly (a one-tick hit of 1, hitting navis)
 -- and gathers himself (animation 17, 4 ticks, marked as moving); then he is off the field, his panel reserved and
--- the chips' icons hidden, and two magnets, the MagnetMan chips' (chips/magnetmn/magnet, in their variant 1: no
+-- the chips' icons hidden, and two magnets, the MagnetMan chips' (chips/magnetman/magnet, in their variant 1: no
 -- immobilizing, a flinching hit, stopping while dimmed), go at once: his target is the first panel ahead along his
 -- row that holds an enemy navi's body; one magnet (pole 1) comes from the panel as far past the target as he is
 -- short of it, when that panel is on the field and free, and the other (pole 0) from his own panel, the two
@@ -10,16 +10,16 @@
 -- that one is gone he is back on his panel (animation 3, 4 ticks) and to idle. Its damage is by his level (the
 -- chips' damage formula 58: the damage rows' row 9).
 --
--- He also spawns a magnet's pull (chips/magnetmn/pull) on the panel ahead of his, in the variant that follows a
+-- He also spawns a magnet's pull (chips/magnetman/pull) on the panel ahead of his, in the variant that follows a
 -- navi through the enemy MagnetMan's attack: a player's NSTackle is another action, so the pull is on that panel
 -- for the tick it appears and goes on the next.
 -- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi_level = require("../../lib/navi_level")
 local collision = require("../../rules/collision")
-local magnet = require("../../chips/magnetmn/magnet")
+local magnet = require("../../chips/magnetman/magnet")
 local marker = require("../../lib/navi_chips/marker")
-local pull = require("../../chips/magnetmn/pull")
+local pull = require("../../chips/magnetman/pull")
 local regions = require("@exelib/regions")
 
 export type State = {
@@ -185,4 +185,4 @@ local chip: Chip = {
     action = action,
 }
 
-return { nstackle = chip }
+return { north_south_tackle = chip }

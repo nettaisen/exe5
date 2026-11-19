@@ -4,7 +4,7 @@
 -- 10, the attachment table's row 0x25, the TankCans' cannon; the counter window open for 15 ticks) for 8 ticks, waits
 -- what the attack gives (none: the chip's own routine, its record's +0x1F, routine 5 of 0x0800EC80, clears it), then
 -- fires (animation 9, the cannon's recoil): on the 5th tick the screen shakes and a TankCan shell (attack object
--- #0x3C, chips/tankcan) leaves the panel ahead, 16 pixels up, without the TankCans' cracking; 18 ticks, then the
+-- #0x3C, chips/tank_cannon) leaves the panel ahead, 16 pixels up, without the TankCans' cracking; 18 ticks, then the
 -- recovery its parameters give (none) and the cannon let go. Its damage is by his level (the chips' damage formula
 -- 61: the damage rows' row 12, lib/navi_level).
 --
@@ -14,8 +14,8 @@
 
 local navi_level = require("../../lib/navi_level")
 local attachment = require("../../objects/attachment")
-local shell = require("@exelib/tankcan/shell")
-local tankcan = require("../../chips/tankcan/tankcan")
+local shell = require("@exelib/tank_cannon/shell")
+local tank_cannon = require("../../chips/tank_cannon/tank_cannon")
 
 export type State = {
     -- AIAttackVars +0x10: the step's count.
@@ -43,7 +43,7 @@ local function raise(me: Object, s: State)
         me:open_counter_window(COUNTER_TICKS)
         s.timer = RAISE_TICKS
         me.status.using_action = true
-        attachment.attach(me, tankcan.cannon, "overlay")
+        attachment.attach(me, tank_cannon.cannon, "overlay")
         me.step_init = 4
         return
     end
@@ -84,7 +84,7 @@ local function fire(me: Object, s: State)
     if s.timer == SHELL_TICK then
         battle.shake_camera(1, 0x14)
         local damage = damage_word.plus(me.attack_word, me.extra)
-        shell.fire(tankcan.kind, me, me.panel_x + me.facing, me.panel_y, SHELL_Z, damage, SHELL)
+        shell.fire(tank_cannon.kind, me, me.panel_x + me.facing, me.panel_y, SHELL_Z, damage, SHELL)
     end
     local t = s.timer + 1
     s.timer = t
@@ -150,4 +150,4 @@ local chip: Chip = {
     end,
 }
 
-return { ["c-cannon"] = chip }
+return { colonel_cannon = chip }

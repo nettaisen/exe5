@@ -11,8 +11,8 @@
 
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local satelity = require("@self/chip").satelity
-local searchman_portrait_sprite = asset.sprite("searchman-portrait")
+local satellite_ray = require("@self/chip").satellite_ray
+local searchman_portrait_sprite = asset.sprite("searchman_portrait")
 local searchman_sprite = asset.sprite("searchman")
 
 local navi: NaviDef = {
@@ -22,7 +22,7 @@ local navi: NaviDef = {
     element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("searchman-win"), lose = asset.banner("searchman-deleted") },
+    banners = { win = asset.banner("searchman_win"), lose = asset.banner("searchman_deleted") },
     mugshot = asset.mugshot("searchman"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x19, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
@@ -30,7 +30,7 @@ local navi: NaviDef = {
     run_message = {
         portrait = searchman_portrait_sprite,
     },
-    own_chip = { chip = satelity, code = "S" },
+    own_chip = { chip = satellite_ray, code = "S" },
     own_chip_draws = true,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },
     -- His fresh stats (his stats row): what a side starts him with.

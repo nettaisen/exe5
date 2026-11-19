@@ -30,7 +30,7 @@ export type State = {
 local ANIM_FLY, ANIM_TAKE_OFF, ANIM_LAND = 20, 18, 3
 local TAKE_OFF_TICKS, LAND_TICKS = 18, 3
 -- (0x14C: 0x080F0C50 loads it as 77 + 255.)
-local SOUND = asset.sound("gyro-change")
+local SOUND = asset.sound("gyro_change")
 
 -- The steps, on the attack's step.
 local CHOOSE, TAKE_OFF, LAND = 0x0, 0x4, 0x8

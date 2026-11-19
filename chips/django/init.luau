@@ -50,7 +50,7 @@ local django_sp: Chip = {
     -- (In the navi chips' block though the US record lacks the `navi` flag: AntiNavi turns it back, and it is kept
     -- as the last navi chip.)
     navi = navi_chips.make {
-        id = "django-sp/controller",
+        id = "django_sp/controller",
         summon = navi.summon { palette = 0, bug = 0xFD, bug_arg = 0x11 },
         navi_block = true,
     },
@@ -76,7 +76,7 @@ local django_ds: Chip = {
     -- (In the navi chips' block though the US record lacks the `navi` flag: AntiNavi turns it back, and it is kept
     -- as the last navi chip.)
     navi = navi_chips.make {
-        id = "django-ds/controller",
+        id = "django_ds/controller",
         -- Dark: his palette 3 and bug 0xFC.
         summon = navi.summon { palette = 3, bug = 0xFC, bug_arg = 0 },
         navi_block = true,
@@ -84,4 +84,4 @@ local django_ds: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-return { django = django, ["django-sp"] = django_sp, ["django-ds"] = django_ds }
+return { django = django, django_sp = django_sp, django_ds = django_ds }

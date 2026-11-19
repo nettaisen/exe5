@@ -28,7 +28,7 @@ local meddy = {}
 
 local SPRITE = asset.sprite("meddy")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_THROW = asset.sound("minibomb-throw")
+local SOUND_THROW = asset.sound("mini_bomb_throw")
 -- When she throws (ticks left of her windup).
 local THROW = 0x84
 

@@ -1,0 +1,37 @@
+--!strict
+-- ParaBom (EXE5 chip 0x027): a bomb thrown three panels ahead that hits the column where it lands and paralyzes: EXE5's
+-- throw (lib/bombs, action 0x12 subtype 10, the bomb held in animation 6) and its bomb (chips/crack_bomb/crack_bomb, attack
+-- object #0x24) of kind 2.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local bombs = require("../lib/bombs")
+local crack_bomb = require("./crack_bomb/crack_bomb")
+local statuses = require("../rules/status")
+
+-- Its bomb (kind 2): the burst in palette 2, the poison panel's sound, paralysis (status 0x10).
+local BOMB = crack_bomb.variant {
+    burst = new.effect { sprite = crack_bomb.burst, anim = 0, palette = 2, steps = 18 },
+    sound = asset.sound("panel_poison"),
+    hit_mod = {},
+    status = statuses.paralyze_90,
+    bug = 0,
+    cracks = false,
+}
+
+local chip: Chip = {
+    codes = { "H", "N", "P" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 34,
+    damage = 90,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    action = bombs.throw { held = bombs.held, held_anim = 6, thrower = crack_bomb.thrower(BOMB) },
+    auto_battle = { class = "into_reach", range = "column_three_ahead" },
+}
+
+return { paralyze_bomb = chip }

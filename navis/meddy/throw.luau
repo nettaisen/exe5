@@ -23,7 +23,7 @@ local SWING, THROW, STAND = 0x0, 0x4, 0x8
 local SWING_ANIM = 6
 local SWING_TICKS, THROW_TICKS, STAND_TICKS = 8, 12, 15
 local REACH = 3
-local SOUND = asset.sound("minibomb-throw")
+local SOUND = asset.sound("mini_bomb_throw")
 
 -- Count the step's ticks down; true when they run out.
 local function count(s: State): boolean

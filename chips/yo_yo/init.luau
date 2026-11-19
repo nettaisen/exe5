@@ -1,0 +1,24 @@
+--!strict
+-- YoYo (EXE5 chip 0x052): a yoyo that rolls two panels ahead, spins twice there and rolls back (EXE5's yoyo,
+-- chips/yo_yo/yo_yo; the throw EXE6's, action 0x4A).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local yoyo = require("@self/yo_yo")
+
+local chip: Chip = {
+    codes = { "D", "E", "F" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 32,
+    damage = 50,
+    counter = 10,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    action = yoyo.action(yoyo.spec { panels = 2, rounds = 2 }),
+    auto_battle = { class = "before_target" },
+}
+
+return { yo_yo = chip }

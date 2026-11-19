@@ -5,9 +5,9 @@
 
 local football = require("@self/football")
 local navi_chips = require("../lib/navi_chips/chip")
-local recipe_gridman_ds = require("./gridman")["gridman-ds"]
-local recipe_gridman_sp = require("./gridman")["gridman-sp"]
-local recipe_mrkcan2 = require("./mrkcan").mrkcan2
+local recipe_gridman_ds = require("./gridman").gridman_ds
+local recipe_gridman_sp = require("./gridman").gridman_sp
+local recipe_mrkcan2 = require("./mark_cannon").mark_cannon_2
 
 local chip: Chip = {
     codes = { "A", "B", "C", "*" },

@@ -3,7 +3,7 @@
 -- `own_chip`): his own action 8 (0x080F1098). Its first step (0x080F10BC) adds the attack's bonus into its damage,
 -- aims at the panel four columns ahead in his row (the field's edge column at most) and goes on: he raises his
 -- cannon (animation 18, a counter window of 16 ticks) and 21 ticks on fires (animation 19, a sound) a napalm bomb,
--- the NapalmMan chips' (chips/napalmmn/bomb, its variant 1), from 8 pixels toward the enemy's side and 56 up; 11
+-- the NapalmMan chips' (chips/napalmman/bomb, its variant 1), from 8 pixels toward the enemy's side and 56 up; 11
 -- ticks after the shot he waits 71 more and stands. Its damage is by his level (the chips' damage formula 56: the
 -- damage rows' row 7).
 --
@@ -13,7 +13,7 @@
 -- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi_level = require("../../lib/navi_level")
-local bomb = require("../../chips/napalmmn/bomb")
+local bomb = require("../../chips/napalmman/bomb")
 local panels = require("@exelib/panels")
 
 export type State = {
@@ -105,4 +105,4 @@ local chip: Chip = {
     action = action,
 }
 
-return { napalm = chip }
+return { napalm_bomb = chip }

@@ -15,7 +15,7 @@ local seed = {}
 
 local SPRITE = asset.sprite("bomb")
 local puff_sprite = asset.sprite("puff")
-local small_puff_sprite = asset.sprite("small-puff")
+local small_puff_sprite = asset.sprite("small_puff")
 
 seed.kind = common.make_kind("seed", {
     sprite = SPRITE,

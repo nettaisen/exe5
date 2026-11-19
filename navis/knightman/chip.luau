@@ -123,4 +123,4 @@ local chip: Chip = {
     action = action,
 }
 
-return { kcrusher = chip }
+return { kingdom_crusher = chip }

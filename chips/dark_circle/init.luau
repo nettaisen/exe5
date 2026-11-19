@@ -1,0 +1,39 @@
+--!strict
+-- DarkCirc (EXE5 chip 0x0bb): a dark chip: a gun sight circles the enemy's area until A or 360 ticks, then leaves
+-- seven shots on the panels it passes, each with the HP bug 0x54 (argument 0x32): EXE5's CircGun (chips/circle_gun/circle_gun:
+-- the shared CircGun, the dimming handler's subtype 42, with EXE5's look, CircGun's kinds) of its variant: period
+-- 2, 7 shots, look 1. Its use costs custom damage (rules/light_dark).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local circle_gun = require("./circle_gun/circle_gun")
+local collision = require("../rules/collision")
+local dark_costs = require("../lib/dark_costs")
+
+local chip: Chip = {
+    codes = { "R" },
+    element = Element.null,
+    family = Family.cursor,
+    class = ChipClass.standard,
+    rarity = 4,
+    mb = 99,
+    damage = 300,
+    counter = 30,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, dark = true, variable_damage = true },
+    slot_in_limit = 1,
+    dimming = circle_gun.hook(circle_gun.variant {
+        period = 2,
+        shots = 7,
+        palette = 1,
+        -- Another attacker's hit (EXE5's collision row 0x2B), with the HP bug 0x54 (argument 0x32).
+        hit = collision.collision_2b,
+        bug = 0x54,
+        bug_arg = 0x32,
+    }),
+    -- What its use costs its user (rules/light_dark).
+    dark_cost = dark_costs.custom_damage,
+    auto_battle = { class = "at_once" },
+}
+
+return { dark_circle = chip }

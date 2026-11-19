@@ -12,20 +12,20 @@
 local attach_points = require("@self/attach_points")
 local buster = require("@self/weapons/buster")
 local charged_shot = require("@self/weapons/charged_shot")
-local colonelsoul = require("@self/forms/colonelsoul").colonelsoul
-local gyrosoul = require("@self/forms/gyrosoul").gyrosoul
-local knightsoul = require("@self/forms/knightsoul").knightsoul
-local magnetsoul = require("@self/forms/magnetsoul").magnetsoul
-local meddysoul = require("@self/forms/meddysoul").meddysoul
-local napalmsoul = require("@self/forms/napalmsoul").napalmsoul
-local numbersoul = require("@self/forms/numbersoul").numbersoul
-local protosoul = require("@self/forms/protosoul").protosoul
-local searchsoul = require("@self/forms/searchsoul").searchsoul
-local shadowsoul = require("@self/forms/shadowsoul").shadowsoul
-local toadsoul = require("@self/forms/toadsoul").toadsoul
-local tomahawksoul = require("@self/forms/tomahawksoul").tomahawksoul
-local megaman_navi_sprite = asset.sprite("megaman-navi")
-local megaman_portrait_sprite = asset.sprite("megaman-portrait")
+local colonel_soul = require("@self/forms/colonel_soul").colonel_soul
+local gyro_soul = require("@self/forms/gyro_soul").gyro_soul
+local knight_soul = require("@self/forms/knight_soul").knight_soul
+local magnet_soul = require("@self/forms/magnet_soul").magnet_soul
+local meddy_soul = require("@self/forms/meddy_soul").meddy_soul
+local napalm_soul = require("@self/forms/napalm_soul").napalm_soul
+local number_soul = require("@self/forms/number_soul").number_soul
+local proto_soul = require("@self/forms/proto_soul").proto_soul
+local search_soul = require("@self/forms/search_soul").search_soul
+local shadow_soul = require("@self/forms/shadow_soul").shadow_soul
+local toad_soul = require("@self/forms/toad_soul").toad_soul
+local tomahawk_soul = require("@self/forms/tomahawk_soul").tomahawk_soul
+local megaman_navi_sprite = asset.sprite("megaman_navi")
+local megaman_portrait_sprite = asset.sprite("megaman_portrait")
 
 local navi: NaviDef = {
     sprite = megaman_navi_sprite,
@@ -34,7 +34,7 @@ local navi: NaviDef = {
     element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("megaman-win"), lose = asset.banner("megaman-deleted") },
+    banners = { win = asset.banner("megaman_win"), lose = asset.banner("megaman_deleted") },
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 3, past its navi check). Its words are locales/<lang>.toml's; the content's own (en) time it.
     run_message = {
@@ -52,18 +52,18 @@ local navi: NaviDef = {
     forms = {
         souls = {
             form_list = {
-                protosoul,
-                gyrosoul,
-                searchsoul,
-                napalmsoul,
-                magnetsoul,
-                meddysoul,
-                colonelsoul,
-                shadowsoul,
-                numbersoul,
-                tomahawksoul,
-                knightsoul,
-                toadsoul,
+                proto_soul,
+                gyro_soul,
+                search_soul,
+                napalm_soul,
+                magnet_soul,
+                meddy_soul,
+                colonel_soul,
+                shadow_soul,
+                number_soul,
+                tomahawk_soul,
+                knight_soul,
+                toad_soul,
             },
         },
     },

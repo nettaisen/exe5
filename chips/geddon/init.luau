@@ -24,7 +24,7 @@ local POISON = quake.change { apply = quake.poison, show = quake.bubbles }
 
 -- Geddon1 (EXE5 chip 0x07b): a quake cracks every solid panel of the field, one every 8 ticks in a random order:
 -- EXE6's Geddon (its quake's first row) without holding the user's panel (chips/geddon/controller).
-local geddon1: Chip = {
+local geddon_1: Chip = {
     codes = { "M", "P", "Z", "*" },
     element = Element.null,
     family = Family.null,
@@ -42,7 +42,7 @@ local geddon1: Chip = {
 
 -- Geddon2 (EXE5 chip 0x07c): a quake breaks every solid panel of the field (cracking those something stands on), one
 -- every 8 ticks in a random order: EXE6's Geddon without holding the user's panel (chips/geddon/controller).
-local geddon2: Chip = {
+local geddon_2: Chip = {
     codes = { "H", "T", "W" },
     element = Element.null,
     family = Family.null,
@@ -61,7 +61,7 @@ local geddon2: Chip = {
 -- Geddon3 (EXE5 chip 0x07d): a quake turns every solid panel of the field to poison, one every 8 ticks in a random
 -- order: EXE6's Geddon (its quake's third row, which no EXE6 chip uses) without holding the user's panel
 -- (chips/geddon/controller).
-local geddon3: Chip = {
+local geddon_3: Chip = {
     codes = { "A", "O", "V" },
     element = Element.null,
     family = Family.null,
@@ -77,4 +77,4 @@ local geddon3: Chip = {
     auto_battle = { class = "at_once" },
 }
 
-return { geddon1 = geddon1, geddon2 = geddon2, geddon3 = geddon3 }
+return { geddon_1 = geddon_1, geddon_2 = geddon_2, geddon_3 = geddon_3 }

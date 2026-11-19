@@ -15,8 +15,8 @@
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local charged_chips = require("./megaman/weapons/charged_chip")
-local t_swing = require("@self/chip")["t-swing"]
-local tomahawkman_portrait_sprite = asset.sprite("tomahawkman-portrait")
+local tomahawk_swing = require("@self/chip").tomahawk_swing
+local tomahawkman_portrait_sprite = asset.sprite("tomahawkman_portrait")
 local tomahawkman_sprite = asset.sprite("tomahawkman")
 
 local navi: NaviDef = {
@@ -26,7 +26,7 @@ local navi: NaviDef = {
     element = Element.wood,
     buster_bonus = 3,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("tomahawkman-win"), lose = asset.banner("tomahawkman-deleted") },
+    banners = { win = asset.banner("tomahawkman_win"), lose = asset.banner("tomahawkman_deleted") },
     mugshot = asset.mugshot("tomahawkman"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x20, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
@@ -35,13 +35,13 @@ local navi: NaviDef = {
         portrait = tomahawkman_portrait_sprite,
     },
     palette_step = 2,
-    own_chip = { chip = t_swing, code = "T" },
+    own_chip = { chip = tomahawk_swing, code = "T" },
     own_chip_draws = true,
     weapons = {
         buster = buster.weapon,
         charge_shot = charge.weapon,
         -- The charge table's row 0x2B (0x0801CC1A); Charge 5 reads on into row 0x2C's first entry.
-        a_charge = charged_chips.routine({ 60, 60, 60, 60, 60, 60 }, "tomahawkman/a-charge"),
+        a_charge = charged_chips.routine({ 60, 60, 60, 60, 60, 60 }, "tomahawkman/a_charge"),
     },
     -- The chips A charges, and what a charged one gains (its damage again).
     charged_chips = { family = Family.wood, damaging = false, plain = true },

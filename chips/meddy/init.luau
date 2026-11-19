@@ -47,7 +47,7 @@ local meddy_sp: Chip = {
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
-        id = "meddy-sp/controller",
+        id = "meddy_sp/controller",
         summon = navi.summon(0),
     },
     auto_battle = { class = "at_once" },
@@ -70,10 +70,10 @@ local meddy_ds: Chip = {
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {
-        id = "meddy-ds/controller",
+        id = "meddy_ds/controller",
         summon = navi.summon(6),
     },
     auto_battle = { class = "at_once" },
 }
 
-return { meddy = meddy, ["meddy-sp"] = meddy_sp, ["meddy-ds"] = meddy_ds }
+return { meddy = meddy, meddy_sp = meddy_sp, meddy_ds = meddy_ds }

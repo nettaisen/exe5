@@ -1,0 +1,25 @@
+--!strict
+-- Invisibl (EXE5 chip 0x085): its user turns invisible for six seconds: EXE6's Invisibl (@exelib/invisible, the
+-- dimming spawner's entry 40; EXE5's the same code), 360 ticks (the record's parameter).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local invisible = require("@self/controller")
+
+local chip: Chip = {
+    codes = { "*" },
+    element = Element.null,
+    family = Family.invisible,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 12,
+    damage = 0,
+    counter = 0,
+    lockout = 0,
+    flags = { dimming = true, standard_library = true, library = true },
+    extra_flags = { rush_cancels = true, free_slot_in = true },
+    slot_in_limit = 3,
+    dimming = invisible.hook(360),
+    auto_battle = { class = "when_visible" },
+}
+
+return { invisible = chip }

@@ -11,7 +11,7 @@ local sparks = require("../../lib/sparks")
 local trajectory = require("../../lib/trajectory")
 local bomb_sprite = asset.sprite("bomb")
 local geyser_sprite = asset.sprite("geyser")
-local spout_splash_sprite = asset.sprite("spout-splash")
+local spout_splash_sprite = asset.sprite("spout_splash")
 
 local made = common.make({
     id = "geyser/bomb",
@@ -19,7 +19,7 @@ local made = common.make({
     bomb = bomb_sprite,
     geyser = geyser_sprite,
     splash = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0, steps = 31 },
-    splash_sound = asset.sound("spout-ball"),
+    splash_sound = asset.sound("spout_ball"),
     erupt = asset.sound("geyser"),
     attack = collision.attack,
     hits = collision.hits_navis,

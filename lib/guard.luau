@@ -11,13 +11,13 @@
 -- - the Reflect program's (and ProtoMan's and ProtoSoul's B+Back): the charged shot's projectile, 20 pixels up
 --   (`guard.reflect`);
 -- - the Shield program's: 0x580 into the side's gauge; it heeds what it blocks only in the operation battle (`heeds`);
--- - the CrsShld chips': a cross (chips/crsshld/cross) leaving from the panel ahead, after which the guard ends at once.
+-- - the CrsShld chips': a cross (chips/curse_shield/cross) leaving from the panel ahead, after which the guard ends at once.
 --
 -- A hit that breaks guards takes the shield down, the guard with it (the time still runs). The NaviCust programs'
 -- uses come with EXE5's NaviCust.
 
 local projectile = require("../objects/projectile")
-local shield = require("@exelib/rflectr/shield")
+local shield = require("@exelib/reflector/shield")
 local variants = require("../objects/projectile/variants")
 
 local guard = {}
@@ -25,7 +25,7 @@ local guard = {}
 -- ---- The shields --------------------------------------------------------------------------------------------------
 
 -- The shield (attack object #0x2B, 0x080CA22C: EXE6's `sub_80C96A0`, the same code).
-local SHIELD = shield.make { id = "rflectr/shield", sound = asset.sound("follow-effect") }
+local SHIELD = shield.make { id = "rflectr/shield", sound = asset.sound("follow_effect") }
 
 -- A shield's look: its sheet, its animations, the ticks it fades and its palette.
 guard.look = shield.look

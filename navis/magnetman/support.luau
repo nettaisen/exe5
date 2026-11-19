@@ -9,7 +9,7 @@
 
 local attachment = require("../../objects/attachment")
 local barriers = require("../../lib/barriers")
-local chips_mag_barr = require("../../chips/mag_barr")
+local chips_mag_barr = require("../../chips/magnet_barrier")
 local collision = require("../../rules/collision")
 local immobilizer = require("@exelib/instant/immobilizer")
 local magnetman = require("../magnetman").magnetman
@@ -17,11 +17,11 @@ local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
 local status = require("../../rules/status")
 local immobilized_sprite = asset.sprite("immobilized")
-local magnet_arm_sprite = asset.sprite("magnet-arm")
+local magnet_arm_sprite = asset.sprite("magnet_arm")
 
 local support = {}
 
-local MAG_BARR = chips_mag_barr["mag-barr"]
+local MAG_BARR = chips_mag_barr.magnet_barrier
 local APPEAR_SOUND = asset.sound("appear")
 -- His magnet arm (the DS's attachment row 0x3A: 10-3C, its animation 0), the ticks he holds it, when the barrier comes
 -- and when the enemies are held.
@@ -33,7 +33,7 @@ local IMMOBILIZER = immobilizer.make_kind("magnetman/immobilizer", {
     sprite = immobilized_sprite,
     anim = 1,
     lasts = 0x14,
-    sound = asset.sound("bass-anly"),
+    sound = asset.sound("bass_anly"),
     status = status.immobilize_120,
     target = collision.hits_navis,
     self_type = collision.guard_breaking,
@@ -167,7 +167,7 @@ support.actor = new.kind {
 
 -- His controller (the DS's effect object 0x91): the dim, Mag-Barr's telop, MagnetMan (0x02225D4C), the undim.
 support.controller = party_support.controller {
-    id = "magnetman/support-controller",
+    id = "magnetman/support_controller",
     bring = function(me: Object): Object?
         local navi = me.related1 :: Object
         local o = battle.spawn(support.actor)

@@ -4,8 +4,8 @@
 -- 0x080C6D10). Its burst sets no status (EXE6's `sub_80C6AB8` gives the variant's): EXE5's variants have none. EXE5 sets
 -- the collision's element to the whole element byte where EXE6 splits it (no secondary elements: the same for EXE5's
 -- elements). Its variants are EXE5's rows (0x080C6B20), each stated by its user (`bullet.variant`): the Vulcans',
--- SuprVulc's and the InfVulcs' (chips/vulcan, chips/infvulc), Spreader's (chips/spreader), the patch cards' HeatS's
--- and BubSht's (navis/megaman/weapons/spreads), NapalmSoul's charged shot's (forms/napalmsoul/charge), NapalmMan's
+-- SuprVulc's and the InfVulcs' (chips/vulcan, chips/infinite_vulcan), Spreader's (chips/spreader), the patch cards' HeatS's
+-- and BubSht's (navis/megaman/weapons/spreads), NapalmSoul's charged shot's (forms/napalm_soul/charge), NapalmMan's
 -- buster's (navis/napalmman/buster) and ColonelSoul's gun soldier's (objects/soldier).
 
 local collision = require("../rules/collision")

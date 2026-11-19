@@ -24,8 +24,8 @@ export type State = {
     across: boolean,
 }
 
-local SPRITE = asset.sprite("thrown-tomahawk")
-local SOUND = asset.sound("tomahawk-throw")
+local SPRITE = asset.sprite("thrown_tomahawk")
+local SOUND = asset.sound("tomahawk_throw")
 local HEIGHT = 16 * 0x1_0000
 -- Its speed along a row and along the column (16.16).
 local SPEED, CROSSING_SPEED = 0x4_0000, 0x2_8000

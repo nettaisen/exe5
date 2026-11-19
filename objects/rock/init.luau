@@ -20,9 +20,9 @@ local sparks = require("../lib/sparks")
 local rock = {}
 
 local SPRITE = asset.sprite("rock")
-local SMALL_PUFF = asset.sprite("small-puff")
+local SMALL_PUFF = asset.sprite("small_puff")
 local puff_sprite = asset.sprite("puff")
-local rock_debris_sprite = asset.sprite("rock-debris")
+local rock_debris_sprite = asset.sprite("rock_debris")
 -- Effects 1, 2 and 0x14 (EXE5's table, 0x080DFC94, as EXE6's rows): a splash, dust, a puff.
 local SPLASH = new.effect { sprite = SMALL_PUFF, anim = 0, palette = 0, steps = 16 }
 local DUST = new.effect { sprite = SMALL_PUFF, anim = 1, palette = 0, steps = 16 }
@@ -45,7 +45,7 @@ local ICE = new.identity {
     look = { sprite = SPRITE, anim = 2, palette = 0, shadow = true },
 }
 
-local CRACK = asset.sound("panel-crack")
+local CRACK = asset.sound("panel_crack")
 
 -- The variants anything places, rows of 0x080D0F80 (a row past the second is aqua): its rows 1 and 3. (Row 0, a cube
 -- anything breaks, and row 2, a hard one, no chip or stage places.)
@@ -65,7 +65,7 @@ rock.variants = {
         hp = 100,
         element = Element.aqua,
         debris_palette = 1,
-        break_sound = asset.sound("falling-rock"),
+        break_sound = asset.sound("falling_rock"),
         identity = ICE,
     },
 }

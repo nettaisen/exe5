@@ -19,7 +19,7 @@ export type State = {
 local COUNTER = 5
 local ANIM = 21
 local TICKS = 10
-local SOUND = asset.sound("col-army-2")
+local SOUND = asset.sound("col_army_2")
 -- The panels holding the other side's navi's body, by side (0x080F0D3C).
 local ENEMY_NAVI: PanelCondition = { enemy_body = true }
 -- The strikes' hit modifier (their first parameter 1's).

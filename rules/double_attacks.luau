@@ -136,7 +136,7 @@ end
 -- Action 0x5C's steps: the land, then the wait and the launch.
 local LAND, LAUNCH = 0x0, 0x4
 local LAND_TICKS, WAIT_TICKS = 0x14, 0x14
-local SOUND_SWITCH = asset.sound("cross-change")
+local SOUND_SWITCH = asset.sound("cross_change")
 
 type FollowUp = { timer: number }
 
@@ -202,7 +202,7 @@ end
 
 -- Action 0x5C (0x02042ED8, its table 0x020E0B40): the rules' `follow_up` (rules/roles.luau).
 double_attacks.follow_up = new.action {
-    id = "double-attack-follow-up",
+    id = "double_attack_follow_up",
     state = { timer = schema.u16 },
     update = function(me: Object, s: FollowUp)
         local step = me.step

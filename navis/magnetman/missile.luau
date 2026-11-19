@@ -24,8 +24,8 @@ export type State = {
     target: Object?,
 }
 
-local SPRITE = asset.sprite("magnet-missile")
-local SOUND = asset.sound("junk-shot")
+local SPRITE = asset.sprite("magnet_missile")
+local SOUND = asset.sound("junk_shot")
 -- Its HP (0x080D24E4 by its first parameter: MagnetMan's charge's 4) and its wait (0x080D261C by its second: 0).
 local HP, WAIT = 20, 15
 -- Its speeds, 16.16 a tick (0x080D26B8 and 0x080D275C: every row the same).

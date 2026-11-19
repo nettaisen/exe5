@@ -5,7 +5,7 @@
 local bullet = require("../objects/bullet")
 local regions = require("@exelib/regions")
 local vulcan = require("@self/vulcan")
-local vulcan_hit_sprite = asset.sprite("vulcan-hit")
+local vulcan_hit_sprite = asset.sprite("vulcan_hit")
 
 -- The Vulcans' bullet (row 0xC: EXE6's): the panel found and the one behind it, staggering, its hit shown once at the
 -- bullet.
@@ -25,7 +25,7 @@ local SUPER_SHOT = bullet.variant {
 }
 
 -- Vulcan1 (EXE5 chip 0x00f): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 3 bullets.
-local vulcan1: Chip = {
+local vulcan_1: Chip = {
     codes = { "C", "D", "E", "*" },
     element = Element.null,
     family = Family.null,
@@ -42,7 +42,7 @@ local vulcan1: Chip = {
 }
 
 -- Vulcan2 (EXE5 chip 0x010): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 5 bullets.
-local vulcan2: Chip = {
+local vulcan_2: Chip = {
     codes = { "A", "B", "C" },
     element = Element.null,
     family = Family.null,
@@ -59,7 +59,7 @@ local vulcan2: Chip = {
 }
 
 -- Vulcan3 (EXE5 chip 0x011): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 7 bullets.
-local vulcan3: Chip = {
+local vulcan_3: Chip = {
     codes = { "L", "M", "N" },
     element = Element.null,
     family = Family.null,
@@ -77,7 +77,7 @@ local vulcan3: Chip = {
 
 -- SuprVulc (EXE5 chip 0x0dc): action 0x19, EXE6's vulcan with EXE5's gun and bullets (chips/vulcan/vulcan): 12 bullets of
 -- row 0x10 (EXE6's SuprVulc's).
-local suprvulc: Chip = {
+local super_vulcan: Chip = {
     codes = { "S" },
     element = Element.null,
     family = Family.null,
@@ -93,4 +93,4 @@ local suprvulc: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-return { vulcan1 = vulcan1, vulcan2 = vulcan2, vulcan3 = vulcan3, suprvulc = suprvulc }
+return { vulcan_1 = vulcan_1, vulcan_2 = vulcan_2, vulcan_3 = vulcan_3, super_vulcan = super_vulcan }

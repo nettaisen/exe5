@@ -38,12 +38,12 @@ export type Flight = { id: string, appears: boolean, runs: boolean, while_dimmed
 local gyroman = {}
 
 local SPRITE = asset.sprite("gyroman")
-local gyro_propeller_sprite = asset.sprite("gyro-propeller")
+local gyro_propeller_sprite = asset.sprite("gyro_propeller")
 local SOUND_APPEAR = asset.sound("appear")
 -- (0x104 and 0x105: 0x080BAC56 and 0x080BACBE load them as 5 + 255 and 6 + 255.)
-local SOUND_TAKEOFF = asset.sound("gyro-takeoff")
+local SOUND_TAKEOFF = asset.sound("gyro_takeoff")
 local SOUND_DROP = asset.sound("drop")
-local SOUND_RUN = asset.sound("ok-8b")
+local SOUND_RUN = asset.sound("ok_8b")
 -- What he wears (0x0800EE4E: EXE5's body overlay row 0, its sprite 10-0A, behind him in his animations 0 to 5, 7,
 -- 16 and 17), stepping even while paused.
 local PROPELLER = new.identity {

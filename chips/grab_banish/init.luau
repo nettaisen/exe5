@@ -1,0 +1,46 @@
+--!strict
+-- GrabRvng and GrabBnsh: the grabbnsh series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local controller = require("@self/controller")
+
+-- GrabRvng (EXE5 chip 0x076): the user's side takes back the panels the other side stole, a hand dropping on every
+-- enemy navi for each: EXE6's controller (@exelib/grab_banish, GrabBnsh's and GrabRvng's). EXE5's code is the same but
+-- for the hand's effect number (0x29, EXE6's 0x3B), which is the same effect (the grab shot's animation 1).
+local grab_revenge: Chip = {
+    codes = { "F", "N", "P" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 3,
+    mb = 48,
+    damage = 40,
+    counter = 10,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, standard_library = true, library = true },
+    slot_in_limit = 1,
+    dimming = controller.hook,
+    auto_battle = { class = "when_area_lost" },
+}
+
+-- GrabBnsh (EXE5 chip 0x077): the user's side takes back the panels the other side stole, a hand dropping on every
+-- enemy navi for each: EXE6's controller (@exelib/grab_banish; EXE5's the same code).
+local grab_banish: Chip = {
+    codes = { "D", "L", "R" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 24,
+    damage = 20,
+    counter = 10,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, standard_library = true, library = true },
+    slot_in_limit = 1,
+    dimming = controller.hook,
+    auto_battle = { class = "when_area_lost" },
+}
+
+return { grab_revenge = grab_revenge, grab_banish = grab_banish }

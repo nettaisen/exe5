@@ -1,0 +1,61 @@
+--!strict
+-- DrilArm1, DrilArm2 and DrilArm3: the drilarm series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local drill = require("@self/drill")
+
+-- DrilArm1 (EXE5 chip 0x048): the navi's arm becomes a drill and two drills grind the two panels ahead for 24
+-- ticks plus 10: EXE6's DrilArm (action 0x4F, EXE6's 0x2E) as EXE5's (chips/drill_arm/drill).
+local drill_arm_1: Chip = {
+    codes = { "A", "J", "W" },
+    element = Element.null,
+    family = Family["break"],
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 38,
+    damage = 60,
+    counter = 10,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 3,
+    action = drill.action { ticks = 24 },
+    auto_battle = { class = "into_reach", range = "two_in_row" },
+}
+
+-- DrilArm2 (EXE5 chip 0x049): the navi's arm becomes a drill and two drills grind the two panels ahead for 24
+-- ticks plus 10: EXE6's DrilArm (action 0x4F, EXE6's 0x2E) as EXE5's (chips/drill_arm/drill).
+local drill_arm_2: Chip = {
+    codes = { "D", "L", "S" },
+    element = Element.null,
+    family = Family["break"],
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 51,
+    damage = 70,
+    counter = 10,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 3,
+    action = drill.action { ticks = 24 },
+    auto_battle = { class = "into_reach", range = "two_in_row" },
+}
+
+-- DrilArm3 (EXE5 chip 0x04a): the navi's arm becomes a drill and two drills grind the two panels ahead for 24
+-- ticks plus 10: EXE6's DrilArm (action 0x4F, EXE6's 0x2E) as EXE5's (chips/drill_arm/drill).
+local drill_arm_3: Chip = {
+    codes = { "I", "P", "Z" },
+    element = Element.null,
+    family = Family["break"],
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 64,
+    damage = 80,
+    counter = 10,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 3,
+    action = drill.action { ticks = 24 },
+    auto_battle = { class = "into_reach", range = "two_in_row" },
+}
+
+return { drill_arm_1 = drill_arm_1, drill_arm_2 = drill_arm_2, drill_arm_3 = drill_arm_3 }

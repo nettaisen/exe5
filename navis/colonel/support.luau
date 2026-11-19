@@ -8,9 +8,9 @@ local attachment = require("../../objects/attachment")
 local colonel = require("../colonel").colonel
 local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
-local shell = require("@exelib/tankcan/shell")
+local shell = require("@exelib/tank_cannon/shell")
 local supports = require("../../rules/party/supports")
-local tankcan = require("../../chips/tankcan/tankcan")
+local tank_cannon = require("../../chips/tank_cannon/tank_cannon")
 
 -- His damage by the side's level (0x020CC258), its counter strength 20 (and it can't counter: 0x94).
 local DAMAGE: { number } = { 30, 60, 80, 80, 100, 100, 120, 170, 180, 180 }
@@ -36,7 +36,7 @@ local function raise(me: Object)
     if me.phase_init == 0 then
         me.anim = ANIM_RAISE
         me.timer = RAISE_TICKS
-        attachment.attach(me, tankcan.cannon, "held", { anim = 0, while_dimmed = true })
+        attachment.attach(me, tank_cannon.cannon, "held", { anim = 0, while_dimmed = true })
         me.phase_init = 4
         return
     end
@@ -66,7 +66,7 @@ local function fire(me: Object)
     end
     if me.timer == FIRE_AT then
         battle.shake_camera(1, 0x14)
-        shell.fire(tankcan.kind, me, me.panel_x + me.facing, me.panel_y, SHELL_Z, me.damage_word, SHELL)
+        shell.fire(tank_cannon.kind, me, me.panel_x + me.facing, me.panel_y, SHELL_Z, me.damage_word, SHELL)
     end
     me.timer += 1
     if me.timer >= FIRE_ENDS then

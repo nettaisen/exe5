@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 18,
     effects = {
         cards.bug(cards.hp(-50)),
-        cards.back_special(chips.crsshld),
+        cards.back_special(chips.curse_shield),
     },
 }
 

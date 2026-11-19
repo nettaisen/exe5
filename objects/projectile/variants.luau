@@ -23,8 +23,8 @@ variants.cannon = projectile.variant { id = "shot/cannon", collision = SHOT, hit
 
 -- The GigaCans' shot (row 0x0C, 0x080C47A8): the blast spark and hit modifier 0x49 (EXE6's 3). It doesn't burst:
 -- EXE5's projectile (0x080C48B0) has none of EXE6's row-0x0C bursts, around what it hits or over the last two columns.
-variants.gigacan = projectile.variant {
-    id = "shot/gigacan",
+variants.giga_cannon = projectile.variant {
+    id = "shot/giga_cannon",
     collision = SHOT,
     hit_mod = { flinch = true, back_far = true, drag = true },
     element = Element.null,
@@ -87,7 +87,7 @@ variants.ice = projectile.variant { id = "shot/ice", collision = SHOT, hit_mod =
 variants.sea = projectile.variant { id = "shot/sea", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.plain, hit_panel = panel(PanelType.sea) }
 -- Row 9: the chip destruction shot, with the chip destruction hit spark (CSchpdst).
 variants.chip_destruction = projectile.variant {
-    id = "shot/chip-destruction",
+    id = "shot/chip_destruction",
     collision = { is = collision.chip_destruction, hits = collision.hits_navis },
     hit_mod = {},
     element = Element.null,
@@ -96,18 +96,18 @@ variants.chip_destruction = projectile.variant {
 -- Row 0x12: Hub Style's spread shot (0x0800F522), the erase beams' spark.
 variants.hub = projectile.variant { id = "shot/hub", collision = SHOT, hit_mod = {}, element = Element.null, spark = sparks.erase }
 -- Rows 0x15 to 0x17: charged shots that confuse, paralyze, blind.
-variants.charged_confusing = charged("shot/charged-confusing", { status = statuses.confuse_480 })
-variants.charged_paralyzing = charged("shot/charged-paralyzing", { status = statuses.paralyze_90 })
-variants.charged_blinding = charged("shot/charged-blinding", { status = statuses.blind_480 })
+variants.charged_confusing = charged("shot/charged_confusing", { status = statuses.confuse_480 })
+variants.charged_paralyzing = charged("shot/charged_paralyzing", { status = statuses.paralyze_90 })
+variants.charged_blinding = charged("shot/charged_blinding", { status = statuses.blind_480 })
 -- Rows 0x18 to 0x1B: charged shots that crack the panel they hit, break it (CShole), turn it lava, poison.
-variants.charged_cracking = charged("shot/charged-cracking", { hit_panel = { effect = "crack" } })
-variants.charged_panel_breaking = charged("shot/charged-panel-breaking", { hit_panel = { effect = "break" } })
-variants.charged_lava = charged("shot/charged-lava", { hit_panel = panel(PanelType.lava) })
-variants.charged_poisoning = charged("shot/charged-poisoning", { hit_panel = panel(PanelType.poison) })
+variants.charged_cracking = charged("shot/charged_cracking", { hit_panel = { effect = "crack" } })
+variants.charged_panel_breaking = charged("shot/charged_panel_breaking", { hit_panel = { effect = "break" } })
+variants.charged_lava = charged("shot/charged_lava", { hit_panel = panel(PanelType.lava) })
+variants.charged_poisoning = charged("shot/charged_poisoning", { hit_panel = panel(PanelType.poison) })
 -- Row 0x1C: a charged shot of the attack type 0xA0 (collision row 0x47: CSbrrdlt, it takes barriers away).
-variants.charged_attack_a0 = charged("shot/charged-attack-a0", { collision = { is = collision.attack_a0, hits = collision.hits_navis } })
+variants.charged_attack_a0 = charged("shot/charged_attack_a0", { collision = { is = collision.attack_a0, hits = collision.hits_navis } })
 -- Rows 0x1D, 0x1E: charged shots with a bug code: the programs go (0xFB, CSreset), the HP bug (0x18 with 0x11).
-variants.charged_uninstalling = charged("shot/charged-uninstalling", { bug = 0xFB })
-variants.charged_hp_bug = charged("shot/charged-hp-bug", { bug = 0x18, bug_arg = 0x11 })
+variants.charged_uninstalling = charged("shot/charged_uninstalling", { bug = 0xFB })
+variants.charged_hp_bug = charged("shot/charged_hp_bug", { bug = 0x18, bug_arg = 0x11 })
 
 return variants

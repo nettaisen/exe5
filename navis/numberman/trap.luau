@@ -14,8 +14,8 @@ local press = require("./press")
 
 local trap = {}
 
-local SPRITE = asset.sprite("land-mine")
-local SOUND = asset.sound("tango-land")
+local SPRITE = asset.sprite("land_mine")
+local SOUND = asset.sound("tango_land")
 local PALETTE = 1
 local SHOWN_TICKS = 40
 -- The upper half of its height once it is hidden.

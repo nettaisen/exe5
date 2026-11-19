@@ -44,9 +44,9 @@ local django = {}
 local SPRITE = asset.sprite("django")
 local navi_left = require("@exelib/navi_chips/left")
 local SOUND_APPEAR = asset.sound("appear")
-local SOUND_CHARGE = asset.sound("django-charge")
+local SOUND_CHARGE = asset.sound("django_charge")
 local SOUND_LAND = asset.sound("rockfall")
-local SOUND_BEAM = asset.sound("sun-beam")
+local SOUND_BEAM = asset.sound("sun_beam")
 
 -- What he looks for ahead in his row (0x080BF594): an enemy navi's body.
 local ENEMY_NAVI: PanelFlags = { enemy_body = true }

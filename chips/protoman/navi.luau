@@ -9,7 +9,7 @@ local common = require("@exelib/protoman/navi")
 return common.make {
     id = "protoman/navi",
     appear_sound = asset.sound("appear"),
-    swing_sound = asset.sound("sword-swing"),
+    swing_sound = asset.sound("sword_swing"),
     attachment = attachment.kind,
     target = collision.hits_navis,
     self_type = collision.slash,

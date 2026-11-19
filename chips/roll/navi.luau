@@ -19,8 +19,8 @@ local heart = require("./heart")
 local collision = require("../../rules/collision")
 local sparks = require("../../lib/sparks")
 local operation_battle = require("../../lib/operation_battle")
-local roll_heart_sprite = asset.sprite("roll-heart")
-local roll_ribbon_sprite = asset.sprite("roll-ribbon")
+local roll_heart_sprite = asset.sprite("roll_heart")
+local roll_ribbon_sprite = asset.sprite("roll_ribbon")
 local navi_status = require("@exelib/navi_status")
 
 -- What a panel in front of the tracked enemy must be free of (0x080C0CE4): the bodies and objects of a side.
@@ -62,7 +62,7 @@ return common.make {
     sprite = roll_heart_sprite,
     appear = asset.sound("appear"),
     warp = asset.sound("roll"),
-    swish = asset.sound("roll-2"),
+    swish = asset.sound("roll_2"),
     sparkle = heart.sparkle,
     ribbon = attachment.look { sprite = roll_ribbon_sprite, palette = 0 },
     ribbon_anim = 0,

@@ -1,0 +1,61 @@
+--!strict
+-- MoonBld1, MoonBld2 and MoonBld3: the moonbld series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local moon_blade = require("@self/moon_blade")
+
+-- MoonBld1 (EXE5 chip 0x039): a spin with a blade that sweeps the eight panels around the navi (EXE5's MoonBld,
+-- chips/moon_blade/moon_blade: action 0x53, EXE6's swing with the shared moon blade; a charged one steps first).
+local moon_blade_1: Chip = {
+    codes = { "E", "N", "Z" },
+    element = Element.null,
+    family = Family.sword,
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 23,
+    damage = 90,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    action = moon_blade.action,
+    auto_battle = { class = "into_reach", range = "around" },
+}
+
+-- MoonBld2 (EXE5 chip 0x03a): a spin with a blade that sweeps the eight panels around the navi (EXE5's MoonBld,
+-- chips/moon_blade/moon_blade: action 0x53, EXE6's swing with the shared moon blade; a charged one steps first).
+local moon_blade_2: Chip = {
+    codes = { "G", "O", "V" },
+    element = Element.null,
+    family = Family.sword,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 36,
+    damage = 110,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    action = moon_blade.action,
+    auto_battle = { class = "into_reach", range = "around" },
+}
+
+-- MoonBld3 (EXE5 chip 0x03b): a spin with a blade that sweeps the eight panels around the navi (EXE5's MoonBld,
+-- chips/moon_blade/moon_blade: action 0x53, EXE6's swing with the shared moon blade; a charged one steps first).
+local moon_blade_3: Chip = {
+    codes = { "C", "L", "T" },
+    element = Element.null,
+    family = Family.sword,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 49,
+    damage = 130,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    slot_in_limit = 3,
+    action = moon_blade.action,
+    auto_battle = { class = "into_reach", range = "around" },
+}
+
+return { moon_blade_1 = moon_blade_1, moon_blade_2 = moon_blade_2, moon_blade_3 = moon_blade_3 }

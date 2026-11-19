@@ -19,7 +19,7 @@ exe5_instrument.sprite = instrument_sprite
 exe5_instrument.kind = instrument.make_kind("instrument", {
     sprite = exe5_instrument.sprite,
     hp = 100,
-    sounds = { appear = asset.sound("appear"), broken = asset.sound("hit-bomb-1") },
+    sounds = { appear = asset.sound("appear"), broken = asset.sound("hit_bomb_1") },
     body = { is = collision.own_body, hits = collision.hit_by_other_side },
     removal_puffs = true,
     -- (Its explosion and puff EXE6's.)

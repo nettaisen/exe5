@@ -1,0 +1,25 @@
+--!strict
+-- The NaviCust program HubBatc (program 27), in white.
+
+local programs = require("../rules/navicust/programs")
+local barriers = require("../lib/barriers")
+local guards = require("../navis/megaman/weapons/guards")
+
+local program: NaviCustProgram = {
+    colors = { "white" },
+    shape = {
+        ".......",
+        "...#...",
+        "..###..",
+        ".#####.",
+        "..###..",
+        "...#...",
+        ".......",
+    },
+    bug = "hub",
+    -- Its own bug counts once more (0x0813F5A8, the compile's `extra`).
+    counts_own_bug = true,
+    effects = { programs.outside("hub_batch"), programs.super_armor(), programs.custom(1), programs.mega_folder(1), programs.first_barrier(barriers.barrier_10), programs.back_special(guards.shield), programs.float_shoes(), programs.air_shoes(), programs.undershirt() },
+}
+
+return { hub_batch = program }

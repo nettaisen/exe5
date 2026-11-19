@@ -17,9 +17,9 @@ image.look = common.look
 image.wearing = common.wearing
 
 local made = common.make {
-    id = "soul-image",
+    id = "soul_image",
     pool = Pool.actor,
-    sound = asset.sound("cross-merge"),
+    sound = asset.sound("cross_merge"),
     sine = SINE,
     offset = Vec3.new(0, 0x2_0000, 0x2_0000),
     ticks_at_init = true,

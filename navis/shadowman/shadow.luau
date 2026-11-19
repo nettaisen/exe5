@@ -19,7 +19,7 @@ local collision = require("../../rules/collision")
 local marker = require("../../lib/navi_chips/marker")
 local regions = require("@exelib/regions")
 local swords = require("../../lib/swords")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
 local visibility = require("@exelib/visibility")
 
 -- The slash over two panels (effect 0x17).

@@ -14,7 +14,7 @@ local HOLY_TO_NORMAL = panel_changer.change {
     flicker = true,
     ticks = 0x1E,
     condition = { holy = true, own_area = true, missing = false },
-    change_sound = asset.sound("panel-change"),
+    change_sound = asset.sound("panel_change"),
 }
 
 -- Roll (EXE5 chip 0x0dd): Roll whips the enemy navi ahead and heals her user with a heart (./navi).
@@ -60,7 +60,7 @@ local roll_sp: Chip = {
     megaman = "light",
     -- (AntiRecv springs on her heal; she brings her user back herself.)
     navi = navi_chips.make {
-        id = "roll-sp/controller",
+        id = "roll_sp/controller",
         summon = navi.summon { rounds = 1, palette = 0, mood = 50, appear_change = HOLY_TO_NORMAL },
         course = navi_chips.USER_RETURNED,
         heals = true,
@@ -86,7 +86,7 @@ local roll_ds: Chip = {
     megaman = "dark",
     -- (AntiRecv springs on her heal; she brings her user back herself.)
     navi = navi_chips.make {
-        id = "roll-ds/controller",
+        id = "roll_ds/controller",
         summon = navi.summon { rounds = 1, palette = 1, mood = 50, ribbon_palette = 1 },
         course = navi_chips.USER_RETURNED,
         heals = true,
@@ -94,4 +94,4 @@ local roll_ds: Chip = {
     auto_battle = { class = "at_once" },
 }
 
-return { roll = roll, ["roll-sp"] = roll_sp, ["roll-ds"] = roll_ds }
+return { roll = roll, roll_sp = roll_sp, roll_ds = roll_ds }

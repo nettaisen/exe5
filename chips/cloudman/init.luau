@@ -32,7 +32,7 @@ local cloudman: Chip = {
 -- CloudMnSP (EXE5 chip 0x10b): CloudMan cuts in and sets thunderclouds behind the enemies, each striking with a
 -- paralyzing bolt (../cloudman/navi); its damage by how fast its user deleted CloudMan SP (rules/sp_chips: formula 16,
 -- its table's row 15).
-local cloudmn_sp: Chip = {
+local cloudman_sp: Chip = {
     codes = { "C" },
     element = Element.elec,
     family = Family.elec,
@@ -48,7 +48,7 @@ local cloudmn_sp: Chip = {
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
-        id = "cloudmn-sp/controller",
+        id = "cloudman_sp/controller",
         summon = navi.summon(0),
     },
     auto_battle = { class = "when_free_ahead_of_enemies" },
@@ -56,7 +56,7 @@ local cloudmn_sp: Chip = {
 
 -- CloudMnDS (EXE5 chip 0x10c): CloudMan, dark, cuts in and sets thunderclouds behind the enemies, each striking with a
 -- paralyzing bolt (../cloudman/navi); its damage by its user's side's statistic 3 (formula 38, its table's row 15).
-local cloudmn_ds: Chip = {
+local cloudman_ds: Chip = {
     codes = { "C" },
     element = Element.elec,
     family = Family.elec,
@@ -71,10 +71,10 @@ local cloudmn_ds: Chip = {
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {
-        id = "cloudmn-ds/controller",
+        id = "cloudman_ds/controller",
         summon = navi.summon(6),
     },
     auto_battle = { class = "when_free_ahead_of_enemies" },
 }
 
-return { cloudman = cloudman, ["cloudmn-sp"] = cloudmn_sp, ["cloudmn-ds"] = cloudmn_ds }
+return { cloudman = cloudman, cloudman_sp = cloudman_sp, cloudman_ds = cloudman_ds }

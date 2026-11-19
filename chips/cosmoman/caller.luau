@@ -22,7 +22,7 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("cosmoman")
-local SOUND_CALL = asset.sound("elmnt-man")
+local SOUND_CALL = asset.sound("elmnt_man")
 
 -- 0x080EA1E0: on its panel's center, a pixel up the field, 95 pixels up (Z's fraction is the spawner's
 -- register); three meteors more than the objects taken.

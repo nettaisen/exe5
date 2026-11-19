@@ -45,4 +45,4 @@ local chip: Chip = {
     action = action,
 }
 
-return { splitup = chip }
+return { split_up = chip }

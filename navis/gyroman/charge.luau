@@ -2,13 +2,13 @@
 -- GyroMan's charged attack (`gyroman/charge`): the original's weapon routine 0x28 (0x0800F9D6) sets the damage his
 -- level gives (the damage rows' row 2, lib/navi_level), his own counter byte and no element, and starts his own
 -- action 8 (0x080F0B6E): he raises his arm (animation 17) for 4 ticks, then a tornado blows along the three panels
--- ahead (GyroSoul's, navis/megaman/forms/gyrosoul/tornado, lying on the ground; the action plays its sound too);
+-- ahead (GyroSoul's, navis/megaman/forms/gyro_soul/tornado, lying on the ground; the action plays its sound too);
 -- 30 ticks, then back to idle. No counter window opens. In the operation battle the panel ahead is marked as he
 -- raises his arm (lib/navi_chips/marker).
 
 local marker = require("../../lib/navi_chips/marker")
 local navi_level = require("../../lib/navi_level")
-local tornado = require("../megaman/forms/gyrosoul/tornado")
+local tornado = require("../megaman/forms/gyro_soul/tornado")
 
 local charge = {}
 
@@ -31,7 +31,7 @@ local RAISE_TICKS, BLOW_TICKS = 4, 30
 -- The operation battle's mark: 30 ticks, style 6.
 local MARK_TICKS, MARK_STYLE = 30, 6
 -- (0x103: 0x080F0BDA loads it as 4 + 255.)
-local SOUND = asset.sound("gyrosoul-tornado")
+local SOUND = asset.sound("gyro_soul_tornado")
 
 -- The steps, on the attack's step.
 local RAISE, BLOW = 0x0, 0x4

@@ -57,7 +57,7 @@ return {
         cracked = { flags = { solid = true, cracked = true, on_field = true } },
         poison = {
             flags = { solid = true, poison = true, on_field = true },
-            trail_sound = asset.sound("panel-poison"),
+            trail_sound = asset.sound("panel_poison"),
             stand = panel_types.poison,
         },
         magnet = {
@@ -85,19 +85,19 @@ return {
         },
         lava = {
             flags = { solid = true, lava = true, on_field = true },
-            trail_sound = asset.sound("panel-volcano"),
+            trail_sound = asset.sound("panel_volcano"),
             expires = 960,
             burn = LAVA_BURN,
             cleared_by = Element.aqua,
         },
         holy = {
             flags = { solid = true, holy = true, on_field = true },
-            trail_sound = asset.sound("panel-change"),
+            trail_sound = asset.sound("panel_change"),
             damage_shift = 1,
         },
         sea = {
             flags = { solid = true, on_field = true, sea = true },
-            trail_sound = asset.sound("sand-worm"),
+            trail_sound = asset.sound("sand_worm"),
             expires = 960,
             stand = panel_types.drains(PrimaryElement.fire),
             move_end = panel_types.holds(20, SPLASH),

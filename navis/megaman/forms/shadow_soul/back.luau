@@ -1,0 +1,33 @@
+--!strict
+-- ShadowSoul's B+Back (`shadow_soul/back`): the original's weapon routine 0x45 (0x0800FBEE) sets 50 damage, its own
+-- counter byte, no bonus, the attack's variant 1, 30 ticks and a 50-tick wait before the next B+Back, and starts
+-- action 0x3D (0x080EE9F4): the anti-damage stance (@exelib/navicust/anti_damage, the AntiDmg program's), whose
+-- caught hit turns into EXE5's anti-damage counter (the roles' `anti_damage_counter`, or `anti_sword_counter`) with
+-- that variant: the shuriken thrown at the nearest enemy ahead (@exelib/anti_damage/counter).
+
+local anti_damage = require("@exelib/navicust/anti_damage")
+
+local back = {}
+
+local DAMAGE, COUNTER, TICKS, COOLDOWN = 50, 20, 30, 50
+back.action = anti_damage.stance("shadow_soul/back/action")
+
+-- 0x0800FBEE (AIAttackVars +3 1, which the counter's start, 0x0800E340, carries as its variant).
+local function setup(navi: Object): Action
+    navi.attack_word = damage_word.of { amount = DAMAGE, counter = COUNTER, cant_counter = true }
+    navi.extra = 0
+    navi.attack_variant = 1
+    local s = navi:action_state(back.action) :: { timer: number }
+    s.timer = TICKS
+    navi.attack_lockout = COOLDOWN
+    return back.action
+end
+
+back.weapon = new.weapon {
+    -- (A B+Back, which nothing charges: the charge table's row 0x45 (0x0801CD1E), Charge 5 reading on into row
+    -- 0x46's first entry.)
+    charge_ticks = { 60, 60, 60, 60, 60, 120 },
+    setup = setup,
+}
+
+return back

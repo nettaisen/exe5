@@ -28,7 +28,7 @@ local function tick(me: Object)
 end
 
 marker.kind = new.kind {
-    id = "dice-marker",
+    id = "dice_marker",
     pool = Pool.effect,
     state = { style = schema.u8 },
     -- 0x080E9F38.

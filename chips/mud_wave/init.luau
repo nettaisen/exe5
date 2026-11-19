@@ -1,0 +1,25 @@
+--!strict
+-- MudWave (EXE5 chip 0x0ae): in each row, the first hole from the user's back column starts a wave toward the other
+-- side; past the field, the waves raise geysers under the other side's navis: EXE5's own (chips/wave_pit/wave_pit).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local wave_pit = require("./wave_pit/wave_pit")
+
+local chip: Chip = {
+    codes = { "D", "N", "W" },
+    element = Element.wood,
+    family = Family.wood,
+    class = ChipClass.standard,
+    rarity = 3,
+    mb = 54,
+    damage = 170,
+    counter = 30,
+    lockout = 20,
+    flags = { has_damage = true, library = true, variable_damage = true },
+    slot_in_limit = 3,
+    -- Its pit (row 2 of 0x080DAFA0): a hole (not solid: no flag 0x10), which stays; the wave in palette 2.
+    instant = wave_pit.instant { panel = { solid = false }, mends = false, palette = 2 },
+    auto_battle = { class = "when_any_hole" },
+}
+
+return { mud_wave = chip }

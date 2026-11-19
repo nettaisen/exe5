@@ -11,10 +11,10 @@ stage = "comp"
 # area's background (the same load data: compat/assets.toml), so acdc-area, oran-area, scilab-area and undernet are
 # here twice and end-area three times, as the table's numbers are.
 link_battle = [
-    "main-comp", "drill-comp", "lans-hp", "mayls-hp", "dexs-hp", "yais-hp", "comp", "comp-alt", "acdc-area",
-    "oran-area", "scilab-area", "visionburst", "acdc-area", "oran-area", "scilab-area", "end-area", "ship-comp",
-    "scilab-hp", "end-area", "gargcastle-hp", "end-area", "soulserv-comp", "gargoyle-comp", "factory-comp",
-    "undernet", "nebula-area", "undernet"
+    "main_comp", "drill_comp", "lans_hp", "mayls_hp", "dexs_hp", "yais_hp", "comp", "comp_alternate", "acdc_area",
+    "oran_area", "scilab_area", "vision_burst", "acdc_area", "oran_area", "scilab_area", "end_area", "ship_comp",
+    "scilab_hp", "end_area", "gargoyle_castle_hp", "end_area", "soul_server_comp", "gargoyle_comp", "factory_comp",
+    "undernet", "nebula_area", "undernet"
 ]
 
 # Each background's music, the battle theme a round drawn on it plays where the player picked none (docs/app.md §1,
@@ -26,31 +26,31 @@ link_battle = [
 # (records 23 to 25). A comp or dungeon that ends in a story navi's battle has the boss battles' (the user's pick: by
 # count every one would be the virus battles', its encounters outnumbering them).
 [backgrounds]
-acdc-area = { music = "virus-battle" }
-comp = { music = "virus-battle" }
-comp-alt = { music = "virus-battle" }
-dexs-hp = { music = "virus-battle" }
+acdc_area = { music = "virus_battle" }
+comp = { music = "virus_battle" }
+comp_alternate = { music = "virus_battle" }
+dexs_hp = { music = "virus_battle" }
 # DrillComp4's navi battle ends its dungeon.
-drill-comp = { music = "boss-battle" }
-end-area = { music = "virus-battle" }
+drill_comp = { music = "boss_battle" }
+end_area = { music = "virus_battle" }
 # FactoryComp1 to 4's navi battles, one each.
-factory-comp = { music = "boss-battle" }
-gargcastle-hp = { music = "virus-battle" }
+factory_comp = { music = "boss_battle" }
+gargoyle_castle_hp = { music = "virus_battle" }
 # GargoylComp3's two navi battles end its dungeon.
-gargoyle-comp = { music = "boss-battle" }
-lans-hp = { music = "virus-battle" }
+gargoyle_comp = { music = "boss_battle" }
+lans_hp = { music = "virus_battle" }
 # MainComp2's navi battle ends its dungeon.
-main-comp = { music = "boss-battle" }
-mayls-hp = { music = "virus-battle" }
-nebula-area = { music = "virus-battle" }
+main_comp = { music = "boss_battle" }
+mayls_hp = { music = "virus_battle" }
+nebula_area = { music = "virus_battle" }
 # No map's: the two battles against NebulaGray (records 79 and 104, started on SoulServComp) state it.
-nebulagray = { music = "final-battle" }
-oran-area = { music = "virus-battle" }
-scilab-area = { music = "virus-battle" }
-scilab-hp = { music = "virus-battle" }
+nebula_gray = { music = "final_battle" }
+oran_area = { music = "virus_battle" }
+scilab_area = { music = "virus_battle" }
+scilab_hp = { music = "virus_battle" }
 # ShipComp3's navi battle ends its dungeon.
-ship-comp = { music = "boss-battle" }
-soulserv-comp = { music = "virus-battle" }
-undernet = { music = "virus-battle" }
-visionburst = { music = "virus-battle" }
-yais-hp = { music = "virus-battle" }
+ship_comp = { music = "boss_battle" }
+soul_server_comp = { music = "virus_battle" }
+undernet = { music = "virus_battle" }
+vision_burst = { music = "virus_battle" }
+yais_hp = { music = "virus_battle" }

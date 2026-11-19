@@ -16,11 +16,11 @@ local bubble_sprite = asset.sprite("bubble")
 
 local barriers = {}
 
-local visual = common_visual.make { id = "barrier-visual", blows = false }
+local visual = common_visual.make { id = "barrier_visual", blows = false }
 barriers.visual = visual
 
 local SPRITE, BUBBLE, AURA = barrier_sprite, bubble_sprite, aura_sprite
-local SOUND, BUBBLE_SOUND, BUBBLE_POP = asset.sound("barrier"), asset.sound("bubble"), asset.sound("bubble-pop")
+local SOUND, BUBBLE_SOUND, BUBBLE_POP = asset.sound("barrier"), asset.sound("bubble"), asset.sound("bubble_pop")
 
 local function barrier(b: Barrier): Barrier
     return new.record(common_controller.BARRIER, b)
@@ -69,7 +69,7 @@ barriers.bubble = barrier {
 
 -- Type 9: an aura that stops every hit of less than 200 for 3000 ticks.
 barriers.life_aura = barrier {
-    id = "barrier/life-aura",
+    id = "barrier/life_aura",
     behavior = BarrierBehavior.plain,
     hp = 1,
     threshold = 200,

@@ -13,12 +13,12 @@
 -- panel, strikes from the air otherwise) and the charged tornado (0x28, ./charge); no B+Back. His own chip is
 -- Airforce G (./chip).
 
-local airforce = require("@self/chip").airforce
+local gyro_air_force = require("@self/chip").gyro_air_force
 local buster = require("@self/buster")
 local charge = require("@self/charge")
 local hover = require("@self/hover")
-local gyro_propeller_sprite = asset.sprite("gyro-propeller")
-local gyroman_portrait_sprite = asset.sprite("gyroman-portrait")
+local gyro_propeller_sprite = asset.sprite("gyro_propeller")
+local gyroman_portrait_sprite = asset.sprite("gyroman_portrait")
 local gyroman_sprite = asset.sprite("gyroman")
 
 -- GyroMan's propeller (the body overlays' row 0, 0x0800EE4E): behind him in his animations 0 to 5, 7, 16 and 17.
@@ -35,7 +35,7 @@ local navi: NaviDef = {
     element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("gyroman-win"), lose = asset.banner("gyroman-deleted") },
+    banners = { win = asset.banner("gyroman_win"), lose = asset.banner("gyroman_deleted") },
     mugshot = asset.mugshot("gyroman"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x18, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
@@ -43,7 +43,7 @@ local navi: NaviDef = {
     run_message = {
         portrait = gyroman_portrait_sprite,
     },
-    own_chip = { chip = airforce, code = "G" },
+    own_chip = { chip = gyro_air_force, code = "G" },
     own_chip_draws = true,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },
     -- His fresh stats (his stats row): what a side starts him with.
@@ -67,7 +67,7 @@ local navi: NaviDef = {
     -- of his name, 0x080E0E58).
     charge_glow_lift = { anims = { 18, 20 }, pixels = 16 },
     -- His tick rests while his Airforce runs (0x080F09EE).
-    tick = hover.tick(airforce.action :: Action),
+    tick = hover.tick(gyro_air_force.action :: Action),
     idle = hover.idle,
     identity = new.identity {
         class = IdentityClass.player,

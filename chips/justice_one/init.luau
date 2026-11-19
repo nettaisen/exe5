@@ -1,0 +1,45 @@
+--!strict
+-- JustcOne (EXE5 chip 0x0d8): a fist falls onto the other side's middle panel and cracks the panels around it: EXE6's
+-- JustcOne (@exelib/justice_one/strike, instant chip effect 20, EXE5's 0x080DBF54) with EXE5's look, the fist of no
+-- element (EXE6's is Break), its landing's hits of the fist's.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local collision = require("../rules/collision")
+local common = require("@exelib/justice_one/strike")
+local effects = require("../lib/effects")
+local sparks = require("../lib/sparks")
+local justice_one_sprite = asset.sprite("justice_one")
+
+-- The fist (attack object #0xAE, 0x080DBDA4).
+local STRIKE = common.make {
+    id = "justice_one/strike",
+    sprite = justice_one_sprite,
+    sounds = { fall = asset.sound("justice_one"), land = asset.sound("hit_bomb_1") },
+    is = collision.thrown_break,
+    hits = collision.hits_navis,
+    spark = sparks.breaking,
+    wave_is = collision.attack,
+    element = Element.null,
+    waves_take_element = true,
+    effects = { explosion = effects.explosion, burst = effects.burst, puff = effects.puff },
+}
+
+local chip: Chip = {
+    codes = { "J" },
+    element = Element.null,
+    family = Family["break"],
+    class = ChipClass.mega,
+    rarity = 4,
+    mb = 90,
+    damage = 280,
+    counter = 50,
+    cant_counter = true,
+    lockout = 20,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 1,
+    megaman = "light",
+    instant = STRIKE.instant,
+    auto_battle = { class = "at_once" },
+}
+
+return { justice_one = chip }

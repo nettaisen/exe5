@@ -1,13 +1,13 @@
 --!strict
 -- ProtoMan's own chip, StepSwrd (EXE5 chip 0x191), which his custom screen offers until it is picked (rules: the
--- navi's `own_chip`): WideSwrd's slash (EXE5's action 0x13 as its subtype 1, chips/wideswrd) from two panels ahead. The
+-- navi's `own_chip`): WideSwrd's slash (EXE5's action 0x13 as its subtype 1, chips/wide_sword) from two panels ahead. The
 -- step is the chip's own routine's doing (its record's +0x1F: routine 2 of 0x0800EC80, which the chip's use calls at
 -- 0x080100CE, once the attack is loaded): it sets the attack's charged byte, by which EXE5's swords step (lib/swords).
 -- Its damage is by his level (the chips' damage formula 50: the damage rows' row 1, lib/navi_level).
 -- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
 
 local navi_level = require("../../lib/navi_level")
-local wideswrd = require("../../chips/wideswrd").wideswrd
+local wide_sword = require("../../chips/wide_sword").wide_sword
 
 local chip: Chip = {
     codes = { "B" },
@@ -22,11 +22,11 @@ local chip: Chip = {
     lockout = 0,
     flags = { has_damage = true, library = true, variable_damage = true },
     slot_in_limit = 1,
-    action = wideswrd.action,
+    action = wide_sword.action,
     -- 0x0800EC68's routine 2.
     setup = function(navi: Object)
         navi.charged = 1
     end,
 }
 
-return { stepswrd = chip }
+return { step_sword = chip }

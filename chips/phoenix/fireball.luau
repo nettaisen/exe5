@@ -20,8 +20,8 @@ export type State = {
 }
 
 local SPRITE = asset.sprite("meteor")
-local SOUND_THROW = asset.sound("justice-one")
-local SOUND_BURST = asset.sound("form-change")
+local SOUND_THROW = asset.sound("justice_one")
+local SOUND_BURST = asset.sound("form_change")
 local FALL = 8
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
 

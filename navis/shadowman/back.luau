@@ -2,12 +2,12 @@
 -- ShadowMan's B+Back (`shadowman/back`): the original's weapon routine 0x0D (0x0800F704) takes the damage his level
 -- gives (the damage rows' row 14, lib/navi_level: his stats row's 50 at +0x48 isn't read), his counter byte, no bonus,
 -- the attack's variant 1, 30 ticks and a 50-tick wait before his next chip, and starts action 0x3D (0x080EE9F4): the
--- anti-damage stance (@exelib/navicust/anti-damage, the AntiDmg program's), whose caught hit turns into EXE5's
+-- anti-damage stance (@exelib/navicust/anti_damage, the AntiDmg program's), whose caught hit turns into EXE5's
 -- anti-damage counter (the roles' `anti_damage_counter`, or `anti_sword_counter`) with that variant: a shuriken at
--- the nearest enemy ahead (@exelib/antidmg/counter). ShadowSoul's (navis/megaman/forms/shadowsoul/back) is the same
+-- the nearest enemy ahead (@exelib/anti_damage/counter). ShadowSoul's (navis/megaman/forms/shadow_soul/back) is the same
 -- stance with 50 damage.
 
-local anti_damage = require("@exelib/navicust/anti-damage")
+local anti_damage = require("@exelib/navicust/anti_damage")
 local navi_level = require("../../lib/navi_level")
 
 local back = {}

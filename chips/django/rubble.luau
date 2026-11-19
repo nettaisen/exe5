@@ -6,8 +6,8 @@
 
 local rubble = {}
 
-local SPRITE = asset.sprite("django-rubble")
-local small_puff_sprite = asset.sprite("small-puff")
+local SPRITE = asset.sprite("django_rubble")
+local small_puff_sprite = asset.sprite("small_puff")
 -- The puff it starts with: effect 2 (the small puff's animation 1).
 local PUFF = new.effect { sprite = small_puff_sprite, anim = 1, palette = 0, steps = 16 }
 local GRAVITY = 0x8000

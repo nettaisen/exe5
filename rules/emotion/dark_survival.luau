@@ -11,7 +11,7 @@
 -- - 4 (0x080EFF10): his dark self leaves him and spirals back into him (actor object 0x2E: ../souls/shade's); 50
 --   ticks later another flash and a sound; 61 ticks.
 -- - 8 (0x080EFF58): he is in auto battle for 720 ticks (rules/auto_battle, as DarkInvs's drive drives its user:
---   chips/darkinvs; the drive's end is EXE5's action 0x49, the roles' `stun_strike`), his statuses and his anger
+--   chips/dark_invisible; the drive's end is EXE5's action 0x49, the roles' `stun_strike`), his statuses and his anger
 --   ended.
 -- - 0xC (0x080EFF78): the HUD back (in the last turns without the gauge) and the screen fades in; then he is no
 --   longer in the stand, the battle undims and he idles.
@@ -35,8 +35,8 @@ export type State = {
 
 -- The flash: EXE5's effect 3 (0x080DFC94's row 3: 14-03).
 local FLASH = new.effect { sprite = deletion_sprite, anim = 0, palette = 0, steps = 22 }
-local FLASH_SOUND = asset.sound("log-in")
-local CHANGE_SOUND = asset.sound("cross-change")
+local FLASH_SOUND = asset.sound("log_in")
+local CHANGE_SOUND = asset.sound("cross_change")
 -- How long he is in auto battle (0x080EFF64).
 local DRIVE = 0x2D0
 -- The screen fades' speed.
@@ -60,7 +60,7 @@ end
 -- His dark self (actor object 0x2E, 0x080C0EA0; spawned by 0x080C0FE2): Chaos Unison's shade's code, but a pixel up
 -- and on rather than two, its ground shadow kept, and wearing what MegaMan's record puts on while it is out.
 local dark_self = shade.make {
-    id = "dark-survival/shade",
+    id = "dark_survival/shade",
     name = "the dark survival's shade",
     phases = 0x080C0F14,
     lift = 0x1_0000,
@@ -185,7 +185,7 @@ local function update(me: Object, s: State)
     me:step_sprite()
 end
 
-survival.action = new.action { id = "dark-survival", state = { timer = schema.u16 }, update = update }
+survival.action = new.action { id = "dark_survival", state = { timer = schema.u16 }, update = update }
 
 -- 0x0802C16C (the rules' `hp_emptied`: object_subtractHP, 0x0800C6E0, at 0 HP): a player MegaMan (AIData +0, +1:
 -- actor type 2, AI index 0), not in the operation battle (NaviStats +0x2A clear, which its init reads, 0x0802D590),

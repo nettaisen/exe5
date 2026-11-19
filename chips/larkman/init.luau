@@ -58,7 +58,7 @@ local larkman_sp: Chip = {
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
-        id = "larkman-sp/controller",
+        id = "larkman_sp/controller",
         summon = navi.summon { palette = 0, swoop = SWOOP },
     },
     auto_battle = { class = "at_once" },
@@ -81,10 +81,10 @@ local larkman_ds: Chip = {
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {
-        id = "larkman-ds/controller",
+        id = "larkman_ds/controller",
         summon = navi.summon { palette = 4, swoop = SWOOP },
     },
     auto_battle = { class = "at_once" },
 }
 
-return { larkman = larkman, ["larkman-sp"] = larkman_sp, ["larkman-ds"] = larkman_ds }
+return { larkman = larkman, larkman_sp = larkman_sp, larkman_ds = larkman_ds }

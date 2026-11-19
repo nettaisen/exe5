@@ -6,7 +6,7 @@
 
 local collision = require("../../rules/collision")
 local common = require("@exelib/guard/wave")
-local shock_wave_sprite = asset.sprite("shock-wave")
+local shock_wave_sprite = asset.sprite("shock_wave")
 
 local wave = {}
 
@@ -15,7 +15,7 @@ wave.variant = common.variant
 wave.spawn = common.make {
     id = "guard/wave",
     sprite = shock_wave_sprite,
-    sound = asset.sound("shock-wave"),
+    sound = asset.sound("shock_wave"),
     attack = collision.attack,
     thrown = collision.thrown,
     hits = collision.hits_navis,

@@ -26,7 +26,7 @@ local barrier: Chip = {
 
 -- Barr100 (EXE5 chip 0x088): a barrier of 100 HP on the user: EXE6's barrier chips (the dimming handler's subtype 14)
 -- with EXE5's barriers (lib/barriers).
-local barr100: Chip = {
+local barrier_100: Chip = {
     codes = { "P" },
     element = Element.null,
     family = Family.null,
@@ -45,7 +45,7 @@ local barr100: Chip = {
 
 -- Barr200 (EXE5 chip 0x089): a barrier of 200 HP on the user: EXE6's barrier chips (the dimming handler's subtype 14)
 -- with EXE5's barriers (lib/barriers).
-local barr200: Chip = {
+local barrier_200: Chip = {
     codes = { "W" },
     element = Element.null,
     family = Family.null,
@@ -62,4 +62,4 @@ local barr200: Chip = {
     auto_battle = { class = "when_unbarriered" },
 }
 
-return { barrier = barrier, barr100 = barr100, barr200 = barr200 }
+return { barrier = barrier, barrier_100 = barrier_100, barrier_200 = barrier_200 }

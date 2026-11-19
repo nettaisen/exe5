@@ -7,15 +7,15 @@
 local effects = {}
 
 local EXPLOSION = asset.sprite("explosion")
-local SMALL_PUFF = asset.sprite("small-puff")
+local SMALL_PUFF = asset.sprite("small_puff")
 local PUFF = asset.sprite("puff")
 local burst_sprite = asset.sprite("burst")
 local deletion_sprite = asset.sprite("deletion")
 local heal_sprite = asset.sprite("heal")
-local hit_marker_sprite = asset.sprite("hit-marker")
-local hit_sparks_sprite = asset.sprite("hit-sparks")
-local pink_flash_sprite = asset.sprite("pink-flash")
-local shell_burst_sprite = asset.sprite("shell-burst")
+local hit_marker_sprite = asset.sprite("hit_marker")
+local hit_sparks_sprite = asset.sprite("hit_sparks")
+local pink_flash_sprite = asset.sprite("pink_flash")
+local shell_burst_sprite = asset.sprite("shell_burst")
 
 -- Row 0: an explosion: a blast landing, something breaking.
 effects.explosion = new.effect { sprite = EXPLOSION, anim = 0, palette = 0, steps = 22 }

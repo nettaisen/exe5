@@ -20,7 +20,7 @@ local common = require("@exelib/megaman/buster")
 local lib = require("../../../lib/buster")
 local projectile = require("../../../lib/projectile")
 local variants = require("../../../objects/projectile/variants")
-local spread_flash_sprite = asset.sprite("spread-flash")
+local spread_flash_sprite = asset.sprite("spread_flash")
 
 local exe5 = {}
 
@@ -35,14 +35,14 @@ local buster = {
         buster = lib,
         projectiles = projectile,
         attachment = attachment.kind,
-        shot_sound = asset.sound("buster-shot"),
+        shot_sound = asset.sound("buster_shot"),
         plain = variants.plain,
         spread_flash = attachment.look { sprite = spread_flash_sprite, palette = 0, attach_point = 0 },
     },
 }
 
 -- The blank shot (EXE5's action 0x33).
-local blank_shot = blank.make { id = "megaman/blank-shot/action", buster = lib, click = asset.sound("gundels1") }
+local blank_shot = blank.make { id = "megaman/blank_shot/action", buster = lib, click = asset.sound("gun_del_sol_1") }
 
 -- 0x0800F522.
 function exe5.setup(navi: Object): Action
@@ -82,7 +82,7 @@ exe5.weapon = new.weapon {
 
 -- 0x0800FE12: the patch cards' TriBustr (a B button), the buster's routine.
 exe5.tri_buster = new.weapon {
-    id = "megaman/tri-buster",
+    id = "megaman/tri_buster",
     -- The charge table's row 0x65, by Charge 0 to 5: past 4 it reads on into row 0x66's first entry.
     charge_ticks = { 60, 60, 60, 60, 60, 120 },
     setup = exe5.setup,

@@ -3,7 +3,7 @@
 -- level gives (the damage rows' row 14, lib/navi_level) and his counter byte, the attack's variant 1 and one throw,
 -- and starts his own action 9 (0x080F95F0). He vanishes from his panel in a puff (the panel stays his, and nothing
 -- reaches him), is back 48 pixels over it two ticks later, and throws a shuriken (AntiDmg's, attack object #0xC2:
--- chips/antidmg) from 60 pixels above himself at the nearest enemy body ahead, his own row first; no enemy ahead,
+-- chips/anti_damage) from 60 pixels above himself at the nearest enemy body ahead, his own row first; no enemy ahead,
 -- no shuriken. 15 ticks a throw, 20 more up there, then he is down and stands 20 ticks.
 --
 -- The action is also his in an auto battle, by the attack's variant: 0 throws at the other side's player and waits
@@ -12,11 +12,11 @@
 -- 0x080F99EA, which isn't ported; SplitUp's shadow isn't one of them.)
 
 local aim = require("./aim")
-local antidmg = require("../../chips/antidmg/counter")
+local anti_damage = require("../../chips/anti_damage/counter")
 local effects = require("../../lib/effects")
 local navi_level = require("../../lib/navi_level")
 local regions = require("@exelib/regions")
-local shuriken = require("@exelib/antidmg/shuriken")
+local shuriken = require("@exelib/anti_damage/shuriken")
 
 local charge = {}
 
@@ -38,7 +38,7 @@ local PARTY: { { number } } = {
     { 60, 10 }, { 80, 10 }, { 80, 10 }, { 80, 10 }, { 80, 10 },
 }
 local ANIM_APPEAR, ANIM_THROW = 3, 12
-local SOUND_VANISH = asset.sound("trap-vanish")
+local SOUND_VANISH = asset.sound("trap_vanish")
 local SOUND_THROW = asset.sound("boomerang")
 -- Where the puff is, how far up he goes meanwhile, where he is back, and where the shuriken leaves, over him.
 local PUFF_Z, AWAY, UP, THROW_Z = 0x20_0000, 0xA0_0000, 0x30_0000, 0x3C_0000
@@ -121,7 +121,7 @@ local function throw(me: Object, s: State)
         local x, y = target(me, s)
         if x and y then
             local damage = me.attack_word
-            shuriken.spawn(antidmg.shuriken, me, x, y, Element.null, HIT_MOD, damage, me.flip, int.i32(me.pos.z + THROW_Z))
+            shuriken.spawn(anti_damage.shuriken, me, x, y, Element.null, HIT_MOD, damage, me.flip, int.i32(me.pos.z + THROW_Z))
         end
         me.step_init = 4
         return

@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 42,
     effects = {
         cards.hp(280),
-        cards.charged_shot(chips.tankcan),
+        cards.charged_shot(chips.tank_cannon),
     },
 }
 

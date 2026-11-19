@@ -1,0 +1,26 @@
+--!strict
+-- LifeSync (EXE5 chip 0x01c): a cut-in chip that, outside link and boss-ranked battles, sets the HP of side 1's
+-- combatants to that of the enemy two panels ahead, at most their own max HP: EXE5's controller (controller.luau, the
+-- dimming handler's subtype 39, EXE6's reworked) with the shared marker (@exelib/life_synchro/marker) in EXE5's hit sparks.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local life_synchro = require("@self/controller")
+
+local chip: Chip = {
+    codes = { "B", "R", "S", "*" },
+    element = Element.null,
+    family = Family.cursor,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 12,
+    damage = 0,
+    counter = 0,
+    lockout = 0,
+    flags = { dimming = true, standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
+    slot_in_limit = 3,
+    dimming = life_synchro.hook,
+    auto_battle = { class = "into_reach", range = "ahead_in_row" },
+}
+
+return { life_synchro = chip }

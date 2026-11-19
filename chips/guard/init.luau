@@ -5,7 +5,7 @@
 local guard = require("../lib/guard")
 local wave = require("@self/wave")
 
-local REFLECTOR = asset.sprite("reflector-shield")
+local REFLECTOR = asset.sprite("reflector_shield")
 -- Their counter: a shock wave back along the row (the wave's row 0xC, 0x080ECC10's first byte for all three: animation
 -- 0, 10 ticks a panel) with the chip's damage.
 local WAVE = wave.variant { anim = 0, steps = 26, ticks = 0x0A }
@@ -21,7 +21,7 @@ local SHIELD3 = guard.look { sprite = REFLECTOR, anim = 8, fade_anim = 9, fade_t
 
 -- Guard1 (EXE5 chip 0x058): the navi holds up a shield for 60 ticks; the first hit it blocks from the front sends a
 -- shock wave back along the row with the chip's damage: EXE5's guard (lib/guard, action 0x1F with subtype 0).
-local guard1: Chip = {
+local guard_1: Chip = {
     codes = { "A", "D", "K", "*" },
     element = Element.null,
     family = Family.null,
@@ -40,7 +40,7 @@ local guard1: Chip = {
 
 -- Guard2 (EXE5 chip 0x059): the navi holds up a shield for 60 ticks; the first hit it blocks from the front sends a
 -- shock wave back along the row with the chip's damage: EXE5's guard (lib/guard, action 0x1F with subtype 1).
-local guard2: Chip = {
+local guard_2: Chip = {
     codes = { "B", "L", "Q", "*" },
     element = Element.null,
     family = Family.null,
@@ -59,7 +59,7 @@ local guard2: Chip = {
 
 -- Guard3 (EXE5 chip 0x05a): the navi holds up a shield for 60 ticks; the first hit it blocks from the front sends a
 -- shock wave back along the row with the chip's damage: EXE5's guard (lib/guard, action 0x1F with subtype 2).
-local guard3: Chip = {
+local guard_3: Chip = {
     codes = { "C", "M", "S", "*" },
     element = Element.null,
     family = Family.null,
@@ -76,4 +76,4 @@ local guard3: Chip = {
     auto_battle = { class = "at_once" },
 }
 
-return { guard1 = guard1, guard2 = guard2, guard3 = guard3 }
+return { guard_1 = guard_1, guard_2 = guard_2, guard_3 = guard_3 }

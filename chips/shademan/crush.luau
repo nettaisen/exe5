@@ -9,7 +9,7 @@ local shademan_sprite = asset.sprite("shademan")
 return require("@exelib/shademan/crush").make {
     id = "shademan/crush",
     sprite = shademan_sprite,
-    sound = asset.sound("elec-pulse"),
+    sound = asset.sound("elec_pulse"),
     attack = collision.piercing,
     hits = collision.hits_navis,
     place = function(me: Object)

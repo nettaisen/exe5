@@ -1,0 +1,81 @@
+--!strict
+-- NapalmMn, NaplmMnSP and NaplmMnDS: the napalmmn series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local navi = require("@self/navi")
+local navi_chips = require("../lib/navi_chips/chip")
+local sp_chips = require("../rules/sp_chips")
+
+-- NapalmMn (EXE5 chip 0x0e3): NapalmMan cuts in and lobs a napalm bomb four panels ahead, its fire spreading around an
+-- empty panel (./navi).
+local napalmman: Chip = {
+    codes = { "N" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.mega,
+    rarity = 2,
+    mb = 38,
+    damage = 120,
+    counter = 40,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
+    slot_in_limit = 1,
+    megaman = "light",
+    navi = navi_chips.make {
+        id = "napalmman/controller",
+        summon = navi.summon(0),
+    },
+    auto_battle = { class = "into_reach", range = "columns_three_to_five" },
+}
+
+-- NaplmMnSP (EXE5 chip 0x0e4): NapalmMan cuts in and lobs a napalm bomb four panels ahead, its fire spreading around an
+-- empty panel (../napalmman/navi); its damage by how fast its user deleted NapalmMan SP (rules/sp_chips: formula 5, its
+-- table's row 4).
+local napalmman_sp: Chip = {
+    codes = { "N" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.mega,
+    rarity = 3,
+    mb = 72,
+    sp = { by_time = { 250, 240, 230, 220, 210, 200, 190, 180, 170, 160, 150 }, operation_battle = 200 },
+    damage = sp_chips.damage,
+    counter = 40,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, library = true },
+    slot_in_limit = 1,
+    megaman = "light",
+    navi = navi_chips.make {
+        id = "napalmman_sp/controller",
+        summon = navi.summon(6),
+    },
+    auto_battle = { class = "into_reach", range = "columns_three_to_five" },
+}
+
+-- NaplmMnDS (EXE5 chip 0x0e5): NapalmMan, dark, cuts in and lobs a napalm bomb four panels ahead, its fire spreading
+-- around an empty panel (../napalmman/navi); its damage by its user's side's statistic 3 (formula 27, its table's row
+-- 4).
+local napalmman_ds: Chip = {
+    codes = { "N" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.mega,
+    rarity = 3,
+    mb = 72,
+    damage = { formula = Formula.count, of = { side_stat = "reactions" }, by_count = { 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250 }, operation_battle = 180 },
+    counter = 40,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true, navi = true, damage_shown_variable = true, library = true, variable_damage = true },
+    slot_in_limit = 1,
+    megaman = "dark",
+    navi = navi_chips.make {
+        id = "napalmman_ds/controller",
+        summon = navi.summon(9),
+    },
+    auto_battle = { class = "into_reach", range = "columns_three_to_five" },
+}
+
+return { napalmman = napalmman, napalmman_sp = napalmman_sp, napalmman_ds = napalmman_ds }

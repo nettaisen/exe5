@@ -15,7 +15,7 @@ local vulcan = {}
 
 -- EXE5's gun, attachment and bullet; the shot's sound EXE6's number.
 local LOOK: VulcanLook = {
-    sound = asset.sound("col-army-2"),
+    sound = asset.sound("col_army_2"),
     arm = attachment.look { sprite = vulcan_sprite, palette = 0, attach_point = 14 },
     -- Held in the overlay, its animation 0, as EXE6's.
     hold = function(me: Object, look: AttachmentLook, which: Slot)

@@ -10,12 +10,12 @@ local attachment = require("../objects/attachment")
 local bullet = require("../objects/bullet")
 local navi_arms = require("../lib/navi_arms")
 local regions = require("@exelib/regions")
-local spreader = require("@exelib/spreadr/action")
-local pink_flash_sprite = asset.sprite("pink-flash")
+local spreader = require("@exelib/spreader/action")
+local pink_flash_sprite = asset.sprite("pink_flash")
 local spreader_sprite = asset.sprite("spreader")
 
 local LOOK: SpreaderLook = {
-    sound = asset.sound("h-burst"),
+    sound = asset.sound("hyper_burst"),
     -- Held in the overlay, its animation by the holder's AI index (the arms' table).
     hold = attachment.holder(navi_arms.spreader),
     slot = "overlay",
@@ -29,7 +29,7 @@ local BURST = bullet.variant {
     region = regions.square,
     hit_mod = {},
     effect = new.effect { sprite = pink_flash_sprite, anim = 0, palette = 0, steps = 10 },
-    sound = asset.sound("h-burst"),
+    sound = asset.sound("hyper_burst"),
 }
 
 local chip: Chip = {

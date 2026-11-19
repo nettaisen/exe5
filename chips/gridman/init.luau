@@ -46,7 +46,7 @@ local gridman_sp: Chip = {
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
-        id = "gridman-sp/controller",
+        id = "gridman_sp/controller",
         summon = navi.summon(0),
     },
     auto_battle = { class = "at_once" },
@@ -69,10 +69,10 @@ local gridman_ds: Chip = {
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {
-        id = "gridman-ds/controller",
+        id = "gridman_ds/controller",
         summon = navi.summon(5),
     },
     auto_battle = { class = "at_once" },
 }
 
-return { gridman = gridman, ["gridman-sp"] = gridman_sp, ["gridman-ds"] = gridman_ds }
+return { gridman = gridman, gridman_sp = gridman_sp, gridman_ds = gridman_ds }

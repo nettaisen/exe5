@@ -10,7 +10,7 @@ local card: PatchCard = {
         cards.hp(170),
         cards.body(Element.aqua),
         cards.bug(cards.undershirt(false)),
-        cards.charged_shot(chips.seaseed),
+        cards.charged_shot(chips.sea_seed),
     },
 }
 

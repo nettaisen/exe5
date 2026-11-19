@@ -13,8 +13,8 @@
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
 local charged_chips = require("./megaman/weapons/charged_chip")
-local nstackle = require("@self/chip").nstackle
-local magnetman_portrait_sprite = asset.sprite("magnetman-portrait")
+local north_south_tackle = require("@self/chip").north_south_tackle
+local magnetman_portrait_sprite = asset.sprite("magnetman_portrait")
 local magnetman_sprite = asset.sprite("magnetman")
 
 local navi: NaviDef = {
@@ -24,7 +24,7 @@ local navi: NaviDef = {
     element = Element.elec,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("magnetman-win"), lose = asset.banner("magnetman-deleted") },
+    banners = { win = asset.banner("magnetman_win"), lose = asset.banner("magnetman_deleted") },
     mugshot = asset.mugshot("magnetman"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x1b, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
@@ -33,13 +33,13 @@ local navi: NaviDef = {
         portrait = magnetman_portrait_sprite,
     },
     palette_step = 2,
-    own_chip = { chip = nstackle, code = "M" },
+    own_chip = { chip = north_south_tackle, code = "M" },
     own_chip_draws = true,
     weapons = {
         buster = buster.weapon,
         charge_shot = charge.weapon,
         -- The charge table's row 0x2A (0x0801CC10); Charge 5 reads on into row 0x2B's first entry.
-        a_charge = charged_chips.routine({ 60, 60, 60, 60, 60, 60 }, "magnetman/a-charge"),
+        a_charge = charged_chips.routine({ 60, 60, 60, 60, 60, 60 }, "magnetman/a_charge"),
     },
     -- The chips A charges, and what a charged one gains (its damage again).
     charged_chips = { family = Family.elec, damaging = false, plain = true },

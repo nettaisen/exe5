@@ -31,7 +31,7 @@ local shademan: Chip = {
 
 -- ShadeMnSP (EXE5 chip 0x105): ShadeMan cuts in and crushes the panel ahead and the column beyond (../shademan/navi);
 -- its damage by how fast its user deleted ShadeMan SP (rules/sp_chips: formula 14, its table's row 13).
-local shademn_sp: Chip = {
+local shademan_sp: Chip = {
     codes = { "S" },
     element = Element.null,
     family = Family.null,
@@ -47,7 +47,7 @@ local shademn_sp: Chip = {
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
-        id = "shademn-sp/controller",
+        id = "shademan_sp/controller",
         summon = navi.summon(0),
     },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
@@ -55,7 +55,7 @@ local shademn_sp: Chip = {
 
 -- ShadeMnDS (EXE5 chip 0x106): ShadeMan, dark, cuts in and crushes the panel ahead and the column beyond
 -- (../shademan/navi); its damage by its user's side's statistic 3 (formula 36, its table's row 13).
-local shademn_ds: Chip = {
+local shademan_ds: Chip = {
     codes = { "S" },
     element = Element.null,
     family = Family.null,
@@ -70,10 +70,10 @@ local shademn_ds: Chip = {
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {
-        id = "shademn-ds/controller",
+        id = "shademan_ds/controller",
         summon = navi.summon(6),
     },
     auto_battle = { class = "into_reach", range = "ahead_then_column" },
 }
 
-return { shademan = shademan, ["shademn-sp"] = shademn_sp, ["shademn-ds"] = shademn_ds }
+return { shademan = shademan, shademan_sp = shademan_sp, shademan_ds = shademan_ds }

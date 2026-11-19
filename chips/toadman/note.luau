@@ -21,7 +21,7 @@ export type State = {
 
 export type Chain = { life: number, delay: number, dimmed: boolean }
 
-local SPRITE = asset.sprite("toad-note")
+local SPRITE = asset.sprite("toad_note")
 local ELEC = Element.elec
 
 -- Action 0 (0x080D6764): its timers.

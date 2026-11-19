@@ -6,7 +6,7 @@ local katana = require("@self/katana")
 
 -- Katana1 (EXE5 chip 0x03c): two slashes, a wide one and then a long one (EXE5's Katana, chips/katana/katana: action 0x54,
 -- its own action on the swords' slash; a charged one steps first).
-local katana1: Chip = {
+local katana_1: Chip = {
     codes = { "D", "H", "S" },
     element = Element.null,
     family = Family.sword,
@@ -24,7 +24,7 @@ local katana1: Chip = {
 
 -- Katana2 (EXE5 chip 0x03d): two slashes, a wide one and then a long one (EXE5's Katana, chips/katana/katana: action 0x54,
 -- its own action on the swords' slash; a charged one steps first).
-local katana2: Chip = {
+local katana_2: Chip = {
     codes = { "B", "R", "W" },
     element = Element.null,
     family = Family.sword,
@@ -42,7 +42,7 @@ local katana2: Chip = {
 
 -- Katana3 (EXE5 chip 0x03e): two slashes, a wide one and then a long one (EXE5's Katana, chips/katana/katana: action 0x54,
 -- its own action on the swords' slash; a charged one steps first).
-local katana3: Chip = {
+local katana_3: Chip = {
     codes = { "A", "J", "Z" },
     element = Element.null,
     family = Family.sword,
@@ -58,4 +58,4 @@ local katana3: Chip = {
     auto_battle = { class = "into_reach", range = "column_ahead_and_two" },
 }
 
-return { katana1 = katana1, katana2 = katana2, katana3 = katana3 }
+return { katana_1 = katana_1, katana_2 = katana_2, katana_3 = katana_3 }

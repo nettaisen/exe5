@@ -1,0 +1,42 @@
+--!strict
+-- AirShot (EXE5 chip 0x004): a shot from the panel ahead that pushes what it hits: the shared AirShot
+-- (@exelib/air_shot, EXE6's action 0x21, EXE5's 0x1D; the same code but for the shooter's attachment row, EXE5's 8,
+-- EXE6's 0x13, the same look), with EXE5's air shooter, attachment, projectile and shot (no wind element: EXE5's variant
+-- row 4); its sound EXE6's number.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local air_shot = require("@exelib/air_shot")
+local attachment = require("../objects/attachment")
+local navi_arms = require("../lib/navi_arms")
+local projectile = require("../lib/projectile")
+local variants = require("../objects/projectile/variants")
+local air_shooter_sprite = asset.sprite("air_shooter")
+
+-- EXE5's air shooter (its attachment row 8: EXE6's row 0x13's look, EXE5's sprite).
+local SHOOTER = attachment.look { sprite = air_shooter_sprite, palette = 0, attach_point = 10 }
+
+local chip: Chip = {
+    codes = { "*" },
+    element = Element.null,
+    family = Family.wind,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 6,
+    damage = 20,
+    counter = 20,
+    lockout = 0,
+    flags = { has_damage = true, standard_library = true, library = true },
+    extra_flags = { free_slot_in = true },
+    slot_in_limit = 3,
+    action = air_shot.action({ shooter = SHOOTER, shot = variants.air, recovery = 10 }, {
+        sound = asset.sound("hyper_burst"),
+        -- EXE6's `sub_80EC934`: the shooter by the holder's AI index.
+        hold = attachment.holder(navi_arms.air_shooter),
+        projectiles = projectile,
+        anim = 9,
+        slot = "overlay",
+    }),
+    auto_battle = { class = "into_reach", range = "ahead_in_row" },
+}
+
+return { air_shot = chip }

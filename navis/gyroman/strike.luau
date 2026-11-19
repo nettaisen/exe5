@@ -15,7 +15,7 @@ export type State = {
     hit_mod: HitModifierByte,
 }
 
-local SPRITE = asset.sprite("air-strike")
+local SPRITE = asset.sprite("air_strike")
 local TICKS = 10
 
 -- 0x080C7EC4: on its panel, on the floor, off its center by two draws; its dust (animation 0, its shadow), facing its

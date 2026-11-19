@@ -4,7 +4,7 @@
 
 local blaze = {}
 
-local SPRITE = asset.sprite("heat-flame")
+local SPRITE = asset.sprite("heat_flame")
 
 -- 0x080EA554: each phase's animation and its ticks less one.
 local PHASES = { [0] = { 0, 5 }, [4] = { 1, 0x14 }, [8] = { 2, 2 } }

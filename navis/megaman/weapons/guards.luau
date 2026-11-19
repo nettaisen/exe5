@@ -2,20 +2,20 @@
 -- The NaviCust programs' B+Back specials, EXE5's weapon routines NaviStats +0x07 names (the patch cards' too, and as
 -- their B buttons and charged shots):
 --
--- - Shield (`megaman/shield`, routine 0x1F, 0x0800F8EA; the patch cards' `megaman/card-shield`, routine 0x62,
+-- - Shield (`megaman/shield`, routine 0x1F, 0x0800F8EA; the patch cards' `megaman/card_shield`, routine 0x62,
 --   0x0800FDAC, the same code with its own charge row): EXE5's guard (action 0x1F, lib/guard) as the Shield program's
 --   (subtype 3: it heeds nothing outside the operation battle's mode, where a guarded hit puts 0x580 into the side's
 --   gauge), no damage;
 -- - Reflect (`megaman/reflect`, routine 0x61, 0x0800FD84; routine 0x20, 0x0800F910, is the same): EXE5's guard as the
 --   Reflect program's (subtype 4: a hit it guards from the front is fired back as the charged shot's projectile, 20
 --   pixels up), 50 damage;
--- - AntiDmg (`megaman/anti-damage`, routine 0x21, 0x0800F938): its stance (action 0x3D, EXE6's code:
---   @exelib/navicust/anti-damage), 50 damage.
+-- - AntiDmg (`megaman/anti_damage`, routine 0x21, 0x0800F938): its stance (action 0x3D, EXE6's code:
+--   @exelib/navicust/anti_damage), 50 damage.
 --
 -- The guards hold 20 ticks (their params words' first byte: 0x214, 0x114) in the Shield program's look (row 2) or the
 -- Reflect program's (row 1); the navi's chips wait 40 ticks after them, 70 after AntiDmg's stance.
 
-local anti_damage = require("@exelib/navicust/anti-damage")
+local anti_damage = require("@exelib/navicust/anti_damage")
 local guard = require("../../../lib/guard")
 local operation_battle = require("../../../lib/operation_battle")
 
@@ -24,7 +24,7 @@ local guards = {}
 local TICKS = 0x14
 local LOCKOUT = 40
 
-local REFLECTOR = asset.sprite("reflector-shield")
+local REFLECTOR = asset.sprite("reflector_shield")
 -- What the Shield program puts into the gauge.
 local SHIELD_GAUGE = 0x580
 
@@ -71,7 +71,7 @@ guards.shield = new.weapon {
 
 -- 0x0800FDAC: the patch cards' Shield (B-Shield, B↓Shield), the same code as the program's, its own charge row.
 guards.card_shield = new.weapon {
-    id = "megaman/card-shield",
+    id = "megaman/card_shield",
     -- The charge table's row 0x62, by Charge 0 to 5: past 4 it reads on into row 0x63's first entry.
     charge_ticks = { 40, 40, 40, 40, 40, 100 },
     setup = function(navi: Object): Action
@@ -93,8 +93,8 @@ guards.reflect = new.weapon {
 
 -- 0x0800F938 and action 0x3D.
 local made = anti_damage.make {
-    weapon = "megaman/anti-damage",
-    action = "megaman/anti-damage/action",
+    weapon = "megaman/anti_damage",
+    action = "megaman/anti_damage/action",
     -- The charge table's row 0x21, by Charge 0 to 5: past 4 it reads on into row 0x22's first entry.
     charge_ticks = { 60, 60, 60, 60, 60, 50 },
 }

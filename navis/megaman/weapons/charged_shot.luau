@@ -1,5 +1,5 @@
 --!strict
--- MegaMan's charged shot in EXE5 (`megaman/charged-shot`): the original's weapon routine 1 (0x0800F5BC, EXE6's
+-- MegaMan's charged shot in EXE5 (`megaman/charged_shot`): the original's weapon routine 1 (0x0800F5BC, EXE6's
 -- `sub_8011A7E`), which sets up the shared charged shot (@exelib/megaman/charged_shot, EXE6's action 0x16, EXE5's
 -- action 0x1E: the same code but for its muzzle flash's attachment row, 13 for EXE6's 5, the same look, and its wait,
 -- 0x080EC9F0, which only the operation battle makes, marking the panel in front for 10 ticks) with EXE5's
@@ -20,11 +20,11 @@ local exe5 = {}
 
 -- The shot (EXE5's action 0x1E).
 exe5.action = common.action {
-    id = "megaman/charged-shot/action",
+    id = "megaman/charged_shot/action",
     buster = buster,
     projectiles = projectile,
     attachment = attachment.kind,
-    shot_sound = asset.sound("buster-shot"),
+    shot_sound = asset.sound("buster_shot"),
     plain = variants.plain,
     -- 0x080EC9F0: in the operation battle, the wait, its panel in front marked (0x080E9FD2: style 8, 10
     -- ticks); else none.
@@ -73,14 +73,14 @@ function exe5.program_setup(navi: Object): Action
 end
 
 exe5.program = new.weapon {
-    id = "megaman/program-charged-shot",
+    id = "megaman/program_charged_shot",
     -- The charge table's row 0x63, by Charge 0 to 5: past 4 it reads on into row 0x64's first entry.
     charge_ticks = { 100, 90, 80, 70, 60, 80 },
     setup = exe5.program_setup,
 }
 
 exe5.weapon = new.weapon {
-    id = "megaman/charged-shot",
+    id = "megaman/charged_shot",
     -- The charge table's row 1 (0x0801CA6C, EXE6's values); Charge 5 reads on into row 2's first entry.
     charge_ticks = { 100, 90, 80, 70, 60, 180 },
     setup = exe5.setup,

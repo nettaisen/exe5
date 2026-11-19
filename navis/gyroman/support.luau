@@ -30,7 +30,7 @@ local OWN_AREA: PanelCondition = { own_area = true }
 local function side_1_area(x: number, y: number): boolean
     return field.check(x, y, OWN_AREA, 1)
 end
-local SOUND = asset.sound("dustbrk")
+local SOUND = asset.sound("dust_break")
 local BLOW, WAIT = 0, 4
 
 type State = {

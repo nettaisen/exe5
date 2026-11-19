@@ -6,7 +6,7 @@ local skully = require("@self/skully")
 
 -- Skully1 (EXE5 chip 0x045): skulls that hop toward the nearest enemy, confusing what they hit (EXE5's Skully,
 -- chips/skully/skully: action 0x55).
-local skully1: Chip = {
+local skully_1: Chip = {
     codes = { "C", "K", "S" },
     element = Element.null,
     family = Family.null,
@@ -24,7 +24,7 @@ local skully1: Chip = {
 
 -- Skully2 (EXE5 chip 0x046): skulls that hop toward the nearest enemy, confusing what they hit (EXE5's Skully,
 -- chips/skully/skully: action 0x55).
-local skully2: Chip = {
+local skully_2: Chip = {
     codes = { "A", "H", "V" },
     element = Element.null,
     family = Family.null,
@@ -42,7 +42,7 @@ local skully2: Chip = {
 
 -- Skully3 (EXE5 chip 0x047): skulls that hop toward the nearest enemy, confusing what they hit (EXE5's Skully,
 -- chips/skully/skully: action 0x55).
-local skully3: Chip = {
+local skully_3: Chip = {
     codes = { "G", "N", "U" },
     element = Element.null,
     family = Family.null,
@@ -58,4 +58,4 @@ local skully3: Chip = {
     auto_battle = { class = "to_front" },
 }
 
-return { skully1 = skully1, skully2 = skully2, skully3 = skully3 }
+return { skully_1 = skully_1, skully_2 = skully_2, skully_3 = skully_3 }

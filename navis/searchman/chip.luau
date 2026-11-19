@@ -20,7 +20,7 @@ export type State = {
 local CALL, LEAVE = 0x0, 0x4
 local LEAVE_TICKS = 10
 
-local satelity: Chip
+local satellite_ray: Chip
 
 local action = new.action {
     state = { timer = schema.u16 },
@@ -32,7 +32,7 @@ local action = new.action {
             -- chip.
             local damage = me.attack_word
             local c = controller.spawn(me, me.attack_element, damage, me.extra)
-            dimming.start(me.alliance, true, c, me, { chip = satelity, bonus = me.extra })
+            dimming.start(me.alliance, true, c, me, { chip = satellite_ray, bonus = me.extra })
             me.step, me.step_init = LEAVE, 0
         elseif step == LEAVE then
             -- 0x080F0E44
@@ -52,7 +52,7 @@ local action = new.action {
     end,
 }
 
-satelity = {
+satellite_ray = {
     codes = { "S" },
     element = Element.null,
     family = Family.cursor,
@@ -68,4 +68,4 @@ satelity = {
     action = action,
 } :: Chip
 
-return { satelity = satelity }
+return { satellite_ray = satellite_ray }

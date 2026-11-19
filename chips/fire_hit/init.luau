@@ -1,0 +1,61 @@
+--!strict
+-- FireHit1, FireHit2 and FireHit3: the firehit series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local fist = require("@self/fist")
+
+-- FireHit1 (EXE5 chip 0x097): action 0x1A's effect 9, EXE6's FireHit (chips/fire_hit/fist: a fist on each row where
+-- the first column ahead with one of the other side's has one, at most three panels ahead).
+local fire_hit_1: Chip = {
+    codes = { "O", "P", "Q" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 12,
+    damage = 60,
+    counter = 20,
+    lockout = 20,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 3,
+    instant = fist.instant,
+    auto_battle = { class = "into_reach", range = "one_ahead" },
+}
+
+-- FireHit2 (EXE5 chip 0x098): action 0x1A's effect 9, EXE6's FireHit (chips/fire_hit/fist: a fist on each row where
+-- the first column ahead with one of the other side's has one, at most three panels ahead).
+local fire_hit_2: Chip = {
+    codes = { "H", "I", "J" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 28,
+    damage = 100,
+    counter = 20,
+    lockout = 20,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 3,
+    instant = fist.instant,
+    auto_battle = { class = "into_reach", range = "one_ahead" },
+}
+
+-- FireHit3 (EXE5 chip 0x099): action 0x1A's effect 9, EXE6's FireHit (chips/fire_hit/fist: a fist on each row where
+-- the first column ahead with one of the other side's has one, at most three panels ahead).
+local fire_hit_3: Chip = {
+    codes = { "E", "F", "G" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 44,
+    damage = 140,
+    counter = 20,
+    lockout = 20,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 3,
+    instant = fist.instant,
+    auto_battle = { class = "into_reach", range = "one_ahead" },
+}
+
+return { fire_hit_1 = fire_hit_1, fire_hit_2 = fire_hit_2, fire_hit_3 = fire_hit_3 }

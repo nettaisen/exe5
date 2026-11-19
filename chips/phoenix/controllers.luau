@@ -3,7 +3,7 @@
 -- @exelib/navi_chips/controller's, with EXE5's course (0x080E1F08): 31 ticks; the chip's phoenix, which it waits on;
 -- 31 ticks; 31 more. The user stays on the field throughout (EXE6's navi chip's controller warps it out and back), and
 -- nothing is kept as the last navi chip. Each chip makes its own (`controllers.make`: ./controller,
--- ../dethphnx/controller).
+-- ../death_phoenix/controller).
 
 local common = require("@exelib/navi_chips/controller")
 

@@ -251,45 +251,45 @@ local rules: Rules = {
         sun = true,
         karma = 500,
         souls = {
-            "colonelsoul",
-            "gyrosoul",
-            "knightsoul",
-            "magnetsoul",
-            "meddysoul",
-            "napalmsoul",
-            "numbersoul",
-            "protosoul",
-            "searchsoul",
-            "shadowsoul",
-            "toadsoul",
-            "tomahawksoul",
+            "colonel_soul",
+            "gyro_soul",
+            "knight_soul",
+            "magnet_soul",
+            "meddy_soul",
+            "napalm_soul",
+            "number_soul",
+            "proto_soul",
+            "search_soul",
+            "shadow_soul",
+            "toad_soul",
+            "tomahawk_soul",
         },
         chaos_unison = true,
         -- Every SP navi deleted in no time (its chip's best damage), in the save's order.
         sp_times = {
-            { chip = "protomn-sp", frames = 0 },
-            { chip = "gyroman-sp", frames = 0 },
-            { chip = "serchmn-sp", frames = 0 },
-            { chip = "naplmmn-sp", frames = 0 },
-            { chip = "magntmn-sp", frames = 0 },
-            { chip = "meddy-sp", frames = 0 },
-            { chip = "colonel-sp", frames = 0 },
-            { chip = "shadomn-sp", frames = 0 },
-            { chip = "numbrmn-sp", frames = 0 },
-            { chip = "tmhwkmn-sp", frames = 0 },
-            { chip = "knigtmn-sp", frames = 0 },
-            { chip = "toadman-sp", frames = 0 },
-            { chip = "shademn-sp", frames = 0 },
-            { chip = "blizman-sp", frames = 0 },
-            { chip = "cloudmn-sp", frames = 0 },
-            { chip = "cosmomn-sp", frames = 0 },
-            { chip = "larkman-sp", frames = 0 },
-            { chip = "gridman-sp", frames = 0 },
+            { chip = "protoman_sp", frames = 0 },
+            { chip = "gyroman_sp", frames = 0 },
+            { chip = "searchman_sp", frames = 0 },
+            { chip = "napalmman_sp", frames = 0 },
+            { chip = "magnetman_sp", frames = 0 },
+            { chip = "meddy_sp", frames = 0 },
+            { chip = "colonel_sp", frames = 0 },
+            { chip = "shadowman_sp", frames = 0 },
+            { chip = "numberman_sp", frames = 0 },
+            { chip = "tomahawkman_sp", frames = 0 },
+            { chip = "knightman_sp", frames = 0 },
+            { chip = "toadman_sp", frames = 0 },
+            { chip = "shademan_sp", frames = 0 },
+            { chip = "blizzardman_sp", frames = 0 },
+            { chip = "cloudman_sp", frames = 0 },
+            { chip = "cosmoman_sp", frames = 0 },
+            { chip = "larkman_sp", frames = 0 },
+            { chip = "gridman_sp", frames = 0 },
         },
     },
     -- The state of each navi, its object's own (the pack's `NaviState`): of a navi no player controls that the rules
     -- drive, its AI's (./auto_battle); ColonelSoul's arm chip (AIData +0x32; none: its 0xFFFF), which the soul's change
-    -- and Arm Change set and its charged shot's routine 0x13 loads (navis/megaman/forms/colonelsoul); GyroMan's
+    -- and Arm Change set and its charged shot's routine 0x13 loads (navis/megaman/forms/colonel_soul); GyroMan's
     -- requests to take off and to land (0x10000000 and 0x20000000 of his request word: navis/gyroman/hover); EXE5 DS's
     -- KnightMan's guard and ToadMan's dive (AIData +0x48's 0x400000 and 0x01000000: navis/knightman/guard,
     -- navis/toadman), which a soul change, a form's revert or break and ToadMan's rescue end.
@@ -306,7 +306,7 @@ local rules: Rules = {
     -- number, NaviStats +0x2C, in each place; the pack's types.d.luau types them): its navi's image at the change
     -- (./souls/image, a `SoulImage`) and what it adds to the custom screen (./souls/custom, a `SoulCustom`); its
     -- sword's arm, the blade's animation (lib/swords, 0x080EC038); its charged sword warping behind the enemy
-    -- whatever the charge (lib/stepsword, 0x08012538); VarSwrd's wait for its sequence while A is up (chips/varswrd,
+    -- whatever the charge (lib/stepsword, 0x08012538); VarSwrd's wait for its sequence while A is up (chips/variable_sword,
     -- 0x080ED570); the cameras' shake as MegaMan emerges in it (./souls/change, 0x0801212C).
     extends = {
         chip = {
@@ -317,7 +317,7 @@ local rules: Rules = {
             -- by name) or its spot test. A chip without it the AI can't play (its class past the table: the original
             -- crashes).
             -- A dark chip's cost to its user (./light_dark, 0x0802C934's entry: a routine of 0x0802C974's,
-            -- lib/dark_costs), a capsule's mix into the chip it goes into (navis/megaman/forms/meddysoul/capsules,
+            -- lib/dark_costs), a capsule's mix into the chip it goes into (navis/megaman/forms/meddy_soul/capsules,
             -- 0x08023824: the mark it gives the chip's hand entry, one of ./chip_use's `mark_bits`), and a chip past
             -- the chip pack's list (./folder: its last chip 0x13A; the BatCans).
             dark_cost = dark_costs.EXE5_DARK_COST,

@@ -1,0 +1,61 @@
+--!strict
+-- HotBody1, HotBody2 and HotBody3: the hotbody series (each chip's own comment above its definition).
+-- Their records are written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local hot_body = require("@self/hot_body")
+
+-- HotBody1 (EXE5 chip 0x09a): the navi bursts into flames that spread to the enemies around it, two rounds 30 ticks
+-- apart (chips/hot_body/hot_body, action 0x58; the record's second parameter, 2).
+local hot_body_1: Chip = {
+    codes = { "A", "F", "P" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 0,
+    mb = 28,
+    damage = 110,
+    counter = 20,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 3,
+    action = hot_body.action(2),
+    auto_battle = { class = "into_reach", range = "around" },
+}
+
+-- HotBody2 (EXE5 chip 0x09b): the navi bursts into flames that spread to the enemies around it, two rounds 30 ticks
+-- apart (chips/hot_body/hot_body, action 0x58; the record's second parameter, 2).
+local hot_body_2: Chip = {
+    codes = { "C", "R", "W" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 1,
+    mb = 40,
+    damage = 130,
+    counter = 20,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 3,
+    action = hot_body.action(2),
+    auto_battle = { class = "into_reach", range = "around" },
+}
+
+-- HotBody3 (EXE5 chip 0x09c): the navi bursts into flames that spread to the enemies around it, two rounds 30 ticks
+-- apart (chips/hot_body/hot_body, action 0x58; the record's second parameter, 2).
+local hot_body_3: Chip = {
+    codes = { "J", "M", "S" },
+    element = Element.fire,
+    family = Family.fire,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 52,
+    damage = 150,
+    counter = 20,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 3,
+    action = hot_body.action(2),
+    auto_battle = { class = "into_reach", range = "around" },
+}
+
+return { hot_body_1 = hot_body_1, hot_body_2 = hot_body_2, hot_body_3 = hot_body_3 }

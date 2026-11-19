@@ -1,13 +1,13 @@
 --!strict
--- The patch cards' FireAm (`megaman/fire-arm`, B↓FireAm, FireMan's card): weapon routine 0x4E (0x0800FC94) and action
+-- The patch cards' FireAm (`megaman/fire_arm`, B↓FireAm, FireMan's card): weapon routine 0x4E (0x0800FC94) and action
 -- 0x57 (0x080F0074, EXE5's own: EXE6's action 0x57 is DustCross's charged shot, of the same dispatch only). The navi
 -- raises ElemRage's claw (the attachment table's row 0x34, 0c-33, its animation 1) and sends ElemRage's flame
--- (chips/elemrage: attack object #0x98) along its row from the panel ahead, at its attach point 20: 5 flames, each
+-- (chips/element_rage: attack object #0x98) along its row from the panel ahead, at its attach point 20: 5 flames, each
 -- standing 30 ticks (the attack's parameters 0x1E05), Fire, 50 damage, in the flames' palette 0, none spreading or
 -- paralyzing. 30 ticks in, 6 more, and it is back to idle.
 
 local attachment = require("../../../objects/attachment")
-local elemrage = require("../../../chips/elemrage/elemrage")
+local element_rage = require("../../../chips/element_rage/element_rage")
 
 -- The attack: 50 damage, hit parameter 20, Fire; its parameters: 5 flames (Param1), 30 ticks (Param2).
 local DAMAGE, COUNTER, FIRE = 50, 20, Element.fire
@@ -29,7 +29,7 @@ local function fire(me: Object, s: State)
         -- (`sub_8018842` reads the attach point unflipped: the flame turns it its own way.)
         local fx, dz = me:attach_point(ATTACH_POINT)
         local dx = fx * me.facing
-        elemrage.spawn_flame(me, me.panel_x + me.facing, me.panel_y, me.attack_element, int.shl(dz, 16), {
+        element_rage.spawn_flame(me, me.panel_x + me.facing, me.panel_y, me.attack_element, int.shl(dz, 16), {
             count = COUNT,
             spread = false,
             ticks = TICKS,
@@ -43,7 +43,7 @@ local function fire(me: Object, s: State)
         }, damage)
         me.anim = ANIM
         me:open_counter_window()
-        attachment.attach(me, elemrage.claw, "overlay", { anim = ARM_ANIM })
+        attachment.attach(me, element_rage.claw, "overlay", { anim = ARM_ANIM })
         me.status.using_action = true
         s.timer = 0
         me.step_init = 4
@@ -70,7 +70,7 @@ local function recover(me: Object, s: State)
 end
 
 local ACTION = new.action {
-    id = "megaman/fire-arm/action",
+    id = "megaman/fire_arm/action",
     state = { timer = schema.u16 },
     -- 0x080F0074.
     update = function(me: Object, s: State)
@@ -86,7 +86,7 @@ local ACTION = new.action {
 
 -- 0x0800FC94: 50 damage, hit parameter 20, Fire; no charge, no bonus, no lockout; its parameters.
 return new.weapon {
-    id = "megaman/fire-arm",
+    id = "megaman/fire_arm",
     -- The charge table's row 0x4E, by Charge 0 to 5: past 4 it reads on into row 0x4F's first entry.
     charge_ticks = { 70, 65, 60, 55, 50, 80 },
     setup = function(navi: Object): Action

@@ -17,7 +17,7 @@ local instants = {}
 
 local INVISIBLE_TICKS = 120
 local INVISIBLE_SOUND = asset.sound("invisible")
-local VACUUM_SOUND = asset.sound("dustbrk")
+local VACUUM_SOUND = asset.sound("dust_break")
 
 -- The routines name no action of their own: the instant chips' action runs their effect.
 local function names_effect(_navi: Object)

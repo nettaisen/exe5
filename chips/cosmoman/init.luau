@@ -32,7 +32,7 @@ local cosmoman: Chip = {
 -- CosmoMnSP (EXE5 chip 0x10e): CosmoMan cuts in, takes the field objects around him and calls meteors down on the
 -- enemy area (../cosmoman/navi); its damage by how fast its user deleted CosmoMan SP (rules/sp_chips: formula 17,
 -- its table's row 16).
-local cosmomn_sp: Chip = {
+local cosmoman_sp: Chip = {
     codes = { "C" },
     element = Element.null,
     family = Family.null,
@@ -48,7 +48,7 @@ local cosmomn_sp: Chip = {
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
-        id = "cosmomn-sp/controller",
+        id = "cosmoman_sp/controller",
         summon = navi.summon(0),
     },
     auto_battle = { class = "at_once" },
@@ -56,7 +56,7 @@ local cosmomn_sp: Chip = {
 
 -- CosmoMnDS (EXE5 chip 0x10f): CosmoMan, dark, cuts in, takes the field objects around him and calls meteors down on
 -- the enemy area (../cosmoman/navi); its damage by its user's side's statistic 3 (formula 39, its table's row 16).
-local cosmomn_ds: Chip = {
+local cosmoman_ds: Chip = {
     codes = { "C" },
     element = Element.null,
     family = Family.null,
@@ -71,10 +71,10 @@ local cosmomn_ds: Chip = {
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {
-        id = "cosmomn-ds/controller",
+        id = "cosmoman_ds/controller",
         summon = navi.summon(0xb),
     },
     auto_battle = { class = "at_once" },
 }
 
-return { cosmoman = cosmoman, ["cosmomn-sp"] = cosmomn_sp, ["cosmomn-ds"] = cosmomn_ds }
+return { cosmoman = cosmoman, cosmoman_sp = cosmoman_sp, cosmoman_ds = cosmoman_ds }

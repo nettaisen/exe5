@@ -30,13 +30,13 @@ export type State = {
 }
 
 -- 0x080CA858: sprite 10-20 with a shadow (`sub_8011504`'s 0x01001020 and 0x01031020: animation 0 or 3).
-local SPRITE = asset.sprite("colonel-soldier")
-local sword_slash_sprite = asset.sprite("sword-slash")
-local vulcan_hit_sprite = asset.sprite("vulcan-hit")
+local SPRITE = asset.sprite("colonel_soldier")
+local sword_slash_sprite = asset.sprite("sword_slash")
+local vulcan_hit_sprite = asset.sprite("vulcan_hit")
 local HP = 1
 -- Its collision (0x13140300): its side's body (row 0x13) that the other side reaches (row 0x14), hit modifier 3.
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
-local DRAW_SOUND, SHOT_SOUND = asset.sound("sword-swing"), asset.sound("col-army-2")
+local DRAW_SOUND, SHOT_SOUND = asset.sound("sword_swing"), asset.sound("col_army_2")
 -- The slash: over the panel ahead and the one past it (region 2), no spark (0xFF), a slash (row 7) against navis
 -- (row 5), hit modifier 3 (r7); its look 16 pixels up, effect 0x17 of EXE5's table (0x080DFC94: sprite 0C-14, the
 -- swords' slash, animation 1).
@@ -334,7 +334,7 @@ function soldier.obstacle_reaction(_side: number, me: Object)
 end
 
 soldier.kind = new.kind {
-    id = "colonel-soldier",
+    id = "colonel_soldier",
     pool = Pool.attack,
     state = { ranged = schema.u8, hit = schema.bool },
     -- 0x080CA834.

@@ -29,7 +29,7 @@ party.SWITCHES = 3
 local UNLIMITED = 6
 
 -- A refused request's sound (0x69): the panel's, on its player's console.
-local REFUSED = asset.sound("cant-jack-in")
+local REFUSED = asset.sound("cant_jack_in")
 
 -- MegaMan's light test's line (0x02004DD8), the chips' (0x08010118).
 local LIGHT = 470

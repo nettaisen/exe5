@@ -1,14 +1,14 @@
 --!strict
 -- Satelity's dimming controller (EXE5's effect object #0x3F, 0x080E4C54; EXE5's own, on the dimming chips' skeleton): the
 -- usual dimming phases (@exelib/dimming), with an effect (0x080E4C98) in two parts. First SearchMan's scope
--- (chips/serchman/scope, as a sight, at the plain chip's speed) sweeps the enemy's area until its user locks it or
+-- (chips/searchman/scope, as a sight, at the plain chip's speed) sweeps the enemy's area until its user locks it or
 -- its time runs out, and gives the controller its panel. Then the user holds his animation 21 while the satellite
 -- (./satellite) comes down three panels behind that panel and fires, its damage the chip's and the Atk+ bonus: 120
 -- ticks, then the user stands again and the undim.
 
 local dimming_chips = require("@exelib/dimming")
 local satellite = require("./satellite")
-local scope = require("../../chips/serchman/scope")
+local scope = require("../../chips/searchman/scope")
 
 export type State = {
     -- The Atk+ / cross bonus (object +0x32).
@@ -77,7 +77,7 @@ local function effect(me: Object)
 end
 
 controller.kind = new.kind {
-    id = "searchman/satelity/controller",
+    id = "searchman/satellite_ray/controller",
     pool = Pool.effect,
     state = { bonus = schema.u16, powered = schema.bool },
     -- 0x080E4C54.

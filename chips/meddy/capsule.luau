@@ -26,22 +26,22 @@ export type State = {
 
 local capsule = {}
 
-local SPRITE = asset.sprite("meddy-capsule")
+local SPRITE = asset.sprite("meddy_capsule")
 local EXPLOSION = asset.sprite("explosion")
-local SOUND_BURST = asset.sound("hit-bomb-1")
+local SOUND_BURST = asset.sound("hit_bomb_1")
 
 -- The effect table's row 0 (an explosion), its palette raised by a variant's.
 capsule.explosion = EXPLOSION
 -- Its burst where it is: the explosion in palette 0.
 local BLOW_UP = new.effect { sprite = EXPLOSION, anim = 0, palette = 0, steps = 22 }
 
-local CAPSULE_VARIANT = schema.record_type("capsule-variant")
+local CAPSULE_VARIANT = schema.record_type("capsule_variant")
 
 -- A capsule's variant, and a line.
 function capsule.variant(v: CapsuleVariant): CapsuleVariant
     return new.record(CAPSULE_VARIANT, v)
 end
-local CAPSULE_LINE = schema.record_type("capsule-line")
+local CAPSULE_LINE = schema.record_type("capsule_line")
 
 local function line(l: CapsuleLine): CapsuleLine
     return new.record(CAPSULE_LINE, l)

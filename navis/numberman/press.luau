@@ -15,7 +15,7 @@ local sparks = require("../../lib/sparks")
 
 local press = {}
 
-local SPRITE = asset.sprite("numtrap-press")
+local SPRITE = asset.sprite("number_trap_press")
 local SOUND_FALL = asset.sound("drop")
 local SOUND_LAND = asset.sound("drumroll")
 -- Where it hangs from its panel's middle, in pixels: over the middle of the four panels, and up.

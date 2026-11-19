@@ -23,7 +23,7 @@ local LOOK_TICKS, SET_TICKS, TRAP_AT = 30, 70, 50
 local AHEAD = 2
 -- The user's animation while he sets it.
 local ANIM_SET = 12
-local SOUND = asset.sound("hockey-puck")
+local SOUND = asset.sound("hockey_puck")
 -- A panel of the other side's that can be stood on, with nothing on it, of the controller's side (0x080E4E28).
 local FREE: PanelCondition = { solid = true, enemy_area = true, occupied = false }
 
@@ -87,7 +87,7 @@ local function effect(me: Object)
 end
 
 controller.kind = new.kind {
-    id = "numberman/numtrap/controller",
+    id = "numberman/number_trap/controller",
     pool = Pool.effect,
     state = { bonus = schema.u16 },
     -- 0x080E4D68.

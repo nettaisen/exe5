@@ -19,7 +19,7 @@ local attachment = require("../../objects/attachment")
 local regions = require("@exelib/regions")
 local roles = require("../../rules/roles")
 local swords = require("../../lib/swords")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
 local navi_status = require("@exelib/navi_status")
 
 -- The slash over a column (effect 0x16).

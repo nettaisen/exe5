@@ -13,7 +13,7 @@ local statuses = require("../rules/status")
 -- blindness for 480 ticks.
 local HOOK = controller.make {
     id = "blinder/controller",
-    sound = asset.sound("blinding-flash"),
+    sound = asset.sound("blinding_flash"),
     is = collision.collision_34,
     hits = collision.hits_navis,
     status = statuses.blind_480,

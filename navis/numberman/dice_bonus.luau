@@ -8,8 +8,8 @@
 -- two dice at the enemy area; the faces of those that land where he aimed, times ten, are added to the next chip's
 -- attack.
 
-local dice = require("../../chips/numbrman/dice")
-local chips_dicebons = require("../../chips/dicebons")
+local dice = require("../../chips/numberman/dice")
+local chips_dicebons = require("../../chips/dice_bonus")
 local effects = require("../../lib/effects")
 local numberman = require("../numberman").numberman
 local party = require("../../rules/party")
@@ -20,7 +20,7 @@ local dice_bonus = {}
 
 -- RNG2 bits 10–13 at most this: 7 in 16.
 local CHANCE = 6
-local DICEBONS = chips_dicebons.dicebons
+local DICEBONS = chips_dicebons.dice_bonus
 -- The dice's faces by an RNG2 draw's low four bits (0x022272AC, 0x022272BC).
 local FACES_1: { number } = { 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6 }
 local FACES_2: { number } = { 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6 }
@@ -29,7 +29,7 @@ local FACES_2: { number } = { 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6 }
 local AIM: PanelCondition = { solid = true, any_body = false, enemy_object = false }
 -- A die: 20 HP, no status or hit modifier, running while dimmed, thrown from 24 pixels above him.
 local DIE_HP, DIE_Z = 0x14, 0x18_0000
-local THROW_SOUND = asset.sound("minibomb-throw")
+local THROW_SOUND = asset.sound("mini_bomb_throw")
 local APPEAR_SOUND = asset.sound("appear")
 local BONUS_SOUND = asset.sound("hub")
 
@@ -231,7 +231,7 @@ local function update(me: Object)
 end
 
 dice_bonus.actor = new.kind {
-    id = "numberman/dice-bonus",
+    id = "numberman/dice_bonus",
     pool = Pool.actor,
     state = { controller = schema.object, dice = schema.array(schema.bool, 2), total = schema.u16, navi = schema.object },
     update = function(me: Object)
@@ -261,7 +261,7 @@ dice_bonus.actor = new.kind {
 
 -- His controller (the DS's effect object 0x95): the dim, DiceBons' telop, NumberMan (0x022264A8), the undim.
 dice_bonus.controller = party_support.controller {
-    id = "numberman/dice-bonus-controller",
+    id = "numberman/dice_bonus_controller",
     bring = function(me: Object): Object?
         local navi = me.related1 :: Object
         local o = battle.spawn(dice_bonus.actor)

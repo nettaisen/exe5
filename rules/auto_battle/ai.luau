@@ -278,8 +278,8 @@ end
 --   table (0x0801D462 + 11 × its number, 0x0800E0E8), which is no row whatever the lag.
 -- The field's rows are 1 to 3 (0x0800B33C), so the test fails for every navi at every place: a pattern entry is a
 -- miss, the target's search moved on, and a step, and nothing of a pattern (its place, its chips, its score, the
--- record after it) shows in a battle. (The lab's chaos-ai/pattern-reached: a pattern at a free panel of his own
--- area, none of it played; chaos-ai/colonel-side: Dark MegaMan on the side of a player who operates Colonel.)
+-- record after it) shows in a battle. (The lab's chaos_ai/pattern_reached: a pattern at a free panel of his own
+-- area, none of it played; chaos_ai/colonel_side: Dark MegaMan on the side of a player who operates Colonel.)
 -- A team navi's stats are read by the Dark MegaMan that stands on its side; no team navi is itself in auto battle in
 -- a netbattle: a dark chip fizzles for any navi but MegaMan and navi 23 (0x08010056: DarkInvs), and the last stand
 -- is the player of AI index 0's alone (0x0802C17A: a team navi's is its number).

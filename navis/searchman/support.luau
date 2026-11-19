@@ -8,18 +8,18 @@
 -- barrier holds it off, or it is frozen). (Every nettai battle is a link battle: the offline path is the DS's, ported,
 -- and never reached; exe5ds-map.md §4.7.)
 
-local chips_serch_s = require("../../chips/serch_s")
+local chips_serch_s = require("../../chips/search_snipe")
 local party = require("../../rules/party")
 local party_support = require("../../lib/party_support")
 local searchman = require("../searchman").searchman
-local shot = require("../../chips/serchman/shot")
-local chip_destruction_spark_sprite = asset.sprite("chip-destruction-spark")
-local search_scope_sprite = asset.sprite("search-scope")
+local shot = require("../../chips/searchman/shot")
+local chip_destruction_spark_sprite = asset.sprite("chip_destruction_spark")
+local search_scope_sprite = asset.sprite("search_scope")
 
 -- His damage a shot by the side's level (0x020CC378), its counter strength 10 (and it can't counter: 0x8A).
 local DAMAGE: { number } = { 5, 5, 5, 5, 5, 5, 10, 10, 15, 15 }
 local COUNTER = 10
-local SERCH_S = chips_serch_s["serch-s"]
+local SERCH_S = chips_serch_s.search_snipe
 -- The panel flag of the other side's navi, by side (`sub_80E7486`'s): its player navi.
 local ENEMY_NAVI: PanelFlags = { enemy_navi = true }
 
@@ -34,7 +34,7 @@ local SHOTS = 5
 local SCOPE = new.effect { sprite = search_scope_sprite, anim = 0, palette = 0, steps = 18 }
 local TAKEN = new.effect { sprite = chip_destruction_spark_sprite, anim = 0, palette = 0, steps = 15 }
 local SCOPE_SOUND = asset.sound("mark")
-local SHOT_SOUND = asset.sound("col-army-2")
+local SHOT_SOUND = asset.sound("col_army_2")
 local APPEAR_SOUND = asset.sound("appear")
 
 type ActorState = { tx: number, ty: number, shots: number, fired: boolean, controller: Object? }
@@ -240,7 +240,7 @@ support.actor = new.kind {
 -- His controller (the DS's effect object 0x94, 0x02226404): the dim, Serch-S's telop, SearchMan (0x02226424), the
 -- undim.
 support.controller = party_support.controller {
-    id = "searchman/support-controller",
+    id = "searchman/support_controller",
     state = { tx = schema.u8, ty = schema.u8 },
     bring = function(me: Object): Object?
         local s = me.state :: ControllerState

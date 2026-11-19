@@ -277,8 +277,8 @@ end
 -- A window label: its name, its tiles, its letters' rows and colors. BATTLE CHIP on the window's top frame (tiles 2 to
 -- 10, color 3 on 6), CHIP SELECT over the slots (0x27 to 0x2D, 4 on 2).
 local LABELS: { WindowLabel } = {
-    { name = "battle-chip", first = 0x02, last = 0x0A, top = 1, bottom = 5, letters = { 3 } },
-    { name = "chip-select", first = 0x27, last = 0x2D, top = 3, bottom = 6, letters = { 4 } },
+    { name = "battle_chip", first = 0x02, last = 0x0A, top = 1, bottom = 5, letters = { 3 } },
+    { name = "chip_select", first = 0x27, last = 0x2D, top = 3, bottom = 6, letters = { 4 } },
 }
 
 -- `c` with what the four ROMs have alike, read from `rom`.

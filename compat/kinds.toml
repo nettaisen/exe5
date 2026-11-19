@@ -12,113 +12,113 @@
 
 "engine/player" = { pool = "actor", index = 0x00 }
 "engine/intro" = { pool = "effect", index = 0x02, scratch_position = true }
-"engine/charge-glow" = { pool = "effect", index = 0x08, scratch_position_without_sprite = true }
-"blkbomb/bomb" = { pool = "attack", index = 0x47 }
+"engine/charge_glow" = { pool = "effect", index = 0x08, scratch_position_without_sprite = true }
+"black_bomb/bomb" = { pool = "attack", index = 0x47 }
 "gust" = { pool = "attack", index = 0x49 }
-"megaman/hells-rolling/whirl" = { pool = "attack", index = 0xC0 }
-"megaman/zap-ring/ring" = { pool = "attack", index = 0xC4 }
+"megaman/hells_rolling/whirl" = { pool = "attack", index = 0xC0 }
+"megaman/zap_ring/ring" = { pool = "attack", index = 0xC4 }
 "thunder/ball" = { pool = "attack", index = 0x2A }
 "engine/effect" = { pool = "effect", index = 0x00 }
 "engine/hitbox" = { pool = "attack", index = 0x03 }
 "engine/spark" = { pool = "effect", index = 0x04 }
-"engine/status-visual" = { pool = "effect", index = 0x06 }
+"engine/status_visual" = { pool = "effect", index = 0x06 }
 "engine/afterimage" = { pool = "effect", index = 0x28 }
-"engine/hit-marker" = { pool = "effect", index = 0x6B }
+"engine/hit_marker" = { pool = "effect", index = 0x6B }
 "attachment" = { pool = "actor", index = 0x05 }
-"widesht/wave" = { pool = "attack", index = 0x3B }
-"boomer/boomerang" = { pool = "attack", index = 0x32 }
-"engine/navi-warp" = { pool = "actor", index = 0x2D }
+"wide_shot/wave" = { pool = "attack", index = 0x3B }
+"boomerang/boomerang" = { pool = "attack", index = 0x32 }
+"engine/navi_warp" = { pool = "actor", index = 0x2D }
 # The navi chips' controllers (each chip's own; the original's one effect object #0x10 for them all), written by
 # bn6battle-verify's tools/content/navi_chip_kinds.py from the chips' ids: run it, rather than editing the section.
 # begin: the navi chips' controllers (tools/content/navi_chip_kinds.py writes these)
 "bass/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"bassanly/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"bighook/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"bignoise/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"blizman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"blizman-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"blizman-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"chaoslrd/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"bass_anomaly/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"big_hook/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"big_noise/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"blizzardman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"blizzardman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"blizzardman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"chaos_lord/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "cloudman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"cloudmn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"cloudmn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"cloudman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"cloudman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "colonel/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"colonel-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"colonel-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"colonel_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"colonel_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"cosmo_prison/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "cosmoman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"cosmomn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"cosmomn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"crossdiv/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"csmopris/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"deltaray/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"cosmoman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"cosmoman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"cross_divide/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"delta_ray_edge/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "django/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"django-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"django-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"django_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"django_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "football/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "gridman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"gridman-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"gridman-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"gridman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"gridman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "gyroman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"gyroman-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"gyroman-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"knightmn/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"knigtmn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"knigtmn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"gyroman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"gyroman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"knightman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"knightman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"knightman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "larkman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"larkman-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"larkman-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"leadraid/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"magnetmn/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"magntmn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"magntmn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"larkman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"larkman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"leader_raid/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"magnetman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"magnetman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"magnetman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "meddy/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"meddy-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"meddy-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"napalmmn/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"naplmmn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"naplmmn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"numbrman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"numbrmn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"numbrmn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"meddy_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"meddy_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"napalmman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"napalmman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"napalmman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"numberman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"numberman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"numberman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "protoman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"protomn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"protomn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"protoman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"protoman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "roll/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"roll-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"roll-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"serchman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"serchmn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"serchmn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"roll_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"roll_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"searchman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"searchman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"searchman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "shademan/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"shademn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"shademn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"shadoman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"shadomn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"shadomn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"tmhwkman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"tmhwkmn-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"tmhwkmn-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"shademan_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"shademan_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"shadowman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"shadowman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"shadowman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 "toadman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"toadman-sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"toadman-ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
-"wildbird/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"toadman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"toadman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"tomahawkman/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"tomahawkman_sp/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"tomahawkman_ds/controller" = { pool = "effect", index = 0x10, scratch_position = true }
+"wild_bird/controller" = { pool = "effect", index = 0x10, scratch_position = true }
 # end: the navi chips' controllers
-"engine/full-synchro-aura" = { pool = "actor", index = 0x5E }
+"engine/full_synchro_aura" = { pool = "actor", index = 0x5E }
 "projectile" = { pool = "attack", index = 0x00 }
 "bomb" = { pool = "attack", index = 0x08 }
 "grab/shot" = { pool = "attack", index = 0x0F }
-"energbom/burst" = { pool = "attack", index = 0x11 }
-"grabbnsh/hand" = { pool = "attack", index = 0x46 }
+"energy_bomb/burst" = { pool = "attack", index = 0x11 }
+"grab_banish/hand" = { pool = "attack", index = 0x46 }
 "grab/controller" = { pool = "effect", index = 0x03, scratch_position = true }
-"gauge-speed" = { pool = "effect", index = 0x1C, scratch_position = true }
-"panel-changer" = { pool = "effect", index = 0x1F, scratch_position = true }
-"panel-chips/controller" = { pool = "effect", index = 0x20, scratch_position = true }
-"grabbnsh/controller" = { pool = "effect", index = 0x22, scratch_position = true }
-"trap-chip" = { pool = "effect", index = 0x2A, scratch_position = true }
-"antirecv/controller" = { pool = "effect", index = 0x2C, scratch_position = true }
+"gauge_speed" = { pool = "effect", index = 0x1C, scratch_position = true }
+"panel_changer" = { pool = "effect", index = 0x1F, scratch_position = true }
+"panel_chips/controller" = { pool = "effect", index = 0x20, scratch_position = true }
+"grab_banish/controller" = { pool = "effect", index = 0x22, scratch_position = true }
+"trap_chip" = { pool = "effect", index = 0x2A, scratch_position = true }
+"anti_recovery/controller" = { pool = "effect", index = 0x2C, scratch_position = true }
 "protoman/navi" = { pool = "actor", index = 0x3C }
-"engine/body-overlay" = { pool = "actor", index = 0x56 }
-"engine/form-overlay" = { pool = "actor", index = 0x57 }
+"engine/body_overlay" = { pool = "actor", index = 0x56 }
+"engine/form_overlay" = { pool = "actor", index = 0x57 }
 "larkman/navi" = { pool = "actor", index = 0x1E }
 "larkman/swoop" = { pool = "attack", index = 0xBA }
 "larkman/follower" = { pool = "attack", index = 0xCB }
@@ -134,132 +134,132 @@
 "django/rubble" = { pool = "effect", index = 0x84 }
 "shademan/navi" = { pool = "actor", index = 0x19 }
 "shademan/crush" = { pool = "attack", index = 0x34 }
-"serchman/navi" = { pool = "actor", index = 0x31 }
-"serchman/scope" = { pool = "effect", index = 0x43 }
-"serchman/shot" = { pool = "attack", index = 0x57 }
+"searchman/navi" = { pool = "actor", index = 0x31 }
+"searchman/scope" = { pool = "effect", index = 0x43 }
+"searchman/shot" = { pool = "attack", index = 0x57 }
 "bass/navi" = { pool = "actor", index = 0x4F }
 "bass/strike" = { pool = "attack", index = 0x72 }
-"dethphnx/controller" = { pool = "effect", index = 0x15, scratch_position = true }
-"dethphnx/phoenix" = { pool = "actor", index = 0x28 }
-"dethphnx/fire" = { pool = "effect", index = 0x89 }
-"dethphnx/flame" = { pool = "effect", index = 0x71 }
+"death_phoenix/controller" = { pool = "effect", index = 0x15, scratch_position = true }
+"death_phoenix/phoenix" = { pool = "actor", index = 0x28 }
+"death_phoenix/fire" = { pool = "effect", index = 0x89 }
+"death_phoenix/flame" = { pool = "effect", index = 0x71 }
 "phoenix/controller" = { pool = "effect", index = 0x0D, scratch_position = true }
 "phoenix/phoenix" = { pool = "actor", index = 0x27 }
 "phoenix/fireball" = { pool = "attack", index = 0xC5 }
 "phoenix/blaze" = { pool = "effect", index = 0x88 }
 "roll/navi" = { pool = "actor", index = 0x2C }
 "roll/heart" = { pool = "attack", index = 0x4E }
-"tmhwkman/navi" = { pool = "actor", index = 0x13 }
-"numbrman/navi" = { pool = "actor", index = 0x0F }
-"numbrman/face" = { pool = "actor", index = 0x5C }
+"tomahawkman/navi" = { pool = "actor", index = 0x13 }
+"numberman/navi" = { pool = "actor", index = 0x0F }
+"numberman/face" = { pool = "actor", index = 0x5C }
 "colonel/navi" = { pool = "actor", index = 0x08 }
-"shadoman/navi" = { pool = "actor", index = 0x07, scratch_status = true }
+"shadowman/navi" = { pool = "actor", index = 0x07, scratch_status = true }
 "toadman/navi" = { pool = "actor", index = 0x17 }
 "toadman/note" = { pool = "attack", index = 0x81 }
-"blizman/navi" = { pool = "actor", index = 0x14 }
-"blizman/ball" = { pool = "attack", index = 0xB2 }
-"blizman/roller" = { pool = "attack", index = 0xB7, scratch_z_fraction = true }
+"blizzardman/navi" = { pool = "actor", index = 0x14 }
+"blizzardman/ball" = { pool = "attack", index = 0xB2 }
+"blizzardman/roller" = { pool = "attack", index = 0xB7, scratch_z_fraction = true }
 "cloudman/navi" = { pool = "actor", index = 0x15 }
 "cloudman/cloud" = { pool = "attack", index = 0xB3, scratch_position = true }
 "tomahawkman/tomahawk" = { pool = "attack", index = 0xB4, scratch_z_fraction = true }
 "shadowman/shadow" = { pool = "actor", index = 0x04 }
 "knightman/crusher" = { pool = "attack", index = 0x15 }
-"numberman/numtrap/controller" = { pool = "effect", index = 0x40 }
+"numberman/number_trap/controller" = { pool = "effect", index = 0x40 }
 "numberman/trap" = { pool = "attack", index = 0xC3 }
 "numberman/press" = { pool = "attack", index = 0x8C }
 "gyroman/navi" = { pool = "actor", index = 0x0C }
-"gyroman/airforce" = { pool = "actor", index = 0x0C }
-"napalmmn/navi" = { pool = "actor", index = 0x0E }
+"gyroman/gyro_air_force" = { pool = "actor", index = 0x0C }
+"napalmman/navi" = { pool = "actor", index = 0x0E }
 "magnetman/missile" = { pool = "attack", index = 0x63 }
-"magnetmn/navi" = { pool = "actor", index = 0x0D }
-"magnetmn/magnet" = { pool = "attack", index = 0x67, scratch_position = true }
-"magnetmn/pull" = { pool = "attack", index = 0x66, scratch_position = true }
+"magnetman/navi" = { pool = "actor", index = 0x0D }
+"magnetman/magnet" = { pool = "attack", index = 0x67, scratch_position = true }
+"magnetman/pull" = { pool = "attack", index = 0x66, scratch_position = true }
 "meddy/navi" = { pool = "actor", index = 0x12 }
-"knightmn/navi" = { pool = "actor", index = 0x06 }
-"knightmn/ball" = { pool = "attack", index = 0x17, scratch_position = true }
-"deltaray/navi" = { pool = "actor", index = 0x3D }
-"bassanly/navi" = { pool = "actor", index = 0x50 }
-"bassanly/shot" = { pool = "attack", index = 0x73 }
-"bighook/hook" = { pool = "effect", index = 0x8C }
-"bighook/fire" = { pool = "attack", index = 0xCA }
-"metrknuk/controller" = { pool = "effect", index = 0x76, scratch_position = true }
-"metrknuk/fist" = { pool = "attack", index = 0x76 }
-"bugcurse/controller" = { pool = "effect", index = 0x56, scratch_position = true }
-"bugcurse/curse" = { pool = "attack", index = 0x80 }
-"omegarkt/controller" = { pool = "effect", index = 0x79, scratch_position = true }
-"omegarkt/rocket" = { pool = "attack", index = 0xB9 }
-"bugcharg/controller" = { pool = "effect", index = 0x7C, scratch_position = true }
-"bugcharg/actor" = { pool = "actor", index = 0x59 }
-"airspin/top" = { pool = "attack", index = 0x9B }
-"aqwhirl/whirlpool" = { pool = "attack", index = 0x5D }
-"numbrbl/controller" = { pool = "effect", index = 0x69, scratch_position = true }
-"numbrbl/numberman" = { pool = "actor", index = 0x45 }
-"numbrbl/ball" = { pool = "attack", index = 0x91 }
-"copydmg/mark" = { pool = "attack", index = 0x28 }
+"knightman/navi" = { pool = "actor", index = 0x06 }
+"knightman/ball" = { pool = "attack", index = 0x17, scratch_position = true }
+"delta_ray_edge/navi" = { pool = "actor", index = 0x3D }
+"bass_anomaly/navi" = { pool = "actor", index = 0x50 }
+"bass_anomaly/shot" = { pool = "attack", index = 0x73 }
+"big_hook/hook" = { pool = "effect", index = 0x8C }
+"big_hook/fire" = { pool = "attack", index = 0xCA }
+"meteor_knuckle/controller" = { pool = "effect", index = 0x76, scratch_position = true }
+"meteor_knuckle/fist" = { pool = "attack", index = 0x76 }
+"bug_curse/controller" = { pool = "effect", index = 0x56, scratch_position = true }
+"bug_curse/curse" = { pool = "attack", index = 0x80 }
+"omega_rocket/controller" = { pool = "effect", index = 0x79, scratch_position = true }
+"omega_rocket/rocket" = { pool = "attack", index = 0xB9 }
+"bug_charge/controller" = { pool = "effect", index = 0x7C, scratch_position = true }
+"bug_charge/actor" = { pool = "actor", index = 0x59 }
+"air_spin/top" = { pool = "attack", index = 0x9B }
+"aqua_whirl/whirlpool" = { pool = "attack", index = 0x5D }
+"number_ball/controller" = { pool = "effect", index = 0x69, scratch_position = true }
+"number_ball/numberman" = { pool = "actor", index = 0x45 }
+"number_ball/ball" = { pool = "attack", index = 0x91 }
+"copy_damage/mark" = { pool = "attack", index = 0x28 }
 "jealousy/controller" = { pool = "effect", index = 0x36, scratch_position = true }
-"piledrvr/controller" = { pool = "effect", index = 0x6F, scratch_position = true }
-"piledrvr/pile" = { pool = "attack", index = 0x99 }
-"piledrvr/beam" = { pool = "attack", index = 0x9A }
-"leadraid/protoman" = { pool = "actor", index = 0x20 }
-"leadraid/colonel" = { pool = "actor", index = 0x22, scratch_status = true }
-"leadraid/glow" = { pool = "effect", index = 0x85 }
-"chaoslrd/navi" = { pool = "actor", index = 0x51, z_moves_from_spawner = true }
-"chaoslrd/aura" = { pool = "effect", index = 0x47 }
-"chaoslrd/gather" = { pool = "effect", index = 0x4B }
-"chaoslrd/strike" = { pool = "attack", index = 0x82, z_falls_from_spawner = 15 }
-"darkinvs/controller" = { pool = "effect", index = 0x18, scratch_position = true }
-"darkinvs/stand-in" = { pool = "actor", index = 0x09 }
-"darkinvs/image" = { pool = "actor", index = 0x0A }
+"pile_driver/controller" = { pool = "effect", index = 0x6F, scratch_position = true }
+"pile_driver/pile" = { pool = "attack", index = 0x99 }
+"pile_driver/beam" = { pool = "attack", index = 0x9A }
+"leader_raid/protoman" = { pool = "actor", index = 0x20 }
+"leader_raid/colonel" = { pool = "actor", index = 0x22, scratch_status = true }
+"leader_raid/glow" = { pool = "effect", index = 0x85 }
+"chaos_lord/navi" = { pool = "actor", index = 0x51, z_moves_from_spawner = true }
+"chaos_lord/aura" = { pool = "effect", index = 0x47 }
+"chaos_lord/gather" = { pool = "effect", index = 0x4B }
+"chaos_lord/strike" = { pool = "attack", index = 0x82, z_falls_from_spawner = 15 }
+"dark_invisible/controller" = { pool = "effect", index = 0x18, scratch_position = true }
+"dark_invisible/stand_in" = { pool = "actor", index = 0x09 }
+"dark_invisible/image" = { pool = "actor", index = 0x0A }
 # DeltaRay's bursts: the follow effect's look 4 (effect #0x31, 0x080E3E3C, one object for all its looks).
-"deltaray/burst" = { pool = "effect", index = 0x31 }
+"delta_ray_edge/burst" = { pool = "effect", index = 0x31 }
 "meddy/capsule" = { pool = "attack", index = 0x0C, scratch_position = true }
-"napalmmn/bomb" = { pool = "attack", index = 0x3A }
+"napalmman/bomb" = { pool = "attack", index = 0x3A }
 "gyroman/bomb" = { pool = "attack", index = 0x1B, scratch_position = true }
 "gyroman/strike" = { pool = "attack", index = 0x1C }
 "shuriken" = { pool = "attack", index = 0x5C }
-"numbrman/dice" = { pool = "attack", index = 0x05 }
-"dice-marker" = { pool = "effect", index = 0x83, scratch_position = true }
-"sonic-boom" = { pool = "attack", index = 0x58 }
-"holydrem/controller" = { pool = "effect", index = 0x59, scratch_position = true }
-"holydrem/actor" = { pool = "actor", index = 0x1C }
-"holydrem/shot" = { pool = "attack", index = 0x83 }
-"invisibl/controller" = { pool = "effect", index = 0x5D, scratch_position = true }
+"numberman/dice" = { pool = "attack", index = 0x05 }
+"dice_marker" = { pool = "effect", index = 0x83, scratch_position = true }
+"sonic_boom" = { pool = "attack", index = 0x58 }
+"holy_dream/controller" = { pool = "effect", index = 0x59, scratch_position = true }
+"holy_dream/actor" = { pool = "actor", index = 0x1C }
+"holy_dream/shot" = { pool = "attack", index = 0x83 }
+"invisible/controller" = { pool = "effect", index = 0x5D, scratch_position = true }
 "mine/controller" = { pool = "effect", index = 0x29, scratch_position = true }
-"mine/land-mine" = { pool = "attack", index = 0x4C }
-"antidmg/shuriken" = { pool = "attack", index = 0xC2 }
-"rising-bubble" = { pool = "effect", index = 0x14 }
-"firehit/fist" = { pool = "attack", index = 0x5B }
+"mine/land_mine" = { pool = "attack", index = 0x4C }
+"anti_damage/shuriken" = { pool = "attack", index = 0xC2 }
+"rising_bubble" = { pool = "effect", index = 0x14 }
+"fire_hit/fist" = { pool = "attack", index = 0x5B }
 "bullet" = { pool = "attack", index = 0x12 }
-"colonel-soldier" = { pool = "attack", index = 0x30 }
-"redfrut/fruit" = { pool = "attack", index = 0x8D }
-"boybomb/bomb" = { pool = "attack", index = 0x3E }
-"boybomb/controller" = { pool = "effect", index = 0x67 }
-"rockcube/cube" = { pool = "effect", index = 0x37 }
+"colonel_soldier" = { pool = "attack", index = 0x30 }
+"red_fruit/fruit" = { pool = "attack", index = 0x8D }
+"boy_bomb/bomb" = { pool = "attack", index = 0x3E }
+"boy_bomb/controller" = { pool = "effect", index = 0x67 }
+"rock_cube/cube" = { pool = "effect", index = 0x37 }
 "wind/fan" = { pool = "attack", index = 0x48 }
 "wind/controller" = { pool = "effect", index = 0x25 }
-"vdoll/doll" = { pool = "attack", index = 0x7A }
-"vdoll/curse" = { pool = "effect", index = 0x4E, scratch_position = true }
-"vdoll/sparkles" = { pool = "effect", index = 0x11, scratch_position = true }
+"voodoo_doll/doll" = { pool = "attack", index = 0x7A }
+"voodoo_doll/curse" = { pool = "effect", index = 0x4E, scratch_position = true }
+"voodoo_doll/sparkles" = { pool = "effect", index = 0x11, scratch_position = true }
 "voltz/sensor" = { pool = "attack", index = 0x90 }
 "voltz/shock" = { pool = "attack", index = 0x92 }
 "tornado" = { pool = "attack", index = 0x31 }
-"anti-trap/trap" = { pool = "attack", index = 0x4D, scratch_position = true }
-"anti-trap/strike" = { pool = "effect", index = 0x2B, scratch_position = true }
-"panel-bursts" = { pool = "effect", index = 0x24, scratch_position = true }
-"crakout/crack" = { pool = "attack", index = 0x18 }
-"soul-image" = { pool = "actor", index = 0x2A }
-"chaos-shade" = { pool = "actor", index = 0x2B }
-"dark-survival/shade" = { pool = "actor", index = 0x2E }
-"gyrosoul/tornado" = { pool = "attack", index = 0x1E }
-"searchsoul/reveal" = { pool = "effect", index = 0x8F, scratch_position = true }
+"anti_trap/trap" = { pool = "attack", index = 0x4D, scratch_position = true }
+"anti_trap/strike" = { pool = "effect", index = 0x2B, scratch_position = true }
+"panel_bursts" = { pool = "effect", index = 0x24, scratch_position = true }
+"crack_out/crack" = { pool = "attack", index = 0x18 }
+"soul_image" = { pool = "actor", index = 0x2A }
+"chaos_shade" = { pool = "actor", index = 0x2B }
+"dark_survival/shade" = { pool = "actor", index = 0x2E }
+"gyro_soul/tornado" = { pool = "attack", index = 0x1E }
+"search_soul/reveal" = { pool = "effect", index = 0x8F, scratch_position = true }
 "megaman/glow" = { pool = "effect", index = 0x26 }
-"dive-ripple" = { pool = "effect", index = 0x3E }
-"tomahawksoul/grass" = { pool = "effect", index = 0x16, scratch_position = true }
-"numbersoul/layer" = { pool = "actor", index = 0x54 }
+"dive_ripple" = { pool = "effect", index = 0x3E }
+"tomahawk_soul/grass" = { pool = "effect", index = 0x16, scratch_position = true }
+"number_soul/layer" = { pool = "actor", index = 0x54 }
 "immobilizer" = { pool = "attack", index = 0x3F }
-"magnetsoul/magnet" = { pool = "attack", index = 0x75 }
-"timebom/countdown" = { pool = "attack", index = 0x4B }
-"timebom/controller" = { pool = "effect", index = 0x27, scratch_position = true }
+"magnet_soul/magnet" = { pool = "attack", index = 0x75 }
+"time_bomb_plus/countdown" = { pool = "attack", index = 0x4B }
+"time_bomb_plus/controller" = { pool = "effect", index = 0x27, scratch_position = true }
 "lance" = { pool = "attack", index = 0x4F }
 "meteor" = { pool = "attack", index = 0x56 }
 "meteors/shower" = { pool = "effect", index = 0x46 }
@@ -268,25 +268,25 @@
 "drill" = { pool = "attack", index = 0x71 }
 "instrument" = { pool = "attack", index = 0x78 }
 "instruments/controller" = { pool = "effect", index = 0x4A, scratch_position = true }
-"airhoc/puck" = { pool = "attack", index = 0x2E }
-"gundels/beam" = { pool = "effect", index = 0x48 }
-"bugbomb/bomb" = { pool = "attack", index = 0x77 }
-"mrkcan/sight" = { pool = "effect", index = 0x44 }
+"air_hockey/puck" = { pool = "attack", index = 0x2E }
+"gun_del_sol/beam" = { pool = "effect", index = 0x48 }
+"bug_bomb/bomb" = { pool = "attack", index = 0x77 }
+"mark_cannon/sight" = { pool = "effect", index = 0x44 }
 "pulsar/pulse" = { pool = "attack", index = 0x6A }
-"spshake/wave" = { pool = "attack", index = 0x68 }
+"space_shake/wave" = { pool = "attack", index = 0x68 }
 "skully/skull" = { pool = "attack", index = 0x88 }
 "snake/controller" = { pool = "effect", index = 0x32, scratch_position = true }
 "snake/nest" = { pool = "attack", index = 0x53 }
 "snake/snake" = { pool = "attack", index = 0x54 }
-"yoyo/yoyo" = { pool = "attack", index = 0x52 }
-"circgun/gun" = { pool = "attack", index = 0x89 }
-"circgun/shot" = { pool = "attack", index = 0x8A }
-"circgun/controller" = { pool = "effect", index = 0x5E, scratch_position = true }
-"tankcan/shell" = { pool = "attack", index = 0x3C }
-"lifesync/controller" = { pool = "effect", index = 0x5C, scratch_position = true }
-"lifesync/marker" = { pool = "effect", index = 0x60 }
-"moonbld/blade" = { pool = "attack", index = 0x69, scratch_position = true }
-"crakbom/bomb" = { pool = "attack", index = 0x24 }
+"yo_yo/yo_yo" = { pool = "attack", index = 0x52 }
+"circle_gun/gun" = { pool = "attack", index = 0x89 }
+"circle_gun/shot" = { pool = "attack", index = 0x8A }
+"circle_gun/controller" = { pool = "effect", index = 0x5E, scratch_position = true }
+"tank_cannon/shell" = { pool = "attack", index = 0x3C }
+"life_synchro/controller" = { pool = "effect", index = 0x5C, scratch_position = true }
+"life_synchro/marker" = { pool = "effect", index = 0x60 }
+"moon_blade/blade" = { pool = "attack", index = 0x69, scratch_position = true }
+"crack_bomb/bomb" = { pool = "attack", index = 0x24 }
 "geddon/controller" = { pool = "effect", index = 0x1D, scratch_position = true }
 "geddon/quake" = { pool = "effect", index = 0x1E, scratch_position = true }
 "anubis/controller" = { pool = "effect", index = 0x33, scratch_position = true }
@@ -294,81 +294,81 @@
 "guardian/controller" = { pool = "effect", index = 0x52, scratch_position = true }
 "guardian/statue" = { pool = "attack", index = 0x7D }
 "guardian/strike" = { pool = "effect", index = 0x53, scratch_position = true }
-"barrier-visual" = { pool = "effect", index = 0x07, round_start_open_bus_flags = 0x02 }
+"barrier_visual" = { pool = "effect", index = 0x07, round_start_open_bus_flags = 0x02 }
 "barriers/controller" = { pool = "effect", index = 0x2F, scratch_position = true }
 "blinder/controller" = { pool = "effect", index = 0x23, scratch_position = true }
-"engine/palette-flash" = { pool = "effect", index = 0x0A, scratch_position = true }
-"colorpt/controller" = { pool = "effect", index = 0x50, scratch_position = true }
-"colorpt/point" = { pool = "effect", index = 0x51, scratch_z_fraction = true }
-"batcan/shot" = { pool = "attack", index = 0x01 }
-"justcone/strike" = { pool = "attack", index = 0xAE }
-"nrthwind/controller" = { pool = "effect", index = 0x39, scratch_position = true }
-"nrthwind/wind" = { pool = "attack", index = 0x5A, scratch_position = true }
-"nrthwind/streak" = { pool = "effect", index = 0x3A }
+"engine/palette_flash" = { pool = "effect", index = 0x0A, scratch_position = true }
+"color_point/controller" = { pool = "effect", index = 0x50, scratch_position = true }
+"color_point/point" = { pool = "effect", index = 0x51, scratch_z_fraction = true }
+"bat_cannon/shot" = { pool = "attack", index = 0x01 }
+"justice_one/strike" = { pool = "attack", index = 0xAE }
+"north_wind/controller" = { pool = "effect", index = 0x39, scratch_position = true }
+"north_wind/wind" = { pool = "attack", index = 0x5A, scratch_position = true }
+"north_wind/streak" = { pool = "effect", index = 0x3A }
 "otenko/controller" = { pool = "effect", index = 0x5F, scratch_position = true }
 "otenko/statue" = { pool = "attack", index = 0xAD }
-"cactbal/ball" = { pool = "attack", index = 0x5E }
-"elcreel/reel" = { pool = "attack", index = 0xA4 }
+"cactus_ball/ball" = { pool = "attack", index = 0x5E }
+"elec_reel/reel" = { pool = "attack", index = 0xA4 }
 "rflectr/shield" = { pool = "attack", index = 0x2B }
 "guard/wave" = { pool = "attack", index = 0x16 }
-"crsshld/cross" = { pool = "attack", index = 0xA8 }
-"wavepit/wave" = { pool = "attack", index = 0xA5 }
-"woodnos/wave" = { pool = "attack", index = 0xA6 }
-"woodnos/geyser" = { pool = "attack", index = 0xA7 }
-"sidebub/bubble" = { pool = "attack", index = 0x8F }
-"flying-shot" = { pool = "attack", index = 0x0B }
+"curse_shield/cross" = { pool = "attack", index = 0xA8 }
+"wave_pit/wave" = { pool = "attack", index = 0xA5 }
+"wood_nose/wave" = { pool = "attack", index = 0xA6 }
+"wood_nose/geyser" = { pool = "attack", index = 0xA7 }
+"side_bubble/bubble" = { pool = "attack", index = 0x8F }
+"flying_shot" = { pool = "attack", index = 0x0B }
 "rock" = { pool = "attack", index = 0x59 }
 "rock/debris" = { pool = "effect", index = 0x38 }
 "boulder" = { pool = "attack", index = 0x6E }
-"greatyo/controller" = { pool = "effect", index = 0x70 }
-"bugfix/glow" = { pool = "actor", index = 0x5D }
-"bugfix/controller" = { pool = "effect", index = 0x3B, scratch_position = true }
+"great_yo_yo/controller" = { pool = "effect", index = 0x70 }
+"bug_fix/glow" = { pool = "actor", index = 0x5D }
+"bug_fix/controller" = { pool = "effect", index = 0x3B, scratch_position = true }
 "liberation/controller" = { pool = "effect", index = 0x8A, scratch_position = true }
-"poltrgst/controller" = { pool = "effect", index = 0x72, scratch_position = true }
-"poltrgst/stand-in" = { pool = "actor", index = 0x58 }
-"poltrgst/poltergeist" = { pool = "effect", index = 0x73 }
+"poltergeist/controller" = { pool = "effect", index = 0x72, scratch_position = true }
+"poltergeist/stand_in" = { pool = "actor", index = 0x58 }
+"poltergeist/poltergeist" = { pool = "effect", index = 0x73 }
 "quake/bomb" = { pool = "attack", index = 0x51 }
 "seed" = { pool = "attack", index = 0x4A }
-"h-burst/burst" = { pool = "attack", index = 0x9E }
+"hyper_burst/burst" = { pool = "attack", index = 0x9E }
 "boxer/boxer" = { pool = "effect", index = 0x64 }
-"shakpar/shaker" = { pool = "effect", index = 0x66 }
-"cacdanc/dancer" = { pool = "effect", index = 0x65 }
-"cacdanc/cactus" = { pool = "attack", index = 0xB1 }
-"hotbody/fire" = { pool = "effect", index = 0x57 }
-"hotbody/flame" = { pool = "attack", index = 0x9D }
-"bodygrd/controller" = { pool = "effect", index = 0x6D, scratch_position = true }
-"bodygrd/striker" = { pool = "effect", index = 0x6E, scratch_position = true }
-"cusvolt/beam" = { pool = "attack", index = 0xB8 }
-"elempowr/controller" = { pool = "effect", index = 0x7F, scratch_position = true }
-"rainyday/controller" = { pool = "effect", index = 0x75, scratch_position = true }
-"rainyday/cloud" = { pool = "attack", index = 0x97 }
-"elemrage/flame" = { pool = "attack", index = 0x98 }
-"cannball/ball" = { pool = "attack", index = 0x35 }
+"shake_parade/shaker" = { pool = "effect", index = 0x66 }
+"cactus_dance/dancer" = { pool = "effect", index = 0x65 }
+"cactus_dance/cactus" = { pool = "attack", index = 0xB1 }
+"hot_body/fire" = { pool = "effect", index = 0x57 }
+"hot_body/flame" = { pool = "attack", index = 0x9D }
+"body_guard/controller" = { pool = "effect", index = 0x6D, scratch_position = true }
+"body_guard/striker" = { pool = "effect", index = 0x6E, scratch_position = true }
+"custom_volt/beam" = { pool = "attack", index = 0xB8 }
+"element_power/controller" = { pool = "effect", index = 0x7F, scratch_position = true }
+"rainy_day/controller" = { pool = "effect", index = 0x75, scratch_position = true }
+"rainy_day/cloud" = { pool = "attack", index = 0x97 }
+"element_rage/flame" = { pool = "attack", index = 0x98 }
+"cannon_ball/ball" = { pool = "attack", index = 0x35 }
 "geyser/bomb" = { pool = "attack", index = 0x42 }
 "geyser/water" = { pool = "attack", index = 0x43, scratch_position = true }
-"metagel/controller" = { pool = "effect", index = 0x21, scratch_position = true }
-"metagel/gel" = { pool = "attack", index = 0x45, scratch_position = true }
+"metal_gel/controller" = { pool = "effect", index = 0x21, scratch_position = true }
+"metal_gel/gel" = { pool = "attack", index = 0x45, scratch_position = true }
 "magnum/controller" = { pool = "effect", index = 0x30, scratch_position = true }
 "magnum/gunner" = { pool = "actor", index = 0x02 }
-"blakwing/controller" = { pool = "effect", index = 0x54, scratch_position = true }
-"blakwing/perch" = { pool = "effect", index = 0x55 }
-"blakwing/flock" = { pool = "attack", index = 0x7E, scratch_position = true }
-"blakwing/wing" = { pool = "attack", index = 0x7F }
-"csmopris/navi" = { pool = "actor", index = 0x26 }
-"csmopris/comet" = { pool = "attack", index = 0x74 }
+"black_wing/controller" = { pool = "effect", index = 0x54, scratch_position = true }
+"black_wing/perch" = { pool = "effect", index = 0x55 }
+"black_wing/flock" = { pool = "attack", index = 0x7E, scratch_position = true }
+"black_wing/wing" = { pool = "attack", index = 0x7F }
+"cosmo_prison/navi" = { pool = "actor", index = 0x26 }
+"cosmo_prison/comet" = { pool = "attack", index = 0x74 }
 "football/navi" = { pool = "actor", index = 0x25 }
 "football/ball" = { pool = "attack", index = 0x95 }
-"bignoise/navi" = { pool = "actor", index = 0x1B }
-"bignoise/noise" = { pool = "attack", index = 0x04 }
+"big_noise/navi" = { pool = "actor", index = 0x1B }
+"big_noise/noise" = { pool = "attack", index = 0x04 }
 "support/controller" = { pool = "effect", index = 0x74 }
 "rush" = { pool = "actor", index = 0x4B }
 "beat" = { pool = "actor", index = 0x4C }
 "tango" = { pool = "actor", index = 0x4D }
 "tango/heal" = { pool = "attack", index = 0x9F }
-"searchman/satelity/controller" = { pool = "effect", index = 0x3F, scratch_position = true }
-"searchman/satelity/satellite" = { pool = "effect", index = 0x61 }
-"searchman/satelity/beam" = { pool = "effect", index = 0x62 }
-"searchman/satelity/flare" = { pool = "attack", index = 0xAF }
+"searchman/satellite_ray/controller" = { pool = "effect", index = 0x3F, scratch_position = true }
+"searchman/satellite_ray/satellite" = { pool = "effect", index = 0x61 }
+"searchman/satellite_ray/beam" = { pool = "effect", index = 0x62 }
+"searchman/satellite_ray/flare" = { pool = "attack", index = 0xAF }
 # EXE5 DS's party supports' actor (the DS's actor object 0x30, 0x021FF280: lib/party_support), a kind per navi.
 "protoman/support" = { pool = "actor", index = 0x30 }
 "napalmman/support" = { pool = "actor", index = 0x30 }
@@ -379,57 +379,57 @@
 # EXE5 DS's Double Attacks (content/exe5/double_attacks; docs/design/exe5ds-map.md §5): the DS's numbers. Each
 # controller's position is what its launcher's registers held (the panel's Y, the element, the spawner's address), which
 # nothing reads.
-"d-hero/controller" = { pool = "effect", index = 0x97, scratch_position = true }
-"m-zan/controller" = { pool = "effect", index = 0x98, scratch_position = true }
-"m-air/controller" = { pool = "effect", index = 0x99, scratch_position = true }
-"d-valcan/controller" = { pool = "effect", index = 0x9A, scratch_position = true }
-"c-scope/controller" = { pool = "effect", index = 0x9B, scratch_position = true }
-"c-bomb/controller" = { pool = "effect", index = 0x9C, scratch_position = true }
-"br-rush/controller" = { pool = "effect", index = 0x9D, scratch_position = true }
-"b-shoot/controller" = { pool = "effect", index = 0x9E, scratch_position = true }
-"e-sappou/controller" = { pool = "effect", index = 0x9F, scratch_position = true }
-"k-throw/controller" = { pool = "effect", index = 0xA0, scratch_position = true }
-"k-bomb/controller" = { pool = "effect", index = 0xA1, scratch_position = true }
-"g-otoshi/controller" = { pool = "effect", index = 0xA2, scratch_position = true }
-"d-hero/navi" = { pool = "actor", index = 0x35 }
-"m-zan/navi" = { pool = "actor", index = 0x36 }
-"m-air/navi" = { pool = "actor", index = 0x37 }
-"d-valcan/navi" = { pool = "actor", index = 0x38 }
-"c-scope/navi" = { pool = "actor", index = 0x3A }
-"c-bomb/navi" = { pool = "actor", index = 0x3B }
-"br-rush/navi" = { pool = "actor", index = 0x3E }
-"b-shoot/navi" = { pool = "actor", index = 0x3F }
-"e-sappou/navi" = { pool = "actor", index = 0x40 }
-"k-throw/navi" = { pool = "actor", index = 0x41 }
-"k-bomb/navi" = { pool = "actor", index = 0x42 }
-"g-otoshi/navi" = { pool = "actor", index = 0x43 }
-"e-sappou/rock" = { pool = "actor", index = 0x44 }
-"m-zan/immobilizer" = { pool = "attack", index = 0x3F }
-"m-air/bomb" = { pool = "attack", index = 0xA1 }
-"m-air/toss" = { pool = "effect", index = 0xA3 }
-"c-scope/scope" = { pool = "effect", index = 0xA4 }
-"c-bomb/capsule" = { pool = "attack", index = 0xCD }
-"br-rush/cape" = { pool = "attack", index = 0x02 }
-"b-shoot/ball" = { pool = "attack", index = 0xCE }
-"e-sappou/blade" = { pool = "attack", index = 0x69, scratch_position = true }
-"k-bomb/bomb" = { pool = "attack", index = 0xCC }
-"g-otoshi/frog" = { pool = "attack", index = 0xA2 }
+"double_hero/controller" = { pool = "effect", index = 0x97, scratch_position = true }
+"magnet_zan/controller" = { pool = "effect", index = 0x98, scratch_position = true }
+"magnet_air_raid/controller" = { pool = "effect", index = 0x99, scratch_position = true }
+"double_vulcan/controller" = { pool = "effect", index = 0x9A, scratch_position = true }
+"cross_scope/controller" = { pool = "effect", index = 0x9B, scratch_position = true }
+"chemical_bomb/controller" = { pool = "effect", index = 0x9C, scratch_position = true }
+"blind_rain_rush/controller" = { pool = "effect", index = 0x9D, scratch_position = true }
+"broken_shoot/controller" = { pool = "effect", index = 0x9E, scratch_position = true }
+"engetsu_sappou/controller" = { pool = "effect", index = 0x9F, scratch_position = true }
+"knight_throw/controller" = { pool = "effect", index = 0xA0, scratch_position = true }
+"kokubankeshi_bomb/controller" = { pool = "effect", index = 0xA1, scratch_position = true }
+"gama_otoshi/controller" = { pool = "effect", index = 0xA2, scratch_position = true }
+"double_hero/navi" = { pool = "actor", index = 0x35 }
+"magnet_zan/navi" = { pool = "actor", index = 0x36 }
+"magnet_air_raid/navi" = { pool = "actor", index = 0x37 }
+"double_vulcan/navi" = { pool = "actor", index = 0x38 }
+"cross_scope/navi" = { pool = "actor", index = 0x3A }
+"chemical_bomb/navi" = { pool = "actor", index = 0x3B }
+"blind_rain_rush/navi" = { pool = "actor", index = 0x3E }
+"broken_shoot/navi" = { pool = "actor", index = 0x3F }
+"engetsu_sappou/navi" = { pool = "actor", index = 0x40 }
+"knight_throw/navi" = { pool = "actor", index = 0x41 }
+"kokubankeshi_bomb/navi" = { pool = "actor", index = 0x42 }
+"gama_otoshi/navi" = { pool = "actor", index = 0x43 }
+"engetsu_sappou/rock" = { pool = "actor", index = 0x44 }
+"magnet_zan/immobilizer" = { pool = "attack", index = 0x3F }
+"magnet_air_raid/bomb" = { pool = "attack", index = 0xA1 }
+"magnet_air_raid/toss" = { pool = "effect", index = 0xA3 }
+"cross_scope/scope" = { pool = "effect", index = 0xA4 }
+"chemical_bomb/capsule" = { pool = "attack", index = 0xCD }
+"blind_rain_rush/cape" = { pool = "attack", index = 0x02 }
+"broken_shoot/ball" = { pool = "attack", index = 0xCE }
+"engetsu_sappou/blade" = { pool = "attack", index = 0x69, scratch_position = true }
+"kokubankeshi_bomb/bomb" = { pool = "attack", index = 0xCC }
+"gama_otoshi/frog" = { pool = "attack", index = 0xA2 }
 "megaman/support" = { pool = "actor", index = 0x30 }
 # SearchMan's party support: his controller (the DS's effect object 0x94, its position the spawner's registers) and his
 # actor (actor object 0x34).
-"searchman/support-controller" = { pool = "effect", index = 0x94, scratch_position = true }
+"searchman/support_controller" = { pool = "effect", index = 0x94, scratch_position = true }
 "searchman/support" = { pool = "actor", index = 0x34 }
 # NumberMan's DiceBons: his controller (the DS's effect object 0x95) and his actor (actor object 0x33).
-"numberman/dice-bonus-controller" = { pool = "effect", index = 0x95, scratch_position = true }
-"numberman/dice-bonus" = { pool = "actor", index = 0x33 }
+"numberman/dice_bonus_controller" = { pool = "effect", index = 0x95, scratch_position = true }
+"numberman/dice_bonus" = { pool = "actor", index = 0x33 }
 # MagnetMan's Mag-Barr: his controller (the DS's effect object 0x91), his actor (actor object 0x32) and his immobilizer
 # (T3 0x3F).
-"magnetman/support-controller" = { pool = "effect", index = 0x91, scratch_position = true }
+"magnetman/support_controller" = { pool = "effect", index = 0x91, scratch_position = true }
 "magnetman/support" = { pool = "actor", index = 0x32 }
 "magnetman/immobilizer" = { pool = "attack", index = 0x3F }
 # ShadowMan's ambush: his actor (the support actor 0x30's variant 4) and his strikes (the DS's effect object 0x96, its
 # position the spawner's registers).
 "shadowman/support" = { pool = "actor", index = 0x30 }
-"shadowman/ambush-strike" = { pool = "effect", index = 0x96, scratch_position = true }
+"shadowman/ambush_strike" = { pool = "effect", index = 0x96, scratch_position = true }
 # KnightMan's guard: his actor (the support actor 0x30's variant 6).
 "knightman/guard" = { pool = "actor", index = 0x30 }

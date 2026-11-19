@@ -9,7 +9,7 @@ local card: PatchCard = {
     mb = 45,
     effects = {
         cards.hp(100),
-        cards.charged_shot(chips.wideblde),
+        cards.charged_shot(chips.wide_blade),
         cards.back_special(guards.shield),
     },
 }

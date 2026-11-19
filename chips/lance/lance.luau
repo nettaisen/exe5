@@ -8,6 +8,6 @@ local lance_sprite = asset.sprite("lance")
 return {
     kind = lance.make_kind("lance", {
         sprite = lance_sprite,
-        sound = asset.sound("sword-swing"),
+        sound = asset.sound("sword_swing"),
     }),
 }

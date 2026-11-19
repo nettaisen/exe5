@@ -1,0 +1,23 @@
+--!strict
+-- SprSonic (EXE5 chip 0x177): a swing that throws a sonic boom through the row (NeoVari's pick: no library chip): EXE5's
+-- action 0x2B (../sonic_boom/action) and EXE5's sonic boom (lib/swords), hit modifier 1, going through.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local sonic_boom = require("./sonic_boom/action")
+
+local chip: Chip = {
+    codes = { "E", "L", "S", "*" },
+    element = Element.null,
+    family = Family.sword,
+    class = ChipClass.special,
+    rarity = 0,
+    mb = 8,
+    damage = 80,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 1,
+    action = sonic_boom.make({ flinch = true }, true),
+}
+
+return { super_sonic = chip }

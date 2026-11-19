@@ -34,4 +34,4 @@ local chip: Chip = {
     action = throw.action({ variant = CAPSULE, line = capsule.column, while_dimmed = false }),
 }
 
-return { meddycap = chip }
+return { meddy_capsule = chip }

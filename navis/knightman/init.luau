@@ -23,9 +23,9 @@
 
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local kcrusher = require("@self/chip").kcrusher
-local knightman_ball_sprite = asset.sprite("knightman-ball")
-local knightman_portrait_sprite = asset.sprite("knightman-portrait")
+local kingdom_crusher = require("@self/chip").kingdom_crusher
+local knightman_ball_sprite = asset.sprite("knightman_ball")
+local knightman_portrait_sprite = asset.sprite("knightman_portrait")
 local knightman_sprite = asset.sprite("knightman")
 
 -- KnightMan's ball and chain (the body overlays' row 1, 0x0800EE7A): in front.
@@ -38,7 +38,7 @@ local navi: NaviDef = {
     element = Element.null,
     buster_bonus = 1,
     move_lag = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 },
-    banners = { win = asset.banner("knightman-win"), lose = asset.banner("knightman-deleted") },
+    banners = { win = asset.banner("knightman_win"), lose = asset.banner("knightman_deleted") },
     mugshot = asset.mugshot("knightman"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x21, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
@@ -46,7 +46,7 @@ local navi: NaviDef = {
     run_message = {
         portrait = knightman_portrait_sprite,
     },
-    own_chip = { chip = kcrusher, code = "K" },
+    own_chip = { chip = kingdom_crusher, code = "K" },
     own_chip_draws = true,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },
     -- His fresh stats (his stats row): what a side starts him with.

@@ -21,7 +21,7 @@ export type State = {
 
 local SHOT = { is = collision.attack, hits = collision.hits_navis }
 
-local FLYING_SHOT_VARIANT = schema.record_type("flying-shot-variant")
+local FLYING_SHOT_VARIANT = schema.record_type("flying_shot_variant")
 flying_shot.FLYING_SHOT_VARIANT = FLYING_SHOT_VARIANT
 
 -- A flying shot variant: what it is (an attack unless said), its hit modifier, element byte, hit spark (none: none),
@@ -137,7 +137,7 @@ local function init(me: Object)
 end
 
 flying_shot.kind = new.kind {
-    id = "flying-shot",
+    id = "flying_shot",
     pool = Pool.attack,
     state = { variant = FLYING_SHOT_VARIANT, range = schema.u8, highlight = schema.bool },
     -- 0x080C5DCC.

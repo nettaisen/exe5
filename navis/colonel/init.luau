@@ -13,10 +13,10 @@
 -- flinches, so the clear has nothing to port.)
 
 local buster = require("./megaman/weapons/buster")
-local c_cannon = require("@self/chip")["c-cannon"]
+local colonel_cannon = require("@self/chip").colonel_cannon
 local charge = require("@self/charge")
-local colonel_cape_sprite = asset.sprite("colonel-cape")
-local colonel_portrait_sprite = asset.sprite("colonel-portrait")
+local colonel_cape_sprite = asset.sprite("colonel_cape")
+local colonel_portrait_sprite = asset.sprite("colonel_portrait")
 local colonel_sprite = asset.sprite("colonel")
 
 local navi: NaviDef = {
@@ -26,7 +26,7 @@ local navi: NaviDef = {
     element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("colonel-win"), lose = asset.banner("colonel-deleted") },
+    banners = { win = asset.banner("colonel_win"), lose = asset.banner("colonel_deleted") },
     mugshot = asset.mugshot("colonel"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x1d, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
@@ -34,7 +34,7 @@ local navi: NaviDef = {
     run_message = {
         portrait = colonel_portrait_sprite,
     },
-    own_chip = { chip = c_cannon, code = "C" },
+    own_chip = { chip = colonel_cannon, code = "C" },
     own_chip_draws = true,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },
     -- His fresh stats (his stats row): what a side starts him with.

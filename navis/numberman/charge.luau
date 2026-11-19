@@ -2,12 +2,12 @@
 -- NumberMan's charged attack (`numberman/charge`): the original's weapon routine 0x3D (0x0800FAE6) sets the damage his
 -- level gives (the damage rows' row 16, lib/navi_level), his own counter byte, no element and a 30-tick wait, and
 -- starts his action 7 (0x080F15D8): he throws for 22 ticks, and six ticks in, with the throw's sound, a die
--- (chips/numbrman/dice) leaves 24 pixels over his place for the panel three ahead: its face drawn (1 to 6, the
+-- (chips/numberman/dice) leaves 24 pixels over his place for the panel three ahead: its face drawn (1 to 6, the
 -- middle faces likelier: his own table), 40 HP, hit modifier 3, a body the other side can hit, which bursts for its
 -- face times his damage. Then he stands out the wait. No counter window opens, and he can be moved off it: the
 -- action sets no status.
 
-local dice = require("../../chips/numbrman/dice")
+local dice = require("../../chips/numberman/dice")
 local navi_level = require("../../lib/navi_level")
 
 local charge = {}
@@ -29,7 +29,7 @@ local PARTY: { { number } } = {
     { 5, 5 }, { 5, 5 }, { 5, 5 }, { 5, 5 }, { 5, 5 },
 }
 local THROW_ANIM = 6
-local SOUND = asset.sound("minibomb-throw")
+local SOUND = asset.sound("mini_bomb_throw")
 local THROW_TICKS, THROW_AT, WAIT = 22, 16, 30
 -- The die leaves this high (16.16), for the panel this far ahead.
 local UP, REACH = 24 * 0x1_0000, 3

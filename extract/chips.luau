@@ -34,10 +34,10 @@ local function ids(names: AssetNames): { number }
     return out
 end
 
--- A chip's key as the pack has its icon and picture under (`chip-185` where compat names none).
+-- A chip's key as the pack has its icon and picture under (`chip_185` where compat names none).
 local function key(names: AssetNames, id: number): string
     local keys = names.chips or {}
-    return keys[id] or string.format("chip-%03x", id)
+    return keys[id] or string.format("chip_%03x", id)
 end
 
 -- A chip's picture (tiles and palette) and icon in `rom`, each where its record has one. A picture whose palette no ROM

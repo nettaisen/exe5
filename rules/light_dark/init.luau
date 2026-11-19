@@ -152,7 +152,7 @@ local function use_dark_chip(side: number, navi: Object): boolean
 end
 
 -- DrkRecov, which a dark chip offer to MegaMan at low HP prefers (0x08025192: chip 0xC2).
-local DRKRECOV = "drkrecov"
+local DRKRECOV = "dark_recovery"
 
 -- 0x08025114, from the custom screen's opening (0x08022C5C) after its hand size and before the folder closes up: a
 -- worried or dark MegaMan (EXE5's emotions 1 and 5: a mood under 65, or 0) is offered a dark chip of his folder. Its

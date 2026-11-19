@@ -20,7 +20,7 @@ local chip_hand = require("@exelib/chip_hand")
 local plus = {}
 
 -- The sparkle by the navi.
-plus.sparkle = sparkle.make(rising_bubble.kind, asset.sound("panel-poison"))
+plus.sparkle = sparkle.make(rising_bubble.kind, asset.sound("panel_poison"))
 
 -- The invalid chip's `instant` hook (action 0x1A's effect 0): the sparkle, whatever the source.
 function plus.sparkle_alone(user: Object, _spec: InstantChipSpec)

@@ -10,7 +10,7 @@ local card: PatchCard = {
         cards.hp(150),
         cards.body(Element.fire),
         cards.bug(cards.custom(-1)),
-        cards.charged_shot(chips.blkbomb),
+        cards.charged_shot(chips.black_bomb),
     },
 }
 

@@ -1,5 +1,5 @@
 --!strict
--- The patch cards' ZapRng (`megaman/zap-ring`, B↓ZapRng, Bunny's card): weapon routine 0x42 (0x0800FB76) and action
+-- The patch cards' ZapRng (`megaman/zap_ring`, B↓ZapRng, Bunny's card): weapon routine 0x42 (0x0800FB76) and action
 -- 0x32 (0x080EFFC8, EXE5's own): the navi holds out its ring (the attachment table's row 0x38, 0c-5a, at its attach
 -- point 0x1C) and, five ticks after the first, sends a ring (attack object #0xC4, 0x080DF38C: EXE6's code,
 -- `sub_80C51CC` and `sub_80C524C`, which no EXE6 content spawns, EXE5's look) along its row from the panel ahead, 26
@@ -16,11 +16,11 @@ local statuses = require("../../../rules/status")
 
 -- ---- The ring -------------------------------------------------------------------------------------------------------
 
-local SPRITE = asset.sprite("zap-ring")
-local zap_ring_arm_sprite = asset.sprite("zap-ring-arm")
+local SPRITE = asset.sprite("zap_ring")
+local zap_ring_arm_sprite = asset.sprite("zap_ring_arm")
 -- Its row (0x080DF380's row 0, the ZapRng attack's first parameter): its speed (pixels a tick), the status its hits
 -- give, its sound.
-local SPEED, STATUS, SOUND = 10, statuses.paralyze_90, asset.sound("aqua-needle-2")
+local SPEED, STATUS, SOUND = 10, statuses.paralyze_90, asset.sound("aqua_needle_2")
 
 -- The end: no region, hidden, destroyed next update.
 local function finish(me: Object)
@@ -74,7 +74,7 @@ local function init(me: Object)
 end
 
 local RING = new.kind {
-    id = "megaman/zap-ring/ring",
+    id = "megaman/zap_ring/ring",
     pool = Pool.attack,
     -- 0x080DF38C.
     update = function(me: Object)
@@ -158,7 +158,7 @@ local function recover(me: Object, s: State)
 end
 
 local ACTION = new.action {
-    id = "megaman/zap-ring/action",
+    id = "megaman/zap_ring/action",
     state = { timer = schema.u16 },
     -- 0x080EFFC8.
     update = function(me: Object, s: State)
@@ -174,7 +174,7 @@ local ACTION = new.action {
 
 -- 0x0800FB76: 30 damage, hit parameter 10, Elec; no charge, bonus or lockout; parameters 0.
 return new.weapon {
-    id = "megaman/zap-ring",
+    id = "megaman/zap_ring",
     -- The charge table's row 0x42, by Charge 0 to 5: past 4 it reads on into row 0x43's first entry.
     charge_ticks = { 90, 85, 80, 75, 70, 60 },
     setup = function(navi: Object): Action

@@ -20,12 +20,12 @@
 -- engine draws its own way.)
 
 local effects = require("../../lib/effects")
-local hprecov = require("../../chips/hprecov").hprecov
+local hp_recovery = require("../../chips/hp_recovery").hp_recovery
 local overlays = require("@exelib/overlays")
 local party = require("../../rules/party")
 local regions = require("@exelib/regions")
 local toadman = require("../toadman").toadman
-local toad_note_sprite = asset.sprite("toad-note")
+local toad_note_sprite = asset.sprite("toad_note")
 local navi_status = require("@exelib/navi_status")
 local stop_moving = require("../../lib/stop_moving")
 
@@ -90,7 +90,7 @@ local function start(me: Object)
     if battle.screen_fading() then
         return
     end
-    dimming.chip_telop(me.alliance, hprecov)
+    dimming.chip_telop(me.alliance, hp_recovery)
     set_step(me, HEAL)
 end
 

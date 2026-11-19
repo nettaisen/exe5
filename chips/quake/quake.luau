@@ -13,7 +13,7 @@ local trajectory = require("../../lib/trajectory")
 local bomb_sprite = asset.sprite("bomb")
 local explosion_sprite = asset.sprite("explosion")
 local puff_sprite = asset.sprite("puff")
-local quake_drop_sprite = asset.sprite("quake-drop")
+local quake_drop_sprite = asset.sprite("quake_drop")
 
 local quake = {}
 

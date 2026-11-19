@@ -9,7 +9,7 @@ local regions = require("@exelib/regions")
 -- Quake1 (EXE5 chip 0x023): a bomb lobbed three panels ahead that drops a weight there and, landing on solid ground,
 -- cracks the panel and hits around it (level 0): EXE5's throw (lib/bombs, action 0x12 subtype 11) and its Quake bomb
 -- (chips/quake/quake, attack object #0x51).
-local quake1: Chip = {
+local quake_1: Chip = {
     codes = { "A", "K", "P" },
     element = Element.null,
     family = Family["break"],
@@ -28,7 +28,7 @@ local quake1: Chip = {
 -- Quake2 (EXE5 chip 0x024): a bomb lobbed three panels ahead that drops a weight there and, landing on solid ground,
 -- cracks the panel and hits around it (level 1): EXE5's throw (lib/bombs, action 0x12 subtype 11) and its Quake bomb
 -- (chips/quake/quake, attack object #0x51).
-local quake2: Chip = {
+local quake_2: Chip = {
     codes = { "B", "L", "Y" },
     element = Element.null,
     family = Family["break"],
@@ -47,7 +47,7 @@ local quake2: Chip = {
 -- Quake3 (EXE5 chip 0x025): a bomb lobbed three panels ahead that drops a weight there and, landing on solid ground,
 -- cracks the panel and hits around it (level 2): EXE5's throw (lib/bombs, action 0x12 subtype 11) and its Quake bomb
 -- (chips/quake/quake, attack object #0x51).
-local quake3: Chip = {
+local quake_3: Chip = {
     codes = { "F", "H", "N" },
     element = Element.null,
     family = Family["break"],
@@ -63,4 +63,4 @@ local quake3: Chip = {
     auto_battle = { class = "into_reach", range = "cross_three_ahead" },
 }
 
-return { quake1 = quake1, quake2 = quake2, quake3 = quake3 }
+return { quake_1 = quake_1, quake_2 = quake_2, quake_3 = quake_3 }

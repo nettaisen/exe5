@@ -1,0 +1,43 @@
+--!strict
+-- CrossDiv (EXE5 chip 0x135): Colonel cuts in and divides the screen with an X on the first enemy navi ahead
+-- (../colonel/navi, his Param3 1: its strike below).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local navi = require("./colonel/navi")
+local navi_chips = require("../lib/navi_chips/chip")
+
+-- Its strike: both his slashes, falling then rising (an X), with a 40-tick flash; no command.
+local CROSS_DIVIDE = navi.strike {
+    land = function(me: Object)
+        navi.slash(me, 1)
+        navi.slash(me, 2)
+    end,
+    flash = 0x28,
+}
+
+local chip: Chip = {
+    -- The version whose saves hold it (rules/folder; rules/builds' groups).
+    version = Version.colonel,
+    codes = { "C" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.giga,
+    -- A save can collect it (rules/folder): Team Colonel's library lists it, where this record's flags are Team
+    -- ProtoMan's ROM's, which doesn't.
+    collectible = true,
+    rarity = 4,
+    mb = 90,
+    damage = 220,
+    counter = 20,
+    cant_counter = true,
+    lockout = 0,
+    flags = { dimming = true, has_damage = true },
+    slot_in_limit = 1,
+    navi = navi_chips.make {
+        id = "cross_divide/controller",
+        summon = navi.summon { palette = 0, sword_palette = 0, strike = CROSS_DIVIDE },
+    },
+    auto_battle = { class = "at_once" },
+}
+
+return { cross_divide = chip }

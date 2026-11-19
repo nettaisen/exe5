@@ -13,62 +13,62 @@
 actor_lists = 232
 
 [colonel.spawner_z_fractions]
-"boybomb/controller" = [0x080E8087, 0x080E816F]
+"boy_bomb/controller" = [0x080E8087, 0x080E816F]
 "wind/controller" = [0x080E32E5, 0x080E33CD]
-"rockcube/cube" = [0x080E46E7, 0x080E47CF]
-"magnetmn/navi" = [0x080BB0BB, 0x080BB1A3]
-"shadoman/navi" = [0x080BA25B, 0x080BA343]
-"chaoslrd/navi" = [0x080C327F, 0x080C3367]
-"chaoslrd/strike" = [0x080C327F, 0x080C3367]
-"bighook/hook" = [0x080EA991, 0x080EAA79]
+"rock_cube/cube" = [0x080E46E7, 0x080E47CF]
+"magnetman/navi" = [0x080BB0BB, 0x080BB1A3]
+"shadowman/navi" = [0x080BA25B, 0x080BA343]
+"chaos_lord/navi" = [0x080C327F, 0x080C3367]
+"chaos_lord/strike" = [0x080C327F, 0x080C3367]
+"big_hook/hook" = [0x080EA991, 0x080EAA79]
 
 [colonel.panel_xs]
-"tomahawksoul/grass" = [0x99, 0x91]  # the low byte of 0x08011C99
+"tomahawk_soul/grass" = [0x99, 0x91]  # the low byte of 0x08011C99
 
 [colonel.panel_ys]
-"moonbld/blade" = [0x7F, 0x67]  # the low byte of 0x080EF87F
-"tomahawksoul/grass" = [0xAC, 0xA4]  # the low byte of 0x08011BAC
+"moon_blade/blade" = [0x7F, 0x67]  # the low byte of 0x080EF87F
+"tomahawk_soul/grass" = [0xAC, 0xA4]  # the low byte of 0x08011BAC
 
-[jp-protoman]
+[jp_protoman]
 # How far its stage actor lists are from Team ProtoMan's US ROM's (a battle settings record's bytes 12..16:
 # its netbattle settings records at 0x0811AB68): -0x3E4.
 actor_lists = -996
 
-[jp-protoman.spawner_z_fractions]
-"boybomb/controller" = [0x080E8087, 0x080E7DAB]
+[jp_protoman.spawner_z_fractions]
+"boy_bomb/controller" = [0x080E8087, 0x080E7DAB]
 "wind/controller" = [0x080E32E5, 0x080E3011]
-"rockcube/cube" = [0x080E46E7, 0x080E4413]
-"magnetmn/navi" = [0x080BB0BB, 0x080BAE4B]
-"shadoman/navi" = [0x080BA25B, 0x080B9FEF]
-"chaoslrd/navi" = [0x080C327F, 0x080C3007]
-"chaoslrd/strike" = [0x080C327F, 0x080C3007]
-"bighook/hook" = [0x080EA991, 0x080EA6B5]
+"rock_cube/cube" = [0x080E46E7, 0x080E4413]
+"magnetman/navi" = [0x080BB0BB, 0x080BAE4B]
+"shadowman/navi" = [0x080BA25B, 0x080B9FEF]
+"chaos_lord/navi" = [0x080C327F, 0x080C3007]
+"chaos_lord/strike" = [0x080C327F, 0x080C3007]
+"big_hook/hook" = [0x080EA991, 0x080EA6B5]
 
-[jp-protoman.panel_xs]
-"tomahawksoul/grass" = [0x99, 0x81]  # the low byte of 0x08011C99
+[jp_protoman.panel_xs]
+"tomahawk_soul/grass" = [0x99, 0x81]  # the low byte of 0x08011C99
 
-[jp-protoman.panel_ys]
-"moonbld/blade" = [0x7F, 0x87]  # the low byte of 0x080EF87F
-"tomahawksoul/grass" = [0xAC, 0x94]  # the low byte of 0x08011BAC
+[jp_protoman.panel_ys]
+"moon_blade/blade" = [0x7F, 0x87]  # the low byte of 0x080EF87F
+"tomahawk_soul/grass" = [0xAC, 0x94]  # the low byte of 0x08011BAC
 
-[jp-colonel]
+[jp_colonel]
 # How far its stage actor lists are from Team ProtoMan's US ROM's (a battle settings record's bytes 12..16:
 # its netbattle settings records at 0x0811AC50): -0x2FC.
 actor_lists = -764
 
-[jp-colonel.spawner_z_fractions]
-"boybomb/controller" = [0x080E8087, 0x080E7E93]
+[jp_colonel.spawner_z_fractions]
+"boy_bomb/controller" = [0x080E8087, 0x080E7E93]
 "wind/controller" = [0x080E32E5, 0x080E30F9]
-"rockcube/cube" = [0x080E46E7, 0x080E44FB]
-"magnetmn/navi" = [0x080BB0BB, 0x080BAF33]
-"shadoman/navi" = [0x080BA25B, 0x080BA0D7]
-"chaoslrd/navi" = [0x080C327F, 0x080C30EF]
-"chaoslrd/strike" = [0x080C327F, 0x080C30EF]
-"bighook/hook" = [0x080EA991, 0x080EA79D]
+"rock_cube/cube" = [0x080E46E7, 0x080E44FB]
+"magnetman/navi" = [0x080BB0BB, 0x080BAF33]
+"shadowman/navi" = [0x080BA25B, 0x080BA0D7]
+"chaos_lord/navi" = [0x080C327F, 0x080C30EF]
+"chaos_lord/strike" = [0x080C327F, 0x080C30EF]
+"big_hook/hook" = [0x080EA991, 0x080EA79D]
 
-[jp-colonel.panel_xs]
-"tomahawksoul/grass" = [0x99, 0x79]  # the low byte of 0x08011C99
+[jp_colonel.panel_xs]
+"tomahawk_soul/grass" = [0x99, 0x79]  # the low byte of 0x08011C99
 
-[jp-colonel.panel_ys]
-"moonbld/blade" = [0x7F, 0x6F]  # the low byte of 0x080EF87F
-"tomahawksoul/grass" = [0xAC, 0x8C]  # the low byte of 0x08011BAC
+[jp_colonel.panel_ys]
+"moon_blade/blade" = [0x7F, 0x6F]  # the low byte of 0x080EF87F
+"tomahawk_soul/grass" = [0xAC, 0x8C]  # the low byte of 0x08011BAC

@@ -11,9 +11,9 @@ local statuses = require("../../rules/status")
 local cloud = {}
 
 local SPRITE = asset.sprite("cloudman")
-local thunder_ball_sprite = asset.sprite("thunder-ball")
-local SOUND_SHOW = asset.sound("panel-poison")
-local SOUND_CHARGE = asset.sound("erase-man-2")
+local thunder_ball_sprite = asset.sprite("thunder_ball")
+local SOUND_SHOW = asset.sound("panel_poison")
+local SOUND_CHARGE = asset.sound("erase_man_2")
 local SOUND_BOLT = asset.sound("wave")
 -- The bolt (the flying shot's row 0xB, 0x080DCB32): thrown, elec, paralyzing for 90 ticks.
 local BOLT = flying_shot.variant {

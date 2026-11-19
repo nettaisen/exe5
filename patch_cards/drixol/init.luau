@@ -9,7 +9,7 @@ local card: PatchCard = {
     effects = {
         cards.rapid(3),
         cards.charge(3),
-        cards.charged_shot(chips.drilarm),
+        cards.charged_shot(chips.drill_arm),
         cards.bug(cards.hit_status("confuse")),
     },
 }

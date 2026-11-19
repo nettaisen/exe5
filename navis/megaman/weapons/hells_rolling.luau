@@ -1,31 +1,31 @@
 --!strict
--- The patch cards' HelzR (`megaman/hells-rolling`, B↓HelzR, Team Colonel's card 111): weapon routine 0x69
+-- The patch cards' HelzR (`megaman/hells_rolling`, B↓HelzR, Team Colonel's card 111): weapon routine 0x69
 -- (0x0800FE36, calling 0x0800FB52, EXE6's `sub_80121F8`'s place: EXE5's own numbers) and action 0x47 (0x080EF030,
--- EXE6's AirSpin, @exelib/airspin/action) in its variant 2 (0x080EF0C4's third entry, 0x080DEBB6: EXE6's
--- `sub_80E025E`): a seeking whirlwind (attack object #0xC0, 0x080DE910: the shared one, @exelib/airspin/whirl, in
+-- EXE6's AirSpin, @exelib/air_spin/action) in its variant 2 (0x080EF0C4's third entry, 0x080DEBB6: EXE6's
+-- `sub_80E025E`): a seeking whirlwind (attack object #0xC0, 0x080DE910: the shared one, @exelib/air_spin/whirl, in
 -- EXE6's sheet and sound, an enemy navi invisible, submerged or bubbled unseen, 0x080DEC04) onto the first panel
 -- ahead of the other side's, (Attack + 1) * 10 damage, hit parameter 0x94, Null.
 
-local airspin = require("@exelib/airspin/action")
+local air_spin = require("@exelib/air_spin/action")
 local collision = require("../../../rules/collision")
-local whirl = require("@exelib/airspin/whirl")
-local bass_anly_shot_sprite = asset.sprite("bass-anly-shot")
+local whirl = require("@exelib/air_spin/whirl")
+local bass_anly_shot_sprite = asset.sprite("bass_anly_shot")
 
 local made = whirl.make {
-    id = "megaman/hells-rolling/whirl",
+    id = "megaman/hells_rolling/whirl",
     sprite = bass_anly_shot_sprite,
-    sound = asset.sound("bass-anly-shot"),
+    sound = asset.sound("bass_anly_shot"),
     attack = collision.attack,
     hits = collision.hits_navis,
     hidden = { invisible = true, submerged = true, bubbled = true },
 }
 
-local SPIN = airspin.action { id = "megaman/hells-rolling/action", whirlwind = made.sender }
+local SPIN = air_spin.action { id = "megaman/hells_rolling/action", whirlwind = made.sender }
 
 local COUNTER = 20
 -- 0x0800FB52: (Attack + 1) * 10 damage, hit parameter 0x94; Null, no Atk+ bonus; AirSpin's variant 2.
 return new.weapon {
-    id = "megaman/hells-rolling",
+    id = "megaman/hells_rolling",
     -- The charge table's row 0x69, by Charge 0 to 5: past 4 it reads on into row 0x6A's first entry.
     charge_ticks = { 140, 130, 120, 110, 100, 60 },
     setup = function(navi: Object): Action

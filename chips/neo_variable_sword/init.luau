@@ -1,0 +1,47 @@
+--!strict
+-- NeoVari (EXE5 chip 0x0d9): the navi holds A and enters a direction sequence: down, forward, up gives CrosSwrd; back,
+-- forward, back, A+B SprSonic; up, A+B, down, A+B, up, A+B DblDream; letting go of A, or 48 ticks, gives a Sword: EXE5's
+-- action 0x31 (0x080EDEE2), VarSwrd's (../variable_sword/action) with its own sequences and picks.
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local action = require("./variable_sword/action")
+local cross_sword = require("./cross_sword").cross_sword
+local double_dream = require("./double_dream").double_dream
+local super_sonic = require("./super_sonic").super_sonic
+local sword = require("./sword").sword
+
+local chip: Chip = {
+    codes = { "V" },
+    element = Element.null,
+    family = Family.sword,
+    class = ChipClass.mega,
+    rarity = 4,
+    mb = 74,
+    damage = 240,
+    counter = 30,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 1,
+    action = action.action {
+        -- The sequences (0x080EDF24, joypad words each ending in 0), not turned (facing right on side 0) and turned,
+        -- each step the buttons held, A among them.
+        sequences = {
+            unturned = {
+                { { a = true, down = true }, { a = true, right = true }, { a = true, up = true } },
+                { { a = true, left = true }, { a = true, right = true }, { a = true, left = true }, { a = true, b = true } },
+                { { a = true, up = true }, { a = true, b = true }, { a = true, down = true }, { a = true, b = true }, { a = true, up = true }, { a = true, b = true } },
+            },
+            turned = {
+                { { a = true, down = true }, { a = true, left = true }, { a = true, up = true } },
+                { { a = true, right = true }, { a = true, left = true }, { a = true, right = true }, { a = true, b = true } },
+                { { a = true, up = true }, { a = true, b = true }, { a = true, down = true }, { a = true, b = true }, { a = true, up = true }, { a = true, b = true } },
+            },
+        },
+        -- CrosSwrd, SprSonic, DblDream (0x080EE024: chips 0x176 to 0x178); a Sword (chip 0x30).
+        picks = { cross_sword, super_sonic, double_dream },
+        sword = sword,
+    },
+    auto_battle = { class = "sword_swing", swings = { "x_one_ahead", "all_ahead", "two_columns_ahead", "one_ahead" } },
+}
+
+return { neo_variable_sword = chip }

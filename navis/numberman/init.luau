@@ -9,7 +9,7 @@
 -- die's throw (0x3D, ./charge); no B+Back. A team navi has no forms. His own chip is NumTrap N (./chip: 0x08025EA0's
 -- pair for him), a dimming of his own that sets a trap (./controller, ./trap, ./press).
 --
--- He wears his face: NumberSoul's layer in its row 0 (forms/numbersoul/layer, a second sprite that shows while he
+-- He wears his face: NumberSoul's layer in its row 0 (forms/number_soul/layer, a second sprite that shows while he
 -- stands), which his actor record's init hook puts in his second related slot (0x0800EE6E: the identity's own part
 -- routine, since the layer is the content's kind) and his death hook takes down (0x0800EFFA). An image made with
 -- his record wears one too; an afterimage of him doesn't (EXE5's is a sprite alone: the effects rule
@@ -17,12 +17,12 @@
 
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local layer = require("./megaman/forms/numbersoul/layer")
-local numtrap = require("@self/chip").numtrap
+local layer = require("./megaman/forms/number_soul/layer")
+local number_trap = require("@self/chip").number_trap
 
 -- His face: the layer's row 0's sprite (0x080C32C0).
-local FACE = asset.sprite("numberman-face")
-local numberman_portrait_sprite = asset.sprite("numberman-portrait")
+local FACE = asset.sprite("numberman_face")
+local numberman_portrait_sprite = asset.sprite("numberman_portrait")
 local numberman_sprite = asset.sprite("numberman")
 
 
@@ -33,7 +33,7 @@ local navi: NaviDef = {
     element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("numberman-win"), lose = asset.banner("numberman-deleted") },
+    banners = { win = asset.banner("numberman_win"), lose = asset.banner("numberman_deleted") },
     mugshot = asset.mugshot("numberman"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x1f, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
@@ -41,7 +41,7 @@ local navi: NaviDef = {
     run_message = {
         portrait = numberman_portrait_sprite,
     },
-    own_chip = { chip = numtrap, code = "N" },
+    own_chip = { chip = number_trap, code = "N" },
     own_chip_draws = true,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },
     -- His fresh stats (his stats row): what a side starts him with.

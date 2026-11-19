@@ -1,11 +1,11 @@
 --!strict
 -- SearchMan's charged shot (`searchman/charge`): the original's weapon routine 0x3F (0x0800FB1A) sets the damage his
 -- level gives (the damage rows' row 4, lib/navi_level), his own counter byte and no element, and starts action 0x3B,
--- the one SearchSoul's charged shot starts (navis/megaman/forms/searchsoul/charge: the scope marks the enemy navi
+-- the one SearchSoul's charged shot starts (navis/megaman/forms/search_soul/charge: the scope marks the enemy navi
 -- nearest ahead and five shots follow on its panel, the last one flinching).
 
 local navi_level = require("../../lib/navi_level")
-local shots = require("../megaman/forms/searchsoul/charge")
+local shots = require("../megaman/forms/search_soul/charge")
 
 local charge = {}
 

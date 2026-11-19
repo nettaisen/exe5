@@ -39,7 +39,7 @@ programs.switches = effects.switches
 programs.party_support = effects.party_support
 
 -- The bugs, in the order the bugs' routine runs them (0x08140008, its table 0x08140054 by bug group and level): a
--- program's `bug` names the one it brings, the colors' count brings `status` or `status-strong`. Each writes the navi's
+-- program's `bug` names the one it brings, the colors' count brings `status` or `status_strong`. Each writes the navi's
 -- stats by its level, 1 to 3 (./init.luau).
 programs.BUGS = {
     -- 1: steps go astray (+0x31 = 1).
@@ -66,7 +66,7 @@ programs.BUGS = {
     -- 11: a status at the battle's start (+0x1A = 9): five colors.
     "status",
     -- 12: a stronger one (+0x1A = 10): six or more.
-    "status-strong",
+    "status_strong",
 }
 
 -- What each bug is where a tool lists a build's bugs (`overview`): the named bugs it brings, each by its name's key
@@ -84,7 +84,7 @@ programs.BUGS = {
 -- - `hp`: the hit status (+0x16 = 3, a hit gives the HP bug), which the cards' hit statuses write (EXE6's card
 --   screen calls this one "DmgHPbug"; no EXE5 card has it, and the one that clears it is "DmgBug"). EXE5's `hp`
 --   raises no HP drain (EXE6's does: that is the cards' "BatHPbug", which only cards bring in EXE5);
--- - `status`, `status-strong`: the battle start's bug (+0x1A = 9 and 10), the cards' "StatBug" for 1 and for more:
+-- - `status`, `status_strong`: the battle start's bug (+0x1A = 9 and 10), the cards' "StatBug" for 1 and for more:
 --   one bug, at level 1 and 2.
 --
 -- The others no card effect writes, and are listed under their own names: `encounter` and `result` (+0x28, +0x26),
@@ -98,7 +98,7 @@ programs.BUG_NAMES = {
     buster = { { name = "buster_blanks", kind = "buster_blanks" } },
     hp = { { name = "hit_status.hp_bug", kind = "hit_status" } },
     status = { { name = "status_bug", kind = "status_bug" } },
-    ["status-strong"] = { { name = "status_bug", kind = "status_bug" } },
+    status_strong = { { name = "status_bug", kind = "status_bug" } },
 } :: { [string]: { BugName } }
 
 return programs

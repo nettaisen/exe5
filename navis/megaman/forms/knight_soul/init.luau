@@ -1,0 +1,71 @@
+--!strict
+-- KnightSoul (soul 11, Team Colonel's): EXE5's Soul Unison with KnightMan, for a Break chip given up. MegaMan's sprite
+-- in it is 00-0B (0x0800DA58[11]), his element Null (0x0800E634 by soul); he wears nothing over it (KnightMan's image
+-- wears his ball and chain). Its weapons (0x0801CA1C's row 11, loaded by 0x0800DCA0): the buster (routine 0), the
+-- wrecking ball (0x11, ./charge), Break chips charged with A (0x12, empty, 0x0800F7D6: any Break chip but a dimming
+-- or dark one, 0x0801090A; their damage doubled, 0x080103D0), Chaos Unison's (0x38: DarkDril); no B+Back (0xFF). A
+-- damaging chip (not a dimming one) used from his area's front edge (the panel ahead not his side's) keeps him
+-- invulnerable for 50 ticks (0x08010392).
+
+local attach_points = require("@self/attach_points")
+local buster = require("../weapons/buster")
+local chaos = require("../weapons/chaos")
+local charge = require("@self/charge")
+local charged_chips = require("../weapons/charged_chip")
+local dark_drill = require("../../../chips/dark_drill").dark_drill
+local soul_change = require("../../../rules/souls/change")
+local soul_image = require("../../../rules/souls/image")
+local soul_revert = require("../../../rules/souls/revert")
+local knightman_ball_sprite = asset.sprite("knightman_ball")
+local knightman_sprite = asset.sprite("knightman")
+local knightsoul_sprite = asset.sprite("knight_soul")
+
+-- KnightMan's ball and chain on the soul's image (the body overlays' row 1, 0x0800EE7A): in front.
+local BALL: BodyPart = { sprite = knightman_ball_sprite, anims = 20 }
+
+local form: FormDef = {
+    -- The version whose saves own it (rules/builds' groups).
+    version = Version.colonel,
+    soul = { family = Family["break"] },
+    change = soul_change.action,
+    revert = soul_revert.action,
+    -- KnightMan's image as MegaMan unites with him (rules/souls/image), with his ball and chain (0x0800EDBC's routine
+    -- for the soul).
+    image = soul_image.wearing(knightman_sprite, BALL),
+    sprite = knightsoul_sprite,
+    element = Element.null,
+    buster_bonus = 0,
+    -- Its Chaos Unison (rules/souls/chaos_charge): the weapon an armed charge released in the cycle's window fires:
+    -- routine 0x38 (0x0800FA84): DarkDril (chip 0xC4), the charge table's row 0x38.
+    chaos = { weapon = chaos.weapon(dark_drill, { 40, 60, 90, 120, 150, 40 }) },
+    weapons = {
+        buster = buster.weapon,
+        charge_shot = charge.weapon,
+        -- Routine 0x12 (the charged chip is the chip with the bonus), the charge table's row 0x12.
+        a_charge = charged_chips.routine({ 80, 80, 80, 80, 80, 120 }),
+    },
+    charged_chips = { { family = Family["break"], damaging = false, plain = true } },
+    charged_bonus = { damage = ChargedBonus.again },
+    front_guard = 50,
+    palette = 0,
+    -- Its face in the emotion window, beside its turns left (0x0801968E: pictures 0x16-0x1B, Team Colonel's
+    -- souls'); in its Chaos Unison look while the chaos charge is armed (0x080125F6: the palette 11 on).
+    mugshot = {
+        normal = asset.mugshot("knight_soul"),
+        variant = { normal = asset.mugshot("knight_soul_chaos") },
+    },
+    -- The buster arm he raises in it (lib/arm, 0x080EBABE): its animation, the soul's.
+    buster_arm = { anim = 11 },
+    -- MegaMan's actor record, with his sprite in the soul's attach points (row 11 of category 0).
+    identity = new.identity {
+        class = IdentityClass.player,
+        changes_form = true,
+        version = 0,
+        actor_type = ActorType.player,
+        ai_index = 0,
+        aura_anim = 0,
+        attach_points = attach_points,
+    },
+}
+
+return { knight_soul = form }

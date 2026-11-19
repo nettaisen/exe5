@@ -8,7 +8,7 @@ local navi = require("@self/navi")
 local navi_chips = require("../lib/navi_chips/chip")
 local sp_chips = require("../rules/sp_chips")
 local protoman_sprite = asset.sprite("protoman")
-local sword_slash_sprite = asset.sprite("sword-slash")
+local sword_slash_sprite = asset.sprite("sword_slash")
 local sword_sprite = asset.sprite("sword")
 
 -- ProtoMan (EXE5 chip 0x0ef): ProtoMan cuts in and slashes each enemy navi he can reach: the shared navi
@@ -60,7 +60,7 @@ local LOOK_PROTOMN_SP = common.look {
     spawner_address = 0x080C1A01,
 }
 
-local protomn_sp: Chip = {
+local protoman_sp: Chip = {
     codes = { "B" },
     element = Element.null,
     family = Family.sword,
@@ -76,7 +76,7 @@ local protomn_sp: Chip = {
     slot_in_limit = 1,
     megaman = "light",
     navi = navi_chips.make {
-        id = "protomn-sp/controller",
+        id = "protoman_sp/controller",
         summon = navi.summon_with(LOOK_PROTOMN_SP),
     },
     auto_battle = { class = "at_once" },
@@ -97,7 +97,7 @@ local LOOK_PROTOMN_DS = common.look {
     spawner_address = 0x080C1A01,
 }
 
-local protomn_ds: Chip = {
+local protoman_ds: Chip = {
     codes = { "B" },
     element = Element.null,
     family = Family.sword,
@@ -112,10 +112,10 @@ local protomn_ds: Chip = {
     slot_in_limit = 1,
     megaman = "dark",
     navi = navi_chips.make {
-        id = "protomn-ds/controller",
+        id = "protoman_ds/controller",
         summon = navi.summon_with(LOOK_PROTOMN_DS),
     },
     auto_battle = { class = "at_once" },
 }
 
-return { protoman = protoman, ["protomn-sp"] = protomn_sp, ["protomn-ds"] = protomn_ds }
+return { protoman = protoman, protoman_sp = protoman_sp, protoman_ds = protoman_ds }

@@ -12,14 +12,14 @@
 -- eruption's (EXE5's lava panels don't erupt: they burn and go, §15), the Cross and Beast Out sounds and the custom
 -- screen's Cross window, re-deal and scrap (EXE6's).
 
-local antidmg_counter = require("../chips/antidmg/counter")
+local antidmg_counter = require("../chips/anti_damage/counter")
 local barriers = require("../lib/barriers")
 local beat = require("../chips/beat").beat
 local charged_shot = require("../navis/megaman/weapons/charged_shot")
-local anti_recovery = require("../chips/antirecv/controller")
+local anti_recovery = require("../chips/anti_recovery/controller")
 local dive_ripple = require("../objects/dive_ripple/ripple")
 local double_attacks = require("./double_attacks")
-local drive_end = require("../chips/darkinvs/drive_end")
+local drive_end = require("../chips/dark_invisible/drive_end")
 local dark_survival = require("./emotion/dark_survival")
 local invalid = require("../chips/invalid").invalid
 local knightman_guard = require("../navis/knightman/guard")
@@ -35,11 +35,11 @@ local supports = require("../lib/supports/controller")
 local swords = require("../lib/swords")
 local tango = require("../chips/tango").tango
 local blindness_sprite = asset.sprite("blindness")
-local charge_glow_a_sprite = asset.sprite("charge-glow-a")
-local charge_glow_sprite = asset.sprite("charge-glow")
+local charge_glow_a_sprite = asset.sprite("charge_glow_a")
+local charge_glow_sprite = asset.sprite("charge_glow")
 local confusion_sprite = asset.sprite("confusion")
-local full_synchro_aura_sprite = asset.sprite("full-synchro-aura")
-local hit_marker_sprite = asset.sprite("hit-marker")
+local full_synchro_aura_sprite = asset.sprite("full_synchro_aura")
+local hit_marker_sprite = asset.sprite("hit_marker")
 local immobilized_sprite = asset.sprite("immobilized")
 
 local roles: RolesSpec = {
@@ -53,7 +53,7 @@ local roles: RolesSpec = {
         anti_damage_counter = antidmg_counter.action,
         anti_sword_counter = swords.anti_sword_counter,
         -- The request 0x80000's action (EXE5's 0x49): the end of DarkInvs's no-charge drive, which its timer's end asks
-        -- for (rules/status's `no_charge_drive`; chips/darkinvs/drive_end). EXE6's is its stun strike.
+        -- for (rules/status's `no_charge_drive`; chips/dark_invisible/drive_end). EXE6's is its stun strike.
         stun_strike = drive_end.action,
         -- The request 0x40000000's action (EXE5's 0x30): a dark MegaMan's last stand, which a loss of HP that brings
         -- him to 0 asks for (the rules' `hp_emptied`; ./emotion/dark_survival). EXE6's is a volley no routine asks
@@ -132,64 +132,64 @@ local roles: RolesSpec = {
     },
     sounds = {
         -- A panel cracks or breaks; a panel turns to poison.
-        panel_crack = asset.sound("panel-crack"),
+        panel_crack = asset.sound("panel_crack"),
         -- A party's navi switch lands (the DS's 0x8D: EXE5's soul change's, which the switch plays for the voices the
         -- user left out).
-        navi_switch = asset.sound("cross-change"),
+        navi_switch = asset.sound("cross_change"),
         -- A navi hit, as its own player hears it and as the other does; an object taking damage; a
         -- blocked hit; a counter hit; a navi deleted.
-        own_hit = asset.sound("own-hit"),
+        own_hit = asset.sound("own_hit"),
         hit = asset.sound("hit"),
         damage = asset.sound("damage"),
-        guard = asset.sound("guard-hit"),
-        counter_hit = asset.sound("counter-hit"),
+        guard = asset.sound("guard_hit"),
+        counter_hit = asset.sound("counter_hit"),
         deleted = asset.sound("deleted"),
         -- HP recovered; a chip's damage bonus as it is used.
         recovery = asset.sound("heal"),
-        damage_bonus = asset.sound("damage-bonus"),
+        damage_bonus = asset.sound("damage_bonus"),
         -- The battle pauses and resumes; the custom gauge fills; the low-HP alarm.
         pause = asset.sound("pause"),
-        gauge_full = asset.sound("gauge-full"),
-        low_hp = asset.sound("low-hp"),
+        gauge_full = asset.sound("gauge_full"),
+        low_hp = asset.sound("low_hp"),
         -- A side cuts in, a trap springs (the same sound); a telop shows.
-        cut_in = asset.sound("dimming-sparkle"),
-        trap_mark = asset.sound("dimming-sparkle"),
+        cut_in = asset.sound("dimming_sparkle"),
+        trap_mark = asset.sound("dimming_sparkle"),
         telop = asset.sound("telop"),
         -- The buster starts charging, and is charged.
-        buster_charge = asset.sound("buster-charge"),
-        buster_charged = asset.sound("buster-charged"),
+        buster_charge = asset.sound("buster_charge"),
+        buster_charged = asset.sound("buster_charged"),
         -- Confusion's stars.
         confusion = asset.sound("confusion"),
         -- A navi turns invisible, shows again (or enters), arrives mid-battle; something goes.
         invisible = asset.sound("invisible"),
         appear = asset.sound("appear"),
-        arrive = asset.sound("point-appear"),
+        arrive = asset.sound("point_appear"),
         fade = asset.sound("fade"),
         -- A thrown obstacle lifted, and flying.
-        obstacle_lift = asset.sound("point-rise"),
-        obstacle_throw = asset.sound("etomahwk"),
+        obstacle_lift = asset.sound("point_rise"),
+        obstacle_throw = asset.sound("eagle_tomahawk"),
         -- SELECT with too little gauge, and what can't be picked or taken back on the custom screen.
-        refused = asset.sound("cant-jack-in"),
+        refused = asset.sound("cant_jack_in"),
         -- A party's navi switch lands (EXE5 DS's 0x8D: 0x0202BEB8, 0x0202C690).
-        navi_switch = asset.sound("cross-change"),
+        navi_switch = asset.sound("cross_change"),
         -- SearchSoul's Shuffle's shuffles (0x08023512: the framework's re-deal, each of its eight steps).
         custom_redeal_shuffle = asset.sound("hop"),
         -- The custom screen's: the window slides in; the cursor moves; SELECT hides and shows the window; a
         -- pick, OK, a pick taken back; L's no-running message; R's description opens and closes; the
         -- Program Advance animation's chips of the recipe and the Program Advance.
-        custom_open = asset.sound("select-79"),
-        custom_cursor = asset.sound("menu-cur-move"),
-        custom_hide = asset.sound("cur-move-80"),
+        custom_open = asset.sound("select_79"),
+        custom_cursor = asset.sound("menu_cur_move"),
+        custom_hide = asset.sound("cur_move_80"),
         -- The hover over a dark chip, every 64 ticks while the screen is dark or fading (0x08025AA2: sound 0x16B).
-        custom_shade = asset.sound("dark-hover"),
-        custom_pick = asset.sound("menu-select"),
-        custom_ok = asset.sound("select-82"),
-        custom_back = asset.sound("exit-submenu"),
-        custom_run_message = asset.sound("unselect-7b"),
-        custom_description = asset.sound("description-open"),
-        custom_description_close = asset.sound("description-close"),
-        program_advance_part = asset.sound("err-select-91"),
-        program_advance = asset.sound("delta-ray-2"),
+        custom_shade = asset.sound("dark_hover"),
+        custom_pick = asset.sound("menu_select"),
+        custom_ok = asset.sound("select_82"),
+        custom_back = asset.sound("exit_submenu"),
+        custom_run_message = asset.sound("unselect_7b"),
+        custom_description = asset.sound("description_open"),
+        custom_description_close = asset.sound("description_close"),
+        program_advance_part = asset.sound("err_select_91"),
+        program_advance = asset.sound("delta_ray_2"),
         -- A battle entered: what every battle's start plays as the screen
         -- breaks into it, a random encounter's too (the battle's game state's entry, 0x080054F6).
         -- No rule plays it; the app plays it as it goes into a battle.
@@ -197,13 +197,13 @@ local roles: RolesSpec = {
     },
     music = {
         -- A link battle's, whatever its stage's.
-        link_battle = asset.sound("virus-battle"),
+        link_battle = asset.sound("virus_battle"),
         -- The winner's (in special battles, and otherwise) and the loser's.
-        winner_special = asset.sound("winner-0"),
-        winner = asset.sound("winner-1"),
+        winner_special = asset.sound("winner_0"),
+        winner = asset.sound("winner_1"),
         loser = asset.sound("loser"),
         -- The start screen's (song 1). No rule plays it; the app plays it across its menus.
-        title_screen = asset.sound("title-screen"),
+        title_screen = asset.sound("title_screen"),
     },
     sprites = {
         -- The charge glow of a B charge; of an A charge (14-15). (An armed Chaos Unison charge's, 14-1C, is
@@ -234,22 +234,22 @@ local roles: RolesSpec = {
     },
     banners = {
         -- A round's start (the battle's number), a turn's, the final turns'.
-        round_start = asset.banner("battle-number-start"),
-        turn_start = asset.banner("turn-start"),
-        final_turn = asset.banner("final-turn"),
+        round_start = asset.banner("battle_number_start"),
+        turn_start = asset.banner("turn_start"),
+        final_turn = asset.banner("final_turn"),
         -- A draw; a win's where it isn't the winner's navi's (every battle but an operation battle:
         -- 0x080074D2), and a win and a loss on the judge's ruling (0x0800758A); the damage judge's.
         draw = asset.banner("draw"),
-        win = asset.banner("enemy-deleted"),
-        win_judged = asset.banner("you-win"),
-        lose_judged = asset.banner("you-lose"),
-        judge = asset.banner("hit-damage-judge"),
+        win = asset.banner("enemy_deleted"),
+        win_judged = asset.banner("you_win"),
+        lose_judged = asset.banner("you_lose"),
+        judge = asset.banner("hit_damage_judge"),
         -- A telop on the local player's side, and on the other's.
         telop = asset.banner("telop"),
-        telop_remote = asset.banner("telop-remote"),
+        telop_remote = asset.banner("telop_remote"),
         -- A Program Advance, and a selection that makes none.
-        program_advance = asset.banner("program-advance"),
-        program_advance_empty = asset.banner("program-advance-empty"),
+        program_advance = asset.banner("program_advance"),
+        program_advance_empty = asset.banner("program_advance_empty"),
     },
 }
 

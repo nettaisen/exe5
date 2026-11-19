@@ -8,7 +8,7 @@ local card: PatchCard = {
     mb = 40,
     effects = {
         cards.hp(150),
-        cards.charged_shot(chips.poltrgst),
+        cards.charged_shot(chips.poltergeist),
         cards.bug(cards.buster_blanks(4, 4)),
     },
 }

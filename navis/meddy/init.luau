@@ -9,8 +9,8 @@
 
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local meddycap = require("@self/chip").meddycap
-local meddy_portrait_sprite = asset.sprite("meddy-portrait")
+local meddy_capsule = require("@self/chip").meddy_capsule
+local meddy_portrait_sprite = asset.sprite("meddy_portrait")
 local meddy_sprite = asset.sprite("meddy")
 
 local navi: NaviDef = {
@@ -20,7 +20,7 @@ local navi: NaviDef = {
     element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("meddy-win"), lose = asset.banner("meddy-deleted") },
+    banners = { win = asset.banner("meddy_win"), lose = asset.banner("meddy_deleted") },
     mugshot = asset.mugshot("meddy"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x1c, which script 3's navi check sends her to). Its words are locales/<lang>.toml's; the
@@ -28,7 +28,7 @@ local navi: NaviDef = {
     run_message = {
         portrait = meddy_portrait_sprite,
     },
-    own_chip = { chip = meddycap, code = "M" },
+    own_chip = { chip = meddy_capsule, code = "M" },
     own_chip_draws = true,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon },
     -- Her fresh stats (her stats row): what a side starts her with.

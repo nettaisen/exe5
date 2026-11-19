@@ -32,7 +32,7 @@ local cannon: Chip = {
 
 -- HiCannon (EXE5 chip 0x002): EXE6's cannon (@exelib/cannon, the original's action 0x14; EXE5's the same code),
 -- firing EXE5's cannon shot.
-local hicannon: Chip = {
+local high_cannon: Chip = {
     codes = { "D", "E", "F" },
     element = Element.null,
     family = Family.null,
@@ -50,7 +50,7 @@ local hicannon: Chip = {
 
 -- M-Cannon (EXE5 chip 0x003): EXE6's cannon (@exelib/cannon, the original's action 0x14; EXE5's the same code),
 -- firing EXE5's cannon shot.
-local m_cannon: Chip = {
+local mega_cannon: Chip = {
     codes = { "F", "G", "H" },
     element = Element.null,
     family = Family.null,
@@ -66,4 +66,4 @@ local m_cannon: Chip = {
     auto_battle = { class = "into_reach", range = "ahead_in_row" },
 }
 
-return { cannon = cannon, hicannon = hicannon, ["m-cannon"] = m_cannon }
+return { cannon = cannon, high_cannon = high_cannon, mega_cannon = mega_cannon }

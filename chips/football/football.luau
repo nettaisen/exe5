@@ -33,7 +33,7 @@ local GRAVITY, LAND_Z = 0x1_0000, 0x8_0000
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
 local LANDING = new.effect { sprite = SPRITE, anim = 0x11, palette = 0, steps = 14 }
 local PUFF = new.effect { sprite = puff_sprite, anim = 2, palette = 0, steps = 4 }
-local SOUND_LAND = asset.sound("football-land")
+local SOUND_LAND = asset.sound("football_land")
 -- The block it hits: its panel and the ones right and down (0x080D94BC).
 local BLOCK = { { 0, 0 }, { 0, 1 }, { 1, 0 }, { 1, 1 } }
 -- The blocks by side (its side ^ flip) and kick, first to fourth (0x080D95B8).
@@ -243,7 +243,7 @@ export type State = {
     kicked: number,
 }
 
-local SOUND_APPEAR, SOUND_KICK = asset.sound("appear"), asset.sound("football-kick")
+local SOUND_APPEAR, SOUND_KICK = asset.sound("appear"), asset.sound("football_kick")
 local KICKS: { [number]: boolean } = { [171] = true, [126] = true, [111] = true, [96] = true }
 
 local function done(me: Object)

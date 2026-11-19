@@ -2,10 +2,10 @@
 -- ProtoMan's charged slash (`protoman/charge`): the original's weapon routine 0x1E (0x0800F8CE). WideSwrd loaded as the
 -- attack (0x0800FE78: the chip's record's element, lockout and params; no chip is spent), then the damage his level
 -- gives (the damage rows' row 0, lib/navi_level) and his own counter byte; it starts the chip's use (EXE5's action 0x13
--- as its subtype 1, chips/wideswrd).
+-- as its subtype 1, chips/wide_sword).
 
 local navi_level = require("../../lib/navi_level")
-local wideswrd = require("../../chips/wideswrd").wideswrd
+local wide_sword = require("../../chips/wide_sword").wide_sword
 
 local charge = {}
 
@@ -21,9 +21,9 @@ local PARTY: { { number } } = {
 
 -- 0x0800F8CE
 local function setup(navi: Object): Chip
-    navi:load_chip_attack(wideswrd)
+    navi:load_chip_attack(wide_sword)
     navi.attack_word = damage_word.of { amount = navi_level.damage(navi, DAMAGE, PARTY), counter = COUNTER, cant_counter = true }
-    return wideswrd
+    return wide_sword
 end
 
 charge.weapon = new.weapon {

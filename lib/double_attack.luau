@@ -27,8 +27,8 @@ local megaman = require("../navis/megaman").megaman
 local base_form = require("../navis/megaman/forms/base").base
 local overlays = require("@exelib/overlays")
 local panels = require("@exelib/panels")
-local buster_arm_sprite = asset.sprite("buster-arm")
-local charge_glow_sprite = asset.sprite("charge-glow")
+local buster_arm_sprite = asset.sprite("buster_arm")
+local charge_glow_sprite = asset.sprite("charge_glow")
 
 local double_attack = {}
 
@@ -71,8 +71,8 @@ local COURSE_WAIT = 0x1E
 local CHARGING = new.effect { sprite = charge_glow_sprite, anim = 0, palette = 0, steps = 16 }
 local CHARGED = new.effect { sprite = charge_glow_sprite, anim = 2, palette = 0, steps = 16 }
 local CHARGING_LASTS, CHARGED_AT = 0x28, 0x14
-local SOUND_CHARGING = asset.sound("buster-charge")
-local SOUND_CHARGED = asset.sound("buster-charged")
+local SOUND_CHARGING = asset.sound("buster_charge")
+local SOUND_CHARGED = asset.sound("buster_charged")
 local SOUND_APPEAR = asset.sound("appear")
 -- How long a navi appears, and leaves.
 local APPEAR_TICKS, LEAVE_TICKS = 0x14, 4
@@ -142,9 +142,9 @@ local function megaman_overlay(me: Object)
     local stats = megaman_stats(me)
     local form = stats.form
     if not form.base then
-        if form.id == "gyrosoul" then
+        if form.id == "gyro_soul" then
             me:add_parts(form.identity :: Identity, 1)
-        elseif form.id == "numbersoul" then
+        elseif form.id == "number_soul" then
             overlays.put_on_form(me, form)
         end
         return
@@ -304,7 +304,7 @@ function double_attack.enemy_panels(me: Object): { number }
     return panels.filtered_except(me, ENEMY_AREA, side)
 end
 
-local EXE5_DOUBLE_ATTACK = schema.record_type("exe5-double-attack")
+local EXE5_DOUBLE_ATTACK = schema.record_type("exe5_double_attack")
 double_attack.EXE5_DOUBLE_ATTACK = EXE5_DOUBLE_ATTACK
 
 -- A Double Attack's controller and navis, and what its chip keeps of it (`DoubleAttack`, types.d.luau).

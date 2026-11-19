@@ -1,0 +1,27 @@
+--!strict
+-- DarkInvs (EXE5 chip 0x0bd): a dark chip whose cut-in turns its user dark and gives it to the auto battle AI for
+-- 600 ticks, untouchable (./controller: EXE5's effect object #0x18; its end, EXE5's action 0x49: ./drive-end).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local controller = require("@self/controller")
+local dark_costs = require("../lib/dark_costs")
+
+local chip: Chip = {
+    codes = { "I", "*" },
+    element = Element.null,
+    family = Family.invisible,
+    class = ChipClass.standard,
+    rarity = 4,
+    mb = 99,
+    damage = 0,
+    counter = 0,
+    lockout = 0,
+    flags = { dimming = true, dark = true },
+    slot_in_limit = 1,
+    dimming = controller.hook,
+    -- What its use costs its user (rules/light_dark).
+    dark_cost = dark_costs.step_bug,
+    auto_battle = { class = "at_once" },
+}
+
+return { dark_invisible = chip }

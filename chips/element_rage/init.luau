@@ -1,0 +1,24 @@
+--!strict
+-- ElemRage (EXE5 chip 0x080): a row of three flames from the panel ahead, of the element of the panel the user stands
+-- on, which then spread and paralyze (chips/element_rage/element_rage, action 0x56; the record's parameters: 3 flames, 30 ticks).
+-- Its record is written by tools/exe5/gen_content.py (bn6battle-verify) from the EXE5 ROMs.
+
+local element_rage = require("@self/element_rage")
+
+local chip: Chip = {
+    codes = { "E", "K", "W" },
+    element = Element.null,
+    family = Family.null,
+    class = ChipClass.standard,
+    rarity = 2,
+    mb = 39,
+    damage = 90,
+    counter = 20,
+    lockout = 0,
+    flags = { has_damage = true, library = true },
+    slot_in_limit = 3,
+    action = element_rage.action(3, 30),
+    auto_battle = { class = "into_reach", range = "three_in_row" },
+}
+
+return { element_rage = chip }

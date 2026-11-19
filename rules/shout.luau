@@ -44,7 +44,7 @@ local BARRIERS: { Barrier } = { barriers.barrier_10, barriers.barrier_100, barri
 -- reads aligned (to confirm on a console): 0x0201, 0x0201, 0x0103.
 local BUSTER_ADDS: { number } = { 0x0201, 0x0201, 0x0103 }
 
-local OK_SOUND = asset.sound("ok-8b")
+local OK_SOUND = asset.sound("ok_8b")
 local HEAL_SOUND = asset.sound("heal")
 local FADE_SPEED = 4
 local WAIT = 0x1E

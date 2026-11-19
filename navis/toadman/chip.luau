@@ -25,7 +25,7 @@ export type State = {
 }
 
 local READY_ANIM, SING_ANIM = 20, 21
-local SOUND = asset.sound("toad-melody")
+local SOUND = asset.sound("toad_melody")
 local COUNTER_TICKS = 10
 -- The record's parameters (0x0A0600): no dimming, the next note 6 ticks in, each note 10 ticks.
 local CHAIN: { life: number, delay: number, dimmed: boolean } = { life = 10, delay = 6, dimmed = false }
@@ -106,4 +106,4 @@ local chip: Chip = {
     end,
 }
 
-return { ["s-melody"] = chip }
+return { shocking_melody = chip }

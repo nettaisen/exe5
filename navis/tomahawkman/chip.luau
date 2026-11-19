@@ -11,7 +11,7 @@ local navi_level = require("../../lib/navi_level")
 local collision = require("../../rules/collision")
 local marker = require("../../lib/navi_chips/marker")
 local regions = require("@exelib/regions")
-local big_slash_sprite = asset.sprite("big-slash")
+local big_slash_sprite = asset.sprite("big_slash")
 
 export type State = {
     -- AIAttackVars +0x10: ticks left in the current step.
@@ -22,7 +22,7 @@ local RAISE_ANIM, SWING_ANIM, RECOVER_ANIM = 16, 17, 7
 local RAISE_TICKS, SWING_TICKS, RECOVER_TICKS = 30, 30, 30
 -- The swing's count when the slash lands.
 local SLASH_AT = 20
-local SOUND = asset.sound("tomahawk-man")
+local SOUND = asset.sound("tomahawk_man")
 local HIT_MOD: HitModifier = { flinch = true, flash = true }
 -- Effect 0x45: the big slash (sprite 0C-15, animation 1), 16 pixels up.
 local SLASH = new.effect { sprite = big_slash_sprite, anim = 1, palette = 0, steps = 15 }
@@ -132,4 +132,4 @@ local chip: Chip = {
     action = action,
 }
 
-return { ["t-swing"] = chip }
+return { tomahawk_swing = chip }

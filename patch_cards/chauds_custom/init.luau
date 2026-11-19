@@ -1,0 +1,16 @@
+--!strict
+-- The patch card Chaud's Custom (46, 炎山の カスタマイズ in the Japanese games), 35 MB.
+
+local cards = require("../rules/patch_cards/cards")
+local chips = require("../navis/megaman/weapons/chips")
+
+local card: PatchCard = {
+    mb = 35,
+    effects = {
+        cards.custom(1),
+        cards.b_button(chips.sword),
+        cards.charged_shot(chips.wide_sword),
+    },
+}
+
+return { chauds_custom = card }

@@ -7,9 +7,9 @@
 local arm = require("./arm")
 local attachment = require("../objects/attachment")
 local common = require("@exelib/buster")
-local buster_arm_sprite = asset.sprite("buster-arm")
-local muzzle_flash_sprite = asset.sprite("muzzle-flash")
-local navi_arm_sprite = asset.sprite("navi-arm")
+local buster_arm_sprite = asset.sprite("buster_arm")
+local muzzle_flash_sprite = asset.sprite("muzzle_flash")
+local navi_arm_sprite = asset.sprite("navi_arm")
 
 local buster = common.make {
     flash = attachment.look { sprite = muzzle_flash_sprite, palette = 0, attach_point = 0x10 },

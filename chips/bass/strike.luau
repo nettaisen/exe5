@@ -13,7 +13,7 @@ local regions = require("@exelib/regions")
 local strike = {}
 
 local SPRITE = asset.sprite("bass")
-local SOUND = asset.sound("col-army-2")
+local SOUND = asset.sound("col_army_2")
 local WARNING = 0xA
 -- The burst (Bass's sprite's animation 32) lasts 12 of its steps.
 local BURST_STEPS = 12

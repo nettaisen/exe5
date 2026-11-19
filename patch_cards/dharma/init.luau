@@ -9,7 +9,7 @@ local card: PatchCard = {
     effects = {
         cards.bug(cards.hp_percent(-15)),
         cards.undershirt(true),
-        cards.charged_shot(chips.airhoc),
+        cards.charged_shot(chips.air_hockey),
     },
 }
 

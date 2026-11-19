@@ -9,15 +9,15 @@ local attachment = require("../../../objects/attachment")
 local bullet = require("../../../objects/bullet")
 local navi_arms = require("../../../lib/navi_arms")
 local regions = require("@exelib/regions")
-local spreader = require("@exelib/spreadr/action")
-local shell_burst_sprite = asset.sprite("shell-burst")
-local spout_splash_sprite = asset.sprite("spout-splash")
+local spreader = require("@exelib/spreader/action")
+local shell_burst_sprite = asset.sprite("shell_burst")
+local spout_splash_sprite = asset.sprite("spout_splash")
 local spreader_sprite = asset.sprite("spreader")
 
 local spreads = {}
 
 local LOOK: SpreaderLook = {
-    sound = asset.sound("h-burst"),
+    sound = asset.sound("hyper_burst"),
     -- Held in the overlay, its animation by the holder's AI index (the arms' table).
     hold = attachment.holder(navi_arms.spreader),
     slot = "overlay",
@@ -33,25 +33,25 @@ local HEAT_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = {},
     effect = new.effect { sprite = shell_burst_sprite, anim = 0, palette = 0, steps = 27 },
-    sound = asset.sound("target-move"),
+    sound = asset.sound("target_move"),
 }
 -- BubSht's (row 4, its effect 0x1F and sound EXE6's): a splash over the panel found and the one behind it.
 local BUBBLE_SHOT = bullet.variant {
     region = regions.long,
     hit_mod = {},
     effect = new.effect { sprite = spout_splash_sprite, anim = 0, palette = 0, steps = 31 },
-    sound = asset.sound("spout-ball"),
+    sound = asset.sound("spout_ball"),
 }
 
 local HEAT = spreader.action({
-    id = "megaman/heat-shot/action",
+    id = "megaman/heat_shot/action",
     gun = GUN,
     z = 0x10_0000,
     bullet = HEAT_SHOT,
     fire_after = FIRE_AFTER,
 }, LOOK)
 local BUBBLE = spreader.action({
-    id = "megaman/bubble-shot/action",
+    id = "megaman/bubble_shot/action",
     gun = GUN,
     z = 0,
     bullet = BUBBLE_SHOT,
@@ -62,7 +62,7 @@ local FIRE, AQUA = Element.fire, Element.aqua
 
 -- 0x0800FC5A: 40 damage, hit parameter 10, Fire (the attack's other bytes as they were).
 spreads.heat = new.weapon {
-    id = "megaman/heat-shot",
+    id = "megaman/heat_shot",
     -- The charge table's row 0x4A, by Charge 0 to 5: past 4 it reads on into row 0x4B's first entry.
     charge_ticks = { 60, 55, 50, 45, 40, 80 },
     setup = function(navi: Object): Action
@@ -74,7 +74,7 @@ spreads.heat = new.weapon {
 
 -- 0x0800FCFE: 50 damage, hit parameter 10, Aqua.
 spreads.bubble = new.weapon {
-    id = "megaman/bubble-shot",
+    id = "megaman/bubble_shot",
     -- The charge table's row 0x56, by Charge 0 to 5: past 4 it reads on into row 0x57's first entry.
     charge_ticks = { 60, 55, 50, 45, 40, 50 },
     setup = function(navi: Object): Action

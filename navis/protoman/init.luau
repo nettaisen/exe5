@@ -14,8 +14,8 @@
 local back = require("@self/back")
 local buster = require("./megaman/weapons/buster")
 local charge = require("@self/charge")
-local stepswrd = require("@self/chip").stepswrd
-local protoman_portrait_sprite = asset.sprite("protoman-portrait")
+local step_sword = require("@self/chip").step_sword
+local protoman_portrait_sprite = asset.sprite("protoman_portrait")
 local protoman_sprite = asset.sprite("protoman")
 
 local navi: NaviDef = {
@@ -25,7 +25,7 @@ local navi: NaviDef = {
     element = Element.null,
     buster_bonus = 1,
     move_lag = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 },
-    banners = { win = asset.banner("protoman-win"), lose = asset.banner("protoman-deleted") },
+    banners = { win = asset.banner("protoman_win"), lose = asset.banner("protoman_deleted") },
     mugshot = asset.mugshot("protoman"),
     -- The no-running message's portrait: the speaker beside the box (L on the custom screen, 0x08023190: the run
     -- dialog's script 0x17, which script 3's navi check sends him to). Its words are locales/<lang>.toml's; the
@@ -33,7 +33,7 @@ local navi: NaviDef = {
     run_message = {
         portrait = protoman_portrait_sprite,
     },
-    own_chip = { chip = stepswrd, code = "B" },
+    own_chip = { chip = step_sword, code = "B" },
     own_chip_draws = true,
     weapons = { buster = buster.weapon, charge_shot = charge.weapon, back_special = back.weapon },
     -- His fresh stats (his stats row): what a side starts him with.
